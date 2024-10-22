@@ -12667,7 +12667,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     // pokemon with unaware ignore attack stat changes while taking damage
     if (defAbility == ABILITY_UNAWARE || defAbility == ABILITY_IGNORANT_BLISS)
         atkStage = DEFAULT_STAT_STAGE;
-    if (atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
+    if (atkStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
         atkStage = DEFAULT_STAT_STAGE;
 
     atkStat *= gStatStageRatios[atkStage][0];
