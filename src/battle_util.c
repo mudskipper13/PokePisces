@@ -12553,10 +12553,9 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         }
         break;
     case HOLD_EFFECT_POISON_BARB:
-        if (moveType == TYPE_POISON) {
+        if (moveType == TYPE_POISON)
+        {
             holdEffectModifier = UQ_4_12(1.0) + sPercentToModifier[20];
-            if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
-                holdEffectModifier += (gBattleMons[battlerDef].maxHP * 115) / 100;
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         }
         break;

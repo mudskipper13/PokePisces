@@ -2228,6 +2228,10 @@ static void Cmd_damagecalc(void)
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
     }
+    else if (atkHoldEffect == HOLD_EFFECT_POISON_BARB && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY && gBattleMoves[gCurrentMove].type == TYPE_POISON)
+    {
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 115) / 100);
+    }
     else if (gCurrentMove == MOVE_NEEDLE_ARM || (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC))
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
