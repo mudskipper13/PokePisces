@@ -297,6 +297,68 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_PERISH_BODY] = -1,
     [ABILITY_WANDERING_SPIRIT] = 2,
     [ABILITY_GORILLA_TACTICS] = 4,
+    [ABILITY_ALL_GAME] = 8,
+    [ABILITY_AMBUSHER] = 6,
+    [ABILITY_APPETITE] = 7,
+    [ABILITY_ARBITER] = 9,
+    [ABILITY_BRANDING_CLAWS] = 4,
+    [ABILITY_CINDER_WALTZ] = 10,
+    [ABILITY_CRUELTY] = 6,
+    [ABILITY_DISDAIN] = 7,
+    [ABILITY_DISTURB] = 7,
+    [ABILITY_DOMINEER] = 6,
+    [ABILITY_DRAINAGE] = 5,
+    [ABILITY_DREAD_VEIL] = 4,
+    [ABILITY_EGGS_ROYALE] = 8,
+    [ABILITY_EMPTY] = 8,
+    [ABILITY_ENDLESS] = 5,
+    [ABILITY_ENTRANCING] = 3,
+    [ABILITY_EVIL_EYE] = 7,
+    [ABILITY_EXTREMO] = 6,
+    [ABILITY_FALLING] = 9,
+    [ABILITY_FAST_TALKER] = 5,
+    [ABILITY_FREE_LOVE] = 4,
+    [ABILITY_FRIENDLY_AURA] = 2,
+    [ABILITY_FROST_JAW] = 6,
+    [ABILITY_FUDDLE_POINT] = 4,
+    [ABILITY_GHOULISH] = 9,
+    [ABILITY_GLARING_STAGGER] = 7,
+    [ABILITY_GOLDEN_MEAN] = 10,
+    [ABILITY_IGNORANT_BLISS] = 9,
+    [ABILITY_LUMBERING] = -1,
+    [ABILITY_MADNESS] = 4,
+    [ABILITY_MELANCHOLIA] = 5,
+    [ABILITY_MIASMA] = 4,
+    [ABILITY_MILKY_WAY] = 0,
+    [ABILITY_MIND_GAMES] = 9,
+    [ABILITY_MOCKING] = 7,
+    [ABILITY_MYSTIC_ONE] = 10,
+    [ABILITY_ONE_WAY_TRIP] = 4,
+    [ABILITY_PERMAFROST] = 6,
+    [ABILITY_PINK_MIST] = 8,
+    [ABILITY_POTENCY] = 6,
+    [ABILITY_POWER_SPIKE] = 5,
+    [ABILITY_PRODIGY] = 9,
+    [ABILITY_PUNISHER] = -1,
+    [ABILITY_RAPID_FIRE] = 10,
+    [ABILITY_RESET] = 10,
+    [ABILITY_REVERSI] = 8,
+    [ABILITY_RISING] = 9,
+    [ABILITY_SERENE_AURA] = 8,
+    [ABILITY_RISKTAKER] = 9,
+    [ABILITY_SADDENED] = -2,
+    [ABILITY_SHAMBLES] = 6,
+    [ABILITY_SOUL_LOCKER] = 7,
+    [ABILITY_SPIRALYSIS] = 8,
+    [ABILITY_STAR_SCREEN] = 6,
+    [ABILITY_STARS_GRACE] = 5,
+    [ABILITY_STELLAR_BODY] = -1,
+    [ABILITY_STRONGHOLD] = 10,
+    [ABILITY_TIME_TURN] = 8,
+    [ABILITY_TITANIC] = 10,
+    [ABILITY_TRANSFUSION] = 2,
+    [ABILITY_WHITE_OUT] = 5,
+    [ABILITY_WITCHCRAFT] = 7,
     [ABILITY_SHUNYONG] = 2,
 };
 
@@ -413,6 +475,8 @@ static const u16 sIgnoredPowerfulMoveEffects[] =
     EFFECT_AIR_CANNON,
     EFFECT_RECHARGE_REDUCE,
     EFFECT_FLEUR_CANNON,
+    EFFECT_AXEL_HEEL,
+    EFFECT_MIND_BREAK,
     IGNORED_MOVES_END
 };
 
@@ -863,13 +927,19 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
             {
             case EFFECT_LEVEL_DAMAGE:
             case EFFECT_PSYWAVE:
-                dmg = gBattleMons[battlerAtk].level * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                dmg = gBattleMons[battlerAtk].level * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
                 break;
             case EFFECT_DRAGON_RAGE:
-                dmg = 40 * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                if (gBattleMons[battlerAtk].level > 49)
+                    dmg = 140 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
+                else
+                    dmg = 40 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
                 break;
             case EFFECT_SONICBOOM:
-                dmg = 20 * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                if (gBattleMons[battlerAtk].level > 49)
+                    dmg = 120 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
+                else
+                    dmg = 20 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
                 break;
             case EFFECT_MULTI_HIT:
             case EFFECT_BLACK_BUFFET:
@@ -880,7 +950,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
                 dmg = max(0, gBattleMons[battlerDef].hp - gBattleMons[battlerAtk].hp);
                 break;
             case EFFECT_SUPER_FANG:
-                dmg = (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND
+                dmg = (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE)
                     ? max(2, gBattleMons[battlerDef].hp * 3 / 4)
                     : max(1, gBattleMons[battlerDef].hp / 2));
                 break;
@@ -1307,7 +1377,7 @@ s32 AI_GetAbility(u32 battlerId)
         return AI_PARTY->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability;
 
     // Abilities that prevent fleeing - treat as always known
-    if (knownAbility == ABILITY_SHADOW_TAG || knownAbility == ABILITY_MAGNET_PULL || knownAbility == ABILITY_ARENA_TRAP)
+    if (knownAbility == ABILITY_SHADOW_TAG || knownAbility == ABILITY_MAGNET_PULL || knownAbility == ABILITY_ARENA_TRAP || knownAbility == ABILITY_SPIRALYSIS || knownAbility == ABILITY_STICKY_HOLD)
         return knownAbility;
 
     // Else, guess the ability
@@ -1466,6 +1536,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     case EFFECT_STUN_SPORE:
     case EFFECT_POISON_POWDER:
     case EFFECT_MAGIC_POWDER:
+    case EFFECT_WORRY_SEED:
         return TRUE;
     default:
         return FALSE;
@@ -1514,6 +1585,7 @@ bool32 IsStatLoweringMoveEffect(u32 moveEffect)
     case EFFECT_COTTON_SPORE:
     case EFFECT_FEATHER_DANCE:
     case EFFECT_KINESIS:
+    case EFFECT_POWDER:
         return TRUE;
     default:
         return FALSE;
@@ -1651,6 +1723,8 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
     if (ability == ABILITY_SAND_VEIL
       || ability == ABILITY_SAND_RUSH
       || ability == ABILITY_SAND_FORCE
+      || ability == ABILITY_WIND_POWER
+      || ability == ABILITY_WIND_RIDER
       || ability == ABILITY_OVERCOAT
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_SUGAR_COAT
@@ -1679,6 +1753,9 @@ bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_SUGAR_COAT
       || ability == ABILITY_OVERCOAT
+      || ability == ABILITY_HIBERNAL
+      || ability == ABILITY_PERMAFROST
+      || ability == ABILITY_WHITE_OUT
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMove(battler, MOVE_BLIZZARD)
@@ -1704,6 +1781,7 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || atkAbility == ABILITY_HYDRATION
       || atkAbility == ABILITY_RAIN_DISH
       || atkAbility == ABILITY_DRY_SKIN
+      || atkAbility == ABILITY_WATER_VEIL
       || HasMoveEffect(battlerAtk, EFFECT_THUNDER)
       || HasMoveEffect(battlerAtk, EFFECT_HURRICANE)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
@@ -1813,7 +1891,8 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
          || battlerAbility == ABILITY_WHITE_SMOKE
-         || battlerAbility == ABILITY_FULL_METAL_BODY)
+         || battlerAbility == ABILITY_FULL_METAL_BODY
+         || battlerAbility == ABILITY_TITANIC)
             return FALSE;
 
         return TRUE;
@@ -1889,6 +1968,7 @@ bool32 ShouldLowerAttack(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_HYPER_CUTTER
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1905,6 +1985,7 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1920,6 +2001,7 @@ bool32 ShouldLowerSpeed(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1936,6 +2018,7 @@ bool32 ShouldLowerSpAtk(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1952,6 +2035,7 @@ bool32 ShouldLowerSpDef(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1967,6 +2051,7 @@ bool32 ShouldLowerAccuracy(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_KEEN_EYE
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1982,6 +2067,7 @@ bool32 ShouldLowerEvasion(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
+      && defAbility != ABILITY_TITANIC
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -2182,6 +2268,7 @@ bool32 IsTrappingMoveEffect(u32 effect)
     case EFFECT_SNAP_TRAP:
     case EFFECT_CONSTRICT:
     case EFFECT_BLOCK:
+    case EFFECT_HEAL_BLOCK:
     //case EFFECT_NO_RETREAT:   // TODO
         return TRUE;
     default:
@@ -2329,6 +2416,7 @@ bool32 IsStatLoweringEffect(u32 effect)
     case EFFECT_COTTON_SPORE:
     case EFFECT_FEATHER_DANCE:
     case EFFECT_KINESIS:
+    case EFFECT_POWDER:
         return TRUE;
     default:
         return FALSE;
@@ -2521,7 +2609,10 @@ static bool32 BattlerAffectedByHail(u32 battlerId, u32 ability)
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_ICE)
       && ability != ABILITY_SNOW_CLOAK
       && ability != ABILITY_OVERCOAT
-      && ability != ABILITY_ICE_BODY)
+      && ability != ABILITY_ICE_BODY
+      && ability != ABILITY_HIBERNAL
+      && ability != ABILITY_PERMAFROST
+      && ability != ABILITY_WHITE_OUT)
         return TRUE;
     return FALSE;
 }
@@ -3007,6 +3098,7 @@ static bool32 AI_CanBePoisoned(u32 battlerAtk, u32 battlerDef, u32 move)
      || gBattleMons[battlerDef].status1 & STATUS1_ANY
      || ability == ABILITY_IMMUNITY
      || ability == ABILITY_COMATOSE
+     || ability == ABILITY_TITANIC
      || AI_IsAbilityOnSide(battlerDef, ABILITY_PASTEL_VEIL)
      || gBattleMons[battlerDef].status1 & STATUS1_ANY
      || IsAbilityStatusProtected(battlerDef)
@@ -3023,6 +3115,7 @@ bool32 ShouldPoisonSelf(u32 battler, u32 ability)
       || ability == ABILITY_QUICK_FEET
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_SUGAR_COAT
+      || ability == ABILITY_EXTREMO
       || (ability == ABILITY_TOXIC_BOOST && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
       || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
@@ -3062,6 +3155,7 @@ static bool32 AI_CanBePanicked(u32 battlerAtk, u32 battlerDef, u32 move)
      || ability == ABILITY_UNAWARE
      || ability == ABILITY_OBLIVIOUS
      || ability == ABILITY_COMATOSE
+     || ability == ABILITY_TITANIC
      || AI_IsAbilityOnSide(battlerDef, ABILITY_PASTEL_VEIL)
      || gBattleMons[battlerDef].status1 & STATUS1_ANY
      || IsAbilityStatusProtected(battlerDef)
@@ -3088,6 +3182,7 @@ static bool32 AI_CanBeParalyzed(u32 battler, u32 ability)
 {
     if (ability == ABILITY_LIMBER
       || ability == ABILITY_COMATOSE
+      || ability == ABILITY_TITANIC
       || IS_BATTLER_OF_TYPE(battler, TYPE_ELECTRIC)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || IsAbilityStatusProtected(battler))
@@ -3110,6 +3205,7 @@ bool32 AI_CanBeConfused(u32 battler, u32 ability)
 {
     if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
       || (ability == ABILITY_OWN_TEMPO)
+      || (ability == ABILITY_TITANIC)
       || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)))
         return FALSE;
     return TRUE;
@@ -3134,6 +3230,7 @@ bool32 AI_CanBeBurned(u32 battler, u32 ability)
     if (ability == ABILITY_WATER_VEIL
       || ability == ABILITY_WATER_BUBBLE
       || ability == ABILITY_COMATOSE
+      || ability == ABILITY_TITANIC
       || IS_BATTLER_OF_TYPE(battler, TYPE_FIRE)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || IsAbilityStatusProtected(battler)
@@ -3146,6 +3243,7 @@ bool32 AI_CanGetFrostbite(u32 battler, u32 ability)
 {
     if (ability == ABILITY_MAGMA_ARMOR
       || ability == ABILITY_COMATOSE
+      || ability == ABILITY_TITANIC
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || IsAbilityStatusProtected(battler)
@@ -3161,6 +3259,7 @@ bool32 ShouldBurnSelf(u32 battler, u32 ability)
       || ability == ABILITY_HEATPROOF
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_SUGAR_COAT
+      || ability == ABILITY_EXTREMO
       || (ability == ABILITY_FLARE_BOOST && HasMoveWithSplit(battler, SPLIT_SPECIAL))
       || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
@@ -3198,6 +3297,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
     if ((gBattleMons[battlerDef].status2 & STATUS2_INFATUATION)
       || AI_GetMoveEffectiveness(AI_THINKING_STRUCT->moveConsidered, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || defAbility == ABILITY_OBLIVIOUS
+      || defAbility == ABILITY_TITANIC
       || !AreBattlersOfOppositeGender(battlerAtk, battlerDef)
       || AI_IsAbilityOnSide(battlerDef, ABILITY_AROMA_VEIL))
         return FALSE;
@@ -3207,7 +3307,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbility, u32 move)
 {
     if (((AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER 
-      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || defAbility == ABILITY_INNER_FOCUS))
+      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || defAbility == ABILITY_INNER_FOCUS || defAbility == ABILITY_TITANIC || defAbility == ABILITY_STEADFAST || defAbility == ABILITY_PROPELLER_TAIL))
       || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER)) // Opponent goes first
@@ -3215,6 +3315,8 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
         return 0;
     }
     else if ((atkAbility == ABILITY_SERENE_GRACE
+      || atkAbility == ABILITY_RISKTAKER
+      || atkAbility == ABILITY_SERENE_AURA
       || gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS
       || gBattleMons[battlerDef].status2 & STATUS2_INFATUATION
       || gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
@@ -3244,13 +3346,17 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     if (!gDisableStructs[battlerAtk].isFirstTurn
     || AI_DATA->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS
+    || AI_DATA->abilities[battlerAtk] == ABILITY_ONE_WAY_TRIP
     || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
     || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER
     && (AI_DATA->abilities[battlerDef]  == ABILITY_PROPELLER_TAIL 
         || AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
-        || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS)))
+        || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS
+        || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST
+        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC
+        || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL)))
         return FALSE;
 
     return TRUE;
@@ -3475,7 +3581,8 @@ bool32 PartnerMoveEffectIsStatusSameTarget(u32 battlerAtkPartner, u32 battlerDef
        || gBattleMoves[partnerMove].effect == EFFECT_SLEEP_POWDER
        || gBattleMoves[partnerMove].effect == EFFECT_STUN_SPORE
        || gBattleMoves[partnerMove].effect == EFFECT_POISON_POWDER
-       || gBattleMoves[partnerMove].effect == EFFECT_MAGIC_POWDER))
+       || gBattleMoves[partnerMove].effect == EFFECT_MAGIC_POWDER
+       || gBattleMoves[partnerMove].effect == EFFECT_WORRY_SEED))
         return TRUE;
     return FALSE;
 }
@@ -3988,7 +4095,10 @@ void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
                 *score += 2; // burning the target to stay alive is cool
         }
 
-        if (HasMoveEffect(battlerAtk, EFFECT_HEX) || HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_HEX) || HasMoveEffect(battlerAtk, EFFECT_RADIOACID))
+        if (HasMoveEffect(battlerAtk, EFFECT_HEX) 
+         || HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_HEX)
+         || HasMoveEffect(battlerAtk, EFFECT_RADIOACID)
+         || AI_DATA->abilities[battlerAtk] == ABILITY_BRANDING_CLAWS)
             (*score)++;
     }
 }
@@ -4048,7 +4158,10 @@ void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
         if (gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS
           || gBattleMons[battlerDef].status2 & STATUS2_INFATUATION
           || (AI_DATA->abilities[battlerAtk] == ABILITY_SERENE_GRACE && HasMoveEffect(battlerAtk, EFFECT_FLINCH_HIT))
-          || (AI_DATA->abilities[battlerAtk] == ABILITY_SERENE_GRACE && HasMoveEffect(battlerAtk, EFFECT_HEART_STAMP)))
+          || (AI_DATA->abilities[battlerAtk] == ABILITY_RISKTAKER && HasMoveEffect(battlerAtk, EFFECT_FLINCH_HIT))
+          || (AI_DATA->abilities[battlerAtk] == ABILITY_SERENE_AURA && HasMoveEffect(battlerAtk, EFFECT_FLINCH_HIT))
+          || (AI_DATA->abilities[battlerAtk] == ABILITY_SERENE_GRACE && HasMoveEffect(battlerAtk, EFFECT_HEART_STAMP))
+          || (AI_DATA->abilities[battlerAtk] == ABILITY_SERENE_AURA && HasMoveEffect(battlerAtk, EFFECT_HEART_STAMP)))
             *score += 3;
         else
             *score += 2;

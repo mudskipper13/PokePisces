@@ -3000,7 +3000,7 @@ u8 DoBattlerEndTurnEffects(void)
         case ENDTURN_AQUA_RING: // aqua ring
             if ((gStatuses3[battler] & STATUS3_AQUA_RING) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) && gBattleMons[battler].hp != 0)
             {
-                gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
+                gBattleMoveDamage = GetDrainedBigRootHp(battler, ((gBattleMons[battler].maxHP - gBattleMons[battler].hp) / 3));
                 BattleScriptExecute(BattleScript_AquaRingHeal);
                 effect++;
             }
@@ -4306,7 +4306,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             if ((gBattleMoves[gCurrentMove].powderMove) && (gBattlerAttacker != gBattlerTarget))
             {
 #if B_POWDER_GRASS >= GEN_6
-                if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS) || GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT || GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC)
+                if (!(GetBattlerAbility(gBattlerAttacker) == ABILITY_MYCELIUM_MIGHT) && (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS) || GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT || GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC))
 #else
                 if ((GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT) || (GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC))
 #endif
@@ -4314,7 +4314,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                     gBattlerAbility = gBattlerTarget;
                     effect = 1;
                 }
-                else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SAFETY_GOGGLES)
+                else if (!(GetBattlerAbility(gBattlerAttacker) == ABILITY_MYCELIUM_MIGHT) && GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SAFETY_GOGGLES)
                 {
                     RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_SAFETY_GOGGLES);
                     gLastUsedItem = gBattleMons[gBattlerTarget].item;
@@ -5520,7 +5520,21 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_HUDDLE_UP:
             if (gBattleMons[battler].level < 25)
                 break;
-        // Fallthrough
+            if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
+                effect++;
+            }
+            if ((gBattleMons[battler].level >= 40) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
+                gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HUDDLE_UP ? 16 : 8);
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage *= -1;
+                effect++;
+            }
+            break;
         case ABILITY_ZEN_MODE:
         case ABILITY_SHIELDS_DOWN:
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
@@ -7853,7 +7867,9 @@ bool32 IsMoldBreakerTypeAbility(u32 battler, u32 ability)
         return FALSE;
 
     return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TURBOBLAZE || ability == ABILITY_IGNORANT_BLISS 
-        || (ability == ABILITY_MYCELIUM_MIGHT && IS_MOVE_STATUS(gCurrentMove)));
+        || (ability == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gCurrentMove].powderMove)
+        || (ability == ABILITY_AQUA_HEART && (gBattleMoves[gCurrentMove].type == TYPE_WATER && gBattleStruct->ateBoost[battler]))
+        || (ability == ABILITY_DRACO_FORCE && (gBattleMoves[gCurrentMove].type == TYPE_DRAGON && gBattleStruct->ateBoost[battler])));
 }
 
 bool32 IsIgnorantBliss(u32 battler, u32 ability)
@@ -8572,6 +8588,29 @@ static u8 DamagedDurinBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 en
     return 0;
 }
 
+static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
+{
+    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
+    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
+    gBattlerTarget = opposingBattler;
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId))
+    {
+        gEffectBattler = battler;
+
+        if (end2)
+        {
+            BattleScriptExecute(BattleScript_PomegBerryInvertRet);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PomegBerryInvert;
+        }
+        return ITEM_EFFECT_OTHER;
+    }
+    return 0;
+}
+
 static u8 DamagedPinapBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
@@ -8986,6 +9025,9 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_DURIN_BERRY:
         effect = DamagedDurinBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
         break;
+    case HOLD_EFFECT_POMEG_BERRY:
+        effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+        break;
     case HOLD_EFFECT_RAZZ_BERRY:
         effect = DamagedRazzBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
         break;
@@ -9323,6 +9365,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_DURIN_BERRY:
                 effect = DamagedDurinBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                break;
+            case HOLD_EFFECT_POMEG_BERRY:
+                effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
                 break;
             case HOLD_EFFECT_RAZZ_BERRY:
                 effect = DamagedRazzBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
@@ -9888,6 +9933,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_DURIN_BERRY:
                 if (!moveTurn)
                     effect = DamagedDurinBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                break;
+            case HOLD_EFFECT_POMEG_BERRY:
+                if (!moveTurn)
+                    effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
                 break;
             case HOLD_EFFECT_RAZZ_BERRY:
                 if (!moveTurn)
@@ -12651,6 +12700,8 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     // pokemon with unaware ignore attack stat changes while taking damage
     if (defAbility == ABILITY_UNAWARE || defAbility == ABILITY_IGNORANT_BLISS)
         atkStage = DEFAULT_STAT_STAGE;
+    if (atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
+        atkStage = DEFAULT_STAT_STAGE;
 
     atkStat *= gStatStageRatios[atkStage][0];
     atkStat /= gStatStageRatios[atkStage][1];
@@ -12957,6 +13008,9 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         defStage = DEFAULT_STAT_STAGE;
     // pokemon with unaware ignore defense stat changes while dealing damage
     if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_IGNORANT_BLISS)
+        defStage = DEFAULT_STAT_STAGE;
+    //draco force make normal moves ignore stat changes
+    if (atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
         defStage = DEFAULT_STAT_STAGE;
     // certain moves also ignore stat changes
     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)

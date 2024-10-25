@@ -1895,7 +1895,7 @@ BattleScript_GreenGuiseStatUpPrintString::
 	goto BattleScript_MoveEnd
 
 BattleScript_GreenGuiseBloomGoodFocusBadCheckEvasion::
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GreenGuiseOnlyBlooming
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_OnlyBlooming
 	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GreenGuiseBloomGoodFocusBadStatUpAttackAnim
 	pause B_WAIT_TIME_SHORT
 	goto BattleScript_GreenGuiseBloomGoodFocusBadStatUpPrintString
@@ -1913,7 +1913,7 @@ BattleScript_GreenGuiseBloomGoodFocusBadStatUpPrintString::
 BattleScript_GreenGuiseBloomGoodFocusBadStatUpEnd::
 	goto BattleScript_MoveEnd
 
-BattleScript_GreenGuiseOnlyBlooming::
+BattleScript_OnlyBlooming::
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
@@ -3320,6 +3320,15 @@ BattleScript_DurinBerryAllStatsDownSpDef::
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_DurinBerryAllStatsDownRet::
+	return
+
+BattleScript_PomegBerryInvert::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	invertnegativestatstages BS_SCRIPTING
+	printstring STRINGID_POMEGSWITCHEDNEGATIVESTATS
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_SCRIPTING
+BattleScript_PomegBerryInvertRet::
 	return
 
 BattleScript_EffectGunkFunk::
@@ -6086,7 +6095,7 @@ BattleScript_EffectRototiller:
 	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_RototillerBloomFailed
 	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
 	seteffectprimary
-	getrototillertargets BattleScript_RototillerOnlyBlooming
+	getrototillertargets BattleScript_OnlyBlooming
 	@ at least one battler is affected
 	attackanimation
 	waitanimation
@@ -6097,7 +6106,7 @@ BattleScript_EffectRototiller:
 BattleScript_RototillerLoop:
 	movevaluescleanup
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_RototillerCheckAffected
-	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_RototillerOnlyBlooming
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_OnlyBlooming
 BattleScript_RototillerCheckAffected:
 	jumpifnotrototilleraffected BS_TARGET, BattleScript_RototillerNoEffect
 BattleScript_RototillerAffected:
@@ -6119,11 +6128,6 @@ BattleScript_RototillerMoveTargetEnd:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_RototillerLoop
 	end
-
-BattleScript_RototillerOnlyBlooming::
-	attackanimation
-	waitanimation
-	goto BattleScript_MoveEnd
 
 BattleScript_RototillerBloomFailed:
 	getrototillertargets BattleScript_ButItFailed
@@ -10253,16 +10257,8 @@ BattleScript_EffectStickyHold::
 	end
 
 BattleScript_EffectDefenseUpHit::
-	jumpifmove MOVE_GEO_PULSE, BattleScript_CheckDefenseUpHitDoubles
-BattleScript_DoDefenseUpHit::
 	setmoveeffect MOVE_EFFECT_DEF_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
 	goto BattleScript_EffectHit
-BattleScript_CheckDefenseUpHitDoubles::
-	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_DefenseUpHitDoubles
-	goto BattleScript_DoDefenseUpHit
-BattleScript_DefenseUpHitDoubles::
-	jumpifword CMP_NO_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
-	goto BattleScript_DoDefenseUpHit
 
 BattleScript_EffectAttackUpHit::
 	setmoveeffect MOVE_EFFECT_ATK_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
@@ -15811,9 +15807,18 @@ BattleScript_WatmelBerryActivate_Anim:
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
 BattleScript_WatmelBerryActivate_Dmg:
-	call BattleScript_HurtAttacker
+	call BattleScript_WatmelHurtAttacker
 	updatestatusicon BS_SCRIPTING
 	removeitem BS_SCRIPTING
+	return
+
+BattleScript_WatmelHurtAttacker:
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_WATMELBERRYEXPLODED
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	return
 
 BattleScript_GemActivates::
