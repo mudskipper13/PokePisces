@@ -11324,6 +11324,7 @@ BattleScript_TeeterDanceDoMoveEndIncrement::
 BattleScript_TeeterDanceLoopIncrement::
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_TeeterDanceLoop
+	goto BattleScript_MoveEnd @required to continue Dance Mania Loop
 	end
 
 BattleScript_TeeterDanceOwnTempoPrevents::

@@ -2027,7 +2027,10 @@ static void Cmd_ppreduce(void)
     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
         ppToDeduct *= 2;
 
-    if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
+    DebugPrintf("gHitMarker = %d", gHitMarker);
+    if ((!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING))
+        && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
+        && !(gHitMarker & HITMARKER_FORCE_NO_PPDEDUCT))
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = TRUE;
         // For item Metronome, echoed voice
@@ -6788,7 +6791,8 @@ static void Cmd_moveend(void)
             break;
         case MOVEEND_NEXT_TARGET: // For moves hitting two opposing Pokemon.
         {
-            if (gCurrentMove != MOVE_DANCE_MANIA)
+            DebugPrintf("MOVEEND_NEXT_TARGET");
+            if (gCurrentMove != MOVE_DANCE_MANIA && gCurrentMove != MOVE_TEETER_DANCE)
             {
                 u16 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove);
                 // Set a flag if move hits either target (for throat spray that can't check damage)
@@ -7144,7 +7148,7 @@ static void Cmd_moveend(void)
                         gSpecialStatuses[gBattlerTarget].instructedChosenTarget = *(gBattleStruct->moveTarget + gBattlerTarget) | 0x4;
                         gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
                         gHitMarker |= HITMARKER_NO_PPDEDUCT;
-                        gHitMarker |= HITMARKER_NO_ATTACKSTRING; //required for PP checks?
+                        gHitMarker |= HITMARKER_FORCE_NO_PPDEDUCT;
                         PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
 
                         //gCalledMove = MOVE_LEER; //Test
@@ -7221,7 +7225,7 @@ static void Cmd_moveend(void)
         if (endMode == 2 && endState == gBattleScripting.moveendState)
             gBattleScripting.moveendState = MOVEEND_COUNT;
 
-        //DebugPrintf("state = %d, effect = %d", gBattleScripting.moveendState, effect);
+        //DebugPrintf("state = %d, endMode = %d, endState = %d, effect = %d", gBattleScripting.moveendState, endMode, endState, effect);
 
     } while (gBattleScripting.moveendState != MOVEEND_COUNT && effect == FALSE);
 
