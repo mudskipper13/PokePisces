@@ -1914,8 +1914,13 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trydancemania
-	various BS_ATTACKER, VARIOUS_TRY_DANCE_MANIA
+	.macro savedancetargets
+	various 0, VARIOUS_SAVE_DANCE_TARGETS
+	.endm
+
+	.macro trydancemania failInstr:req
+	various 0, VARIOUS_TRY_DANCE_MANIA
+	.4byte \failInstr
 	.endm
 
 	.macro settracedability battler:req

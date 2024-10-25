@@ -2289,14 +2289,16 @@ BattleScript_EffectDanceMania:
 	attackstring
 	ppreduce
 	pause 5
-	trydancemania
+	savedancetargets
+	trydancemania BattleScript_ButItFailed
 	attackanimation
 	waitanimation
+	setbyte gBattlerTarget, 0 @why?
 	printstring STRINGID_STARTEDADANCEMANIA
 	waitmessage B_WAIT_TIME_LONG
 	setbyte sB_ANIM_TURN, 0
 	setbyte sB_ANIM_TARGETS_HIT, 0
-	jumptocalledmove TRUE
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectBoundary:
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
@@ -11317,6 +11319,7 @@ BattleScript_TeeterDanceDoMoveEndIncrement::
 BattleScript_TeeterDanceLoopIncrement::
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_TeeterDanceLoop
+	goto BattleScript_MoveEnd @required to continue Dance Mania Loop
 	end
 
 BattleScript_TeeterDanceOwnTempoPrevents::

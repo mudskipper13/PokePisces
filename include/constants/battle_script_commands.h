@@ -287,7 +287,8 @@
 #define VARIOUS_ARBITER_DAMAGE                       195
 #define VARIOUS_TRY_GAIN_CHEESE                      196
 #define VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED         197
-#define VARIOUS_INVERT_NEGATIVE_STAT_STAGES          198
+#define VARIOUS_SAVE_DANCE_TARGETS                   198
+#define VARIOUS_INVERT_NEGATIVE_STAT_STAGES          199
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -363,8 +364,9 @@
 #define MOVEEND_PICKPOCKET                        31
 #define MOVEEND_DANCER                            32
 #define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_CLEAR_BITS                        34
-#define MOVEEND_COUNT                             35
+#define MOVEEND_NEXT_DANCE_TARGET                 34
+#define MOVEEND_CLEAR_BITS                        35
+#define MOVEEND_COUNT                             36
 
 // switch cases
 #define B_SWITCH_NORMAL     0
