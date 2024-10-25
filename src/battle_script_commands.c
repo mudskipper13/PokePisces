@@ -6147,7 +6147,6 @@ static bool32 TryKnockOffBattleScript(u32 battlerDef)
 static u32 GetNextTarget(u32 moveTarget)
 {
     u32 i;
-
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         if (i != gBattlerAttacker
@@ -6185,6 +6184,7 @@ static u32 GetNextDanceManiaTarget(void)
                 break;
     }
 
+    //set return values
     if (i == MAX_BATTLERS_COUNT)
         fastestBattler = MAX_BATTLERS_COUNT;
     else
@@ -6192,7 +6192,7 @@ static u32 GetNextDanceManiaTarget(void)
 
     DebugPrintf("next battler = %d", fastestBattler);
 
-    //clear new Attacker from list
+    //clear new Attacker from target list
     gBattleStruct->savedDanceTargets &= ~(1u << fastestBattler);
 
     return fastestBattler;
@@ -7088,9 +7088,7 @@ static void Cmd_moveend(void)
                         }
                     }
                     if (nextDancer && AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer & 0x3, 0, 0, 0))
-                    {
                         effect = TRUE;
-                    }
                 }
             }
             gBattleScripting.moveendState++;
@@ -7120,7 +7118,6 @@ static void Cmd_moveend(void)
             if (originallyUsedMove == MOVE_DANCE_MANIA)
             {
                 u8 k = 0;
-                //gBattleStruct->savedDanceTarget |= 1u << gBattlerTarget;
                 DebugPrintf("MOVEEND_NEXT_DANCE_TARGET");
 
                 //reset dancerUsedMove, so Dancer can activate multiple times during a Dance Mania turn
@@ -7136,37 +7133,35 @@ static void Cmd_moveend(void)
 
                     if (battler != MAX_BATTLERS_COUNT)
                     {
-                        //gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = nextTarget; // Fix for moxie spread moves
+                        //reset moveend loop for next battler
                         gBattleScripting.moveendState = 0;
                         gBattlerAttacker = battler;
 
+                        //define details of called move
                         gCalledMove = RandomUniformExcept(RNG_METRONOME, 1, MOVES_COUNT_PISCES - 1, InvalidDanceManiaMove);
                         gBattleScripting.animTurn = 0;
                         gBattleScripting.animTargetsHit = 0;
                         gBattlerTarget = SetRandomTarget(gBattlerAttacker);
-                        //= *(gBattleStruct->moveTarget + battler) | 0x4;
                         gSpecialStatuses[gBattlerTarget].instructedChosenTarget = *(gBattleStruct->moveTarget + gBattlerTarget) | 0x4;
                         gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
                         gHitMarker |= HITMARKER_NO_PPDEDUCT;
-                        gHitMarker |= HITMARKER_FORCE_NO_PPDEDUCT;
+                        gHitMarker |= HITMARKER_FORCE_NO_PPDEDUCT; //new bit to make sure no PPs are deducted (the one above doesn't work for interaction with ABILITY_DANCER)
                         PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
 
-                        //gCalledMove = MOVE_LEER; //Test
+                        //gCalledMove = MOVE_LEER; //Test value
                         gCurrentMove = gCalledMove;
 
+                        //execute called move
                         SetTypeBeforeUsingMove(gCurrentMove, i); //optional
                         MoveValuesCleanUp();
                         SetAtkCancellerForCalledMove();
-                        //gBattleScripting.moveEffect = gBattleScripting.savedMoveEffect;
                         BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
                         gBattlescriptCurrInstr = BattleScript_FlushMessageBox;
                         return;
                     }
-
-                    //gHitMarker |= HITMARKER_NO_ATTACKSTRING;
-                    //gHitMarker &= ~HITMARKER_NO_PPDEDUCT;
                 }
             }
+            //reset DancerCount if Dance Mania loop completed
             if (gBattleScripting.moveendState == MOVEEND_NEXT_DANCE_TARGET)
             {
                 DebugPrintf("reset DancerCount");
@@ -11204,9 +11199,8 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         u32 i;
 
-        gBattleStruct->DancerCount = 0;
-
         DebugPrintf("VARIOUS_SAVE_DANCE_TARGETS");
+        gBattleStruct->DancerCount = 0;
 
         //save valid targets to call dance moves later on
         for (i = 0; i < MAX_BATTLERS_COUNT; i++)

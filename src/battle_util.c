@@ -1761,7 +1761,6 @@ void UpdateSentPokesToOpponentValue(u32 battler)
 
 void BattleScriptPush(const u8 *bsPtr)
 {
-    DebugPrintf("BattleScriptPush %d", &bsPtr);
     gBattleResources->battleScriptsStack->ptr[gBattleResources->battleScriptsStack->size++] = bsPtr;
 }
 
