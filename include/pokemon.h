@@ -276,6 +276,7 @@ struct BattleMove
     u32 surpriseEggMove:1;
     u32 windMove:1;
     u32 slicingMove:1;
+    u32 gasMove:1;
     u32 sandMove:1;
     u32 oozeMove:1;
     u32 minimizeDoubleDamage:1;

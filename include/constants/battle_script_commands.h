@@ -289,6 +289,8 @@
 #define VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED         197
 #define VARIOUS_SAVE_DANCE_TARGETS                   198
 #define VARIOUS_INVERT_NEGATIVE_STAT_STAGES          199
+#define VARIOUS_SET_PURPLE_HAZE                      200
+#define VARIOUS_SET_MAGMA_ARMORED                    201
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

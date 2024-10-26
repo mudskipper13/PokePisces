@@ -6464,6 +6464,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_MAGMA_ARMOR:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                && TARGET_TURN_DAMAGED
+                && IsBattlerAlive(battler)
+                && moveType == TYPE_WATER
+                && !(gDisableStructs[battler].magmaArmored))
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilitySetMagmaArmored;
+                effect++;
+            }
+            break;
         case ABILITY_STAMINA:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler) && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
@@ -7227,6 +7239,17 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_PURPLE_HAZE:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && gBattleMoves[move].gasMove)
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilitySetPurpleHaze;
+                effect++;
+            }
+            break;
         case ABILITY_STORM_BREW:
             if ((!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && gBattleMoves[move].type == TYPE_ELECTRIC
@@ -7915,7 +7938,7 @@ u32 GetBattlerAbility(u32 battler)
     if (gStatuses3[battler] & STATUS3_GASTRO_ACID)
         return ABILITY_NONE;
 
-    if (gBattleMons[gBattlerTarget].ability == ABILITY_IGNORANT_BLISS || GetBattlerHoldEffectIgnoreAbility(gBattlerTarget, TRUE) != HOLD_EFFECT_ABILITY_SHIELD)
+    if (gBattleMons[gBattlerTarget].ability == ABILITY_IGNORANT_BLISS || GetBattlerHoldEffectIgnoreAbility(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
         return ABILITY_NONE;
 
     if (IsNeutralizingGasOnField()
@@ -11742,17 +11765,17 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_SEIZE_CHANCE:
     {
-        if (!(GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget)
-        && IS_MOVE_PHYSICAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]])
-        && IS_MOVE_SPECIAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]])))
+        if (!(GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget))
+        && (!(IS_MOVE_PHYSICAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]])))
+        && (!(IS_MOVE_SPECIAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]]))))
             basePower = 100;
         break;
     }
     case EFFECT_UPPER_HAND:
     {
-        if (!((GetChosenMovePriority(gBattlerTarget) < 1)
-        && (gChosenMoveByBattler[gBattlerTarget] == MOVE_NONE)
-        && GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget)))
+        if ((!((GetChosenMovePriority(gBattlerTarget) < 1))
+        && (!(gChosenMoveByBattler[gBattlerTarget] == MOVE_NONE))
+        && (!GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget))))
             basePower = 70;
         break;
     }
@@ -12161,6 +12184,12 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gStatuses4[battlerAtk] & STATUS4_PUMPED_UP && moveType == TYPE_WATER)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+    if (gDisableStructs[battlerAtk].purpleHazeOffense)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+    if (gDisableStructs[battlerDef].purpleHazeDefense)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+    if (gDisableStructs[battlerDef].magmaArmored)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.66));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_GRASSY_TERRAIN) && moveType == TYPE_GRASS)
@@ -13486,6 +13515,10 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         if (IsMoveMakingContact(move, battlerAtk) && moveType != TYPE_FIRE)
             return UQ_4_12(0.5);
         break;
+    case ABILITY_MAGMA_ARMOR:
+        if ((!(gDisableStructs[battlerDef].magmaArmored)) && moveType == TYPE_WATER)
+            return UQ_4_12(0.9);
+        break;
     case ABILITY_CACOPHONY:
     case ABILITY_PUNK_ROCK:
         if (gBattleMoves[move].soundMove)
@@ -13899,8 +13932,6 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
     if (moveType == TYPE_POISON && (defType == TYPE_POISON || defType == TYPE_STEEL) && GetBattlerAbility(battlerAtk) == ABILITY_CORROSION)
         mod = UQ_4_12(2.0);
     if (gCurrentMove == MOVE_SCORP_FANG && (defType == TYPE_POISON || defType == TYPE_STEEL))
-        mod = UQ_4_12(1.0);
-    if (moveType == TYPE_WATER && GetBattlerAbility(battlerDef) == ABILITY_MAGMA_ARMOR)
         mod = UQ_4_12(1.0);
 
     // B_WEATHER_STRONG_WINDS weakens Super Effective moves against Flying-type Pok?mon

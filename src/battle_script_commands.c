@@ -2961,6 +2961,20 @@ static void Cmd_resultmessage(void)
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_UnfrozeTargetWaitMessage;
     }
+
+    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp > 0
+            && gDisableStructs[gBattlerAttacker].purpleHazeOffense)
+    {
+        gDisableStructs[gBattlerAttacker].purpleHazeOffense = TRUE;
+    }
+
+    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+        && gBattleMons[gBattlerTarget].hp > 0
+        && gDisableStructs[gBattlerTarget].purpleHazeDefense)
+    {
+        gDisableStructs[gBattlerTarget].purpleHazeDefense = TRUE;
+    }
 }
 
 static void Cmd_printstring(void)
@@ -12935,6 +12949,27 @@ static void Cmd_various(void)
         u8 battler = GetBattlerForBattleScript(cmd->battler);
         gStatuses4[battler] |= STATUS4_PUMPED_UP;
         gDisableStructs[battler].pumpTimer = 0;
+        gBattlescriptCurrInstr++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_SET_PURPLE_HAZE:
+    {
+        VARIOUS_ARGS();
+
+        u8 battler = GetBattlerForBattleScript(cmd->battler);
+        gDisableStructs[battler].purpleHazeOffense = TRUE;
+        gDisableStructs[battler].purpleHazeDefense = TRUE;
+        gBattlescriptCurrInstr++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_SET_MAGMA_ARMORED:
+    {
+        VARIOUS_ARGS();
+
+        u8 battler = GetBattlerForBattleScript(cmd->battler);
+        gDisableStructs[battler].magmaArmored = TRUE;
         gBattlescriptCurrInstr++;
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;

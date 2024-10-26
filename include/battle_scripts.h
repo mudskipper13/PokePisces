@@ -247,6 +247,8 @@ extern const u8 BattleScript_CuteCharmActivates2[];
 extern const u8 BattleScript_EffectStickyHold[];
 extern const u8 BattleScript_AbilityStatusEffect[];
 extern const u8 BattleScript_AbilitySetGlaiveRush[];
+extern const u8 BattleScript_AbilitySetPurpleHaze[];
+extern const u8 BattleScript_AbilitySetMagmaArmored[];
 extern const u8 BattleScript_TransfusionAbilityCopy[];
 extern const u8 BattleScript_ItemBurnEffect[];
 extern const u8 BattleScript_ItemBloomingEffect[];
