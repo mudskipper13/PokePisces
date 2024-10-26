@@ -943,6 +943,8 @@ static const u8 sText_PomegSwitchedNegativeStats[] = _("{B_SCR_ACTIVE_NAME_WITH_
 static const u8 sText_WatmelBerryExploded[] = _("{B_ATK_NAME_WITH_PREFIX}'s BLOOM caused its\nWatmel Berry to go BOOM!");
 static const u8 sText_IceScalesGains[] = _("{B_ATK_NAME_WITH_PREFIX} gained a layer\nof icy scales!");
 static const u8 sText_IceScalesLoss[] = _("A layer of {B_DEF_NAME_WITH_PREFIX}'s scales\nshattered and stifled the blow!");
+static const u8 sText_PurpleHaze[] = _("The purple haze enflamed\n{B_ATK_NAME_WITH_PREFIX} with frenzy!");
+static const u8 sText_MagmaArmored[] = _("{B_ATK_NAME_WITH_PREFIX}'s magma armor\nhardened from {B_DEF_NAME_WITH_PREFIX}'s attack!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1737,6 +1739,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_WATMELBERRYEXPLODED - BATTLESTRINGS_TABLE_START] = sText_WatmelBerryExploded,
     [STRINGID_ICESCALESGAINS - BATTLESTRINGS_TABLE_START] = sText_IceScalesGains,
     [STRINGID_ICESCALESLOSS - BATTLESTRINGS_TABLE_START] = sText_IceScalesLoss,
+    [STRINGID_PURPLEHAZE - BATTLESTRINGS_TABLE_START] = sText_PurpleHaze,
+    [STRINGID_MAGMAARMORED - BATTLESTRINGS_TABLE_START] = sText_MagmaArmored,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -115,6 +115,9 @@ struct DisableStruct
     u8 pumpTimer:4;
     u8 syrupBombTimer;
     u8 iceScalesCounter;
+    u8 purpleHazeOffense:1;
+    u8 purpleHazeDefense:1;
+    u8 magmaArmored:1;
 };
 
 struct ProtectStruct

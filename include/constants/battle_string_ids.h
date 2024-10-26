@@ -803,8 +803,10 @@
 #define	STRINGID_WATMELBERRYEXPLODED                  801
 #define STRINGID_ICESCALESGAINS                       802
 #define STRINGID_ICESCALESLOSS                        803
+#define	STRINGID_PURPLEHAZE                           804
+#define	STRINGID_MAGMAARMORED                         805
 
-#define BATTLESTRINGS_COUNT                           804
+#define BATTLESTRINGS_COUNT                           806
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

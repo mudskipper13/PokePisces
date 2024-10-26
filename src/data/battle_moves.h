@@ -1874,6 +1874,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_EVSN_UP_1,
         .magicCoatAffected = TRUE,
+        .gasMove = TRUE,
     },
 
     [MOVE_CONFUSE_RAY] =
@@ -1967,6 +1968,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_RECOVER_HP,
+        .gasMove = TRUE,
     },
 
     [MOVE_REFLECT] =
@@ -2125,6 +2127,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .gasMove = TRUE,
     },
 
     [MOVE_SLUDGE] =
@@ -2409,7 +2412,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
             .accuracy = 55,
             .target = MOVE_TARGET_SELECTED,
         #endif
-        .effect = EFFECT_POISON_GAS,
+        .effect = EFFECT_POISON,
         .power = 0,
         .type = TYPE_POISON,
         .pp = 40,
@@ -2418,6 +2421,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_DEF_UP_1,
         .magicCoatAffected = TRUE,
+        .gasMove = TRUE,
     },
 
     [MOVE_BARRAGE] =
@@ -8465,6 +8469,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .gasMove = TRUE,
     },
 
     [MOVE_STORED_POWER] =
@@ -12378,6 +12383,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
         .magicCoatAffected = TRUE,
+        .gasMove = TRUE,
     },
 
     [MOVE_COACHING] =
@@ -14824,6 +14830,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
         .surpriseEggMove = TRUE,
+        .gasMove = TRUE,
     },
 
     [MOVE_VENOM_DRAIN] =

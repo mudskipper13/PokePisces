@@ -1778,7 +1778,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         evasionStage = DEFAULT_STAT_STAGE;
     if (defAbility == ABILITY_UNAWARE || atkAbility == ABILITY_IGNORANT_BLISS)
         accStage = DEFAULT_STAT_STAGE;
-    if (atkAbility == ABILITY_AQUA_HEART && gBattleMoves[gCurrentMove].type == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
+    if (accStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && gBattleMoves[gCurrentMove].type == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
         accStage = DEFAULT_STAT_STAGE;
 
     if (gBattleMons[battlerDef].status2 & STATUS2_FORESIGHT || gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED)
@@ -2234,6 +2234,10 @@ static void Cmd_damagecalc(void)
     else if (atkHoldEffect == HOLD_EFFECT_CHUPACABRA)
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
+    }
+    else if (atkHoldEffect == HOLD_EFFECT_POISON_BARB && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY && gBattleMoves[gCurrentMove].type == TYPE_POISON)
+    {
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 115) / 100);
     }
     else if (gCurrentMove == MOVE_NEEDLE_ARM || (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC))
     {
@@ -2956,6 +2960,20 @@ static void Cmd_resultmessage(void)
         MarkBattlerForControllerExec(gBattlerTarget);
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_UnfrozeTargetWaitMessage;
+    }
+
+    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp > 0
+            && gDisableStructs[gBattlerAttacker].purpleHazeOffense)
+    {
+        gDisableStructs[gBattlerAttacker].purpleHazeOffense = TRUE;
+    }
+
+    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+        && gBattleMons[gBattlerTarget].hp > 0
+        && gDisableStructs[gBattlerTarget].purpleHazeDefense)
+    {
+        gDisableStructs[gBattlerTarget].purpleHazeDefense = TRUE;
     }
 }
 
@@ -12931,6 +12949,27 @@ static void Cmd_various(void)
         u8 battler = GetBattlerForBattleScript(cmd->battler);
         gStatuses4[battler] |= STATUS4_PUMPED_UP;
         gDisableStructs[battler].pumpTimer = 0;
+        gBattlescriptCurrInstr++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_SET_PURPLE_HAZE:
+    {
+        VARIOUS_ARGS();
+
+        u8 battler = GetBattlerForBattleScript(cmd->battler);
+        gDisableStructs[battler].purpleHazeOffense = TRUE;
+        gDisableStructs[battler].purpleHazeDefense = TRUE;
+        gBattlescriptCurrInstr++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_SET_MAGMA_ARMORED:
+    {
+        VARIOUS_ARGS();
+
+        u8 battler = GetBattlerForBattleScript(cmd->battler);
+        gDisableStructs[battler].magmaArmored = TRUE;
         gBattlescriptCurrInstr++;
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
