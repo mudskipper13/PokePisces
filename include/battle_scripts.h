@@ -329,6 +329,7 @@ extern const u8 BattleScript_RizzBerryActivatesRet[];
 extern const u8 BattleScript_RizzBerryEnd[];
 extern const u8 BattleScript_BlukBerryActivatesRet[];
 extern const u8 BattleScript_BlukBerryEnd[];
+extern const u8 BattleScript_BlukBerryReturn[];
 extern const u8 BattleScript_NanabBerryActivatesRet[];
 extern const u8 BattleScript_NanabBerryEnd[];
 extern const u8 BattleScript_HondewBerryActivatesRet[];
