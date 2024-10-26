@@ -15098,6 +15098,10 @@ static void Cmd_dmgtolevel(void)
     {
         gBattleMoveDamage = 140;
     }
+    else if ((gCurrentMove == MOVE_SEISMIC_TOSS) && (gFieldStatuses & STATUS_FIELD_GRAVITY))
+    {
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
+    }
     else if (gBattleMoves[gCurrentMove].effect == EFFECT_LEVEL_DAMAGE)
     {
         gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
