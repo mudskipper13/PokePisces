@@ -16517,6 +16517,7 @@ BattleScript_BlukBerryActivatesRet::
 BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
+BattleScript_BlukBerryReturn::
 	return
 
 BattleScript_BlukBerryFail::

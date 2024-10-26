@@ -5566,28 +5566,32 @@ const u8 gLusckawPokedexText[] = _(
     "said to provide vast wealth and fortune.");
 
 const u8 gSadsodPokedexText[] = _(
-    "Sadsod can be found alone in dark\n"
-    "corners and crying all the time. The\n"
-    "only time Sadsod have been seen smiling\n"
-    "is when they're with a trainer.");
+    "Sadsod can be found alone in dark corners,\n"
+    "crying all the time. They have no known\n"
+    "predators, simply because nothing wants to\n"
+    "associate with them. Sadsod have only been seen\n"
+    "smiling when they're with a trainer.");
 
 const u8 gMaeracholyPokedexText[] = _(
-    "When a Sadsod feels completely empty\n"
-    "from sadness, they die and turn into\n"
-    "Maeracholy. People are overcome with grief\n"
-    "by seeing its beautiful crystal tears.");
+    "When a Sadsod feels empty from sadness, it\n"
+    "passes on and turns into Maeracholy. It flies\n"
+    "high up into the sky where it wishes to be\n"
+    "alone. People are overcome with great grief by\n"
+    "seeing their beautiful crystal tears.");
 
 const u8 gLumelmoPokedexText[] = _(
-    "Lumelmo is completely made of energy.\n"
-    "Somehow it's possible to touch them, and\n"
-    "it has been reported to be extremely\n"
-    "smooth.");
+    "Lumelmo are completely made of energy. Somehow,\n"
+    "it's possible to touch Lumelmo, and people have\n"
+    "reported them to be extremely smooth.\n"
+    "Occasionally, they randomly discharge their\n"
+    "energy because otherwise, they will explode.");
 
 const u8 gLumendelaPokedexText[] = _(
-    "Lumendela's body is continually leaking\n"
-    "copious quantities of energy. It is in\n"
-    "constant pain because of this, which\n"
-    "makes it irritable.");
+    "A Lumendela's body is continuously leaking\n"
+    "copious amounts of energy. They are in constant\n"
+    "pain because of this, making them quite\n"
+    "irritable. Any attempt to harness this energy\n"
+    "output has only resulted in great tragedies.");
 
 const u8 gStomawayPokedexText[] = _(
     "It's believed by fanatics Stomaway came\n"
@@ -5720,22 +5724,24 @@ const u8 gMedgeonPokedexText[] = _(
     "shows the offender their imminent demise.");
 
 const u8 gMaggordePokedexText[] = _(
-    "The oldest Maggorde transports their\n"
-    "siblings around. Merely touching one may\n"
-    "produce an overwhelming sense of disgust\n"
-    "no ordinary person can handle.");
+    "Maggorde are born in large swarms. The firstborn\n"
+    "grows rapidly, carrying its smaller kin. The\n"
+    "slightest touch invokes an overwhelming, primal\n"
+    "sense of disgust no human can handle.");
 
 const u8 gFlaguePokedexText[] = _(
-    "When a Flague evolves all their siblings\n"
-    "do also, but they lose their own will.\n"
-    "They can control their brethren and also\n"
-    "coerce other puny creatures to their side.");
+    "All the siblings evolve at the same time as the\n"
+    "larger Maggorde, however, they lose their will.\n"
+    "Whatever Flague wills them to do, the swarm\n"
+    "follows. Flague are known to harass other\n"
+    "Pokémon into doing its bidding.");
 
 const u8 gCultipexPokedexText[] = _(
-    "Cultipex can speak many languages, even\n"
-    "ones unknown to most humans. They say\n"
-    "that if you hear a whisper at night,\n"
-    "pretend you didn’t.");
+    "A dangerous and mysterious Pokémon that can\n"
+    "speak many languages, even those not known or\n"
+    "recorded. They can read minds and exploit one's\n"
+    "vulnerabilities, coercing humans to follow or\n"
+    "even worship their orders.");
 
 const u8 gEerikoPokedexText[] = _(
     "A wooden doll said to be possessed by a\n"

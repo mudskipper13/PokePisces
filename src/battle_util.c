@@ -8768,11 +8768,11 @@ static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
     gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && (gDisableStructs[opposingBattler].isFirstTurn))
     {
         if (end2)
         {
-            BattleScriptExecute(BattleScript_BlukBerryEnd);
+            BattleScriptExecute(BattleScript_BlukBerryReturn);
         }
         else
         {
