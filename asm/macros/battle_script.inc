@@ -2564,6 +2564,14 @@
 	various \battler, VARIOUS_SET_PUMP
 	.endm
 
+	.macro setpurplehaze battler:req
+	various \battler, VARIOUS_SET_PURPLE_HAZE
+	.endm
+
+	.macro setmagmaarmored battler:req
+	various \battler, VARIOUS_SET_MAGMA_ARMORED
+	.endm
+
 	.macro remodelcheck battler:req, jumpInstr:req
 	various \battler, VARIOUS_REMODEL_CHECK
 	.4byte \jumpInstr

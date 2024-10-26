@@ -4519,9 +4519,9 @@ static const u8 sDrakenGuardDescription[] = _(
     "attacker uses a special move.");
 
 static const u8 sTickTackDescription[] = _(
-    "Deals 1/5 of the foe's HP as\n"
-    "damage and absorbs it. Sets ticks\n"
-    "on the foe to take HP each turn.");
+    "Does 1/5 HP as damage and drains.\n"
+    "Sets ticks to take HP each turn.\n"
+    "Bug-weak foes lose more HP.");
 
 static const u8 sDeepGazeDescription[] = _(
     "The user stares at the target\n"

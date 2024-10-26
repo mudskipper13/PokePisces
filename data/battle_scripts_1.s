@@ -627,7 +627,6 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMindBlown               @ EFFECT_STALAG_BLAST
 	.4byte BattleScript_EffectMoonBeam                @ EFFECT_MOON_BEAM
 	.4byte BattleScript_EffectHunkerDown              @ EFFECT_HUNKER_DOWN
-	.4byte BattleScript_EffectPoisonGas               @ EFFECT_POISON_GAS
 	.4byte BattleScript_EffectHighRollHit             @ EFFECT_HIGH_ROLL_HIT
 	.4byte BattleScript_EffectSpindaSwing             @ EFFECT_SPINDA_SWING
 	.4byte BattleScript_EffectWildCharge              @ EFFECT_WILD_CHARGE
@@ -1429,36 +1428,8 @@ BattleScript_PoisonPowderDamage::
 	goto BattleScript_HitFromAtkAnimation
 
 BattleScript_EffectSmog::
-	jumpifability BS_ATTACKER, ABILITY_PURPLE_HAZE, BattleScript_PurpleHazeSmog
 	setmoveeffect MOVE_EFFECT_SMOG
 	goto BattleScript_EffectHit
-
-BattleScript_PurpleHazeSmog::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	setmoveeffect MOVE_EFFECT_SMOG
-	seteffectprimary
-	setmoveeffect MOVE_EFFECT_SPATK_SPDEF_UP | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	seteffectsecondary
-	seteffectwithchance
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
 
 BattleScript_EffectSnowfade::
 	setmoveeffect MOVE_EFFECT_SNOWFADE
@@ -3372,36 +3343,8 @@ BattleScript_VenomDrainHealBlock::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectDefAccDownHit::
-	jumpifability BS_ATTACKER, ABILITY_PURPLE_HAZE, BattleScript_VenomGalePurpleHazeStatRaise
 	setmoveeffect MOVE_EFFECT_DEF_ACC_DOWN
 	goto BattleScript_EffectHit
-
-BattleScript_VenomGalePurpleHazeStatRaise::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	setmoveeffect MOVE_EFFECT_DEF_ACC_DOWN
-	seteffectprimary
-	setmoveeffect MOVE_EFFECT_SPATK_SPDEF_UP | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	seteffectsecondary
-	seteffectwithchance
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
 
 BattleScript_LoneSharkSetUp::
 	printstring STRINGID_EMPTYSTRING3
@@ -4404,7 +4347,6 @@ BattleScript_EffectCorrosiveGas:
 	attackanimation
 	waitanimation
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_StickyHoldActivates
-	jumpifability BS_ATTACKER, ABILITY_PURPLE_HAZE, BattleScript_CorrosiveGasPurpleHazeStatRaise
 	setlastuseditem BS_TARGET
 	removeitem BS_TARGET
 	printstring STRINGID_PKMNITEMMELTED
@@ -4415,31 +4357,6 @@ BattleScript_CorrosiveGasFail:
 	pause B_WAIT_TIME_SHORT
 	orhalfword gMoveResultFlags, MOVE_RESULT_FAILED
 	printstring STRINGID_NOEFFECTONTARGET
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_CorrosiveGasPurpleHazeStatRaise:
-	normalisebuffs
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_CorrosiveGasPurpleHazeStatRaiseDoMoveAnim
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_CorrosiveGasPurpleHazeStatRaiseEnd
-BattleScript_CorrosiveGasPurpleHazeStatRaiseDoMoveAnim::
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_SPDEF | BIT_SPATK, 0
-	setstatchanger STAT_SPDEF, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_CorrosiveGasPurpleHazeStatRaiseTrySpAtk
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CorrosiveGasPurpleHazeStatRaiseTrySpAtk
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_CorrosiveGasPurpleHazeStatRaiseTrySpAtk::
-	setstatchanger STAT_SPATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_CorrosiveGasPurpleHazeStatRaiseEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CorrosiveGasPurpleHazeStatRaiseEnd
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_CorrosiveGasPurpleHazeStatRaiseEnd:
-	setlastuseditem BS_TARGET
-	removeitem BS_TARGET
-	printstring STRINGID_PKMNITEMMELTED
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -8438,7 +8355,6 @@ BattleScript_EffectHaze::
 	pause B_WAIT_TIME_MED
 	ppreduce
 	waitstate
-	jumpifability BS_ATTACKER, ABILITY_PURPLE_HAZE, BattleScript_HazePurpleHazeStatRaise
 	attackanimation
 	waitanimation
 	tryhaze FALSE, BattleScript_EffectHazeDoMoveAnimation
@@ -8452,31 +8368,6 @@ BattleScript_EffectHazeDoMoveAnimation::
 
 BattleScript_HazeStatNormalize::
 	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_HazePurpleHazeStatRaise:
-	normalisebuffs
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_HazePurpleHazeStatRaiseDoMoveAnim
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_HazePurpleHazeStatRaiseEnd
-BattleScript_HazePurpleHazeStatRaiseDoMoveAnim::
-	attackanimation
-	waitanimation
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_SPDEF | BIT_SPATK, 0
-	setstatchanger STAT_SPDEF, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HazePurpleHazeStatRaiseTrySpAtk
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HazePurpleHazeStatRaiseTrySpAtk
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_HazePurpleHazeStatRaiseTrySpAtk::
-	setstatchanger STAT_SPATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HazePurpleHazeStatRaiseEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HazePurpleHazeStatRaiseEnd
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_HazePurpleHazeStatRaiseEnd:
 	printstring STRINGID_STATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -9030,41 +8921,6 @@ BattleScript_EffectPoison::
 	waitanimation
 	setmoveeffect MOVE_EFFECT_POISON
 	seteffectprimary
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_EffectPoisonGas::
-	jumpifability BS_ATTACKER, ABILITY_PURPLE_HAZE, BattleScript_PurpleHazePoisonGas
-	goto BattleScript_EffectPoison
-
-BattleScript_PurpleHazePoisonGas::
-	attackcanceler
-	attackstring
-	ppreduce
-	jumpifability BS_TARGET, ABILITY_IMMUNITY, BattleScript_ImmunityProtected
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_AbilityProtectsDoesntAffect
-	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtectsDoesntAffect
-	jumpifability BS_TARGET_SIDE, ABILITY_PASTEL_VEIL, BattleScript_PastelVeilProtects
-	jumpifflowerveil BattleScript_FlowerVeilProtects
-	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifeeriemaskprotected BS_TARGET, BattleScript_ItemProtectsDoesntAffect
-	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifsubstituteblocks BattleScript_ButItFailed
-	jumpifstatus BS_TARGET, STATUS1_POISON, BattleScript_AlreadyPoisoned
-	jumpifstatus BS_TARGET, STATUS1_TOXIC_POISON, BattleScript_AlreadyPoisoned
-	trypoisontype BS_ATTACKER, BS_TARGET, BattleScript_NotAffected
-	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_ButItFailed
-	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_MistyTerrainPrevents
-	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
-	jumpifsafeguard BattleScript_SafeguardProtected
-	attackanimation
-	waitanimation
-	setmoveeffect MOVE_EFFECT_POISON
-	seteffectprimary
-	setmoveeffect MOVE_EFFECT_SPATK_SPDEF_UP | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	seteffectsecondary
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -15558,6 +15414,20 @@ BattleScript_AbilityStatusEffect::
 BattleScript_AbilitySetGlaiveRush::
 	waitstate
 	setglaiverush2
+	return
+
+BattleScript_AbilitySetPurpleHaze::
+	call BattleScript_AbilityPopUp
+	setpurplehaze BS_ATTACKER
+	printstring STRINGID_PURPLEHAZE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_AbilitySetMagmaArmored::
+	call BattleScript_AbilityPopUp
+	setmagmaarmored BS_ATTACKER
+	printstring STRINGID_MAGMAARMORED
+	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_TransfusionAbilityCopy::

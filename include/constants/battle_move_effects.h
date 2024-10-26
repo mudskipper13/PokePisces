@@ -604,25 +604,24 @@
 #define EFFECT_STALAG_BLAST                 598 //AI Flags added, made new code based off EFFECT_BELLY_DRUM. If AI_RISKY and not HP_AWARE, will use recklessly
 #define EFFECT_MOON_BEAM                    599 //AI Flags complete
 #define EFFECT_HUNKER_DOWN                  600 //AI Flags added, copied stuff from EFFECT_GEOMANCY
-#define EFFECT_POISON_GAS                   601            //Purple Haze thing. Waiting to code
-#define EFFECT_HIGH_ROLL_HIT                602 //Just added to AI_RISKY, random damage moves are not particularly accounted for by the AI
-#define EFFECT_SPINDA_SWING                 603 //AI Flags added, simple check on if the user is Confused or not
-#define EFFECT_WILD_CHARGE                  604 //AI Flags complete
-#define EFFECT_STORM_CHASE                  605 //According to EFFECT_PARALYZE_HIT, this doesnt need any special AI code
-#define EFFECT_STORM_FURY                   606 //According to EFFECT_RAMPAGE, this doesnt need any special AI code
-#define EFFECT_SUBMISSION                   607 //AI Flags added, combined stuff from EFFECT_RECOIL_25, EFFECT_SUCKER_PUNCH and EFFECT_QUASH, may cause a bug
-#define EFFECT_DRAGON_CLAW                  608 //Just added to AI_RISKY, random damage moves are not particularly accounted for by the AI
-#define EFFECT_CHEESE_STEAL                 609            //No idea how to code this one
-#define EFFECT_LEAF_TORNADO                 610 //AI Flags added, Blooming conditional should be tested
-#define EFFECT_AXEL_HEEL                    611 //AI Flags complete
-#define EFFECT_MIND_BREAK                   612 //AI Flags added, checks for Panic or Confusion
-#define EFFECT_HAYWIRE                      613 //Should not need special AI code as damage is calculated beforehand into AI move preferences
-#define EFFECT_FLYING_PRESS                 614 //Copied EFFECT_RECOIL_25; should not need AI code for minimize damage
-#define EFFECT_TRUE_LOVES_KISS              615 //Joke move, does not need special code
-#define EFFECT_SABRE_BREAK                  616 //AI Flags added, combined stuff from EFFECT_FLINCH_HIT with a Frostbite/Freeze check, may cause a bug
-#define EFFECT_SYRUP_BOMB                   617 //AI Flags added, simply took from EFFECT_SPEED_DOWN and adjusted scores. Could maybe do more
-#define EFFECT_OCTAZOOKA                    618 //AI Flags complete
+#define EFFECT_HIGH_ROLL_HIT                601 //Just added to AI_RISKY, random damage moves are not particularly accounted for by the AI
+#define EFFECT_SPINDA_SWING                 602 //AI Flags added, simple check on if the user is Confused or not
+#define EFFECT_WILD_CHARGE                  603 //AI Flags complete
+#define EFFECT_STORM_CHASE                  604 //According to EFFECT_PARALYZE_HIT, this doesnt need any special AI code
+#define EFFECT_STORM_FURY                   605 //According to EFFECT_RAMPAGE, this doesnt need any special AI code
+#define EFFECT_SUBMISSION                   606 //AI Flags added, combined stuff from EFFECT_RECOIL_25, EFFECT_SUCKER_PUNCH and EFFECT_QUASH, may cause a bug
+#define EFFECT_DRAGON_CLAW                  607 //Just added to AI_RISKY, random damage moves are not particularly accounted for by the AI
+#define EFFECT_CHEESE_STEAL                 608            //No idea how to code this one
+#define EFFECT_LEAF_TORNADO                 609 //AI Flags added, Blooming conditional should be tested
+#define EFFECT_AXEL_HEEL                    610 //AI Flags complete
+#define EFFECT_MIND_BREAK                   611 //AI Flags added, checks for Panic or Confusion
+#define EFFECT_HAYWIRE                      612 //Should not need special AI code as damage is calculated beforehand into AI move preferences
+#define EFFECT_FLYING_PRESS                 613 //Copied EFFECT_RECOIL_25; should not need AI code for minimize damage
+#define EFFECT_TRUE_LOVES_KISS              614 //Joke move, does not need special code
+#define EFFECT_SABRE_BREAK                  615 //AI Flags added, combined stuff from EFFECT_FLINCH_HIT with a Frostbite/Freeze check, may cause a bug
+#define EFFECT_SYRUP_BOMB                   616 //AI Flags added, simply took from EFFECT_SPEED_DOWN and adjusted scores. Could maybe do more
+#define EFFECT_OCTAZOOKA                    617 //AI Flags complete
 
-#define NUM_BATTLE_MOVE_EFFECTS             619
+#define NUM_BATTLE_MOVE_EFFECTS             618
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

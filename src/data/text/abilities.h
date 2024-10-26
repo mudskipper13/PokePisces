@@ -336,7 +336,7 @@ static const u8 sArenaTrapDescription[] = _(
     "the chance of wild encounters.");
 
 static const u8 sVitalSpiritDescription[] = _(
-    "Prevents the Pokémon from falling\n"
+    "Stops the Pokémon from falling\n"
     "asleep. Gradually regains health\n"
     "during battle if at half health.");
 
