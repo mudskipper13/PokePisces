@@ -6070,6 +6070,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_ICE_SCALES:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_HAIL)
+                && (gDisableStructs[gBattlerAttacker].iceScalesCounter < 5))
+                {
+                    gDisableStructs[gBattlerAttacker].iceScalesCounter++;
+                    PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerAttacker].iceScalesCounter);
+                    BattleScriptPushCursorAndCallback(BattleScript_IceScalesActivatesHail);
+                    effect++;
+                }
+                break;
             case ABILITY_HEALER:
                 gBattleScripting.battler = BATTLE_PARTNER(battler);
                 if (IsBattlerAlive(gBattleScripting.battler) && gBattleMons[gBattleScripting.battler].status1 & STATUS1_ANY_NEGATIVE && (Random() % 100) < 30)
@@ -6995,17 +7005,25 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_ICE_SCALES:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED
+            && (gDisableStructs[gBattlerTarget].iceScalesCounter > 0))
             {
-                switch (gMoveResultFlags & ~MOVE_RESULT_MISSED)
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
+                    gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 40) * gDisableStructs[gBattlerTarget].iceScalesCounter);
+                else
+                    gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 20) * gDisableStructs[gBattlerTarget].iceScalesCounter);
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
                 {
-                    case MOVE_RESULT_SUPER_EFFECTIVE:
-                        gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                        gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    default:
-                        gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
                 }
-                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                else
+                {
+                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                }
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerTarget].iceScalesCounter);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IceScalesActivatesLoss;
                 effect++;
@@ -7259,11 +7277,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_ICE_SCALES:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && TARGET_TURN_DAMAGED)
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && (gBattleMoves[gCurrentMove].type == TYPE_ICE)
+            && TARGET_TURN_DAMAGED
+            && (gDisableStructs[gBattlerAttacker].iceScalesCounter < 5))
             {
                 gDisableStructs[gBattlerAttacker].iceScalesCounter++;
-                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerAttacker].iceScalesCounter);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IceScalesActivatesGain;
                 effect++;
@@ -13538,6 +13557,10 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
     case ABILITY_PRISM_ARMOR:
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
             return UQ_4_12(0.75);
+        break;
+    case ABILITY_ICE_SCALES:
+        if (gDisableStructs[battlerDef].iceScalesCounter > 0)
+            return UQ_4_12(1.0 - (gDisableStructs[battlerDef].iceScalesCounter * 0.1));
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)

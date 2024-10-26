@@ -14140,6 +14140,12 @@ BattleScript_SolarPowerActivates::
 	tryfaintmon BS_ATTACKER
 	end3
 
+BattleScript_IceScalesActivatesHail::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ICESCALESGAINS
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_HealerActivates::
 	call BattleScript_AbilityPopUp
 	curestatus BS_SCRIPTING
@@ -16891,8 +16897,12 @@ BattleScript_IceScalesActivatesGain::
 BattleScript_IceScalesActivatesLoss::
 	waitstate
 	call BattleScript_AbilityPopUp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
 	printstring STRINGID_ICESCALESLOSS
 	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	return
 
 BattleScript_TargetAbilityStatRaiseRet::
