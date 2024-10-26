@@ -13326,7 +13326,7 @@ static inline uq4_12_t GetParentalBondModifier(u32 battlerAtk)
 static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveType, u32 move, u32 abilityAtk)
 {
     if ((IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move != MOVE_STRUGGLE || move != MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
-        return UQ_4_12(1.0);
+        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.5) : UQ_4_12(1.0);
     else if (((!IS_BATTLER_OF_TYPE(battlerAtk, moveType)) || move == MOVE_STRUGGLE || move == MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
         return UQ_4_12(1.5);
     else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move == MOVE_STRUGGLE || move == MOVE_NONE)
