@@ -941,6 +941,8 @@ static const u8 sText_NoSex[] = _("With {B_ATK_NAME_WITH_PREFIX}'s ally gone the
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
 static const u8 sText_PomegSwitchedNegativeStats[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s Pomeg Berry\nflipped its negative stat stages!");
 static const u8 sText_WatmelBerryExploded[] = _("{B_ATK_NAME_WITH_PREFIX}'s BLOOM caused its\nWatmel Berry to go BOOM!");
+static const u8 sText_IceScalesGains[] = _("{B_ATK_NAME_WITH_PREFIX} gained a layer\nof icy scales!");
+static const u8 sText_IceScalesLoss[] = _("A layer of {B_DEF_NAME_WITH_PREFIX}'s scales\nshattered and stifled the blow!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1733,6 +1735,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP - BATTLESTRINGS_TABLE_START] = sText_TargetCoveredInStickyCandySyrup,
     [STRINGID_POMEGSWITCHEDNEGATIVESTATS - BATTLESTRINGS_TABLE_START] = sText_PomegSwitchedNegativeStats,
     [STRINGID_WATMELBERRYEXPLODED - BATTLESTRINGS_TABLE_START] = sText_WatmelBerryExploded,
+    [STRINGID_ICESCALESGAINS - BATTLESTRINGS_TABLE_START] = sText_IceScalesGains,
+    [STRINGID_ICESCALESLOSS - BATTLESTRINGS_TABLE_START] = sText_IceScalesLoss,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

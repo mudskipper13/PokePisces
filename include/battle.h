@@ -114,6 +114,7 @@ struct DisableStruct
     u8 chargeTimer:4;
     u8 pumpTimer:4;
     u8 syrupBombTimer;
+    u8 iceScalesCounter;
 };
 
 struct ProtectStruct

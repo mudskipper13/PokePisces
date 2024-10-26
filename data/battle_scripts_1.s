@@ -17011,6 +17011,20 @@ BattleScript_SymbiosisActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_IceScalesActivatesGain::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ICESCALESGAINS
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_IceScalesActivatesLoss::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ICESCALESLOSS
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_TargetAbilityStatRaiseRet::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
 	copybyte gBattlerAbility, gEffectBattler
