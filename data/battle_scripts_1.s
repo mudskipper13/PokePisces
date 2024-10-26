@@ -16512,12 +16512,16 @@ BattleScript_RizzBerryEnd::
 
 BattleScript_BlukBerryActivatesRet::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	tryspiteppreduce BattleScript_BlukBerryEnd
+	eeriespellppreduce BattleScript_BlukBerryFail
 	printstring STRINGID_PKMNREDUCEDPP
+BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
-BattleScript_BlukBerryEnd::
 	return
+
+BattleScript_BlukBerryFail::
+	printstring STRINGID_BUTITFAILED
+	goto BattleScript_BlukBerryEnd
 
 BattleScript_NanabBerryActivatesRet::
 	stockpile 0

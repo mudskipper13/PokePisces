@@ -347,9 +347,9 @@ static const u8 sCounterDescription[] = _(
     "double the damage.");
 
 static const u8 sSeismicTossDescription[] = _(
-    "The target is thrown using the\n"
-    "power of gravity. It inflicts\n"
-    "damage equal to the user's level.");
+    "A gravity-fed throw that causes\n"
+    "damage matching the user's level.\n"
+    "This move is boosted in Gravity.");
 
 static const u8 sStrengthDescription[] = _(
     "A powerful slam that may boost\n"
