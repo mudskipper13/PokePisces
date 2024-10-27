@@ -11650,13 +11650,14 @@ static void Cmd_various(void)
     case VARIOUS_EERIE_SPELL_PP_REDUCE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gLastMoves[battler] != 0 && gLastMoves[battler] != 0xFFFF)
+
+        if (gChosenMove != MOVE_NONE && gChosenMove != 0xFFFF)
         {
             s32 i;
 
             for (i = 0; i < MAX_MON_MOVES; i++)
             {
-                if (gLastMoves[battler] == gBattleMons[battler].moves[i])
+                if (gChosenMove == gBattleMons[battler].moves[i])
                     break;
             }
 
@@ -11667,7 +11668,7 @@ static void Cmd_various(void)
                 if (gBattleMons[battler].pp[i] < ppToDeduct)
                     ppToDeduct = gBattleMons[battler].pp[i];
 
-                PREPARE_MOVE_BUFFER(gBattleTextBuff1, gLastMoves[battler])
+                PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMove)
                 ConvertIntToDecimalStringN(gBattleTextBuff2, ppToDeduct, STR_CONV_MODE_LEFT_ALIGN, 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 1, ppToDeduct)
                 gBattleMons[battler].pp[i] -= ppToDeduct;
