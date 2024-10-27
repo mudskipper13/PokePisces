@@ -19,10 +19,13 @@ static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
     .species = SPECIES_LEDIAN,
+    .heldItem = ITEM_POKE_BALL,
+    .moves = {MOVE_SPLASH, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
     .lvl = 50,
     .species = SPECIES_MOSKOPO,
+    .moves = {MOVE_SWITCHEROO, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }
 };
 

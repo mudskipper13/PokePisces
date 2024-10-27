@@ -14978,26 +14978,35 @@ bool32 CanStealItem(u32 battlerStealing, u32 battlerItem, u16 item)
         return FALSE;
 
     // Check if the battler trying to steal should be able to
-    if (stealerSide == B_SIDE_OPPONENT && !(gBattleTypeFlags &
-                                            (BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SECRET_BASE
-#if B_TRAINERS_KNOCK_OFF_ITEMS == TRUE
-                                             | BATTLE_TYPE_TRAINER
-#endif
-                                             )))
+    if (stealerSide == B_SIDE_OPPONENT
+        && !(gBattleTypeFlags &
+            (BATTLE_TYPE_EREADER_TRAINER 
+             | BATTLE_TYPE_FRONTIER 
+             | BATTLE_TYPE_LINK 
+             | BATTLE_TYPE_RECORDED_LINK 
+             | BATTLE_TYPE_SECRET_BASE
+             | (B_TRAINERS_KNOCK_OFF_ITEMS == TRUE ? BATTLE_TYPE_TRAINER : 0)
+            )))
     {
         return FALSE;
     }
     else if (!(gBattleTypeFlags &
-               (BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SECRET_BASE)) &&
-             (gWishFutureKnock.knockedOffMons[stealerSide] & gBitTable[gBattlerPartyIndexes[battlerStealing]]))
+        (BATTLE_TYPE_EREADER_TRAINER 
+         | BATTLE_TYPE_FRONTIER 
+         | BATTLE_TYPE_LINK 
+         | BATTLE_TYPE_RECORDED_LINK 
+         | BATTLE_TYPE_SECRET_BASE))
+        && (gWishFutureKnock.knockedOffMons[stealerSide] & gBitTable[gBattlerPartyIndexes[battlerStealing]]))
     {
         return FALSE;
     }
 
     if (!CanBattlerGetOrLoseItem(battlerItem, item)         // Battler with item cannot have it stolen
         || !CanBattlerGetOrLoseItem(battlerStealing, item)) // Stealer cannot take the item
+    {
         return FALSE;
-
+    }
+        
     return TRUE;
 }
 
