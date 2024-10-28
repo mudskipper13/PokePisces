@@ -1490,9 +1490,9 @@ static const u8 sOneWayTripDescription[] = _(
     "first selected move.");
 
 static const u8 sPurpleHazeDescription[] = _(
-    "The turn after using a gas-based\n"
-    "move, doubles damage done and\n"
-    "halves damage taken.");
+    "After using a gas-based move,\n"
+    "doubles damage done and halves\n"
+    "damage taken from the next moves.");
 
 static const u8 sRapidFireDescription[] = _(
     "The Pokémon uses moves twice in\n"
