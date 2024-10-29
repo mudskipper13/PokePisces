@@ -769,6 +769,11 @@ static const u8 sFurCoatDescription[] = _(
     "Doubles the Pokémon's Defense\n"
     "stat.");
 
+static const u8 sMagicianDescription[] = _(
+    "The Pokémon swaps the its held\n"
+    "item with a target when it\n"
+    "enters a battle.");
+
 static const u8 sBulletproofDescription[] = _(
     "Protects the Pokémon from ball\n"
     "and bomb moves.");
@@ -2644,7 +2649,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_CHEEK_POUCH] = sCheekPouchDescription,
     [ABILITY_PROTEAN] = sProteanDescription,
     [ABILITY_FUR_COAT] = sFurCoatDescription,
-    [ABILITY_MAGICIAN] = sPickpocketDescription,
+    [ABILITY_MAGICIAN] = sMagicianDescription,
     [ABILITY_BULLETPROOF] = sBulletproofDescription,
     [ABILITY_COMPETITIVE] = sCompetitiveDescription,
     [ABILITY_STRONG_JAW] = sStrongJawDescription,

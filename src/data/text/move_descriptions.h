@@ -604,7 +604,7 @@ static const u8 sSelfDestructDescription[] = _(
 static const u8 sEggBombDescription[] = _(
     "A large egg is hurled at the foe\n"
     "with maximum force to inflict\n"
-    "damage and remove their Ability.");
+    "damage and remove its Ability.");
 
 static const u8 sLickDescription[] = _(
     "The user licks the foe with a\n"
@@ -614,7 +614,7 @@ static const u8 sLickDescription[] = _(
 static const u8 sSmogDescription[] = _(
     "The foe is attacked with exhaust\n"
     "gases. It may also poison the\n"
-    "foe or lower their Speed stat.");
+    "foe or lower its Speed stat.");
 
 static const u8 sSludgeDescription[] = _(
     "The user hurls unsanitary sludge\n"
@@ -1881,7 +1881,7 @@ static const u8 sPowerTrickDescription[] = _(
 static const u8 sGastroAcidDescription[] = _(
     "Hurls up its stomach acids on the\n"
     "foe. The fluid clears the foe's\n"
-    "ability and lowers its Sp. Def.");
+    "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
     "For 6 turns, prevents foes from\n"
@@ -3165,7 +3165,7 @@ static const u8 sRevelationDanceDescription[] = _(
 static const u8 sCoreEnforcerDescription[] = _(
     "If the user goes first, this\n"
     "move eliminates the effect of\n"
-    "the foe's ability.");
+    "the foe's Ability.");
 
 static const u8 sTropKickDescription[] = _(
     "Lowers the foe's Atk, and Def if\n"
@@ -4061,7 +4061,7 @@ static const u8 sTemperFlareDescription[] = _(
 
 static const u8 sPsychicNoiseDescription[] = _(
     "The user attacks the foe with\n"
-    "unpleasant sound waves. For 2\n"
+    "unpleasant sound waves. For 5\n"
     "turns, the foe can't recover HP.");
 
 static const u8 sUpperHandDescription[] = _(
@@ -4103,6 +4103,11 @@ static const u8 sBurningSpiritDescription[] = _(
     "The user attacks the foe by\n"
     "emitting its pure passionate\n"
     "aura. This may burn the foe.");
+
+static const u8 sPurgingFlamesDescription[] = _(
+    "Spews flames that reset the\n"
+    "foe's stat changes. Goes first\n"
+    "if the foe has stat changes.");
 
 static const u8 sSnuffOutDescription[] = _(
     "The user blows real hard on the\n"
@@ -4222,7 +4227,7 @@ static const u8 sPartingCurryDescription[] = _(
 static const u8 sSerpentSurgeDescription[] = _(
     "Damage category is based on which\n"
     "would do more damage. Its effect\n"
-    "is based on the user's ability.");
+    "is based on the user's Ability.");
 
 static const u8 sFlareCrushDescription[] = _(
     "The user breaks down the foe with\n"
@@ -4749,9 +4754,9 @@ static const u8 sWilderDanceDescription[] = _(
     "Attack, Defense, and Speed.");
 
 static const u8 sFrostShredDescription[] = _(
-    "Slashes the foe 2 times, or more\n"
-    "for each Speed boost. May freeze\n"
-    "the foe or land critical hits.");
+    "Slashes twice; or more foe each\n"
+    "Speed boost. May freeze the foe.\n"
+    "Critical hits land more easily.");
 
 static const u8 sGlacialShiftDescription[] = _(
     "After rushing towards the foe,\n"
@@ -5791,7 +5796,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_STORM_FURY - 1] = sOutrageDescription,
     [MOVE_PIXIE_POW - 1] = sPixiePowDescription,
     [MOVE_BURNING_SPIRIT - 1] = sBurningSpiritDescription,
-    [MOVE_PURGING_FLAMES - 1] = sClearSmogDescription,
+    [MOVE_PURGING_FLAMES - 1] = sPurgingFlamesDescription,
     [MOVE_SNUFF_OUT - 1] = sSnuffOutDescription,
     [MOVE_SPIRIT_DANCE - 1] = sSpiritDanceDescription,
     [MOVE_MUDSLIDE - 1] = sMudslideDescription,
