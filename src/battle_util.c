@@ -552,35 +552,28 @@ void HandleAction_UseMove(void)
     GET_MOVE_TYPE(gChosenMove, moveType);
 
     // choose target
-    DebugPrintf("HandleAction_UseMove - choose target");
     side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
     if (IsAffectedByFollowMe(gBattlerAttacker, side, gCurrentMove) && moveTarget == MOVE_TARGET_SELECTED && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gSideTimers[side].followmeTarget))
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
-    else if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
     {
         int battler;
-
-        DebugPrintf("GetMoveTarget Overtake is active for %d", gBattlerAttacker);
         
         for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
         {
-            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d",battler ,gDisableStructs[battler].overtakeRedirectedUser);
-            if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+            //search linked battler to set target
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
             {
-                DebugPrintf("i = %d", battler);
-                gBattlerTarget = battler; //wiz1989 - default target would be 3 -> issue
+                //set target
+                gBattlerTarget = battler;
                 if (!IsBattlerAlive(battler))
-                    gBattlerTarget ^= BIT_FLANK;
+                    gBattlerTarget ^= BIT_FLANK; //change target if opponent is dead
                 gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget;
-                battler = MAX_BATTLERS_COUNT;
-                //reset overtake
-                //gDisableStructs[battler].overtakeRedirectedUser = 0;
-                //gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                battler = MAX_BATTLERS_COUNT; //exit loop early
             }
         }
-        DebugPrintf("targetBattler = %d", gBattlerTarget);
     }
     else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
     {
@@ -11019,26 +11012,25 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         {
             targetBattler = SetRandomTarget(gBattlerAttacker);
 
-            //wiz1989
-            if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive != FALSE) //can be values 1 or 2
+            //this next if might be redundant, but should never negatively affect outcome
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
             {
                 int battler;
-
-                DebugPrintf("GetMoveTarget Overtake is active for %d", gBattlerAttacker);
                 
                 for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
                 {
-                    if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+                    //search linked battler to set target
+                    if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
                     {
-                        if (IsBattlerAlive(battler))
-                            targetBattler = battler;
-                        //reset overtake
-                        gDisableStructs[battler].overtakeRedirectedUser = 0;
-                        gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                        //set target
+                        targetBattler = battler;
+                        if (!IsBattlerAlive(battler))
+                            targetBattler ^= BIT_FLANK; //change target if opponent is dead
+                        battler = MAX_BATTLERS_COUNT; //exit loop early
                     }
                 }
-                DebugPrintf("targetBattler = %d", targetBattler);
             }
+
             if (gBattleMoves[move].type == TYPE_ELECTRIC && IsAbilityOnOpposingSide(gBattlerAttacker, ABILITY_LIGHTNING_ROD) && GetBattlerAbility(targetBattler) != ABILITY_LIGHTNING_ROD)
             {
                 targetBattler ^= BIT_FLANK;

@@ -118,8 +118,6 @@ struct DisableStruct
     u8 purpleHazeOffense:1;
     u8 purpleHazeDefense:1;
     u8 magmaArmored:1;
-    u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
-    u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
 };
 
 struct ProtectStruct
@@ -176,6 +174,8 @@ struct ProtectStruct
     u8 specialBattlerId;
     u32 extraMoveUsed:1;
     u32 hardStoneBoost:1;
+    u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
+    u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
 };
 
 struct SpecialStatus
@@ -223,7 +223,6 @@ struct SpecialStatus
     u8 magnetPullRedirected:1;
     u8 witchcraftRedirected:1;
     u8 soulLockerRedirected:1;
-    // End of byte
 };
 
 struct SideTimer

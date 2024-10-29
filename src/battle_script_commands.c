@@ -1489,40 +1489,32 @@ static void Cmd_attackcanceler(void)
         }
     }
 
-    DebugPrintf("check attackcanceler gSpecialStatuses");
-    DebugPrintf("gBattlerAttacker= %d, overtake? %d", gBattlerAttacker, gDisableStructs[gBattlerAttacker].overtakeRedirectActive);
-    DebugPrintf("gBattlerTarget= %d, overtake to %d", gBattlerTarget, gDisableStructs[gBattlerTarget].overtakeRedirectedUser);
-
-    if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    //trigger Overtake script if affected battler attacks
+    if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
     {
         int battler;
-        //check if linked overtake user is still alive
+        //check if linked Overtake user is still alive
         for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
         {
-            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d",battler ,gDisableStructs[battler].overtakeRedirectedUser);
-            if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
             {
-                DebugPrintf("k = %d", battler);
                 if (!IsBattlerAlive(battler))
                 {
-                    DebugPrintf("%d is no longer alive", battler);
-                    //reset overtake
-                    gDisableStructs[battler].overtakeRedirectedUser = 0;
-                    gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                    //reset Overtake
+                    gProtectStructs[gBattlerAttacker].overtakeRedirectedUser = 0;
+                    gProtectStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
                 }
-                battler = MAX_BATTLERS_COUNT;
+                battler = MAX_BATTLERS_COUNT; //exit loop early
             }
         }
         
-        //if overtake still active, then activate script
-        if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+        //if Overtake is still active, then activate script
+        if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
         {
-            //increment so this snippet isn't executed infinitely
-            //gDisableStructs[gBattlerAttacker].overtakeRedirectActive++;
-            DebugPrintf("trigger Overtake effect");
-            //reset overtake
-            gDisableStructs[battler].overtakeRedirectedUser = 0;
-            gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+            //reset Overtake data
+            gProtectStructs[gBattlerAttacker].overtakeRedirectedUser = 0;
+            gProtectStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+            //trigger BattleScript
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_OvertookAttack;
         }
@@ -13037,13 +13029,10 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
 
-        DebugPrintf("VARIOUS_SET_OVERTAKE_TARGET");
-        gDisableStructs[gBattlerTarget].overtakeRedirectActive = TRUE;
-        gDisableStructs[gBattlerAttacker].overtakeRedirectedUser = gBattlerTarget;
-        DebugPrintf("Set overtakeRedirectActive for %d = %d", gBattlerTarget, gDisableStructs[gBattlerTarget].overtakeRedirectActive);
-        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
-            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d", battler, gDisableStructs[battler].overtakeRedirectedUser);
-
+        //set Overtake data for the target
+        gProtectStructs[gBattlerTarget].overtakeRedirectActive = TRUE;
+        gProtectStructs[gBattlerTarget].overtakeRedirectedUser = gBattlerAttacker;
+        
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
