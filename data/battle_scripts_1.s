@@ -993,6 +993,7 @@ BattleScript_ExtraExtraMoveEnd::
 	end
 
 BattleScript_EffectOvertake::
+	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_EffectHit
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
@@ -1003,8 +1004,6 @@ BattleScript_EffectOvertake::
 	setovertaketarget
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNCENTERATTENTION
-	waitmessage B_WAIT_TIME_LONG
 	effectivenesssound
 	hitanimation BS_TARGET
 	waitstate
@@ -16554,7 +16553,7 @@ BattleScript_RizzBerryEnd::
 
 BattleScript_BlukBerryActivatesRet::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	eeriespellppreduce BattleScript_BlukBerryFail
+	blukberryppreduce BattleScript_BlukBerryFail
 	printstring STRINGID_PKMNREDUCEDPP
 BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
