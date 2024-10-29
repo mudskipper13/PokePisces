@@ -292,6 +292,7 @@
 #define VARIOUS_SET_PURPLE_HAZE                      200
 #define VARIOUS_SET_MAGMA_ARMORED                    201
 #define VARIOUS_SET_OVERTAKE_TARGET                  202
+#define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

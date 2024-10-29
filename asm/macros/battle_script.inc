@@ -2089,6 +2089,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro blukberryppreduce failInstr:req
+	various BS_TARGET, VARIOUS_BLUK_BERRY_PP_REDUCE
+	.4byte \failInstr
+	.endm
+
 	.macro jumpifteamhealthy battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TEAM_HEALTHY
 	.4byte \jumpInstr

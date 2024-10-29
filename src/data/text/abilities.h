@@ -770,9 +770,9 @@ static const u8 sFurCoatDescription[] = _(
     "stat.");
 
 static const u8 sMagicianDescription[] = _(
-    "The Pokémon swaps the its held\n"
-    "item with a target when it\n"
-    "enters a battle.");
+    "The Pokémon swaps its held item\n"
+    "with a target when it enters a\n"
+    "battle.");
 
 static const u8 sBulletproofDescription[] = _(
     "Protects the Pokémon from ball\n"
