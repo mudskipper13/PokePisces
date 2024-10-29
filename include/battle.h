@@ -118,6 +118,8 @@ struct DisableStruct
     u8 purpleHazeOffense:1;
     u8 purpleHazeDefense:1;
     u8 magmaArmored:1;
+    u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
+    u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
 };
 
 struct ProtectStruct
@@ -202,7 +204,7 @@ struct SpecialStatus
     // End of byte
     u8 gemParam;
     // End of byte
-     u8 gemBoost:1;
+    u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
     u8 parentalBondState:2;
     u8 multiHitOn:1;
@@ -221,6 +223,7 @@ struct SpecialStatus
     u8 magnetPullRedirected:1;
     u8 witchcraftRedirected:1;
     u8 soulLockerRedirected:1;
+    // End of byte
 };
 
 struct SideTimer

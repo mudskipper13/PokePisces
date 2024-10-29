@@ -644,6 +644,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFlinchHit               @ EFFECT_SABRE_BREAK
 	.4byte BattleScript_EffectSyrupBomb               @ EFFECT_SYRUP_BOMB
 	.4byte BattleScript_EffectOctazooka               @ EFFECT_OCTAZOOKA
+	.4byte BattleScript_EffectOvertake                @ EFFECT_OVERTAKE
 
 BattleScript_EffectOctazooka::
 	setmoveeffect MOVE_EFFECT_OCTAZOOKA
@@ -992,7 +993,30 @@ BattleScript_ExtraExtraMoveEnd::
 	end
 
 BattleScript_EffectOvertake::
-	goto BattleScript_EffectHit
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	setovertaketarget
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNCENTERATTENTION
+	waitmessage B_WAIT_TIME_LONG
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHunkerDown::
 	attackcanceler
@@ -14760,6 +14784,14 @@ BattleScript_TookAttack::
 	attackstring
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNSXTOOKATTACK
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_ATTACKSTRING_PRINTED
+	return
+
+BattleScript_OvertookAttack::
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNOVERTOOKATTACK
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_ATTACKSTRING_PRINTED
 	return

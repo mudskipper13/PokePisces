@@ -467,6 +467,8 @@ void HandleAction_UseMove(void)
     u32 battler, i, side, moveType, var = 4;
     u16 moveTarget;
 
+    DebugPrintf("HandleAction_UseMove");
+
     DestroyTypeIcon();
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     if (gBattleStruct->absentBattlerFlags & gBitTable[gBattlerAttacker] || !IsBattlerAlive(gBattlerAttacker))
@@ -550,10 +552,35 @@ void HandleAction_UseMove(void)
     GET_MOVE_TYPE(gChosenMove, moveType);
 
     // choose target
+    DebugPrintf("HandleAction_UseMove - choose target");
     side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
     if (IsAffectedByFollowMe(gBattlerAttacker, side, gCurrentMove) && moveTarget == MOVE_TARGET_SELECTED && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gSideTimers[side].followmeTarget))
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
+    }
+    else if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    {
+        int battler;
+
+        DebugPrintf("GetMoveTarget Overtake is active for %d", gBattlerAttacker);
+        
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+        {
+            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d",battler ,gDisableStructs[battler].overtakeRedirectedUser);
+            if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+            {
+                DebugPrintf("i = %d", battler);
+                gBattlerTarget = battler; //wiz1989 - default target would be 3 -> issue
+                if (!IsBattlerAlive(battler))
+                    gBattlerTarget ^= BIT_FLANK;
+                gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget;
+                battler = MAX_BATTLERS_COUNT;
+                //reset overtake
+                //gDisableStructs[battler].overtakeRedirectedUser = 0;
+                //gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+            }
+        }
+        DebugPrintf("targetBattler = %d", gBattlerTarget);
     }
     else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
     {
@@ -1045,6 +1072,7 @@ void HandleAction_ActionFinished(void)
     gCurrentTurnActionNumber++;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     SpecialStatusesClear();
+    DebugPrintf("HandleAction_ActionFinished");
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONISE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET | HITMARKER_IGNORE_DISGUISE);
 
     gCurrentMove = 0;
@@ -10977,9 +11005,11 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
     if (move == MOVE_CURSE && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
         moveTarget = MOVE_TARGET_USER;
 
+    DebugPrintf("GetMoveTarget - moveTarget = %d", moveTarget);
     switch (moveTarget)
     {
     case MOVE_TARGET_SELECTED:
+        DebugPrintf("GetMoveTarget - MOVE_TARGET_SELECTED");
         side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
         if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
         {
@@ -10988,6 +11018,27 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         else
         {
             targetBattler = SetRandomTarget(gBattlerAttacker);
+
+            //wiz1989
+            if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive != FALSE) //can be values 1 or 2
+            {
+                int battler;
+
+                DebugPrintf("GetMoveTarget Overtake is active for %d", gBattlerAttacker);
+                
+                for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+                {
+                    if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+                    {
+                        if (IsBattlerAlive(battler))
+                            targetBattler = battler;
+                        //reset overtake
+                        gDisableStructs[battler].overtakeRedirectedUser = 0;
+                        gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                    }
+                }
+                DebugPrintf("targetBattler = %d", targetBattler);
+            }
             if (gBattleMoves[move].type == TYPE_ELECTRIC && IsAbilityOnOpposingSide(gBattlerAttacker, ABILITY_LIGHTNING_ROD) && GetBattlerAbility(targetBattler) != ABILITY_LIGHTNING_ROD)
             {
                 targetBattler ^= BIT_FLANK;

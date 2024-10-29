@@ -31,7 +31,7 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .trainerName = _("Mendali"),
         .items = {},
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .party = TRAINER_PARTY(sParty_PMendel),
     },

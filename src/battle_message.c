@@ -237,6 +237,7 @@ static const u8 sText_PkmnBlewAwaySpikes[] = _("{B_ATK_NAME_WITH_PREFIX} blew aw
 static const u8 sText_PkmnFledFromBattle[] = _("{B_ATK_NAME_WITH_PREFIX} fled from\nbattle!");
 static const u8 sText_PkmnForesawAttack[] = _("{B_ATK_NAME_WITH_PREFIX} foresaw\nan attack!");
 static const u8 sText_PkmnTookAttack[] = _("{B_DEF_NAME_WITH_PREFIX} took the\n{B_BUFF1} attack!");
+static const u8 sText_PkmnOvertookAttack[] = _("{B_DEF_NAME_WITH_PREFIX} overtook the\nattack!");
 static const u8 sText_PkmnChoseXAsDestiny[] = _("{B_ATK_NAME_WITH_PREFIX} chose\n{B_CURRENT_MOVE} as its destiny!");
 static const u8 sText_PkmnAttack[] = _("{B_BUFF1}'s attack!");
 static const u8 sText_PkmnCenterAttention[] = _("{B_ATK_NAME_WITH_PREFIX} became the\ncenter of attention!");
@@ -1741,6 +1742,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ICESCALESLOSS - BATTLESTRINGS_TABLE_START] = sText_IceScalesLoss,
     [STRINGID_PURPLEHAZE - BATTLESTRINGS_TABLE_START] = sText_PurpleHaze,
     [STRINGID_MAGMAARMORED - BATTLESTRINGS_TABLE_START] = sText_MagmaArmored,
+    [STRINGID_PKMNOVERTOOKATTACK - BATTLESTRINGS_TABLE_START] = sText_PkmnOvertookAttack,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

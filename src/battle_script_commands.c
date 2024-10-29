@@ -1489,7 +1489,45 @@ static void Cmd_attackcanceler(void)
         }
     }
 
-    if (gSpecialStatuses[gBattlerTarget].lightningRodRedirected)
+    DebugPrintf("check attackcanceler gSpecialStatuses");
+    DebugPrintf("gBattlerAttacker= %d, overtake? %d", gBattlerAttacker, gDisableStructs[gBattlerAttacker].overtakeRedirectActive);
+    DebugPrintf("gBattlerTarget= %d, overtake to %d", gBattlerTarget, gDisableStructs[gBattlerTarget].overtakeRedirectedUser);
+
+    if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    {
+        int battler;
+        //check if linked overtake user is still alive
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+        {
+            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d",battler ,gDisableStructs[battler].overtakeRedirectedUser);
+            if (gDisableStructs[battler].overtakeRedirectedUser == gBattlerAttacker)
+            {
+                DebugPrintf("k = %d", battler);
+                if (!IsBattlerAlive(battler))
+                {
+                    DebugPrintf("%d is no longer alive", battler);
+                    //reset overtake
+                    gDisableStructs[battler].overtakeRedirectedUser = 0;
+                    gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                }
+                battler = MAX_BATTLERS_COUNT;
+            }
+        }
+        
+        //if overtake still active, then activate script
+        if (gDisableStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+        {
+            //increment so this snippet isn't executed infinitely
+            //gDisableStructs[gBattlerAttacker].overtakeRedirectActive++;
+            DebugPrintf("trigger Overtake effect");
+            //reset overtake
+            gDisableStructs[battler].overtakeRedirectedUser = 0;
+            gDisableStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_OvertookAttack;
+        }
+    }
+    else if (gSpecialStatuses[gBattlerTarget].lightningRodRedirected)
     {
         gSpecialStatuses[gBattlerTarget].lightningRodRedirected = FALSE;
         gLastUsedAbility = ABILITY_LIGHTNING_ROD;
@@ -6224,8 +6262,8 @@ static void Cmd_moveend(void)
     choicedMoveAtk = &gBattleStruct->choicedMove[gBattlerAttacker];
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
-    DebugPrintf("original move = %d", originallyUsedMove);
-    DebugPrintf("called move = %d", gCurrentMove);
+    //DebugPrintf("original move = %d", originallyUsedMove);
+    //DebugPrintf("called move = %d", gCurrentMove);
 
     do
     {
@@ -6793,7 +6831,7 @@ static void Cmd_moveend(void)
             break;
         case MOVEEND_NEXT_TARGET: // For moves hitting two opposing Pokemon.
         {
-            DebugPrintf("MOVEEND_NEXT_TARGET");
+            //DebugPrintf("MOVEEND_NEXT_TARGET");
             if (gCurrentMove != MOVE_DANCE_MANIA && gCurrentMove != MOVE_TEETER_DANCE)
             {
                 u16 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove);
@@ -7063,8 +7101,8 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCER: // Special case because it's so annoying
-            DebugPrintf("MOVEEND_DANCER");
-            DebugPrintf("gCurrentMove = %d", gCurrentMove);
+            //DebugPrintf("MOVEEND_DANCER");
+            //DebugPrintf("gCurrentMove = %d", gCurrentMove);
             if (gBattleMoves[gCurrentMove].danceMove && gCurrentMove != MOVE_DANCE_MANIA)
             {
                 u8 battler, nextDancer = 0;
@@ -7084,7 +7122,7 @@ static void Cmd_moveend(void)
                     {
                         if (GetBattlerAbility(battler) == ABILITY_DANCER && !gSpecialStatuses[battler].dancerUsedMove)
                         {
-                            DebugPrintf("-- activate Dancer --");
+                            //DebugPrintf("-- activate Dancer --");
                             if (!nextDancer || (gBattleMons[battler].speed < gBattleMons[nextDancer & 0x3].speed))
                                 nextDancer = battler | 0x4;
                         }
@@ -7120,7 +7158,7 @@ static void Cmd_moveend(void)
             if (originallyUsedMove == MOVE_DANCE_MANIA)
             {
                 u8 k = 0;
-                DebugPrintf("MOVEEND_NEXT_DANCE_TARGET");
+                //DebugPrintf("MOVEEND_NEXT_DANCE_TARGET");
 
                 //reset dancerUsedMove, so Dancer can activate multiple times during a Dance Mania turn
                 for (k = 0; k < MAX_BATTLERS_COUNT; k++)
@@ -7226,7 +7264,7 @@ static void Cmd_moveend(void)
 
     } while (gBattleScripting.moveendState != MOVEEND_COUNT && effect == FALSE);
 
-    DebugPrintf("exited moveend loop");
+    //DebugPrintf("exited moveend loop");
     if (gBattleScripting.moveendState == MOVEEND_COUNT && effect == FALSE)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
@@ -12994,6 +13032,20 @@ static void Cmd_various(void)
             return;
         }
         break;
+    }
+    case VARIOUS_SET_OVERTAKE_TARGET:
+    {
+        VARIOUS_ARGS();
+
+        DebugPrintf("VARIOUS_SET_OVERTAKE_TARGET");
+        gDisableStructs[gBattlerTarget].overtakeRedirectActive = TRUE;
+        gDisableStructs[gBattlerAttacker].overtakeRedirectedUser = gBattlerTarget;
+        DebugPrintf("Set overtakeRedirectActive for %d = %d", gBattlerTarget, gDisableStructs[gBattlerTarget].overtakeRedirectActive);
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+            DebugPrintf("gDisableStructs[%d].overtakeRedirectedUser = %d", battler, gDisableStructs[battler].overtakeRedirectedUser);
+
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
     }
     } // End of switch (cmd->id)
 

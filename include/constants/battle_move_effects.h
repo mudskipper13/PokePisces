@@ -621,7 +621,8 @@
 #define EFFECT_SABRE_BREAK                  615 //AI Flags added, combined stuff from EFFECT_FLINCH_HIT with a Frostbite/Freeze check, may cause a bug
 #define EFFECT_SYRUP_BOMB                   616 //AI Flags added, simply took from EFFECT_SPEED_DOWN and adjusted scores. Could maybe do more
 #define EFFECT_OCTAZOOKA                    617 //AI Flags complete
+#define EFFECT_OVERTAKE                     618
 
-#define NUM_BATTLE_MOVE_EFFECTS             618
+#define NUM_BATTLE_MOVE_EFFECTS             619
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
