@@ -174,6 +174,8 @@ struct ProtectStruct
     u8 specialBattlerId;
     u32 extraMoveUsed:1;
     u32 hardStoneBoost:1;
+    u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
+    u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
 };
 
 struct SpecialStatus
@@ -202,7 +204,7 @@ struct SpecialStatus
     // End of byte
     u8 gemParam;
     // End of byte
-     u8 gemBoost:1;
+    u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
     u8 parentalBondState:2;
     u8 multiHitOn:1;

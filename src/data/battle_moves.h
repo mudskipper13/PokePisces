@@ -16775,7 +16775,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_OVERTAKE] =
     {
-        .effect = EFFECT_PLACEHOLDER,
+        .effect = EFFECT_OVERTAKE,
         .power = 80,
         .type = TYPE_STEEL,
         .accuracy = 100,

@@ -555,6 +555,24 @@ void HandleAction_UseMove(void)
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
+    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    {
+        int battler;
+        
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+        {
+            //search linked battler to set target
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
+            {
+                //set target
+                gBattlerTarget = battler;
+                if (!IsBattlerAlive(battler))
+                    gBattlerTarget ^= BIT_FLANK; //change target if opponent is dead
+                gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget;
+                battler = MAX_BATTLERS_COUNT; //exit loop early
+            }
+        }
+    }
     else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
     {
         side = GetBattlerSide(gBattlerAttacker);
@@ -10988,6 +11006,26 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         else
         {
             targetBattler = SetRandomTarget(gBattlerAttacker);
+
+            //this next if might be redundant, but should never negatively affect outcome
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+            {
+                int battler;
+                
+                for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+                {
+                    //search linked battler to set target
+                    if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
+                    {
+                        //set target
+                        targetBattler = battler;
+                        if (!IsBattlerAlive(battler))
+                            targetBattler ^= BIT_FLANK; //change target if opponent is dead
+                        battler = MAX_BATTLERS_COUNT; //exit loop early
+                    }
+                }
+            }
+
             if (gBattleMoves[move].type == TYPE_ELECTRIC && IsAbilityOnOpposingSide(gBattlerAttacker, ABILITY_LIGHTNING_ROD) && GetBattlerAbility(targetBattler) != ABILITY_LIGHTNING_ROD)
             {
                 targetBattler ^= BIT_FLANK;
@@ -14974,26 +15012,35 @@ bool32 CanStealItem(u32 battlerStealing, u32 battlerItem, u16 item)
         return FALSE;
 
     // Check if the battler trying to steal should be able to
-    if (stealerSide == B_SIDE_OPPONENT && !(gBattleTypeFlags &
-                                            (BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SECRET_BASE
-#if B_TRAINERS_KNOCK_OFF_ITEMS == TRUE
-                                             | BATTLE_TYPE_TRAINER
-#endif
-                                             )))
+    if (stealerSide == B_SIDE_OPPONENT
+        && !(gBattleTypeFlags &
+            (BATTLE_TYPE_EREADER_TRAINER 
+             | BATTLE_TYPE_FRONTIER 
+             | BATTLE_TYPE_LINK 
+             | BATTLE_TYPE_RECORDED_LINK 
+             | BATTLE_TYPE_SECRET_BASE
+             | (B_TRAINERS_KNOCK_OFF_ITEMS == TRUE ? BATTLE_TYPE_TRAINER : 0)
+            )))
     {
         return FALSE;
     }
     else if (!(gBattleTypeFlags &
-               (BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SECRET_BASE)) &&
-             (gWishFutureKnock.knockedOffMons[stealerSide] & gBitTable[gBattlerPartyIndexes[battlerStealing]]))
+        (BATTLE_TYPE_EREADER_TRAINER 
+         | BATTLE_TYPE_FRONTIER 
+         | BATTLE_TYPE_LINK 
+         | BATTLE_TYPE_RECORDED_LINK 
+         | BATTLE_TYPE_SECRET_BASE))
+        && (gWishFutureKnock.knockedOffMons[stealerSide] & gBitTable[gBattlerPartyIndexes[battlerStealing]]))
     {
         return FALSE;
     }
 
     if (!CanBattlerGetOrLoseItem(battlerItem, item)         // Battler with item cannot have it stolen
         || !CanBattlerGetOrLoseItem(battlerStealing, item)) // Stealer cannot take the item
+    {
         return FALSE;
-
+    }
+        
     return TRUE;
 }
 
