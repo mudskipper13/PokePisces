@@ -467,8 +467,6 @@ void HandleAction_UseMove(void)
     u32 battler, i, side, moveType, var = 4;
     u16 moveTarget;
 
-    DebugPrintf("HandleAction_UseMove");
-
     DestroyTypeIcon();
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     if (gBattleStruct->absentBattlerFlags & gBitTable[gBattlerAttacker] || !IsBattlerAlive(gBattlerAttacker))
@@ -1065,7 +1063,6 @@ void HandleAction_ActionFinished(void)
     gCurrentTurnActionNumber++;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     SpecialStatusesClear();
-    DebugPrintf("HandleAction_ActionFinished");
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONISE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET | HITMARKER_IGNORE_DISGUISE);
 
     gCurrentMove = 0;
@@ -10998,11 +10995,9 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
     if (move == MOVE_CURSE && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
         moveTarget = MOVE_TARGET_USER;
 
-    DebugPrintf("GetMoveTarget - moveTarget = %d", moveTarget);
     switch (moveTarget)
     {
     case MOVE_TARGET_SELECTED:
-        DebugPrintf("GetMoveTarget - MOVE_TARGET_SELECTED");
         side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
         if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
         {

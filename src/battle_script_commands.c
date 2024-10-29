@@ -18583,6 +18583,10 @@ static void Cmd_tryswapitemsmagician(void)
         } else {
             monToStealFrom = GetBattlerAtPosition(targets[sideAttacker][0]);
         }
+
+        //set gBattlerTarget so remaining code and string buffers work
+        gBattlerTarget = monToStealFrom;
+
         // You can't swap items if they were knocked off in regular battles
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                              | BATTLE_TYPE_EREADER_TRAINER
@@ -18590,26 +18594,26 @@ static void Cmd_tryswapitemsmagician(void)
                              | BATTLE_TYPE_SECRET_BASE
                              | BATTLE_TYPE_RECORDED_LINK))
             && (gWishFutureKnock.knockedOffMons[sideAttacker] & gBitTable[gBattlerPartyIndexes[gBattlerAttacker]]
-                || gWishFutureKnock.knockedOffMons[sideTarget] & gBitTable[gBattlerPartyIndexes[monToStealFrom]]))
+                || gWishFutureKnock.knockedOffMons[sideTarget] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]]))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
         // can't swap if two pokemon don't have an item
         // or if either of them is an enigma berry or a mail
-        else if ((gBattleMons[gBattlerAttacker].item == ITEM_NONE && gBattleMons[monToStealFrom].item == ITEM_NONE)
+        else if ((gBattleMons[gBattlerAttacker].item == ITEM_NONE && gBattleMons[gBattlerTarget].item == ITEM_NONE)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
-                 || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[monToStealFrom].item)
-                 || !CanBattlerGetOrLoseItem(monToStealFrom, gBattleMons[monToStealFrom].item)
-                 || !CanBattlerGetOrLoseItem(monToStealFrom, gBattleMons[gBattlerAttacker].item))
+                 || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
         // check if ability prevents swapping
-        else if (GetBattlerAbility(monToStealFrom) == ABILITY_STICKY_HOLD)
+        else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
         {
             gBattlescriptCurrInstr = BattleScript_StickyHoldActivates;
-            gLastUsedAbility = gBattleMons[monToStealFrom].ability;
-            RecordAbilityBattle(monToStealFrom, gLastUsedAbility);
+            gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
+            RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
         }
         // took a while, but all checks passed and items can be safely swapped
         else
@@ -18618,21 +18622,21 @@ static void Cmd_tryswapitemsmagician(void)
 
             newItemAtk = &gBattleStruct->changedItems[gBattlerAttacker];
             oldItemAtk = gBattleMons[gBattlerAttacker].item;
-            *newItemAtk = gBattleMons[monToStealFrom].item;
+            *newItemAtk = gBattleMons[gBattlerTarget].item;
 
             gBattleMons[gBattlerAttacker].item = ITEM_NONE;
-            gBattleMons[monToStealFrom].item = oldItemAtk;
+            gBattleMons[gBattlerTarget].item = oldItemAtk;
 
             RecordItemEffectBattle(gBattlerAttacker, 0);
-            RecordItemEffectBattle(monToStealFrom, ItemId_GetHoldEffect(oldItemAtk));
+            RecordItemEffectBattle(gBattlerTarget, ItemId_GetHoldEffect(oldItemAtk));
 
             BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(*newItemAtk), newItemAtk);
             MarkBattlerForControllerExec(gBattlerAttacker);
 
-            BtlController_EmitSetMonData(monToStealFrom, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[monToStealFrom].item), &gBattleMons[monToStealFrom].item);
-            MarkBattlerForControllerExec(monToStealFrom);
+            BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[gBattlerTarget].item);
+            MarkBattlerForControllerExec(gBattlerTarget);
 
-            gBattleStruct->choicedMove[monToStealFrom] = MOVE_NONE;
+            gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
             gBattleStruct->choicedMove[gBattlerAttacker] = MOVE_NONE;
 
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -18645,8 +18649,8 @@ static void Cmd_tryswapitemsmagician(void)
                 // if targeting your own side and you aren't in a multi battle, don't save items as stolen
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     TrySaveExchangedItem(gBattlerAttacker, oldItemAtk);
-                if (GetBattlerSide(monToStealFrom) == B_SIDE_PLAYER)
-                    TrySaveExchangedItem(monToStealFrom, *newItemAtk);
+                if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
+                    TrySaveExchangedItem(gBattlerTarget, *newItemAtk);
             }
 
             if (oldItemAtk != ITEM_NONE && *newItemAtk != ITEM_NONE)

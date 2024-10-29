@@ -25,6 +25,7 @@ static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
     .species = SPECIES_MOSKOPO,
+    .heldItem = ITEM_POKE_BALL,
     .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }
 };

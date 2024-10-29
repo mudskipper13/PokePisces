@@ -3084,7 +3084,6 @@ static void BattleStartClearSetData(void)
 
     TurnValuesCleanUp(FALSE);
     SpecialStatusesClear();
-    DebugPrintf("BattleStartClearSetData");
 
     memset(&gDisableStructs, 0, sizeof(gDisableStructs));
     memset(&gFieldTimers, 0, sizeof(gFieldTimers));
@@ -3941,7 +3940,6 @@ static void TryDoEventsBeforeFirstTurn(void)
     }
     TurnValuesCleanUp(FALSE);
     SpecialStatusesClear();
-    DebugPrintf("TryDoEventsBeforeFirstTurn");
     *(&gBattleStruct->absentBattlerFlags) = gAbsentBattlerFlags;
     BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
     gBattleMainFunc = HandleTurnActionSelectionState;
