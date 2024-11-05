@@ -2260,6 +2260,10 @@
 	various \battler, VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES
 	.endm
 
+	.macro tryresetstatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_STAT_STAGES
+	.endm
+
 	.macro jumpiflastuseditemberry jumpInstr:req
 	various BS_ATTACKER, VARIOUS_JUMP_IF_LAST_USED_ITEM_BERRY
 	.4byte \jumpInstr

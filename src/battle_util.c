@@ -5905,18 +5905,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
-                    BattleScriptExecute(BattleScript_ResetActivates3);
+                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates3);
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                     MarkBattlerForControllerExec(battler);
                     effect++;
                 }
                 else
                 {
-                    for (i = 0; i < gBattlersCount; i++)
-                    {
-                        BattleScriptPushCursorAndCallback(BattleScript_NormaliseBuffs);
-                        effect++;
-                    }
+                    BattleScriptPushCursorAndCallback(BattleScript_NormaliseBuffs);
+                    effect++;
                 }
                 break;
             case ABILITY_DRY_SKIN:
@@ -10828,10 +10825,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
                 }
                 break;
-            case HOLD_EFFECT_PINAP_BERRY: // consume and damage attacker if used physical move
-                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, ITEM_PINAP_BERRY), ITEM_PINAP_BERRY) && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+            case HOLD_EFFECT_PINAP_BERRY: // consume and damage target if used physical move
+                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && !DoesSubstituteBlockMove(gBattlerTarget, battler, gCurrentMove) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, ITEM_PINAP_BERRY), ITEM_PINAP_BERRY) && GetBattlerAbility(gBattlerTarget) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerTarget) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
                 {
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
@@ -10849,17 +10846,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MARANGA_BERRY: // consume and boost sp. defense if used special move
                 effect = DamagedStatBoostBerryEffect(battler, STAT_SPDEF, SPLIT_SPECIAL);
-                break;
-            case HOLD_EFFECT_STICKY_BARB:
-                if (TARGET_TURN_DAMAGED && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)) && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && IsBattlerAlive(gBattlerAttacker) && CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item) && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
-                {
-                    // No sticky hold checks.
-                    gEffectBattler = battler;                          // gEffectBattler = target
-                    StealTargetItem(gBattlerAttacker, gBattlerTarget); // Attacker takes target's barb
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_StickyBarbTransfer;
-                    effect = ITEM_EFFECT_OTHER;
-                }
                 break;
             }
         }

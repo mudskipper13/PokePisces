@@ -12713,11 +12713,34 @@ static void Cmd_various(void)
     case VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES:
     {
         VARIOUS_ARGS();
-        battler = gBattlerTarget;
+
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         for (i = 0; i < NUM_BATTLE_STATS; i++)
             if (gBattleMons[battler].statStages[i] < DEFAULT_STAT_STAGE)
                 gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
         gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_TRY_RESET_STAT_STAGES:
+    {
+        VARIOUS_ARGS();
+
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        if (gCurrentMove == MOVE_MIRACLE_EYE)
+        {
+            for (i = 0; i < NUM_BATTLE_STATS; i++)
+                if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE)
+                    gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            for (i = 0; i < NUM_BATTLE_STATS; i++)
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_JUMP_IF_LAST_USED_ITEM_BERRY:

@@ -4923,17 +4923,17 @@ static const u8 sSupercellSlamDescription[] = _(
     "electrified dive. If this move\n"
     "misses, the user is hurt instead.");
 
-static const u8 gMindGapDescription[] = _(
+static const u8 sMindGapDescription[] = _(
     "Goes first and disables the move\n"
     "the foe is about to use. Fails\n"
     "if the foe isn't being targeted.");
 
-static const u8 gSweetWhispersDescription[] = _(
+static const u8 sSweetWhispersDescription[] = _(
     "The user promises great things\n"
     "and coerces infatuated targets\n"
     "to attack their allies.");
 
-static const u8 gSyrupBombDescription[] = _(
+static const u8 sSyrupBombDescription[] = _(
     "The user covers the foe in sticky\n"
     "candy syrup. Drops the foe's\n"
     "Speed and evasion for 3 turns.");
@@ -5973,8 +5973,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CRIMSON_STORM - 1] = sSplashDescription,
     [MOVE_TRUE_LOVES_KISS - 1] = sSplashDescription,
     [MOVE_SABRE_BREAK - 1] = sSabreBreakDescription,
-    [MOVE_MIND_GAP - 1] = gMindGapDescription,
+    [MOVE_MIND_GAP - 1] = sMindGapDescription,
     [MOVE_SUPERCELL_SLAM - 1] = sSupercellSlamDescription,
-    [MOVE_SWEET_WHISPERS - 1] = gSweetWhispersDescription,
-    [MOVE_SYRUP_BOMB - 1] = gSyrupBombDescription,
+    [MOVE_SWEET_WHISPERS - 1] = sSweetWhispersDescription,
+    [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
 };

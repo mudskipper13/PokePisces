@@ -4006,8 +4006,9 @@ static const u8 sGravityCoreDesc[] = _(
     "speed in Gravity.");
 
 static const u8 sFavorScarfDesc[] = _(
-    "Grants a lot of\n"
-    "buffs. Give it to\n"
+    "A beautiful scarf that\n"
+    "represents true\n"
+    "friendship. Give it to\n"
     "your favorite!");
 
 static const u8 sWideArmorDesc[] = _(

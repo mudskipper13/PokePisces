@@ -1673,7 +1673,7 @@ BattleScript_EffectPurification:
 	trysoak BattleScript_ButItFailed
 	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-	normalisebuffs
+	tryresetstatstages BS_TARGET
 	printstring STRINGID_STATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -7573,7 +7573,7 @@ BattleScript_MiracleEyeStatBoosted:
     jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_EffectMiracleEyeStatClear
     jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_EffectMiracleEyeStatClear
     jumpifsafeguard BattleScript_EffectMiracleEyeStatClear
-	normalisebuffs
+	tryresetstatstages BS_TARGET
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_CONFUSION
@@ -7581,7 +7581,7 @@ BattleScript_MiracleEyeStatBoosted:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_EffectMiracleEyeStatClear:
-	normalisebuffs
+	tryresetstatstages BS_TARGET
 	attackanimation
 	waitanimation
 	printstring STRINGID_STATCHANGESGONE
@@ -15876,7 +15876,7 @@ BattleScript_AbilityHealHP_End2::
 
 BattleScript_ResetActivates::
 	call BattleScript_AbilityHealHP_Ret
-	normalisebuffs
+	tryresetstatstages BS_ATTACKER
 	printstring STRINGID_STATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
@@ -15885,7 +15885,7 @@ BattleScript_ResetActivates2::
 	printstring STRINGID_PKMNSXCUREDYPROBLEM
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
-	normalisebuffs
+	tryresetstatstages BS_ATTACKER
 	printstring STRINGID_STATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
@@ -15895,7 +15895,7 @@ BattleScript_ResetActivates3::
 	printstring STRINGID_PKMNSXCUREDYPROBLEM
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
-	normalisebuffs
+	tryresetstatstages BS_ATTACKER
 	printstring STRINGID_STATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
