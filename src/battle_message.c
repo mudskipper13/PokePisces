@@ -950,6 +950,8 @@ static const u8 sText_TargetNegativeStatChangesGone[] = _("{B_DEF_NAME_WITH_PREF
 static const u8 sText_UserStatChangesGone[] = _("{B_ATK_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
 static const u8 sText_TargetStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
 static const u8 sText_TargetPositiveStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s positive stat\nchanges were eliminated!");
+static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered\nan extra heal!");
+static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1751,6 +1753,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_UserStatChangesGone,
     [STRINGID_TARGETSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetStatChangesGone,
     [STRINGID_TARGETPOSITIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetPositiveStatChangesGone,
+    [STRINGID_ORDEREDANEXTRAHEAL - BATTLESTRINGS_TABLE_START] = sText_OrderedAnExtraHeal,
+    [STRINGID_THEHEALORDERCAMEIN - BATTLESTRINGS_TABLE_START] = sText_TheHealOrderCameIn,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1810,7 +1814,7 @@ const u16 gDemolisherStringIds[] =
 
 const u16 gHealingWishStringIds[] =
 {
-    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE
+    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE, STRINGID_THEHEALORDERCAMEIN
 };
 
 const u16 gDmgHazardsStringIds[] =

@@ -2977,6 +2977,7 @@ enum
     ENDTURN_EMERGENCY_EXIT,
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
+    ENDTURN_HEAL_ORDER,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3023,6 +3024,14 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
                 BattleScriptExecute(BattleScript_IngrainTurnHeal);
                 effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_HEAL_ORDER:
+            if (gBattleStruct->storedHealOrder & gBitTable[battler])
+            {
+                BattleScriptExecute(BattleScript_HealOrderActivates);
+                gBattleStruct->storedHealOrder &= ~(gBitTable[battler]);
             }
             gBattleStruct->turnEffectsTracker++;
             break;

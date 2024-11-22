@@ -1563,7 +1563,8 @@ static void Cmd_attackcanceler(void)
      && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
      && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
      && gBattleMoves[gCurrentMove].effect != EFFECT_SUCKER_PUNCH
-     && gBattleMoves[gCurrentMove].effect != EFFECT_SEIZE_CHANCE)
+     && gBattleMoves[gCurrentMove].effect != EFFECT_SEIZE_CHANCE
+     && (!(gProtectStructs[gBattlerTarget].drakenGuarded)))
     {
         if (IsMoveMakingContact(gCurrentMove, gBattlerAttacker))
             gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
@@ -1582,6 +1583,22 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else if (gProtectStructs[gBattlerTarget].beakBlastCharge && IsMoveMakingContact(gCurrentMove, gBattlerAttacker))
+    {
+        gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else if (IsBattlerProtected(gBattlerTarget, gCurrentMove)
+     && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
+     && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
+     && gBattleMoves[gCurrentMove].effect != EFFECT_SUCKER_PUNCH
+     && gBattleMoves[gCurrentMove].effect != EFFECT_SEIZE_CHANCE
+     && gProtectStructs[gBattlerTarget].drakenGuarded
+     && IS_MOVE_SPECIAL(gCurrentMove))
+    {
+        gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else if (gProtectStructs[gBattlerTarget].defendOrder)
     {
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -6318,7 +6335,7 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_PROTECT_LIKE_EFFECT:
-            if (gProtectStructs[gBattlerAttacker].touchedProtectLike && !gProtectStructs[gBattlerTarget].drakenGuarded)
+            if (gProtectStructs[gBattlerAttacker].touchedProtectLike)
             {
                 if (gProtectStructs[gBattlerTarget].spikyShielded && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[gBattlerAttacker].species == SPECIES_CHIROBERRA)))
                 {
@@ -6330,6 +6347,17 @@ static void Cmd_moveend(void)
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SPIKY_SHIELD);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
+                    effect = 1;
+                }
+                else if (gProtectStructs[gBattlerTarget].defendOrder && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[gBattlerAttacker].species == SPECIES_CHIROBERRA)))
+                {
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_DEFEND_ORDER);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
                     effect = 1;
@@ -6418,18 +6446,12 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_BeakBlastBurn;
                     effect = 1;
                 }
-            }
-            else //other PROTECT_LIKE_EFFECTs
-            {
-                if (gProtectStructs[gBattlerTarget].drakenGuarded)
+                else if (gProtectStructs[gBattlerTarget].drakenGuarded)
                 {
                     i = gBattlerAttacker;
                     gBattlerAttacker = gBattlerTarget;
                     gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
-                    if IS_MOVE_SPECIAL(originallyUsedMove)
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1;
-                    else 
-                        gBattleScripting.moveEffect = 0;
+                    gBattleScripting.moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_DetectEffect;
                     effect = 1;
@@ -11822,11 +11844,14 @@ static void Cmd_various(void)
     case VARIOUS_TRY_HEAL_QUARTER_HP:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gCurrentMove == MOVE_LIFE_DEW)
+        if (gCurrentMove == MOVE_LIFE_DEW || gCurrentMove == MOVE_HEAL_ORDER)
         {
             gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
         }
-        gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
+        else
+        {
+            gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
+        }
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         gBattleMoveDamage *= -1;
@@ -12607,6 +12632,20 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_DEFEND_ORDER:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gProtectStructs[battler].defendOrder)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gProtectStructs[battler].defendOrder = TRUE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_CHECK_MEAN_LOOK:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -12918,6 +12957,8 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         if (gCurrentMove == MOVE_LUNAR_DANCE)
             gBattleStruct->storedLunarDance |= gBitTable[battler];
+        else if (gCurrentMove == MOVE_HEAL_ORDER)
+            gBattleStruct->storedHealOrder |= gBitTable[battler];
         else
             gBattleStruct->storedHealingWish |= gBitTable[battler];
         break;

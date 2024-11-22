@@ -2169,6 +2169,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trydefendorder battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_DEFEND_ORDER
+	.4byte \failInstr
+	.endm
+
 	.macro checkmeanlook failInstr:req
 	various BS_ATTACKER, VARIOUS_CHECK_MEAN_LOOK
 	.4byte \failInstr
