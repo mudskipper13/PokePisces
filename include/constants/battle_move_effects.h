@@ -622,7 +622,10 @@
 #define EFFECT_SYRUP_BOMB                   616 //AI Flags added, simply took from EFFECT_SPEED_DOWN and adjusted scores. Could maybe do more
 #define EFFECT_OCTAZOOKA                    617 //AI Flags complete
 #define EFFECT_OVERTAKE                     618
+#define EFFECT_ATTACK_ORDER                 619
+#define EFFECT_DEFEND_ORDER                 620
+#define EFFECT_HEAL_ORDER                   621
 
-#define NUM_BATTLE_MOVE_EFFECTS             619
+#define NUM_BATTLE_MOVE_EFFECTS             622
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

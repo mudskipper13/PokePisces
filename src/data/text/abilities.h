@@ -74,7 +74,8 @@ static const u8 sInsomniaDescription[] = _(
 
 static const u8 sColorChangeDescription[] = _(
     "The Pokémon's type becomes the\n"
-    "type of the move used on it.");
+    "type of the Pokémon that\n"
+    "attacked it.");
 
 static const u8 sImmunityDescription[] = _(
     "The Pokémon's immune system\n"
@@ -337,8 +338,8 @@ static const u8 sArenaTrapDescription[] = _(
 
 static const u8 sVitalSpiritDescription[] = _(
     "Stops the Pokémon from falling\n"
-    "asleep. Gradually regains health\n"
-    "during battle if at half health.");
+    "asleep. Restores HP every turn\n"
+    "if at half or less HP.");
 
 static const u8 sWhiteSmokeDescription[] = _(
     "The Pokémon summons a white mist\n"
@@ -457,14 +458,14 @@ static const u8 sMagicGuardDescription[] = _(
     "from attacks.");
 
 static const u8 sStallDescription[] = _(
-    "Ensures both Pokémon's and foe's\n"
-    "attacks land. Increases the\n"
-    "chance of wild encounters.");
-
-static const u8 sNoGuardDescription[] = _(
     "The Pokémon is always the last to\n"
     "use its moves, however it deals\n"
     "more and takes less damage.");
+
+static const u8 sNoGuardDescription[] = _(
+    "Ensures both Pokémon's and foe's\n"
+    "attacks land. Increases the\n"
+    "chance of wild encounters.");
 
 static const u8 sTechnicianDescription[] = _(
     "Powers up weak moves so the\n"
@@ -476,8 +477,9 @@ static const u8 sLeafGuardDescription[] = _(
     "harsh sunlight.");
 
 static const u8 sKlutzDescription[] = _(
-    "The Pokémon can't use any held\n"
-    "items.");
+    "The Pokémon's held item goes to\n"
+    "a foe at the turn's end. The\n"
+    "Pokémon ignores its held item.");
 
 static const u8 sMoldBreakerDescription[] = _(
     "The Pokémon's moves are\n"
@@ -495,8 +497,8 @@ static const u8 sAftermathDescription[] = _(
     "uses a Fire-type exploding move.");
 
 static const u8 sAnticipationDescription[] = _(
-    "When the Pokémon enters battle it\n"
-    "is way more likely to evade the\n"
+    "When the Pokémon enters battle\n"
+    "it is more likely to evade the\n"
     "next move it gets targeted by.");
 
 static const u8 sForewarnDescription[] = _(
@@ -945,9 +947,9 @@ static const u8 sSurgeSurferDescription[] = _(
     "on Electric Terrain.");
 
 static const u8 sHuddleUpDescription[] = _(
-    "At level 20 the Pokémon becomes\n"
-    "a powerful beast. At level 40\n"
-    "steadily restores HP every turn.");
+    "At LVL 25, the Pokémon becomes a\n"
+    "a powerful beast until at low HP.\n"
+    "At LVL 40, restores HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
     "Once per battle, the silk that\n"
@@ -1033,6 +1035,11 @@ static const u8 sGrassySurgeDescription[] = _(
     "Turns the ground into Grassy\n"
     "Terrain when the Pokémon enters\n"
     "a battle.");
+
+static const u8 sFullMetalBodyDescription[] = _(
+    "Prevents the Pokémon's from being\n"
+    "lowered. Below half HP, reduces\n"
+    "the damage taken from moves.");
 
 static const u8 sNeuroforceDescription[] = _(
     "Powers up the Pokémon's super\n"
@@ -1332,9 +1339,9 @@ static const u8 sEarthEaterDescription[] = _(
     "instead of taking damage.");
 
 static const u8 sMyceliumMightDescription[] = _(
-    "The Pokémon acts last when using\n"
-    "status moves, but these moves\n"
-    "ignore the target's Ability.");
+    "Powder-based moves never miss,\n"
+    "ignore abilities and powder\n"
+    "blocking, but always go last.");
 
 static const u8 sMiasmaDescription[] = _(
     "Damages opposing Pokémon that\n"
@@ -1582,12 +1589,12 @@ static const u8 sFreeLoveDescription[] = _(
 static const u8 sGhoulishDescription[] = _(
     "When the Pokémon takes damage\n"
     "from attacks restores some of\n"
-    "the damage as health.");
+    "the damage as HP.");
 
 static const u8 sGlaringStaggerDescription[] = _(
     "The Pokémon glares at the\n"
     "opposing Pokémon upon entering\n"
-    "battle, cutting their health.");
+    "battle, cutting their HP.");
 
 static const u8 sGustyDescription[] = _(
     "The Pokémon whips up a turbulent\n"
@@ -1612,14 +1619,14 @@ static const u8 sPotencyDescription[] = _(
     "Powers up Poison-type moves.");
 
 static const u8 sPowerSpikeDescription[] = _(
-    "Powers up piercing moves and\n"
-    "boosts odds of Horn Drill when\n"
-    "the Pokémon's below half health.");
+    "Boostes the power of piercing\n"
+    "moves when the Pokémon's HP is\n"
+    "at half or less.");
 
 static const u8 sArbiterDescription[] = _(
-    "Cuts the health of all other\n"
-    "Pokémon by a fifth, increasing\n"
-    "for each stat boost on the foe.");
+    "Cuts the HP of all other Pokémon\n"
+    "by 1/5, increasing for each\n"
+    "stat boost on each Pokémon.");
 
 static const u8 sSeafarerDescription[] = _(
     "Powers up Water-type moves.");
@@ -1669,7 +1676,7 @@ static const u8 sWatcherDescription[] = _(
 static const u8 sAppetiteDescription[] = _(
     "When the Pokémon knocks out a\n"
     "target, it reveals its appetite,\n"
-    "which restores some health.");
+    "which restores some HP.");
 
 static const u8 sAllGameDescription[] = _(
     "Soaks the field with water and\n"

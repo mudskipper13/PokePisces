@@ -1496,11 +1496,6 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro jumpifnothit jumpInstr:req
-	callnative BS_JumpIfNotHit
-	.4byte \jumpInstr
-	.endm
-
 	.macro copyfoesstatincrease battler:req, failInstr:req
 	callnative BS_CopyFoesStatIncrease
 	.byte \battler

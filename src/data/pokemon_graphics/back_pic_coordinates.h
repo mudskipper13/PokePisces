@@ -444,7 +444,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_HIPPOWDON]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_SKORUPI]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_DRAPION]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
-    [SPECIES_CROAGUNK]                     = { .size = MON_COORDS_SIZE(56, 32), .y_offset = 10 },
+    [SPECIES_CROAGUNK]                     = { .size = MON_COORDS_SIZE(56, 32), .y_offset = 11 },
     [SPECIES_TOXICROAK]                    = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  4 },
     [SPECIES_CARNIVINE]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_FINNEON]                      = { .size = MON_COORDS_SIZE(56, 40), .y_offset = 12 },

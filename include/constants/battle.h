@@ -444,8 +444,9 @@
 #define MOVE_EFFECT_CONSTRICT           110
 #define MOVE_EFFECT_SYRUP_BOMB          111
 #define MOVE_EFFECT_OCTAZOOKA           112
+#define MOVE_EFFECT_ATTACK_ORDER        113
 
-#define NUM_MOVE_EFFECTS                113
+#define NUM_MOVE_EFFECTS                114
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

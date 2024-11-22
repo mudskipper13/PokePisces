@@ -318,7 +318,7 @@ static const s32 sExperienceScalingFactors[] =
 
 static const u16 sTrappingMoves[NUM_TRAPPING_MOVES] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP, MOVE_THUNDER_CAGE, MOVE_CONSTRICT, MOVE_LEECH_SEED, MOVE_VINE_WHIP, MOVE_VERGLASTROM,
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP, MOVE_THUNDER_CAGE, MOVE_CONSTRICT, MOVE_LEECH_SEED, MOVE_VINE_WHIP, MOVE_VERGLASTROM, MOVE_ATTACK_ORDER,
 };
 
 static const u16 sBadgeFlags[8] = {
@@ -2041,7 +2041,14 @@ static void Cmd_ppreduce(void)
             {
                 if (i != gBattlerAttacker && IsBattlerAlive(i))
                     ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
-                    ppToDeduct += GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL * 2;
+                if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
+                {
+                    ppToDeduct += 2;
+                }
+                else 
+                {
+                    ppToDeduct += 0;
+                }
                     ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
             }
             break;
@@ -2051,14 +2058,28 @@ static void Cmd_ppreduce(void)
             {
                 if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
                     ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
-                    ppToDeduct += GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL * 2;
+                if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
+                {
+                    ppToDeduct += 2;
+                }
+                else 
+                {
+                    ppToDeduct += 0;
+                }
                     ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
             }
             break;
         default:
             if (gBattlerAttacker != gBattlerTarget)
                 ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
-                ppToDeduct += GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL * 2;
+                if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
+                {
+                    ppToDeduct += 2;
+                }
+                else 
+                {
+                    ppToDeduct += 0;
+                }
                 ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
             break;
         }
@@ -2172,7 +2193,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                 #if B_AFFECTION_MECHANICS == TRUE
                     + 2 * (GetBattlerFriendshipScore(battlerAtk) >= FRIENDSHIP_200_TO_254)
                 #endif
-                    + (abilityAtk == ABILITY_SUPER_LUCK);
+                    + (abilityAtk == ABILITY_SUPER_LUCK)
                     + 2 * (abilityAtk == ABILITY_RISKTAKER);
 
         // Record ability only if move had at least +3 chance to get a crit
@@ -3767,6 +3788,18 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     static const u8 sTriAttackEffects[] = { MOVE_EFFECT_BURN, MOVE_EFFECT_FREEZE, MOVE_EFFECT_PARALYSIS };
                 #endif
                     gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
+                    SetMoveEffect(FALSE, 0);
+                }
+                break;
+            case MOVE_EFFECT_ATTACK_ORDER:
+                if (gBattleMons[gEffectBattler].status1)
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else
+                {
+                    static const u8 sAttackOrderEffects[] = { MOVE_EFFECT_BURN, MOVE_EFFECT_POISON, MOVE_EFFECT_PARALYSIS };
+                    gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sAttackOrderEffects);
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
@@ -14913,10 +14946,9 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE 
-            && (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
-                || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-            )
+        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
+        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -19660,16 +19692,6 @@ void BS_TryHaze(void)
         else
             gBattlescriptCurrInstr = cmd->nextInstr;
     }
-}
-
-void BS_JumpIfNotHit(void)
-{
-    NATIVE_ARGS(const u8 *jumpInstr);
-
-    if ((gProtectStructs[gBattlerAttacker].physicalDmg && gProtectStructs[gBattlerAttacker].physicalBattlerId == gBattlerTarget) || (gProtectStructs[gBattlerAttacker].specialDmg && gProtectStructs[gBattlerAttacker].specialBattlerId == gBattlerTarget))
-        gBattlescriptCurrInstr = cmd->nextInstr;
-    else
-        gBattlescriptCurrInstr = cmd->jumpInstr;
 }
 
 void BS_CopyFoesStatIncrease(void)

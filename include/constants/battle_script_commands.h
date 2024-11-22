@@ -196,7 +196,6 @@
 #define VARIOUS_TERRAIN_SEED                         104
 #define VARIOUS_MAKE_INVISIBLE                       105
 #define VARIOUS_ROOM_SERVICE                         106
-
 #define VARIOUS_EERIE_SPELL_PP_REDUCE                107
 #define VARIOUS_JUMP_IF_TEAM_HEALTHY                 108
 #define VARIOUS_TRY_HEAL_QUARTER_HP                  109

@@ -752,7 +752,7 @@
 #define STRINGID_PKMNTICKED                           750
 #define STRINGID_PKMNSHEDTICK                         751
 #define STRINGID_SPEEDSTATCHANGESGONE                 752
-#define STRINGID_USERSTATCHANGESGONE                  753
+#define STRINGID_USERNEGATIVESTATCHANGESGONE          753
 #define STRINGID_PKMNISPREPARINGFORDECIMATION         754
 #define STRINGID_PKMNISALREADYEXPOSED                 755
 #define STRINGID_HEARTHWARMHEAL                       756
@@ -806,8 +806,12 @@
 #define	STRINGID_PURPLEHAZE                           804
 #define	STRINGID_MAGMAARMORED                         805
 #define STRINGID_PKMNOVERTOOKATTACK                   806
+#define STRINGID_TARGETNEGATIVESTATCHANGESGONE        807
+#define STRINGID_USERSTATCHANGESGONE                  808
+#define STRINGID_TARGETSTATCHANGESGONE                809
+#define STRINGID_TARGETPOSITIVESTATCHANGESGONE        810
 
-#define BATTLESTRINGS_COUNT                           807
+#define BATTLESTRINGS_COUNT                           811
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1119,7 +1123,8 @@
 #define B_MSG_SEED_WRAP            11
 #define B_MSG_WRAPPED_VINE_WHIP    12
 #define B_MSG_WRAPPED_VERGLASTROM  13
-#define NUM_TRAPPING_MOVES         14
+#define B_MSG_WRAPPED_ATTACK_ORDER 14
+#define NUM_TRAPPING_MOVES         15
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0

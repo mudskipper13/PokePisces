@@ -1405,6 +1405,15 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
                 score -= 6;
             break;
+        case EFFECT_FROST_SHRED:
+            if (gBattleMons[battlerAtk].statStages[STAT_SPEED] <= DEFAULT_STAT_STAGE)
+                score -= 10;
+        case EFFECT_HAYWIRE:
+            for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
+            {
+                if (gBattleMons[battlerAtk].statStages[i] <= DEFAULT_STAT_STAGE)
+                    score -= 10;
+            }
         case EFFECT_SHIFT_GEAR:
             if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
                 score -= 10;
@@ -2219,6 +2228,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_TRICK:
         case EFFECT_KNOCK_OFF:
+        case EFFECT_PARTY_TRICK:
             if (aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD)
                 score -= 10;
             break;
@@ -3062,7 +3072,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_EMBARGO:
-        case EFFECT_PARTY_TRICK:
             if (aiData->abilities[battlerDef] == ABILITY_KLUTZ
               || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM
               || gDisableStructs[battlerDef].embargoTimer != 0
@@ -6005,6 +6014,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         break;
     case EFFECT_KNOCK_OFF:
+    case EFFECT_PARTY_TRICK:
         if (CanKnockOffItem(battlerDef, aiData->items[battlerDef]))
         {
             switch (aiData->holdEffects[battlerDef])
@@ -6444,7 +6454,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score += 3;
         break;
     case EFFECT_EMBARGO:
-    case EFFECT_PARTY_TRICK:
         if (aiData->holdEffects[battlerDef] != HOLD_EFFECT_NONE)
             score++;
         break;
