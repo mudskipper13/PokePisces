@@ -12675,6 +12675,7 @@ static void Cmd_various(void)
     case VARIOUS_CAN_TAR_SHOT_WORK:
     {
         VARIOUS_ARGS(const u8 *failInstr);
+        DebugPrintf("target = %S", GetSpeciesName(gBattleMons[battler].species));
         // Tar Shot will fail if it's already been used on the target and its speed can't be lowered further
         if (!gDisableStructs[battler].tarShot
             && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))

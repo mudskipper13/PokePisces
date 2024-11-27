@@ -16508,7 +16508,7 @@ BattleScript_BelueBerryActivatesRet::
 	cantarshotwork BS_ATTACKER, BattleScript_BelueBerryEnd
 	trytarshot BS_ATTACKER, BattleScript_BelueBerryEnd
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNBECAMEWEAKERTOFIRE
+	printstring STRINGID_ATTACKERBECAMEWEAKERTOFIRE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_BelueBerryEnd::

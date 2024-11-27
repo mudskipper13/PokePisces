@@ -8631,13 +8631,11 @@ static u8 DamagedSpelonBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
 
 static u8 DamagedBelueBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[gBattlerTarget].tarShot))
+    DebugPrintf("Belue Berry battler = %S", GetSpeciesName(gBattleMons[gBattlerAttacker].species));
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[gBattlerAttacker].tarShot))
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
+        BufferStatChange(gBattlerAttacker, statId, STRINGID_STATROSE);
+        gEffectBattler = gBattlerAttacker;
         gBattleScripting.animArg1 = 14 + statId;
         gBattleScripting.animArg2 = 0;
 
