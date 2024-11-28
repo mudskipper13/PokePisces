@@ -1051,7 +1051,7 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
 {
     u8 count = 0;
     u8 numLines = 1;
-    u8 maxChars = 35;
+    u8 maxChars = 34;
     u8 *desc = (u8 *)gItems[item].description;
 
     while (*desc != EOS)
@@ -1114,7 +1114,7 @@ void DrawHeaderBox(void)
         return; //no box if item obtained previously
     }
 
-    SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 28, 4, 15, 8);
     sHeaderBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sHeaderBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sHeaderBoxWindowId);

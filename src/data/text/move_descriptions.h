@@ -1494,7 +1494,7 @@ static const u8 sMudSportDescription[] = _(
     "Electric-type moves for 5 turns.");
 
 static const u8 sNeedleArmDescription[] = _(
-    "Cuts the target's HP by a 1/5 as\n"
+    "Cuts the target's HP by 1/5 as\n"
     "bonus damage. If the user is\n"
     "blooming, sets Spikes.");
 
@@ -1535,7 +1535,7 @@ static const u8 sMeteorMashDescription[] = _(
 
 static const u8 sAstonishDescription[] = _(
     "If the foe is panicking, goes\n"
-    "first and cuts HP by a 1/5 as\n"
+    "first and cuts HP by 1/5 as\n"
     "bonus damage. May flinch.");
 
 static const u8 sWeatherBallDescription[] = _(
@@ -2245,18 +2245,18 @@ static const u8 sAquaJetDescription[] = _(
 
 static const u8 sAttackOrderDescription[] = _(
     "The user calls out its\n"
-    "underlings to pummel the target.\n"
-    "Critical hits land more easily.");
+    "underlings who may burn, poison,\n"
+    "or paralyze. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
-    "The user calls out its\n"
-    "underlings to shield its body,\n"
-    "boosting its Def and Sp. Def.");
-
+    "Raises the user's Defense.\n"
+    "Attackers take damage when\n"
+    "hitting the user this turn.");
+ 
 static const u8 sHealOrderDescription[] = _(
     "The user calls out its\n"
-    "underlings to heal it. The user\n"
-    "regains up to half of its max HP.");
+    "underlings to heal it both this\n"
+    "turn and the next.");
 
 static const u8 sHeadSmashDescription[] = _(
     "The user delivers a hazardous\n"
@@ -4754,7 +4754,7 @@ static const u8 sWilderDanceDescription[] = _(
     "Attack, Defense, and Speed.");
 
 static const u8 sFrostShredDescription[] = _(
-    "Slashes twice; or more foe each\n"
+    "Slashes twice, or more foe each\n"
     "Speed boost. May freeze the foe.\n"
     "Critical hits land more easily.");
 

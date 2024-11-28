@@ -194,6 +194,7 @@ struct SpecialStatus
     u8 ppNotAffectedByPressure:1;
     u8 faintedHasReplacement:1;
     u8 focusBanded:1;
+    u8 focusBandEndured:1;
     u8 focusSashed:1;
     // End of byte
     u8 sturdied:1;
@@ -255,6 +256,8 @@ struct SideTimer
     u8 retaliateTimer;
     u8 silenceTimer;
     u8 silenceTimerBattlerId;
+    u8 healOrderTimer;
+    u8 healOrderTimerBattlerId;
 };
 
 struct FieldTimer
@@ -711,7 +714,6 @@ struct BattleStruct
     u8 battleBondTransformed[NUM_BATTLE_SIDES]; // Bitfield for each party.
     u8 storedHealingWish:4; // Each battler as a bit.
     u8 storedLunarDance:4; // Each battler as a bit.
-    u8 storedHealOrder:4; // Each battler as a bit.
     u8 itemPartyIndex[MAX_BATTLERS_COUNT];
     u8 itemMoveIndex[MAX_BATTLERS_COUNT];
     bool8 trainerSlideHalfHpMsgDone;

@@ -294,6 +294,7 @@
 #define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
 #define VARIOUS_TRY_RESET_STAT_STAGES                204
 #define VARIOUS_TRY_DEFEND_ORDER                     205
+#define VARIOUS_STORE_HEAL_ORDER                     206
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

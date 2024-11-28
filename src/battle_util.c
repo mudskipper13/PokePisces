@@ -2328,6 +2328,7 @@ enum
     ENDTURN_WEATHER_FORM,
     ENDTURN_STATUS_HEAL,
     ENDTURN_SILENCE,
+    ENDTURN_HEAL_ORDER,
     ENDTURN_INVERSE_ROOM,
     ENDTURN_FIELD_COUNT,
 };
@@ -2471,36 +2472,60 @@ u8 DoFieldEndTurnEffects(void)
             }
             break;
         case ENDTURN_SILENCE:
-        {
             {
-                side = gBattleStruct->turnSideTracker;
-                gBattlerAttacker = gSideTimers[side].silenceTimerBattlerId;
-                if (gSideStatuses[side] & SIDE_STATUS_SILENCE)
                 {
-                    if (--gSideTimers[side].silenceTimer == 0)
+                    side = gBattleStruct->turnSideTracker;
+                    gBattlerAttacker = gSideTimers[side].silenceTimerBattlerId;
+                    if (gSideStatuses[side] & SIDE_STATUS_SILENCE)
                     {
-                        gSideStatuses[side] &= ~SIDE_STATUS_SILENCE;
-                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
-                        gBattlescriptCurrInstr = BattleScript_SilenceActivatesNonArcane;
+                        if (--gSideTimers[side].silenceTimer == 0)
+                        {
+                            gSideStatuses[side] &= ~SIDE_STATUS_SILENCE;
+                            gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                            gBattlescriptCurrInstr = BattleScript_SilenceActivatesNonArcane;
+                        }
+                        else
+                        {
+                            gBattlescriptCurrInstr = BattleScript_SilenceContinues;
+                        }
+                        BattleScriptExecute(gBattlescriptCurrInstr);
+                        effect++;
                     }
-                    else
-                    {
-                        gBattlescriptCurrInstr = BattleScript_SilenceContinues;
-                    }
-                    BattleScriptExecute(gBattlescriptCurrInstr);
-                    effect++;
+                    gBattleStruct->turnSideTracker++;
+                    if (effect != 0)
+                        break;
                 }
-                gBattleStruct->turnSideTracker++;
-                if (effect != 0)
-                    break;
+                if (!effect)
+                {
+                    gBattleStruct->turnCountersTracker++;
+                    gBattleStruct->turnSideTracker = 0;
+                }
             }
-            if (!effect)
+            break;
+        case ENDTURN_HEAL_ORDER:
             {
-                gBattleStruct->turnCountersTracker++;
-                gBattleStruct->turnSideTracker = 0;
+                {
+                    side = gBattleStruct->turnSideTracker;
+                    gBattlerAttacker = gSideTimers[side].healOrderTimerBattlerId;
+                    if (gSideStatuses[side] & SIDE_STATUS_HEAL_ORDER && --gSideTimers[side].healOrderTimer == 0)
+                    {
+                        gSideStatuses[side] &= ~SIDE_STATUS_HEAL_ORDER;
+                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                        gBattlescriptCurrInstr = BattleScript_HealOrderActivates;
+                        BattleScriptExecute(gBattlescriptCurrInstr);
+                        effect++;
+                    }
+                    gBattleStruct->turnSideTracker++;
+                    if (effect != 0)
+                        break;
+                }
+                if (!effect)
+                {
+                    gBattleStruct->turnCountersTracker++;
+                    gBattleStruct->turnSideTracker = 0;
+                }
             }
-        }
-        break;
+            break;
         case ENDTURN_MIST:
             while (gBattleStruct->turnSideTracker < 2)
             {
@@ -2977,7 +3002,6 @@ enum
     ENDTURN_EMERGENCY_EXIT,
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
-    ENDTURN_HEAL_ORDER,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3024,14 +3048,6 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
                 BattleScriptExecute(BattleScript_IngrainTurnHeal);
                 effect++;
-            }
-            gBattleStruct->turnEffectsTracker++;
-            break;
-        case ENDTURN_HEAL_ORDER:
-            if (gBattleStruct->storedHealOrder & gBitTable[battler])
-            {
-                BattleScriptExecute(BattleScript_HealOrderActivates);
-                gBattleStruct->storedHealOrder &= ~(gBitTable[battler]);
             }
             gBattleStruct->turnEffectsTracker++;
             break;
@@ -5148,9 +5164,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_HEARTSTRINGS:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            if (!gSpecialStatuses[battler].switchInAbilityDone 
+            && !(gBattleMons[BATTLE_OPPOSITE(battler)].status2 & STATUS2_INFATUATION)
+            && AreBattlersOfOppositeGender(gBattlerAttacker, BATTLE_OPPOSITE(battler)))
             {
                 gBattlerAttacker = battler;
+                gBattlerTarget = BATTLE_OPPOSITE(battler);
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_HeartstringsActivates);
                 effect++;
@@ -5353,11 +5372,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 i = Random() % 4;
                 if (i == 0)
                     goto RAIN;
-                if (i == 1)
+                else if (i == 1)
                     goto SAND;
-                if (i == 2)
+                else if (i == 2)
                     goto SUN;
-                if (i == 3)
+                else if (i == 3)
                     goto HAIL;
             }
         case ABILITY_DRIZZLE:
@@ -5562,6 +5581,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 break;
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
+                gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                 effect++;
             }
@@ -5579,6 +5599,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_SHIELDS_DOWN:
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
+                gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                 effect++;
             }
@@ -6128,12 +6149,29 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_HUDDLE_UP:
                 if (gBattleMons[battler].level < 25)
                     break;
+                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
+                {
+                    gBattlerAttacker = battler;
+                    BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
+                    effect++;
+                }
+                if ((gBattleMons[battler].level >= 40) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HUDDLE_UP ? 16 : 8);
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
+                }
+                break;
             // Fallthrough
             case ABILITY_ZEN_MODE:
             case ABILITY_SHIELDS_DOWN:
             case ABILITY_DORMANT:
                 if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
+                    gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                     effect++;
                 }
@@ -6836,7 +6874,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_BLOW_UP;  //The Extra Move to be used
                 u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -6865,7 +6904,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_CINDER_WALTZ;     //The Extra Move to be used
                 u8 movePower = 70;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -6895,7 +6935,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && (gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION)
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_STUMBLE;  //The Extra Move to be used
                 u8 movePower = 70;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -6924,7 +6965,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_SWEET_SCENT;     //The Extra Move to be used
                 u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7347,7 +7389,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && !gProtectStructs[gBattlerAttacker].extraMoveUsed
             && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_THUNDER_SHOCK;  //The Extra Move to be used
                 u8 movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -8618,15 +8661,11 @@ static u8 DamagedRabutaBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
 
 static u8 DamagedSpelonBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[battler].spikesDone))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && IsBattlerAlive(gBattlerAttacker)
+    && !(gSideTimers[GetBattlerSide(gBattlerAttacker)].spikesAmount < 3))
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
+        gEffectBattler = gBattlerAttacker;
 
         if (end2)
         {
@@ -8645,15 +8684,12 @@ static u8 DamagedSpelonBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
 
 static u8 DamagedBelueBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[gBattlerTarget].tarShot))
+    DebugPrintf("Belue Berry battler = %S", GetSpeciesName(gBattleMons[gBattlerAttacker].species));
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && !(gDisableStructs[gBattlerAttacker].tarShot)
+    && IsBattlerAlive(gBattlerAttacker))
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
+        gEffectBattler = gBattlerAttacker;
 
         if (end2)
         {
@@ -8797,11 +8833,11 @@ static u8 DamagedRizzBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
 
 static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && (gDisableStructs[opposingBattler].isFirstTurn))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && IsBattlerAlive(gBattlerAttacker))
     {
+        gEffectBattler = gBattlerAttacker;
+
         if (end2)
         {
             BattleScriptExecute(BattleScript_BlukBerryReturn);
@@ -8818,15 +8854,10 @@ static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
 
 static u8 DamagedNanabBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && gDisableStructs[gBattlerAttacker].stockpileCounter < 3)
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
         gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
 
         if (end2)
         {
@@ -9026,7 +9057,7 @@ static u8 TryConsumeMirrorHerb(u32 battler, bool32 execute)
 {
     u8 effect = 0;
 
-    if (gProtectStructs[battler].eatMirrorHerb)
+    if (gProtectStructs[battler].eatMirrorHerb && IsBattlerAlive(battler))
     {
         gLastUsedItem = gBattleMons[battler].item;
         gBattleScripting.battler = battler;
@@ -9282,7 +9313,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
         break;
     case HOLD_EFFECT_FAVOR_SCARF:
-        if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+        if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
         {
             if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
                 StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
@@ -9625,7 +9656,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_FAVOR_SCARF:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
                     i = 0;
                     if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
@@ -10208,7 +10239,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_FAVOR_SCARF:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
                     i = 0;
                     if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
@@ -13231,12 +13262,6 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         if (gBattleMons[battlerDef].species == SPECIES_COLFIN && usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
-    case HOLD_EFFECT_FOCUS_BAND:
-        if (Random() % 5 == 0 && gSpecialStatuses[battlerDef].focusBanded != TRUE)
-            RecordItemEffectBattle(battlerDef, HOLD_EFFECT_FOCUS_BAND);
-            gSpecialStatuses[battlerDef].focusBanded = TRUE;
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
-        break;
     case HOLD_EFFECT_FAVOR_SCARF:
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.1));
         break;
@@ -13460,8 +13485,8 @@ static inline uq4_12_t GetLuckyChantModifier(u32 abilityAtk, u32 battlerAtk, u32
 {
     if ((gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_LUCKY_CHANT) 
     && (typeEffectivenessModifier >= UQ_4_12(2.0))
-    && (abilityAtk != ABILITY_INFILTRATOR)
-    && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))
+    && ((abilityAtk != ABILITY_INFILTRATOR)
+    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG))))
         return UQ_4_12(0.7);
     return UQ_4_12(1.0);
 }

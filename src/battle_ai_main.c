@@ -3314,6 +3314,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else
                 score -= 10;
             break;
+        case EFFECT_REFLECT_TYPE:
+            //Check holding ring target or is of same type
+            if ((IS_BATTLER_OF_TYPE(battlerDef, GetBattlerType(battlerAtk, 0))
+              || IS_BATTLER_OF_TYPE(battlerDef, GetBattlerType(battlerAtk, 1))
+              || IS_BATTLER_OF_TYPE(battlerDef, GetBattlerType(battlerAtk, 2)))
+              && gStatuses4[battlerAtk] & STATUS4_REFLECTED_TYPE)
+                score -= 10;
+            else
+                score += 10;
+            break;
         case EFFECT_ERUPTION:
             if (effectiveness <= AI_EFFECTIVENESS_x0_5)
                 score--;
