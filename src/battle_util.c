@@ -66,6 +66,7 @@ static u32 GetBattlerItemHoldEffectParam(u32 battler, u32 item);
 static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier);
 static uq4_12_t GetSupremeOverlordModifier(u32 battler);
 static bool32 CanBeInfinitelyConfused(u32 battler);
+static u32 BufferStatusCondition(u32 battler);
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForRunningByItem[];
@@ -5370,19 +5371,20 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
                 i = Random() % 4;
-                if (i == 0)
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                if (i < 1 && TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
                     goto RAIN;
-                else if (i == 1)
+                else if (i < 2 && TryChangeBattleWeather(battler, ENUM_WEATHER_SANDSTORM, TRUE))
                     goto SAND;
-                else if (i == 2)
+                else if (i < 3 && TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
                     goto SUN;
-                else if (i == 3)
+                else if (i < 4 && TryChangeBattleWeather(battler, ENUM_WEATHER_HAIL, TRUE))
                     goto HAIL;
             }
         case ABILITY_DRIZZLE:
-            RAIN:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
             {
+            RAIN:
                 BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
                 effect++;
             }
@@ -5394,9 +5396,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_SAND_STREAM:
-            SAND:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SANDSTORM, TRUE))
             {
+            SAND:
                 BattleScriptPushCursorAndCallback(BattleScript_SandstreamActivates);
                 effect++;
             }
@@ -5408,9 +5410,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_DROUGHT:
-            SUN:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
             {
+            SUN:
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
                 effect++;
             }
@@ -5422,7 +5424,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_SNOW_WARNING:
-            HAIL:
 #if B_USE_SNOW == TRUE
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SNOW, TRUE))
             {
@@ -5432,6 +5433,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 #else
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_HAIL, TRUE))
             {
+            HAIL:
                 BattleScriptPushCursorAndCallback(BattleScript_SnowWarningActivatesHail);
                 effect++;
             }
@@ -5583,15 +5585,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             {
                 gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
-                effect++;
-            }
-            if ((gBattleMons[battler].level >= 40) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-            {
-                BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
-                gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HUDDLE_UP ? 16 : 8);
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-                gBattleMoveDamage *= -1;
                 effect++;
             }
             break;
@@ -5896,23 +5889,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 else if (gBattleMons[battler].status1 & STATUS1_ANY && ((!(gBattleMons[battler].hp < gBattleMons[battler].maxHP)) || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
-                    if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                    if (gBattleMons[battler].status1 & (STATUS1_FREEZE | STATUS1_FROSTBITE))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_BLOOMING)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BloomingJpn);
-
+                    BufferStatusCondition(battler);
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
@@ -5928,23 +5905,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
 
-                    if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                    if (gBattleMons[battler].status1 & (STATUS1_FREEZE | STATUS1_FROSTBITE))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_BLOOMING)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BloomingJpn);
-
+                    BufferStatusCondition(battler);
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
@@ -5984,30 +5945,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMoveDamage *= -1;
                     effect++;
                 }
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) && (gBattleMons[battler].status1 & STATUS1_ANY) && (Random() % 3) == 0)
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) && (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE) && (Random() % 3) == 0)
                 {
                     goto ABILITY_HEAL_MON_STATUS;
                 }
                 break;
             case ABILITY_SHED_SKIN:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY) && (Random() % 2) == 0)
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE) && (Random() % 2) == 0)
                 {
                 ABILITY_HEAL_MON_STATUS:
-                    if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                    if (gBattleMons[battler].status1 & (STATUS1_FREEZE | STATUS1_FROSTBITE))
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-
+                    BufferStatusCondition(battler);
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
@@ -6280,7 +6227,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 
-                if(gBattleMons[battler].status1 & STATUS1_ANY)
+                if(gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
                     gBattleResults.shunyongStatusCounter++;
                 else
                     gBattleResults.shunyongStatusCounter = 0;
@@ -7638,21 +7585,21 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_PASTEL_VEIL:
                 if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON | STATUS1_TOXIC_COUNTER))
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
+                    StringCopy(gBattleTextBuff1, gText_Poison);
                     effect = 1;
                 }
                 break;
             case ABILITY_OWN_TEMPO:
                 if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
+                    StringCopy(gBattleTextBuff1, gText_Confusion);
                     effect = 2;
                 }
                 break;
             case ABILITY_LIMBER:
                 if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
+                    StringCopy(gBattleTextBuff1, gText_Paralysis);
                     effect = 1;
                 }
                 break;
@@ -7661,40 +7608,40 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
                 {
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
+                    StringCopy(gBattleTextBuff1, gText_Sleep);
                     effect = 1;
                 }
                 break;
             case ABILITY_WATER_VEIL:
                 if (gBattleMons[battler].status1 & STATUS1_FROSTBITE)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
+                    StringCopy(gBattleTextBuff1, gText_Ice);
                     effect = 1;
                 }
                 else if (gBattleMons[battler].status1 & STATUS1_BURN)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
+                    StringCopy(gBattleTextBuff1, gText_Burn);
                     effect = 1;
                 }
                 break;
             case ABILITY_WATER_BUBBLE:
                 if (gBattleMons[battler].status1 & STATUS1_BURN)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
+                    StringCopy(gBattleTextBuff1, gText_Burn);
                     effect = 1;
                 }
                 break;
             case ABILITY_MAGMA_ARMOR:
                 if (gBattleMons[battler].status1 & (STATUS1_FREEZE | STATUS1_FROSTBITE))
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
+                    StringCopy(gBattleTextBuff1, gText_Ice);
                     effect = 1;
                 }
                 break;
             case ABILITY_IGNORANT_BLISS:
                 if (gBattleMons[battler].status1 & STATUS1_PANIC)
                 {
-                    StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
+                    StringCopy(gBattleTextBuff1, gText_Panic);
                     effect = 1;
                 }
                 else if (gBattleMons[battler].status2 & STATUS2_INFATUATION)
@@ -7747,7 +7694,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         {
             gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
 
-            if (!(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY))
+            if (!(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY_NEGATIVE))
             {
                 gBattleStruct->synchronizeMoveEffect &= ~(MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN);
 #if B_SYNCHRONIZE_TOXIC < GEN_5
@@ -7770,7 +7717,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         {
             gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
 
-            if (!(gBattleMons[gBattlerTarget].status1 & STATUS1_ANY))
+            if (!(gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE))
             {
                 gBattleStruct->synchronizeMoveEffect &= ~(MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN);
                 if (gBattleStruct->synchronizeMoveEffect == MOVE_EFFECT_TOXIC)
@@ -8751,32 +8698,6 @@ static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 en
     return 0;
 }
 
-static u8 DamagedPinapBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
-{
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && (IsBattlerAlive(gBattlerTarget)))
-    {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
-
-        if (end2)
-        {
-            BattleScriptExecute(BattleScript_PinapBerryEnd);
-        }
-        else
-        {
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_PinapBerryActivatesRet;
-        }
-        return ITEM_EFFECT_OTHER;
-    }
-    return 0;
-}
-
 static u8 DamagedRazzBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
@@ -8854,10 +8775,10 @@ static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
 
 static u8 DamagedNanabBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
-    && gDisableStructs[gBattlerAttacker].stockpileCounter < 3)
+    if (HasEnoughHpToEatBerry(gBattlerTarget, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && gDisableStructs[gBattlerTarget].stockpileCounter < 3)
     {
-        gEffectBattler = battler;
+        gEffectBattler = gBattlerTarget;
 
         if (end2)
         {
@@ -9275,35 +9196,9 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
         break;
     case HOLD_EFFECT_CURE_STATUS:
-        if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
+        if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
         {
-            if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-            {
-                gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-            }
-
-            if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_BURN)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-
-            if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-
+            BufferStatusCondition(battler);
             gBattleMons[battler].status1 = 0;
             RemoveConfusionStatus(battler);
             BattleScriptPushCursor();
@@ -9315,33 +9210,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_FAVOR_SCARF:
         if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
         {
-            if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-            {
-                gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-            }
-
-            if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_BURN)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-
-            if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-
+            BufferStatusCondition(battler);
             gBattleMons[battler].status1 = 0;
             RemoveConfusionStatus(battler);
             BattleScriptPushCursor();
@@ -9601,50 +9470,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CURE_STATUS:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    i = 0;
-                    if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                    {
-                        gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-                        i++;
-                    }
+                    i = BufferStatusCondition(battler);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -9658,48 +9486,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_FAVOR_SCARF:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
-                    i = 0;
-                    if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                    {
-                        gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-                        i++;
-                    }
+                    i = BufferStatusCondition(battler);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -10184,50 +9971,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CURE_STATUS:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    i = 0;
-                    if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                    {
-                        gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-                        i++;
-                    }
+                    i = BufferStatusCondition(battler);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -10241,48 +9987,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_FAVOR_SCARF:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
-                    i = 0;
-                    if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
-                    {
-                        gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_BURN)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_PANIC)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_PanicJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ExposedJpn);
-                        i++;
-                    }
-                    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                    {
-                        StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-                        i++;
-                    }
+                    i = BufferStatusCondition(battler);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -10727,14 +10432,22 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_CURSED_AMULET:
-                if (TARGET_TURN_DAMAGED && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) && gDisableStructs[gBattlerAttacker].disabledMove == MOVE_NONE && IsBattlerAlive(gBattlerAttacker) && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL) && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 && (Random() % 3) == 0) // Hardcoding the chance here since cant get it working right through holdEffectParam
+                if (TARGET_TURN_DAMAGED
+                && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
+                && gDisableStructs[gBattlerAttacker].disabledMove == MOVE_NONE
+                && IsBattlerAlive(gBattlerAttacker)
+                && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL)
+                && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0
+                && (Random() % 3) == 0) // Hardcoding the chance here since cant get it working right through holdEffectParam
                 {
                     gDisableStructs[gBattlerAttacker].disabledMove = gChosenMove;
                     gDisableStructs[gBattlerAttacker].disableTimer = 4;
+                    effect = ITEM_EFFECT_OTHER;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMove);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_CursedAmuletActivates;
-                    effect++;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff2, gLastUsedItem);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_CURSED_AMULET);
                 }
                 break;
             case HOLD_EFFECT_FLIP_COIN:
@@ -10879,7 +10592,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
-                    if (GetBattlerAbility(battler) == ABILITY_RIPEN)
+                    if (GetBattlerAbility(gBattlerTarget) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
 
                     effect = ITEM_HP_CHANGE;
@@ -12305,7 +12018,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     if (gStatuses4[battlerAtk] & STATUS4_PUMPED_UP && moveType == TYPE_WATER)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gDisableStructs[battlerAtk].purpleHazeOffense)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (gDisableStructs[battlerDef].purpleHazeDefense)
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
     if (gDisableStructs[battlerDef].magmaArmored)
@@ -13631,7 +13344,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         break;
     case ABILITY_MAGMA_ARMOR:
         if ((!(gDisableStructs[battlerDef].magmaArmored)) && moveType == TYPE_WATER)
-            return UQ_4_12(0.9);
+            return UQ_4_12(0.1);
         break;
     case ABILITY_CACOPHONY:
     case ABILITY_PUNK_ROCK:
@@ -15410,4 +15123,57 @@ u8 GetBattlerType(u32 battler, u8 typeIndex)
     }
 
     return types[typeIndex];
+}
+
+static u32 BufferStatusCondition(u32 battler)
+{
+    u32 ret = 0;
+
+    if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
+    {
+        StringCopy(gBattleTextBuff1, gText_Poison);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
+    {
+        gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+        StringCopy(gBattleTextBuff1, gText_Sleep);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
+    {
+        StringCopy(gBattleTextBuff1, gText_Paralysis);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_BURN)
+    {
+        StringCopy(gBattleTextBuff1, gText_Burn);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
+    {
+        StringCopy(gBattleTextBuff1, gText_Ice);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_PANIC)
+    {
+        StringCopy(gBattleTextBuff1, gText_Panic);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_EXPOSED)
+    {
+        StringCopy(gBattleTextBuff1, gText_Exposed);
+        ret++;
+    }
+    if (gBattleMons[battler].status1 & STATUS1_REST)
+    {
+        StringCopy(gBattleTextBuff1, gText_RestStatus);
+        ret++;
+    }
+    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
+    {
+        StringCopy(gBattleTextBuff1, gText_Confusion);
+        ret++;
+    }
+    return ret;
 }

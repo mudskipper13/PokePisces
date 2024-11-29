@@ -948,7 +948,7 @@ static const u8 sSurgeSurferDescription[] = _(
 
 static const u8 sHuddleUpDescription[] = _(
     "At LVL 25, the Pokémon becomes a\n"
-    "a powerful beast until at low HP.\n"
+    "powerful beast until at low HP.\n"
     "At LVL 40, heals HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
@@ -1100,8 +1100,9 @@ static const u8 sSandSpitDescription[] = _(
     "when it's hit by an attack.");
 
 static const u8 sIceScalesDescription[] = _(
-    "Doubles the Pokémon's Special\n"
-    "Defense stat.");
+    "Gains scales in hail or using\n"
+    "Ice-type moves. They do reflect\n"
+    "damage and reduce damage taken.");
 
 static const u8 sRipenDescription[] = _(
     "Ripens Berries and doubles their\n"
@@ -1503,7 +1504,7 @@ static const u8 sOneWayTripDescription[] = _(
 
 static const u8 sPurpleHazeDescription[] = _(
     "After using a gas-based move,\n"
-    "doubles damage done and halves\n"
+    "boosts damage done and halves\n"
     "damage taken for the next moves.");
 
 static const u8 sRapidFireDescription[] = _(

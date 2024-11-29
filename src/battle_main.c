@@ -545,8 +545,9 @@ const u8 gStatusConditionString_LoveJpn[] = _("メロメロ$$$");
 const u8 gStatusConditionString_PanicJpn[] = _("こおり$$$$");
 const u8 gStatusConditionString_ExposedJpn[] = _("こおり$$$$");
 const u8 gStatusConditionString_BloomingJpn[] = _("こおり$$$$");
+const u8 gStatusConditionString_RestJpn[] = _("こおり$$$$");
 
-const u8 *const gStatusConditionStringsTable[][2] =
+const u8 *const gStatusConditionStringsTable[11][2] =
 {
     {gStatusConditionString_PoisonJpn, gText_Poison},
     {gStatusConditionString_SleepJpn, gText_Sleep},
@@ -557,7 +558,8 @@ const u8 *const gStatusConditionStringsTable[][2] =
     {gStatusConditionString_LoveJpn, gText_Love},
     {gStatusConditionString_PanicJpn, gText_Panic},
     {gStatusConditionString_ExposedJpn, gText_Exposed},
-    {gStatusConditionString_BloomingJpn, gText_Blooming}
+    {gStatusConditionString_BloomingJpn, gText_Blooming},
+    {gStatusConditionString_RestJpn, gText_RestStatus}
 };
 
 void CB2_InitBattle(void)

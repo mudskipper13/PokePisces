@@ -1198,15 +1198,17 @@ static u32 AI_GetEffectiveness(uq4_12_t multiplier)
     case UQ_4_12(0.25):
         return AI_EFFECTIVENESS_x0_25;
     case UQ_4_12(0.5):
+    case UQ_4_12(0.75):
         return AI_EFFECTIVENESS_x0_5;
     case UQ_4_12(1.0):
     default:
         return AI_EFFECTIVENESS_x1;
-    case UQ_4_12(2.0):
+    case UQ_4_12(1.5):
         return AI_EFFECTIVENESS_x2;
-    case UQ_4_12(4.0):
+    case UQ_4_12(2.25):
+    case UQ_4_12(3.375):
         return AI_EFFECTIVENESS_x4;
-    case UQ_4_12(8.0):
+    case UQ_4_12(5.0625):
         return AI_EFFECTIVENESS_x8;
     }
 }
@@ -3349,6 +3351,8 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || AI_DATA->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS
     || AI_DATA->abilities[battlerAtk] == ABILITY_ONE_WAY_TRIP
     || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
+    || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
+    || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS
     || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER
@@ -3358,6 +3362,28 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
         || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST
         || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC
         || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL)))
+        return FALSE;
+
+    return TRUE;
+}
+
+bool32 ShouldLoveTap(u32 battlerAtk, u32 battlerDef, u32 move)
+{
+    if (!gDisableStructs[battlerAtk].isFirstTurn
+    || AI_DATA->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS
+    || AI_DATA->abilities[battlerAtk] == ABILITY_ONE_WAY_TRIP
+    || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
+    || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SCARF
+    || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS
+    || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
+    || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
+    || (AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER
+    && (AI_DATA->abilities[battlerDef]  == ABILITY_OBLIVIOUS 
+        || AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
+        || AI_DATA->abilities[battlerDef] == ABILITY_TANGLED_FEET
+        || AI_DATA->abilities[battlerDef] == ABILITY_OWN_TEMPO
+        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC
+        || AI_DATA->abilities[battlerDef] == ABILITY_LOVESICK)))
         return FALSE;
 
     return TRUE;

@@ -1607,12 +1607,15 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_SPIDER_WEB:
-            if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPEED))
+            if (gDisableStructs[battlerDef].spiderweb
+              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                score -= 10;
+            else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPEED))
                 score -= 10;
             else if (aiData->abilities[battlerDef] == ABILITY_SPEED_BOOST)
                 score -= 10;
             else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_DEF))
-                score -= 8;
+                score -= 10;
             break;
         case EFFECT_EERIE_IMPULSE:
             if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPATK)) //|| !HasMoveWithSplit(battlerDef, SPLIT_SPECIAL))
@@ -2776,12 +2779,21 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_TAUNT:
             if (gDisableStructs[battlerDef].tauntTimer > 0
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
-                score--;
+                score -= 10;
+            break;
+        case EFFECT_OCTOLOCK:
+            if (gDisableStructs[battlerDef].octolock
+              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                score -= 10;
+            else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPDEF))
+                score -= 10;
+            else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_DEF))
+                score -= 10;
             break;
         case EFFECT_RAGE_POWDER:
             if (gDisableStructs[battlerDef].tauntTimer > 0
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
-                score--;
+                score -= 10;
             if (!isDoubleBattle
               || !IsBattlerAlive(BATTLE_PARTNER(battlerAtk))
               || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
@@ -4346,24 +4358,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMons[battlerDef].statStages[STAT_EVASION] < 7 || aiData->abilities[battlerAtk] == ABILITY_NO_GUARD)
             score -= 2;
         break;
-    case EFFECT_SPIDER_WEB:
-        if (AI_STRIKES_FIRST(battlerAtk, battlerDef, move))
-            score -= 3;
-        else if (!AI_RandLessThan(70))
-            score += 2;
-        if (!ShouldLowerDefense(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            score -= 1;
-        if ((aiData->hpPercents[battlerAtk] < 70 && !AI_RandLessThan(50)) || (gBattleMons[battlerDef].statStages[STAT_DEF] <= 3 && !AI_RandLessThan(50)))
-            score -= 2;
-        if (aiData->hpPercents[battlerDef] <= 70)
-            score -= 2;
-        if (HasMoveEffect(battlerDef, EFFECT_RAPID_SPIN))
-            break;
-        if (IsBattlerTrapped(battlerDef, TRUE))
-            break; // in this case its a bad attacking move
-        else if (ShouldTrap(battlerAtk, battlerDef, move))
-            score += 5;
-        break;
     case EFFECT_EERIE_IMPULSE:
         if (!ShouldLowerSpAtk(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
             score -= 2;
@@ -5673,7 +5667,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_FAKE_OUT:
     case EFFECT_LOVE_TAP:
     case EFFECT_NOBLE_ROAR:
-        if ((move == MOVE_FAKE_OUT) || (move == MOVE_NOBLE_ROAR)) // filter out first impression
+        if ((move == MOVE_FAKE_OUT) || (move == MOVE_NOBLE_ROAR) || (move == MOVE_COLD_SNAP)) // filter out first impression
         {
             if (ShouldFakeOut(battlerAtk, battlerDef, move))
                 score += 4;
@@ -5682,8 +5676,23 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         if (move == MOVE_LOVE_TAP) // filter out first impression
         {
-            if (gBattleMons[battlerDef].status2 & (STATUS2_INFATUATION))
-                score -= 2;
+            if (ShouldLoveTap(battlerAtk, battlerDef, move))
+                score += 4;
+            else
+                score -= 10;
+        }
+        if (move == MOVE_FIRST_IMPRESSION)
+        {
+            if (gDisableStructs[battlerAtk].isFirstTurn 
+            && AI_DATA->abilities[battlerAtk] != ABILITY_GORILLA_TACTICS
+            && AI_DATA->abilities[battlerAtk] != ABILITY_ONE_WAY_TRIP
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_BAND
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_SCARF
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_SPECS
+            && DoesSubstituteBlockMove(battlerAtk, battlerDef, move))
+                score += 4;
+            else
+                score -= 10;
         }
         break;
     case EFFECT_STOCKPILE:

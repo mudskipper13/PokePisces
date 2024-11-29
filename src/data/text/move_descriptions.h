@@ -2245,8 +2245,8 @@ static const u8 sAquaJetDescription[] = _(
 
 static const u8 sAttackOrderDescription[] = _(
     "The user calls out its\n"
-    "underlings who may burn, poison,\n"
-    "or paralyze. Always goes first.");
+    "underlings who may poison or\n"
+    "paralyze. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
     "Raises the user's Defense.\n"
@@ -3995,9 +3995,9 @@ static const u8 sComeuppanceDescription[] = _(
     "that last dealt damage on it.");
 
 static const u8 sAquaCutterDescription[] = _(
-    "The user expels pressurized water\n"
-    "to cut at the foe like a blade.\n"
-    "Critical hits land more easily.");
+    "The user expels water to cut at\n"
+    "the foe like a blade. Critical\n"
+    "hits land more easily.");
 
 static const u8 sBlazingTorqueDescription[] = _(
     "---");
