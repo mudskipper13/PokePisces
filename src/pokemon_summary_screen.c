@@ -4039,7 +4039,48 @@ static void SetMoveTypeIcons(void)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
-            SetTypeSpritePosAndPal(gBattleMoves[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+        {
+            if(summary->moves[i] == MOVE_RAGE || summary->moves[i] == MOVE_SPIT_UP)
+            {
+                SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            //ability names also don't wanna cooperate here so gotta use the numbers again
+            //GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum)
+            else if(GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 184
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //aerilate
+            {
+                SetTypeSpritePosAndPal(TYPE_FLYING, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 182
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //pixilate
+            {
+                SetTypeSpritePosAndPal(TYPE_FAIRY, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 174
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //refrigerate
+            {
+                SetTypeSpritePosAndPal(TYPE_ICE, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 338
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //aqua heart
+            {
+                SetTypeSpritePosAndPal(TYPE_WATER, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 342
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //draco force
+            {
+                SetTypeSpritePosAndPal(TYPE_DRAGON, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 204
+            && gBattleMoves[summary->moves[i]].soundMove == TRUE) //liquid voice
+            {
+                SetTypeSpritePosAndPal(TYPE_WATER, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else
+            {
+                SetTypeSpritePosAndPal(gBattleMoves[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+        }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
     }
