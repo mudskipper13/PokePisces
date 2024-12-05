@@ -75,4 +75,4 @@ TestMap_Text_MendelPostBattle:
 	.string "post$"
 
 TestMap_Text_NameJacob:
-	.string "Jacob$"
+	.string "Quigley$"
