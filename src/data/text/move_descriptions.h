@@ -273,9 +273,9 @@ static const u8 sFlamethrowerDescription[] = _(
     "also leave the foe with a burn.");
 
 static const u8 sMistDescription[] = _(
-    "Cloaks itself and allies in a\n"
-    "white mist that stops stat drops\n"
-    "and added effects for 6 turns.");
+    "Stops stat drops and added\n"
+    "effects for 6 turns. This move\n"
+    "always goes first.");
 
 static const u8 sWaterGunDescription[] = _(
     "The target is blasted with a\n"
@@ -472,9 +472,9 @@ static const u8 sPsychicDescription[] = _(
     "Boosted if the user's in Gravity.");
 
 static const u8 sHypnosisDescription[] = _(
-    "The user employs hypnotic\n"
-    "suggestion to make the target\n"
-    "fall asleep.");
+    "The user employs hypnosis to\n"
+    "make the target fall asleep.\n"
+    "Psychic-types are immune.");
 
 static const u8 sMeditateDescription[] = _(
     "The user meditates to awaken the\n"
@@ -647,7 +647,7 @@ static const u8 sSwiftDescription[] = _(
     "and always goes first.");
 
 static const u8 sSkullBashDescription[] = _(
-    "boosts Defense on the first\n"
+    "Boosts Defense on the first\n"
     "turn, then attacks on the next.\n"
     "Based on the user's Defense.");
 
@@ -1091,9 +1091,9 @@ static const u8 sFrustrationDescription[] = _(
     "likes its Trainer.");
 
 static const u8 sSafeguardDescription[] = _(
-    "The user creates a protective\n"
-    "field that prevents certain\n"
-    "statuses for 6 turns.");
+    "Prevents certain status for 6\n"
+    "turns. This move always goes\n"
+    "first.");
 
 static const u8 sPainSplitDescription[] = _(
     "The user adds its HP to the\n"
@@ -1884,9 +1884,9 @@ static const u8 sGastroAcidDescription[] = _(
     "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
-    "For 6 turns, prevents foes from\n"
-    "landing critical hits and weakens\n"
-    "their super effective moves.");
+    "For 6 turns, prevents critical\n"
+    "hits and weakens super effective\n"
+    "moves. This always goes first.");
 
 static const u8 sMeFirstDescription[] = _(
     "The user tries to cut ahead of\n"
@@ -2089,14 +2089,14 @@ static const u8 sThunderFangDescription[] = _(
     "paralyze the target.");
 
 static const u8 sIceFangDescription[] = _(
-    "The user bites with\n"
-    "flame-cloaked fangs. This may\n"
-    "also flinch or burn the target.");
-
-static const u8 sFireFangDescription[] = _(
     "The user bites with cold-infused\n"
     "fangs. This may also flinch or\n"
     "frostbite the target.");
+
+static const u8 sFireFangDescription[] = _(
+    "The user bites with\n"
+    "flame-cloaked fangs. This may\n"
+    "also flinch or burn the target.");
 
 static const u8 sShadowSneakDescription[] = _(
     "The user extends its shadow and\n"
@@ -2244,9 +2244,9 @@ static const u8 sAquaJetDescription[] = _(
     "move always goes first.");
 
 static const u8 sAttackOrderDescription[] = _(
-    "The user calls out its\n"
-    "underlings who may poison or\n"
-    "paralyze. Always goes first.");
+    "May poison or paralyze. Traps\n"
+    "and hurts the foe for 4 to 5\n"
+    "turns. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
     "Raises the user's Defense.\n"
@@ -2547,7 +2547,7 @@ static const u8 sAcrobaticsDescription[] = _(
     "isn't holding an item.");
 
 static const u8 sReflectTypeDescription[] = _(
-    "The user copies the foe's type\n"
+    "The user copies the foe's types\n"
     "and then the user becomes immune\n"
     "to moves of the same type as it.");
 
@@ -2858,7 +2858,8 @@ static const u8 sMistyTerrainDescription[] = _(
 
 static const u8 sElectrifyDescription[] = _(
     "Electrifies the foe making its\n"
-    "next move become Electric-type.");
+    "next move become Electric-type.\n"
+    "Can't be used consecutively.");
 
 static const u8 sPlayRoughDescription[] = _(
     "The user attacks by playing\n"
@@ -3853,8 +3854,8 @@ static const u8 sRevivalBlessingDescription[] = _(
 
 static const u8 sSaltCureDescription[] = _(
     "The user salt cures the foe,\n"
-    "doing damage every turn. Steel\n"
-    "and Water-types take more damage.");
+    "hurting it every turn. Steel and\n"
+    "Water-types take more damage.");
 
 static const u8 sTripleDiveDescription[] = _(
     "The user performs a perfectly\n"
@@ -4081,8 +4082,8 @@ static const u8 sSpookDescription[] = _(
 
 static const u8 sChillyAirDescription[] = _(
     "The user blows cold winds\n"
-    "that harshly lower foes'\n"
-    "evasion and Speed stats.");
+    "that lower foes' evasion\n"
+    "and Speed stats.");
 
 static const u8 sHitNRunDescription[] = _(
     "After running over the foe, the\n"
@@ -4284,9 +4285,9 @@ static const u8 sVenomGaleDescription[] = _(
     "Defense stats.");
 
 static const u8 sVenomDrainDescription[] = _(
-    "Drains some of the damage done.\n"
-    "Drains more if the foe is\n"
-    "poisoned, but removes it.");
+    "Drains HP. Boosts Atk if the foe\n"
+    "is poisoned and drains all damage\n"
+    "done, but removes the poison.");
 
 static const u8 sGunkFunkDescription[] = _(
     "The user spreads gunk that may\n"
@@ -4435,8 +4436,8 @@ static const u8 sCoolMistDescription[] = _(
 
 static const u8 sMindBreakDescription[] = _(
     "Fails if the foe isn't panicking\n"
-    "or confused. The higher the foe's\n"
-    "Sp. Atk, the greater the damage.");
+    "or confused. Uses the foe's\n"
+    "Sp. Atk. Always goes first.");
 
 static const u8 sRoadblockDescription[] = _(
     "Fails if the foe isn't attacking.\n"
@@ -4519,7 +4520,7 @@ static const u8 sStormChaseDescription[] = _(
     "move always goes first.");
 
 static const u8 sDrakenGuardDescription[] = _(
-    "Protects from attacks and boosts\n"
+    "Protects from moves and boosts\n"
     "the Sp. Atk of the user when an\n"
     "attacker uses a special move.");
 

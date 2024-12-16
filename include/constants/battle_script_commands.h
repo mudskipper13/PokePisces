@@ -295,6 +295,8 @@
 #define VARIOUS_TRY_RESET_STAT_STAGES                204
 #define VARIOUS_TRY_DEFEND_ORDER                     205
 #define VARIOUS_STORE_HEAL_ORDER                     206
+#define VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES       207
+#define VARIOUS_SPELL_TAG_PP_REDUCE                  208
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

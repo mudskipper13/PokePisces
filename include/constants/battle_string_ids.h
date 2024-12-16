@@ -812,8 +812,18 @@
 #define STRINGID_TARGETPOSITIVESTATCHANGESGONE        810
 #define STRINGID_ORDEREDANEXTRAHEAL                   811
 #define STRINGID_THEHEALORDERCAMEIN                   812
+#define STRINGID_TARGETHURTBYITEM                     813
+#define STRINGID_TARGETSTOCKPILED                     814
+#define STRINGID_FLIPCOINCHANGEDATTACKERSSTATS        815
+#define STRINGID_ATTACKERBECAMEWEAKERTOFIRE           816
+#define STRINGID_ATKPKMNREDUCEDPP                     817
+#define STRINGID_CLEARAMULETWONTLOWERSTATS            818 // chair do these and below for me teehee
+#define STRINGID_ITEMWONTLOWERCERTAINSTAT             819
+#define STRINGID_PURIFIEDNOSTATCHANGE                 820
+#define STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS  821
+#define STRINGID_PKMNSXINFATUATEDYITEMEDITION         822
 
-#define BATTLESTRINGS_COUNT                           813
+#define BATTLESTRINGS_COUNT                           823
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

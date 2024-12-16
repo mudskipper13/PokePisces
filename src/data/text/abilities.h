@@ -74,8 +74,7 @@ static const u8 sInsomniaDescription[] = _(
 
 static const u8 sColorChangeDescription[] = _(
     "The Pokémon's type becomes the\n"
-    "type of the Pokémon that\n"
-    "attacked it.");
+    "type of the move used on it. ");
 
 static const u8 sImmunityDescription[] = _(
     "The Pokémon's immune system\n"
@@ -188,8 +187,8 @@ static const u8 sInnerFocusDescription[] = _(
     "Energy raises Atk and Sp. Atk.");
 
 static const u8 sMagmaArmorDescription[] = _(
-    "Weakens Water-type moves once.\n"
-    "Weakens all moves after.\n"
+    "After being hit by a Water-type\n"
+    "move, weakens all moves after.\n"
     "Prevents Frostbite and Freeze.");
 
 static const u8 sWaterVeilDescription[] = _(
@@ -493,7 +492,7 @@ static const u8 sSuperLuckDescription[] = _(
 
 static const u8 sAftermathDescription[] = _(
     "The Pokémon cannot be knocked\n"
-    "out by a single hit. At 1 HP,\n"
+    "out before exploding. At 1 HP,\n"
     "uses a Fire-type exploding move.");
 
 static const u8 sAnticipationDescription[] = _(
@@ -554,7 +553,7 @@ static const u8 sFriskDescription[] = _(
 
 static const u8 sRecklessDescription[] = _(
     "Powers up moves that have recoil\n"
-    "damage.");
+    "damage by a random amount.");
 
 static const u8 sMultitypeDescription[] = _(
     "Changes the Pokémon's type to\n"
@@ -1620,7 +1619,7 @@ static const u8 sPotencyDescription[] = _(
     "Powers up Poison-type moves.");
 
 static const u8 sPowerSpikeDescription[] = _(
-    "Boostes the power of piercing\n"
+    "Boosts the power of piercing\n"
     "moves when the Pokémon's HP is\n"
     "at half or less.");
 

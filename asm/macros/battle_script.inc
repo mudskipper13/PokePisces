@@ -736,8 +736,9 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro stockpile id:req
+	.macro stockpile battler:req, id:req
 	.byte 0x85
+	.byte \battler
 	.byte \id
 	.endm
 
@@ -839,9 +840,8 @@
 	.byte 0x9b
 	.endm
 
-	.macro setsubstitute, half:req
+	.macro setsubstitute
 	.byte 0x9c
-	.byte \half
 	.endm
 
 	.macro mimicattackcopy failInstr:req
@@ -932,8 +932,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetspikes failInstr:req
+	.macro trysetspikes battler:req, failInstr:req
 	.byte 0xb0
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -2084,8 +2085,13 @@
 	.4byte \failInstr
 	.endm
 
+	.macro spelltagppreduce failInstr:req
+	various BS_TARGET, VARIOUS_SPELL_TAG_PP_REDUCE
+	.4byte \failInstr
+	.endm
+
 	.macro blukberryppreduce failInstr:req
-	various BS_TARGET, VARIOUS_BLUK_BERRY_PP_REDUCE
+	various BS_ATTACKER, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
 	.endm
 
@@ -2258,6 +2264,10 @@
 
 	.macro tryresetnegativestatstages battler:req
 	various \battler, VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro tryresetpositivestatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES
 	.endm
 
 	.macro tryresetstatstages battler:req

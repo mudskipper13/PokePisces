@@ -2089,7 +2089,7 @@ static const u8 sSoulDewDesc[] = _(
     "Latias' Psychic and\n"
     "Dragon-type moves.");
 #else
-    "Hold item: raises\n"
+    "held item: raises\n"
     "Sp. Atk & Sp. Def of\n"
     "Latios & Latias.");
 #endif
@@ -2203,12 +2203,12 @@ static const u8 sPowerBeltDesc[] = _(
     "but reduces Speed.");
 
 static const u8 sPowerLensDesc[] = _(
-    "Hold item that pro-\n"
+    "held item that pro-\n"
     "motes Sp. Atk gain,\n"
     "but reduces Speed.");
 
 static const u8 sPowerBandDesc[] = _(
-    "Hold item that pro-\n"
+    "held item that pro-\n"
     "motes Sp. Def gain,\n"
     "but reduces Speed.");
 
@@ -2219,13 +2219,13 @@ static const u8 sPowerAnkletDesc[] = _(
 
 // Type-boosting Held Items
 static const u8 sSilkScarfDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Normal-type\n"
     "moves, and all other\n"
     "moves a bit less.");
 
 static const u8 sCharcoalDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Fire-type\n"
     "moves. Boosts more if\n"
     "the target is burned.");
@@ -2247,8 +2247,9 @@ static const u8 sMiracleSeedDesc[] = _(
 
 static const u8 sNeverMeltIceDesc[] = _(
     "A held item that\n"
-    "raises the power of\n"
-    "Ice-type moves.");
+    "boosts Ice-type moves.\n"
+    "Prevents the holder\n"
+    "from being burned.");
 
 static const u8 sBlackBeltDesc[] = _(
     "A held item that\n"
@@ -2256,19 +2257,19 @@ static const u8 sBlackBeltDesc[] = _(
     "type moves.");
 
 static const u8 sPoisonBarbDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Poison-type\n"
     "moves. Boosts more if\n"
     "the foe is poisoned.");
 
 static const u8 sSoftSandDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Ground-type\n"
     "moves, and may make\n"
     "them lower accuracy.");
 
 static const u8 sSharpBeakDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Flying-type\n"
     "moves. Boosts more if\n"
     "the foe is grounded.");
@@ -2279,24 +2280,25 @@ static const u8 sTwistedSpoonDesc[] = _(
     "type moves.");
 
 static const u8 sSilverPowderDesc[] = _(
-    "A hold item that\n"
-    "boosts Bug-type moves,\n"
-    "and may make cover the\n"
-    "target in powder.");
+    "A held item that\n"
+    "boosts Bug-type\n"
+    "moves, and may cover\n"
+    "the foe in powder.");
 
 static const u8 sHardStoneDesc[] = _(
     "A held item that\n"
-    "raises the power of\n"
-    "Rock-type moves.");
-
-static const u8 sSpellTagDesc[] = _(
-    "A hold item that\n"
     "boosts Rock-type\n"
     "moves. Reduces damage\n"
     "after using one.");
 
+static const u8 sSpellTagDesc[] = _(
+    "A held item that\n"
+    "boosts Ghost-type\n"
+    "moves, and depletes\n"
+    "the target's PP.");
+
 static const u8 sDragonFangDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Dragon-type\n"
     "moves. Boosts more if\n"
     "it is resisted.");
@@ -2345,49 +2347,49 @@ static const u8 sToxicOrbDesc[] = _(
 // Weather Rocks
 static const u8 sDampRockDesc[] = _(
     "When the holder\n"
-    "changes the weather to\n"
-    "rain, it will persist\n"
-    "for longer than usual.");
+    "changes the weather\n"
+    "to rain, it will\n"
+    "persist longer.");
 
 static const u8 sHeatRockDesc[] = _(
-    "If the holder changes\n"
-    "the weather to harsh\n"
-    "sunlight, it will last\n"
-    "longer than usual.");
+    "When the holder\n"
+    "changes the weather\n"
+    "to harsh sunlight, it\n"
+    "will persist longer.");
 
 static const u8 sSmoothRockDesc[] = _(
-    "If the holder changes\n"
-    "the weather to a\n"
-    "sandstom, it will last\n"
-    "longer than usual.");
+    "When the holder\n"
+    "changes the weather\n"
+    "to a sandstorm, it\n"
+    "will persist longer.");
 
 static const u8 sIcyRockDesc[] = _(
     "When the holder\n"
-    "changes the weather to\n"
-    "hail, it will persist\n"
-    "for longer than usual.");
+    "changes the weather\n"
+    "to hail, it will\n"
+    "persist longer.");
 
 // Terrain Seeds
 static const u8 sElectricSeedDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Defense on\n"
     "Electric Terrain. It\n"
     "can only be used once.");
 
 static const u8 sPsychicSeedDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Sp. Def on\n"
     "Psychic Terrain. It\n"
     "can only be used once.");
 
 static const u8 sMistySeedDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Sp. Def on\n"
     "Misty Terrain. It can\n"
     "only be used once.");
 
 static const u8 sGrassySeedDesc[] = _(
-    "A hold item that\n"
+    "A held item that\n"
     "boosts Defense on\n"
     "Grassy Terrain. It\n"
     "can only be used once.");
@@ -2465,8 +2467,8 @@ static const u8 sMentalHerbDesc[] = _(
 static const u8 sKingsRockDesc[] = _(
     "When the holder\n"
     "successfully inflicts\n"
-    "damage, the target may\n"
-    "also flinch.");
+    "damage, the target\n"
+    "may also flinch.");
 
 static const u8 sAmuletCoinDesc[] = _(
     "Doubles money in\n"
@@ -2548,9 +2550,10 @@ static const u8 sLifeOrbDesc[] = _(
     "of some HP per hit.");
 
 static const u8 sPowerHerbDesc[] = _(
-    "Allows immediate\n"
-    "use of a move that\n"
-    "charges first.");
+    "A single-use held item\n"
+    "that allows the\n"
+    "immediate use of a\n"
+    "move that charges.");
 
 static const u8 sFocusSashDesc[] = _(
     "If the holder has full\n"
@@ -2599,8 +2602,8 @@ static const u8 sGripClawDesc[] = _(
 
 static const u8 sStickyBarbDesc[] = _(
     "A held item that\n"
-    "damages the holder and\n"
-    "drops its Speed and\n"
+    "damages the holder\n"
+    "and drops Speed and\n"
     "evasion every turn.");
 
 static const u8 sShedShellDesc[] = _(
@@ -2631,9 +2634,9 @@ static const u8 sEvioliteDesc[] = _(
 
 static const u8 sFloatStoneDesc[] = _(
     "A held up that boosts\n"
-    "the holder's Speed stat\n"
-    "and reduces their\n"
-    "weight.");
+    "the holder's Speed\n"
+    "stat and reduces\n"
+    "their weight.");
 
 static const u8 sRockyHelmetDesc[] = _(
     "If the holder of this\n"
@@ -2655,8 +2658,9 @@ static const u8 sRedCardDesc[] = _(
 
 static const u8 sRingTargetDesc[] = _(
     "The immunities of the\n"
-    "holder are negated and\n"
-    "they take more damage.");
+    "holder are negated\n"
+    "and they take more\n"
+    "damage.");
 
 static const u8 sBindingBandDesc[] = _(
     "A held item that\n"
@@ -2698,10 +2702,10 @@ static const u8 sTerrainExtenderDesc[] = _(
     "battle terrain.");
 
 static const u8 sProtectivePadsDesc[] = _(
-    "Protects the holder\n"
-    "from effects caused by\n"
-    "making direct contact\n"
-    "with the target.");
+    "Reduces recoil damage\n"
+    "taken from moves and\n"
+    "prevents direct\n"
+    "contact with targets.");
 
 static const u8 sThroatSprayDesc[] = _(
     "Raises Sp. Atk. if\n"
@@ -2777,9 +2781,10 @@ static const u8 sPersimBerryDesc[] = _(
     "in battle.");
 
 static const u8 sLumBerryDesc[] = _(
-    "A held item that\n"
-    "heals any status\n"
-    "problem in battle.");
+    "It may be used or held\n"
+    "by a Pokémon to cure\n"
+    "itself of any status\n"
+    "condition it may have.");
 
 static const u8 sSitrusBerryDesc[] = _(
 #if I_SITRUS_BERRY_HEAL >= GEN_4
@@ -2824,10 +2829,10 @@ static const u8 sRazzBerryDesc[] = _(
     "of the opposite gender.");
 
 static const u8 sBlukBerryDesc[] = _(
-    "The holder will be\n"
-    "able reduce the PP of\n"
-    "the foe's last chosen\n"
-    "move.");
+    "If the holder is hit,\n"
+    "the attacker's last\n"
+    "used move will have\n"
+    "its PP reduced.");
 
 static const u8 sNanabBerryDesc[] = _(
     "The holder will be\n"
@@ -2840,9 +2845,10 @@ static const u8 sWepearBerryDesc[] = _(
     "the opponent.");
 
 static const u8 sPinapBerryDesc[] = _(
-    "If in a pinch, the\n"
+    "If the holder is hit\n"
+    "with a move, the\n"
     "holder will be hurt\n"
-    "further.");
+    "even further.");
 
 static const u8 sPomegBerryDesc[] = _(
     "The holder will be\n"
@@ -2897,10 +2903,10 @@ static const u8 sNomelBerryDesc[] = _(
     "up damage by 1.5x.");
 
 static const u8 sSpelonBerryDesc[] = _(
-    "The holder will be\n"
-    "able lay spikes on the\n"
-    "foe's side of the\n"
-    "field.");
+    "If the holder is hit,\n"
+    "spikes will be laid on\n"
+    "the attacker's side of\n"
+    "the field.");
 
 static const u8 sPamtreBerryDesc[] = _(
     "A held item that\n"
@@ -2913,14 +2919,15 @@ static const u8 sWatmelBerryDesc[] = _(
     "explode destructively.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "Eaten at 1/2 HP\n"
-    "To lower all stats\n"
-    "of the opponent.");
+    "If the holder is hit,\n"
+    "the attacker will have\n"
+    "all their stats\n"
+    "lowered.");
 
 static const u8 sBelueBerryDesc[] = _(
-    "The holder will be\n"
-    "able to cover the\n"
-    "attacker in Tar.");
+    "If the holder is hit,\n"
+    "the attacker will be\n"
+    "covered in Tar.");
 
 static const u8 sChilanBerryDesc[] = _(
     "If held by a Pokémon,\n"
@@ -3972,8 +3979,8 @@ static const u8 sMaliciousArmorDesc[] = _(
 static const u8 sMirrorHerbDesc[] = _(
     "The holder mirrors the\n"
     "foe's stat boosts to\n"
-    "boost its own\n"
-    "stats, but only once.");
+    "boost its own stats,\n"
+    "but only once.");
 
 static const u8 sScrollOfDarknessDesc[] = _(
     "A peculiar scroll\n"
@@ -4117,7 +4124,7 @@ static const u8 sWideArmorDesc[] = _(
 static const u8 sLostMantleDesc[] = _(
     "If the holder of this\n"
     "item takes damage, the\n"
-    "attacker's Def/Sp. Def\n"
+    "attacker's defenses\n"
     "may be lowered.");
 
 static const u8 sBattleHelmDesc[] = _(
@@ -4280,15 +4287,16 @@ static const u8 sCreditCardDesc[] = _(
     "card.");
 
 static const u8 sRizzBerryDesc[] = _(
-    "Eaten at 1/4 HP\n"
-    "to infatuate a foe.\n"
-    "Ignores gender.");
+    "If the holder is hit,\n"
+    "the attacker will be\n"
+    "infatuated regardless\n"
+    "of gender.");
 
 static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"
     "damage with a Bug-type\n"
     "move, the target will\n"
-    "be tormented.");
+    "be taunted.");
 
 static const u8 sBlackSaladDesc[] = _(
     "Attacks may cause\n"
@@ -4303,8 +4311,8 @@ static const u8 sDistillModDesc[] = _(
 static const u8 sCorrodeModDesc[] = _(
     "Physical moves drop\n"
     "Def and Special moves\n"
-    "drop Sp. Def. Only\n"
-    "works for Relic-types.");
+    "drop Sp. Def. It is\n"
+    "only for Relic-types.");
 
 static const u8 sStilettoDesc[] = _(
     "Boosts kicking\n"
@@ -4415,9 +4423,10 @@ static const u8 sCrypticPlateDesc[] = _(
     "SPATK. For Uhefoe.");
 
 static const u8 sChupacabraDesc[] = _(
-    "Holder moves last.\n"
-    "Attacks do\n"
-    "additional damage.");
+    "A held item that makes\n"
+    "the holder move last,\n"
+    "but makes its attacks\n"
+    "do bonus damage.");
 
 static const u8 sHeartGiftDesc[] = _(
     "Explodes after 2\n"

@@ -3025,7 +3025,8 @@ static void PrintPageNamesAndStats(void)
     PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_SWITCH, FALSE, iconXPos);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_SWITCH, gText_Switch, stringXPos, 1, 0, 0);
     
-    PrintEditEVs();
+    if (!sMonSummaryScreen->lockMovesFlag)
+        PrintEditEVs();
 
     PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL, gText_RentalPkmn, 0, 1, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE, gText_TypeSlash, 0, 1, 0, 0);
@@ -4592,7 +4593,7 @@ static void Task_HandleEvEditorInput(u8 taskId)
         } else {
             sMonSummaryScreen->secondMoveIndex++;
         }
-    } else if (JOY_NEW(A_BUTTON)) {
+    } else if (JOY_NEW(A_BUTTON) && !sMonSummaryScreen->lockMovesFlag) {
         // adjust EV values
         PlaySE(SE_SELECT);
         SetStatSelectorFixedState(TRUE);

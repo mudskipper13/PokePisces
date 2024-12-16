@@ -50419,7 +50419,6 @@ static const u16 sAgomagoTeachableLearnset[] = {
     MOVE_SNIPE_SHOT,
     MOVE_FRUSTRATION,
     MOVE_RETURN,
-    MOVE_WORK_UP,
     MOVE_SUBSTITUTE,
     MOVE_UNAVAILABLE,
 };
@@ -50496,7 +50495,6 @@ static const u16 sMorftreeTeachableLearnset[] = {
     MOVE_SNIPE_SHOT,
     MOVE_FRUSTRATION,
     MOVE_RETURN,
-    MOVE_WORK_UP,
     MOVE_SUBSTITUTE,
     MOVE_UNAVAILABLE,
 };
@@ -50597,7 +50595,6 @@ static const u16 sEpochotlTeachableLearnset[] = {
     MOVE_RETURN,
     MOVE_GIGA_IMPACT,
     MOVE_HYPER_BEAM,
-    MOVE_WORK_UP,
     MOVE_SUBSTITUTE,
     MOVE_UNAVAILABLE,
 };

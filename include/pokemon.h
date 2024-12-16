@@ -298,8 +298,9 @@ struct BattleMove
     u32 sleepTalkBanned:1;
     u32 instructBanned:1;
     u32 lazyMove:1;
+    u32 cantUseTwice:1;
+    u32 cantUseTwiceBlooming:1;
 };
-
 #define SPINDA_SPOT_WIDTH 16
 #define SPINDA_SPOT_HEIGHT 16
 
