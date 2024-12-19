@@ -171,7 +171,8 @@
     "Gym4Corridor",
     "FortreeTransitionArea",
     "FortreeGymBattleLocation",
-    "FortreeInteriors"
+    "FortreeInteriors",
+    "FortreeGymTransitionBuilding"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",

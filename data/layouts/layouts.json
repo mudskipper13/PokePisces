@@ -5820,6 +5820,16 @@
       "secondary_tileset": "gTileset_TrainerHill",
       "border_filepath": "data/layouts/OzoneTransitionBuildings/border.bin",
       "blockdata_filepath": "data/layouts/OzoneTransitionBuildings/map.bin"
+    },
+    {
+      "id": "LAYOUT_FORTREE_GYM_TRANSITION_BUILDING",
+      "name": "FortreeGymTransitionBuilding_Layout",
+      "width": 9,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_FortreeGym",
+      "border_filepath": "data/layouts/FortreeGymTransitionBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeGymTransitionBuilding/map.bin"
     }
   ]
 }
