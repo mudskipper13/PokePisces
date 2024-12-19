@@ -13333,6 +13333,65 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_SKY_PILLAR_NEW",
+          "base_label": "gSkyPillarNew0",
+          "fishing_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 1,
+                "max_level": 4,
+                "species": "SPECIES_SNELFREND"
+              },
+              {
+                "min_level": 1,
+                "max_level": 4,
+                "species": "SPECIES_GUPSPAR"
+              },
+              {
+                "min_level": 15,
+                "max_level": 20,
+                "species": "SPECIES_GUPSPAR"
+              },
+              {
+                "min_level": 15,
+                "max_level": 20,
+                "species": "SPECIES_EBIBI"
+              },
+              {
+                "min_level": 15,
+                "max_level": 20,
+                "species": "SPECIES_SHARGUY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RATICATE"
+              }
+            ]
+          }
         }
       ]
     },

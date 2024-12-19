@@ -1742,6 +1742,10 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     {
         type = moveInfo->monType1;
     }
+    else if(moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_RAGING_BULL)
+    {
+        type = moveInfo->monType2;
+    }
     //for some godforsaken reason it doesn't recognize ability name flags so i'm having to brute force it with index numbers
     else if(ability == 184 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //aerilate
     {

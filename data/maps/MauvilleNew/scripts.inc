@@ -115,6 +115,7 @@ MauvilleNew_EventScript_MrBondingBeaten::
 	msgbox MauvilleNew_Text_WellDone, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, MauvilleNew_Movement_RejoinMrBonding
 	waitmovement 0
+	setvar VAR_OLD_GUYS_STATE, 19
 	msgbox MauvilleNew_Text_SomeLoreDrops, MSGBOX_DEFAULT
 	giveitem ITEM_LOADED_DICE
 	speakername MauvilleNew_Text_NameMrBonding

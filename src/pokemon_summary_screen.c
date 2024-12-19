@@ -4044,6 +4044,10 @@ static void SetMoveTypeIcons(void)
             {
                 SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             }
+            else if(summary->moves[i] == MOVE_RAGING_BULL)
+            {
+                SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
             //ability names also don't wanna cooperate here so gotta use the numbers again
             //GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum)
             else if(GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 184
