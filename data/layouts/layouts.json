@@ -5825,7 +5825,7 @@
       "id": "LAYOUT_FORTREE_GYM_TRANSITION_BUILDING",
       "name": "FortreeGymTransitionBuilding_Layout",
       "width": 9,
-      "height": 12,
+      "height": 14,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_FortreeGym",
       "border_filepath": "data/layouts/FortreeGymTransitionBuilding/border.bin",
