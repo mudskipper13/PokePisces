@@ -1294,9 +1294,8 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro tryswapitemsmagician failInstr:req
+	.macro unused
 	.byte 0xfd
-	.4byte \failInstr
 	.endm
 
 	.macro tryworryseed failInstr:req
@@ -1317,6 +1316,22 @@
     .4byte \hpfailptr
     .endm
 
+	.macro savetarget
+	callnative BS_SaveTarget
+	.endm
+
+	.macro restoretarget
+	callnative BS_RestoreTarget
+	.endm
+
+	.macro saveattacker
+	callnative BS_SaveAttacker
+	.endm
+
+	.macro restoreattacker
+	callnative BS_RestoreAttacker
+	.endm
+
 	.macro metalburstdamagecalculator failInstr:req
 	callnative BS_CalcMetalBurstDmg
 	.4byte \failInstr
@@ -1326,6 +1341,11 @@
 	callnative BS_JumpIfCantFling
 	.byte \battler
 	.4byte \jumpInstr
+	.endm
+
+	.macro itemstatchangeeffects battler:req
+	callnative BS_RunStatChangeItems
+	.byte \battler
 	.endm
 
 	.macro jumpifholdeffect battler:req, holdEffect:req, jumpInstr:req
@@ -1623,14 +1643,6 @@
 
 	.macro switchinabilities battler:req
 	various \battler, VARIOUS_SWITCHIN_ABILITIES
-	.endm
-
-	.macro savetarget
-	various BS_TARGET, VARIOUS_SAVE_TARGET
-	.endm
-
-	.macro restoretarget
-	various BS_TARGET, VARIOUS_RESTORE_TARGET
 	.endm
 
 	.macro instanthpdrop battler:req
@@ -2227,6 +2239,11 @@
 
 	.macro setoctolock battler:req, failInstr:req
 	various \battler, VARIOUS_SET_OCTOLOCK
+	.4byte \failInstr
+	.endm
+
+	.macro setpurified battler:req, failInstr:req
+	various \battler, VARIOUS_SET_PURIFIED
 	.4byte \failInstr
 	.endm
 

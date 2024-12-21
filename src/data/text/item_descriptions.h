@@ -2835,8 +2835,8 @@ static const u8 sBlukBerryDesc[] = _(
     "its PP reduced.");
 
 static const u8 sNanabBerryDesc[] = _(
-    "The holder will be\n"
-    "able to stockpile some\n"
+    "At half HP, the holder\n"
+    "will stockpile some\n"
     "power.");
 
 static const u8 sWepearBerryDesc[] = _(
@@ -2851,9 +2851,9 @@ static const u8 sPinapBerryDesc[] = _(
     "even further.");
 
 static const u8 sPomegBerryDesc[] = _(
-    "The holder will be\n"
-    "able invert their own\n"
-    "negative stat drops.");
+    "The holder's stat\n"
+    "drops will be flipped\n"
+    "when at low HP.");
 
 static const u8 sKelpsyBerryDesc[] = _(
     "When using a Pulse\n"
@@ -2866,8 +2866,8 @@ static const u8 sQualotBerryDesc[] = _(
     "up damage by 1.5x.");
 
 static const u8 sHondewBerryDesc[] = _(
-    "The holder will be\n"
-    "able to envelop itself\n"
+    "At half HP, the holder\n"
+    "will be enveloped in\n"
     "in Aqua Ring and\n"
     "Hearthwarm.");
 
@@ -2888,9 +2888,9 @@ static const u8 sCornnBerryDesc[] = _(
 
 static const u8 sMagostBerryDesc[] = _(
     "If the holder is hit\n"
-    "with a any move, the\n"
-    "power of that move\n"
-    "will be weakened.");
+    "by any move, the power\n"
+    "of that move will be\n"
+    "slightly weakened.");
 
 static const u8 sRabutaBerryDesc[] = _(
     "Eaten at 1/2 HP\n"
@@ -2919,10 +2919,10 @@ static const u8 sWatmelBerryDesc[] = _(
     "explode destructively.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "If the holder is hit,\n"
-    "the attacker will have\n"
-    "all their stats\n"
-    "lowered.");
+    "If the holder is hit\n"
+    "at half HP, all of the\n"
+    "attacker's stats will\n"
+    "be lowered.");
 
 static const u8 sBelueBerryDesc[] = _(
     "If the holder is hit,\n"
@@ -3037,46 +3037,43 @@ static const u8 sRoseliBerryDesc[] = _(
     "Grass-type attack.");
 
 static const u8 sLiechiBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its Attack stat will\n"
-    "increase when it's in\n"
-    "a pinch.");
+    "The holder's Attack\n"
+    "stat will increase\n"
+    "when it's at low HP.");
 
 static const u8 sGanlonBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its Defense stat will\n"
-    "increase when it's in\n"
-    "a pinch.");
+    "The holder's Defense\n"
+    "stat will increase\n"
+    "when it's at low HP.");
 
 static const u8 sSalacBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its Speed stat will\n"
-    "increase when it's in\n"
-    "a pinch.");
+    "The holder's Speed\n"
+    "stat will increase\n"
+    "when it's at low HP.");
 
 static const u8 sPetayaBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its Special Attack\n"
-    "stat will increase\n"
-    "when it's in a pinch.");
+    "The holder's Special\n"
+    "Attack stat will\n"
+    "increase when it's at\n"
+    "low HP.");
 
 static const u8 sApicotBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its Special Defense\n"
-    "stat will increase\n"
-    "when it's in a pinch.");
+    "The holder's Special\n"
+    "Defense stat will\n"
+    "increase when it's at\n"
+    "low HP.");
 
 static const u8 sLansatBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its critical-hit ratio\n"
+    "The holder's\n"
+    "critical-hit ratio\n"
     "will increase when\n"
-    "it's in a pinch.");
+    "it's at low HP.");
 
 static const u8 sStarfBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "one of its stats will\n"
-    "sharply increase when\n"
-    "it's in a pinch.");
+    "A random stat of the\n"
+    "holder's will sharply\n"
+    "increase when it's at\n"
+    "low HP.");
 
 static const u8 sEnigmaBerryDesc[] = _(
     "If held by a Pokémon,\n"
@@ -3085,16 +3082,15 @@ static const u8 sEnigmaBerryDesc[] = _(
     "Relic-type attack.");
 
 static const u8 sMicleBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "its accuracy will\n"
-    "increase when it's in\n"
-    "a pinch.");
+    "The holder's accuracy\n"
+    "will increase when\n"
+    "it's at low HP.");
 
 static const u8 sCustapBerryDesc[] = _(
-    "If held by a Pokémon,\n"
-    "it will be able to\n"
-    "move first just once\n"
-    "when it's in a pinch."); 
+    "The holder wil be able\n"
+    "to move first just\n"
+    "once when it's at low\n"
+    "HP."); 
 
 static const u8 sJabocaBerryDesc[] = _(
     "If the holder is hit\n"
@@ -4287,10 +4283,10 @@ static const u8 sCreditCardDesc[] = _(
     "card.");
 
 static const u8 sRizzBerryDesc[] = _(
-    "If the holder is hit,\n"
-    "the attacker will be\n"
-    "infatuated regardless\n"
-    "of gender.");
+    "If the holder is hit\n"
+    "by a super effective\n"
+    "move, the attacker\n"
+    "will be infatuated.");
 
 static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"

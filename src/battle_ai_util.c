@@ -430,6 +430,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_MUD_SPORT,
     EFFECT_WATER_SPORT,
     EFFECT_DRAGON_DANCE,
+    EFFECT_TIDY_UP,
     EFFECT_CAMOUFLAGE,
     EFFECT_FILLET_AWAY,
     EFFECT_SPOOK,
@@ -1930,6 +1931,7 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
          || battlerAbility == ABILITY_WHITE_SMOKE
+         || gDisableStructs[battler].purified
          || battlerAbility == ABILITY_FULL_METAL_BODY
          || battlerAbility == ABILITY_TITANIC)
             return FALSE;
@@ -2004,6 +2006,7 @@ bool32 ShouldLowerAttack(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerDef, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_HYPER_CUTTER
@@ -2022,6 +2025,7 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_TITANIC
@@ -2038,6 +2042,7 @@ bool32 ShouldLowerSpeed(u32 battlerAtk, u32 battlerDef, u32 defAbility)
     if (!AI_STRIKES_FIRST(battlerAtk, battlerDef, AI_THINKING_STRUCT->moveConsidered)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_TITANIC
@@ -2055,6 +2060,7 @@ bool32 ShouldLowerSpAtk(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerDef, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_TITANIC
@@ -2072,6 +2078,7 @@ bool32 ShouldLowerSpDef(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_TITANIC
@@ -2087,6 +2094,7 @@ bool32 ShouldLowerAccuracy(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 
     if (defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_KEEN_EYE
@@ -2104,6 +2112,7 @@ bool32 ShouldLowerEvasion(u32 battlerAtk, u32 battlerDef, u32 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !gDisableStructs[battlerDef].purified
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_TITANIC
@@ -2355,6 +2364,7 @@ bool32 IsAttackBoostMoveEffect(u32 effect)
     case EFFECT_ATTACK_ACCURACY_UP:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_DRAGON_DANCE:
+    case EFFECT_TIDY_UP:
     case EFFECT_COIL:
     case EFFECT_BELLY_DRUM:
     case EFFECT_BULK_UP:
@@ -2395,6 +2405,7 @@ bool32 IsStatRaisingEffect(u32 effect)
 	case EFFECT_CALM_MIND:
     case EFFECT_COSMIC_POWER:
 	case EFFECT_DRAGON_DANCE:
+    case EFFECT_TIDY_UP:
 	case EFFECT_ACUPRESSURE:
 	case EFFECT_SHELL_SMASH:
 	case EFFECT_SHIFT_GEAR:
@@ -4318,5 +4329,5 @@ bool32 ShouldUseZMove(u32 battlerAtk, u32 battlerDef, u32 chosenMove)
 
 bool32 AI_IsBattlerAsleepOrComatose(u32 battlerId)
 {
-    return (gBattleMons[battlerId].status1 & STATUS1_SLEEP_ANY) || AI_DATA->abilities[battlerId] == ABILITY_COMATOSE;
+    return (gBattleMons[battlerId].status1 & STATUS1_SLEEP_ANY) || (gBattleMons[battlerId].status1 & STATUS1_REST_TURN(1)) || (gBattleMons[battlerId].status1 & STATUS1_REST_TURN(2)) || (gBattleMons[battlerId].status1 & STATUS1_REST_TURN(3)) || AI_DATA->abilities[battlerId] == ABILITY_COMATOSE;
 }

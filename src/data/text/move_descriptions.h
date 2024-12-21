@@ -2947,9 +2947,9 @@ static const u8 sVenomDrenchDescription[] = _(
     "all the stats of poisoned foes.");
 
 static const u8 sPowderDescription[] = _(
-    "Covers the foe in a powder that\n"
-    "hurts it if it uses a Fire-type\n"
-    "move. Cuts the foe's accuracy.");
+    "Covers foes in a powder that\n"
+    "hurts them if they use Fire-type\n"
+    "moves. Cuts their accuracy.");
 
 static const u8 sGeomancyDescription[] = _(
     "The user absorbs energy and\n"
@@ -3933,9 +3933,9 @@ static const u8 sChillyReceptionDescription[] =_(
     "This summons hail for 5 turns.");
 
 static const u8 sTidyUpDescription[] = _(
-    "The user tidies up, undoing moves\n"
-    "like Spikes and Substitute. This\n"
-    "boosts the user's Atk and Spd.");
+    "The user Atk/Spd are boosted. It\n"
+    "also boosts Def if Substitute,\n"
+    "Spikes, etc., are cleared.");
 
 static const u8 sSnowscapeDescription[] = _(
     "who cares");

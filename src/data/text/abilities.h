@@ -1100,8 +1100,8 @@ static const u8 sSandSpitDescription[] = _(
 
 static const u8 sIceScalesDescription[] = _(
     "Gains scales in hail or using\n"
-    "Ice-type moves. They do reflect\n"
-    "damage and reduce damage taken.");
+    "Ice-type moves. They damage\n"
+    "foes and reduce damage taken.");
 
 static const u8 sRipenDescription[] = _(
     "Ripens Berries and doubles their\n"
