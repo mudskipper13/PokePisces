@@ -228,10 +228,24 @@ FortreeGymNew_Text_CantStopNow:
 	.string "(No going back now.)$"
 
 FortreeGymNew_Text_SurprisedToSeeYou:
-	.string "wowee good job$"
+	.string "Oh. Hello...\p"
+	.string "...I didn't expect a visitor up\n"
+	.string "this high in altitude.\p"
+	.string "Aarune... wants me to come meet\n"
+	.string "him on ground level?\l"
+	.string "So we can... fight the challenger?\p"
+	.string "Hmmm... it IS hard to say no to him.$"
 
 FortreeGymNew_Text_TakeALeapOfFaith:
-	.string "leap of faith bro$"
+	.string "Alright. How about... you\n"
+	.string "come with me?\l"
+	.string "Let's take a leap of faith...\l"
+	.string "off the mountaintop.\p"
+	.string "Don't worry... this area is\n"
+	.string "populated with Flying-type\l"
+	.string "Pokemon... the gusts will\l"
+	.string "carry you safely downwards...\p"
+	.string "...Come along...$"
 
 FortreeGymNew_Text_NameWinona:
 	.string "Winona$"

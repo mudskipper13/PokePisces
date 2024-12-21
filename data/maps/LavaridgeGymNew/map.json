@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_FLANNERY",
+      "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_WOMAN",
       "x": 6,
       "y": 1,
       "elevation": 0,
@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_7"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_9"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_IN_BLACK_SUIT",
@@ -77,10 +77,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_A"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GLACIA",
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 6,
       "y": 1,
       "elevation": 0,
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_8"
     }
   ],
   "warp_events": [
@@ -98,7 +98,7 @@
       "x": 11,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_LAVARIDGE_GYM_NEW",
+      "dest_map": "MAP_GYM5CORRIDOR",
       "dest_warp_id": "0"
     }
   ],

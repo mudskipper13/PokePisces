@@ -14676,7 +14676,7 @@ BattleScript_EntrancingAbilityActivates::
 
 BattleScript_MagicianAbilityActivates::	
 	jumpifsubstituteblocks BattleScript_MagicianAbilityActivates_End
-	tryswapitems BattleScript_MagicianAbilityActivates_End
+	tryswapitemsmagician BattleScript_MagicianAbilityActivates_End
 	call BattleScript_AbilityPopUp	
 	playanimation BS_ATTACKER, B_ANIM_SWITCH_ITEMS	
 	printstring STRINGID_PKMNSWITCHEDITEMS

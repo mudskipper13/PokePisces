@@ -3715,3 +3715,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/FallarborInteriors/scripts.inc"
 
 	.include "data/maps/OzoneTransitionBuildings/scripts.inc"
+
+	.include "data/maps/FortreeGymTransitionBuilding/scripts.inc"

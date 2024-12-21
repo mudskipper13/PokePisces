@@ -120,6 +120,7 @@
 #define MAP_FORTREE_TRANSITION_AREA           (5 | (9 << 8))
 #define MAP_FORTREE_GYM_BATTLE_LOCATION       (6 | (9 << 8))
 #define MAP_FORTREE_INTERIORS                 (7 | (9 << 8))
+#define MAP_FORTREE_GYM_TRANSITION_BUILDING   (8 | (9 << 8))
 
 // gMapGroup_PiscesLeg6Major
 #define MAP_OZONE_INSTITUTE    (0 | (10 << 8))
