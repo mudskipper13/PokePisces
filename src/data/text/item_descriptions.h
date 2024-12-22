@@ -4130,10 +4130,9 @@ static const u8 sBattleHelmDesc[] = _(
     "use of status moves.");
 
 static const u8 sSpectralIdolDesc[] = _(
-    "This held item boosts\n"
-    "the foe's PP usage but\n"
-    "prevents the use of\n"
-    "status moves.");
+    "A held item that\n"
+    "increases the\n"
+    "opponent's PP usage.");
 
 static const u8 sGlueTubeDesc[] = _(
     "A held item that\n"

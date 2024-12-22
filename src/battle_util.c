@@ -2057,7 +2057,7 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
             limitations++;
         }
     }
-    else if (((holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM) || (holdEffect == HOLD_EFFECT_SPECTRAL_IDOL)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
+    else if (((holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
     {
         gCurrentMove = move;
         gLastUsedItem = gBattleMons[battler].item;
@@ -2159,7 +2159,7 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CHOICE_ITEM && HOLD_EFFECT_CHOICE(holdEffect) && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
         return TRUE;
     // Assault Vest
-    else if (check & MOVE_LIMITATION_ASSAULT_VEST && ((holdEffect == HOLD_EFFECT_SPECTRAL_IDOL) || (holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
+    else if (check & MOVE_LIMITATION_ASSAULT_VEST && ((holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
         return TRUE;
     // Gravity
     else if (check & MOVE_LIMITATION_GRAVITY && IsGravityPreventingMove(move))
@@ -10472,7 +10472,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_DURIN_BERRY:
                 if (IsBattlerAlive(battler)
                 && TARGET_TURN_DAMAGED
-                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove))
+                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
+                && gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 2))
                 {
                     effect = ITEM_EFFECT_OTHER;
                     BattleScriptPushCursor();
@@ -11700,7 +11701,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);
         break;
     case EFFECT_REDLINE:
-        basePower = 50 + (CountBattlerStatDecreases(battlerAtk, TRUE) * 100);
+        basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
         break;
     case EFFECT_ZAPPER:
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
@@ -13732,13 +13733,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
     {
         mod = UQ_4_12(1.0);
     }
-    else if (((GetBattlerType(battlerDef, 0) == TYPE_ICE
-         && GetTypeModifier(moveType, GetBattlerType(battlerDef, 0)) >= UQ_4_12(2.0))
-         || (GetBattlerType(battlerDef, 1) == TYPE_ICE
-         && GetTypeModifier(moveType, GetBattlerType(battlerDef, 1)) >= UQ_4_12(2.0))
-         || (GetBattlerType(battlerDef, 2) == TYPE_ICE
-         && GetTypeModifier(moveType, GetBattlerType(battlerDef, 2)) >= UQ_4_12(2.0)))
-         && (GetBattlerAbility(battlerDef) == ABILITY_PERMAFROST))
+    else if (defType == TYPE_ICE && GetBattlerAbility(battlerDef) == ABILITY_PERMAFROST)
     {
         mod = UQ_4_12(1.0);
         if (recordAbilities)
