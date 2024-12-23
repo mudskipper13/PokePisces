@@ -2315,6 +2315,17 @@ const struct SpriteTemplate gBlackBuffetHitSpriteTemplate =
     .callback = AnimHornHit,
 };
 
+const struct SpriteTemplate gHornLeechHornTemplate =
+{
+    .tileTag = ANIM_TAG_HORN_LEECH,
+    .paletteTag = ANIM_TAG_HORN_LEECH,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHornHit
+};
+
 const union AnimCmd gSuperFangAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 2),

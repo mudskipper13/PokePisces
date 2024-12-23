@@ -113,6 +113,8 @@ enum RandomTag
     RNG_HOLD_EFFECT_MYSTIC_WATER,
     RNG_HOLD_EFFECT_SILVER_POWDER,
     RNG_HOLD_EFFECT_SOFT_SAND,
+    RNG_QUICK_CLAW,
+    RNG_QUICK_DRAW,
 };
 
 #define RandomWeighted(tag, ...) \

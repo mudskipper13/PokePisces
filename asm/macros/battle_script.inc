@@ -736,8 +736,9 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro stockpile id:req
+	.macro stockpile battler:req, id:req
 	.byte 0x85
+	.byte \battler
 	.byte \id
 	.endm
 
@@ -839,9 +840,8 @@
 	.byte 0x9b
 	.endm
 
-	.macro setsubstitute, half:req
+	.macro setsubstitute
 	.byte 0x9c
-	.byte \half
 	.endm
 
 	.macro mimicattackcopy failInstr:req
@@ -932,8 +932,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetspikes failInstr:req
+	.macro trysetspikes battler:req, failInstr:req
 	.byte 0xb0
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -1316,6 +1317,22 @@
     .4byte \hpfailptr
     .endm
 
+	.macro savetarget
+	callnative BS_SaveTarget
+	.endm
+
+	.macro restoretarget
+	callnative BS_RestoreTarget
+	.endm
+
+	.macro saveattacker
+	callnative BS_SaveAttacker
+	.endm
+
+	.macro restoreattacker
+	callnative BS_RestoreAttacker
+	.endm
+
 	.macro metalburstdamagecalculator failInstr:req
 	callnative BS_CalcMetalBurstDmg
 	.4byte \failInstr
@@ -1325,6 +1342,11 @@
 	callnative BS_JumpIfCantFling
 	.byte \battler
 	.4byte \jumpInstr
+	.endm
+
+	.macro itemstatchangeeffects battler:req
+	callnative BS_RunStatChangeItems
+	.byte \battler
 	.endm
 
 	.macro jumpifholdeffect battler:req, holdEffect:req, jumpInstr:req
@@ -1496,11 +1518,6 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro jumpifnothit jumpInstr:req
-	callnative BS_JumpIfNotHit
-	.4byte \jumpInstr
-	.endm
-
 	.macro copyfoesstatincrease battler:req, failInstr:req
 	callnative BS_CopyFoesStatIncrease
 	.byte \battler
@@ -1627,14 +1644,6 @@
 
 	.macro switchinabilities battler:req
 	various \battler, VARIOUS_SWITCHIN_ABILITIES
-	.endm
-
-	.macro savetarget
-	various BS_TARGET, VARIOUS_SAVE_TARGET
-	.endm
-
-	.macro restoretarget
-	various BS_TARGET, VARIOUS_RESTORE_TARGET
 	.endm
 
 	.macro instanthpdrop battler:req
@@ -1766,11 +1775,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trydamping failInstr:req
-	various BS_ATTACKER, VARIOUS_TRY_DAMPING
-	.4byte \failInstr
-	.endm
-
 	.macro handleformchange battler:req, case:req
 	various \battler, VARIOUS_HANDLE_FORM_CHANGE
 	.byte \case
@@ -1864,6 +1868,11 @@
 
 	.macro setsilence battler:req, failInstr:req
 	various \battler VARIOUS_SET_SILENCE
+	.4byte \failInstr
+	.endm
+
+	.macro storehealorder battler:req, failInstr:req
+	various \battler VARIOUS_STORE_HEAL_ORDER
 	.4byte \failInstr
 	.endm
 
@@ -2089,8 +2098,13 @@
 	.4byte \failInstr
 	.endm
 
+	.macro spelltagppreduce failInstr:req
+	various BS_TARGET, VARIOUS_SPELL_TAG_PP_REDUCE
+	.4byte \failInstr
+	.endm
+
 	.macro blukberryppreduce failInstr:req
-	various BS_TARGET, VARIOUS_BLUK_BERRY_PP_REDUCE
+	various BS_ATTACKER, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
 	.endm
 
@@ -2174,6 +2188,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trydefendorder battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_DEFEND_ORDER
+	.4byte \failInstr
+	.endm
+
 	.macro checkmeanlook failInstr:req
 	various BS_ATTACKER, VARIOUS_CHECK_MEAN_LOOK
 	.4byte \failInstr
@@ -2224,6 +2243,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro setpurified battler:req, failInstr:req
+	various \battler, VARIOUS_SET_PURIFIED
+	.4byte \failInstr
+	.endm
+
 	.macro setspiderweb battler:req, failInstr:req
 	various \battler, VARIOUS_SET_SPIDER_WEB
 	.4byte \failInstr
@@ -2258,6 +2282,14 @@
 
 	.macro tryresetnegativestatstages battler:req
 	various \battler, VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro tryresetpositivestatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES
+	.endm
+
+	.macro tryresetstatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_STAT_STAGES
 	.endm
 
 	.macro jumpiflastuseditemberry jumpInstr:req

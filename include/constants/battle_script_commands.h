@@ -196,7 +196,6 @@
 #define VARIOUS_TERRAIN_SEED                         104
 #define VARIOUS_MAKE_INVISIBLE                       105
 #define VARIOUS_ROOM_SERVICE                         106
-
 #define VARIOUS_EERIE_SPELL_PP_REDUCE                107
 #define VARIOUS_JUMP_IF_TEAM_HEALTHY                 108
 #define VARIOUS_TRY_HEAL_QUARTER_HP                  109
@@ -293,6 +292,12 @@
 #define VARIOUS_SET_MAGMA_ARMORED                    201
 #define VARIOUS_SET_OVERTAKE_TARGET                  202
 #define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
+#define VARIOUS_TRY_RESET_STAT_STAGES                204
+#define VARIOUS_TRY_DEFEND_ORDER                     205
+#define VARIOUS_STORE_HEAL_ORDER                     206
+#define VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES       207
+#define VARIOUS_SPELL_TAG_PP_REDUCE                  208
+#define VARIOUS_SET_PURIFIED                         209
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -360,9 +365,9 @@
 #define MOVEEND_MOVE_EFFECTS2                     23
 #define MOVEEND_RECOIL                            24
 #define MOVEEND_MAGICIAN                          25    // Occurs after final multi-hit strike, and after other items/abilities would activate
-#define MOVEEND_EJECT_BUTTON                      26
-#define MOVEEND_RED_CARD                          27
-#define MOVEEND_EJECT_PACK                        28
+#define MOVEEND_EJECT_ITEMS                       26
+#define MOVEEND_WHITE_HERB                        27
+#define MOVEEND_RED_CARD                          28
 #define MOVEEND_LIFEORB_SHELLBELL                 29    // Includes shell bell, throat spray, etc
 #define MOVEEND_CHANGED_ITEMS                     30
 #define MOVEEND_PICKPOCKET                        31

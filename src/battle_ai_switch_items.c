@@ -183,7 +183,8 @@ static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
         absorbingTypeAbilities[0] = ABILITY_WATER_ABSORB;
         absorbingTypeAbilities[1] = ABILITY_STORM_DRAIN;
         absorbingTypeAbilities[2] = ABILITY_DRY_SKIN;
-        numAbsorbingAbilities = 3;
+        absorbingTypeAbilities[3] = ABILITY_ALL_GAME;
+        numAbsorbingAbilities = 4;
     }
     else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_ELECTRIC)
     {
@@ -197,9 +198,49 @@ static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
         absorbingTypeAbilities[0] = ABILITY_SAP_SIPPER;
         numAbsorbingAbilities = 1;
     }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_GROUND)
+    {
+        absorbingTypeAbilities[0] = ABILITY_EARTH_EATER;
+        numAbsorbingAbilities = 1;
+    }
     else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_STEEL)
     {
         absorbingTypeAbilities[0] = ABILITY_MAGNET_PULL;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_GHOST)
+    {
+        absorbingTypeAbilities[0] = ABILITY_SOUL_LOCKER;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_FAIRY)
+    {
+        absorbingTypeAbilities[0] = ABILITY_WITCHCRAFT;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_PSYCHIC && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
+    {
+        absorbingTypeAbilities[0] = ABILITY_PINK_MIST;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_POISON)
+    {
+        absorbingTypeAbilities[0] = ABILITY_IMMUNITY;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_NORMAL)
+    {
+        absorbingTypeAbilities[0] = ABILITY_EMPTY;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_FIGHTING)
+    {
+        absorbingTypeAbilities[0] = ABILITY_EMPTY;
+        numAbsorbingAbilities = 1;
+    }
+    else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_GROUND)
+    {
+        absorbingTypeAbilities[0] = ABILITY_ALL_GAME;
         numAbsorbingAbilities = 1;
     }
     else
