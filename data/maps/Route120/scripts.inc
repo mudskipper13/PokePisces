@@ -67,52 +67,62 @@ Route120_EventScript_Leilei::
     end
 
 Route120_Text_ColbyIntro:
-	.string "intro$"
+	.string "I bet you can't beat my full team of 6!$"
 
 Route120_Text_ColbyDefeated:
-	.string "defeat$"
+	.string "Huh? What about my strength in\n"
+	.string "numbers...?$"
 
 Route120_Text_ColbyPostBattle:
-	.string "post$"
+	.string "A team with more Pokémon should have a\n"
+	.string "natural advantage, right?\p"
+	.string "Or is there more to it than that...?$"
 
 Route120_Text_KatAndAnaIntro:
-	.string "intro$"
+	.string "KAT: We're so in sync, we finish each\n"
+	.string "other's...\p"
+	.string "ANA: ...sandwiches!$"
 
 Route120_Text_KatAndAnaDefeated:
-	.string "defeat$"
+	.string "KAT: We're finished! You...\n"
+	.string "ANA: ...Uhh. Beats me!$"
 
 Route120_Text_KatAndAnaPostBattle:
-	.string "post$"
+	.string "KAT: We battle everyone together, and...\n"
+	.string "ANA: ...we always lose together too!$"
 
 Route120_Text_KatAndAnaNeedTwoMons:
-	.string "need 2 dood$"
+	.string "KAT: Two! Two! You need...\n"
+	.string "ANA: ...more than one.$"
 
 Route120_Text_ThatcherIntro:
-	.string "intro$"
+	.string "I'm both creepy AND crawly!$"
 
 Route120_Text_ThatcherDefeated:
-	.string "defeat$"
+	.string "Whoa! I've been stomped!$"
 
 Route120_Text_ThatcherPostBattle:
-	.string "post$"
+	.string "Time for me to skitter on out of here!$"
 
 Route120_Text_CherieIntro:
-	.string "intro$"
+	.string "We're going on a trainer hunt!\n"
+	.string "We're gonna catch a big one!$"
 
 Route120_Text_CherieDefeated:
-	.string "defeat$"
+	.string "What a beautiful day!$"
 
 Route120_Text_CheriePostBattle:
-	.string "post$"
+	.string "We're not going on a trainer hunt again.$"
 
 Route120_Text_FinnIntro:
-	.string "intro$"
+	.string "Hey there, kid. Wanna battle my cute\n"
+	.string "Pokémon?$"
 
 Route120_Text_FinnDefeated:
-	.string "defeat$"
+	.string "Oops! ...Did I trick you?$"
 
 Route120_Text_FinnPostBattle:
-	.string "post$"
+	.string "Looks can be decieving, my friend.$"
 
 Route120_Text_JunieIntro:
 	.string "intro$"
@@ -133,34 +143,48 @@ Route120_Text_KiwiPostBattle:
 	.string "post$"
 
 Route120_Text_JimBobIntro:
-	.string "intro$"
+	.string "My mom says I'll be an entomologist\n"
+	.string "when I grow up! How cool is that?!$"
 
 Route120_Text_JimBobDefeated:
-	.string "defeat$"
+	.string "Just have to learn what that means\n"
+	.string "first...$"
 
 Route120_Text_JimBobPostBattle:
-	.string "post$"
+	.string "Hopefully it has something to do with\n"
+	.string "bugs! I just love bugs!$"
 
 Route120_Text_MaddyAndCrossIntro:
-	.string "intro$"
+	.string "MADDY: Dibs on this trainer!\n"
+	.string "CROSS: No way, I'll get them first!$"
 
 Route120_Text_MaddyAndCrossDefeated:
-	.string "defeat$"
+	.string "CROSS: Huh!!??\n"
+	.string "MADDY: What!!!???$"
 
 Route120_Text_MaddyAndCrossPostBattle:
-	.string "post$"
+	.string "MADDY: You totally screwed me up!\n"
+	.string "CROSS: No way! You're the one who ruined\l"
+	.string " my perfect strategy...$"
 
 Route120_Text_MaddyAndCrossNeedTwoMons:
-	.string "need 2 dood$"
+	.string "MADDY: Are you even good enough for\n"
+	.string "us?\l"
+	.string "CROSS: Let's not even bother with this\l"
+	.string "one.$"
 
 Route120_Text_HectorIntro:
-	.string "intro$"
+	.string "Let me show you my finest specimens...\n"
+	.string "Hee hee.$"
 
 Route120_Text_HectorDefeated:
-	.string "defeat$"
+	.string "You've damaged my collection!\n"
+	.string "How dare you!??$"
 
 Route120_Text_HectorPostBattle:
-	.string "post$"
+	.string "We Collectors are proud of our rare\n"
+	.string "Pokémon. If you happen upon one, you'll\l"
+	.string "never know what to expect! Hee hee.$"
 
 Route120_Text_PatrascheIntro:
 	.string "intro$"

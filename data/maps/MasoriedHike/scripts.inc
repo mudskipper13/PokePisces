@@ -27,13 +27,14 @@ MasonriedHike_EventScript_JayAndEm::
     end
 
 MasonriedHike_Text_MichaelIntro:
-	.string "intro$"
+	.string "...Eeyup.$"
 
 MasonriedHike_Text_MichaelDefeated:
-	.string "defeat$"
+	.string "...$"
 
 MasonriedHike_Text_MichaelPostBattle:
-	.string "post$"
+	.string "...Think I already said more than\n"
+	.string "enough.$"
 
 MasonriedHike_Text_ChloeIntro:
 	.string "intro$"
@@ -45,31 +46,47 @@ MasonriedHike_Text_ChloePostBattle:
 	.string "post$"
 
 MasonriedHike_Text_BichaelIntro:
-	.string "intro$"
+	.string "Boy, this terrain is tough to bike on!\n"
+	.string "Care for a battle?$"
 
 MasonriedHike_Text_BichaelDefeated:
-	.string "defeat$"
+	.string "Well, not as tough as you...$"
 
 MasonriedHike_Text_BichaelPostBattle:
-	.string "post$"
+	.string "I come from a family of bike\n"
+	.string "enthusiasts.\p"
+	.string "I wish they'd given me a normal name,\n"
+	.string "though...$"
 
 MasonriedHike_Text_FlowersIntro:
-	.string "intro$"
+	.string "I'm just gettin' started!\n"
+	.string "Wanna be part of my journey?$"
 
 MasonriedHike_Text_FlowersDefeated:
-	.string "defeat$"
+	.string "Oof! You used me like a stepping\n"
+	.string "stone...$"
 
 MasonriedHike_Text_FlowersPostBattle:
-	.string "post$"
+	.string "I'll just head back to the Pokémon\n"
+	.string "Center now...$"
 
 MasonriedHike_Text_JayAndEmIntro:
-	.string "intro$"
+	.string "JAY: You're the Plus to my Minus!\n"
+	.string "EM: You're the Minus to my Plus!$"
+
 
 MasonriedHike_Text_JayAndEmDefeated:
-	.string "defeat$"
+	.string "JAY: Whoa! Neutralized!\n"
+	.string "EM: We balance each other out, don't we?$"
 
 MasonriedHike_Text_JayAndEmPostBattle:
-	.string "post$"
+	.string "JAY: I guess you could say we're a\n"
+	.string "''Power Couple''.\p"
+	.string "EM: Is that an electricity joke?\n"
+	.string "Ion' get it...$"
 
 MasonriedHike_Text_JayAndEmNeedTwoMons:
-	.string "need 2 dood$"
+	.string "JAY: Two plus one...\n"
+	.string "Doesn't make for a good double battle.\n"
+	.string "EM: One plus two...\n"
+	.string "That's three, right?$"

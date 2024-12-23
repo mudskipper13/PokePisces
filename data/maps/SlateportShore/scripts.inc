@@ -67,13 +67,15 @@ SlateportShore_EventScript_CaseyNat::
     end
 
 SlateportShore_Text_JelloIntro:
-	.string "intro$"
+	.string "Yo! You dig on multiverses?$"
 
 SlateportShore_Text_JelloDefeated:
-	.string "defeat$"
+	.string "In another universe, I won.$"
 
 SlateportShore_Text_JelloPostBattle:
-	.string "post$"
+	.string "Even if something bad happens to me,\n"
+	.string "in another universe something good\l"
+	.string "happened to me.$"
 
 SlateportShore_Text_LenIntro:
 	.string "intro$"
@@ -106,13 +108,16 @@ SlateportShore_Text_RoseAndThornNeedTwoMons:
 	.string "need 2 dood$"
 
 SlateportShore_Text_TexIntro:
-	.string "intro$"
+	.string "Watch out, landlubber!\n"
+	.string "You're in deep waters now!$"
 
 SlateportShore_Text_TexDefeated:
-	.string "defeat$"
+	.string "Guess I was the one who was in deep\n"
+	.string "water.$"
 
 SlateportShore_Text_TexPostBattle:
-	.string "post$"
+	.string "Watch your step, landlubber, don't want\n"
+	.string "you fallin' in the water now, do we?$"
 
 SlateportShore_Text_DawnIntro:
 	.string "intro$"

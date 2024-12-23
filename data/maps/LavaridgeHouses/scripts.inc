@@ -139,3 +139,10 @@ LavaridgeHouses_Text_DurinGrandmaPost:
 	.string "but we can't take youthful\l"
 	.string "energy for granted.\l"
 	.string "I'll continue to spoil them!$"
+
+LavaridgeHouses_Text_Mustybane:
+	.string "MUSTYBANE...\p"
+	.string "I've heard somewhere that it's some \n"
+	.string "kind of variant of a dog Pokémon\p"
+	.string "There's no way that can be right,\n"
+	.string "can it?$"

@@ -317,7 +317,7 @@ ZotpyreGym_Text_ShuichiPostBattle:
 	.string "What I said before wasn't\n"
 	.string "just a platitude.\p"
 	.string "Relic-types are complex beings.\n"
-	.string "However, Psychic-type Pokémonm with\l"
+	.string "However, Psychic-type Pokémon with\l"
 	.string "their high IQs, know their inner\l"
 	.string "workings well to exploit\l"
 	.string "their weaknesses.$"
@@ -332,13 +332,14 @@ ZotpyreGym_Text_TomiePostBattle:
 	.string "post$"
 
 ZotpyreGym_Text_AzamiIntro:
-	.string "intro$"
+	.string "I've got to get out of this place.$"
 
 ZotpyreGym_Text_AzamiDefeated:
-	.string "defeat$"
+	.string "I can't win a single battle here...$"
 
 ZotpyreGym_Text_AzamiPostBattle:
-	.string "post$"
+	.string "Something about this gym sucks me in.\n"
+	.string "It's odd...$"
 
 ZotpyreGym_Text_MisakiIntro:
 	.string "intro$"

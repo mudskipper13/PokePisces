@@ -141,49 +141,61 @@ MtPyre_1F_Text_IReuniteWithMyKin:
 	.string "psychic connection activate$"
 
 MtPyre_1F_Text_PearlIntro:
-	.string "intro$"
+	.string "... Leave this place...$"
 
 MtPyre_1F_Text_PearlDefeated:
-	.string "defeat$"
+	.string "... You do not belong...$"
 
 MtPyre_1F_Text_PearlPostBattle:
-	.string "post$"
+	.string "...$"
 
 MtPyre_1F_Text_NekoIntro:
-	.string "intro$"
+	.string "I'll exorcise you!$"
 
 MtPyre_1F_Text_NekoDefeated:
-	.string "defeat$"
+	.string "Ah, there are no spirits within you,\n"
+	.string "child.$"
 
 MtPyre_1F_Text_NekoPostBattle:
-	.string "post$"
+	.string "Beware the possessed Mediums...$"
 
 MtPyre_1F_Text_AyumuIntro:
-	.string "intro$"
+	.string "I shall cleanse you of miasma!$"
 
 MtPyre_1F_Text_AyumuDefeated:
-	.string "defeat$"
+	.string "Oh, it seems you've been blessed\n"
+	.string "already.$"
 
 MtPyre_1F_Text_AyumuPostBattle:
-	.string "post$"
+	.string "A purifying spell has been placed on\n"
+	.string "you already.\p"
+	.string "You probably have met one of my own\n"
+	.string "along the way here.$"
 
 MtPyre_1F_Text_ReimuIntro:
-	.string "intro$"
+	.string "Stay back!$"
 
 MtPyre_1F_Text_ReimuDefeated:
-	.string "defeat$"
+	.string "Okay, the barrier has been set up.$"
 
 MtPyre_1F_Text_ReimuPostBattle:
-	.string "post$"
+	.string "We do daily maintenance on the\n"
+	.string "spiritual barrier protecting the town.\p"
+	.string "It wards off impure spirits with evil\l"
+	.string "intent while allowing in good spirits\l"
+	.string "that bless the shrine. $"
 
 MtPyre_1F_Text_MikoIntro:
-	.string "intro$"
+	.string "Please do not interrupt the ritual.$"
 
 MtPyre_1F_Text_MikoDefeated:
-	.string "defeat$"
+	.string "You may now pass.$"
 
 MtPyre_1F_Text_MikoPostBattle:
-	.string "post$"
+	.string "Right now evil spirits are running\n"
+	.string "rampant and have been overwhelming our\l"
+	.string "local Mediums, but don't worry, most of\l"
+	.string "the time they'll be fine... eventually.$"
 
 MtPyre_1F_Text_TakeThisForYourOwnGood:
 	.string "All sorts of beings wander the slopes\n"

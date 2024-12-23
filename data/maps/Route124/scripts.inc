@@ -548,22 +548,26 @@ Route124_Text_TobyPostBattle:
 	.string "at you, before taking their leave.)$"
 
 Route124_Text_ArbuckleIntro:
-	.string "intro$"
+	.string "Garjira, you lazy Pokémon!\p"
+	.string "You are so big and fat!\n"
+	.string "Why are you so fat?$"
 
 Route124_Text_ArbuckleDefeated:
-	.string "defeat$"
+	.string "I hate Mondays.$"
 
 Route124_Text_ArbucklePostBattle:
-	.string "post$"
+	.string "Now, where could my pipe be?$"
 
 Route124_Text_NaomiIntro:
-	.string "intro$"
+	.string "Well well well, look what washed\n"
+	.string "ashore.$"
 
 Route124_Text_NaomiDefeated:
-	.string "defeat$"
+	.string "H-hey! You splashed me!$"
 
 Route124_Text_NaomiPostBattle:
-	.string "post$"
+	.string "Training water Pokémon is fun, as long\n"
+	.string "as you don't mind getting wet a little.$"
 
 Route124_Text_BethaIntro:
 	.string "intro$"
@@ -582,7 +586,7 @@ Route124_Text_EbbDefeated:
 	.string "Uh-oh! Sis… what do we do now?$"
 
 Route124_Text_EbbPostBattle:
-	.string "post$"
+	.string "Eep! Help!$"
 
 Route124_Text_FloIntro:
 	.string "More easy prey… karharhar!\p"
@@ -620,13 +624,14 @@ Route124_Text_JulioPostBattle:
 	.string "Don't think you've won!$"
 
 Route124_Text_HomerIntro:
-	.string "intro$"
+	.string "We're just one big, happy,\n"
+	.string "Poké-family!$"
 
 Route124_Text_HomerDefeated:
-	.string "defeat$"
+	.string "Why, you little...$"
 
 Route124_Text_HomerPostBattle:
-	.string "post$"
+	.string "(Annoyed Grunt)$"
 
 Route124_Text_MargeIntro:
 	.string "intro$"

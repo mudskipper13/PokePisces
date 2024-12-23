@@ -126,103 +126,135 @@ CyclingRoad_EventScript_Phillip::
     end
 
 CyclingRoad_Text_RhodeIntro:
-	.string "intro$"
+	.string "Cycling Road isn't for newbs!\n"
+	.string "Show me what you got!$"
 
 CyclingRoad_Text_RhodeDefeated:
-	.string "defeat$"
+	.string "I guess the training wheels are off...$"
 
 CyclingRoad_Text_RhodePostBattle:
-	.string "post$"
+	.string "It's way too easy to bump into other\n"
+	.string "people here.\p"
+	.string "I've got bruises the size of Poké Balls.$"
 
 CyclingRoad_Text_CruzIntro:
-	.string "intro$"
+	.string "Care for an uphill battle?$"
 
 CyclingRoad_Text_CruzDefeated:
-	.string "defeat$"
+	.string "It's all downhill from here...$"
 
 CyclingRoad_Text_CruzPostBattle:
-	.string "post$"
+	.string "Biking uphill is slow, but once you reach\n"
+	.string "downhill, you can zoom on by!\p"
+	.string "So long as you don't hit anything...$"
 
 CyclingRoad_Text_MonaIntro:
-	.string "intro$"
+	.string " Hey, you're blocking the way!\n"
+	.string "No matter what, I'll push through!$"
 
 CyclingRoad_Text_MonaDefeated:
-	.string "defeat$"
+	.string "You've stopped me dead in my tracks.\n"
+	.string "But that doesn't matter!$"
 
 CyclingRoad_Text_MonaPostBattle:
-	.string "post$"
+	.string "Blocking my path...\n"
+	.string "are walls, mountains, and even planets!\p"
+	.string "I'll carve a road through them and move\n"
+	.string "forward!$"
 
 CyclingRoad_Text_SoloIntro:
-	.string "intro$"
+	.string "On your left! On your right!\n"
+	.string "Hey, why aren't you moving!?$"
 
 CyclingRoad_Text_SoloDefeated:
-	.string "defeat$"
+	.string "What hand signal do you use if you're\n"
+	.string "turning all the way down?$"
 
 CyclingRoad_Text_SoloPostBattle:
-	.string "post$"
+	.string "(Huff, puff...)\n"
+	.string "Just gotta... regain my strength.$"
 
 CyclingRoad_Text_HichaelIntro:
-	.string "intro$"
+	.string "I seem to be lost... Can you help me?$"
 
 CyclingRoad_Text_HichaelDefeated:
-	.string "defeat$"
+	.string "Whoops.$"
 
 CyclingRoad_Text_HichaelPostBattle:
-	.string "post$"
+	.string "I come from a family of hiking\n"
+	.string "enthusiasts.\p"
+	.string "I'm so glad they gave me this cool and\n"
+	.string "unique name!$"
 
 CyclingRoad_Text_PennyIntro:
-	.string "intro$"
+	.string "Whoa! I'm jealous of how fast you\n"
+	.string "cycle...$"
 
 CyclingRoad_Text_PennyDefeated:
-	.string "defeat$"
+	.string "Nice hustle! I'm not even winded!$"
 
 CyclingRoad_Text_PennyPostBattle:
-	.string "post$"
+	.string "Yeah, that's right.\n"
+	.string "I'm using an electric bike!\p"
+	.string "What's wrong with that, huh!? HUH!?$"
 
 CyclingRoad_Text_JuniorIntro:
-	.string "intro$"
+	.string "I'm using tilt controls!$"
 
 CyclingRoad_Text_JuniorDefeated:
-	.string "defeat$"
+	.string "I'm using tilt controls!$"
 
 CyclingRoad_Text_JuniorPostBattle:
-	.string "post$"
+	.string "I'm using tilt controls!$"
 
 CyclingRoad_Text_HichaelsonIntro:
-	.string "intro$"
+	.string "Im looking for my father, I heard he has\n"
+	.string "a unique name like mine.$"
 
 CyclingRoad_Text_HichaelsonDefeated:
-	.string "defeat$"
+	.string "I swear on my name... I will find you...\n"
+	.string "Dad.$"
 
 CyclingRoad_Text_HichaelsonPostBattle:
-	.string "post$"
+	.string "I've been on a journey to find my dad,\n"
+	.string "whom I have not seen since I was a\n"
+	.string "child.$"
 
 CyclingRoad_Text_LuluIntro:
-	.string "intro$"
+	.string "Woof...\n"
+	.string "I feel like I'm melting in this parka.$"
 
 CyclingRoad_Text_LuluDefeated:
-	.string "defeat$"
+	.string "Now I'm only heating up more...$"
 
 CyclingRoad_Text_LuluPostBattle:
-	.string "post$"
+	.string "Am I crazy? Or am I just a cycle path?$"
 
 CyclingRoad_Text_KairaIntro:
-	.string "intro$"
+	.string "It has taken me years to master the\n"
+	.string "bow.\p"
+	.string "Similarly, it also takes many years to\n"
+	.string "master the art of Pokémon battling!$"
 
 CyclingRoad_Text_KairaDefeated:
-	.string "defeat$"
+	.string "Amazing... so young, yet so skilled.$"
 
 CyclingRoad_Text_KairaPostBattle:
-	.string "post$"
+	.string "It isn't very often the world is blessed\n"
+	.string "with a prodigy, so I shall give you some\l"
+	.string "advice.\p"
+	.string "Hone your skills to perfection, no\n"
+	.string:"matter how difficult the process may be..$"
 
 CyclingRoad_Text_WoodyIntro:
-	.string "intro$"
+	.string "Be kind to me, I'm just a little\n"
+	.string "acoustic.$"
 
 CyclingRoad_Text_WoodyDefeated:
-	.string "defeat$"
+	.string "That resonated with me.$"
 
 CyclingRoad_Text_WoodyPostBattle:
-	.string "post$"
+	.string "This Poké Ball kills fascists.$"
 
 CyclingRoad_Text_AnaIntro:
 	.string "intro$"
@@ -243,22 +275,24 @@ CyclingRoad_Text_YokoPostBattle:
 	.string "post$"
 
 CyclingRoad_Text_FlatsIntro:
-	.string "intro$"
+	.string "Oh, I'll fix you up REAL good.$"
 
 CyclingRoad_Text_FlatsDefeated:
-	.string "defeat$"
+	.string "Keep it together...$"
 
 CyclingRoad_Text_FlatsPostBattle:
-	.string "post$"
+	.string "My business partner here has a few\n"
+	.string "screws missing.$"
 
 CyclingRoad_Text_PhillipIntro:
-	.string "intro$"
+	.string "Don't get it twisted...$"
 
 CyclingRoad_Text_PhillipDefeated:
-	.string "defeat$"
+	.string "Ah! I've been screwed...$"
 
 CyclingRoad_Text_PhillipPostBattle:
-	.string "post$"
+	.string "Maybe I need more than a screwdriver...\n"
+	.string "You know the drill.$"
 
 CyclingRoad_Text_RydelHype1:
 	.string "Folks, we have the quickest wheels\n"
