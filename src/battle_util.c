@@ -92,341 +92,60 @@ static const u8 sPkblToEscapeFactor[][3] = {
 static const u8 sGoNearCounterToCatchFactor[] = {4, 3, 2, 1};
 static const u8 sGoNearCounterToEscapeFactor[] = {4, 4, 4, 4};
 
-static const u16 sSkillSwapBannedAbilities[] =
-    {
-        ABILITY_WONDER_GUARD,
-        ABILITY_MULTITYPE,
-        ABILITY_ILLUSION,
-        ABILITY_STELLAR_BODY,
-        ABILITY_HUDDLE_UP,
-        ABILITY_COMATOSE,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_BATTLE_BOND,
-        ABILITY_DORMANT,
-        ABILITY_NEUTRALIZING_GAS,
-        ABILITY_ICE_FACE,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_GULP_MISSILE,
-        ABILITY_GRIM_NEIGH,
-        ABILITY_SHUNYONG,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sRolePlayBannedAbilities[] =
-    {
-        ABILITY_TRACE,
-        ABILITY_WONDER_GUARD,
-        ABILITY_FORECAST,
-        ABILITY_FLOWER_GIFT,
-        ABILITY_MULTITYPE,
-        ABILITY_ILLUSION,
-        ABILITY_ZEN_MODE,
-        ABILITY_IMPOSTER,
-        ABILITY_STELLAR_BODY,
-        ABILITY_POWER_OF_ALCHEMY,
-        ABILITY_RECEIVER,
-        ABILITY_HUDDLE_UP,
-        ABILITY_COMATOSE,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_BATTLE_BOND,
-        ABILITY_DORMANT,
-        ABILITY_ICE_FACE,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_GULP_MISSILE,
-        ABILITY_SHUNYONG,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sRolePlayBannedAttackerAbilities[] =
-    {
-        ABILITY_MULTITYPE,
-        ABILITY_ZEN_MODE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_HUDDLE_UP,
-        ABILITY_COMATOSE,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_BATTLE_BOND,
-        ABILITY_DORMANT,
-        ABILITY_ICE_FACE,
-        ABILITY_GULP_MISSILE,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_SHUNYONG,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sWorrySeedBannedAbilities[] =
-    {
-        ABILITY_MULTITYPE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_HUDDLE_UP,
-        ABILITY_COMATOSE,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_BATTLE_BOND,
-        ABILITY_DORMANT,
-        ABILITY_TRUANT,
-        ABILITY_ICE_FACE,
-        ABILITY_GULP_MISSILE,
-        ABILITY_SHUNYONG,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sGastroAcidBannedAbilities[] =
-    {
-        ABILITY_AS_ONE_ICE_RIDER,
-        ABILITY_AS_ONE_SHADOW_RIDER,
-        ABILITY_BATTLE_BOND,
-        ABILITY_COMATOSE,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_GULP_MISSILE,
-        ABILITY_ICE_FACE,
-        ABILITY_MULTITYPE,
-        ABILITY_DORMANT,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_HUDDLE_UP,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_STELLAR_BODY,
-        ABILITY_ZEN_MODE,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sEntrainmentBannedAttackerAbilities[] =
-    {
-        ABILITY_TRACE,
-        ABILITY_FORECAST,
-        ABILITY_FLOWER_GIFT,
-        ABILITY_ZEN_MODE,
-        ABILITY_ILLUSION,
-        ABILITY_IMPOSTER,
-        ABILITY_POWER_OF_ALCHEMY,
-        ABILITY_RECEIVER,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_DORMANT,
-        ABILITY_NEUTRALIZING_GAS,
-        ABILITY_ICE_FACE,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_GULP_MISSILE,
-        ABILITY_SHUNYONG,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
-};
-
-static const u16 sEntrainmentTargetSimpleBeamBannedAbilities[] =
-    {
-        ABILITY_TRUANT,
-        ABILITY_MULTITYPE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_HUDDLE_UP,
-        ABILITY_COMATOSE,
-        ABILITY_SHIELDS_DOWN,
-        ABILITY_DISGUISE,
-        ABILITY_BROKEN,
-        ABILITY_RKS_SYSTEM,
-        ABILITY_BATTLE_BOND,
-        ABILITY_ICE_FACE,
-        ABILITY_GULP_MISSILE,
-        ABILITY_TITANIC,
-        ABILITY_DORMANT,
-        ABILITY_ENDLESS,
-        ABILITY_RISING,
-        ABILITY_FALLING,
-        ABILITY_GOLDEN_MEAN,
-        ABILITY_PRODIGY,
-        ABILITY_PUNISHER,
-        ABILITY_ARBITER,
-        ABILITY_WATCHER,
-        ABILITY_REVERSI,
-        ABILITY_STARS_GRACE,
-        ABILITY_STELLAR_BODY,
-        ABILITY_SUGAR_COAT,
-        ABILITY_TIME_TURN,
-        ABILITY_WHITE_SMOKE,
-        ABILITY_PINK_MIST,
-        ABILITY_IGNORANT_BLISS,
-        ABILITY_MELANCHOLIA,
-        ABILITY_MILKY_WAY,
-        ABILITY_CINDER_WALTZ,
-        ABILITY_RESET,
-        ABILITY_PURPLE_HAZE,
-        ABILITY_MAGMA_ARMOR,
-        ABILITY_LOVESICK,
-        ABILITY_VERTIGO,
-        ABILITY_MIND_GAMES,
-        ABILITY_STORM_BREW,
+static const u16 sUnchangeableAbilities[] =
+{
+    ABILITY_WONDER_GUARD,
+    ABILITY_MULTITYPE,
+    ABILITY_ILLUSION,
+    ABILITY_ZEN_MODE,
+    ABILITY_STELLAR_BODY,
+    ABILITY_SHIELDS_DOWN,
+    ABILITY_HUDDLE_UP,
+    ABILITY_DISGUISE,
+    ABILITY_BROKEN,
+    ABILITY_BATTLE_BOND,
+    ABILITY_DORMANT,
+    ABILITY_COMATOSE,
+    ABILITY_RKS_SYSTEM,
+    ABILITY_ICE_FACE,
+    ABILITY_NEUTRALIZING_GAS,
+    ABILITY_HUNGER_SWITCH,
+    ABILITY_EGGS_ROYALE,
+    ABILITY_TRACE,
+    ABILITY_FORECAST,
+    ABILITY_FLOWER_GIFT,
+    ABILITY_IMPOSTER,
+    ABILITY_RECEIVER,
+    ABILITY_POWER_OF_ALCHEMY,
+    ABILITY_TRUANT,
+    ABILITY_SHUNYONG,
+    ABILITY_TITANIC,
+    ABILITY_ENDLESS,
+    ABILITY_RISING,
+    ABILITY_FALLING,
+    ABILITY_PRODIGY,
+    ABILITY_PUNISHER,
+    ABILITY_ARBITER,
+    ABILITY_WATCHER,
+    ABILITY_REVERSI,
+    ABILITY_STARS_GRACE,
+    ABILITY_SUGAR_COAT,
+    ABILITY_TIME_TURN,
+    ABILITY_WHITE_SMOKE,
+    ABILITY_PINK_MIST,
+    ABILITY_IGNORANT_BLISS,
+    ABILITY_MELANCHOLIA,
+    ABILITY_MILKY_WAY,
+    ABILITY_CINDER_WALTZ,
+    ABILITY_RESET,
+    ABILITY_PURPLE_HAZE,
+    ABILITY_MAGMA_ARMOR,
+    ABILITY_LOVESICK,
+    ABILITY_VERTIGO,
+    ABILITY_MIND_GAMES,
+    ABILITY_STORM_BREW,
+    ABILITY_FULL_METAL_BODY,
+    ABILITY_KLUTZ,
 };
 
 static u8 CalcBeatUpPower(void)
@@ -1113,120 +832,6 @@ void HandleAction_ActionFinished(void)
     }
 #endif
 }
-
-static const u8 sAbilitiesAffectedByMoldBreaker[] =
-    {
-        [ABILITY_BATTLE_ARMOR] = 1,
-        [ABILITY_CLEAR_BODY] = 1,
-        [ABILITY_DAMP] = 1,
-        [ABILITY_DRY_SKIN] = 1,
-        [ABILITY_FILTER] = 1,
-        [ABILITY_FLASH_FIRE] = 1,
-        [ABILITY_FLOWER_GIFT] = 1,
-        [ABILITY_HEATPROOF] = 1,
-        [ABILITY_HYPER_CUTTER] = 1,
-        [ABILITY_IMMUNITY] = 1,
-        [ABILITY_INNER_FOCUS] = 1,
-        [ABILITY_PROPELLER_TAIL] = 1,
-        [ABILITY_INSOMNIA] = 1,
-        [ABILITY_KEEN_EYE] = 1,
-        [ABILITY_LEAF_GUARD] = 1,
-        [ABILITY_LEVITATE] = 1,
-        [ABILITY_ALL_GAME] = 1,
-        [ABILITY_LIGHTNING_ROD] = 1,
-        [ABILITY_MAGNET_PULL] = 1,
-        [ABILITY_LIMBER] = 1,
-        [ABILITY_MAGMA_ARMOR] = 1,
-        [ABILITY_MARVEL_SCALE] = 1,
-        [ABILITY_EXTREMO] = 1,
-        [ABILITY_MOTOR_DRIVE] = 1,
-        [ABILITY_OBLIVIOUS] = 1,
-        [ABILITY_OWN_TEMPO] = 1,
-        [ABILITY_SAND_VEIL] = 1,
-        [ABILITY_SHELL_ARMOR] = 1,
-        [ABILITY_SHIELD_DUST] = 1,
-        [ABILITY_SIMPLE] = 1,
-        [ABILITY_SNOW_CLOAK] = 1,
-        [ABILITY_SOLID_ROCK] = 1,
-        [ABILITY_SOUNDPROOF] = 1,
-        [ABILITY_STICKY_HOLD] = 1,
-        [ABILITY_STORM_DRAIN] = 1,
-        [ABILITY_STURDY] = 1,
-        [ABILITY_SUCTION_CUPS] = 1,
-        [ABILITY_STALWART] = 1,
-        [ABILITY_TANGLED_FEET] = 1,
-        [ABILITY_THICK_FAT] = 1,
-        [ABILITY_UNAWARE] = 1,
-        [ABILITY_VITAL_SPIRIT] = 1,
-        [ABILITY_VOLT_ABSORB] = 1,
-        [ABILITY_WATER_ABSORB] = 1,
-        [ABILITY_WATER_VEIL] = 1,
-        [ABILITY_WHITE_SMOKE] = 1,
-        [ABILITY_WONDER_GUARD] = 1,
-        [ABILITY_CONTRARY] = 1,
-        [ABILITY_FRIEND_GUARD] = 1,
-        [ABILITY_HEAVY_METAL] = 1,
-        [ABILITY_LIGHT_METAL] = 1,
-        [ABILITY_MAGIC_BOUNCE] = 1,
-        [ABILITY_MULTISCALE] = 1,
-        [ABILITY_SAP_SIPPER] = 1,
-        [ABILITY_TELEPATHY] = 1,
-        [ABILITY_WONDER_SKIN] = 1,
-        [ABILITY_AROMA_VEIL] = 1,
-        [ABILITY_BULLETPROOF] = 1,
-        [ABILITY_FLOWER_VEIL] = 1,
-        [ABILITY_FUR_COAT] = 1,
-        [ABILITY_OVERCOAT] = 1,
-        [ABILITY_SWEET_VEIL] = 1,
-        [ABILITY_DAZZLING] = 1,
-        [ABILITY_DISGUISE] = 1,
-        [ABILITY_BROKEN] = 1,
-        [ABILITY_FLUFFY] = 1,
-        [ABILITY_QUEENLY_MAJESTY] = 1,
-        [ABILITY_WATER_BUBBLE] = 1,
-        [ABILITY_MIRROR_ARMOR] = 1,
-        [ABILITY_PUNK_ROCK] = 1,
-        [ABILITY_HIBERNAL] = 1,
-        [ABILITY_ICE_SCALES] = 1,
-        [ABILITY_ICE_FACE] = 1,
-        [ABILITY_PASTEL_VEIL] = 1,
-        [ABILITY_ARMOR_TAIL] = 1,
-        [ABILITY_EARTH_EATER] = 1,
-        [ABILITY_GOOD_AS_GOLD] = 1,
-        [ABILITY_PURIFYING_SALT] = 1,
-        [ABILITY_WELL_BAKED_BODY] = 1,
-        [ABILITY_TITANIC] = 1,
-};
-
-static const u8 sAbilitiesNotTraced[ABILITIES_COUNT] =
-    {
-        [ABILITY_AS_ONE_ICE_RIDER] = 1,
-        [ABILITY_AS_ONE_SHADOW_RIDER] = 1,
-        [ABILITY_BATTLE_BOND] = 1,
-        [ABILITY_COMATOSE] = 1,
-        [ABILITY_DISGUISE] = 1,
-        [ABILITY_BROKEN] = 1,
-        [ABILITY_FLOWER_GIFT] = 1,
-        [ABILITY_FORECAST] = 1,
-        [ABILITY_GULP_MISSILE] = 1,
-        [ABILITY_GOLDEN_MEAN] = 1,
-        [ABILITY_ICE_FACE] = 1,
-        [ABILITY_ILLUSION] = 1,
-        [ABILITY_IMPOSTER] = 1,
-        [ABILITY_MULTITYPE] = 1,
-        [ABILITY_NEUTRALIZING_GAS] = 1,
-        [ABILITY_NONE] = 1,
-        [ABILITY_DORMANT] = 1,
-        [ABILITY_POWER_OF_ALCHEMY] = 1,
-        [ABILITY_RECEIVER] = 1,
-        [ABILITY_RKS_SYSTEM] = 1,
-        [ABILITY_HUDDLE_UP] = 1,
-        [ABILITY_SHIELDS_DOWN] = 1,
-        [ABILITY_STELLAR_BODY] = 1,
-        [ABILITY_TRACE] = 1,
-        [ABILITY_ZEN_MODE] = 1,
-        [ABILITY_SHUNYONG] = 1,
-};
 
 static const u8 sHoldEffectToType[][2] =
     {
@@ -3718,16 +3323,16 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleResources->flags->flags[i] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
                     gSpecialStatuses[i].emergencyExited = TRUE;
                     gBattlerTarget = gBattlerAbility = i;
-                    BattleScriptPushCursor();
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER || GetBattlerSide(i) == B_SIDE_PLAYER)
                     {
                         BattleScriptExecute(BattleScript_EmergencyExit);
+                        effect++;
                     }
                     else
                     {
                         BattleScriptExecute(BattleScript_EmergencyExitWild);
+                        effect++;
                     }
-                    effect++;
                 }
             }
             gBattleStruct->turnEffectsTracker++;
@@ -6600,23 +6205,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_MUMMY:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker) && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
             {
-                switch (gBattleMons[gBattlerAttacker].ability)
+                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
-                case ABILITY_MUMMY:
-                case ABILITY_LINGERING_AROMA:
-                case ABILITY_MELANCHOLIA:
-                case ABILITY_BATTLE_BOND:
-                case ABILITY_COMATOSE:
-                case ABILITY_DISGUISE:
-                case ABILITY_BROKEN:
-                case ABILITY_MULTITYPE:
-                case ABILITY_DORMANT:
-                case ABILITY_RKS_SYSTEM:
-                case ABILITY_HUDDLE_UP:
-                case ABILITY_SHIELDS_DOWN:
-                case ABILITY_STELLAR_BODY:
                     break;
-                default:
+                }
+                else
+                {
                     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
                     {
                         RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
@@ -6636,23 +6230,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED 
             && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
             {
-                switch (gBattleMons[gBattlerAttacker].ability)
+                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
-                case ABILITY_MUMMY:
-                case ABILITY_LINGERING_AROMA:
-                case ABILITY_MELANCHOLIA:
-                case ABILITY_BATTLE_BOND:
-                case ABILITY_COMATOSE:
-                case ABILITY_DISGUISE:
-                case ABILITY_BROKEN:
-                case ABILITY_MULTITYPE:
-                case ABILITY_DORMANT:
-                case ABILITY_RKS_SYSTEM:
-                case ABILITY_HUDDLE_UP:
-                case ABILITY_SHIELDS_DOWN:
-                case ABILITY_STELLAR_BODY:
                     break;
-                default:
+                }
+                else
+                {
                     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
                     {
                         RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
@@ -6670,25 +6253,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_WANDERING_SPIRIT:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker))
             {
-                switch (gBattleMons[gBattlerAttacker].ability)
+                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
-                case ABILITY_DISGUISE:
-                case ABILITY_BROKEN:
-                case ABILITY_FLOWER_GIFT:
-                case ABILITY_GULP_MISSILE:
-                case ABILITY_GOLDEN_MEAN:
-                case ABILITY_ICE_FACE:
-                case ABILITY_ILLUSION:
-                case ABILITY_IMPOSTER:
-                case ABILITY_RECEIVER:
-                case ABILITY_RKS_SYSTEM:
-                case ABILITY_HUDDLE_UP:
-                case ABILITY_STELLAR_BODY:
-                case ABILITY_WONDER_GUARD:
-                case ABILITY_ZEN_MODE:
-                case ABILITY_SHUNYONG:
                     break;
-                default:
+                }
+                else
+                {
                     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
                     {
                         RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
@@ -7765,16 +7335,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 
                 if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
                 {
-                    if (!sAbilitiesNotTraced[gBattleMons[target1].ability] && gBattleMons[target1].hp != 0 && !sAbilitiesNotTraced[gBattleMons[target2].ability] && gBattleMons[target2].hp != 0)
+                    if (!IsGastroAcidBannedAbility(gBattleMons[target1].ability) && gBattleMons[target1].hp != 0 && !IsGastroAcidBannedAbility(gBattleMons[target2].ability) && gBattleMons[target2].hp != 0)
                         chosenTarget = GetBattlerAtPosition(((Random() & 1) * 2) | side), effect++;
-                    else if (!sAbilitiesNotTraced[gBattleMons[target1].ability] && gBattleMons[target1].hp != 0)
+                    else if (!IsGastroAcidBannedAbility(gBattleMons[target1].ability) && gBattleMons[target1].hp != 0)
                         chosenTarget = target1, effect++;
-                    else if (!sAbilitiesNotTraced[gBattleMons[target2].ability] && gBattleMons[target2].hp != 0)
+                    else if (!IsGastroAcidBannedAbility(gBattleMons[target2].ability) && gBattleMons[target2].hp != 0)
                         chosenTarget = target2, effect++;
                 }
                 else
                 {
-                    if (!sAbilitiesNotTraced[gBattleMons[target1].ability] && gBattleMons[target1].hp != 0)
+                    if (!IsGastroAcidBannedAbility(gBattleMons[target1].ability) && gBattleMons[target1].hp != 0)
                         chosenTarget = target1, effect++;
                 }
 
@@ -7937,30 +7507,6 @@ bool32 TryPrimalReversion(u32 battler)
     return FALSE;
 }
 
-bool32 IsNeutralizingGasBannedAbility(u32 ability)
-{
-    switch (ability)
-    {
-    case ABILITY_MULTITYPE:
-    case ABILITY_ZEN_MODE:
-    case ABILITY_STELLAR_BODY:
-    case ABILITY_DORMANT:
-    case ABILITY_HUDDLE_UP:
-    case ABILITY_RKS_SYSTEM:
-    case ABILITY_SHIELDS_DOWN:
-    case ABILITY_COMATOSE:
-    case ABILITY_DISGUISE:
-    case ABILITY_BROKEN:
-    case ABILITY_GULP_MISSILE:
-    case ABILITY_ICE_FACE:
-    case ABILITY_AS_ONE_ICE_RIDER:
-    case ABILITY_AS_ONE_SHADOW_RIDER:
-        return TRUE;
-    default:
-        return FALSE;
-    }
-}
-
 bool32 IsNeutralizingGasOnField(void)
 {
     u32 i;
@@ -7997,7 +7543,7 @@ static inline bool32 CanBreakThroughAbility(u32 battlerAtk, u32 battlerDef, u32 
          || ((gCurrentMove == MOVE_SPORE || gCurrentMove == MOVE_SEED_FLARE)
          && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING))
          && battlerDef != battlerAtk
-         && sAbilitiesAffectedByMoldBreaker[gBattleMons[battlerDef].ability]
+         && !IsGastroAcidBannedAbility(gBattleMons[battlerDef].ability)
          && gBattlerByTurnOrder[gCurrentTurnActionNumber] == battlerAtk
          && gActionsByTurnOrder[gCurrentTurnActionNumber] == B_ACTION_USE_MOVE
          && gCurrentTurnActionNumber < gBattlersCount);
@@ -8008,20 +7554,7 @@ u32 GetBattlerAbility(u32 battler)
     bool32 noAbilityShield = GetBattlerHoldEffectIgnoreAbility(battler, TRUE) != HOLD_EFFECT_ABILITY_SHIELD;
     bool32 noIgnorantBliss = (!(IsIgnorantBliss(battler, gBattleMons[battler].ability)));
 
-    if (gBattleMons[battler].ability == ABILITY_MUMMY
-    || gBattleMons[battler].ability == ABILITY_LINGERING_AROMA
-    || gBattleMons[battler].ability == ABILITY_MELANCHOLIA
-    || gBattleMons[battler].ability == ABILITY_BATTLE_BOND
-    || gBattleMons[battler].ability == ABILITY_COMATOSE
-    || gBattleMons[battler].ability == ABILITY_DISGUISE
-    || gBattleMons[battler].ability == ABILITY_BROKEN
-    || gBattleMons[battler].ability == ABILITY_MULTITYPE
-    || gBattleMons[battler].ability == ABILITY_DORMANT
-    || gBattleMons[battler].ability == ABILITY_RKS_SYSTEM
-    || gBattleMons[battler].ability == ABILITY_SHUNYONG
-    || gBattleMons[battler].ability == ABILITY_HUDDLE_UP
-    || gBattleMons[battler].ability == ABILITY_SHIELDS_DOWN
-    || gBattleMons[battler].ability == ABILITY_STELLAR_BODY)
+    if (IsGastroAcidBannedAbility(gBattleMons[battler].ability))
     {
         // Edge case: pokemon under the effect of gastro acid transforms into a pokemon with Comatose (Todo: verify how other unsuppressable abilities behave)
         if (gBattleMons[battler].status2 & STATUS2_TRANSFORMED
@@ -14648,9 +14181,9 @@ bool32 CanFling(u32 battler)
 bool32 IsRolePlayBannedAbilityAtk(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sRolePlayBannedAttackerAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sRolePlayBannedAttackerAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14659,9 +14192,9 @@ bool32 IsRolePlayBannedAbilityAtk(u16 ability)
 bool32 IsRolePlayBannedAbility(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sRolePlayBannedAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sRolePlayBannedAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14670,9 +14203,9 @@ bool32 IsRolePlayBannedAbility(u16 ability)
 bool32 IsSkillSwapBannedAbility(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sSkillSwapBannedAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sSkillSwapBannedAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14681,9 +14214,9 @@ bool32 IsSkillSwapBannedAbility(u16 ability)
 bool32 IsWorrySeedBannedAbility(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sWorrySeedBannedAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sWorrySeedBannedAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14692,9 +14225,9 @@ bool32 IsWorrySeedBannedAbility(u16 ability)
 bool32 IsGastroAcidBannedAbility(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sGastroAcidBannedAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sGastroAcidBannedAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14703,9 +14236,9 @@ bool32 IsGastroAcidBannedAbility(u16 ability)
 bool32 IsEntrainmentBannedAbilityAttacker(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sEntrainmentBannedAttackerAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sEntrainmentBannedAttackerAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;
@@ -14714,9 +14247,9 @@ bool32 IsEntrainmentBannedAbilityAttacker(u16 ability)
 bool32 IsEntrainmentTargetOrSimpleBeamBannedAbility(u16 ability)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sEntrainmentTargetSimpleBeamBannedAbilities); i++)
+    for (i = 0; i < ARRAY_COUNT(sUnchangeableAbilities); i++)
     {
-        if (ability == sEntrainmentTargetSimpleBeamBannedAbilities[i])
+        if (ability == sUnchangeableAbilities[i])
             return TRUE;
     }
     return FALSE;

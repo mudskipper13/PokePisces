@@ -10756,33 +10756,12 @@ static void Cmd_various(void)
             && (i == ABILITY_RECEIVER || i == ABILITY_POWER_OF_ALCHEMY)
             && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_ABILITY_SHIELD)
         {
-            switch (gBattleMons[battler].ability)
-            { // Can't copy these abilities.
-            case ABILITY_POWER_OF_ALCHEMY:  case ABILITY_RECEIVER:
-            case ABILITY_FORECAST:          case ABILITY_MULTITYPE:
-            case ABILITY_FLOWER_GIFT:       case ABILITY_ILLUSION:
-            case ABILITY_WONDER_GUARD:      case ABILITY_ZEN_MODE:
-            case ABILITY_STELLAR_BODY:      case ABILITY_IMPOSTER:
-            case ABILITY_DORMANT:           case ABILITY_BATTLE_BOND:
-            case ABILITY_COMATOSE:          case ABILITY_HUDDLE_UP:
-            case ABILITY_SHIELDS_DOWN:      case ABILITY_DISGUISE:
-            case ABILITY_RKS_SYSTEM:        case ABILITY_TRACE:            
-            case ABILITY_BROKEN:            case ABILITY_TITANIC:
-            case ABILITY_ENDLESS:           case ABILITY_STORM_BREW:
-            case ABILITY_RISING:            case ABILITY_FALLING:
-            case ABILITY_GOLDEN_MEAN:       case ABILITY_PRODIGY:
-            case ABILITY_PUNISHER:          case ABILITY_ARBITER:
-            case ABILITY_WATCHER:           case ABILITY_REVERSI:
-            case ABILITY_STARS_GRACE:       case ABILITY_TRANSFUSION:
-            case ABILITY_SUGAR_COAT:        case ABILITY_TIME_TURN:
-            case ABILITY_WHITE_SMOKE:       case ABILITY_PINK_MIST:
-            case ABILITY_IGNORANT_BLISS:    case ABILITY_MELANCHOLIA:
-            case ABILITY_MILKY_WAY:         case ABILITY_CINDER_WALTZ:
-            case ABILITY_RESET:             case ABILITY_PURPLE_HAZE:
-            case ABILITY_MAGMA_ARMOR:       case ABILITY_LOVESICK:
-            case ABILITY_VERTIGO:           case ABILITY_MIND_GAMES:
+            if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAbility].ability))
+            {
                 break;
-            default:
+            }
+            else
+            {
                 gBattleStruct->tracedAbility[gBattlerAbility] = gBattleMons[battler].ability; // re-using the variable for trace
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -17483,22 +17462,24 @@ static void Cmd_switchoutabilities(void)
         case ABILITY_NATURAL_CURE:
             gBattleMons[battler].status1 = 0;
             BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE,
-                                         gBitTable[*(gBattleStruct->battlerPartyIndexes + battler)],
+                                         1u << *(gBattleStruct->battlerPartyIndexes + battler),
                                          sizeof(gBattleMons[battler].status1),
                                          &gBattleMons[battler].status1);
             MarkBattlerForControllerExec(battler);
             break;
         case ABILITY_REGENERATOR:
-            gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
-            gBattleMoveDamage += gBattleMons[battler].hp;
-            if (gBattleMoveDamage > gBattleMons[battler].maxHP)
-                gBattleMoveDamage = gBattleMons[battler].maxHP;
+        {
+            u32 regenerate = gBattleMons[battler].maxHP / 3;
+            regenerate += gBattleMons[battler].hp;
+            if (regenerate > gBattleMons[battler].maxHP)
+                regenerate = gBattleMons[battler].maxHP;
             BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HP_BATTLE,
-                                         gBitTable[*(gBattleStruct->battlerPartyIndexes + battler)],
-                                         sizeof(gBattleMoveDamage),
-                                         &gBattleMoveDamage);
+                                         1u << *(gBattleStruct->battlerPartyIndexes + battler),
+                                         sizeof(regenerate),
+                                         &regenerate);
             MarkBattlerForControllerExec(battler);
             break;
+        }
         }
 
         gBattlescriptCurrInstr = cmd->nextInstr;

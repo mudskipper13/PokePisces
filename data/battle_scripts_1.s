@@ -13030,7 +13030,7 @@ BattleScript_WishComesTrue::
 	playanimation BS_TARGET, B_ANIM_WISH_HEAL
 	printstring STRINGID_PKMNWISHCAMETRUE
 	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printstring STRINGID_PKMNREGAINEDHEALTH
@@ -14168,7 +14168,7 @@ BattleScript_EmergencyExit::
 BattleScript_EmergencyExitNoPopUp::
 	playanimation BS_TARGET, B_ANIM_SLIDE_OFFSCREEN
 	waitanimation
-	openpartyscreen BS_TARGET, BattleScript_EmergencyExitRet
+	openpartyscreen BS_TARGET, BattleScript_EmergencyExitEnd
 	switchoutabilities BS_TARGET
 	waitstate
 	switchhandleorder BS_TARGET, 2
@@ -14180,7 +14180,7 @@ BattleScript_EmergencyExitNoPopUp::
 	switchinanim BS_TARGET, TRUE
 	waitstate
 	switchineffects BS_TARGET
-BattleScript_EmergencyExitRet:
+BattleScript_EmergencyExitEnd:
 	end2
 
 BattleScript_EmergencyExitWild::
