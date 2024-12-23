@@ -613,8 +613,8 @@ static const u8 sLickDescription[] = _(
 
 static const u8 sSmogDescription[] = _(
     "The foe is attacked with exhaust\n"
-    "gases. It may also poison the\n"
-    "foe or lower its Speed stat.");
+    "gases. It may poison the foe\n"
+    "and/or lower its Speed stat.");
 
 static const u8 sSludgeDescription[] = _(
     "The user hurls unsanitary sludge\n"
@@ -1606,7 +1606,7 @@ static const u8 sWaterSpoutDescription[] = _(
 static const u8 sSignalBeamDescription[] = _(
     "The user attacks with a sinister\n"
     "beam of light. This may confuse\n"
-    "the target or lower its Attack.");
+    "the for and/or lower its Attack.");
 
 static const u8 sShadowPunchDescription[] = _(
     "The user throws a punch from the\n"

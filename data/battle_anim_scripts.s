@@ -22262,69 +22262,25 @@ Move_SPINDA_SWING::
 
 Move_VERGLASTROM::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 0, 3, RGB_BLACK
-	waitforvisualfinish
-	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 6, 0, 40
+	fadetobg BG_ICE
+	waitbgfadeout
+	playsewithpan SE_M_BUBBLE_BEAM2, SOUND_PAN_TARGET
+	loopsewithpan SE_M_BUBBLE_BEAM2, SOUND_PAN_TARGET, 5, 8
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 2, 47, 1
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
-	waitforvisualfinish
+	restorebg
+	waitbgfadeout
+	setarg 7, 0xFFF
+	waitbgfadein
 	clearmonbg ANIM_DEF_PARTNER
-	delay 20
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 3, 0, RGB_BLACK
+	blendoff
 	end
 IceSpinEffect:
 	createsprite gSpinningPowderSnowSnowballSpriteTemplate, ANIM_TARGET, 2, 0, 28, 528, 30, 13, 50, ANIM_TARGET
@@ -36858,36 +36814,26 @@ Status_Snap_Trap:
 
 Status_Verglastrom:
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 0, 3, RGB_BLACK
-	waitforvisualfinish
-	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 6, 0, 20
+	fadetobg BG_ICE
+	waitbgfadeout
+	playsewithpan SE_M_BUBBLE_BEAM2, SOUND_PAN_TARGET
+	loopsewithpan SE_M_BUBBLE_BEAM2, SOUND_PAN_TARGET, 5, 8
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 2, 47, 1
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
 	call IceSpinEffect
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 64
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 128
-	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 192
-	delay 5
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 32
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 96
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 160
-	createsprite gIceCrystalSpiralInwardLarge, ANIM_ATTACKER, 2, 224
-	delay 5
-	waitforvisualfinish
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
+	call IceSpinEffect
+	call IceSpinEffect
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 4, 2, 2, 0, 12, RGB(22, 9, 7)
+	call IceSpinEffect
+	restorebg
+	waitbgfadeout
+	setarg 7, 0xFFF
+	waitbgfadein
+	stopsound
 	clearmonbg ANIM_DEF_PARTNER
-	delay 20
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 3, 0, RGB_BLACK
+	blendoff
 	end
 
 Status_SandTomb:

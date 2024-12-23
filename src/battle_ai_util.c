@@ -3014,6 +3014,9 @@ bool32 CanKnockOffItem(u32 battler, u32 item)
     if (AI_DATA->abilities[battler] == ABILITY_STICKY_HOLD)
         return FALSE;
 
+    if (IS_BATTLER_OF_TYPE(battler, TYPE_FAIRY))
+        return FALSE;
+
     if (!CanBattlerGetOrLoseItem(battler, item))
         return FALSE;
 
@@ -3257,6 +3260,7 @@ bool32 AI_CanBeConfused(u32 battler, u32 ability)
     if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
       || (ability == ABILITY_OWN_TEMPO)
       || (ability == ABILITY_TITANIC)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC)
       || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)))
         return FALSE;
     return TRUE;

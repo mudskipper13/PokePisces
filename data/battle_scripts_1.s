@@ -1526,8 +1526,12 @@ BattleScript_PoisonPowderDamage::
 	goto BattleScript_HitFromAtkAnimation
 
 BattleScript_EffectSmog::
-	setmoveeffect MOVE_EFFECT_SMOG
-	goto BattleScript_EffectHit
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	argumentstatuseffect
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSnowfade::
 	setmoveeffect MOVE_EFFECT_SNOWFADE
@@ -2199,8 +2203,12 @@ BattleScript_EffectVineWhip::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectBanshriek::
-	setmoveeffect MOVE_EFFECT_BANSHRIEK
-	goto BattleScript_EffectHit
+	setmoveeffect MOVE_EFFECT_CONFUSION
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	argumentstatuseffect
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectFeatherDance:
 	jumpifnodamage BattleScript_EffectAttackDown2
@@ -3864,6 +3872,7 @@ BattleScript_EffectAttackDown3:
 BattleScript_EffectFlash:
 	attackcanceler
 	attackstring
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_EffectAccuracyDown
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_EffectAccuracyDown
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectAccuracyDown
 	jumpifsubstituteblocks BattleScript_EffectAccuracyDown
@@ -3981,8 +3990,13 @@ BattleScript_RagePowderEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSignalBeam::
-	setmoveeffect MOVE_EFFECT_SIGNAL_BEAM
-	goto BattleScript_EffectHit
+	setmoveeffect MOVE_EFFECT_CONFUSION
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSilverWind:
 	setmoveeffect MOVE_EFFECT_ALL_STATS_UP | MOVE_EFFECT_AFFECTS_USER
@@ -4460,6 +4474,7 @@ BattleScript_EffectCorrosiveGas:
 	attackanimation
 	waitanimation
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_StickyHoldActivates
+	jumpiftype BS_TARGET, TYPE_FAIRY, BattleScript_ButItFailed
 	setlastuseditem BS_TARGET
 	removeitem BS_TARGET
 	printstring STRINGID_PKMNITEMMELTED
@@ -7676,6 +7691,7 @@ BattleScript_EffectMiracleEye:
 	jumpifhasastatboost BS_TARGET, BattleScript_MiracleEyeStatBoosted
 	goto BattleScript_ButItFailed
 BattleScript_MiracleEyeStatBoosted:
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_EffectMiracleEyeStatClear
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_EffectMiracleEyeStatClear
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectMiracleEyeStatClear
     jumpifsubstituteblocks BattleScript_EffectMiracleEyeStatClear
@@ -8916,6 +8932,7 @@ BattleScript_EffectConfuse:
 	attackcanceler
 	attackstring
 	ppreduce
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicOTPrevents
 	jumpifsubstituteblocks BattleScript_ButItFailed
@@ -9858,6 +9875,7 @@ BattleScript_EffectSwagger::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_SwaggerTryConfuse:
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicOTPrevents
 	jumpifsafeguard BattleScript_SafeguardProtected
@@ -10734,6 +10752,7 @@ BattleScript_EffectFlatter::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_FlatterTryConfuse::
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicOTPrevents
 	jumpifsafeguard BattleScript_SafeguardProtected
@@ -11265,6 +11284,7 @@ BattleScript_TeeterDanceLoop::
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_TeeterDanceLoopIncrement
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_TeeterDanceOwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_TeeterDanceSubstitutePrevents
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TeeterDanceTitanicOTPrevents
 	jumpifsubstituteblocks BattleScript_TeeterDanceSubstitutePrevents
 	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_TeeterDanceAlreadyConfused
@@ -17141,6 +17161,7 @@ BattleScript_BerserkGeneRet::
 BattleScript_BerserkGeneRet_TryConfuse:
 	jumpifability BS_SCRIPTING, ABILITY_OWN_TEMPO, BattleScript_BerserkGeneRet_OwnTempoPrevents
 	jumpifability BS_SCRIPTING, ABILITY_TITANIC, BattleScript_BerserkGeneRet_OwnTempoPrevents
+	jumpiftype BS_SCRIPTING, TYPE_PSYCHIC, BattleScript_BerserkGeneRet_End
 	jumpifsafeguard BattleScript_BerserkGeneRet_SafeguardProtected
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	seteffectprimary

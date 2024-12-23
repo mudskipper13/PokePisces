@@ -3809,18 +3809,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
-            case MOVE_EFFECT_BANSHRIEK:
-                if (gBattleMons[gEffectBattler].status1 && gBattleMons[gEffectBattler].status2 & STATUS2_CONFUSION)
-                {
-                    gBattlescriptCurrInstr++;
-                }
-                else
-                {
-                    static const u8 sBanshriekEffects[] = { MOVE_EFFECT_PANIC, MOVE_EFFECT_CONFUSION };
-                    gBattleScripting.moveEffect = RandomElement(RNG_BANSHRIEK, sBanshriekEffects);
-                    SetMoveEffect(FALSE, 0);
-                }
-                break;
             case MOVE_EFFECT_RADIOACID:
                 if (gBattleMons[gEffectBattler].status1)
                 {
@@ -3830,30 +3818,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 {
                     static const u8 sRadioacidEffects[] = { MOVE_EFFECT_POISON, MOVE_EFFECT_BURN };
                     gBattleScripting.moveEffect = RandomElement(RNG_RADIOACID, sRadioacidEffects);
-                    SetMoveEffect(FALSE, 0);
-                }
-                break;
-            case MOVE_EFFECT_SIGNAL_BEAM:
-                if ((gBattleMons[gEffectBattler].status2 & STATUS2_CONFUSION) && (gBattleMons[gEffectBattler].statStages[STAT_ATK] == MIN_STAT_STAGE))
-                {
-                    gBattlescriptCurrInstr++;
-                }
-                else
-                {
-                    static const u8 sSignalBeamEffects[] = { MOVE_EFFECT_CONFUSION, MOVE_EFFECT_ATK_MINUS_1 };
-                    gBattleScripting.moveEffect = RandomElement(RNG_SIGNAL_BEAM, sSignalBeamEffects);
-                    SetMoveEffect(FALSE, 0);
-                }
-                break;
-            case MOVE_EFFECT_SMOG:
-                if ((gBattleMons[gEffectBattler].status1) && (gBattleMons[gEffectBattler].statStages[STAT_SPEED] == MIN_STAT_STAGE))
-                {
-                    gBattlescriptCurrInstr++;
-                }
-                else
-                {
-                    static const u8 sSmogEffects[] = { MOVE_EFFECT_POISON, MOVE_EFFECT_SPD_MINUS_1 };
-                    gBattleScripting.moveEffect = RandomElement(RNG_SMOG, sSmogEffects);
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
@@ -4031,47 +3995,20 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectPayDay;
                 }
 
-                if (!CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item))
-                {
-                    gBattlescriptCurrInstr++;
-                    break;
-                }
-
-                side = GetBattlerSide(gBattlerAttacker);
-                if (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
-                    && !(gBattleTypeFlags &
-                        (BATTLE_TYPE_EREADER_TRAINER
-                        | BATTLE_TYPE_FRONTIER
-                        | BATTLE_TYPE_LINK
-                        | BATTLE_TYPE_RECORDED_LINK
-                        | BATTLE_TYPE_SECRET_BASE)))
+                if (!CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                    || gBattleMons[gBattlerAttacker].item != ITEM_NONE
+                    || gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY_E_READER
+                    || gBattleMons[gBattlerTarget].item == ITEM_NONE
+                    || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))
                 {
                     gBattlescriptCurrInstr++;
                 }
-                else if (!(gBattleTypeFlags &
-                        (BATTLE_TYPE_EREADER_TRAINER
-                        | BATTLE_TYPE_FRONTIER
-                        | BATTLE_TYPE_LINK
-                        | BATTLE_TYPE_RECORDED_LINK
-                        | BATTLE_TYPE_SECRET_BASE))
-                    && (gWishFutureKnock.knockedOffMons[side] & gBitTable[gBattlerPartyIndexes[gBattlerAttacker]]))
+                else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
                 {
-                    gBattlescriptCurrInstr++;
-                }
-                else if (gBattleMons[gBattlerTarget].item
-                    && GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
-                {
-                    BattleScriptPushCursor();
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
                     gBattlescriptCurrInstr = BattleScript_NoItemSteal;
-
                     gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
                     RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
-                }
-                else if (gBattleMons[gBattlerAttacker].item != ITEM_NONE
-                    || gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY_E_READER
-                    || gBattleMons[gBattlerTarget].item == ITEM_NONE)
-                {
-                    gBattlescriptCurrInstr++;
                 }
                 else
                 {
@@ -4088,7 +4025,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     if (!CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
                         || gBattleMons[gBattlerAttacker].item != ITEM_NONE
                         || gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY_E_READER
-                        || gBattleMons[gBattlerTarget].item == ITEM_NONE)
+                        || gBattleMons[gBattlerTarget].item == ITEM_NONE
+                        || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))
                     {
                         gBattlescriptCurrInstr++;
                     }
@@ -4429,7 +4367,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_BUG_BITE:
                 if (ItemId_GetPocket(gBattleMons[gEffectBattler].item) == POCKET_BERRIES
-                    && battlerAbility != ABILITY_STICKY_HOLD)
+                    && battlerAbility != ABILITY_STICKY_HOLD
+                    && !IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_FAIRY))
                 {
                     // target loses their berry
                     gLastUsedItem = gBattleMons[gEffectBattler].item;
@@ -6196,7 +6135,8 @@ static bool32 TryKnockOffBattleScript(u32 battlerDef)
     if (gBattleMons[battlerDef].item != 0
         && CanBattlerGetOrLoseItem(battlerDef, gBattleMons[battlerDef].item)
         && !NoAliveMonsForEitherParty()
-        && IsBattlerAlive(battlerDef))
+        && IsBattlerAlive(battlerDef)
+        && !IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
     {
         if (GetBattlerAbility(battlerDef) == ABILITY_STICKY_HOLD && IsBattlerAlive(battlerDef))
         {
@@ -6882,6 +6822,7 @@ static void Cmd_moveend(void)
               && !DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove)
               && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
               && (GetBattlerAbility(gBattlerTarget) != ABILITY_STICKY_HOLD || !IsBattlerAlive(gBattlerTarget))
+              && !IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY)
               && IsMoveMakingContact(gCurrentMove, gBattlerAttacker))
             {
                 StealTargetItem(gBattlerAttacker, gBattlerTarget);
@@ -7185,7 +7126,8 @@ static void Cmd_moveend(void)
               && !(gWishFutureKnock.knockedOffMons[GetBattlerSide(gBattlerAttacker)] & gBitTable[gBattlerPartyIndexes[gBattlerAttacker]])   // But not knocked off
               && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove))  // Pickpocket doesn't activate for sheer force
               && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)    // Pickpocket requires contact
-              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))           // Obviously attack needs to have worked
+              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)            // Obviously attack needs to have worked
+              && !IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))
             {
                 u8 battlers[4] = {0, 1, 2, 3};
                 SortBattlersBySpeed(battlers, FALSE); // Pickpocket activates for fastest mon without item
@@ -16965,7 +16907,9 @@ static void Cmd_tryswapitems(void)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
-                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item)
+                 || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY)
+                 || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FAIRY))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -18801,7 +18745,9 @@ static void Cmd_tryswapitemsmagician(void)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
-                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item)
+                 || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY)
+                 || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FAIRY))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -18813,6 +18759,7 @@ static void Cmd_tryswapitemsmagician(void)
             RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
         }
         // took a while, but all checks passed and items can be safely swapped
+        else
         {
             u16 oldItemAtk, newItemAtk;
 

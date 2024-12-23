@@ -2128,6 +2128,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
         .gasMove = TRUE,
+        .argument = STATUS1_POISON,
     },
 
     [MOVE_SLUDGE] =
@@ -16440,6 +16441,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .soundMove = TRUE,
+        .argument = STATUS1_PANIC,
+        .sheerForceBoost = TRUE,
     },
 
     [MOVE_GREEN_GUISE] =

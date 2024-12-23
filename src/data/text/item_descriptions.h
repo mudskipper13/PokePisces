@@ -2247,9 +2247,9 @@ static const u8 sMiracleSeedDesc[] = _(
 
 static const u8 sNeverMeltIceDesc[] = _(
     "A held item that\n"
-    "boosts Ice-type moves.\n"
-    "Prevents the holder\n"
-    "from being burned.");
+    "boosts Ice-type\n"
+    "moves. Protects the\n"
+    "holder from burns.");
 
 static const u8 sBlackBeltDesc[] = _(
     "A held item that\n"
@@ -2639,10 +2639,10 @@ static const u8 sFloatStoneDesc[] = _(
     "their weight.");
 
 static const u8 sRockyHelmetDesc[] = _(
-    "If the holder of this\n"
-    "item takes damage, the\n"
-    "attacker will also be\n"
-    "damaged upon contact.");
+    "If the holder takes\n"
+    "damage, the attacker\n"
+    "will also be damaged\n"
+    "upon contact.");
 
 static const u8 sAirBalloonDesc[] = _(
     "When held, the holder\n"
@@ -2905,8 +2905,8 @@ static const u8 sNomelBerryDesc[] = _(
 static const u8 sSpelonBerryDesc[] = _(
     "If the holder is hit,\n"
     "spikes will be laid on\n"
-    "the attacker's side of\n"
-    "the field.");
+    "the attacker's side\n"
+    "of the field.");
 
 static const u8 sPamtreBerryDesc[] = _(
     "A held item that\n"
@@ -3095,14 +3095,14 @@ static const u8 sCustapBerryDesc[] = _(
 static const u8 sJabocaBerryDesc[] = _(
     "If the holder is hit\n"
     "with a physical move,\n"
-    "the attacker will also\n"
-    "take damage.");
+    "the attacker will\n"
+    "also take damage.");
 
 static const u8 sRowapBerryDesc[] = _(
     "If the holder is hit\n"
     "with a special move,\n"
-    "the attacker will also\n"
-    "take damage.");
+    "the attacker will\n"
+    "also take damage.");
 
 static const u8 sKeeBerryDesc[] = _(
     "If the holder is hit\n"
@@ -4118,8 +4118,8 @@ static const u8 sWideArmorDesc[] = _(
     "moves.");
 
 static const u8 sLostMantleDesc[] = _(
-    "If the holder of this\n"
-    "item takes damage, the\n"
+    "If the holder takes\n"
+    "damage, the\n"
     "attacker's defenses\n"
     "may be lowered.");
 
@@ -4289,9 +4289,9 @@ static const u8 sRizzBerryDesc[] = _(
 
 static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"
-    "damage with a Bug-type\n"
-    "move, the target will\n"
-    "be taunted.");
+    "damage with a\n"
+    "Bug-type move, the\n"
+    "foe will be taunted.");
 
 static const u8 sBlackSaladDesc[] = _(
     "Attacks may cause\n"

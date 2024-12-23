@@ -725,8 +725,8 @@ static const u8 sSapSipperDescription[] = _(
 
 static const u8 sPranksterDescription[] = _(
     "Gives priority to the Pokémon's\n"
-    "status moves unless the\n"
-    "opposing Pokémon is Dark-type.");
+    "status moves unless the target\n"
+    "is Dark or Fairy-type.");
 
 static const u8 sSandForceDescription[] = _(
     "Boosts the power of Rock,\n"

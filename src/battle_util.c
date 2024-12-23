@@ -7872,7 +7872,7 @@ bool32 CanBeExposed(u32 battler)
 
 bool32 CanBeConfused(u32 battler)
 {
-    if (GetBattlerAbility(battler) == ABILITY_OWN_TEMPO || gBattleMons[battler].status2 & STATUS2_CONFUSION || gStatuses4[battler] & STATUS4_INFINITE_CONFUSION || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD)
+    if (GetBattlerAbility(battler) == ABILITY_OWN_TEMPO || gBattleMons[battler].status2 & STATUS2_CONFUSION || gStatuses4[battler] & STATUS4_INFINITE_CONFUSION || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC))
         return FALSE;
     return TRUE;
 }
@@ -11514,18 +11514,14 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gStatuses4[battlerAtk] & STATUS4_PUMPED_UP && moveType == TYPE_WATER)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
-    if (gDisableStructs[battlerAtk].purpleHazeOffense)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-    if (gDisableStructs[battlerDef].purpleHazeDefense)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
-    if (gDisableStructs[battlerDef].magmaArmored)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(2 / 3));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_GRASSY_TERRAIN) && moveType == TYPE_GRASS)
         modifier = uq4_12_multiply(modifier, TERRAIN_TYPE_BOOST);
     if (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_MISTY_TERRAIN) && (moveType == TYPE_DRAGON || moveType == TYPE_DARK || moveType == TYPE_FIGHTING))
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.8));
+    if (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_TERRAIN_ANY) && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_GROUND)))
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.9));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_ELECTRIC_TERRAIN) && moveType == TYPE_ELECTRIC)
         modifier = uq4_12_multiply(modifier, TERRAIN_TYPE_BOOST);
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_PSYCHIC_TERRAIN) && moveType == TYPE_PSYCHIC)
@@ -11733,6 +11729,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case ABILITY_SHARPNESS:
         if (gBattleMoves[move].slicingMove)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+        break;
+    case ABILITY_PURPLE_HAZE:
+        if (gDisableStructs[battlerAtk].purpleHazeOffense)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_RISING:
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
@@ -12266,7 +12266,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case HOLD_EFFECT_CLEANSE_TAG:
         if ((CountBattlerStatDecreases(battlerDef, TRUE)) > 0)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12((1.0) + ((CountBattlerStatDecreases(battlerDef, TRUE)) * (0.15))));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.0 + (CountBattlerStatDecreases(battlerDef, TRUE) * 0.15)));
         break;
     case HOLD_EFFECT_CHOICE_BAND:
         if (IS_MOVE_PHYSICAL(move) && atkAbility != ABILITY_ONE_WAY_TRIP)
@@ -12648,21 +12648,23 @@ static uq4_12_t GetWeatherDamageModifier(u32 battlerAtk, u32 move, u32 moveType,
 
     if (weather & B_WEATHER_RAIN)
     {
-        if (moveType != TYPE_FIRE && moveType != TYPE_WATER)
-            return UQ_4_12(1.0);
-        return (moveType == TYPE_FIRE) ? UQ_4_12(0.5) : UQ_4_12(1.5);
+        if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_WATER) && moveType == TYPE_WATER)
+            return UQ_4_12(1.5);
+        else if (moveType == TYPE_WATER)
+            return UQ_4_12(1.3);
+        else if (moveType == TYPE_FIRE)
+            return UQ_4_12(0.7);
     }
     if (weather & B_WEATHER_SUN)
     {
         if (moveType == TYPE_GRASS && GetBattlerAbility(battlerAtk) == ABILITY_CHLOROPHYLL)
-        {
             return UQ_4_12(1.5);
-        }
-        else if (moveType != TYPE_FIRE && moveType != TYPE_WATER)
-        {
-            return UQ_4_12(1.0);
-        }
-        return (moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(1.5);
+        else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FIRE) && moveType == TYPE_FIRE)
+            return UQ_4_12(1.5);
+        else if (moveType == TYPE_FIRE)
+            return UQ_4_12(1.3);
+        else if (moveType == TYPE_WATER)
+            return UQ_4_12(0.7);
     }
     return UQ_4_12(1.0);
 }
@@ -12805,6 +12807,17 @@ static inline uq4_12_t GetBenthicWhipModifier(u32 move, uq4_12_t typeEffectivene
     return UQ_4_12(1.0);
 }
 
+static inline uq4_12_t GetFightingTypeModifier(u32 battlerAtk, u32 move, uq4_12_t typeEffectivenessModifier)
+{
+    if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FIGHTING) && typeEffectivenessModifier > UQ_4_12(3.0))
+        return UQ_4_12(1.3);
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FIGHTING) && typeEffectivenessModifier > UQ_4_12(2.0))
+        return UQ_4_12(1.2);
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FIGHTING) && typeEffectivenessModifier > UQ_4_12(1.0))
+        return UQ_4_12(1.1);
+    return UQ_4_12(1.0);
+}
+
 static inline uq4_12_t GetAttackerAbilitiesModifier(u32 battlerAtk, uq4_12_t typeEffectivenessModifier, bool32 isCrit, u32 abilityAtk)
 {
     switch (abilityAtk)
@@ -12865,6 +12878,12 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
     case ABILITY_MAGMA_ARMOR:
         if ((!(gDisableStructs[battlerDef].magmaArmored)) && moveType == TYPE_WATER)
             return UQ_4_12(0.1);
+        else if (gDisableStructs[battlerDef].magmaArmored)
+            return UQ_4_12(2 / 3);
+        break;
+    case ABILITY_PURPLE_HAZE:
+        if (gDisableStructs[battlerDef].purpleHazeDefense)
+            return UQ_4_12(0.5);
         break;
     case ABILITY_CACOPHONY:
     case ABILITY_PUNK_ROCK:
@@ -13062,6 +13081,7 @@ static inline uq4_12_t GetOtherModifiers(u32 move, u32 moveType, u32 battlerAtk,
     DAMAGE_MULTIPLY_MODIFIER(GetScreensModifier(move, battlerAtk, battlerDef, isCrit, abilityAtk));
     DAMAGE_MULTIPLY_MODIFIER(GetCollisionCourseElectroDriftModifier(move, typeEffectivenessModifier));
     DAMAGE_MULTIPLY_MODIFIER(GetBenthicWhipModifier(move, typeEffectivenessModifier));
+    DAMAGE_MULTIPLY_MODIFIER(GetFightingTypeModifier(battlerAtk, move, typeEffectivenessModifier));
 
     if (unmodifiedAttackerSpeed >= unmodifiedDefenderSpeed)
     {
@@ -14504,7 +14524,7 @@ bool32 BlocksPrankster(u16 move, u32 battlerPrankster, u32 battlerDef, bool32 ch
         return FALSE;
     if (checkTarget && (GetBattlerMoveTargetType(battlerPrankster, move) & (MOVE_TARGET_OPPONENTS_FIELD | MOVE_TARGET_DEPENDS)))
         return FALSE;
-    if (!IS_BATTLER_OF_TYPE(battlerDef, NUMBER_OF_MON_TYPES))
+    if (!IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK))
         return FALSE;
     if (gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE)
         return FALSE;
