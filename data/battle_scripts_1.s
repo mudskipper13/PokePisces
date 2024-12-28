@@ -7459,64 +7459,49 @@ BattleScript_EffectStickyWeb:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectGastroAcid:
+BattleScript_EffectGastroAcid::
+	setgastroacid BattleScript_EffectSpecialDefenseDown
 	setstatchanger STAT_SPDEF, 1, TRUE
 	attackcanceler
-	jumpifsubstituteblocks BattleScript_GastroAcidAbilityRemoval
+	jumpifsubstituteblocks BattleScript_JustGastroAcid
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	setgastroacid BattleScript_GastroAcidTrySpDef
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GastroAcidAnimFinish
-	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_GastroAcidAnim
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_GastroAcidAnimFinish
-	pause B_WAIT_TIME_SHORT
-BattleScript_GastroAcidAnim:
-	attackanimation
-	waitanimation
-	setgraphicalstatchangevalues
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printfromtable gStatDownStringIds
-	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_PKMNSABILITYSUPPRESSED
-	waitmessage B_WAIT_TIME_LONG
-	trytoclearprimalweather
-	tryrevertweatherform
-	printstring STRINGID_EMPTYSTRING3
-	waitmessage 1
-	tryendneutralizinggas BS_TARGET
-	goto BattleScript_MoveEnd
-BattleScript_GastroAcidAbilityRemoval:
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	setgastroacid BattleScript_ButItFailed
-BattleScript_GastroAcidAnimFinish:
-	attackanimation
-	waitanimation
-	printstring STRINGID_PKMNSABILITYSUPPRESSED
-	waitmessage B_WAIT_TIME_LONG
-	trytoclearprimalweather
-	tryrevertweatherform
-	printstring STRINGID_EMPTYSTRING3
-	waitmessage 1
-	tryendneutralizinggas BS_TARGET
-	goto BattleScript_MoveEnd
-BattleScript_GastroAcidTrySpDef:
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GastroAcidStatDownEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GastroAcidStatDownDoAnimJustGastro
 	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_GastroAcidStatDownDoAnim
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_GastroAcidStatDownEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_GastroAcidStatDownDoAnimJustGastro
 	pause B_WAIT_TIME_SHORT
 	goto BattleScript_GastroAcidStatDownPrintString
 BattleScript_GastroAcidStatDownDoAnim::
 	attackanimation
 	waitanimation
+	printstring STRINGID_PKMNSABILITYSUPPRESSED
+	waitmessage B_WAIT_TIME_LONG
+	trytoclearprimalweather
+	tryrevertweatherform
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	tryendneutralizinggas BS_TARGET
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 BattleScript_GastroAcidStatDownPrintString::
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_GastroAcidStatDownEnd::
+	goto BattleScript_MoveEnd
+BattleScript_JustGastroAcid::
+	attackstring
+	ppreduce
+BattleScript_GastroAcidStatDownDoAnimJustGastro::
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSABILITYSUPPRESSED
+	waitmessage B_WAIT_TIME_LONG
+	trytoclearprimalweather
+	tryrevertweatherform
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	tryendneutralizinggas BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectToxicSpikes:
@@ -15097,7 +15082,6 @@ BattleScript_ItemNoSpecificStatLoss::
 	printstring STRINGID_ITEMWONTLOWERCERTAINSTAT
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
-	orhalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	return
 
 BattleScript_PurifiedNoStatChange::
@@ -15255,11 +15239,9 @@ BattleScript_GrassyTerrainHealEnd:
 BattleScript_AbilityNoSpecificStatLoss::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-BattleScript_AbilityNoSpecificStatLossPrint:
 	printstring STRINGID_PKMNSXPREVENTSYLOSS
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
-	orhalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	return
 
 BattleScript_StickyHoldActivates::
@@ -15649,11 +15631,6 @@ BattleScript_TransfusionAbilityCopy::
 	destroyabilitypopup
 	pause 40
 	printstring STRINGID_PKMNCOPIEDFOE
-	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_ItemBurnEffect::
-	printstring STRINGID_PKMNSITEMCAUSEBURN
 	waitmessage B_WAIT_TIME_LONG
 	return
 

@@ -1326,7 +1326,6 @@ void PrepareStringBattle(u16 stringId, u32 battler)
     else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
               && ((targetAbility == ABILITY_DEFIANT && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
                  || (targetAbility == ABILITY_COMPETITIVE && CompareStat(gBattlerTarget, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)))
-              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget)
               && ((gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget) || gBattleScripting.stickyWebStatDrop == 1)
               && !(gBattleScripting.stickyWebStatDrop == 1 && gSideTimers[targetSide].stickyWebBattlerSide == targetSide)) // Sticky Web must have been set by the foe
     {
@@ -7113,7 +7112,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
             && gBattleMoves[gCurrentMove].effect != EFFECT_DEFENSE_DOWN_HIT
-            && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
+            && (CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
+            || GetBattlerAbility(gBattlerTarget) == ABILITY_MIRROR_ARMOR
+            || (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_MOON_MIRROR 
+            && gBattleMons[gBattlerTarget].species == SPECIES_LUNATONE))
             && !IS_MOVE_STATUS(move)
             && gBattleMoves[move].bitingMove)
             {
@@ -9641,15 +9643,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED 
                 && !(IS_MOVE_STATUS(gCurrentMove))
                 && CanBeBurned(gBattlerTarget)
-                && gBattleMons[gBattlerTarget].hp 
-                && RandomPercentage(RNG_FLAME_BODY, atkHoldEffectParam) 
+                && IsBattlerAlive(gBattlerTarget)
                 && moveType == TYPE_GRASS)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemBurnEffect;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
                 effect++;
-                SetMoveEffect(TRUE, 0);
             }
         }
         break;
@@ -9962,7 +9962,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             //    effect = TrySetEnigmaBerry(battler);
             //    break;
             case HOLD_EFFECT_JABOCA_BERRY: // consume and damage attacker if used physical move
-                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && IS_MOVE_PHYSICAL(gCurrentMove) && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+                if (IsBattlerAlive(battler) 
+                && TARGET_TURN_DAMAGED 
+                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) 
+                && IS_MOVE_PHYSICAL(gCurrentMove) && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD 
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+                && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) 
+                && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
                 {
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                     if (gBattleMoveDamage == 0)
@@ -10032,6 +10038,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_SPELON_BERRY:
                 if (IsBattlerAlive(battler)
+                && IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && (gSideTimers[GetBattlerSide(gBattlerAttacker)].spikesAmount < 3))

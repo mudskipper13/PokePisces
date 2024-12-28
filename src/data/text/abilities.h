@@ -591,7 +591,7 @@ static const u8 sUnnerveDescription[] = _(
 static const u8 sDefiantDescription[] = _(
     "Boosts the Pokémon's Attack\n"
     "stat sharply when its stats are\n"
-    "lowered by an opposing Pokémon.");
+    "lowered by another Pokémon.");
 
 static const u8 sDefeatistDescription[] = _(
     "Halves the Pokémon's Attack and\n"
@@ -782,7 +782,7 @@ static const u8 sBulletproofDescription[] = _(
 static const u8 sCompetitiveDescription[] = _(
     "Boosts the Pokémon's Sp. Atk\n"
     "stat sharply when its stats are\n"
-    "lowered by an opposing Pokémon.");
+    "lowered by another Pokémon.");
 
 static const u8 sStrongJawDescription[] = _(
     "The Pokémon's strong jaw boosts\n"

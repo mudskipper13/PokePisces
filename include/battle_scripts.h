@@ -254,7 +254,6 @@ extern const u8 BattleScript_AbilitySetGlaiveRush[];
 extern const u8 BattleScript_AbilitySetPurpleHaze[];
 extern const u8 BattleScript_AbilitySetMagmaArmored[];
 extern const u8 BattleScript_TransfusionAbilityCopy[];
-extern const u8 BattleScript_ItemBurnEffect[];
 extern const u8 BattleScript_ItemBloomingEffect[];
 extern const u8 BattleScript_ItemTauntEffect[];
 extern const u8 BattleScript_SynchronizeActivates[];

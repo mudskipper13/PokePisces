@@ -3591,12 +3591,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             }
             else
             {
-                if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_BURNT_BRANCH) {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
-                } else {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED;
-                }
-                
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED;                
             }
 
             // for synchronize
@@ -13985,10 +13980,10 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                 }
                 else
                 {
-                    BattleScriptPush(BS_ptr);
                     gBattleScripting.battler = battler;
                     if (battlerHoldEffect == HOLD_EFFECT_CLEAR_AMULET || (battlerHoldEffect == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)))
                     {
+                        BattleScriptPush(BS_ptr);
                         gBattlescriptCurrInstr = BattleScript_ItemNoStatLoss;
                         PREPARE_ITEM_BUFFER(gBattleTextBuff1, gBattleMons[battler].item);
                     }
@@ -13997,12 +13992,14 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                     || battlerAbility == ABILITY_FULL_METAL_BODY)
                     {
                         gBattlerAbility = battler;
+                        BattleScriptPush(BS_ptr);
                         gBattlescriptCurrInstr = BattleScript_AbilityNoStatLoss;
                         gLastUsedAbility = battlerAbility;
                         RecordAbilityBattle(battler, gLastUsedAbility);
                     }
                     else
                     {
+                        BattleScriptPush(BS_ptr);
                         gBattlescriptCurrInstr = BattleScript_PurifiedNoStatChange;
                     }
                     gSpecialStatuses[battler].statLowered = TRUE;
@@ -14032,40 +14029,31 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
         }
         else if (!certain
                 && ((battlerAbility == ABILITY_KEEN_EYE && statId == STAT_ACC)
-                || (battlerAbility == ABILITY_HYPER_CUTTER && statId == STAT_ATK)
-                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_SAFETY_GOGGLES && statId == STAT_ACC)
-                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_MUSCLE_BAND && statId == STAT_ATK)
-                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_WISE_GLASSES && statId == STAT_SPATK)
-                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC)))
-
+                || (battlerAbility == ABILITY_HYPER_CUTTER && statId == STAT_ATK)))
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
-                if (gSpecialStatuses[battler].statLowered)
-                {
-                    gBattlescriptCurrInstr = BS_ptr;
-                }
-                else
-                {
-                    BattleScriptPush(BS_ptr);
-                    gBattleScripting.battler = battler;
-                    if ((battlerHoldEffect == HOLD_EFFECT_SAFETY_GOGGLES && statId == STAT_ACC) 
-                    || (battlerHoldEffect == HOLD_EFFECT_MUSCLE_BAND && statId == STAT_ATK)
-                    || (battlerHoldEffect == HOLD_EFFECT_WISE_GLASSES && statId == STAT_SPATK)
-                    || (battlerHoldEffect == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC))
-                    {
-                        gBattlescriptCurrInstr = BattleScript_ItemNoSpecificStatLoss;
-                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gBattleMons[battler].item);
-                    }
-                    else
-                    {
-                        gBattlerAbility = battler;
-                        gBattlescriptCurrInstr = BattleScript_AbilityNoSpecificStatLoss;
-                        gLastUsedAbility = battlerAbility;
-                        RecordAbilityBattle(battler, gLastUsedAbility);
-                    }
-                    gSpecialStatuses[battler].statLowered = TRUE;
-                }
+                BattleScriptPush(BS_ptr);
+                gBattleScripting.battler = battler;
+                gBattlerAbility = battler;
+                gBattlescriptCurrInstr = BattleScript_AbilityNoSpecificStatLoss;
+                gLastUsedAbility = battlerAbility;
+                RecordAbilityBattle(battler, gLastUsedAbility);
+            }
+            return STAT_CHANGE_DIDNT_WORK;
+        }
+        else if (!certain
+                && ((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_SAFETY_GOGGLES && statId == STAT_ACC)
+                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_MUSCLE_BAND && statId == STAT_ATK)
+                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_WISE_GLASSES && statId == STAT_SPATK)
+                || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC)))
+        {
+            if (flags == STAT_CHANGE_ALLOW_PTR)
+            {
+                BattleScriptPush(BS_ptr);
+                gBattleScripting.battler = battler;
+                gBattlescriptCurrInstr = BattleScript_ItemNoSpecificStatLoss;
+                PREPARE_ITEM_BUFFER(gBattleTextBuff2, gBattleMons[battler].item);
             }
             return STAT_CHANGE_DIDNT_WORK;
         }
