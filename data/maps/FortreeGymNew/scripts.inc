@@ -185,7 +185,7 @@ FortreeGymNew_Text_DenaliDefeated:
 	.string "No way! Did I reach my limit already?!$"
 
 FortreeGymNew_Text_DenaliPostBattle:
-	.string "This reminds me of the time I took to\n
+	.string "This reminds me of the time I took to\n"
 	.string "the sky during a thunderstorm.\p"
 	.string "That also didn't turn out all too well.$"
 
