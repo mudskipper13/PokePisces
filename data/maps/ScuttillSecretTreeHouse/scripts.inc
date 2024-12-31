@@ -23,7 +23,7 @@ ScuttillSecretTreeHouse_EventScript_SetEggState::
 	goto_if_set FLAG_SCUTTILL_EGG, ScuttillSecretTreeHouse_EventScript_EggGotten
 	goto_if_set FLAG_FAKE_EGG, ScuttillSecretTreeHouse_EventScript_FakeEggGotten
 	setvar VAR_TEMP_4, 69
-	setvar VAR_TEMP_6, 3
+	setvar VAR_TEMP_6, 2
 	setflag FLAG_TEMP_10
 	setflag FLAG_TEMP_11
 	setflag FLAG_TEMP_12
@@ -810,10 +810,10 @@ ScuttillSecretTreeHouse_EventScript_ReceivedEggFanfare::
 
 ScuttillSecretTreeHouse_Movement_PlayerConfrontEgg:
 	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	face_up
 	step_end
 

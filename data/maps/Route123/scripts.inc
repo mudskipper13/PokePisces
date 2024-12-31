@@ -500,7 +500,7 @@ Route123_Text_JinxieDefeated:
 
 Route123_Text_JinxiePostBattle:
 	.string "Haha, got you!\n"
-	.string "You totally thought I was possessed,\l	"
+	.string "You totally thought I was possessed,\l"
 	.string "didn't you!$"
 
 Route123_Text_CarolinaIntro:
