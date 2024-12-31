@@ -244,7 +244,7 @@ CyclingRoad_Text_KairaPostBattle:
 	.string "with a prodigy, so I shall give you some\l"
 	.string "advice.\p"
 	.string "Hone your skills to perfection, no\n"
-	.string:"matter how difficult the process may be..$"
+	.string "matter how difficult the process may be..$"
 
 CyclingRoad_Text_WoodyIntro:
 	.string "Be kind to me, I'm just a little\n"
