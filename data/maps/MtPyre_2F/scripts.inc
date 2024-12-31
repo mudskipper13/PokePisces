@@ -105,15 +105,15 @@ MtPyre_2F_Text_DeaconPostBattle:
 	.string "I will need to meditate on this loss.$"
 
 MtPyre_2F_Text_AlodiaIntro:
-	.string "I dance, I call! Each step shakes my\n
+	.string "I dance, I call! Each step shakes my\n"
 	.string "very soul!$"
 
 MtPyre_2F_Text_AlodiaDefeated:
-	.string "We who sing and dance the language of\n
+	.string "We who sing and dance the language of\n"
 	.string "dragons!$"
 
 MtPyre_2F_Text_AlodiaPostBattle:
-	.string "I dance, I call! Each step quakes my\n
+	.string "I dance, I call! Each step quakes my\n"
 	.string "body whole!$"
 
 MtPyre_2F_Text_RaelianaIntro:
@@ -146,7 +146,7 @@ MtPyre_2F_Text_MistyPostBattle:
 	.string "...$"
 
 MtPyre_2F_Text_MistyNotAllMediumsBeaten:
-	.string "You must conquer each of us\n
+	.string "You must conquer each of us\n"
 	.string "to continue...$"
 
 MtPyre_2F_Text_MistyGreetings:

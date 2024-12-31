@@ -143,6 +143,6 @@ LavaridgeHouses_Text_DurinGrandmaPost:
 LavaridgeHouses_Text_Mustybane:
 	.string "MUSTYBANE...\p"
 	.string "I've heard somewhere that it's some \n"
-	.string "kind of variant of a dog Pokémon\p"
+	.string "kind of variant of a dog Pokémon.\p"
 	.string "There's no way that can be right,\n"
 	.string "can it?$"

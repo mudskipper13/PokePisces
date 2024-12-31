@@ -183,7 +183,7 @@ MtPyre_1F_Text_ReimuPostBattle:
 	.string "spiritual barrier protecting the town.\p"
 	.string "It wards off impure spirits with evil\l"
 	.string "intent while allowing in good spirits\l"
-	.string "that bless the shrine. $"
+	.string "that bless the shrine.$"
 
 MtPyre_1F_Text_MikoIntro:
 	.string "Please do not interrupt the ritual.$"

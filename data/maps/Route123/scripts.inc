@@ -500,7 +500,7 @@ Route123_Text_JinxieDefeated:
 
 Route123_Text_JinxiePostBattle:
 	.string "Haha, got you!\n"
-	.string "You totally thought I was possessed,\l	"
+	.string "You totally thought I was possessed,\l"
 	.string "didn't you!$"
 
 Route123_Text_CarolinaIntro:
@@ -547,7 +547,7 @@ Route123_Text_MiaPostBattle:
 	.string "...$"
 
 Route123_Text_MayaIntro:
-	.string "... The soul is more malleable than one\n
+	.string "... The soul is more malleable than one\n"
 	.string "may expect...$"
 
 Route123_Text_MayaDefeated:
