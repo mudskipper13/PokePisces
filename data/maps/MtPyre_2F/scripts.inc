@@ -146,7 +146,7 @@ MtPyre_2F_Text_MistyPostBattle:
 	.string "...$"
 
 MtPyre_2F_Text_MistyNotAllMediumsBeaten:
-	.string "You must conquer each of us\n
+	.string "You must conquer each of us\n"
 	.string "to continue...$"
 
 MtPyre_2F_Text_MistyGreetings:
