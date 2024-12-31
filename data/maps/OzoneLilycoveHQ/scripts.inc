@@ -496,7 +496,7 @@ OzoneLilycoveHQ_Text_MarinaDefeated:
 
 OzoneLilycoveHQ_Text_MarinaPostBattle:
 	.string "Team Ozone is dedicated to keeping Hoenn\n"
-	.string in one piece.\p"
+	.string "in one piece.\p"
 	.string "Remember that, kid!$"
 
 OzoneLilycoveHQ_Text_NoBusinessHere:

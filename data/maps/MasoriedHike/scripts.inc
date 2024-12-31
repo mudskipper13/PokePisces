@@ -90,3 +90,4 @@ MasonriedHike_Text_JayAndEmNeedTwoMons:
 	.string "Doesn't make for a good double battle.\n"
 	.string "EM: One plus two...\n"
 	.string "That's three, right?$"
+

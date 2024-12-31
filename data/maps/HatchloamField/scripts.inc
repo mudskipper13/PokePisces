@@ -61,7 +61,7 @@ HatchloamField_Text_DustinPostBattle:
 
 HatchloamField_Text_HayleyIntro:
 	.string "It amazes me how many trainers are\n"
-	.string "stumped why an egg 'appears' at the\l
+	.string "stumped why an egg 'appears' at the\l"
 	.string "daycare...$"
 
 HatchloamField_Text_HayleyDefeated:
@@ -88,7 +88,7 @@ HatchloamField_Text_EnaAndMinaPostBattle:
 
 HatchloamField_Text_EnaAndMinaNeedTwoMons:
 	.string "ENA: We are two in one.\n"
-	.string MINA: But you'd need two to keep up.$"
+	.string "MINA: But you'd need two to keep up.$"
 
 HatchloamField_Text_DillIntro:
 	.string "Shush! Your loud footsteps are scaring\n"

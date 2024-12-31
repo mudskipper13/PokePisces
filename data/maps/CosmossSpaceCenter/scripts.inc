@@ -8,11 +8,24 @@ CosmossSpaceCenter_OnFrame:
 
 CosmossSpaceCenter_EventScript_AfterInvasion::
 	lock
+	applymovement 12, CosmossSpaceCenter_LookRight
+	applymovement OBJ_EVENT_ID_PLAYER, CosmossSpaceCenter_LookLeft
 	msgbox CosmossSpaceCenter_Text_SavedTheRocket, MSGBOX_DEFAULT
 	setvar VAR_SPACE_CENTER_QUEST_STATE, 3
 	msgbox CosmossSpaceCenter_Text_MeteorsFallen, MSGBOX_AUTOCLOSE
+	waitmessage
+	applymovement 12, CosmossSpaceCenter_Movement_FaceUp
+	waitmovement 0
 	release
 	end
+
+CosmossSpaceCenter_LookLeft:
+	face_left
+	step_end
+
+CosmossSpaceCenter_LookRight:
+	face_right
+	step_end
 
 CosmossSpaceCenter_EventScript_AIBlock::
 	lock
@@ -138,12 +151,23 @@ CosmossSpaceCenter_EventScript_UFOResearcher::
 	faceplayer
 	goto_if_lt VAR_SPACE_CENTER_QUEST_STATE, 2, CosmossSpaceCenter_EventScript_RadioWaves
 	goto_if_gt VAR_SPACE_CENTER_QUEST_STATE, 2, CosmossSpaceCenter_EventScript_AboutUhefoe
-	msgbox CosmossSpaceCenter_Text_HelpFightUFO, MSGBOX_YESNO
+	msgbox CosmossSpaceCenter_Text_HelpFightUFO, MSGBOX_DEFAULT
+	closemessage
+	playse SE_BOO
+	waitse
+	applymovement VAR_LAST_TALKED, CosmossSpaceCenter_Movement_Surprised
+	waitmovement 0
+	applymovement VAR_LAST_TALKED, CosmossSpaceCenter_Movement_FaceUp
+	msgbox CosmossSpaceCenter_Text_AskFightUFO, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, CosmossSpaceCenter_EventScript_PrepForUhefoeInvasion
 	goto_if_eq VAR_RESULT, NO, CosmossSpaceCenter_EventScript_Matrix
 	closemessage
 	release
 	end
+
+CosmossSpaceCenter_Movement_Surprised:
+	emote_exclamation_mark
+	step_end
 
 CosmossSpaceCenter_EventScript_Matrix::
 	msgbox CosmossSpaceCenter_Text_Matrix, MSGBOX_DEFAULT
@@ -162,12 +186,16 @@ CosmossSpaceCenter_EventScript_PrepForUhefoeInvasion::
 CosmossSpaceCenter_EventScript_RadioWaves::
 	msgbox CosmossSpaceCenter_Text_RadioWaves, MSGBOX_DEFAULT
 	closemessage
+	applymovement VAR_LAST_TALKED, CosmossSpaceCenter_Movement_FaceUp
+	waitmovement 0
 	release
 	end
 
 CosmossSpaceCenter_EventScript_AboutUhefoe::
 	msgbox CosmossSpaceCenter_Text_AboutUhefoe, MSGBOX_DEFAULT
 	closemessage
+	applymovement VAR_LAST_TALKED, CosmossSpaceCenter_Movement_FaceUp
+	waitmovement 0
 	release
 	end
 
@@ -406,7 +434,9 @@ CosmossSpaceCenter_Text_HelpFightUFO:
 	.string "Look, I dunno what command\n"
 	.string "is expecting here.\p"
 	.string "Do they really believe that my daily\n"
-	.string "ET-Phoning-Home is gonna…\p"
+	.string "ET-Phoning-Home is gonna…$"
+
+CosmossSpaceCenter_Text_AskFightUFO:
 	.string "…Uhhh… am I officially off my rocker,\n"
 	.string "or… am I seeing an unidentified signal\l"
 	.string "at Launch Pad B…?\p"
