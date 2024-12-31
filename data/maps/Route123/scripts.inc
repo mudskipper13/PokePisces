@@ -547,7 +547,7 @@ Route123_Text_MiaPostBattle:
 	.string "...$"
 
 Route123_Text_MayaIntro:
-	.string "... The soul is more malleable than one\n
+	.string "... The soul is more malleable than one\n"
 	.string "may expect...$"
 
 Route123_Text_MayaDefeated:
