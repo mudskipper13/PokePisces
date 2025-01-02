@@ -3717,3 +3717,27 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneTransitionBuildings/scripts.inc"
 
 	.include "data/maps/FortreeGymTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustGymEntryHallways/scripts.inc"
+
+	.include "data/maps/RustGymLockerHallway/scripts.inc"
+
+	.include "data/maps/RustGymExtracurricularHallway/scripts.inc"
+
+	.include "data/maps/RustGymCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymGym/scripts.inc"
+
+	.include "data/maps/RustGymComputerLab/scripts.inc"
+
+	.include "data/maps/RustGymLibrary/scripts.inc"
+
+	.include "data/maps/RustGymClassroom/scripts.inc"
+
+	.include "data/maps/RustGymDarkHallway/scripts.inc"
+
+	.include "data/maps/RustGymDarkLockers/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymDarkClassroom/scripts.inc"

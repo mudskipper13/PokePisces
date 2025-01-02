@@ -277,13 +277,25 @@
     "UnduraTunnelsDeep",
     "MidneorFalls",
     "RustboroNew",
-    "RustboroCity_Gym"
+    "RustboroCity_Gym",
+    "RustGymEntryHallways"
   ],
   "gMapGroup_PiscesLeg9Minor": [
     "DewfordTown_PokemonCenter_2F",
     "FallarborTown_PokemonCenter_2F",
     "RustboroCity_PokemonCenter_1F",
-    "Gym8Corridor"
+    "Gym8Corridor",
+    "RustGymLockerHallway",
+    "RustGymExtracurricularHallway",
+    "RustGymCafeteria",
+    "RustGymGym",
+    "RustGymComputerLab",
+    "RustGymLibrary",
+    "RustGymClassroom",
+    "RustGymDarkHallway",
+    "RustGymDarkLockers",
+    "RustGymDarkCafeteria",
+    "RustGymDarkClassroom"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
