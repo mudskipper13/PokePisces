@@ -10,6 +10,16 @@ Route123_OnTransition:
 	call_if_gt VAR_BREADWINNER_STATE, 1, Route123_EventScript_SetTempFlags
 	end
 
+Route123_EventScript_FogTrigger::
+	setweather WEATHER_FOG_DIAGONAL
+	doweather
+	end
+
+Route123_EventScript_SnowTrigger::
+	setweather WEATHER_SNOW
+	doweather
+	end
+
 Route123_EventScript_SetTempFlags::
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_BREAD
