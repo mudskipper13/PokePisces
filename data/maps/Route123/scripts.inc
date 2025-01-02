@@ -10,6 +10,16 @@ Route123_OnTransition:
 	call_if_gt VAR_BREADWINNER_STATE, 1, Route123_EventScript_SetTempFlags
 	end
 
+Route123_EventScript_FogTrigger::
+	setweather WEATHER_FOG_DIAGONAL
+	doweather
+	end
+
+Route123_EventScript_SnowTrigger::
+	setweather WEATHER_SNOW
+	doweather
+	end
+
 Route123_EventScript_SetTempFlags::
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_BREAD
@@ -474,13 +484,14 @@ Route123_Text_ItTakesOffTheMantle:
 	.string "red hood it was wearing.)$"
 
 Route123_Text_RamiIntro:
-	.string "intro$"
+	.string "Hey! Wanna have a snowball fight?$"
 
 Route123_Text_RamiDefeated:
-	.string "defeat$"
+	.string "Yay! Again! Again!$"
 
 Route123_Text_RamiPostBattle:
-	.string "post$"
+	.string "Snowball fights are so much more fun\n"
+	.string "with Pokémon! Don't you agree?!$"
 
 Route123_Text_TsunamiIntro:
 	.string "intro$"
@@ -492,31 +503,39 @@ Route123_Text_TsunamiPostBattle:
 	.string "post$"
 
 Route123_Text_JinxieIntro:
-	.string "intro$"
+	.string "Oooooh... Be afraid...$"
 
 Route123_Text_JinxieDefeated:
-	.string "defeat$"
+	.string "... Be... uhh... More afraid... please...$"
 
 Route123_Text_JinxiePostBattle:
-	.string "post$"
+	.string "Haha, got you!\n"
+	.string "You totally thought I was possessed,\l"
+	.string "didn't you!$"
 
 Route123_Text_CarolinaIntro:
-	.string "intro$"
+	.string "This big heavy backpack is stuffed\n"
+	.string "chock-full of necessary items!\p"
+	.string "Take a look!$"
 
 Route123_Text_CarolinaDefeated:
-	.string "defeat$"
+	.string "Huff.. Puff...\n"
+	.string "The weight of my defeat is heavy, too.$"
 
 Route123_Text_CarolinaPostBattle:
-	.string "post$"
+	.string "Carry a lighter load? No way!\n"
+	.string "You never know when you'll need 99\l"
+	.string "Elixrs!$"
 
 Route123_Text_BettyIntro:
-	.string "intro$"
+	.string "I've broken so many bones doing this!$"
 
 Route123_Text_BettyDefeated:
-	.string "defeat$"
+	.string "Now my ego is broken too.$"
 
 Route123_Text_BettyPostBattle:
-	.string "post$"
+	.string "I wish I had crashed into a tree,\n"
+	.string "rather than you.$"
 
 Route123_Text_HazakuraIntro:
 	.string "Your guard was down, and I strike!\n"
@@ -526,43 +545,47 @@ Route123_Text_HazakuraDefeated:
 	.string "Buried in the snow once more…!$"
 
 Route123_Text_HazakuraPostBattle:
-	.string "post$"
+	.string "That's cold.$"
 
 Route123_Text_MiaIntro:
-	.string "intro$"
+	.string "... You will lose yourself here...$"
 
 Route123_Text_MiaDefeated:
-	.string "defeat$"
+	.string "... Heed my warning...$"
 
 Route123_Text_MiaPostBattle:
-	.string "post$"
+	.string "...$"
 
 Route123_Text_MayaIntro:
-	.string "intro$"
+	.string "... The soul is more malleable than one\n"
+	.string "may expect...$"
 
 Route123_Text_MayaDefeated:
-	.string "defeat$"
+	.string "... Would you like a demonstration?...$"
 
 Route123_Text_MayaPostBattle:
-	.string "post$"
+	.string "...$"
 
 Route123_Text_KumoriIntro:
-	.string "intro$"
+	.string "... Do you want to see my snow angel?$"
 
 Route123_Text_KumoriDefeated:
-	.string "defeat$"
+	.string "It's really cool...$"
 
 Route123_Text_KumoriPostBattle:
-	.string "post$"
+	.string "I love making snow angels, they're so\n"
+	.string "much fun...\p"
+	.string "What do you think?$"
 
 Route123_Text_HothIntro:
-	.string "intro$"
+	.string "I've got a bad feeling about\n"
+	.string "this...$"
 
 Route123_Text_HothDefeated:
-	.string "defeat$"
+	.string "Why, you... nerf-herder!$"
 
 Route123_Text_HothPostBattle:
-	.string "post$"
+	.string "I could use a blanket.$"
 
 Route123_Text_NamePandou:
 	.string "Pandou$"

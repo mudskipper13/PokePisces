@@ -5830,6 +5830,126 @@
       "secondary_tileset": "gTileset_FortreeGym",
       "border_filepath": "data/layouts/FortreeGymTransitionBuilding/border.bin",
       "blockdata_filepath": "data/layouts/FortreeGymTransitionBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_ENTRY_HALLWAYS",
+      "name": "RustGymEntryHallways_Layout",
+      "width": 17,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymEntryHallways/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymEntryHallways/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_LOCKER_HALLWAY",
+      "name": "RustGymLockerHallway_Layout",
+      "width": 32,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymLockerHallway/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymLockerHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "name": "RustGymExtracurricularHallway_Layout",
+      "width": 21,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymExtracurricularHallway/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymExtracurricularHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_CAFETERIA",
+      "name": "RustGymCafeteria_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymCafeteria/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymCafeteria/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_GYM",
+      "name": "RustGymGym_Layout",
+      "width": 12,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymGym/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymGym/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_COMPUTER_LAB",
+      "name": "RustGymComputerLab_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymComputerLab/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymComputerLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_LIBRARY",
+      "name": "RustGymLibrary_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymLibrary/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymLibrary/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_CLASSROOM",
+      "name": "RustGymClassroom_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymClassroom/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymClassroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_DARK_HALLWAY",
+      "name": "RustGymDarkHallway_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymDarkHallway/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymDarkHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_DARK_LOCKERS",
+      "name": "RustGymDarkLockers_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymDarkLockers/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymDarkLockers/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_DARK_CAFETERIA",
+      "name": "RustGymDarkCafeteria_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymDarkCafeteria/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymDarkCafeteria/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUST_GYM_DARK_CLASSROOM",
+      "name": "RustGymDarkClassroom_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGymNew",
+      "border_filepath": "data/layouts/RustGymDarkClassroom/border.bin",
+      "blockdata_filepath": "data/layouts/RustGymDarkClassroom/map.bin"
     }
   ]
 }

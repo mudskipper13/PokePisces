@@ -102,49 +102,59 @@ FieryPath_Text_CassPostBattle:
 	.string "post$"
 
 FieryPath_Text_SandyIntro:
-	.string "intro$"
+	.string "... You remind me of someone I battled a\n"
+	.string "long time ago...$"
 
 FieryPath_Text_SandyDefeated:
-	.string "defeat$"
+	.string "Yep... I lost to them, too...$"
 
 FieryPath_Text_SandyPostBattle:
-	.string "post$"
+	.string "Right, I remember now...\p"
+	.string "Back when Maxie was trying to awaken\n"
+	.string "Groudon, I tried to stop them and we\l"
+	.string "ended up losing.\p"
+	.string "Uh, what a blast from the past!$"
 
 FieryPath_Text_JanIntro:
-	.string "intro$"
+	.string "I'm a janitor! I do it for free!$"
 
 FieryPath_Text_JanDefeated:
-	.string "defeat$"
+	.string "Maybe I should demand a pay raise...$"
 
 FieryPath_Text_JanPostBattle:
-	.string "post$"
+	.string "I take my job very seriously.$"
 
 FieryPath_Text_CattIntro:
-	.string "intro$"
+	.string "You will serve as a springboard for my\n"
+	.string "ambition!$"
 
 FieryPath_Text_CattDefeated:
-	.string "defeat$"
+	.string "Me?! Lose?! Impossible!$"
 
 FieryPath_Text_CattPostBattle:
-	.string "post$"
+	.string "In the end I only served as a\n"
+	.string "springboard for your own\n"
+	.string "ambitions, how humiliating.$"
 
 FieryPath_Text_CeliaIntro:
-	.string "intro$"
+	.string "I'm totally lost in this place...\n"
+	.string "Little help?$"
 
 FieryPath_Text_CeliaDefeated:
-	.string "defeat$"
+	.string "I must be stupid or something...$"
 
 FieryPath_Text_CeliaPostBattle:
-	.string "post$"
+	.string "On second thought...\n"
+	.string "I think I'll just stay here.$"
 
 FieryPath_Text_REDACTEDIntro:
-	.string "intro$"
+	.string "It's a secret to everybody.$"
 
 FieryPath_Text_REDACTEDDefeated:
-	.string "defeat$"
+	.string "(DATA EXPUNGED)$"
 
 FieryPath_Text_REDACTEDPostBattle:
-	.string "post$"
+	.string "This speech intentionally left blank.$"
 
 FieryPath_Text_DimitriIntro:
 	.string "intro$"
@@ -156,16 +166,27 @@ FieryPath_Text_DimitriPostBattle:
 	.string "post$"
 
 FieryPath_Text_CliffAndIssaIntro:
-	.string "intro$"
+	.string "CLIFF: Hey kid, why ya lookin' at me that\n"
+	.string "way?\p"
+	.string "ISSA: Do you always have to act like\n"
+	.string "this?$"
 
 FieryPath_Text_CliffAndIssaDefeated:
-	.string "defeat$"
+	.string "ISSA: We lost because of you and your\n"
+	.string "ego!\p"
+	.string "CLIFF: You’re the one who was in my way!$"
 
 FieryPath_Text_CliffAndIssaPostBattle:
-	.string "post$"
+	.string "CLIFF: Ya itchin' for another battle?\n"
+	.string "ISSA: You can't ever take a break, can\l"
+	.string"you?$"
 
 FieryPath_Text_CliffAndIssaNeedTwoMons:
-	.string "need 2 dood$"
+	.string "CLIFF: This kid's so weak and puny, they \n"
+	.string "can't even battle us!\p"
+	.string "ISSA: Or maybe you're so weak they\n"
+	.string "can't bring themselves to beat you?$"
+
 
 FieryPath_Text_GerodeIntro:
 	.string "intro$"
@@ -177,25 +198,27 @@ FieryPath_Text_GerodePostBattle:
 	.string "post$"
 
 FieryPath_Text_MezraIntro:
-	.string "intro$"
+	.string "Swing your arms from side to side!$"
 
 FieryPath_Text_MezraDefeated:
-	.string "defeat$"
+	.string "....Juuust liiike thaaat!$"
 
 FieryPath_Text_MezraPostBattle:
-	.string "post$"
+	.string "Come on, it's time to go!$"
 
 FieryPath_Text_LaneIntro:
-	.string "intro$"
+	.string "Something here smells funny...\n"
+	.string "Oh, it's just you!$"
 
 FieryPath_Text_LaneDefeated:
-	.string "defeat$"
+	.string "Don't forget to flush!$"
 
 FieryPath_Text_LanePostBattle:
-	.string "post$"
+	.string "(sniff, sniff) Wait, that smell isn't\n"
+	.string "you. I must be plumb crazy...$"
 
 FieryPath_Text_BonnieIntro:
-	.string "intro$"
+	.string "poob!$"
 
 FieryPath_Text_BonnieDefeated:
 	.string "defeat$"
@@ -231,13 +254,19 @@ FieryPath_Text_IngridPostBattle:
 	.string "post$"
 
 FieryPath_Text_BlaiseAndMarIntro:
-	.string "intro$"
+	.string "BLAISE: I'm a weather expert, you know.\n"
+	.string "MAR: So am I! Don't discount me!$"
 
 FieryPath_Text_BlaiseAndMarDefeated:
-	.string "defeat$"
+	.string "BLAISE: Why am I all wet?\n"
+	.string "MAR: What happened?$"
 
 FieryPath_Text_BlaiseAndMarPostBattle:
-	.string "post$"
+	.string "MAR: Well, now I'm all dried up...\n"
+	.string "BLAISE: You doused my chances of\l"
+	.string "winning!$"
 
 FieryPath_Text_BlaiseAndMarNeedTwoMons:
-	.string "need 2 dood$"
+	.string "BLAISE: We should double battle for a\n"
+	.string "change.\p"
+	.string "MAR: That sounds good to me...$"

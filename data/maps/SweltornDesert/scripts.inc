@@ -62,13 +62,21 @@ SweltornDesert_EventScript_Dotty::
     end
 
 SweltornDesert_Text_SantoIntro:
-	.string "intro$"
+	.string "Hold it kid! Sweltorn Desert is\n"
+	.string "experiencing a pretty severe\l"
+	.string "sandstorm right now.\p"
+	.string "Do you have a pair of Go-Goggles?$"
 
 SweltornDesert_Text_SantoDefeated:
-	.string "defeat$"
+	.string "Good, it seems you're prepared...$"
 
 SweltornDesert_Text_SantoPostBattle:
-	.string "post$"
+	.string "Sandstorms around this area used to be \n"
+	.string "pretty minor, but now they're out of\l"
+	.string "control...\p"
+	.string "...But don't worry, kid!\n"
+	.string "Team Ozone will have everything\l"
+	.string "under control in no time!$"
 
 SweltornDesert_Text_DorothyIntro:
 	.string "intro$"
@@ -80,13 +88,17 @@ SweltornDesert_Text_DorothyPostBattle:
 	.string "post$"
 
 SweltornDesert_Text_ErinIntro:
-	.string "intro$"
+	.string "Who do you think these big ol' bones\n"
+	.string "belong to?$"
 
 SweltornDesert_Text_ErinDefeated:
-	.string "defeat$"
+	.string "I wasn't talking about myself!$"
 
 SweltornDesert_Text_ErinPostBattle:
-	.string "post$"
+	.string "I'm trying to find out what sort of \n"
+	.string "colossal Pokémon these bones once \n"
+	.string "were...\n"
+	.string "Or maybe it wasn't a Pokémon at all...?$"
 
 SweltornDesert_Text_AaronIntro:
 	.string "intro$"
@@ -107,31 +119,38 @@ SweltornDesert_Text_ThadPostBattle:
 	.string "post$"
 
 SweltornDesert_Text_LeelaIntro:
-	.string "intro$"
+	.string "Is this the right address?\n"
+	.string "I think I'm lost...$"
 
 SweltornDesert_Text_LeelaDefeated:
-	.string "defeat$"
+	.string "Can you give me a five-star review,\n"
+	.string "please?$"
 
 SweltornDesert_Text_LeelaPostBattle:
-	.string "post$"
+	.string "Hmm, this isn't right...\n"
+	.string "I'm trying to find ''Yes Town''.\p"
+	.string "You don't suppose someone's punking\n"
+	.string "me, do you?$"
 
 SweltornDesert_Text_IckleIntro:
-	.string "intro$"
+	.string "Woof.. sure is hot here.$"
 
 SweltornDesert_Text_IckleDefeated:
-	.string "defeat$"
+	.string "Good weather for some ice cold treats.$"
 
 SweltornDesert_Text_IcklePostBattle:
-	.string "post$"
+	.string "Have some dessert in the desert.$"
 
 SweltornDesert_Text_StaphIntro:
-	.string "intro$"
+	.string "...Eh? Trainers, out here!?$"
 
 SweltornDesert_Text_StaphDefeated:
-	.string "defeat$"
+	.string "I specifically wanted to avoid this.$"
 
 SweltornDesert_Text_StaphPostBattle:
-	.string "post$"
+	.string "Have you been drinking water?\n"
+	.string "Yeah, I bet you haven't, you're sweating\l"
+	.string "like a Sadsod. Take some of mine.$"
 
 SweltornDesert_Text_HwarangIntro:
 	.string "intro$"
@@ -143,13 +162,17 @@ SweltornDesert_Text_HwarangPostBattle:
 	.string "post$"
 
 SweltornDesert_Text_TakeshiIntro:
-	.string "intro$"
+	.string "Those eyes... You hold a love for battle,\n"
+	.string "don't you?\p"
+	.string "Very well then, show me your passion in\n"
+	.string "combat!$"
 
 SweltornDesert_Text_TakeshiDefeated:
-	.string "defeat$"
+	.string "Hmph, as to be expected!$"
 
 SweltornDesert_Text_TakeshiPostBattle:
-	.string "post$"
+	.string "You are a very unique trainer.\n"
+	.string "Do not squander such a gift!$"
 
 SweltornDesert_Text_BeatIntro:
 	.string "intro$"

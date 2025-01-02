@@ -32,9 +32,13 @@ Route126_EventScript_StartInvasion::
 	msgbox Route126_Text_TheyreInvading, MSGBOX_DEFAULT
 	setwildbattle SPECIES_UHEFOE, 18
 	settotemboost B_POSITION_OPPONENT_LEFT, 0, 2, 0, 0, 2
-	playmoncry SPECIES_BEHEEYEM, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_UHEFOE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
+	speakername NULL
+	msgbox Route126_Text_UhefoeCry, MSGBOX_DEFAULT
+	waitmessage
+	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_UhefoeAppears, MSGBOX_DEFAULT
 	speakername NULL
 	dowildbattle
@@ -545,8 +549,10 @@ Route126_Text_TheyreInvading:
 	.string "His lazy bum is probably using this as\n"
 	.string "an excuse to get sent home early.$"
 
+Route126_Text_UhefoeCry:
+	.string "(You hear a Pokémon's cry.)$"
+
 Route126_Text_UhefoeAppears:
-	.string "(You hear a Pokémon's cry.)\p"
 	.string "Crud, watch out…\n"
 	.string "looks like something wants to give us\l"
 	.string "a warm welcome…!$"

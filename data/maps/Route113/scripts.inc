@@ -78,49 +78,53 @@ Route113_EventScript_Sakurai::
     end
 
 Route113_Text_AsheIntro:
-	.string "intro$"
+	.string "What, you didn't bring an umbrella?$"
 
 Route113_Text_AsheDefeated:
-	.string "defeat$"
+	.string "Have fun getting ashed on...$"
 
 Route113_Text_AshePostBattle:
-	.string "post$"
+	.string "I'm no Seattlite.$"
 
 Route113_Text_SaraIntro:
-	.string "intro$"
+	.string "I have a great burden to bear.$"
 
 Route113_Text_SaraDefeated:
-	.string "defeat$"
+	.string "Soooo... Heavy....$"
 
 Route113_Text_SaraPostBattle:
-	.string "post$"
+	.string "I shouldn't have packed my folding\n"
+	.string "bicycle.$"
 
 Route113_Text_TogedemaruIntro:
-	.string "intro$"
+	.string "Prepare to be Ninja'd!$"
 
 Route113_Text_TogedemaruDefeated:
-	.string "defeat$"
+	.string "Hey! I'll be the one doin' the Ninja-ing\n"
+	.string "around here!$"
 
 Route113_Text_TogedemaruPostBattle:
-	.string "post$"
+	.string "...Do ya mind?...\n"
+	.string "I'm tryin' to brood over here!$"
 
 Route113_Text_JucikaIntro:
-	.string "intro$"
+	.string "Oh, how great, another interruption.$"
 
 Route113_Text_JucikaDefeated:
-	.string "defeat$"
+	.string "...Great.$"
 
 Route113_Text_JucikaPostBattle:
-	.string "post$"
+	.string "Will you leave now?\n"
+	.string "I have work to do.$"
 
 Route113_Text_NarutoIntro:
-	.string "intro$"
+	.string "Nin nin nin!!$"
 
 Route113_Text_NarutoDefeated:
-	.string "defeat$"
+	.string "Doryaaaah!!$"
 
 Route113_Text_NarutoPostBattle:
-	.string "post$"
+	.string "Im an assassin nin nin...$"
 
 Route113_Text_KushinaIntro:
 	.string "intro$"
@@ -141,13 +145,13 @@ Route113_Text_CallumPostBattle:
 	.string "post$"
 
 Route113_Text_KusuoIntro:
-	.string "intro$"
+	.string "These powers are a curse.$"
 
 Route113_Text_KusuoDefeated:
-	.string "defeat$"
+	.string "You beat me, even with my curse?$"
 
 Route113_Text_KusuoPostBattle:
-	.string "post$"
+	.string "You truly are remarkable.$"
 
 Route113_Text_MiraiIntro:
 	.string "intro$"

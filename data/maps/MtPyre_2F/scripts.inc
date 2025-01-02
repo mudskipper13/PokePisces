@@ -96,22 +96,25 @@ MtPyre_2F_Text_MaybeAnotherTime:
 	.string "maybe nexttime$"
 
 MtPyre_2F_Text_DeaconIntro:
-	.string "intro$"
+	.string "I can sense your aura.$"
 
 MtPyre_2F_Text_DeaconDefeated:
-	.string "defeat$"
+	.string "It would seem your aura dwarfs my own.$"
 
 MtPyre_2F_Text_DeaconPostBattle:
-	.string "post$"
+	.string "I will need to meditate on this loss.$"
 
 MtPyre_2F_Text_AlodiaIntro:
-	.string "intro$"
+	.string "I dance, I call! Each step shakes my\n"
+	.string "very soul!$"
 
 MtPyre_2F_Text_AlodiaDefeated:
-	.string "defeat$"
+	.string "We who sing and dance the language of\n"
+	.string "dragons!$"
 
 MtPyre_2F_Text_AlodiaPostBattle:
-	.string "post$"
+	.string "I dance, I call! Each step quakes my\n"
+	.string "body whole!$"
 
 MtPyre_2F_Text_RaelianaIntro:
 	.string "intro$"
@@ -123,25 +126,28 @@ MtPyre_2F_Text_RaelianaPostBattle:
 	.string "post$"
 
 MtPyre_2F_Text_MorganIntro:
-	.string "intro$"
+	.string "... Get out ... Get out!...$"
 
 MtPyre_2F_Text_MorganDefeated:
-	.string "defeat$"
+	.string "...Or keep going. I'm not a cop...$"
+
 
 MtPyre_2F_Text_MorganPostBattle:
-	.string "post$"
+	.string "...$"
 
 MtPyre_2F_Text_MistyIntro:
-	.string "intro$"
+	.string "... The spirits call my name...$"
 
 MtPyre_2F_Text_MistyDefeated:
-	.string "defeat$"
+
+	.string "... They call for you as well...$"
 
 MtPyre_2F_Text_MistyPostBattle:
-	.string "post$"
+	.string "...$"
 
 MtPyre_2F_Text_MistyNotAllMediumsBeaten:
-	.string "needa beat all the mediums$"
+	.string "You must conquer each of us\n"
+	.string "to continue...$"
 
 MtPyre_2F_Text_MistyGreetings:
 	.string "hello there$"

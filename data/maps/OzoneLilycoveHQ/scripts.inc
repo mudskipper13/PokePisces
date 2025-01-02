@@ -489,13 +489,15 @@ OzoneLilycoveHQ_Text_SeanPostBattle:
 	.string "post$"
 
 OzoneLilycoveHQ_Text_MarinaIntro:
-	.string "intro$"
+	.string "You remind me of me when I was your age.$"
 
 OzoneLilycoveHQ_Text_MarinaDefeated:
-	.string "defeat$"
+	.string "Oh yeah, I was kind of a twerp at your age, too...$"
 
 OzoneLilycoveHQ_Text_MarinaPostBattle:
-	.string "post$"
+	.string "Team Ozone is dedicated to keeping Hoenn\n"
+	.string "in one piece.\p"
+	.string "Remember that, kid!$"
 
 OzoneLilycoveHQ_Text_NoBusinessHere:
 	.string "Welcome to the\n"

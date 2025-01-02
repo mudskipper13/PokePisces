@@ -206,13 +206,15 @@ TrickHouseDarkRoom_EventScript_ExplodePart7::
 	return
 
 TrickHouseDarkRoom_Text_AntonIntro:
-	.string "yo$"
+	.string "You want it? It's yours.$"
 
 TrickHouseDarkRoom_Text_AntonDefeated:
-	.string "uh oh$"
+	.string "Bombs!?$"
 
 TrickHouseDarkRoom_Text_AntonBlowUp:
-	.string "gotta blast$"
+	.string "Come back when you're a little...\n"
+	.string "mmm...\l"
+	.string "richer!$"
 
 TrickHouseDarkRoom_Text_ScrollC:
 	.string "(It's a scroll with odd\n"
