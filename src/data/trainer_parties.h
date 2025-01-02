@@ -2567,7 +2567,7 @@ static const struct TrainerMon sParty_PMisty[] = {
     .species = SPECIES_BISHARP,
     .ability = ABILITY_PRESSURE,
     .heldItem = ITEM_SPECTRAL_IDOL,
-    .moves = {MOVE_FINISH_OFF, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .moves = {MOVE_EXECUTION, MOVE_NONE, MOVE_NONE, MOVE_NONE},
     }
 };
 
@@ -4073,7 +4073,7 @@ static const struct TrainerMon sParty_PJucika[] = {
     .friendship = 255,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 36,
-    .moves = {MOVE_FINISH_OFF, MOVE_CUT, MOVE_NIGHT_SLASH, MOVE_METAL_SOUND},
+    .moves = {MOVE_EXECUTION, MOVE_CUT, MOVE_NIGHT_SLASH, MOVE_METAL_SOUND},
     },
     {
     .species = SPECIES_UHEFOE,
@@ -12245,7 +12245,7 @@ static const struct TrainerMon sParty_PBadumka[] = {
     .heldItem = ITEM_EJECT_PACK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 79,
-    .moves = {MOVE_METAL_BURST, MOVE_FINISH_OFF, MOVE_THROAT_CHOP, MOVE_SILVER_EDGE},
+    .moves = {MOVE_METAL_BURST, MOVE_EXECUTION, MOVE_THROAT_CHOP, MOVE_SILVER_EDGE},
     },
     {
     .species = SPECIES_GUMONA,

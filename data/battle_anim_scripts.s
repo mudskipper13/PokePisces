@@ -945,7 +945,7 @@ gBattleAnims_Moves::
 	.4byte Move_CREEPY_CRAWL
 	.4byte Move_BENTHIC_WHIP
 	.4byte Move_BLACK_BUFFET
-	.4byte Move_FINISH_OFF
+	.4byte Move_EXECUTION
 	.4byte Move_SEIZE_CHANCE
 	.4byte Move_CASTLE_CRASH
 	.4byte Move_BRUTALIZE
@@ -22706,7 +22706,7 @@ Move_BLACK_BUFFET::
 	waitforvisualfinish
 	end
 
-Move_FINISH_OFF::
+Move_EXECUTION::
 	loadspritegfx ANIM_TAG_CUT
 	loadspritegfx ANIM_TAG_CROSS_IMPACT
 	loadspritegfx ANIM_TAG_PINK_PETAL

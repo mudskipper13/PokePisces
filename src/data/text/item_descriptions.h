@@ -2259,8 +2259,8 @@ static const u8 sBlackBeltDesc[] = _(
 static const u8 sPoisonBarbDesc[] = _(
     "A held item that\n"
     "boosts Poison-type\n"
-    "moves. Boosts more if\n"
-    "the foe is poisoned.");
+    "moves. Poisoned foes\n"
+    "take bonus true damage.");
 
 static const u8 sSoftSandDesc[] = _(
     "A held item that\n"
@@ -4253,9 +4253,10 @@ static const u8 sRoomExtenderDesc[] = _(
     "rooms.");
 
 static const u8 sTradingCardDesc[] = _(
-    "Shifts damage\n"
-    "based on foe's\n"
-    "and user's stats.");
+    "Deals bonus true\n"
+    "damage dependent on\n"
+    "user's and foe's\n"
+    "stats.");
 
 static const u8 sFairyRingDesc[] = _(
     "Boosts Fairy-type\n"
@@ -4419,9 +4420,9 @@ static const u8 sCrypticPlateDesc[] = _(
 
 static const u8 sChupacabraDesc[] = _(
     "A held item that makes\n"
-    "the holder move last,\n"
-    "but makes its attacks\n"
-    "do bonus damage.");
+    "the holder's attacks\n"
+    "do bonus true damage,\n"
+    "but also move last.");
 
 static const u8 sHeartGiftDesc[] = _(
     "Explodes after 2\n"

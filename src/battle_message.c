@@ -228,6 +228,7 @@ static const u8 sText_PkmnLockedInNightmare[] = _("{B_ATK_NAME_WITH_PREFIX} is l
 static const u8 sText_PkmnLaidCurse[] = _("{B_ATK_NAME_WITH_PREFIX} cut its own HP and\nlaid a CURSE on {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnAfflictedByCurse[] = _("{B_ATK_NAME_WITH_PREFIX} is afflicted\nby the CURSE!");
 static const u8 sText_SpikesScattered[] = _("Spikes were scattered all around\n{B_DEF_TEAM2} team!");
+static const u8 sText_SpelonSpikesScattered[] = _("Spelon Berry scattered Spikes all\naround {B_DEF_TEAM2} team!");
 static const u8 sText_PkmnHurtBySpikes[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is hurt\nby spikes!");
 static const u8 sText_PkmnIdentified[] = _("{B_ATK_NAME_WITH_PREFIX} identified\n{B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnPerishCountFell[] = _("{B_ATK_NAME_WITH_PREFIX}'s PERISH count\nfell to {B_BUFF1}!");
@@ -1777,6 +1778,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS - BATTLESTRINGS_TABLE_START] = sText_TargetWasPurifiedAndCantChangeStats,
     [STRINGID_PKMNSXINFATUATEDYITEMEDITION - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedYItemEdition,
     [STRINGID_PKMNSURROUNDEDWITHVEILS - BATTLESTRINGS_TABLE_START] = sText_PkmnSurroundedWithVeils,
+    [STRINGID_SPELONSPIKESSCATTERED - BATTLESTRINGS_TABLE_START] = sText_SpelonSpikesScattered,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

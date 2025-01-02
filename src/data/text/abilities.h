@@ -302,9 +302,9 @@ static const u8 sMarvelScaleDescription[] = _(
     "a status condition.");
 
 static const u8 sLiquidOozeDescription[] = _(
-    "Damages Pokémon using draining\n"
-    "moves. Ooze-based moves do more\n"
-    "damage based on target's max HP.");
+    "Damages attackers using any\n"
+    "draining move. Ooze-based moves\n"
+    "do bonus true damage.");
 
 static const u8 sOvergrowDescription[] = _(
     "Powers up Grass-type moves when\n"

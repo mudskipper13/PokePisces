@@ -1310,9 +1310,9 @@ static const u8 sFacadeDescription[] = _(
     "certain status conditions.");
 
 static const u8 sFocusPunchDescription[] = _(
-    "The user focuses its mind before\n"
-    "launching a punch. The user\n"
-    "flinches if hit beforehand.");
+    "Flinches if hit. After using\n"
+    "Focus Energy the user doesn't\n"
+    "need to focus, but it weakens.");
 
 static const u8 sSmellingSaltsDescription[] = _(
     "This attack inflicts double\n"
@@ -1494,9 +1494,8 @@ static const u8 sMudSportDescription[] = _(
     "Electric-type moves for 5 turns.");
 
 static const u8 sNeedleArmDescription[] = _(
-    "Cuts the target's HP by 1/5 as\n"
-    "bonus damage. If the user is\n"
-    "blooming, sets Spikes.");
+    "Deals bonus true damage. If the\n"
+    "user is blooming, sets Spikes.");
 
 static const u8 sSlackOffDescription[] = _(
     "The user slacks off, restoring\n"
@@ -1535,8 +1534,8 @@ static const u8 sMeteorMashDescription[] = _(
 
 static const u8 sAstonishDescription[] = _(
     "If the foe is panicking, goes\n"
-    "first and cuts HP by 1/5 as\n"
-    "bonus damage. May flinch.");
+    "first and deals bonus true\n"
+    "damage. May flinch the foe.");
 
 static const u8 sWeatherBallDescription[] = _(
     "This move's type and power\n"
@@ -1959,14 +1958,14 @@ static const u8 sFlareBlitzDescription[] = _(
     "leave the target with a burn.");
 
 static const u8 sForcePalmDescription[] = _(
-    "The target is attacked with a\n"
-    "shock wave. This may also leave\n"
-    "the target with paralysis.");
+    "May leave the foe paralyzed. If\n"
+    "the foe is paralyzed, sharply\n"
+    "lowers a random stat.");
 
 static const u8 sAuraSphereDescription[] = _(
     "The user lets loose a blast of\n"
-    "aura power from deep within its\n"
-    "body at the foe, never missing.");
+    "aura that ignores the user's\n"
+    "stat nerfs and foe's stat buffs.");
 
 static const u8 sRockPolishDescription[] = _(
     "The user polishes its body to\n"
@@ -2004,9 +2003,9 @@ static const u8 sAirSlashDescription[] = _(
     "This may make the target flinch.");
 
 static const u8 sXScissorDescription[] = _(
-    "The user slashes at the foe by\n"
-    "crossing its scythes or claws.\n"
-    "Critical hits land more easily.");
+    "Critical hits land more easily.\n"
+    "Always lands critical hits if\n"
+    "the foe's HP is at half or less.");
 
 static const u8 sBugBuzzDescription[] = _(
     "The user vibrates to generate a\n"
@@ -2029,9 +2028,9 @@ static const u8 sPowerGemDescription[] = _(
     "were made of gemstones.");
 
 static const u8 sVacuumWaveDescription[] = _(
-    "The user whirls its fists to send\n"
-    "a wave of pure vacuum at the foe.\n"
-    "This move always goes first.");
+    "A wave of pure vacuum that\n"
+    "always goes first. Boosted if\n"
+    "the foe has no stat changes.");
 
 static const u8 sFocusBlastDescription[] = _(
     "The user heightens its mental\n"
@@ -4409,7 +4408,7 @@ static const u8 sBlackBuffetDescription[] = _(
     "the foe 3 to 5 times in a row.\n"
     "Absorbs half the damage done.");
 
-static const u8 sFinishOffDescription[] = _(
+static const u8 sExecutionDescription[] = _(
     "This move doubles in power if\n"
     "the foe's HP isn't full. Lowers\n"
     "the user's Attack and goes first.");
@@ -5866,7 +5865,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CREEPY_CRAWL - 1] = sCreepyCrawlDescription,
     [MOVE_BENTHIC_WHIP - 1] = sBenthicWhipDescription,
     [MOVE_BLACK_BUFFET - 1] = sBlackBuffetDescription,
-    [MOVE_FINISH_OFF - 1] = sFinishOffDescription,
+    [MOVE_EXECUTION - 1] = sExecutionDescription,
     [MOVE_SEIZE_CHANCE - 1] = sSeizeChanceDescription,
     [MOVE_CASTLE_CRASH - 1] = sDemolisherDescription,
     [MOVE_BRUTALIZE - 1] = sBrutalizeDescription,

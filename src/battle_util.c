@@ -1323,7 +1323,7 @@ void PrepareStringBattle(u16 stringId, u32 battler)
         stringId = STRINGID_STATSWONTDECREASE2;
 
     // Check Defiant and Competitive stat raise whenever a stat is lowered.
-    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
+    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSSPEEDWITH || stringId == STRINGID_PKMNCUTSATTACKWITH || stringId == STRINGID_PKMNCUTSSPATTACKWITH || stringId == STRINGID_PKMNCUTSDEFENCEWITH || stringId == STRINGID_PKMNCUTSSPDEFENCEWITH)
               && ((targetAbility == ABILITY_DEFIANT && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
                  || (targetAbility == ABILITY_COMPETITIVE && CompareStat(gBattlerTarget, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)))
               && ((gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget) || gBattleScripting.stickyWebStatDrop == 1)
@@ -2079,15 +2079,17 @@ u8 DoFieldEndTurnEffects(void)
                 side = gBattleStruct->turnSideTracker;
                 gBattlerAttacker = gSideTimers[side].healOrderTimerBattlerId;
                 if (gSideStatuses[side] & SIDE_STATUS_HEAL_ORDER)
-                {
-                    if (--gSideTimers[side].healOrderTimer == 0
-                    && gBattleMons[gBattlerAttacker].hp != 0
-                    && (!(BATTLER_MAX_HP(gBattlerAttacker)))
-                    && (!(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
+                {            
+                    if (--gSideTimers[side].healOrderTimer == 0)
                     {
+                        if ((!(BATTLER_MAX_HP(gBattlerAttacker)))
+                        && gBattleMons[gBattlerAttacker].hp != 0
+                        && (!(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
+                        {
+                            BattleScriptExecute(BattleScript_HealOrderActivates);
+                            effect++;
+                        }
                         gSideStatuses[side] &= ~SIDE_STATUS_HEAL_ORDER;
-                        BattleScriptExecute(BattleScript_HealOrderActivates);
-                        effect++;
                     }
                 }
                 gBattleStruct->turnSideTracker++;
@@ -10173,6 +10175,18 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattlescriptCurrInstr = BattleScript_WhiteHerbRet;
             }
             break;
+        case HOLD_EFFECT_EJECT_PACK:
+            if (gProtectStructs[battler].statFell
+             && gProtectStructs[battler].disableEjectPack == 0
+             && CountUsablePartyMons(battler) > 0)
+            {
+                gBattleScripting.battler = battler;
+                gPotentialItemEffectBattler = battler;
+                effect = ITEM_STATS_CHANGE;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_EjectPackActivates;
+            }
+            break;
         }
         break;
     }
@@ -11101,6 +11115,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if ((gProtectStructs[battlerAtk].physicalDmg && gProtectStructs[battlerAtk].physicalBattlerId == battlerDef) || (gProtectStructs[battlerAtk].specialDmg && gProtectStructs[battlerAtk].specialBattlerId == battlerDef))
             basePower *= 2;
         break;
+    case EFFECT_FICKLE_BEAM:
+        if (gBattleStruct->fickleBeamBoosted)
+            basePower *= 2;
+        break;
     case EFFECT_SEIZE_CHANCE:
     {
         if (!(GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget))
@@ -11281,6 +11299,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
                 basePower = 100;
         }
         break;
+    case EFFECT_FOCUS_PUNCH:
+        if (gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY)
+            basePower = 110;
+        break;
     case EFFECT_PAYBACK:
         if (GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef)
 #if B_PAYBACK_SWITCH_BOOST >= GEN_5
@@ -11381,10 +11403,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 40 + (30 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
         basePower = (basePower > 160) ? 160 : basePower;
         break;
-    case EFFECT_FICKLE_BEAM:
-        if (gBattleStruct->fickleBeamBoosted)
-            basePower = 160;
-        break;
     case EFFECT_DRAGON_CLAW:
         if (gBattleStruct->fickleBeamBoosted)
             basePower = 100;
@@ -11442,6 +11460,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE))
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
+    case EFFECT_VACUUM_WAVE:
+        if (CountBattlerStatIncreases(battlerDef, TRUE) < 1 && CountBattlerStatDecreases(battlerDef, TRUE) < 1)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
     case EFFECT_FAIRY_WIND:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -11458,7 +11480,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
-    case EFFECT_FINISH_OFF:
+    case EFFECT_EXECUTION:
         if (gBattleMons[battlerDef].hp < gBattleMons[battlerDef].maxHP)
             modifier = uq4_12_multiply(modifier, UQ_4_12(3.0));
         break;
@@ -12076,6 +12098,8 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         atkStage = DEFAULT_STAT_STAGE;
     if (atkStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
         atkStage = DEFAULT_STAT_STAGE;
+    if (atkStage < DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
+        atkStage = DEFAULT_STAT_STAGE;
 
     atkStat *= gStatStageRatios[atkStage][0];
     atkStat /= gStatStageRatios[atkStage][1];
@@ -12386,12 +12410,14 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_IGNORANT_BLISS)
         defStage = DEFAULT_STAT_STAGE;
     //draco force make normal moves ignore stat changes
-    if (atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
+    if (defStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
         defStage = DEFAULT_STAT_STAGE;
     // certain moves also ignore stat changes
     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
         defStage = DEFAULT_STAT_STAGE;
     if (gCurrentMove == MOVE_GRASSY_GLIDE && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+        defStage = DEFAULT_STAT_STAGE;
+    if (defStage > DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
         defStage = DEFAULT_STAT_STAGE;
 
     defStat *= gStatStageRatios[defStage][0];
@@ -12624,12 +12650,14 @@ static inline uq4_12_t GetParentalBondModifier(u32 battlerAtk)
 
 static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveType, u32 move, u32 abilityAtk)
 {
-    if ((IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move != MOVE_STRUGGLE || move != MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
-        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.25) : UQ_4_12(1.0);
-    else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_NORMAL))
+    if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_NORMAL) && moveType == TYPE_NORMAL)
         return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
-    else if (((!IS_BATTLER_OF_TYPE(battlerAtk, moveType)) || move == MOVE_STRUGGLE || move == MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
-        return UQ_4_12(1.25);
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_NORMAL) && moveType != TYPE_NORMAL && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
+        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
+        return UQ_4_12(1.0);
+    else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) && gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
+        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.5) : UQ_4_12(1.25);
     else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move == MOVE_STRUGGLE || move == MOVE_NONE)
         return UQ_4_12(1.0);
     return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.5) : UQ_4_12(1.25);
@@ -13126,6 +13154,8 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     s32 dmg;
     u32 userFinalAttack;
     u32 targetFinalDefense;
+    u32 defCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].defense;
+    u32 atkCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].attack;
 
     if (fixedBasePower)
         gBattleMovePower = fixedBasePower;
@@ -13156,6 +13186,36 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     DAMAGE_APPLY_MODIFIER(GetBurnOrFrostBiteOrPanicModifier(battlerAtk, move, abilityAtk));
     DAMAGE_APPLY_MODIFIER(GetZMoveAgainstProtectionModifier(battlerDef));
     DAMAGE_APPLY_MODIFIER(GetOtherModifiers(move, moveType, battlerAtk, battlerDef, isCrit, typeEffectivenessModifier, updateFlags, abilityAtk, abilityDef, holdEffectAtk, holdEffectDef));
+
+    if (holdEffectAtk == HOLD_EFFECT_TRADING_CARD)
+    {
+        if (gBattleMoves[move].piercingMove)
+        {
+            if (defCompare > 80)
+                defCompare = 80;
+            dmg = dmg + defCompare;
+        }
+        else
+        {
+            if (atkCompare > 80)
+                atkCompare = 80;
+            dmg = dmg + defCompare;
+        }
+    }
+
+    if (holdEffectAtk == HOLD_EFFECT_POISON_BARB 
+    && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY 
+    && gBattleMoves[move].type == TYPE_POISON)
+    {
+        dmg = dmg + (gBattleMons[battlerDef].maxHP * 15 / 100);
+    }
+    else if (move == MOVE_NEEDLE_ARM 
+    || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
+    || (abilityAtk == ABILITY_LIQUID_OOZE && gBattleMoves[move].oozeMove)
+    || holdEffectAtk == HOLD_EFFECT_CHUPACABRA)
+    {
+        dmg = dmg + (gBattleMons[battlerDef].maxHP / 5);
+    }
 
     if (dmg == 0)
         dmg = 1;
@@ -13205,7 +13265,7 @@ static inline s32 DoFutureSightAttackDamageCalcVars(u32 move, u32 battlerAtk, u3
     }
     // Same type attack bonus
     if (gSpeciesInfo[partyMonSpecies].types[0] == moveType || gSpeciesInfo[partyMonSpecies].types[1] == moveType)
-        DAMAGE_APPLY_MODIFIER(UQ_4_12(1.5));
+        DAMAGE_APPLY_MODIFIER(UQ_4_12(1.25));
     else
         DAMAGE_APPLY_MODIFIER(UQ_4_12(1.0));
     DAMAGE_APPLY_MODIFIER(typeEffectivenessModifier);
@@ -14690,7 +14750,10 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
     if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance *= 5;
 
-    if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE || GetBattlerAbility(battler) == ABILITY_RISKTAKER || IsAbilityOnSide(battler, ABILITY_SERENE_AURA) || (GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
+    if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 
+    || GetBattlerAbility(battler) == ABILITY_RISKTAKER 
+    || IsAbilityOnSide(battler, ABILITY_SERENE_AURA) 
+    || (GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
         secondaryEffectChance *= 2;
 
     if (GetBattlerAbility(battler) == ABILITY_SHUNYONG && (gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 2)))

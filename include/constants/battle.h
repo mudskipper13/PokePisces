@@ -443,8 +443,9 @@
 #define MOVE_EFFECT_SYRUP_BOMB          108
 #define MOVE_EFFECT_OCTAZOOKA           109
 #define MOVE_EFFECT_ATTACK_ORDER        110
+#define MOVE_EFFECT_RANDOM_STAT_DROP_2  111
 
-#define NUM_MOVE_EFFECTS                111
+#define NUM_MOVE_EFFECTS                112
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

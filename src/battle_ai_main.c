@@ -1226,7 +1226,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_DREAM_EATER:
             if (!AI_IsBattlerAsleepOrComatose(battlerDef))
-                score -= 8;
+                score -= 30;
             else if (effectiveness == AI_EFFECTIVENESS_x0)
                 score -= 10;
             break;
