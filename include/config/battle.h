@@ -41,7 +41,7 @@
 #define B_PARALYZE_ELECTRIC         GEN_LATEST // In Gen6+, Electric-type Pok?mon can't be paralyzed.
 #define B_POWDER_GRASS              GEN_LATEST // In Gen6+, Grass-type Pok?mon are immune to powder and spore moves.
 #define B_STEEL_RESISTANCES         GEN_LATEST // In Gen6+, Steel-type Pok?mon are no longer resistant to Dark-type and Ghost-type moves.
-#define B_PRANKSTER_DARK_TYPES      GEN_LATEST // In Gen7+, Prankster-elevated status moves do not affect Dark type Pok?mon.
+#define B_PRANKSTER_DARK_TYPES      GEN_6 // In Gen7+, Prankster-elevated status moves do not affect Dark type Pok?mon.
 #define B_SHEER_COLD_IMMUNITY       GEN_LATEST // In Gen7+, Ice-types are immune to Sheer Cold
 #define B_ROOST_PURE_FLYING         GEN_LATEST // In Gen5+, Roost makes pure Flying-types into Normal-type.
 

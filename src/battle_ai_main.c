@@ -1132,7 +1132,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
         // gen7+ dark type mons immune to priority->elevated moves from prankster
         #if B_PRANKSTER_DARK_TYPES >= GEN_7
-        if (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER && IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK) && IS_MOVE_STATUS(move)
+        if (aiData->abilities[battlerAtk] == ABILITY_PRANKSTER && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK) || IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY)) && IS_MOVE_STATUS(move)
           && !(moveTarget & (MOVE_TARGET_OPPONENTS_FIELD | MOVE_TARGET_USER)))
             RETURN_SCORE_MINUS(10);
         #endif
@@ -1226,7 +1226,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_DREAM_EATER:
             if (!AI_IsBattlerAsleepOrComatose(battlerDef))
-                score -= 8;
+                score -= 30;
             else if (effectiveness == AI_EFFECTIVENESS_x0)
                 score -= 10;
             break;
@@ -2223,7 +2223,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_TRICK:
         case EFFECT_KNOCK_OFF:
         case EFFECT_PARTY_TRICK:
-            if (aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD)
+            if (aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD || IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
                 score -= 10;
             break;
         case EFFECT_INGRAIN:
@@ -5268,7 +5268,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
               && CanBattlerGetOrLoseItem(battlerAtk, aiData->items[battlerDef])
               && !HasMoveEffect(battlerAtk, EFFECT_ACROBATICS)
               && !HasMoveEffect(battlerAtk, EFFECT_SAVAGE_WING)
-              && aiData->abilities[battlerDef] != ABILITY_STICKY_HOLD)
+              && aiData->abilities[battlerDef] != ABILITY_STICKY_HOLD
+              && !IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
             {
                 switch (aiData->holdEffects[battlerDef])
                 {
@@ -5347,7 +5348,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
               && CanBattlerGetOrLoseItem(battlerAtk, aiData->items[battlerDef])
               && !HasMoveEffect(battlerAtk, EFFECT_ACROBATICS)
               && !HasMoveEffect(battlerAtk, EFFECT_SAVAGE_WING)
-              && aiData->abilities[battlerDef] != ABILITY_STICKY_HOLD)
+              && aiData->abilities[battlerDef] != ABILITY_STICKY_HOLD
+              && !IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
             {
                 switch (aiData->holdEffects[battlerDef])
                 {
@@ -6396,13 +6398,13 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         break;
     case EFFECT_BUG_BITE:   // And pluck
-        if (gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE || aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD)
+        if (gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE || aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD || IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
             break;
         else if (ItemId_GetPocket(aiData->items[battlerDef]) == POCKET_BERRIES)
             score += 3;
         break;
     case EFFECT_INCINERATE:
-        if (gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE || aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD)
+        if (gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE || aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD || IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY))
             break;
         else if (ItemId_GetPocket(aiData->items[battlerDef]) == POCKET_BERRIES || aiData->holdEffects[battlerDef] == HOLD_EFFECT_GEMS)
             score += 3;

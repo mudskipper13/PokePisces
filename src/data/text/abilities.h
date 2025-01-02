@@ -302,9 +302,9 @@ static const u8 sMarvelScaleDescription[] = _(
     "a status condition.");
 
 static const u8 sLiquidOozeDescription[] = _(
-    "Damages Pokémon using draining\n"
-    "moves. Ooze-based moves do more\n"
-    "damage based on target's max HP.");
+    "Damages attackers using any\n"
+    "draining move. Ooze-based moves\n"
+    "do bonus true damage.");
 
 static const u8 sOvergrowDescription[] = _(
     "Powers up Grass-type moves when\n"
@@ -591,7 +591,7 @@ static const u8 sUnnerveDescription[] = _(
 static const u8 sDefiantDescription[] = _(
     "Boosts the Pokémon's Attack\n"
     "stat sharply when its stats are\n"
-    "lowered by an opposing Pokémon.");
+    "lowered by another Pokémon.");
 
 static const u8 sDefeatistDescription[] = _(
     "Halves the Pokémon's Attack and\n"
@@ -725,8 +725,8 @@ static const u8 sSapSipperDescription[] = _(
 
 static const u8 sPranksterDescription[] = _(
     "Gives priority to the Pokémon's\n"
-    "status moves unless the\n"
-    "opposing Pokémon is Dark-type.");
+    "status moves unless the target\n"
+    "is Dark or Fairy-type.");
 
 static const u8 sSandForceDescription[] = _(
     "Boosts the power of Rock,\n"
@@ -782,7 +782,7 @@ static const u8 sBulletproofDescription[] = _(
 static const u8 sCompetitiveDescription[] = _(
     "Boosts the Pokémon's Sp. Atk\n"
     "stat sharply when its stats are\n"
-    "lowered by an opposing Pokémon.");
+    "lowered by another Pokémon.");
 
 static const u8 sStrongJawDescription[] = _(
     "The Pokémon's strong jaw boosts\n"

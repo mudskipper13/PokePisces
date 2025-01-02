@@ -764,6 +764,8 @@ bool32 IsBattlerTrapped(u32 battler, bool32 checkSwitch)
         return FALSE;
     else if (gBattleMons[battler].status2 & (STATUS2_ESCAPE_PREVENTION | STATUS2_WRAPPED))
         return TRUE;
+    else if (holdEffect == HOLD_EFFECT_GLUE_TUBE)
+        return TRUE;
     else if (gStatuses3[battler] & (STATUS3_ROOTED | STATUS3_SKY_DROPPED))
         return TRUE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
@@ -3014,6 +3016,9 @@ bool32 CanKnockOffItem(u32 battler, u32 item)
     if (AI_DATA->abilities[battler] == ABILITY_STICKY_HOLD)
         return FALSE;
 
+    if (IS_BATTLER_OF_TYPE(battler, TYPE_FAIRY))
+        return FALSE;
+
     if (!CanBattlerGetOrLoseItem(battler, item))
         return FALSE;
 
@@ -3257,6 +3262,7 @@ bool32 AI_CanBeConfused(u32 battler, u32 ability)
     if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
       || (ability == ABILITY_OWN_TEMPO)
       || (ability == ABILITY_TITANIC)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC)
       || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)))
         return FALSE;
     return TRUE;

@@ -492,7 +492,7 @@
 #define EFFECT_EXPOSED_HIT                  486 //According to EFFECT_POISON_HIT et al, this doesnt need any special AI code, but may take the liberty to add it
 #define EFFECT_TEARFUL_LOOK                 487 //AI Flags complete (replaced Noble Roar)
 #define EFFECT_BLACK_BUFFET                 488 //AI Flags added, combined stuff from EFFECT_MULTI_HIT and EFFECT_ABSORB, may cause a bug
-#define EFFECT_FINISH_OFF                   489 //According to EFFECT_BRINE, this doesnt need any special AI code
+#define EFFECT_EXECUTION                    489 //According to EFFECT_BRINE, this doesnt need any special AI code
 #define EFFECT_SEIZE_CHANCE                 490 //AI Flags added, combined stuff from EFFECT_SUCKER_PUNCH and EFFECT_ALWAYS_CRIT, may cause a bug
 #define EFFECT_RAZING_SUN                   491 //AI Flags added, combined stuff from EFFECT_RECOIL_33 and EFFECT_FEINT, may cause a bug
 #define EFFECT_TERRORIZE                    492 //AI Flags added, made unique code for IncreasePanicScore and its associated functions which was copied from Poison. Needs testing
@@ -625,7 +625,10 @@
 #define EFFECT_ATTACK_ORDER                 619
 #define EFFECT_DEFEND_ORDER                 620
 #define EFFECT_HEAL_ORDER                   621
+#define EFFECT_MOUNTAIN_GALE                623
+#define EFFECT_FORCE_PALM                   624
+#define EFFECT_VACUUM_WAVE                  625
 
-#define NUM_BATTLE_MOVE_EFFECTS             622
+#define NUM_BATTLE_MOVE_EFFECTS             626
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

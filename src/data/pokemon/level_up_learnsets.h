@@ -12197,8 +12197,8 @@ static const struct LevelUpMove sPawniardLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sBisharpLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(0, MOVE_FINISH_OFF),
-    LEVEL_UP_MOVE(1, MOVE_FINISH_OFF),
+    LEVEL_UP_MOVE(0, MOVE_EXECUTION),
+    LEVEL_UP_MOVE(1, MOVE_EXECUTION),
     LEVEL_UP_MOVE(1, MOVE_FURY_CUTTER),
     LEVEL_UP_MOVE(1, MOVE_LEER),
     LEVEL_UP_MOVE(1, MOVE_METAL_BURST),
@@ -22371,7 +22371,7 @@ static const struct LevelUpMove sLuoShanLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sKingambitLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(1, MOVE_FINISH_OFF),
+    LEVEL_UP_MOVE(1, MOVE_EXECUTION),
     LEVEL_UP_MOVE(0, MOVE_FINAL_GAMBIT),
     LEVEL_UP_MOVE(1, MOVE_FINAL_GAMBIT),
     LEVEL_UP_MOVE(1, MOVE_FURY_CUTTER),

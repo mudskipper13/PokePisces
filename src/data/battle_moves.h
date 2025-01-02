@@ -2128,6 +2128,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
         .gasMove = TRUE,
+        .argument = STATUS1_POISON,
     },
 
     [MOVE_SLUDGE] =
@@ -3897,7 +3898,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_HIT,
         .power = 150,
         .type = TYPE_BUG,
-        .accuracy = 85,
+        .accuracy = 90,
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -4126,7 +4127,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_FIGHTING,
-        .accuracy = 80,
+        .accuracy = 85,
         .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -5939,7 +5940,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_RECOIL_50_STATUS,
         .power = 150,
         .type = TYPE_ELECTRIC,
-        .accuracy = 80,
+        .accuracy = 85,
         .pp = 5,
         .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
@@ -6352,8 +6353,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .power = 50,
         .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 15,
-        .secondaryEffectChance = 10,
+        .pp = 10,
+        .secondaryEffectChance = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -6761,7 +6762,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FORCE_PALM] =
     {
-        .effect = EFFECT_PARALYZE_HIT,
+        .effect = EFFECT_FORCE_PALM,
         .power = 60,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
@@ -6784,7 +6785,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #endif
         .effect = EFFECT_HIT,
         .type = TYPE_FIGHTING,
-        .accuracy = 0,
+        .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -7019,7 +7020,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_VACUUM_WAVE] =
     {
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_VACUUM_WAVE,
         .power = 40,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
@@ -12823,13 +12824,13 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MOUNTAIN_GALE] =
     {
-        .effect = EFFECT_FLINCH_HIT,
+        .effect = EFFECT_MOUNTAIN_GALE,
         .power = 120,
         .type = TYPE_ICE,
         .accuracy = 85,
         .pp = 5,
         .secondaryEffectChance = 30,
-        .target = MOVE_TARGET_SELECTED,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
@@ -15150,7 +15151,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_LOVE_TAP] =
     {
         .effect = EFFECT_LOVE_TAP,
-        .power = 70,
+        .power = 60,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,
@@ -15322,9 +15323,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
     },
 
-    [MOVE_FINISH_OFF] =
+    [MOVE_EXECUTION] =
     {
-        .effect = EFFECT_FINISH_OFF,
+        .effect = EFFECT_EXECUTION,
         .power = 50,
         .type = TYPE_DARK,
         .accuracy = 100,
@@ -15440,10 +15441,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ROADBLOCK] =
     {
         .effect = EFFECT_ROADBLOCK,
-        .power = 85,
+        .power = 120,
         .type = TYPE_ROCK,
         .accuracy = 100,
-        .pp = 10,
+        .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
@@ -16440,6 +16441,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .soundMove = TRUE,
+        .argument = STATUS1_PANIC,
+        .sheerForceBoost = TRUE,
     },
 
     [MOVE_GREEN_GUISE] =
@@ -16596,7 +16599,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_RECHARGE_REDUCE,
         .power = 140,
         .type = TYPE_NORMAL,
-        .accuracy = 90,
+        .accuracy = 100,
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,

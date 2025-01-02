@@ -4946,13 +4946,15 @@ const u16 gEggMoves[] = {
         MOVE_SUCKER_PUNCH,
         MOVE_MEAN_LOOK,
         MOVE_LASER_FOCUS,
-        MOVE_LOW_KICK),
+        MOVE_LOW_KICK,
+        MOVE_WICKED_BLOW),
 
     egg_moves(KINGAMBIT,
         MOVE_SUCKER_PUNCH,
         MOVE_MEAN_LOOK,
         MOVE_LASER_FOCUS,
-        MOVE_LOW_KICK),
+        MOVE_LOW_KICK,
+        MOVE_WICKED_BLOW),
 
     egg_moves(CATTUCLID,
         MOVE_ELECTROWEB),
