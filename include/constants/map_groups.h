@@ -244,6 +244,7 @@
 #define MAP_RUST_GYM_DARK_LOCKERS            (12 | (17 << 8))
 #define MAP_RUST_GYM_DARK_CAFETERIA          (13 | (17 << 8))
 #define MAP_RUST_GYM_DARK_CLASSROOM          (14 | (17 << 8))
+#define MAP_RUST_GYM_PRINCIPALS_OFFICE       (15 | (17 << 8))
 
 // gMapGroup_PiscesLeg10Major
 #define MAP_PETALBURG_NEW       (0 | (18 << 8))

@@ -3741,3 +3741,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/RustGymDarkCafeteria/scripts.inc"
 
 	.include "data/maps/RustGymDarkClassroom/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOffice/scripts.inc"
