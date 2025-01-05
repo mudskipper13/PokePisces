@@ -6615,26 +6615,32 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_ICE_SCALES:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED
-            && (gDisableStructs[gBattlerTarget].iceScalesCounter > 0))
+            && (gDisableStructs[gBattlerTarget].iceScalesCounter != 0))
             {
+                s32 iceScalesToDeduct;
+                
                 if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 40) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 else
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 20) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+
                 if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
                 {
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    iceScalesToDeduct = 3;
                 }
                 else
                 {
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    iceScalesToDeduct = 2;
                 }
-                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerTarget].iceScalesCounter);
+
+                if (gDisableStructs[gBattlerTarget].iceScalesCounter < iceScalesToDeduct)
+                {
+                    iceScalesToDeduct = gDisableStructs[gBattlerTarget].iceScalesCounter;
+                }
+
+                gDisableStructs[gBattlerTarget].iceScalesCounter -= iceScalesToDeduct;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IceScalesActivatesLoss;
                 effect++;
@@ -12297,7 +12303,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case HOLD_EFFECT_CLEANSE_TAG:
         if ((CountBattlerStatDecreases(battlerDef, TRUE)) > 0)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.0 + (CountBattlerStatDecreases(battlerDef, TRUE) * 0.15)));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.0) + (sPercentToModifier[CountBattlerStatDecreases(battlerDef, TRUE) * 15]));
         break;
     case HOLD_EFFECT_CHOICE_BAND:
         if (IS_MOVE_PHYSICAL(move) && atkAbility != ABILITY_ONE_WAY_TRIP)
@@ -12901,8 +12907,8 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
             return UQ_4_12(0.75);
         break;
     case ABILITY_ICE_SCALES:
-        if (gDisableStructs[battlerDef].iceScalesCounter > 0)
-            return UQ_4_12(1.0 - (gDisableStructs[battlerDef].iceScalesCounter * 0.1));
+        if (gDisableStructs[battlerDef].iceScalesCounter != 0)
+            return UQ_4_12(1.0 - (sPercentToModifier[gDisableStructs[battlerDef].iceScalesCounter * 10]));
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)

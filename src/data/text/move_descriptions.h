@@ -1603,9 +1603,9 @@ static const u8 sWaterSpoutDescription[] = _(
     "the less powerful it becomes.");
 
 static const u8 sSignalBeamDescription[] = _(
-    "The user attacks with a sinister\n"
-    "beam of light. This may confuse\n"
-    "the for and/or lower its Attack.");
+    "Shoots a beam of light that may\n"
+    "confuse the foe. If the foe is\n"
+    "confused, always lowers Attack.");
 
 static const u8 sShadowPunchDescription[] = _(
     "The user throws a punch from the\n"

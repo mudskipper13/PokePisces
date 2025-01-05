@@ -4028,13 +4028,35 @@ BattleScript_RagePowderEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSignalBeam::
+	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_SignalBeamStatDrop
 	setmoveeffect MOVE_EFFECT_CONFUSION
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
-	seteffectwithchance
+	goto BattleScript_EffectHit
+BattleScript_SignalBeamStatDrop::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
+	seteffectprimary
+	moveendall
+	end
 
 BattleScript_EffectSilverWind:
 	setmoveeffect MOVE_EFFECT_ALL_STATS_UP | MOVE_EFFECT_AFFECTS_USER
@@ -16900,6 +16922,7 @@ BattleScript_EffectHitSetRemoveTerrain:
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
+	jumpifmovehadnoeffect BattleScript_TryFaint
 	setremoveterrain BattleScript_TryFaint
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printfromtable gDemolisherStringIds
