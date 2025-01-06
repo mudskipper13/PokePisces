@@ -296,7 +296,8 @@
     "RustGymDarkLockers",
     "RustGymDarkCafeteria",
     "RustGymDarkClassroom",
-    "RustGymPrincipalsOffice"
+    "RustGymPrincipalsOffice",
+    "RustGymPrincipalsOfficeShort"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
