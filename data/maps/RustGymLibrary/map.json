@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 3,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "dest_warp_id": "3"
+    }
   ],
   "coord_events": [
 

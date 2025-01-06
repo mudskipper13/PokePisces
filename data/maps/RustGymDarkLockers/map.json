@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_HALLWAY",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 30,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_HALLWAY",
+      "dest_warp_id": "7"
+    }
   ],
   "coord_events": [
 

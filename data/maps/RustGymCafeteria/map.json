@@ -17,7 +17,34 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 7,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 26,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_GYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 25,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_HALLWAY",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

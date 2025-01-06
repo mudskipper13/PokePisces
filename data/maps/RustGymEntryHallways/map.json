@@ -17,7 +17,69 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 0,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_ENTRY_HALLWAYS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 1,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_ENTRY_HALLWAYS",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 11,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 15,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_EXTRACURRICULAR_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 6,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_CLASSROOM",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

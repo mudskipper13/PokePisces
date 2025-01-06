@@ -17,7 +17,62 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 1,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_ENTRY_HALLWAYS",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 18,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_PRINCIPALS_OFFICE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_COMPUTER_LAB",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 9,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LIBRARY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 0,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 1,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_LOCKER_HALLWAY",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 16,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_CAFETERIA",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_CAFETERIA",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 
