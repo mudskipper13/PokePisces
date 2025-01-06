@@ -1012,3 +1012,14 @@ const struct Tileset gTileset_RustboroGymNew =
     .metatileAttributes = gMetatileAttributes_RustboroGymNew,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasinoNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasinoNew,
+    .palettes = gTilesetPalettes_CasinoNew,
+    .metatiles = gMetatiles_CasinoNew,
+    .metatileAttributes = gMetatileAttributes_CasinoNew,
+    .callback = NULL,
+};

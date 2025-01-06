@@ -254,6 +254,7 @@
 #define MAP_LITTLEROOT_NEW      (4 | (18 << 8))
 #define MAP_PENDING_DEV         (5 | (18 << 8))
 #define MAP_TEST_MAP            (6 | (18 << 8))
+#define MAP_SEASIDE_CASINO      (7 | (18 << 8))
 
 // gMapGroup_PiscesLeg10Minor
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_1F (0 | (19 << 8))

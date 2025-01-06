@@ -5960,6 +5960,16 @@
       "secondary_tileset": "gTileset_RustboroGymNew",
       "border_filepath": "data/layouts/RustGymPrincipalsOffice/border.bin",
       "blockdata_filepath": "data/layouts/RustGymPrincipalsOffice/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASIDE_CASINO",
+      "name": "SeasideCasino_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasinoNew",
+      "border_filepath": "data/layouts/SeasideCasino/border.bin",
+      "blockdata_filepath": "data/layouts/SeasideCasino/map.bin"
     }
   ]
 }
