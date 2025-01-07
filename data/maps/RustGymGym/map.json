@@ -42,20 +42,7 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 5,
-      "y": 15,
-      "elevation": 0,
-      "dest_map": "MAP_RUST_GYM_CAFETERIA",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 6,
-      "y": 15,
-      "elevation": 0,
-      "dest_map": "MAP_RUST_GYM_CAFETERIA",
-      "dest_warp_id": "1"
-    }
+
   ],
   "coord_events": [
 
