@@ -396,6 +396,7 @@
 #define EVO_PANICKED                      56
 #define EVO_SILENCE_ACTIVATED             57
 #define EVO_MED_FRIENDSHIP                58
+#define EVO_LEVEL_HEMOKO                  59
 
 #define EVOS_PER_MON 10
 
@@ -406,6 +407,7 @@
 #define EVO_MODE_ITEM_CHECK        3 // If an Everstone is being held, still want to show that the stone *could* be used on that Pokémon to evolve
 #define EVO_MODE_BATTLE_SPECIAL    4
 #define EVO_MODE_OVERWORLD_SPECIAL 5
+#define EVO_MODE_BATTLE_ONLY 6
 
 #define MON_PIC_WIDTH 64
 #define MON_PIC_HEIGHT 64
