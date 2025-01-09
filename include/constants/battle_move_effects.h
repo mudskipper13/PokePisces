@@ -376,7 +376,7 @@
 #define EFFECT_POLTERGEIST                  370
 #define EFFECT_OCTOLOCK                     371
 #define EFFECT_CLANGOROUS_SOUL              372
-#define EFFECT_BOLT_BEAK                    373
+#define EFFECT_SEA_JAWS                     373
 #define EFFECT_SKY_DROP                     374
 #define EFFECT_EXPANDING_FORCE              375
 #define EFFECT_METEOR_BEAM                  376
@@ -628,7 +628,15 @@
 #define EFFECT_MOUNTAIN_GALE                623
 #define EFFECT_FORCE_PALM                   624
 #define EFFECT_VACUUM_WAVE                  625
+#define EFFECT_FIERY_WRATH                  626
+#define EFFECT_DUAL_CHOP                    627
+#define EFFECT_BOLT_BEAK                    628
+#define EFFECT_COVET                        629
+#define EFFECT_SWEET_KISS                   630
+#define EFFECT_ROCK_POLISH                  631
+#define EFFECT_POWER_GEM                    632
+#define EFFECT_PSYCHO_CUT                   633
 
-#define NUM_BATTLE_MOVE_EFFECTS             626
+#define NUM_BATTLE_MOVE_EFFECTS             634
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

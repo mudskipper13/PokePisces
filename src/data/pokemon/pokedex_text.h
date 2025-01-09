@@ -6051,15 +6051,18 @@ const u8 gBehekoPokedexText[] = _(
     "also make good house pets, by the way.");
 
 const u8 gHemokoPokedexText[] = _(
-    "They are ordinarily found guarding the\n"
-    "remains of Bolterock or Levialago.\n"
-    "Hemoko swarm and consume those they\n"
-    "identify would cause harm to their home.");
+    "Hemoko are usually found guarding the remains of\n"
+    "Bolterock or Levialago. Hemoko swarm and devour\n"
+    "those they believe will cause harm to their\n"
+    "home. They were once responsible for a string of\n"
+    "missing incidents in a distant province.");
 
 const u8 gLepucytePokedexText[] = _(
-    "They are extremely aggressive against\n"
-    "children despite their docile appearance\n"
-    "However, carrots appease it.");
+    "Despite their docile look, they are violent\n"
+    "towards young children. This odd behavior has\n"
+    "been seen in all cases and serves no purpose for\n"
+    "their survival. Oddly, no one has truly seen a \n"
+    "Hemoko evolve. Carrots can calm down Lepucyte.");
 
 const u8 gLeukunehoPokedexText[] = _(
     "This Pokémon is not recommended in the\n"
@@ -6110,22 +6113,25 @@ const u8 gEggneggmaPokedexText[] = _(
     "parents while it swallows it whole.");
 
 const u8 gLevladePokedexText[] = _(
-    "Their arms emit a blazing hot electrical\n"
-    "blade that can cut through everything. It\n"
-    "dashes all over jungles, cutting through\n"
-    "the dense greenery with its blades.");
+    "Dashing throughout the jungle, they hone their\n"
+    "blades by cutting leaves and bark. Their large\n"
+    "eyes enable them to fully see their\n"
+    "surroundings, allowing them to hunt and observe\n"
+    "prey.");
 
 const u8 gShockorePokedexText[] = _(
-    "Shockore stores and produces an abundant\n"
-    "amount of energy that can power entire\n"
-    "towns. Be careful when handling it, as it\n"
-    "can randomly release powerful energies.");
+    "Shockore store and produce an abundant amount of\n"
+    "energy that can power entire towns. Many trainers\n"
+    "keep one on hand to charge important devices\n"
+    "and even vehicles. However, be careful when\n"
+    "handling them as they may cause power surges.");
 
 const u8 gPlasmantisPokedexText[] = _(
-    "Despite their carnivorous nature, they\n"
-    "are often seen helping small Pokémon and\n"
-    "humans from danger. Their gallant nature\n"
-    "often makes them a symbol of justice.");
+    "Despite being carnivores, they're often seen\n"
+    "saving Pokémon from danger. With plasma blades\n"
+    "that cut steel, their swift legs letting them\n"
+    "leap miles, and their gallant nature, they have\n"
+    "been deemed symbols of justice among the locals.");
 
 const u8 gHaracePokedexText[] = _(
     "Harace is made purely of a magnetic\n"

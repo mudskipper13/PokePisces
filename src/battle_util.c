@@ -4092,6 +4092,12 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                     gMultiHitCounter = count + gBattleMoves[gCurrentMove].strikeCount;
                     PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
                 }
+                else if ((gCurrentMove == MOVE_BULLET_PUNCH) && (gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE))
+                {
+                    count += gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] - DEFAULT_STAT_STAGE;
+                    gMultiHitCounter = count + gBattleMoves[gCurrentMove].strikeCount;
+                    PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+                }
                 else if (gBattleMoves[gCurrentMove].effect == EFFECT_HAYWIRE)
                 {
                     for (i = 0; i < NUM_BATTLE_STATS; i++)
@@ -6615,26 +6621,32 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_ICE_SCALES:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED
-            && (gDisableStructs[gBattlerTarget].iceScalesCounter > 0))
+            && (gDisableStructs[gBattlerTarget].iceScalesCounter != 0))
             {
+                s32 iceScalesToDeduct;
+                
                 if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 40) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 else
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 20) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+
                 if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
                 {
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    iceScalesToDeduct = 3;
                 }
                 else
                 {
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
-                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    iceScalesToDeduct = 2;
                 }
-                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerTarget].iceScalesCounter);
+
+                if (gDisableStructs[gBattlerTarget].iceScalesCounter < iceScalesToDeduct)
+                {
+                    iceScalesToDeduct = gDisableStructs[gBattlerTarget].iceScalesCounter;
+                }
+
+                gDisableStructs[gBattlerTarget].iceScalesCounter -= iceScalesToDeduct;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IceScalesActivatesLoss;
                 effect++;
@@ -10787,6 +10799,17 @@ u32 CountBattlerSpeedIncreases(u32 battler)
     return count;
 }
 
+u32 CountBattlerSpDefIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_SPDEF] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
 u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc)
 {
     u32 i;
@@ -10799,6 +10822,17 @@ u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc)
         if (gBattleMons[battler].statStages[i] < DEFAULT_STAT_STAGE) // Stat is decreased.
             count += DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i];
     }
+
+    return count;
+}
+
+u32 CountBattlerSpeedDecreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_SPEED] < DEFAULT_STAT_STAGE) // Stat is increased.
+        count += DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_SPEED];
 
     return count;
 }
@@ -10855,26 +10889,34 @@ static const u8 sFlailHpScaleToPowerTable[] =
 
 static const u8 sLoneSharkHpScaleToPowerTable[] =
     {
-        4, 170,
-        9, 165,
-        14, 160,
-        19, 155,
-        24, 150,
-        29, 145,
-        34, 140,
-        39, 135,
-        44, 130,
-        49, 125,
-        54, 120,
-        59, 115,
-        64, 110,
-        69, 105,
-        74, 100,
-        79, 95,
-        84, 90,
-        89, 85,
-        94, 80,
+        5, 170,
+        10, 165,
+        15, 160,
+        20, 155,
+        25, 150,
+        30, 145,
+        35, 140,
+        40, 135,
+        45, 130,
+        50, 125,
+        55, 120,
+        60, 115,
+        65, 110,
+        70, 105,
+        75, 100,
+        80, 95,
+        85, 90,
+        90, 85,
+        95, 80,
         100, 75};
+
+static const u8 sBlackBuffetHpScaleToPowerTable[] =
+    {
+        1, 45,
+        2, 40,
+        3, 35,
+        4, 30,
+        5, 25,};
 
 // format: min. weight (hectograms), base power
 static const u16 sWeightToDamageTable[] =
@@ -11055,6 +11097,15 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         }
         basePower = sLoneSharkHpScaleToPowerTable[i + 1];
         break;
+    case EFFECT_BLACK_BUFFET:
+        hpFraction = GetScaledHPFraction(gBattleMons[battlerDef].hp, gBattleMons[battlerDef].maxHP, 5);
+        for (i = 0; i < sizeof(sBlackBuffetHpScaleToPowerTable); i += 2)
+        {
+            if (hpFraction <= sBlackBuffetHpScaleToPowerTable[i])
+                break;
+        }
+        basePower = sBlackBuffetHpScaleToPowerTable[i + 1];
+        break;
     case EFFECT_RETURN:
         basePower = 10 * (gBattleMons[battlerAtk].friendship) / 25;
         break;
@@ -11071,6 +11122,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_ROCK_CLIMB:
     case EFFECT_SURF:
         basePower = 6 * (gBattleMons[battlerAtk].friendship) / 17;
+        break;
+    case EFFECT_FROST_NOVA:
+        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
+            basePower = 80;
         break;
     case EFFECT_DIVE:
     case EFFECT_FLY:
@@ -11119,14 +11174,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleStruct->fickleBeamBoosted)
             basePower *= 2;
         break;
-    case EFFECT_SEIZE_CHANCE:
-    {
-        if (!(GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget))
-        && (!(IS_MOVE_PHYSICAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]])))
-        && (!(IS_MOVE_SPECIAL(gBattleMons[gBattlerTarget].moves[gBattleStruct->chosenMovePositions[gBattlerTarget]]))))
-            basePower = 100;
-        break;
-    }
     case EFFECT_UPPER_HAND:
     {
         if ((!((GetChosenMovePriority(gBattlerTarget) < 1))
@@ -11258,6 +11305,12 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_STORED_POWER:
         basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);
         break;
+    case EFFECT_BOLT_BEAK:
+        basePower = 65 + (CountBattlerSpeedIncreases(battlerAtk) * 20);
+        break;
+    case EFFECT_POWER_GEM:
+        basePower = 80 + (CountBattlerSpDefIncreases(battlerAtk) * 15);
+        break;
     case EFFECT_REDLINE:
         basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
         break;
@@ -11311,7 +11364,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         )
             basePower *= 2;
         break;
-    case EFFECT_BOLT_BEAK:
+    case EFFECT_SEA_JAWS:
         if (GetBattlerTurnOrderNum(battlerAtk) < GetBattlerTurnOrderNum(battlerDef) || gDisableStructs[battlerDef].isFirstTurn == 2)
             basePower *= 2;
         break;
@@ -11399,6 +11452,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 50 + (30 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
         basePower = (basePower > 200) ? 200 : basePower;
         break;
+    case EFFECT_FIERY_WRATH:
+        basePower = 90 + (10 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
+        basePower = (basePower > 200) ? 200 : basePower;
+        break;
     case EFFECT_BARI_BARI_BEAM:
         basePower = 40 + (30 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
         basePower = (basePower > 160) ? 160 : basePower;
@@ -11406,6 +11463,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_DRAGON_CLAW:
         if (gBattleStruct->fickleBeamBoosted)
             basePower = 100;
+        break;
+    case EFFECT_GRASSY_GLIDE:
+        if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
+            basePower = 70;
         break;
     case EFFECT_FALSE_SWIPE:
         if (gBattleMons[battlerAtk].level >= 50)
@@ -11464,10 +11525,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (CountBattlerStatIncreases(battlerDef, TRUE) < 1 && CountBattlerStatDecreases(battlerDef, TRUE) < 1)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
-    case EFFECT_FAIRY_WIND:
-        if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
-            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
-        break;
     case EFFECT_KERFUFFLE:
         if (gBattleMons[battlerAtk].status2 & STATUS2_CONFUSION)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -11488,10 +11545,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_POISON_DART:
     case EFFECT_VENOSHOCK:
         if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
-            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
-        break;
-    case EFFECT_FROST_NOVA:
-        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_RETALIATE:
@@ -12297,7 +12350,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case HOLD_EFFECT_CLEANSE_TAG:
         if ((CountBattlerStatDecreases(battlerDef, TRUE)) > 0)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.0 + (CountBattlerStatDecreases(battlerDef, TRUE) * 0.15)));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.0) + (sPercentToModifier[CountBattlerStatDecreases(battlerDef, TRUE) * 15]));
         break;
     case HOLD_EFFECT_CHOICE_BAND:
         if (IS_MOVE_PHYSICAL(move) && atkAbility != ABILITY_ONE_WAY_TRIP)
@@ -12364,7 +12417,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         defStage = gBattleMons[battlerDef].statStages[STAT_DEF];
         usesDefStat = TRUE;
     }
-    else if (gBattleMoves[move].effect == EFFECT_SOUL_CUTTER || IS_MOVE_SPECIAL(move)) // uses sp.def stat instead of defense
+    else if (gBattleMoves[move].effect == EFFECT_SOUL_CUTTER || (gBattleMoves[move].effect == EFFECT_PSYCHO_CUT && IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_PSYCHIC_TERRAIN)) || IS_MOVE_SPECIAL(move)) // uses sp.def stat instead of defense
     {
         defStat = spDef;
         defStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
@@ -12415,7 +12468,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     // certain moves also ignore stat changes
     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
         defStage = DEFAULT_STAT_STAGE;
-    if (gCurrentMove == MOVE_GRASSY_GLIDE && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    if (gCurrentMove == MOVE_BULLET_SEED && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
         defStage = DEFAULT_STAT_STAGE;
     if (defStage > DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
         defStage = DEFAULT_STAT_STAGE;
@@ -12718,8 +12771,7 @@ static inline uq4_12_t GetBurnOrFrostBiteOrPanicModifier(u32 battlerAtk, u32 mov
         && (move == MOVE_MEGA_DRAIN))
         return UQ_4_12(2.0);
     if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING
-        && (move == MOVE_BULLET_SEED
-        || move == MOVE_RAZOR_LEAF
+        && (move == MOVE_RAZOR_LEAF
         || move == MOVE_ABSORB))
         return UQ_4_12(1.5);
     if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING
@@ -12901,8 +12953,8 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
             return UQ_4_12(0.75);
         break;
     case ABILITY_ICE_SCALES:
-        if (gDisableStructs[battlerDef].iceScalesCounter > 0)
-            return UQ_4_12(1.0 - (gDisableStructs[battlerDef].iceScalesCounter * 0.1));
+        if (gDisableStructs[battlerDef].iceScalesCounter != 0)
+            return UQ_4_12(1.0 - (sPercentToModifier[gDisableStructs[battlerDef].iceScalesCounter * 10]));
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
@@ -13203,16 +13255,19 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
         }
     }
 
-    if (holdEffectAtk == HOLD_EFFECT_POISON_BARB 
+    if ((holdEffectAtk == HOLD_EFFECT_POISON_BARB 
     && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY 
     && gBattleMoves[move].type == TYPE_POISON)
+    || move == MOVE_SPIRIT_DANCE)
     {
         dmg = dmg + (gBattleMons[battlerDef].maxHP * 15 / 100);
     }
     else if (move == MOVE_NEEDLE_ARM 
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
     || (abilityAtk == ABILITY_LIQUID_OOZE && gBattleMoves[move].oozeMove)
-    || holdEffectAtk == HOLD_EFFECT_CHUPACABRA)
+    || holdEffectAtk == HOLD_EFFECT_CHUPACABRA
+    || move == MOVE_SOUL_CUTTER
+    || (move == MOVE_ZING_ZAP && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN))
     {
         dmg = dmg + (gBattleMons[battlerDef].maxHP / 5);
     }
@@ -14746,7 +14801,20 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         if (moveType == TYPE_FAIRY)
             return 100;
     }
-    
+
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+            && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER))
+        secondaryEffectChance /= 2;
+
+    if (CanUseLastResort(battler) && gCurrentMove == MOVE_ANCIENT_POWER)
+        secondaryEffectChance *= 3;
+
+    if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
+        secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
+
+    if (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND)
+        secondaryEffectChance *= 3;
+
     if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance *= 5;
 
