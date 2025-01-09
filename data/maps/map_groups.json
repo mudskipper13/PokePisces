@@ -296,7 +296,11 @@
     "RustGymDarkLockers",
     "RustGymDarkCafeteria",
     "RustGymDarkClassroom",
-    "RustGymPrincipalsOffice"
+    "RustGymPrincipalsOffice",
+    "RustGymPrincipalsOfficeShort",
+    "RustGymDarkCafeArena",
+    "RustboroTransitionBuilding",
+    "RustboroInteriors"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
@@ -305,7 +309,8 @@
     "NoviceWalk",
     "LittlerootNew",
     "PendingDev",
-    "TestMap"
+    "TestMap",
+    "SeasideCasino"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",

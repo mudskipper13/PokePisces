@@ -8148,7 +8148,7 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_PRoxanne),
     },
 
-    [TRAINER_P_LANNETTE] =
+    [TRAINER_P_LANETTE] =
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,

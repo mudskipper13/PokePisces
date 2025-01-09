@@ -296,26 +296,19 @@
       "x": 15,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_RUSTBURG_WHARF",
+      "dest_map": "MAP_UNDURA_TUNNELS",
       "dest_warp_id": "0"
     },
     {
       "x": 34,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_RUSTBURG_WHARF",
+      "dest_map": "MAP_RUSTBORO_TRANSITION_BUILDING",
       "dest_warp_id": "0"
     },
     {
       "x": 23,
       "y": 35,
-      "elevation": 0,
-      "dest_map": "MAP_RUSTBURG_WHARF",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 30,
-      "y": 27,
       "elevation": 0,
       "dest_map": "MAP_RUSTBURG_WHARF",
       "dest_warp_id": "0"
