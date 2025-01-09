@@ -518,6 +518,10 @@
 #define METATILE_RSMossdeepGym_Switch_Down     0x239
 #define METATILE_RSMossdeepGym_Switch_Up       0x238
 
+// gTileset_RustboroGymNew
+#define METATILE_RustboroGymNew_DiogenesLeft   0x355
+#define METATILE_RustboroGymNew_DiogenesRight  0x356
+
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
 #define METATILE_Rustboro_Door_Tan   0x22F

@@ -297,7 +297,10 @@
     "RustGymDarkCafeteria",
     "RustGymDarkClassroom",
     "RustGymPrincipalsOffice",
-    "RustGymPrincipalsOfficeShort"
+    "RustGymPrincipalsOfficeShort",
+    "RustGymDarkCafeArena",
+    "RustboroTransitionBuilding",
+    "RustboroInteriors"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
