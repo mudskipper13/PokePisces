@@ -1076,9 +1076,9 @@ static const u8 sHealBellDescription[] = _(
     "party Pokémon.");
 
 static const u8 sReturnDescription[] = _(
-    "This full-power attack grows\n"
-    "more powerful the more the user\n"
-    "likes its Trainer.");
+    "Increases in power based on the\n" 
+    "user's friendship. Critical hits\n"
+    "land more easily at full health.");
 
 static const u8 sPresentDescription[] = _(
     "The foe is given a booby-trapped\n"
