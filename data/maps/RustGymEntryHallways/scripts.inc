@@ -53,4 +53,10 @@ RustGymEntryHallways_Movement_GreeterFormUpToGreet:
 	step_end
 
 RustGymEntryHallways_Text_WelcomeToRustboroUniversity:
-	.string "$"
+	.string "Welcome to Rustboro University!\p"
+	.string "I assume you are here as a Gym\n"
+	.string "Challenger, hoping to enroll in\l"
+	.string "a one-day accelerated course?\p"
+	.string "In that case, let me send you to\n"
+	.string "meet Principal Roxanne to get\l"
+	.string "all your ducks in a row.$"

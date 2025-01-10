@@ -26,6 +26,30 @@ RustGymDarkCafeteria_EventScript_RemoveDiogenes::
 	setflag FLAG_TEMP_15
 	return
 
+RustGymDarkCafeteria_EventScript_StartGangWarLeft::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, RustGymDarkCafeteria_Movement_PlayerWalkRight
+	waitmovement 0
+	goto RustGymDarkCafeteria_EventScript_GangWar
+	release
+	end
+
+RustGymDarkCafeteria_EventScript_StartGangWarRight::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, RustGymDarkCafeteria_Movement_PlayerWalkLeft
+	waitmovement 0
+	goto RustGymDarkCafeteria_EventScript_GangWar
+	release
+	end
+
+RustGymDarkCafeteria_Movement_PlayerWalkLeft:
+	walk_left
+	step_end
+
+RustGymDarkCafeteria_Movement_PlayerWalkRight:
+	walk_right
+	step_end
+
 RustGymDarkCafeteria_EventScript_GangWar::
 	lock
 	delay 4

@@ -89,19 +89,40 @@ RustGymCafeteria_Movement_Exclamation:
 	step_end
 
 RustGymCafeteria_Text_LunchByYourself:
-	.string "$"
+	.string "(You recline in the bench\n"
+	.string "to prep for some alone time.)$"
 
 RustGymCafeteria_Text_WeAreHavingADiscussion:
-	.string "$"
+	.string "You seem a little lonely there,\n"
+	.string "random person! Hey, want to\l"
+	.string "join in on our discussion?\p"
+	.string "(You nod your head no.)\p"
+	.string "Great! So, we were just\n"
+	.string "pontificating about releasing\l"
+	.string "our Pokemon from their balls\l"
+	.string "for good. Would that not be\l"
+	.string "the best thing for them?\l"
+	.string "Complete Pokemon Liberation?\p"
+	.string "(You shrug with a very\n"
+	.string "annoyed expression on your face.)\p"
+	.string "You know, you're awfully quiet.\n"
+	.string "I wonder if your Pokemon wish\l"
+	.string "to be let go into the wild, too.\p"
+	.string "Let's send 'em all out and see\n"
+	.string "what they end up choosing!$"
 
 RustGymCafeteria_Text_MarxDefeat:
-	.string "$"
+	.string "Your Pokemon started a violent\n"
+	.string "insurrection... against us???$"
 
 RustGymCafeteria_Text_QiuDefeat:
-	.string "$"
+	.string "W-We get it now!\n"
+	.string "We'll leave you be!$"
 
 RustGymCafeteria_Text_TaughtUsNothingActually:
-	.string "$"
+	.string "(You feel you've learned\n"
+	.string "absolutely nothing from this\l"
+	.string "interaction.)$"
 
 RustGymCafeteria_Text_BackToClass:
-	.string "$"
+	.string "(Back to Classroom B.)$"

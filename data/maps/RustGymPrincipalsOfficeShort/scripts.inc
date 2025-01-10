@@ -40,4 +40,17 @@ RustGymPrincipalsOfficeShort_Text_NameRoxanne:
 	.string "Roxanne$"
 
 RustGymPrincipalsOfficeShort_Text_EnrollInTheUniversity:
-	.string "$"
+	.string "Pleased to make your acquaintance.\n"
+	.string "I personally oversee all that goes\l"
+	.string "on in this institution's halls,\l"
+	.string "so it will do you well to follow\l"
+	.string "the rules and stay in line.\p"
+	.string "Let's see here... ah. Here's\n"
+	.string "your record... {PLAYER}?\p"
+	.string "You are in for the one-day\n"
+	.string "accelerated course. In that case,\l"
+	.string "there is not much time for delay.\l"
+	.string "You will be reporting to\l"
+	.string "Classroom B, in the hallway you\l"
+	.string "arrived in, for your first lesson.\p"
+	.string "Take care, and don't disappoint.$"

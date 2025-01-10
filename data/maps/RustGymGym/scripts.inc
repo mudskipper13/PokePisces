@@ -3,7 +3,7 @@ RustGymGym_MapScripts::
 	.byte 0
 
 RustGymGym_OnFrame:
-	map_script_2 VAR_RUST_GYM_STATE, 13, RustGymGym_EventScript_GymBattle
+	map_script_2 VAR_RUST_GYM_STATE, 8, RustGymGym_EventScript_GymBattle
 	.2byte 0
 
 RustGymGym_EventScript_GymBattle::

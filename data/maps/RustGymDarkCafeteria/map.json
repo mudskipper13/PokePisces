@@ -143,7 +143,7 @@
       "elevation": 0,
       "var": "VAR_RUST_GYM_STATE",
       "var_value": "12",
-      "script": "NULL"
+      "script": "RustGymDarkCafeteria_EventScript_StartGangWarLeft"
     },
     {
       "type": "trigger",
@@ -152,7 +152,7 @@
       "elevation": 0,
       "var": "VAR_RUST_GYM_STATE",
       "var_value": "12",
-      "script": "NULL"
+      "script": "RustGymDarkCafeteria_EventScript_GangWar"
     },
     {
       "type": "trigger",
@@ -161,7 +161,7 @@
       "elevation": 0,
       "var": "VAR_RUST_GYM_STATE",
       "var_value": "12",
-      "script": "NULL"
+      "script": "RustGymDarkCafeteria_EventScript_StartGangWarRight"
     }
   ],
   "bg_events": [

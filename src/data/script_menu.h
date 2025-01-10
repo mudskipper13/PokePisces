@@ -898,11 +898,11 @@ static const struct MenuAction MultichoiceList_BrineyBoat3[] =
     {sText_Desti6},
 };
 
-static const u8 sText_RustGymQ1A1[] = _("A");
-static const u8 sText_RustGymQ1A2[] = _("B");
-static const u8 sText_RustGymQ1A3[] = _("C");
-static const u8 sText_RustGymQ1A4[] = _("D");
-static const u8 sText_RustGymQ1A5[] = _("E");
+static const u8 sText_RustGymQ1A1[] = _("Bread");
+static const u8 sText_RustGymQ1A2[] = _("Buildings");
+static const u8 sText_RustGymQ1A3[] = _("Forests");
+static const u8 sText_RustGymQ1A4[] = _("Oceans");
+static const u8 sText_RustGymQ1A5[] = _("Donuts");
 static const struct MenuAction MultichoiceList_RustGymQuestion1[] = {
     {sText_RustGymQ1A1},
     {sText_RustGymQ1A2},
@@ -911,11 +911,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion1[] = {
     {sText_RustGymQ1A5},
 };
 
-static const u8 sText_RustGymQ2A1[] = _("A");
-static const u8 sText_RustGymQ2A2[] = _("B");
-static const u8 sText_RustGymQ2A3[] = _("C");
-static const u8 sText_RustGymQ2A4[] = _("D");
-static const u8 sText_RustGymQ2A5[] = _("E");
+static const u8 sText_RustGymQ2A1[] = _("Tension");
+static const u8 sText_RustGymQ2A2[] = _("Unity");
+static const u8 sText_RustGymQ2A3[] = _("Wealth");
+static const u8 sText_RustGymQ2A4[] = _("Confusion");
+static const u8 sText_RustGymQ2A5[] = _("Nothing");
 static const struct MenuAction MultichoiceList_RustGymQuestion2[] = {
     {sText_RustGymQ2A1},
     {sText_RustGymQ2A2},
@@ -924,11 +924,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion2[] = {
     {sText_RustGymQ2A5},
 };
 
-static const u8 sText_RustGymQ3A1[] = _("A");
-static const u8 sText_RustGymQ3A2[] = _("B");
-static const u8 sText_RustGymQ3A3[] = _("C");
-static const u8 sText_RustGymQ3A4[] = _("D");
-static const u8 sText_RustGymQ3A5[] = _("E");
+static const u8 sText_RustGymQ3A1[] = _("Attack");
+static const u8 sText_RustGymQ3A2[] = _("Defense");
+static const u8 sText_RustGymQ3A3[] = _("Sp Atk");
+static const u8 sText_RustGymQ3A4[] = _("Sp Def");
+static const u8 sText_RustGymQ3A5[] = _("Speed");
 static const struct MenuAction MultichoiceList_RustGymQuestion3[] = {
     {sText_RustGymQ3A1},
     {sText_RustGymQ3A2},
@@ -937,11 +937,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion3[] = {
     {sText_RustGymQ3A5},
 };
 
-static const u8 sText_RustGymQ4A1[] = _("A");
-static const u8 sText_RustGymQ4A2[] = _("B");
-static const u8 sText_RustGymQ4A3[] = _("C");
-static const u8 sText_RustGymQ4A4[] = _("D");
-static const u8 sText_RustGymQ4A5[] = _("E");
+static const u8 sText_RustGymQ4A1[] = _("Money");
+static const u8 sText_RustGymQ4A2[] = _("More Fish");
+static const u8 sText_RustGymQ4A3[] = _("New Wife");
+static const u8 sText_RustGymQ4A4[] = _("House");
+static const u8 sText_RustGymQ4A5[] = _("A Pokemon");
 static const struct MenuAction MultichoiceList_RustGymQuestion4[] = {
     {sText_RustGymQ4A1},
     {sText_RustGymQ4A2},
@@ -950,11 +950,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion4[] = {
     {sText_RustGymQ4A5},
 };
 
-static const u8 sText_RustGymQ5A1[] = _("A");
-static const u8 sText_RustGymQ5A2[] = _("B");
-static const u8 sText_RustGymQ5A3[] = _("C");
-static const u8 sText_RustGymQ5A4[] = _("D");
-static const u8 sText_RustGymQ5A5[] = _("E");
+static const u8 sText_RustGymQ5A1[] = _("Cave of Origin");
+static const u8 sText_RustGymQ5A2[] = _("Sootopolis");
+static const u8 sText_RustGymQ5A3[] = _("Mt. Chimney");
+static const u8 sText_RustGymQ5A4[] = _("Mossdeep");
+static const u8 sText_RustGymQ5A5[] = _("Sky Pillar");
 static const struct MenuAction MultichoiceList_RustGymQuestion5[] = {
     {sText_RustGymQ5A1},
     {sText_RustGymQ5A2},
@@ -963,11 +963,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion5[] = {
     {sText_RustGymQ5A5},
 };
 
-static const u8 sText_RustGymQ6A1[] = _("A");
-static const u8 sText_RustGymQ6A2[] = _("B");
-static const u8 sText_RustGymQ6A3[] = _("C");
-static const u8 sText_RustGymQ6A4[] = _("D");
-static const u8 sText_RustGymQ6A5[] = _("E");
+static const u8 sText_RustGymQ6A1[] = _("Skellywarg");
+static const u8 sText_RustGymQ6A2[] = _("Kodough");
+static const u8 sText_RustGymQ6A3[] = _("Icksqueek");
+static const u8 sText_RustGymQ6A4[] = _("Flague");
+static const u8 sText_RustGymQ6A5[] = _("Weroberra");
 static const struct MenuAction MultichoiceList_RustGymQuestion6[] = {
     {sText_RustGymQ6A1},
     {sText_RustGymQ6A2},
@@ -976,11 +976,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion6[] = {
     {sText_RustGymQ6A5},
 };
 
-static const u8 sText_RustGymQ7A1[] = _("A");
-static const u8 sText_RustGymQ7A2[] = _("B");
-static const u8 sText_RustGymQ7A3[] = _("C");
-static const u8 sText_RustGymQ7A4[] = _("D");
-static const u8 sText_RustGymQ7A5[] = _("E");
+static const u8 sText_RustGymQ7A1[] = _("Fire");
+static const u8 sText_RustGymQ7A2[] = _("Ice");
+static const u8 sText_RustGymQ7A3[] = _("Bug");
+static const u8 sText_RustGymQ7A4[] = _("Steel");
+static const u8 sText_RustGymQ7A5[] = _("Fighting");
 static const struct MenuAction MultichoiceList_RustGymQuestion7[] = {
     {sText_RustGymQ7A1},
     {sText_RustGymQ7A2},
@@ -989,11 +989,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion7[] = {
     {sText_RustGymQ7A5},
 };
 
-static const u8 sText_RustGymQ8A1[] = _("A");
-static const u8 sText_RustGymQ8A2[] = _("B");
-static const u8 sText_RustGymQ8A3[] = _("C");
-static const u8 sText_RustGymQ8A4[] = _("D");
-static const u8 sText_RustGymQ8A5[] = _("E");
+static const u8 sText_RustGymQ8A1[] = _("Bisharp");
+static const u8 sText_RustGymQ8A2[] = _("Sworduc");
+static const u8 sText_RustGymQ8A3[] = _("Nuzleaf");
+static const u8 sText_RustGymQ8A4[] = _("Plasmantis");
+static const u8 sText_RustGymQ8A5[] = _("Ninjask");
 static const struct MenuAction MultichoiceList_RustGymQuestion8[] = {
     {sText_RustGymQ8A1},
     {sText_RustGymQ8A2},
@@ -1002,11 +1002,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion8[] = {
     {sText_RustGymQ8A5},
 };
 
-static const u8 sText_RustGymQ9A1[] = _("A");
-static const u8 sText_RustGymQ9A2[] = _("B");
-static const u8 sText_RustGymQ9A3[] = _("C");
-static const u8 sText_RustGymQ9A4[] = _("D");
-static const u8 sText_RustGymQ9A5[] = _("E");
+static const u8 sText_RustGymQ9A1[] = _("11 am");
+static const u8 sText_RustGymQ9A2[] = _("12 pm");
+static const u8 sText_RustGymQ9A3[] = _("1 pm");
+static const u8 sText_RustGymQ9A4[] = _("2 pm");
+static const u8 sText_RustGymQ9A5[] = _("3 pm");
 static const struct MenuAction MultichoiceList_RustGymQuestion9[] = {
     {sText_RustGymQ9A1},
     {sText_RustGymQ9A2},
@@ -1015,11 +1015,11 @@ static const struct MenuAction MultichoiceList_RustGymQuestion9[] = {
     {sText_RustGymQ9A5},
 };
 
-static const u8 sText_RustGymQ10A1[] = _("A");
-static const u8 sText_RustGymQ10A2[] = _("B");
-static const u8 sText_RustGymQ10A3[] = _("C");
-static const u8 sText_RustGymQ10A4[] = _("D");
-static const u8 sText_RustGymQ10A5[] = _("E");
+static const u8 sText_RustGymQ10A1[] = _("Sunday");
+static const u8 sText_RustGymQ10A2[] = _("Monday");
+static const u8 sText_RustGymQ10A3[] = _("Wednesday");
+static const u8 sText_RustGymQ10A4[] = _("Friday");
+static const u8 sText_RustGymQ10A5[] = _("Saturday");
 static const struct MenuAction MultichoiceList_RustGymQuestion10[] = {
     {sText_RustGymQ10A1},
     {sText_RustGymQ10A2},
