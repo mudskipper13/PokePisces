@@ -12,19 +12,34 @@ RustGymLockerHallway_EventScript_Simone::
     end
 
 RustGymLockerHallway_Text_JeanPaulIntro:
-	.string "intro$"
+	.string "Are you a member of the\n"
+	.string "bourgeosie? Would you perhaps\l"
+	.string "be interested in advocating\l"
+	.string "for those of lower class standing?$"
 
 RustGymLockerHallway_Text_JeanPaulDefeated:
-	.string "defeat$"
+	.string "I supposed I am condemned to\n"
+	.string "be free of battling prowess.$"
 
 RustGymLockerHallway_Text_JeanPaulPostBattle:
-	.string "post$"
+	.string "Upon my defeat, I have become an\n"
+	.string "object in your mind. No longer\l"
+	.string "an individual, merely your\l"
+	.string "interpretation of what I was.$"
 
 RustGymLockerHallway_Text_SimoneIntro:
-	.string "intro$"
+	.string "Your philosophical leanings\n"
+	.string "seem quite... ambiguous.\p"
+	.string "Let us ponder the ethics\n"
+	.string "of that as we battle.$"
 
 RustGymLockerHallway_Text_SimoneDefeated:
-	.string "defeat$"
+	.string "One is not born a master.\p"
+	.string "One becomes one.$"
 
 RustGymLockerHallway_Text_SimonePostBattle:
-	.string "post$"
+	.string "Jean-Paul and I are in\n"
+	.string "an open relationship.\p"
+	.string "You seem quite wishy-washy,\n"
+	.string "though, so I don't see you\l"
+	.string "integrating yourself with us.$"

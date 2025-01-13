@@ -52,6 +52,30 @@ RustGymEntryHallways_Movement_GreeterFormUpToGreet:
 	walk_down
 	step_end
 
+RustGymEntryHallways_EventScript_PassTheTest::
+	msgbox RustGymEntryHallways_Text_PassTheTest, MSGBOX_NPC
+	end
+
+RustGymEntryHallways_EventScript_BrainAgeKid::
+	msgbox RustGymEntryHallways_Text_BrainAgeKid, MSGBOX_NPC
+	end
+
+RustGymEntryHallways_EventScript_TetrisKid::
+	msgbox RustGymEntryHallways_Text_TetrisKid, MSGBOX_NPC
+	end
+
+RustGymEntryHallways_EventScript_ClassroomASign::
+	msgbox RustGymEntryHallways_Text_ClassroomASign, MSGBOX_SIGN
+	end
+
+RustGymEntryHallways_EventScript_ClassroomCSign::
+	msgbox RustGymEntryHallways_Text_ClassroomCSign, MSGBOX_SIGN
+	end
+
+RustGymEntryHallways_EventScript_ClassroomDSign::
+	msgbox RustGymEntryHallways_Text_ClassroomDSign, MSGBOX_SIGN
+	end
+
 RustGymEntryHallways_Text_WelcomeToRustboroUniversity:
 	.string "Welcome to Rustboro University!\p"
 	.string "I assume you are here as a Gym\n"
@@ -60,3 +84,32 @@ RustGymEntryHallways_Text_WelcomeToRustboroUniversity:
 	.string "In that case, let me send you to\n"
 	.string "meet Principal Roxanne to get\l"
 	.string "all your ducks in a row.$"
+
+RustGymEntryHallways_Text_PassTheTest:
+	.string "After a few classroom lessons\n"
+	.string "and a lunch period, you gotta\l"
+	.string "be ready to pass a multiple\l"
+	.string "choice test at the end.\l"
+	.string "Study up! Anything can\l"
+	.string "be on that bad boy.$"
+
+RustGymEntryHallways_Text_BrainAgeKid:
+	.string "I'm playing Brain Age to\n"
+	.string "help my noggin get supercharged!\p"
+	.string "I hear it actually helps you\n"
+	.string "stay sharp!$"
+
+RustGymEntryHallways_Text_TetrisKid:
+	.string "I'm playing Tetris a bunch\n"
+	.string "to help my brain feel good.\l"
+	.string "Or so that study I read the\l"
+	.string "title of once said.$"
+
+RustGymEntryHallways_Text_ClassroomASign:
+	.string "Classroom A$"
+
+RustGymEntryHallways_Text_ClassroomCSign:
+	.string "Classroom C$"
+
+RustGymEntryHallways_Text_ClassroomDSign:
+	.string "Classroom D$"

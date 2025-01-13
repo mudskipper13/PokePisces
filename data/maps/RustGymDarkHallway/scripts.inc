@@ -355,53 +355,162 @@ RustGymDarkHallway_EventScript_PlatoAndAris::
     msgbox RustGymDarkHallway_Text_PlatoAndArisPostBattle, MSGBOX_AUTOCLOSE
     end
 
+RustGymDarkHallway_EventScript_WatchOutForGangGuards::
+	msgbox RustGymDarkHallway_Text_WatchOutForGangGuards, MSGBOX_NPC
+    end
+
+RustGymDarkHallway_EventScript_BlockingThisHallway::
+	msgbox RustGymDarkHallway_Text_BlockingThisHallway, MSGBOX_NPC
+    end
+
+RustGymDarkHallway_EventScript_PanicAboutTest::
+	msgbox RustGymDarkHallway_Text_PanicAboutTest, MSGBOX_NPC
+    end
+
+RustGymDarkHallway_EventScript_IdolPhotoshoot::
+	msgbox RustGymDarkHallway_Text_IdolPhotoshoot, MSGBOX_NPC
+    end
+
+RustGymDarkHallway_EventScript_SlappedATeacher::
+	msgbox RustGymDarkHallway_Text_SlappedATeacher, MSGBOX_NPC
+    end
+
 RustGymDarkHallway_Text_GoombellaIntro:
-	.string "intro$"
+	.string "According to my book, it\n"
+	.string "says here...\p"
+	.string "{PLAYER}: A researcher and trainer\n"
+	.string "from Littleroot Town.\l"
+	.string "Stubborn. Strong opponent.\p"
+	.string "That it? I think I can take\n"
+	.string "you, lickety-split!$"
 
 RustGymDarkHallway_Text_GoombellaDefeated:
-	.string "defeat$"
+	.string "Crud! I got bonked!$"
 
 RustGymDarkHallway_Text_GoombellaPostBattle:
-	.string "post$"
+	.string "I'm actually a transfer from\n"
+	.string "the University of Goom.\p"
+	.string "Goooooo Goombas!$"
 
 RustGymDarkHallway_Text_TimpaniIntro:
-	.string "intro$"
+	.string "I've identified...\n"
+	.string "a weak-willed person.\p"
+	.string "It should be easy enough to\n"
+	.string "take them down and move on...$"
 
 RustGymDarkHallway_Text_TimpaniDefeated:
-	.string "defeat$"
+	.string "...A bad outcome.$"
 
 RustGymDarkHallway_Text_TimpaniPostBattle:
-	.string "post$"
+	.string "I have been to dimensions...\n"
+	.string "you could not possibly comprehend.\p"
+	.string "A single loss like this is...\n"
+	.string "simply another step in my long road.$"
 
 RustGymDarkHallway_Text_PlatoAndArisIntro:
-	.string "intro$"
+	.string "Aris keeps claiming I have\n"
+	.string "a 'broad forehead'.\l"
+	.string "Say it ain't so?$"
 
 RustGymDarkHallway_Text_PlatoAndArisDefeated:
-	.string "defeat$"
+	.string "Your reason, your spirit,\n"
+	.string "your appetite...\l"
+	.string "Simply tremendous!$"
 
 RustGymDarkHallway_Text_PlatoAndArisPostBattle:
-	.string "post$"
+	.string "We are keeping ourselves busy\n"
+	.string "pondering what reality\l"
+	.string "is composed of.\p"
+	.string "Yes, that has led to us not\n"
+	.string "studying for tests.$"
 
 RustGymDarkHallway_Text_PlatoAndArisNeedTwoMons:
-	.string "need 2 dood$"
+	.string "You possess but one Pokemon\n"
+	.string "soul on your person.\p"
+	.string "Two are needed to challenge us!$"
 
 RustGymDarkHallway_Text_StealLunchMoney1:
-	.string "$"
+	.string "Hey, locker stuffing.\p"
+	.string "I get the feelin' that you're\n"
+	.string "one of the pansy ones around here.\l"
+	.string "Know what that means?\p"
+	.string "Fork up summa that cash.$"
 
 RustGymDarkHallway_Text_Loser1:
-	.string "$"
+	.string "And stay out of my area.\n"
+	.string "I'm tryna read here, and your\l"
+	.string "plink-plonkin' goody-two-shoe\l"
+	.string "steps are distractin'.$"
 
 RustGymDarkHallway_Text_NoMoney:
-	.string "$"
+	.string "No greenbacks? At ALL?\p"
+	.string "Wow. You're a hell of a joke.\p"
+	.string "Get outta here.$"
 
 RustGymDarkHallway_Text_StealLunchMoney2:
-	.string "$"
+	.string "Nuh-uh. Nope. I ain't\n"
+	.string "lettin' someone I ain't recognize\l"
+	.string "past this point.\p"
+	.string "Matter of fact, slip me some\n"
+	.string "of the money you got. That way,\l"
+	.string "I ain't gonna rat you out\l"
+	.string "to someone who's a lot less\l"
+	.string "nice than me.$"
 
 RustGymDarkHallway_Text_Loser2:
-	.string "$"
+	.string "Now get to steppin'.\n"
+	.string "This is a no-trespassing zone!$"
 
 RustGymDarkHallway_Text_StealLunchMoney3:
-	.string "$"
+	.string "Ugh. ANOTHER lamer.\p"
+	.string "(She simply holds out her\n"
+	.string "palm to receive your lunch money.)$"
 
 RustGymDarkHallway_Text_Loser3:
-	.string "$"
+	.string "Book it.$"
+
+RustGymDarkHallway_Text_WatchOutForGangGuards:
+	.string "Oh, a new face!\n"
+	.string "Well, this is the\l"
+	.string "delinquency program home base.\p"
+	.string "Like, I'm pretty nice, but most\n"
+	.string "of my friends aren't so kind\l"
+	.string "to the newbies.\p"
+	.string "Try not to step into anybody's\n"
+	.string "turf. You could get your\l"
+	.string "money taken from ya.\p"
+	.string "Now, with all that said...\p"
+	.string "Gimme your lunch money!\p"
+	.string "Hah! Just joshin'. But I had\n"
+	.string "you sweatin' there, huh?$"
+
+RustGymDarkHallway_Text_BlockingThisHallway:
+	.string "I'm under strict orders to\n"
+	.string "block this hallway like a\l"
+	.string "brick wall.\p"
+	.string "(His nametag says\n"
+	.string "Rick Wall.)$"
+
+RustGymDarkHallway_Text_PanicAboutTest:
+	.string "Grrrggh! I can't stop going\n"
+	.string "over what I got wrong on that\l"
+	.string "blasted test...!\p"
+	.string "I swear, I don't belong here!\n"
+	.string "Take me back! Gahhhhh!$"
+
+RustGymDarkHallway_Text_IdolPhotoshoot:
+	.string "Ey. Whatcha in for?\p"
+	.string "Me... I got the teachers in a tizzy\n"
+	.string "when I took over a classroom for\l"
+	.string "a glamour photoshoot.\p"
+	.string "I didn't get permission from\n"
+	.string "anybody! Even the magazine it\l"
+	.string "was supposed to feature in.\l"
+	.string "I figure it wouldn't be too hard.\p"
+	.string "But now I'm here.\n"
+	.string "Glamourless.$"
+
+RustGymDarkHallway_Text_SlappedATeacher:
+	.string "How was I supposed to know\n"
+	.string "that slapping the teacher across\l"
+	.string "the face would land me here?$"

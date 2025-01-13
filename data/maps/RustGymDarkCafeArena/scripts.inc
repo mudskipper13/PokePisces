@@ -34,6 +34,8 @@ RustGymDarkCafeArena_EventScript_LeadersDefeated::
 	message RustGymDarkCafeArena_Text_ReceivedAmberBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	speakername RustGymDarkCafeArena_Text_NameLanette
+	msgbox RustGymDarkCafeArena_Text_AmberBadgeDesc, MSGBOX_DEFAULT
 	speakername RustGymDarkCafeArena_Text_NameRoxanne
 	msgbox RustGymDarkCafeArena_Text_PermanentRecord, MSGBOX_DEFAULT
 	speakername RustGymDarkCafeArena_Text_NameLanette
@@ -46,36 +48,91 @@ RustGymDarkCafeArena_EventScript_LeadersDefeated::
 	end
 
 RustGymDarkCafeArena_Text_NameRoxanne:
-	.string "$"
+	.string "Roxanne$"
 
 RustGymDarkCafeArena_Text_NameLanette:
-	.string "$"
+	.string "Lanette$"
 
 RustGymDarkCafeArena_Text_YoureQuiteImpressive:
-	.string "$"
+	.string "I must tell you that I am\n"
+	.string "grateful that you put Diogenes\l"
+	.string "in his place.\p"
+	.string "I had not seen you battle prior\n"
+	.string "to then; had I seen your\l"
+	.string "prowess before, mayhaps I'd\l"
+	.string "have sought some alternative\l"
+	.string "to sending you down the path\l"
+	.string "of delinquency.\p"
+	.string "Though, in a way, it is humbling,\n"
+	.string "is it not?\p"
+	.string "Enough of the preamble. I find it\n"
+	.string "fit to skip your remedial exams\l"
+	.string "and jump right into your\l"
+	.string "gym battle.$"
 
 RustGymDarkCafeArena_Text_IWillBeJoining:
-	.string "$"
+	.string "I will be joining the...\n"
+	.string "festivities, or so to speak.\p"
+	.string "Roxanne never does gym bouts\n"
+	.string "without me at her side. I'm\l"
+	.string "flattered that she thinks\l"
+	.string "highly of me... but I do think\l"
+	.string "she wants to moreso handicap\l"
+	.string "herself, hahaha...$"
 
 RustGymDarkCafeArena_Text_YourFinalExamIsNow:
-	.string "$"
+	.string "You're simply filling your role,\n"
+	.string "Ms. Lanette. And quite\l"
+	.string "masterfully, at that.\p"
+	.string "Consider this your final exam.\n"
+	.string "Show us everything you've got,\l"
+	.string "and then some!$"
 
 RustGymDarkCafeArena_Text_RoxanneDefeat:
-	.string "$"
+	.string "Your foundation is solid\n"
+	.string "as concrete. Quite commendable.$"
 
 RustGymDarkCafeArena_Text_LanetteDefeat:
-	.string "$"
+	.string "I should use your strategies\n"
+	.string "as basis for my program's\l"
+	.string "AI improvements...$"
 
 RustGymDarkCafeArena_Text_YouDidIt:
-	.string "$"
+	.string "That showed me more than enough\n"
+	.string "of your rock-hard grit\l"
+	.string "and determination.\p"
+	.string "You have earned the right to\n"
+	.string "behold... the last badge.$"
 
 RustGymDarkCafeArena_Text_ReceivedAmberBadge:
 	.string "{PLAYER} received the\n"
 	.string "Amber Badge\l"
 	.string "from Roxanne and Lanette.$"
 
+RustGymDarkCafeArena_Text_AmberBadgeDesc:
+	.string "The Amber Badge allows you\n"
+	.string "to use the Waterfall field move\l"
+	.string "outside of battle.\l"
+	.string "Now that you've reached the\l"
+	.string "height of the gym journey...\l"
+	.string "you can reach new physical\l"
+	.string "heights as well. Pretty fitting.\p"
+	.string "These technical machines\n"
+	.string "are for you, too.$"
+
 RustGymDarkCafeArena_Text_PermanentRecord:
-	.string "$"
+	.string "I am feeling generous this evening,\n"
+	.string "so I am striking your delinquency\l"
+	.string "from your permanent record.\l"
+	.string "Just this once.\p"
+	.string "You will take care not to misbehave\n"
+	.string "in my presence in the future.\l"
+	.string "Understood? Good.$"
 
 RustGymDarkCafeArena_Text_ByeBye:
-	.string "$"
+	.string "I'll escort you back out to\n"
+	.string "the city, {PLAYER}...\p"
+	.string "And, if you ever get a chance...\n"
+	.string "I'd like you to email me.\l"
+	.string "I really could use the help\l"
+	.string "coding my trainer AI...$"
