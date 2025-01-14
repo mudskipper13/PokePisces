@@ -3753,3 +3753,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/RustboroTransitionBuilding/scripts.inc"
 
 	.include "data/maps/RustboroInteriors/scripts.inc"
+
+	.include "data/maps/DevonCorp/scripts.inc"

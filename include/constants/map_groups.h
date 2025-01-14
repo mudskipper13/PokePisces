@@ -249,6 +249,7 @@
 #define MAP_RUST_GYM_DARK_CLASSROOM          (18 | (17 << 8))
 #define MAP_RUST_GYM_DARK_CAFETERIA          (19 | (17 << 8))
 #define MAP_RUST_GYM_DARK_CAFE_ARENA         (20 | (17 << 8))
+#define MAP_DEVON_CORP                       (21 | (17 << 8))
 
 // gMapGroup_PiscesLeg10Major
 #define MAP_PETALBURG_NEW       (0 | (18 << 8))

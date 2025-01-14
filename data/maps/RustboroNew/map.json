@@ -30,7 +30,19 @@
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_IN_BLACK_SUIT",
+      "x": 60,
+      "y": 37,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_DEVON_CORP_VISIT"
+    }
   ],
   "warp_events": [
     {
@@ -168,7 +180,51 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RUST_GYM_STATE",
+      "var_value": "14",
+      "script": "RustboroNew_EventScript_DevonEncounterStartUpLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 38,
+      "elevation": 0,
+      "var": "VAR_RUST_GYM_STATE",
+      "var_value": "14",
+      "script": "RustboroNew_EventScript_DevonEncounterStartDownLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_RUST_GYM_STATE",
+      "var_value": "14",
+      "script": "RustboroNew_EventScript_DevonEncounterStartUpRight"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 38,
+      "elevation": 0,
+      "var": "VAR_RUST_GYM_STATE",
+      "var_value": "14",
+      "script": "RustboroNew_EventScript_DevonEncounterStartDownRight"
+    },
+    {
+      "type": "trigger",
+      "x": 51,
+      "y": 39,
+      "elevation": 0,
+      "var": "VAR_RUST_GYM_STATE",
+      "var_value": "14",
+      "script": "RustboroNew_EventScript_DevonEncounterStartDown"
+    }
   ],
   "bg_events": [
 

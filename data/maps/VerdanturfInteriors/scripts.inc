@@ -1,9 +1,21 @@
 .set LOCALID_P_MAN, 3
 .set LOCALID_SCOTT, 2
 .set LOCALID_WATTSON, 1
+.set LOCALID_WALLY, 8
 
 VerdanturfInteriors_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VerdanturfInteriors_OnFrame
 	.byte 0
+
+VerdanturfInteriors_OnFrame:
+	map_script_2 VAR_WALLY_QUEST_STATE, 0, VerdanturfInteriors_EventScript_WallyHouse
+	.2byte 0
+
+VerdanturfInteriors_EventScript_WallyHouse::
+	lock
+	setvar VAR_WALLY_QUEST_STATE, 1
+	release
+	end
 
 VerdanturfInteriors_EventScript_MeetingLeftTrigger::
 	lock

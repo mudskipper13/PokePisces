@@ -6010,6 +6010,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroInteriors/border.bin",
       "blockdata_filepath": "data/layouts/RustboroInteriors/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEVON_CORP",
+      "name": "DevonCorp_Layout",
+      "width": 19,
+      "height": 37,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/DevonCorp/border.bin",
+      "blockdata_filepath": "data/layouts/DevonCorp/map.bin"
     }
   ]
 }
