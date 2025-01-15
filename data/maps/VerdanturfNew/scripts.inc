@@ -96,6 +96,13 @@ VerdanturfNew_Movement_WalkUpToPlayer5:
 	step_end
 
 VerdanturfNew_EventScript_FirstWallyEncounter::
+	msgbox VerdanturfNew_Text_DoYouRememberMe, MSGBOX_DEFAULT
+	speakername VerdanturfNew_Text_NameWally
+	msgbox VerdanturfNew_Text_ComeToMyHouse, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	warp MAP_VERDANTURF_INTERIORS, 19, 6
+	waitstate
 	release
 	end
 
@@ -103,3 +110,21 @@ VerdanturfNew_Movement_Surprise:
 	delay_4
 	emote_exclamation_mark
 	step_end
+
+VerdanturfNew_Text_NameWally:
+	.string "Wally$"
+
+VerdanturfNew_Text_DoYouRememberMe:
+	.string "H-Hello! Is that you,\n"
+	.string "{PLAYER}? It must be!\p"
+	.string "Haha, do you remember me?\n"
+	.string "I-In case you forgot, it's...\l"
+	.string "it's Wally!$"
+
+VerdanturfNew_Text_ComeToMyHouse:
+	.string "I know you and I didn't\n"
+	.string "talk all too much, but\l"
+	.string "it's still good to see you!\p"
+	.string "Let's, uh... let's go to\n"
+	.string "my house real quick!\l"
+	.string "To catch up!$"
