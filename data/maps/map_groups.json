@@ -311,7 +311,9 @@
     "LittlerootNew",
     "PendingDev",
     "TestMap",
-    "SeasideCasino"
+    "SeasideCasino",
+    "WallyArena",
+    "WallyArenaLeadup"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",

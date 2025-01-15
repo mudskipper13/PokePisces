@@ -3755,3 +3755,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/RustboroInteriors/scripts.inc"
 
 	.include "data/maps/DevonCorp/scripts.inc"
+
+	.include "data/maps/WallyArena/scripts.inc"
+
+	.include "data/maps/WallyArenaLeadup/scripts.inc"

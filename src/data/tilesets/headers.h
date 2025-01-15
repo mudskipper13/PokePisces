@@ -1023,3 +1023,14 @@ const struct Tileset gTileset_CasinoNew =
     .metatileAttributes = gMetatileAttributes_CasinoNew,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BossArenas =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BossArenas,
+    .palettes = gTilesetPalettes_BossArenas,
+    .metatiles = gMetatiles_BossArenas,
+    .metatileAttributes = gMetatileAttributes_BossArenas,
+    .callback = NULL,
+};

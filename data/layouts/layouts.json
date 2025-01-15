@@ -6020,6 +6020,26 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/DevonCorp/border.bin",
       "blockdata_filepath": "data/layouts/DevonCorp/map.bin"
+    },
+    {
+      "id": "LAYOUT_WALLY_ARENA",
+      "name": "WallyArena_Layout",
+      "width": 19,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BossArenas",
+      "border_filepath": "data/layouts/WallyArena/border.bin",
+      "blockdata_filepath": "data/layouts/WallyArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_WALLY_ARENA_LEADUP",
+      "name": "WallyArenaLeadup_Layout",
+      "width": 32,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/WallyArenaLeadup/border.bin",
+      "blockdata_filepath": "data/layouts/WallyArenaLeadup/map.bin"
     }
   ]
 }

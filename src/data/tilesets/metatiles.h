@@ -261,3 +261,6 @@ const u16 gMetatileAttributes_RustboroGymNew[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_CasinoNew[] = INCBIN_U16("data/tilesets/secondary/casino_new/metatiles.bin");
 const u16 gMetatileAttributes_CasinoNew[] = INCBIN_U16("data/tilesets/secondary/casino_new/metatile_attributes.bin");
+
+const u16 gMetatiles_BossArenas[] = INCBIN_U16("data/tilesets/secondary/boss_arenas/metatiles.bin");
+const u16 gMetatileAttributes_BossArenas[] = INCBIN_U16("data/tilesets/secondary/boss_arenas/metatile_attributes.bin");
