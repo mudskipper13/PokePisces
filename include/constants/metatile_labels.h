@@ -386,6 +386,10 @@
 #define METATILE_Mossdeep_Door               0x2A1
 #define METATILE_Mossdeep_Door_SpaceCenter   0x2ED
 #define METATILE_Mossdeep_MangrottoCaveDoor  0x3F4
+#define METATILE_Mossdeep_RocketNormalLeft   0x39C
+#define METATILE_Mossdeep_RocketNormalRight  0x37D
+#define METATILE_Mossdeep_RocketUhefoeLeft   0x3F8
+#define METATILE_Mossdeep_RocketUhefoeRight  0x3F9
 
 // gTileset_OldStoneBuildings
 #define METATILE_OldStoneBuildings_BottomWall             0x28F
