@@ -139,6 +139,11 @@
 #define METATILE_Cave_ShoalCave_DirtPile_Large           0x358
 #define METATILE_Cave_ShoalCave_DirtPile_Small           0x35A
 
+// gTileset_Chimney
+#define METATILE_Chimney_door_chimney                  0x311
+#define METATILE_Chimney_door_chimney_pokecenter_brow  0x3D1
+#define METATILE_Chimney_door_chimney_pokemart_green   0x3D0
+
 // gTileset_Contest
 #define METATILE_Contest_CounterFlap_Bottom  0x2D9
 #define METATILE_Contest_CounterFlap_Top     0x2D1
@@ -299,6 +304,7 @@
 #define METATILE_Lilycove_Wailmer1_Alt     0x299
 #define METATILE_Lilycove_Wailmer2         0x2A0
 #define METATILE_Lilycove_Wailmer3         0x2A1
+#define METATILE_Lilycove_sliding_doors    0x346
 
 // gTileset_LilycoveMuseum
 #define METATILE_LilycoveMuseum_Painting0_Left   0x25A
@@ -787,12 +793,15 @@
 #define METATILE_SecretBase_YellowBrick_Top             0x226
 
 // gTileset_Shop
-#define METATILE_Shop_Door_Elevator          0x285
-#define METATILE_Shop_Laptop1_Flash          0x258
-#define METATILE_Shop_Laptop1_Normal         0x29D
-#define METATILE_Shop_Laptop2_Flash          0x260
-#define METATILE_Shop_Laptop2_Normal         0x2A5
-#define METATILE_Shop_MaintenanceDoorLocked  0x3C2
+#define METATILE_Shop_Door_Elevator            0x285
+#define METATILE_Shop_Laptop1_Flash            0x258
+#define METATILE_Shop_Laptop1_Normal           0x29D
+#define METATILE_Shop_Laptop2_Flash            0x260
+#define METATILE_Shop_Laptop2_Normal           0x2A5
+#define METATILE_Shop_MaintenanceDoorLocked    0x3C2
+#define METATILE_Shop_mauville_elevator_beige  0x369
+#define METATILE_Shop_mauville_elevator_green  0x32D
+#define METATILE_Shop_mauville_elevator_red    0x36C
 
 // gTileset_Slateport
 #define METATILE_Slateport_Door             0x2DC
@@ -812,6 +821,7 @@
 #define METATILE_Snow_SnowPileBottomRight  0x377
 #define METATILE_Snow_SnowPileTopLeft      0x36E
 #define METATILE_Snow_SnowPileTopRight     0x36F
+#define METATILE_Snow_door_zotpyre_gym     0x363
 
 // gTileset_Sootopolis
 #define METATILE_Sootopolis_Door             0x21E
@@ -952,6 +962,14 @@
 // gTileset_Underwater
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
+
+// gTileset_desert
+#define METATILE_desert_door_poke_mart_sweltorn  0x308
+
+// gTileset_mauvillenew
+#define METATILE_mauvillenew_door_elevators   0x24D
+#define METATILE_mauvillenew_door_pokecenter  0x2B1
+#define METATILE_mauvillenew_doors_entrance   0x200
 
 // Other
 #define METATILE_RSMossdeepGym_RedArrow_Down   0x205
