@@ -87,6 +87,20 @@
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_NEW",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 40,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 41,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
@@ -97,7 +111,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "2",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_StevenEncounter1"
     },
     {
       "type": "trigger",
@@ -106,7 +120,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "2",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_StevenEncounter2"
     },
     {
       "type": "trigger",
@@ -115,7 +129,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "1",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_ShouldntGoHere"
     },
     {
       "type": "trigger",
@@ -124,7 +138,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "1",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_ShouldntGoHere"
     },
     {
       "type": "trigger",
@@ -133,7 +147,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "2",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_StevenEncounter3"
     },
     {
       "type": "trigger",
@@ -142,7 +156,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "2",
-      "script": "NULL"
+      "script": "PetalburgNew_EventScript_StevenEncounter4"
     }
   ],
   "bg_events": [

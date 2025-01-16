@@ -3759,3 +3759,9 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/WallyArena/scripts.inc"
 
 	.include "data/maps/WallyArenaLeadup/scripts.inc"
+
+	.include "data/maps/LittlerootNormanHouse/scripts.inc"
+
+	.include "data/maps/SeasideCasinoTheater/scripts.inc"
+
+	.include "data/maps/SeasideCasinoBackrooms/scripts.inc"

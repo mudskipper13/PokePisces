@@ -5964,8 +5964,8 @@
     {
       "id": "LAYOUT_SEASIDE_CASINO",
       "name": "SeasideCasino_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 33,
+      "height": 21,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_CasinoNew",
       "border_filepath": "data/layouts/SeasideCasino/border.bin",
@@ -6040,6 +6040,36 @@
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/WallyArenaLeadup/border.bin",
       "blockdata_filepath": "data/layouts/WallyArenaLeadup/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_NORMAN_HOUSE",
+      "name": "LittlerootNormanHouse_Layout",
+      "width": 11,
+      "height": 22,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/LittlerootNormanHouse/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootNormanHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASIDE_CASINO_THEATER",
+      "name": "SeasideCasinoTheater_Layout",
+      "width": 11,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasinoNew",
+      "border_filepath": "data/layouts/SeasideCasinoTheater/border.bin",
+      "blockdata_filepath": "data/layouts/SeasideCasinoTheater/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASIDE_CASINO_BACKROOMS",
+      "name": "SeasideCasinoBackrooms_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasinoNew",
+      "border_filepath": "data/layouts/SeasideCasinoBackrooms/border.bin",
+      "blockdata_filepath": "data/layouts/SeasideCasinoBackrooms/map.bin"
     }
   ]
 }
