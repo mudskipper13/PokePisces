@@ -25378,11 +25378,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_SOLASU] =
     {
         .baseHP        = 50,
-        .baseAttack    = 75,
+        .baseAttack    = 65,
         .baseDefense   = 45,
-        .baseSpeed     = 65,
+        .baseSpeed     = 85,
         .baseSpAttack  = 120,
-        .baseSpDefense = 95,
+        .baseSpDefense = 85,
         .types = { TYPE_FIRE,TYPE_FAIRY },
         .catchRate = 45,
         .expYield = 64,
@@ -25401,8 +25401,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 70,
         .baseAttack    = 100,
-        .baseDefense   = 60,
-        .baseSpeed     = 85,
+        .baseDefense   = 50,
+        .baseSpeed     = 95,
         .baseSpAttack  = 160,
         .baseSpDefense = 125,
         .types = { TYPE_FIRE,TYPE_FAIRY },

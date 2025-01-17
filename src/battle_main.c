@@ -4741,10 +4741,14 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer >= 4)
         speed *= 2;
+    else if (gStatuses4[battler] == STATUS4_PHANTOM)
+        speed *= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
-        speed = (speed * 150) / 100;    
+        speed = (speed * 150) / 100;
+    if (gDisableStructs[battler].frenzyCounter != 0)
+        speed = (speed * (100 + (30 * gDisableStructs[battler].frenzyCounter))) / 100;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
         speed *= 2;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG)
@@ -5196,8 +5200,8 @@ static void TurnValuesCleanUp(bool8 var0)
         gSpecialStatuses[i].parentalBondState = PARENTAL_BOND_OFF;
     }
 
-    gSideStatuses[B_SIDE_PLAYER] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_CRAFTY_SHIELD | SIDE_STATUS_MAT_BLOCK);
-    gSideStatuses[B_SIDE_OPPONENT] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_CRAFTY_SHIELD | SIDE_STATUS_MAT_BLOCK);
+    gSideStatuses[B_SIDE_PLAYER] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_MAT_BLOCK);
+    gSideStatuses[B_SIDE_OPPONENT] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_MAT_BLOCK);
     gSideTimers[B_SIDE_PLAYER].followmeTimer = 0;
     gSideTimers[B_SIDE_OPPONENT].followmeTimer = 0;
 }

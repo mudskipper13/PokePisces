@@ -9046,12 +9046,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_RAZOR_SHELL] =
     {
-        .effect = EFFECT_DEFENSE_DOWN_HIT,
+        .effect = EFFECT_RAZOR_SHELL,
         .power = 75,
         .type = TYPE_WATER,
-        .accuracy = 95,
+        .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 50,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -9142,7 +9142,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PSYSTRIKE] =
     {
-        .effect = EFFECT_PSYSHOCK,
+        .effect = EFFECT_PSYSTRIKE,
         .power = 100,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
@@ -9152,6 +9152,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .ignoresProtect = TRUE,
     },
 
     [MOVE_TAIL_SLAP] =
@@ -14596,7 +14597,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_BERRY_BAD_JOKE] =
     {
         .effect = EFFECT_BERRY_BAD_JOKE,
-        .power = 1,
+        .power = 100,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,

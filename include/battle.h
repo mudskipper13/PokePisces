@@ -67,6 +67,8 @@ struct DisableStruct
     u16 encoredMove;
     u8 protectUses;
     u8 stockpileCounter;
+    u8 exhaustionCounter;
+    u8 frenzyCounter;
     u8 purified;
     s8 stockpileDef;
     s8 stockpileSpDef;
@@ -807,7 +809,6 @@ STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLER
 #define IS_BATTLER_PROTECTED(battlerId)(gProtectStructs[battlerId].protected                                           \
                                         || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_WIDE_GUARD           \
                                         || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_QUICK_GUARD          \
-                                        || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_CRAFTY_SHIELD        \
                                         || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_MAT_BLOCK            \
                                         || gProtectStructs[battlerId].spikyShielded                                    \
                                         || gProtectStructs[battlerId].kingsShielded                                    \

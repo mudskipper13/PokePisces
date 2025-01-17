@@ -6058,11 +6058,11 @@ const u8 gHemokoPokedexText[] = _(
     "missing incidents in a distant province.");
 
 const u8 gLepucytePokedexText[] = _(
-    "Despite their docile look, they are violent\n"
-    "towards young children. This odd behavior has\n"
-    "been seen in all cases and serves no purpose for\n"
-    "their survival. Oddly, no one has truly seen a \n"
-    "Hemoko evolve. Carrots can calm down Lepucyte.");
+    "Despite their docile appearance, they are\n"
+    "violent towards young children. This odd\n"
+    "behavior has been seen in all cases and serves\n"
+    "no purpose other than pure hatred. Giving them\n"
+    "carrots seems to calm them down, however.");
 
 const u8 gLeukunehoPokedexText[] = _(
     "This Pokémon is not recommended in the\n"
