@@ -298,6 +298,7 @@
 #define VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES       207
 #define VARIOUS_SPELL_TAG_PP_REDUCE                  208
 #define VARIOUS_SET_PURIFIED                         209
+#define VARIOUS_TRY_CRITICAL_REPAIR                  210
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

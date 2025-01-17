@@ -636,7 +636,9 @@
 #define EFFECT_ROCK_POLISH                  631
 #define EFFECT_POWER_GEM                    632
 #define EFFECT_PSYCHO_CUT                   633
+#define EFFECT_RAZOR_SHELL                  634
+#define EFFECT_PSYSTRIKE                    635
 
-#define NUM_BATTLE_MOVE_EFFECTS             634
+#define NUM_BATTLE_MOVE_EFFECTS             636
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

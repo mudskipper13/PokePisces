@@ -1086,9 +1086,9 @@ static const u8 sPresentDescription[] = _(
     "however.");
 
 static const u8 sFrustrationDescription[] = _(
-    "This full-power attack grows\n"
-    "more powerful the less the user\n"
-    "likes its Trainer.");
+    "Boosted based on low friendship.\n"
+    "Always lands critical hits if\n"
+    "the user has a stat drop.");
 
 static const u8 sSafeguardDescription[] = _(
     "Prevents certain status for 6\n"
@@ -2109,8 +2109,8 @@ static const u8 sMudBombDescription[] = _(
 
 static const u8 sPsychoCutDescription[] = _(
     "Critical hits land more easily.\n"
-    "On Psychic Terrain, uses the\n"
-    "foe's Sp. Def and lowers it.");
+    "On Psychic Terrain, uses Sp. Def\n"
+    "instead of Def and lowers it.");
 
 static const u8 sZenHeadbuttDescription[] = _(
     "The user focuses its willpower\n"
@@ -2336,6 +2336,11 @@ static const u8 sPsyshockDescription[] = _(
     "The user emits an odd psychic\n"
     "wave to attack the foe. Uses the\n"
     "foe's Def instead of Sp. Def.");
+
+static const u8 sPsystrikeDescription[] = _(
+    "The user emits an odd psychic\n"
+    "wave that ignores protection,\n"
+    "redirection, and breaks screens.");
 
 static const u8 sTailSlapDescription[] = _(
     "The user attacks by striking the\n"
@@ -2636,9 +2641,9 @@ static const u8 sHeartStampDescription[] = _(
     "lowers the foe's Defense stat.");
 
 static const u8 sRazorShellDescription[] = _(
-    "The user cuts the foe with sharp\n"
-    "shells to deal damage. This may\n"
-    "lower the foe's Defense stat.");
+    "This move uses Defense to deal\n"
+    "damage. Boosted if the user used\n"
+    "Withdraw the previous turn.");
 
 static const u8 sLeafTornadoDescription[] = _(
     "Lowers the foe's accuracy. If\n"
@@ -2688,7 +2693,7 @@ static const u8 sRelicSongDescription[] = _(
 static const u8 sSecretSwordDescription[] = _(
     "The user cuts with its long\n"
     "horn. The odd power contained in\n"
-    "the horn uses the foe's Defense.");
+    "the horn does physical damage. ");
 
 static const u8 sGlaciateDescription[] = _(
     "The user blows freezing cold air\n"
@@ -4340,8 +4345,8 @@ static const u8 sSonicBurstDescription[] = _(
 
 static const u8 sSoulCutterDescription[] = _(
     "Slashes with a spectral blade\n"
-    "that uses the foe's Sp. Def.\n"
-    "Deals bonus true damage.");
+    "that uses Sp. Def instead of\n"
+    "Def. Deals bonus true damage.");
 
 static const u8 sVoidDescription[] = _(
     "The user sends foes to the void.\n"
@@ -4934,9 +4939,9 @@ static const u8 sSweetWhispersDescription[] = _(
     "to attack their allies.");
 
 static const u8 sSyrupBombDescription[] = _(
-    "The user covers the foe in sticky\n"
-    "candy syrup. Drops the foe's\n"
-    "Speed and evasion for 3 turns.");
+    "Drops the foe's Spd and eva for\n"
+    "3 turns. If the user is\n"
+    "blooming, traps the foe forever.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -5486,7 +5491,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_STEAMROLLER - 1] = sSteamrollerDescription,
     [MOVE_COTTON_GUARD - 1] = sCottonGuardDescription,
     [MOVE_NIGHT_DAZE - 1] = sNightDazeDescription,
-    [MOVE_PSYSTRIKE - 1] = sPsyshockDescription,
+    [MOVE_PSYSTRIKE - 1] = sPsystrikeDescription,
     [MOVE_TAIL_SLAP - 1] = sTailSlapDescription,
     [MOVE_HURRICANE - 1] = sHurricaneDescription,
     [MOVE_HEAD_CHARGE - 1] = sHeadChargeDescription,

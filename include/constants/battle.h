@@ -191,7 +191,7 @@
 #define STATUS3_LASER_FOCUS             (1 << 29)
 #define STATUS3_POWER_TRICK             (1 << 30)
 #define STATUS3_SKY_DROPPED             (1 << 31) // Target of Sky Drop
-#define STATUS3_SEMI_INVULNERABLE       (STATUS3_UNDERGROUND | STATUS3_ON_AIR | STATUS3_UNDERWATER | STATUS3_PHANTOM_FORCE)
+#define STATUS3_SEMI_INVULNERABLE       (STATUS3_UNDERGROUND | STATUS3_ON_AIR | STATUS3_UNDERWATER | STATUS3_PHANTOM_FORCE | STATUS4_PHANTOM)
 
 #define STATUS4_ELECTRIFIED             (1 << 0)
 #define STATUS4_PLASMA_FISTS            (1 << 1)
@@ -212,6 +212,10 @@
 #define STATUS4_ACID_ARMORED            (1 << 16)
 #define STATUS4_POWER_SHIFT             (1 << 17)
 #define STATUS4_SYRUP_BOMB              (1 << 18)
+#define STATUS4_GEARED_UP               (1 << 19)
+#define STATUS4_SUPERCHARGED            (1 << 20)
+#define STATUS4_PHANTOM                 (1 << 21)
+#define STATUS4_CRAFTY_SHIELD           (1 << 22)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -258,10 +262,9 @@
 // Missing flags previously were SIDE_STATUS_TOXIC_SPIKES_DAMAGED, SIDE_STATUS_STEALTH_ROCK_DAMAGED, SIDE_STATUS_STICKY_WEB_DAMAGED
 #define SIDE_STATUS_QUICK_GUARD             (1 << 18)
 #define SIDE_STATUS_WIDE_GUARD              (1 << 19)
-#define SIDE_STATUS_CRAFTY_SHIELD           (1 << 20)
-#define SIDE_STATUS_MAT_BLOCK               (1 << 21)
-#define SIDE_STATUS_SILENCE                 (1 << 22)
-#define SIDE_STATUS_HEAL_ORDER              (1 << 23)
+#define SIDE_STATUS_MAT_BLOCK               (1 << 20)
+#define SIDE_STATUS_SILENCE                 (1 << 21)
+#define SIDE_STATUS_HEAL_ORDER              (1 << 22)
 
 #define SIDE_STATUS_HAZARDS_ANY    (SIDE_STATUS_SPIKES | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_STEALTH_ROCK)
 #define SIDE_STATUS_SCREEN_ANY     (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)

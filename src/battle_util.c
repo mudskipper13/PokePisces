@@ -172,7 +172,7 @@ bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide, u32 move)
         }
         return TRUE;
     }
-    if (gSideTimers[defSide].followmeTimer == 0 || gBattleMons[gSideTimers[defSide].followmeTarget].hp == 0 || gBattleMoves[move].effect == EFFECT_SNIPE_SHOT || gBattleMoves[move].effect == EFFECT_SKY_DROP || ability == ABILITY_PROPELLER_TAIL || ability == ABILITY_STALWART)
+    if (gSideTimers[defSide].followmeTimer == 0 || gBattleMons[gSideTimers[defSide].followmeTarget].hp == 0 || gBattleMoves[move].effect == EFFECT_SNIPE_SHOT || gBattleMoves[move].effect == EFFECT_PSYSTRIKE || gBattleMoves[move].effect == EFFECT_SKY_DROP || ability == ABILITY_PROPELLER_TAIL || ability == ABILITY_STALWART)
         return FALSE;
 
     if (gSideTimers[defSide].followmePowder && !IsAffectedByPowder(battlerAtk, ability, GetBattlerHoldEffect(battlerAtk, TRUE)))
@@ -307,6 +307,7 @@ void HandleAction_UseMove(void)
             || (GetBattlerAbility(battler) == ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)) 
             && GetBattlerTurnOrderNum(battler) < var 
             && gBattleMoves[gCurrentMove].effect != EFFECT_SNIPE_SHOT 
+            && gBattleMoves[gCurrentMove].effect != EFFECT_PSYSTRIKE
             && (GetBattlerAbility(gBattlerAttacker) != ABILITY_PROPELLER_TAIL 
             || GetBattlerAbility(gBattlerAttacker) != ABILITY_STALWART))
             {
@@ -1789,6 +1790,8 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CANT_USE_TWICE && gBattleMoves[move].cantUseTwice && move == gLastResultingMoves[battler])
         return TRUE;
     else if (check & MOVE_LIMITATION_BLOOMING && gBattleMoves[move].cantUseTwiceBlooming && move == gLastResultingMoves[battler] && gBattleMons[battler].status1 & STATUS1_BLOOMING)
+        return TRUE;
+    else if (check & MOVE_LIMITATION_PHANTOM && gStatuses4[battler] & STATUS4_PHANTOM && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
         return TRUE;
     return 0;
 }
@@ -10577,7 +10580,7 @@ bool32 IsBattlerProtected(u32 battler, u32 move)
     // Decorate bypasses protect and detect, but not crafty shield
     if (move == MOVE_DECORATE)
     {
-        if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_CRAFTY_SHIELD)
+        if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD)
             return TRUE;
         else if (gProtectStructs[battler].protected)
             return FALSE;
@@ -10624,7 +10627,7 @@ bool32 IsBattlerProtected(u32 battler, u32 move)
         return TRUE;
     else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_QUICK_GUARD && GetChosenMovePriority(gBattlerAttacker) > 0)
         return TRUE;
-    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_CRAFTY_SHIELD && IS_MOVE_STATUS(move))
+    else if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD && IS_MOVE_STATUS(move))
         return TRUE;
     else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_MAT_BLOCK && !IS_MOVE_STATUS(move))
         return TRUE;
@@ -11186,7 +11189,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gProtectStructs[gBattlerTarget].protected
             || gSideStatuses[GetBattlerSide(gBattlerTarget)] == SIDE_STATUS_WIDE_GUARD
             || gSideStatuses[GetBattlerSide(gBattlerTarget)] == SIDE_STATUS_QUICK_GUARD
-            || gSideStatuses[GetBattlerSide(gBattlerTarget)] == SIDE_STATUS_CRAFTY_SHIELD
             || gSideStatuses[GetBattlerSide(gBattlerTarget)] == SIDE_STATUS_MAT_BLOCK
             || gProtectStructs[gBattlerTarget].spikyShielded
             || gProtectStructs[gBattlerTarget].kingsShielded
@@ -11427,8 +11429,12 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_ELECTRIC_TERRAIN))
             basePower *= 2;
         break;
+    case EFFECT_RAZOR_SHELL:
+        if (MOVE_WITHDRAW == gLastResultingMoves[battlerAtk])
+            basePower *= 2;
+        break;
     case EFFECT_SHARP_GLIDE:
-        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND)
+        if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
             basePower *= 2;
         break;
     case EFFECT_HIT_SET_REMOVE_TERRAIN:
@@ -11596,6 +11602,12 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gStatuses4[battlerAtk] & STATUS4_PUMPED_UP && moveType == TYPE_WATER)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+    if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP && moveType == TYPE_STEEL)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+    if (gStatuses4[battlerAtk] & STATUS4_SUPERCHARGED && moveType == TYPE_ELECTRIC)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+    if (gStatuses4[battlerDef] & STATUS4_CRAFTY_SHIELD)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_GRASSY_TERRAIN) && moveType == TYPE_GRASS)
@@ -12114,7 +12126,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         atkStat = gBattleMons[battlerDef].speed;
         atkStage = gBattleMons[battlerDef].statStages[STAT_SPEED];
     }
-    else if (gBattleMoves[move].effect == EFFECT_BODY_PRESS || gBattleMoves[move].effect == EFFECT_SKULL_BASH || gBattleMoves[move].effect == EFFECT_STALAG_BLAST)
+    else if (gBattleMoves[move].effect == EFFECT_BODY_PRESS || gBattleMoves[move].effect == EFFECT_RAZOR_SHELL || gBattleMoves[move].effect == EFFECT_SKULL_BASH || gBattleMoves[move].effect == EFFECT_STALAG_BLAST)
     {
         atkStat = gBattleMons[battlerAtk].defense;
         atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
@@ -12848,10 +12860,38 @@ static inline uq4_12_t GetDiveModifier(u32 move, u32 battlerDef)
     return UQ_4_12(1.0);
 }
 
-static inline uq4_12_t GetInfatuationModifier(u32 battlerDef)
+static inline uq4_12_t GetFrenzyAttackerModifier(u32 battlerAtk, bool32 isCrit)
+{
+    if (gDisableStructs[battlerAtk].frenzyCounter != 0 && isCrit)
+        return UQ_4_12(1.0 + (sPercentToModifier[gDisableStructs[battlerAtk].frenzyCounter * 30]));
+    return UQ_4_12(1.0);
+}
+
+static inline uq4_12_t GetFrenzyDefenderModifier(u32 battlerDef)
+{
+    if (gDisableStructs[battlerDef].frenzyCounter != 0)
+        return UQ_4_12(1.0 + (sPercentToModifier[gDisableStructs[battlerDef].frenzyCounter * 20]));
+    return UQ_4_12(1.0);
+}
+
+static inline uq4_12_t GetExhaustionAttackerModifier(u32 battlerAtk)
+{
+    if (gDisableStructs[battlerAtk].exhaustionCounter != 0)
+        return UQ_4_12(1.0 - (sPercentToModifier[gDisableStructs[battlerAtk].exhaustionCounter * 25]));
+    return UQ_4_12(1.0);
+}
+
+static inline uq4_12_t GetInfatuationDefenderModifier(u32 battlerDef)
 {
     if (gBattleMons[battlerDef].status2 & STATUS2_INFATUATION)
         return UQ_4_12(1.25);
+    return UQ_4_12(1.0);
+}
+
+static inline uq4_12_t GetInfatuationAttackerModifier(u32 battlerAtk)
+{
+    if (gBattleMons[battlerAtk].status2 & STATUS2_INFATUATION)
+        return UQ_4_12(0.75);
     return UQ_4_12(1.0);
 }
 
@@ -13163,7 +13203,11 @@ static inline uq4_12_t GetOtherModifiers(u32 move, u32 moveType, u32 battlerAtk,
     DAMAGE_MULTIPLY_MODIFIER(GetMinimizeModifier(move, battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetUndergroundModifier(move, battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetDiveModifier(move, battlerDef));
-    DAMAGE_MULTIPLY_MODIFIER(GetInfatuationModifier(battlerDef));
+    DAMAGE_MULTIPLY_MODIFIER(GetInfatuationDefenderModifier(battlerDef));
+    DAMAGE_MULTIPLY_MODIFIER(GetInfatuationAttackerModifier(battlerAtk));
+    DAMAGE_MULTIPLY_MODIFIER(GetExhaustionAttackerModifier(battlerAtk));
+    DAMAGE_MULTIPLY_MODIFIER(GetFrenzyDefenderModifier(battlerDef));
+    DAMAGE_MULTIPLY_MODIFIER(GetFrenzyAttackerModifier(battlerAtk, isCrit));
     DAMAGE_MULTIPLY_MODIFIER(GetAirborneModifier(move, battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetScreensModifier(move, battlerAtk, battlerDef, isCrit, abilityAtk));
     DAMAGE_MULTIPLY_MODIFIER(GetCollisionCourseElectroDriftModifier(move, typeEffectivenessModifier));
@@ -14795,12 +14839,16 @@ bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2)
 
 u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
 {
-    if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_FAIRY_FEATHER) {
+    if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_FAIRY_FEATHER) 
+    {
         u8 moveType;
         GET_MOVE_TYPE(gCurrentMove, moveType);
         if (moveType == TYPE_FAIRY)
             return 100;
     }
+
+    if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
+        secondaryEffectChance = 100;
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
             && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER))
@@ -14814,9 +14862,6 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
 
     if (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND)
         secondaryEffectChance *= 3;
-
-    if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
-        secondaryEffectChance *= 5;
 
     if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 
     || GetBattlerAbility(battler) == ABILITY_RISKTAKER 

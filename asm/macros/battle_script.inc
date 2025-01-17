@@ -2593,6 +2593,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trycriticalrepair battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_CRITICAL_REPAIR
+	.4byte \failInstr
+	.endm
+
 	.macro staggerdamage
 	various 0, VARIOUS_STAGGER_DAMAGE
 	.endm
