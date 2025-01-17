@@ -3193,7 +3193,7 @@ BattleScript_HeavyCellDoMoveAnim::
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_ATTACKER, BIT_SPEED, 0
-	setstatchanger STAT_DEF, 1, FALSE
+	setstatchanger STAT_DEF, 2, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HeavyCellTrySpecialDefense
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HeavyCellTrySpecialDefense
 	printfromtable gStatUpStringIds
@@ -3207,7 +3207,7 @@ BattleScript_HeavyCellTrySpecialDefense::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_HeavyCellTrySpeed::
-	setstatchanger STAT_SPEED, 2, FALSE
+	setstatchanger STAT_SPEED, 1, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HeavyCellEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HeavyCellEnd
 	printfromtable gStatUpStringIds
