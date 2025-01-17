@@ -292,6 +292,7 @@
 
 // gTileset_LavaridgeNew
 #define METATILE_LavaridgeNew_DurinHarvestedBrach  0x2B4
+#define METATILE_LavaridgeNew_door_lavaridge       0x282
 
 // gTileset_Lilycove
 #define METATILE_Lilycove_Door             0x246
@@ -383,6 +384,10 @@
 #define METATILE_Mossdeep_Door               0x2A1
 #define METATILE_Mossdeep_Door_SpaceCenter   0x2ED
 #define METATILE_Mossdeep_MangrottoCaveDoor  0x3F4
+#define METATILE_Mossdeep_RocketNormalLeft   0x39C
+#define METATILE_Mossdeep_RocketNormalRight  0x37D
+#define METATILE_Mossdeep_RocketUhefoeLeft   0x3F8
+#define METATILE_Mossdeep_RocketUhefoeRight  0x3F9
 
 // gTileset_MossdeepGameCorner
 #define METATILE_MossdeepGameCorner_CounterClosed_Bottom  0x232
@@ -519,6 +524,10 @@
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
 #define METATILE_Rustboro_Door_Tan   0x22F
+
+// gTileset_RustboroGymNew
+#define METATILE_RustboroGymNew_DiogenesLeft   0x355
+#define METATILE_RustboroGymNew_DiogenesRight  0x356
 
 // gTileset_SecretBase
 #define METATILE_SecretBase_AttractMat_BottomLeft       0x313
@@ -821,6 +830,7 @@
 #define METATILE_Snow_SnowPileBottomRight  0x377
 #define METATILE_Snow_SnowPileTopLeft      0x36E
 #define METATILE_Snow_SnowPileTopRight     0x36F
+#define METATILE_Snow_door_zotpyre         0x324
 #define METATILE_Snow_door_zotpyre_gym     0x363
 
 // gTileset_Sootopolis
@@ -965,6 +975,7 @@
 
 // gTileset_desert
 #define METATILE_desert_door_poke_mart_sweltorn  0x308
+#define METATILE_desert_door_sweltorn            0x27F
 
 // gTileset_mauvillenew
 #define METATILE_mauvillenew_door_elevators   0x24D

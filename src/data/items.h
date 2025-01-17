@@ -8338,11 +8338,23 @@ const struct Item gItems[] =
         .secondaryId = MOVE_BLEAKWIND_STORM, // Todo
     },
 
-    [ITEM_TM_ZAP_CANNON] =
+    [ITEM_TM_MIND_BREAK] =
     {
         .name = _("TM95"),
         .price = 3000,
         .description = sTM95Desc,
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_MIND_BREAK, // Todo
+    },
+
+    [ITEM_TM_ZAP_CANNON] =
+    {
+        .name = _("TM96"),
+        .price = 3000,
+        .description = sTM96Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -8352,9 +8364,9 @@ const struct Item gItems[] =
 
     [ITEM_TM_FIRE_BLAST] =
     {
-        .name = _("TM96"),
+        .name = _("TM97"),
         .price = 3000,
-        .description = sTM96Desc,
+        .description = sTM97Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -8364,9 +8376,9 @@ const struct Item gItems[] =
 
     [ITEM_TM_RAGING_FURY] =
     {
-        .name = _("TM97"),
+        .name = _("TM98"),
         .price = 3000,
-        .description = sTM97Desc,
+        .description = sTM98Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -8376,9 +8388,9 @@ const struct Item gItems[] =
 
     [ITEM_TM_GUNK_SHOT] =
     {
-        .name = _("TM98"),
+        .name = _("TM99"),
         .price = 3000,
-        .description = sTM98Desc,
+        .description = sTM99Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -8388,18 +8400,6 @@ const struct Item gItems[] =
 
     [ITEM_TM_IRON_TAIL] =
     {
-        .name = _("TM99"),
-        .price = 3000,
-        .description = sTM99Desc,
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_IRON_TAIL, // Todo
-    },
-
-    [ITEM_TM_MIND_BREAK] =
-    {
         .name = _("TM100"),
         .price = 3000,
         .description = sTM100Desc,
@@ -8407,7 +8407,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_MIND_BREAK, // Todo
+        .secondaryId = MOVE_IRON_TAIL, // Todo
     },
 
     [ITEM_HM_CUT] =

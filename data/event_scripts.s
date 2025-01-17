@@ -3743,3 +3743,19 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/RustGymDarkClassroom/scripts.inc"
 
 	.include "data/maps/RustGymPrincipalsOffice/scripts.inc"
+
+	.include "data/maps/SeasideCasino/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOfficeShort/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeArena/scripts.inc"
+
+	.include "data/maps/RustboroTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustboroInteriors/scripts.inc"
+
+	.include "data/maps/DevonCorp/scripts.inc"
+
+	.include "data/maps/WallyArena/scripts.inc"
+
+	.include "data/maps/WallyArenaLeadup/scripts.inc"

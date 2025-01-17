@@ -38,6 +38,9 @@ Route126_EventScript_StartInvasion::
 	speakername NULL
 	msgbox Route126_Text_UhefoeCry, MSGBOX_DEFAULT
 	waitmessage
+	setmetatile 62, 9, METATILE_Mossdeep_RocketUhefoeLeft, TRUE
+	setmetatile 63, 9, METATILE_Mossdeep_RocketUhefoeRight, TRUE
+	special DrawWholeMapView
 	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_UhefoeAppears, MSGBOX_DEFAULT
 	speakername NULL
@@ -53,6 +56,8 @@ Route126_Movement_WalkToRocket:
 	step_end
 
 Route126_EventScript_YouDidIt::
+	setmetatile 62, 9, METATILE_Mossdeep_RocketNormalLeft, TRUE
+	setmetatile 63, 9, METATILE_Mossdeep_RocketNormalRight, TRUE
 	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_YouDidIt, MSGBOX_DEFAULT
 	speakername NULL

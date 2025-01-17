@@ -96,12 +96,12 @@
     F(DUAL_WINGBEAT) \
     F(EARTHQUAKE) \
     F(BLEAKWIND_STORM) \
+    F(MIND_BREAK) \
     F(ZAP_CANNON) \
     F(FIRE_BLAST) \
     F(RAGING_FURY) \
     F(GUNK_SHOT) \
-    F(IRON_TAIL) \
-    F(MIND_BREAK) 
+    F(IRON_TAIL)
 
 #define FOREACH_HM(F) \
     F(CUT) \

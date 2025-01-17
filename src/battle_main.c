@@ -5740,6 +5740,7 @@ static void TrySpecialEvolution(void) // Attempts to perform non-level related b
 static void TryEvolvePokemon(void)
 {
     s32 i;
+    u32 currSpecies = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
 
     while (gLeveledUpInBattle != 0)
     {
@@ -5753,7 +5754,22 @@ static void TryEvolvePokemon(void)
                 levelUpBits &= ~(gBitTable[i]);
                 gLeveledUpInBattle = levelUpBits;
 
-                species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
+                if (currSpecies == SPECIES_HEMOKO && (gLeveledUpInBattle & (1u << i)))
+                {
+                    gLeveledUpInBattle &= ~(1u << i);
+                    species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_BATTLE_ONLY, gLeveledUpInBattle, NULL);
+                }
+                else if (currSpecies != SPECIES_HEMOKO)
+                {
+                    species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
+                }
+
+                if (species == SPECIES_LEPUCYTE)
+                {
+                    EvolveMon(&gPlayerParty[i], currSpecies, species);
+                    return;
+                }
+
                 if (species != SPECIES_NONE)
                 {
                     return;
@@ -5762,6 +5778,7 @@ static void TryEvolvePokemon(void)
         }
     }
 
+    gLeveledUpInBattle = 0;
     gBattleMainFunc = ReturnFromBattleToOverworld;
 }
 

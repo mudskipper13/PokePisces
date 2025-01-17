@@ -1957,3 +1957,41 @@ const u16 gTilesetPalettes_RustboroGymNew[][16] =
 };
 
 const u32 gTilesetTiles_RustboroGymNew[] = INCBIN_U32("data/tilesets/secondary/rustboro_gym_new/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CasinoNew[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/casino_new/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CasinoNew[] = INCBIN_U32("data/tilesets/secondary/casino_new/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_BossArenas[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/boss_arenas/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_BossArenas[] = INCBIN_U32("data/tilesets/secondary/boss_arenas/tiles.4bpp.lz");

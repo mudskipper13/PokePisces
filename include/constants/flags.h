@@ -1259,8 +1259,8 @@
 #define FLAG_FOUND_BRAWLY                                           0x4B9 // Unused Flag
 #define FLAG_BRINEY_DEWFORD_VISIT                                           0x4BA // Unused Flag
 #define FLAG_MET_AARUNE                                           0x4BB // Unused Flag
-#define FLAG_UNUSED_0x4BC                                           0x4BC // Unused Flag
-#define FLAG_UNUSED_0x4BD                                           0x4BD // Unused Flag
+#define FLAG_DEVON_CORP_VISIT                                           0x4BC // Unused Flag
+#define FLAG_MET_WALLY_VERDANTURF                                           0x4BD // Unused Flag
 #define FLAG_UNUSED_0x4BE                                           0x4BE // Unused Flag
 #define FLAG_UNUSED_0x4BF                                           0x4BF // Unused Flag
 #define FLAG_UNUSED_0x4C0                                           0x4C0 // Unused Flag
