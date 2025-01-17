@@ -1,5 +1,26 @@
+.set LOCALID_ROADBLOCKER_1, 16
+.set LOCALID_ROADBLOCKER_2, 17
+.set LOCALID_ROADBLOCKER_3, 18
+.set LOCALID_ROADBLOCKER_4, 19
+
 HatchloamField_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, HatchloamField_OnLoad
 	.byte 0
+
+HatchloamField_OnLoad:
+	call_if_gt VAR_WALLY_QUEST_STATE, 2, HatchloamField_EventScript_RemoveRoadblock
+	end
+
+HatchloamField_EventScript_RemoveRoadblock::
+	removeobject LOCALID_ROADBLOCKER_1
+	setflag FLAG_TEMP_11
+	removeobject LOCALID_ROADBLOCKER_2
+	setflag FLAG_TEMP_12
+	removeobject LOCALID_ROADBLOCKER_3
+	setflag FLAG_TEMP_13
+	removeobject LOCALID_ROADBLOCKER_4
+	setflag FLAG_TEMP_14
+	return
 
 HatchloamField_EventScript_Dustin::
     trainerbattle_single TRAINER_P_DUSTIN, HatchloamField_Text_DustinIntro, HatchloamField_Text_DustinDefeated

@@ -252,21 +252,24 @@
 #define MAP_DEVON_CORP                       (21 | (17 << 8))
 
 // gMapGroup_PiscesLeg10Major
-#define MAP_PETALBURG_NEW       (0 | (18 << 8))
-#define MAP_PETALBURG_WOODS_NEW (1 | (18 << 8))
-#define MAP_OLDALE_NEW          (2 | (18 << 8))
-#define MAP_NOVICE_WALK         (3 | (18 << 8))
-#define MAP_LITTLEROOT_NEW      (4 | (18 << 8))
-#define MAP_PENDING_DEV         (5 | (18 << 8))
-#define MAP_TEST_MAP            (6 | (18 << 8))
-#define MAP_SEASIDE_CASINO      (7 | (18 << 8))
-#define MAP_WALLY_ARENA         (8 | (18 << 8))
-#define MAP_WALLY_ARENA_LEADUP  (9 | (18 << 8))
+#define MAP_PETALBURG_NEW            (0 | (18 << 8))
+#define MAP_PETALBURG_WOODS_NEW      (1 | (18 << 8))
+#define MAP_OLDALE_NEW               (2 | (18 << 8))
+#define MAP_NOVICE_WALK              (3 | (18 << 8))
+#define MAP_LITTLEROOT_NEW           (4 | (18 << 8))
+#define MAP_PENDING_DEV              (5 | (18 << 8))
+#define MAP_TEST_MAP                 (6 | (18 << 8))
+#define MAP_SEASIDE_CASINO           (7 | (18 << 8))
+#define MAP_WALLY_ARENA              (8 | (18 << 8))
+#define MAP_WALLY_ARENA_LEADUP       (9 | (18 << 8))
+#define MAP_SEASIDE_CASINO_THEATER   (10 | (18 << 8))
+#define MAP_SEASIDE_CASINO_BACKROOMS (11 | (18 << 8))
 
 // gMapGroup_PiscesLeg10Minor
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_1F (0 | (19 << 8))
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_1F    (1 | (19 << 8))
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F    (2 | (19 << 8))
+#define MAP_LITTLEROOT_NORMAN_HOUSE          (3 | (19 << 8))
 
 // gMapGroup_PiscesLeg11Major
 #define MAP_CRIMNEY_CALDERA             (0 | (20 << 8))

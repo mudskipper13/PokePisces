@@ -313,12 +313,15 @@
     "TestMap",
     "SeasideCasino",
     "WallyArena",
-    "WallyArenaLeadup"
+    "WallyArenaLeadup",
+    "SeasideCasinoTheater",
+    "SeasideCasinoBackrooms"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_1F",
-    "OldaleTown_PokemonCenter_2F"
+    "OldaleTown_PokemonCenter_2F",
+    "LittlerootNormanHouse"
   ],
   "gMapGroup_PiscesLeg11Major": [
     "CrimneyCaldera",

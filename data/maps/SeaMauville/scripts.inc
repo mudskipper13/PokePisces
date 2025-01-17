@@ -7,6 +7,10 @@
 .set LOCALID_ARCHIE, 5
 .set LOCALID_STERN, 6
 .set LOCALID_NUE, 2
+.set LOCALID_ROADBLOCKER_1, 16
+.set LOCALID_ROADBLOCKER_2, 17
+.set LOCALID_ROADBLOCKER_3, 18
+.set LOCALID_ROADBLOCKER_4, 19
 
 SeaMauville_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SeaMauville_OnLoad
@@ -27,6 +31,7 @@ SeaMauville_OnLoad:
 	call_if_eq VAR_OLD_GUYS_STATE, 9, SeaMauville_EventScript_RemoveNob
 	call_if_eq VAR_OLD_GUYS_STATE, 10, SeaMauville_EventScript_RemoveNob
 	call_if_ge VAR_OLD_GUYS_STATE, 16, SeaMauville_EventScript_RemoveNob
+	call_if_gt VAR_WALLY_QUEST_STATE, 2, SeaMauville_EventScript_RemoveRoadblock
 	end
 
 SeaMauville_EventScript_SetTraderGfx::
@@ -68,6 +73,17 @@ SeaMauville_EventScript_RemoveNob::
 	removeobject LOCALID_TRADER
 	setflag FLAG_TEMP_12
 	return	
+
+SeaMauville_EventScript_RemoveRoadblock::
+	removeobject LOCALID_ROADBLOCKER_1
+	setflag FLAG_TEMP_A
+	removeobject LOCALID_ROADBLOCKER_2
+	setflag FLAG_TEMP_B
+	removeobject LOCALID_ROADBLOCKER_3
+	setflag FLAG_TEMP_C
+	removeobject LOCALID_ROADBLOCKER_4
+	setflag FLAG_TEMP_D
+	return
 
 SeaMauville_EventScript_BrineyFastTravel::
 	lock

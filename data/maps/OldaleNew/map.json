@@ -49,15 +49,15 @@
       "x": 10,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "2"
     },
     {
       "x": 11,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "3"
     },
     {
       "x": 39,
