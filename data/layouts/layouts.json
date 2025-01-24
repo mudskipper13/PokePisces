@@ -6080,6 +6080,16 @@
       "secondary_tileset": "gTileset_CasinoNew",
       "border_filepath": "data/layouts/SeasideCasinoVIPLounges/border.bin",
       "blockdata_filepath": "data/layouts/SeasideCasinoVIPLounges/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASIDE_CASINO_BATTLE_ROOM",
+      "name": "SeasideCasinoBattleRoom_Layout",
+      "width": 7,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasinoNew",
+      "border_filepath": "data/layouts/SeasideCasinoBattleRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SeasideCasinoBattleRoom/map.bin"
     }
   ]
 }

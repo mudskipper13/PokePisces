@@ -9118,6 +9118,8 @@ u8 GetCurrentLevelCap(void)
         return 54;
     else if (!FlagGet(FLAG_BADGE08_GET))
         return 62;
+    else if (!FlagGet(FLAG_DEFEATED_CASINO))
+        return 71;
     else if (!FlagGet(FLAG_IS_CHAMPION))
         return 75;
     else
