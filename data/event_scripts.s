@@ -3769,3 +3769,9 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SeasideCasinoVIPLounges/scripts.inc"
 
 	.include "data/maps/SeasideCasinoBattleRoom/scripts.inc"
+
+	.include "data/maps/SouthMossdeep/scripts.inc"
+
+	.include "data/maps/OzoneInt/scripts.inc"
+
+	.include "data/maps/OzoneFloor2/scripts.inc"

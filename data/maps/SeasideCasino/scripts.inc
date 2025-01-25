@@ -34,10 +34,118 @@ SeasideCasino_EventScript_StevenDiscussion::
 	clearflag FLAG_TEMP_13
 	addobject LOCALID_STEVEN2
 	speakername SeasideCasino_Text_NameSteven
-	msgbox SeasideCasino_Text_WhatAreOurOptions, MSGBOX_AUTOCLOSE
-	setvar VAR_WALLY_QUEST_STATE, 8
+	msgbox SeasideCasino_Text_WhatAreOurOptions, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SeasideCasino_Text_ThinkingItOver, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, SeasideCasino_EventScript_AnswerNorman
+	case 1, SeasideCasino_EventScript_AnswerWally
+	case 2, SeasideCasino_EventScript_AnswerLiza
+	case 3, SeasideCasino_EventScript_AnswerTate
+	case 4, SeasideCasino_EventScript_AnswerMrBonding
 	release
 	end
+
+SeasideCasino_EventScript_AnswerNorman::
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_CantBeNorman, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, SeasideCasino_EventScript_AnswerNorman
+	case 1, SeasideCasino_EventScript_AnswerWally
+	case 2, SeasideCasino_EventScript_AnswerLiza
+	case 3, SeasideCasino_EventScript_AnswerTate
+	case 4, SeasideCasino_EventScript_AnswerMrBonding
+	release
+	end
+
+SeasideCasino_EventScript_AnswerLiza::
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_CantBeLiza, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, SeasideCasino_EventScript_AnswerNorman
+	case 1, SeasideCasino_EventScript_AnswerWally
+	case 2, SeasideCasino_EventScript_AnswerLiza
+	case 3, SeasideCasino_EventScript_AnswerTate
+	case 4, SeasideCasino_EventScript_AnswerMrBonding
+	release
+	end
+
+SeasideCasino_EventScript_AnswerTate::
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_CantBeTate, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, SeasideCasino_EventScript_AnswerNorman
+	case 1, SeasideCasino_EventScript_AnswerWally
+	case 2, SeasideCasino_EventScript_AnswerLiza
+	case 3, SeasideCasino_EventScript_AnswerTate
+	case 4, SeasideCasino_EventScript_AnswerMrBonding
+	release
+	end
+
+SeasideCasino_EventScript_AnswerMrBonding::
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_CantBeMrBonding, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, SeasideCasino_EventScript_AnswerNorman
+	case 1, SeasideCasino_EventScript_AnswerWally
+	case 2, SeasideCasino_EventScript_AnswerLiza
+	case 3, SeasideCasino_EventScript_AnswerTate
+	case 4, SeasideCasino_EventScript_AnswerMrBonding
+	release
+	end
+
+SeasideCasino_EventScript_AnswerWally::
+	speakername NULL
+	msgbox SeasideCasino_Text_IsItReallyHim, MSGBOX_DEFAULT
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_WallyIsOurMan, MSGBOX_DEFAULT
+	applymovement LOCALID_STEVEN2, SeasideCasino_Movement_StevenReadyToLeave
+	waitmovement 0
+	speakername SeasideCasino_Text_NameSteven
+	msgbox SeasideCasino_Text_MeetMeInMossdeep, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_STEVEN2, SeasideCasino_Movement_StevenLeavesFinal
+	waitmovement 0
+	removeobject LOCALID_STEVEN2
+	setflag FLAG_TEMP_13
+	setvar VAR_WALLY_QUEST_STATE, 8
+	delay 4
+	release
+	end
+
+SeasideCasino_Movement_StevenReadyToLeave:
+	walk_down
+	walk_left
+	face_up
+	step_end
+
+SeasideCasino_Movement_StevenLeavesFinal:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 SeasideCasino_EventScript_BackroomGuard::
 	lock
@@ -321,4 +429,31 @@ SeasideCasino_Text_ComeWithMe:
 	.string "$"
 
 SeasideCasino_Text_WhatAreOurOptions:
+	.string "$"
+
+SeasideCasino_Text_ThinkingItOver:
+	.string "$"
+
+SeasideCasino_Text_ThinkingItOverAgain:
+	.string "$"
+
+SeasideCasino_Text_CantBeNorman:
+	.string "$"
+
+SeasideCasino_Text_CantBeLiza:
+	.string "$"
+
+SeasideCasino_Text_CantBeTate:
+	.string "$"
+
+SeasideCasino_Text_CantBeMrBonding:
+	.string "$"
+
+SeasideCasino_Text_IsItReallyHim:
+	.string "$"
+
+SeasideCasino_Text_WallyIsOurMan:
+	.string "$"
+
+SeasideCasino_Text_MeetMeInMossdeep:
 	.string "$"

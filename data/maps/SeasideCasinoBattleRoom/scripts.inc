@@ -47,7 +47,6 @@ SeasideCasinoBattleRoom_EventScript_SidneyLucyBattle::
 
 SeasideCasinoBattleRoom_EventScript_LeadersDefeated::
 	setvar VAR_WALLY_QUEST_STATE, 7
-	setflag FLAG_DEFEATED_CASINO
 	speakername SeasideCasinoBattleRoom_Text_NameSidney
 	msgbox SeasideCasinoBattleRoom_Text_AlrightThen, MSGBOX_DEFAULT
 	speakername SeasideCasinoBattleRoom_Text_NameLucy

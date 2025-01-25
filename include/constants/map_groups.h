@@ -266,6 +266,7 @@
 #define MAP_SEASIDE_CASINO_BACKROOMS   (11 | (18 << 8))
 #define MAP_SEASIDE_CASINO_VIPLOUNGES  (12 | (18 << 8))
 #define MAP_SEASIDE_CASINO_BATTLE_ROOM (13 | (18 << 8))
+#define MAP_SOUTH_MOSSDEEP             (14 | (18 << 8))
 
 // gMapGroup_PiscesLeg10Minor
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_1F (0 | (19 << 8))
@@ -279,6 +280,8 @@
 #define MAP_EVER_GRANDE_TRANSITION_CAVE (2 | (20 << 8))
 #define MAP_EVER_GRANDE_ROAD            (3 | (20 << 8))
 #define MAP_EVER_GRANDE_PEAK            (4 | (20 << 8))
+#define MAP_OZONE_INT                   (5 | (20 << 8))
+#define MAP_OZONE_FLOOR2                (6 | (20 << 8))
 
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))

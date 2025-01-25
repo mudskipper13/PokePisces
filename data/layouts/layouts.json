@@ -6090,6 +6090,36 @@
       "secondary_tileset": "gTileset_CasinoNew",
       "border_filepath": "data/layouts/SeasideCasinoBattleRoom/border.bin",
       "blockdata_filepath": "data/layouts/SeasideCasinoBattleRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOUTH_MOSSDEEP",
+      "name": "SouthMossdeep_Layout",
+      "width": 32,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/SouthMossdeep/border.bin",
+      "blockdata_filepath": "data/layouts/SouthMossdeep/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_INT",
+      "name": "OzoneInt_Layout",
+      "width": 31,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneInt/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneInt/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_FLOOR2",
+      "name": "OzoneFloor2_Layout",
+      "width": 27,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneFloor2/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneFloor2/map.bin"
     }
   ]
 }
