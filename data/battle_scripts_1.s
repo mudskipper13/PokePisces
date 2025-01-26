@@ -1773,10 +1773,10 @@ BattleScript_FleurCannonBlooming:
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	cureifblooming BattleScript_MoveEnd
-	
 	seteffectprimary
 	tryresetnegativestatstages BS_ATTACKER
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
+	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_PKMNSISNOLONGERBLOOMING
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
