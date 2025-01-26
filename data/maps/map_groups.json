@@ -171,7 +171,8 @@
     "Gym4Corridor",
     "FortreeTransitionArea",
     "FortreeGymBattleLocation",
-    "FortreeInteriors"
+    "FortreeInteriors",
+    "FortreeGymTransitionBuilding"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",
@@ -282,7 +283,25 @@
     "DewfordTown_PokemonCenter_2F",
     "FallarborTown_PokemonCenter_2F",
     "RustboroCity_PokemonCenter_1F",
-    "Gym8Corridor"
+    "RustboroTransitionBuilding",
+    "RustboroInteriors",
+    "Gym8Corridor",
+    "RustGymEntryHallways",
+    "RustGymClassroom",
+    "RustGymLockerHallway",
+    "RustGymExtracurricularHallway",
+    "RustGymComputerLab",
+    "RustGymLibrary",
+    "RustGymCafeteria",
+    "RustGymGym",
+    "RustGymPrincipalsOfficeShort",
+    "RustGymPrincipalsOffice",
+    "RustGymDarkHallway",
+    "RustGymDarkLockers",
+    "RustGymDarkClassroom",
+    "RustGymDarkCafeteria",
+    "RustGymDarkCafeArena",
+    "DevonCorp"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
@@ -291,19 +310,30 @@
     "NoviceWalk",
     "LittlerootNew",
     "PendingDev",
-    "TestMap"
+    "TestMap",
+    "SeasideCasino",
+    "WallyArena",
+    "WallyArenaLeadup",
+    "SeasideCasinoTheater",
+    "SeasideCasinoBackrooms",
+    "SeasideCasinoVIPLounges",
+    "SeasideCasinoBattleRoom",
+    "SouthMossdeep"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_1F",
-    "OldaleTown_PokemonCenter_2F"
+    "OldaleTown_PokemonCenter_2F",
+    "LittlerootNormanHouse"
   ],
   "gMapGroup_PiscesLeg11Major": [
     "CrimneyCaldera",
     "MeteorNadir",
     "EverGrandeTransitionCave",
     "EverGrandeRoad",
-    "EverGrandePeak"
+    "EverGrandePeak",
+    "OzoneInt",
+    "OzoneFloor2"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",

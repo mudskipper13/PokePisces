@@ -37,7 +37,7 @@ Gym7Corridor_EventScript_PrepForGym::
 	cleartrainerflag TRAINER_P_MARCEL
 	cleartrainerflag TRAINER_P_NESSIE
 	msgbox Gym7Corridor_Text_TimeForGym, MSGBOX_DEFAULT
-	warp MAP_DEWFORD_TOWN_GYM, 33, 21
+	warp MAP_DEWFORD_GYM_NEW, 33, 21
 	waitstate
 	release
 	end

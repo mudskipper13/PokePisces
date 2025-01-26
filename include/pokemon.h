@@ -276,6 +276,7 @@ struct BattleMove
     u32 surpriseEggMove:1;
     u32 windMove:1;
     u32 slicingMove:1;
+    u32 gasMove:1;
     u32 sandMove:1;
     u32 oozeMove:1;
     u32 minimizeDoubleDamage:1;
@@ -296,8 +297,10 @@ struct BattleMove
     u32 copycatBanned:1;
     u32 sleepTalkBanned:1;
     u32 instructBanned:1;
+    u32 lazyMove:1;
+    u32 cantUseTwice:1;
+    u32 cantUseTwiceBlooming:1;
 };
-
 #define SPINDA_SPOT_WIDTH 16
 #define SPINDA_SPOT_HEIGHT 16
 
@@ -463,6 +466,7 @@ u16 SpeciesToNationalPokedexNum(u16 species);
 u16 SpeciesToHoennPokedexNum(u16 species);
 u16 HoennToNationalOrder(u16 hoennNum);
 void DrawSpindaSpots(u32 personality, u8 *dest, bool32 isSecondFrame);
+void EvolveMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies);
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies);
 u8 GetPlayerFlankId(void);
 u16 GetLinkTrainerFlankId(u8 id);

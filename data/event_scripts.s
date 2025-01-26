@@ -3715,3 +3715,63 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/FallarborInteriors/scripts.inc"
 
 	.include "data/maps/OzoneTransitionBuildings/scripts.inc"
+
+	.include "data/maps/FortreeGymTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustGymEntryHallways/scripts.inc"
+
+	.include "data/maps/RustGymLockerHallway/scripts.inc"
+
+	.include "data/maps/RustGymExtracurricularHallway/scripts.inc"
+
+	.include "data/maps/RustGymCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymGym/scripts.inc"
+
+	.include "data/maps/RustGymComputerLab/scripts.inc"
+
+	.include "data/maps/RustGymLibrary/scripts.inc"
+
+	.include "data/maps/RustGymClassroom/scripts.inc"
+
+	.include "data/maps/RustGymDarkHallway/scripts.inc"
+
+	.include "data/maps/RustGymDarkLockers/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymDarkClassroom/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOffice/scripts.inc"
+
+	.include "data/maps/SeasideCasino/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOfficeShort/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeArena/scripts.inc"
+
+	.include "data/maps/RustboroTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustboroInteriors/scripts.inc"
+
+	.include "data/maps/DevonCorp/scripts.inc"
+
+	.include "data/maps/WallyArena/scripts.inc"
+
+	.include "data/maps/WallyArenaLeadup/scripts.inc"
+
+	.include "data/maps/LittlerootNormanHouse/scripts.inc"
+
+	.include "data/maps/SeasideCasinoTheater/scripts.inc"
+
+	.include "data/maps/SeasideCasinoBackrooms/scripts.inc"
+
+	.include "data/maps/SeasideCasinoVIPLounges/scripts.inc"
+
+	.include "data/maps/SeasideCasinoBattleRoom/scripts.inc"
+
+	.include "data/maps/SouthMossdeep/scripts.inc"
+
+	.include "data/maps/OzoneInt/scripts.inc"
+
+	.include "data/maps/OzoneFloor2/scripts.inc"

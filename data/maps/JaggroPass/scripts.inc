@@ -46,22 +46,26 @@ JaggroPass_Text_EmmyPostBattle:
 	.string "post$"
 
 JaggroPass_Text_DaytonIntro:
-	.string "intro$"
+	.string "Let's soak up some Vitamin D!\n"
+	.string "It's good for you!$"
 
 JaggroPass_Text_DaytonDefeated:
-	.string "defeat$"
+	.string "I've just absorbed some\n"
+	.string "Vitamin D-feat...$"
 
 JaggroPass_Text_DaytonPostBattle:
-	.string "post$"
+	.string "All kinds of Pokémon like the desert\n"
+	.string "sun. Berries like the sun, too!$"
 
 JaggroPass_Text_AntoIntro:
-	.string "intro$"
+	.string "Na-a-a! Wrong way.$"
 
 JaggroPass_Text_AntoDefeated:
-	.string "defeat$"
+	.string "I said wrong way!!$"
 
 JaggroPass_Text_AntoPostBattle:
-	.string "post$"
+	.string "Fine, you can go, since you beat\n"
+	.string "grandpa.$"
 
 JaggroPass_Text_BazeIntro:
 	.string "intro$"
@@ -82,13 +86,16 @@ JaggroPass_Text_ChinzaoPostBattle:
 	.string "post$"
 
 JaggroPass_Text_MarimarIntro:
-	.string "intro$"
+	.string "Hey doll, did it hurt when you fell from\n"
+	.string "heaven?$"
 
 JaggroPass_Text_MarimarDefeated:
-	.string "defeat$"
+	.string "Ouchie... That hurt...$"
 
 JaggroPass_Text_MarimarPostBattle:
-	.string "post$"
+	.string "Did it hurt when you fell from heaven?\p"
+	.string "Because you have a tough outer shell\n"
+	.string "like a Minior does...$"
 
 JaggroPass_Text_JellyIntro:
 	.string "intro$"

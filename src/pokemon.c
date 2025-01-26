@@ -7085,6 +7085,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
     switch (mode)
     {
     case EVO_MODE_NORMAL:
+    case EVO_MODE_BATTLE_ONLY:
         level = GetMonData(mon, MON_DATA_LEVEL, 0);
         friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, 0);
         stat = GAME_STAT_SILENCE_ACTIVATED;
@@ -7225,8 +7226,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && ((personality % 1000) > 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
+            case EVO_LEVEL_HEMOKO:
+                if (mode == EVO_MODE_BATTLE_ONLY && gEvolutionTable[species][i].param <= level)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
             case EVO_MOVE_THREE_SEGMENT:
-                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (1 <= (personality % 1000) <= 100))
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (0 <= (personality % 1000) <= 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_MOVE_EIGHT_SEGMENT:
@@ -7649,6 +7654,17 @@ void DrawSpindaSpots(u32 personality, u8 *dest, bool32 isSecondFrame)
 
         personality >>= 8;
     }
+}
+
+void EvolveMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
+{
+    u32 zero = 0;
+    SetMonData(mon, MON_DATA_SPECIES, &newSpecies);
+    CalculateMonStats(mon);
+    EvolutionRenameMon(mon, oldSpecies, newSpecies);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_SEEN);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_CAUGHT);
+    IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
 }
 
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
@@ -9102,6 +9118,8 @@ u8 GetCurrentLevelCap(void)
         return 54;
     else if (!FlagGet(FLAG_BADGE08_GET))
         return 62;
+    else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
+        return 72;
     else if (!FlagGet(FLAG_IS_CHAMPION))
         return 75;
     else

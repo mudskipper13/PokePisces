@@ -196,7 +196,6 @@
 #define VARIOUS_TERRAIN_SEED                         104
 #define VARIOUS_MAKE_INVISIBLE                       105
 #define VARIOUS_ROOM_SERVICE                         106
-
 #define VARIOUS_EERIE_SPELL_PP_REDUCE                107
 #define VARIOUS_JUMP_IF_TEAM_HEALTHY                 108
 #define VARIOUS_TRY_HEAL_QUARTER_HP                  109
@@ -270,7 +269,6 @@
 #define VARIOUS_JUMP_IF_SPECIES_HAS_NO_LEGS          177
 #define VARIOUS_JUMP_IF_ALLY_HAS_NO_LEGS             178
 #define VARIOUS_JUMP_IF_HP_THRESHOLD                 179
-#define VARIOUS_SURPRISE_EGG                         180
 #define VARIOUS_CURE_IF_BLOOMING                     181
 #define VARIOUS_TAILWIND_REMOVAL                     182
 #define VARIOUS_SET_PUMP                             183
@@ -288,6 +286,19 @@
 #define VARIOUS_ARBITER_DAMAGE                       195
 #define VARIOUS_TRY_GAIN_CHEESE                      196
 #define VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED         197
+#define VARIOUS_SAVE_DANCE_TARGETS                   198
+#define VARIOUS_INVERT_NEGATIVE_STAT_STAGES          199
+#define VARIOUS_SET_PURPLE_HAZE                      200
+#define VARIOUS_SET_MAGMA_ARMORED                    201
+#define VARIOUS_SET_OVERTAKE_TARGET                  202
+#define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
+#define VARIOUS_TRY_RESET_STAT_STAGES                204
+#define VARIOUS_TRY_DEFEND_ORDER                     205
+#define VARIOUS_STORE_HEAL_ORDER                     206
+#define VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES       207
+#define VARIOUS_SPELL_TAG_PP_REDUCE                  208
+#define VARIOUS_SET_PURIFIED                         209
+#define VARIOUS_TRY_CRITICAL_REPAIR                  210
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -355,16 +366,18 @@
 #define MOVEEND_MOVE_EFFECTS2                     23
 #define MOVEEND_RECOIL                            24
 #define MOVEEND_MAGICIAN                          25    // Occurs after final multi-hit strike, and after other items/abilities would activate
-#define MOVEEND_EJECT_BUTTON                      26
-#define MOVEEND_RED_CARD                          27
-#define MOVEEND_EJECT_PACK                        28
+#define MOVEEND_EJECT_ITEMS                       26
+#define MOVEEND_WHITE_HERB                        27
+#define MOVEEND_RED_CARD                          28
 #define MOVEEND_LIFEORB_SHELLBELL                 29    // Includes shell bell, throat spray, etc
 #define MOVEEND_CHANGED_ITEMS                     30
 #define MOVEEND_PICKPOCKET                        31
 #define MOVEEND_DANCER                            32
 #define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_CLEAR_BITS                        34
-#define MOVEEND_COUNT                             35
+#define MOVEEND_DOUBLE_SLAP                         34
+#define MOVEEND_NEXT_DANCE_TARGET                 35
+#define MOVEEND_CLEAR_BITS                        36
+#define MOVEEND_COUNT                             37
 
 // switch cases
 #define B_SWITCH_NORMAL     0

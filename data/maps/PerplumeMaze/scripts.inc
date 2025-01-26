@@ -17,22 +17,24 @@ PerplumeMaze_EventScript_Ralsei::
     end
 
 PerplumeMaze_Text_KrisIntro:
-	.string "intro$"
+	.string "...$"
 
 PerplumeMaze_Text_KrisDefeated:
-	.string "defeat$"
+	.string "...!?$"
 
 PerplumeMaze_Text_KrisPostBattle:
-	.string "post$"
+	.string "<3$"
 
 PerplumeMaze_Text_SusieIntro:
-	.string "intro$"
+	.string "God dammit Kris!\n"
+	.string"Where the hell are we?$"
 
 PerplumeMaze_Text_SusieDefeated:
-	.string "defeat$"
+	.string "i dont know what to write here$"
 
 PerplumeMaze_Text_SusiePostBattle:
-	.string "post$"
+	.string "My partner here is the\n"
+	.string "weak, silent type. Heh heh.$"
 
 PerplumeMaze_Text_RalseiIntro:
 	.string "intro$"

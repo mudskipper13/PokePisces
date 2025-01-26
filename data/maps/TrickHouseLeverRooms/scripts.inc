@@ -248,7 +248,8 @@ TrickHouseLeverRooms_Text_DavidPostBattle:
 	.string "post$"
 
 TrickHouseLeverRooms_Text_YouFoundOil:
-	.string "found oil$"
+	.string "found oil\n"
+	.string "you are the u.s. government now$"
 
 TrickHouseLeverRooms_Text_ThisLeverNeedsOil:
 	.string "needs oil$"

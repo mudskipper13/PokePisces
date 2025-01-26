@@ -131,6 +131,19 @@ static const u8 sDoorAnimTiles_TrainerHillLobbyElevator[] = INCBIN_U8("graphics/
 static const u16 sDoorNullPalette48[16] = {};
 static const u8 sDoorAnimTiles_TrainerHillRoofElevator[] = INCBIN_U8("graphics/door_anims/trainer_hill_roof_elevator.4bpp");
 static const u16 sDoorNullPalette49[16] = {};
+static const u8 sDoorAnimTiles_ZotpyreGym[] = INCBIN_U8("graphics/door_anims/gym_zotpyre.4bpp");
+static const u8 sDoorAnimTiles_PokeCenterChimney[] = INCBIN_U8("graphics/door_anims/poke_center_chimney.4bpp");
+static const u8 sDoorAnimTiles_PokeMartChimney[] = INCBIN_U8("graphics/door_anims/poke_mart_chimney.4bpp");
+static const u8 sDoorAnimTiles_Chimney[] = INCBIN_U8("graphics/door_anims/chimney.4bpp");
+static const u8 sDoorAnimTiles_MauvilleElevators[] = INCBIN_U8("graphics/door_anims/mauville_elevators.4bpp");
+static const u8 sDoorAnimTiles_MauvillePokecenter[] = INCBIN_U8("graphics/door_anims/mauville_pokecenter.4bpp");
+static const u8 sDoorAnimTiles_MauvilleElevatorRed[] = INCBIN_U8("graphics/door_anims/mauville_elevator_red.4bpp");
+static const u8 sDoorAnimTiles_MauvilleElevatorGreen[] = INCBIN_U8("graphics/door_anims/mauville_elevator_green.4bpp");
+static const u8 sDoorAnimTiles_MauvilleElevatorBeige[] = INCBIN_U8("graphics/door_anims/mauville_elevator_beige.4bpp");
+static const u8 sDoorAnimTiles_MauvilleEntrance[] = INCBIN_U8("graphics/door_anims/mauville_entrance.4bpp");
+static const u8 sDoorAnimTiles_ZotpyreCivilian[] = INCBIN_U8("graphics/door_anims/zotpyre.4bpp");
+static const u8 sDoorAnimTiles_LavaridgeNew[] = INCBIN_U8("graphics/door_anims/lavaridge_new.4bpp");
+static const u8 sDoorAnimTiles_SweltornCivilian[] = INCBIN_U8("graphics/door_anims/sweltorn.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -219,6 +232,15 @@ static const u8 sDoorAnimPalettes_BattleDomePreBattleRoom[] = {9, 9, 7, 7, 7, 7,
 static const u8 sDoorAnimPalettes_BattleTentInterior[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_TrainerHillLobbyElevator[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_TrainerHillRoofElevator[] = {9, 9, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_ZotpyreGym[] = {6, 6, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_ChimneySlidingDoors[] = {8, 8, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_Chimney[] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_PokeMartSweltorn[] = {5, 5, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_MauvilleSlidingDoors[] = {6, 6, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_MauvilleElevatorRed[] = {12, 12, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_MauvilleElevatorGreen[] = {12, 12, 6, 6, 6, 6, 6, 6};
+static const u8 sDoorAnimPalettes_MauvilleElevatorBeige[] = {12, 12, 0, 0, 0, 0, 0, 0};
+static const u8 sDoorAnimPalettes_ZotpyreCivilian[] = {6, 6, 6, 6, 6, 6, 6, 6};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -247,7 +269,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_PetalburgGym_Door,                            DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_PetalburgGym, sDoorAnimPalettes_PetalburgGym},
     {METATILE_Mauville_Door_CyclingRoad,                    DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_CyclingRoad, sDoorAnimPalettes_CyclingRoad},
     {METATILE_Lilycove_Door_DeptStore,                      DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_LilycoveDeptStore, sDoorAnimPalettes_LilycoveDeptStore},
-    {METATILE_Lilycove_Door_SafariZone,                     DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_SafariZone, sDoorAnimPalettes_SafariZone},
+    {METATILE_Lilycove_Door_SafariZone,                     DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevatorGreen, sDoorAnimPalettes_MauvilleElevatorGreen},
     {METATILE_Mossdeep_Door_SpaceCenter,                    DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MossdeepSpaceCenter, sDoorAnimPalettes_MossdeepSpaceCenter},
     {METATILE_PokemonCenter_Door_CableClub,                 DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_CableClub, sDoorAnimPalettes_CableClub},
     {METATILE_InsideShip_IntactDoor_Bottom_Unlocked,        DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_AbandonedShip, sDoorAnimPalettes_AbandonedShip},
@@ -268,7 +290,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_BattlePalace_Door,                            DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_BattlePalaceLobby, sDoorAnimPalettes_BattlePalaceLobby},
     {METATILE_Slateport_Door_BattleTent,                    DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTent, sDoorAnimPalettes_BattleTent},
     {METATILE_Mauville_Door_BattleTent,                     DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTent, sDoorAnimPalettes_BattleTent},
-    {METATILE_Fallarbor_Door_BattleTent,                    DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTent, sDoorAnimPalettes_BattleTent},
+    {METATILE_Fallarbor_Door_BattleTent,                    DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevatorRed, sDoorAnimPalettes_MauvilleElevatorRed},
     {METATILE_BattleDome_Door_Corridor,                     DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleDomeCorridor, sDoorAnimPalettes_BattleDomeCorridor},
     {METATILE_BattleFrontier_Door_MultiCorridor,            DOOR_SOUND_SLIDING, 2, sDoorAnimTiles_BattleTowerMultiCorridor, sDoorAnimPalettes_BattleTowerMultiCorridor},
     {METATILE_BattleFrontierOutsideWest_Door,               DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_BattleFrontier, sDoorAnimPalettes_BattleFrontier},
@@ -277,7 +299,21 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_BattleTent_Door,                              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTentInterior, sDoorAnimPalettes_BattleTentInterior},
     {METATILE_TrainerHill_Door_Elevator_Lobby,              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillLobbyElevator, sDoorAnimPalettes_TrainerHillLobbyElevator},
     {METATILE_TrainerHill_Door_Elevator_Roof,               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillRoofElevator, sDoorAnimPalettes_TrainerHillRoofElevator},
-    {},
+    {METATILE_Snow_door_zotpyre_gym,                        DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_ZotpyreGym, sDoorAnimPalettes_ZotpyreGym},
+    {METATILE_Chimney_door_chimney_pokecenter_brow,         DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeCenterChimney, sDoorAnimPalettes_ChimneySlidingDoors},
+    {METATILE_Chimney_door_chimney_pokemart_green,          DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeMartChimney, sDoorAnimPalettes_ChimneySlidingDoors},
+    {METATILE_Chimney_door_chimney,                         DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Chimney, sDoorAnimPalettes_Chimney},
+    {METATILE_desert_door_poke_mart_sweltorn,               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeMart, sDoorAnimPalettes_PokeMartSweltorn},
+    {METATILE_mauvillenew_door_elevators,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevators, sDoorAnimPalettes_MauvilleSlidingDoors},
+    {METATILE_mauvillenew_door_pokecenter,                  DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvillePokecenter, sDoorAnimPalettes_MauvilleSlidingDoors},
+    {METATILE_Shop_mauville_elevator_red,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevatorRed, sDoorAnimPalettes_MauvilleElevatorRed},
+    {METATILE_Shop_mauville_elevator_green,                 DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevatorGreen, sDoorAnimPalettes_MauvilleElevatorGreen},
+    {METATILE_Shop_mauville_elevator_beige,                 DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleElevatorBeige, sDoorAnimPalettes_MauvilleElevatorBeige},
+    {METATILE_Lilycove_sliding_doors,                       DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_SafariZone, sDoorAnimPalettes_SafariZone},
+    {METATILE_mauvillenew_doors_entrance,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleEntrance, sDoorAnimPalettes_MauvilleSlidingDoors},
+    {METATILE_Snow_door_zotpyre,                            DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_ZotpyreCivilian, sDoorAnimPalettes_ZotpyreCivilian},
+    {METATILE_LavaridgeNew_door_lavaridge,                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_LavaridgeNew, sDoorAnimPalettes_ZotpyreCivilian},
+    {METATILE_desert_door_sweltorn,                         DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SweltornCivilian, sDoorAnimPalettes_Chimney,}
 };
 
 // NOTE: The tiles of a door's animation must be copied to VRAM because they are not already part of any given tileset.

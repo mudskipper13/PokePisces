@@ -155,49 +155,62 @@ FortreeGymNew_EventScript_Fuji::
     end
 
 FortreeGymNew_Text_EverestIntro:
-	.string "intro$"
+	.string "Here I can stand proud and tall!$"
 
 FortreeGymNew_Text_EverestDefeated:
-	.string "defeat$"
+	.string "Oops! Bumped my head...$"
 
 FortreeGymNew_Text_EverestPostBattle:
-	.string "post$"
+	.string "I like looking down at the people on the\n"
+	.string "bottom. I'm taller than everyone!$"
 
 FortreeGymNew_Text_LhotseIntro:
-	.string "intro$"
+	.string "Many have tried to clip my wings before,\n"
+	.string "they have all failed.$"
 
 FortreeGymNew_Text_LhotseDefeated:
-	.string "defeat$"
+	.string "It would seem I flew too close to the\n"
+	.string "sun...$"
 
 FortreeGymNew_Text_LhotsePostBattle:
-	.string "post$"
+	.string "There is no feeling better than soaring\n"
+	.string "among the clouds with your Pokémon!\p"
+	.string "You should try it sometime.$"
 
 FortreeGymNew_Text_DenaliIntro:
-	.string "intro$"
+	.string "With the power of my Pokémon, the\n"
+	.string "sky's the limit!$"
 
 FortreeGymNew_Text_DenaliDefeated:
-	.string "defeat$"
+	.string "No way! Did I reach my limit already?!$"
 
 FortreeGymNew_Text_DenaliPostBattle:
-	.string "post$"
+	.string "This reminds me of the time I took to\n"
+	.string "the sky during a thunderstorm.\p"
+	.string "That also didn't turn out all too well.$"
 
 FortreeGymNew_Text_RainierIntro:
-	.string "intro$"
+	.string "Birds are just smaller dinosaurs, aren't\n"
+	.string "they?$"
 
 FortreeGymNew_Text_RainierDefeated:
-	.string "defeat$"
+	.string "You sure taught this old fossil a\n"
+	.string "lesson!$"
 
 FortreeGymNew_Text_RainierPostBattle:
-	.string "post$"
+	.string "Birds come from the land too, just as\n"
+	.string "much as you and I do.\p"
+	.string "Maybe some day humans will have wings, too?$"
 
 FortreeGymNew_Text_FujiIntro:
-	.string "intro$"
+	.string "Every bird loves a high perch!$"
 
 FortreeGymNew_Text_FujiDefeated:
-	.string "defeat$"
+	.string "Don't look down on me 'cuz I lost...$"
 
 FortreeGymNew_Text_FujiPostBattle:
-	.string "post$"
+	.string "Winona and Aarune are real different,\n"
+	.string "but they both love climbing mountains!$"
 
 FortreeGymNew_Text_AreYouReady:
 	.string "Welcome to the\n"
@@ -228,10 +241,24 @@ FortreeGymNew_Text_CantStopNow:
 	.string "(No going back now.)$"
 
 FortreeGymNew_Text_SurprisedToSeeYou:
-	.string "wowee good job$"
+	.string "Oh. Hello...\p"
+	.string "...I didn't expect a visitor up\n"
+	.string "this high in altitude.\p"
+	.string "Aarune... wants me to come meet\n"
+	.string "him on ground level?\l"
+	.string "So we can... fight the challenger?\p"
+	.string "Hmmm... it IS hard to say no to him.$"
 
 FortreeGymNew_Text_TakeALeapOfFaith:
-	.string "leap of faith bro$"
+	.string "Alright. How about... you\n"
+	.string "come with me?\l"
+	.string "Let's take a leap of faith...\l"
+	.string "off the mountaintop.\p"
+	.string "Don't worry... this area is\n"
+	.string "populated with Flying-type\l"
+	.string "Pokemon... the gusts will\l"
+	.string "carry you safely downwards...\p"
+	.string "...Come along...$"
 
 FortreeGymNew_Text_NameWinona:
 	.string "Winona$"

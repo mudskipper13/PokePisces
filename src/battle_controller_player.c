@@ -1734,8 +1734,49 @@ static void MoveSelectionDisplayMoveType(u32 battler)
 {
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    u32 type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
-    u8 whiteIndex = LoadTypeIconPal(type);
+    u32 type;
+    u8 whiteIndex;
+    u16 ability = GetBattlerAbility(battler);
+    if(moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_RAGE
+    || moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_SPIT_UP)
+    {
+        type = moveInfo->monType1;
+    }
+    else if(moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_RAGING_BULL)
+    {
+        type = moveInfo->monType2;
+    }
+    //for some godforsaken reason it doesn't recognize ability name flags so i'm having to brute force it with index numbers
+    else if(ability == 184 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //aerilate
+    {
+        type = TYPE_FLYING;
+    }
+    else if (ability == 182 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //pixilate
+    {
+        type = TYPE_FAIRY;
+    }
+    else if (ability == 174 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //refrigerate
+    {
+        type = TYPE_ICE;
+    }
+    else if (ability == 338 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //aqua heart
+    {
+        type = TYPE_WATER;
+    }
+    else if (ability == 342 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //draco force
+    {
+        type = TYPE_DRAGON;
+    }
+    else if (ability == 204 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].soundMove == TRUE) //liquid voice
+    {
+        type = TYPE_WATER;
+    }
+    else
+    {
+        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
+    }
+
+    whiteIndex = LoadTypeIconPal(type);
     
     FillWindowPixelBuffer(B_WIN_MOVE_TYPE, PIXEL_FILL(whiteIndex));
     BlitTypeIcon(B_WIN_MOVE_TYPE, type, 0, 0);

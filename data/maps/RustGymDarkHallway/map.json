@@ -1,0 +1,370 @@
+{
+  "id": "MAP_RUST_GYM_DARK_HALLWAY",
+  "name": "RustGymDarkHallway",
+  "layout": "LAYOUT_RUST_GYM_DARK_HALLWAY",
+  "music": "MUS_GYM",
+  "region_map_section": "MAPSEC_RUSTBORO_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 3,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "RustGymDarkHallway_EventScript_Goombella",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DELINQUENT",
+      "x": 6,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "RustGymDarkHallway_EventScript_Timpani",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 28,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "RustGymDarkHallway_EventScript_PlatoAndAris",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 28,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "RustGymDarkHallway_EventScript_PlatoAndAris",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustGymDarkHallway_EventScript_PanicAboutTest",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_IN_BLACK_SUIT",
+      "x": 19,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DELINQUENT",
+      "x": 17,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_IN_BLACK_SUIT",
+      "x": 8,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustGymDarkHallway_EventScript_BlockingThisHallway",
+      "flag": "FLAG_TEMP_14"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DELINQUENT",
+      "x": 18,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY_M",
+      "x": 17,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustGymDarkHallway_EventScript_IdolPhotoshoot",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DELINQUENT",
+      "x": 0,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustGymDarkHallway_EventScript_WatchOutForGangGuards",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_BLONDE",
+      "x": 25,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustGymDarkHallway_EventScript_SlappedATeacher",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_CAFETERIA",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_CLASSROOM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 4,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_CAFETERIA",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_CAFETERIA",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_CAFETERIA",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 1,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_LOCKERS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 2,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_LOCKERS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 28,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_LOCKERS",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 29,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_RUST_GYM_DARK_LOCKERS",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2West"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2West"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney1Left"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2East"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2North"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2North"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2South"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney2South"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney1Right"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney3North"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney3North"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney3South"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney3South"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "RustGymDarkHallway_EventScript_LunchMoney3East"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

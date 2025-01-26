@@ -3025,7 +3025,8 @@ static void PrintPageNamesAndStats(void)
     PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_SWITCH, FALSE, iconXPos);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_SWITCH, gText_Switch, stringXPos, 1, 0, 0);
     
-    PrintEditEVs();
+    if (!sMonSummaryScreen->lockMovesFlag)
+        PrintEditEVs();
 
     PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL, gText_RentalPkmn, 0, 1, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE, gText_TypeSlash, 0, 1, 0, 0);
@@ -4039,7 +4040,52 @@ static void SetMoveTypeIcons(void)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
-            SetTypeSpritePosAndPal(gBattleMoves[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+        {
+            if(summary->moves[i] == MOVE_RAGE || summary->moves[i] == MOVE_SPIT_UP)
+            {
+                SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if(summary->moves[i] == MOVE_RAGING_BULL)
+            {
+                SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            //ability names also don't wanna cooperate here so gotta use the numbers again
+            //GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum)
+            else if(GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 184
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //aerilate
+            {
+                SetTypeSpritePosAndPal(TYPE_FLYING, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 182
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //pixilate
+            {
+                SetTypeSpritePosAndPal(TYPE_FAIRY, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 174
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //refrigerate
+            {
+                SetTypeSpritePosAndPal(TYPE_ICE, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 338
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //aqua heart
+            {
+                SetTypeSpritePosAndPal(TYPE_WATER, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 342
+            && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //draco force
+            {
+                SetTypeSpritePosAndPal(TYPE_DRAGON, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 204
+            && gBattleMoves[summary->moves[i]].soundMove == TRUE) //liquid voice
+            {
+                SetTypeSpritePosAndPal(TYPE_WATER, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+            else
+            {
+                SetTypeSpritePosAndPal(gBattleMoves[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            }
+        }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
     }
@@ -4592,7 +4638,7 @@ static void Task_HandleEvEditorInput(u8 taskId)
         } else {
             sMonSummaryScreen->secondMoveIndex++;
         }
-    } else if (JOY_NEW(A_BUTTON)) {
+    } else if (JOY_NEW(A_BUTTON) && !sMonSummaryScreen->lockMovesFlag) {
         // adjust EV values
         PlaySE(SE_SELECT);
         SetStatSelectorFixedState(TRUE);

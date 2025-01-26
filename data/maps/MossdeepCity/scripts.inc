@@ -691,6 +691,16 @@ MossdeepCity_EventScript_WarpToTidal::
 	release
 	end
 
+MossdeepCity_EventScript_WallyBlackout::
+	lock
+	msgbox MossdeepCity_Text_YouFeelFaint, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	warp MAP_WALLY_ARENA, 9, 24
+	waitstate
+	release
+	end
+
 MossdeepCity_Text_NameBriney:
 	.string "Cpt. Briney$"
 
@@ -760,3 +770,6 @@ MossdeepCity_Text_Gugumbir:
 	.string "Please treat his dwellings with\n"
 	.string "the same amount of respect\l"
 	.string "as you would your own.$"
+
+MossdeepCity_Text_YouFeelFaint:
+	.string "u feel faint$"

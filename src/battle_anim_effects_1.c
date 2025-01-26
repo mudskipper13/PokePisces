@@ -2315,6 +2315,17 @@ const struct SpriteTemplate gBlackBuffetHitSpriteTemplate =
     .callback = AnimHornHit,
 };
 
+const struct SpriteTemplate gHornLeechHornTemplate =
+{
+    .tileTag = ANIM_TAG_HORN_LEECH,
+    .paletteTag = ANIM_TAG_HORN_LEECH,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimHornHit
+};
+
 const union AnimCmd gSuperFangAnimCmds[] =
 {
     ANIMCMD_FRAME(0, 2),
@@ -2423,7 +2434,7 @@ const struct SpriteTemplate gWavyMusicNotesSpriteTemplate =
     .callback = AnimWavyMusicNotes,
 };
 
-const struct SpriteTemplate gBeatboxDuckSpriteTemplate =
+const struct SpriteTemplate gBeatboxMusicNoteSpriteTemplate =
 {
     .tileTag = ANIM_TAG_MUSIC_NOTES,
     .paletteTag = ANIM_TAG_MUSIC_NOTES,
@@ -5588,6 +5599,11 @@ void AnimGrantingStars(struct Sprite *sprite)
 {
     if (!InitSpritePosToAnimBattler(gBattleAnimArgs[2], sprite, FALSE))
         return;
+
+    if (gAnimMoveIndex == MOVE_PURIFICATION)
+    {
+        InitSpritePosToAnimTarget(sprite, FALSE);
+    }
 
     SetAnimSpriteInitialXOffset(sprite, gBattleAnimArgs[0]);
     sprite->y += gBattleAnimArgs[1];

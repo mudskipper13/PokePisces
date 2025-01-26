@@ -97,22 +97,29 @@ CanopourWilds_EventScript_PickleLou::
     end
 
 CanopourWilds_Text_JustinIntro:
-	.string "intro$"
+	.string "Hey?! What are you doing?!\p"
+	.string "This is MY bug hunting spot!\n"
+	.string "Go get your own!$"
 
 CanopourWilds_Text_JustinDefeated:
-	.string "defeat$"
+	.string "Huh! Y-you DIDN'T want to take my\n"
+	.string "super awesome secret hiding spot?$"
 
 CanopourWilds_Text_JustinPostBattle:
-	.string "post$"
+	.string "Sorry about that. Many of them lil'\n"
+	.string "Bug Catcher wannabes keep trying to\l"
+	.string "butt in on my turf!$"
 
 CanopourWilds_Text_JuonoIntro:
-	.string "intro$"
+	.string "Smell that?\n"
+	.string "That's the smell of a good roast.$"
 
 CanopourWilds_Text_JuonoDefeated:
-	.string "defeat$"
+	.string "Roasted as black as charcoal...$"
 
 CanopourWilds_Text_JuonoPostBattle:
-	.string "post$"
+	.string "You should come eat some at my stall\n"
+	.string "sometime.$"
 
 CanopourWilds_Text_WallpressIntro:
 	.string "intro$"
@@ -133,22 +140,28 @@ CanopourWilds_Text_TawnyPostBattle:
 	.string "post$"
 
 CanopourWilds_Text_JaidenIntro:
-	.string "intro$"
+	.string "Remember! All Pokémon require one thing\n"
+	.string "above all else!\p"
+	.string "Can you tell me what that thing is?$"
 
 CanopourWilds_Text_JaidenDefeated:
-	.string "defeat$"
+	.string "Yep, love! They all need love!$"
 
 CanopourWilds_Text_JaidenPostBattle:
-	.string "post$"
+	.string "Not showing a Pokémon any love can\n"
+	.string "severely stunt their growth.$"
 
 CanopourWilds_Text_GriseldisIntro:
-	.string "intro$"
+	.string "Delivery!\n"
+	.string "Special delivery for you, {PLAYER}!$"
 
 CanopourWilds_Text_GriseldisDefeated:
-	.string "defeat$"
+	.string "There goes my tip...$"
 
 CanopourWilds_Text_GriseldisPostBattle:
-	.string "post$"
+	.string "Hang on, I need to take a picture of my\n"
+	.string "fainted Pokémon so they know you\l"
+	.string "recieved your battle.$"
 
 CanopourWilds_Text_CameronIntro:
 	.string "intro$"
@@ -196,13 +209,18 @@ CanopourWilds_Text_KoizumiPostBattle:
 	.string "post$"
 
 CanopourWilds_Text_CharliIntro:
-	.string "intro$"
+	.string "A battle?\l"
+	.string "I haven't had my coffee yet, but sure,\n"
+	.string "why not?$"
 
 CanopourWilds_Text_CharliDefeated:
-	.string "defeat$"
+	.string "Hmph, now I just want to go back to\n"
+	.string "sleep.$"
 
 CanopourWilds_Text_CharliPostBattle:
-	.string "post$"
+	.string "The life of a scientist is a\n"
+	.string "daunting one.\l"
+	.string "Lots of sleepless nights. What a drag.$"
 
 CanopourWilds_Text_ShamooIntro:
 	.string "intro$"
@@ -223,40 +241,50 @@ CanopourWilds_Text_MarisaPostBattle:
 	.string "post$"
 
 CanopourWilds_Text_GunnessIntro:
-	.string "intro$"
+	.string "... Do you wanna see my super rare\n"
+	.string "Steven Stone poster?$"
 
 CanopourWilds_Text_GunnessDefeated:
-	.string "defeat$"
+	.string "That was NOT the answer I was\n"
+	.string "expecting.$"
 
 CanopourWilds_Text_GunnessPostBattle:
-	.string "post$"
+	.string "If you ever meet Steven Stone, can\n"
+	.string "you PLEASE ask him to sign my poster?\p"
+	.string "It would mean the world to me.$"
 
 CanopourWilds_Text_JasonIntro:
-	.string "intro$"
+	.string "D'you know how to start a fire with\n"
+	.string "sticks?$"
 
 CanopourWilds_Text_JasonDefeated:
-	.string "defeat$"
+	.string "N-not like that...$"
 
 CanopourWilds_Text_JasonPostBattle:
-	.string "post$"
+	.string "Maybe I should just buy a flashlight...$"
 
 CanopourWilds_Text_LeahIntro:
-	.string "intro$"
+	.string "I'm learning to forage for berries!$"
 
 CanopourWilds_Text_LeahDefeated:
-	.string "defeat$"
+	.string "He's not a very good teacher, is he?$"
 
 CanopourWilds_Text_LeahPostBattle:
-	.string "post$"
+	.string "Maybe a Pokémon with Pickup can\n"
+	.string "forage for me.$"
 
 CanopourWilds_Text_LeleIntro:
-	.string "intro$"
+	.string "Dragons are the best!\n"
+	.string "They're the biggest and baddest\l"
+	.string "Pokémon around!$"
 
 CanopourWilds_Text_LeleDefeated:
-	.string "defeat$"
+	.string "Huh?! How could you beat my super\n"
+	.string "awesome Dragons?!$"
 
 CanopourWilds_Text_LelePostBattle:
-	.string "post$"
+	.string "Hmph! You're a big ol' meanie!\n"
+	.string "Y'know that?!$"
 
 CanopourWilds_Text_PickleLouIntro:
 	.string "intro$"

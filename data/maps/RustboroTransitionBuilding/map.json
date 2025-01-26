@@ -1,0 +1,48 @@
+{
+  "id": "MAP_RUSTBORO_TRANSITION_BUILDING",
+  "name": "RustboroTransitionBuilding",
+  "layout": "LAYOUT_RUSTBORO_TRANSITION_BUILDING",
+  "music": "MUS_RANGER_TUTORIAL_CAPTURE",
+  "region_map_section": "MAPSEC_ROUTE_128",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBURG_WHARF",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 4,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBURG_WHARF",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_NEW",
+      "dest_warp_id": "16"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -1001,3 +1001,36 @@ const struct Tileset gTileset_TrickHouseNew =
     .metatileAttributes = gMetatileAttributes_TrickHouseNew,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_RustboroGymNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RustboroGymNew,
+    .palettes = gTilesetPalettes_RustboroGymNew,
+    .metatiles = gMetatiles_RustboroGymNew,
+    .metatileAttributes = gMetatileAttributes_RustboroGymNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CasinoNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasinoNew,
+    .palettes = gTilesetPalettes_CasinoNew,
+    .metatiles = gMetatiles_CasinoNew,
+    .metatileAttributes = gMetatileAttributes_CasinoNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_BossArenas =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BossArenas,
+    .palettes = gTilesetPalettes_BossArenas,
+    .metatiles = gMetatiles_BossArenas,
+    .metatileAttributes = gMetatileAttributes_BossArenas,
+    .callback = NULL,
+};

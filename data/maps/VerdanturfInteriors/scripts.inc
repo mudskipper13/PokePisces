@@ -1,9 +1,45 @@
 .set LOCALID_P_MAN, 3
 .set LOCALID_SCOTT, 2
 .set LOCALID_WATTSON, 1
+.set LOCALID_WALLY, 8
 
 VerdanturfInteriors_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VerdanturfInteriors_OnFrame
 	.byte 0
+
+VerdanturfInteriors_OnFrame:
+	map_script_2 VAR_WALLY_QUEST_STATE, 0, VerdanturfInteriors_EventScript_WallyHouse
+	.2byte 0
+
+VerdanturfInteriors_EventScript_WallyHouse::
+	lock
+	setvar VAR_WALLY_QUEST_STATE, 1
+	applymovement OBJ_EVENT_ID_PLAYER, VerdanturfInteriors_Movement_PlayerWalkIn
+	applymovement LOCALID_WALLY, VerdanturfInteriors_Movement_WallyWalkIn
+	waitmovement 0
+	speakername VerdanturfInteriors_Text_NameWally
+	msgbox VerdanturfInteriors_Text_LetsCatchUp, MSGBOX_DEFAULT
+	setflag FLAG_MET_WALLY_VERDANTURF
+	release
+	end
+
+VerdanturfInteriors_Movement_PlayerWalkIn:
+	walk_up
+	step_end
+
+VerdanturfInteriors_Movement_WallyWalkIn:
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+VerdanturfInteriors_EventScript_WallyIdle::
+	lock
+	faceplayer
+	speakername VerdanturfInteriors_Text_NameWally
+	msgbox VerdanturfInteriors_Text_ImOnMyOwnJourney, MSGBOX_AUTOCLOSE
+	release
+	end
 
 VerdanturfInteriors_EventScript_MeetingLeftTrigger::
 	lock
@@ -217,3 +253,42 @@ VerdanturfInteriors_Text_IKindaHadFun:
 
 VerdanturfInteriors_Text_IMustStressThatYouLeave:
 	.string "die$"
+
+VerdanturfInteriors_Text_NameWally:
+	.string "Wally$"
+
+VerdanturfInteriors_Text_LetsCatchUp:
+	.string "S-So, I see you're doing\n"
+	.string "the gym challenge over again.\p"
+	.string "That's pretty cool! Personally,\n"
+	.string "I-I think my time for adventuring\l"
+	.string "has passed, if I'm being honest.\l"
+	.string "Cough... my lungs haven't\l"
+	.string "exactly gotten better over time,\l"
+	.string "hahaha...\p"
+	.string "Listen, I know we were both kinda\n"
+	.string "rivals to the former champ, b-but\l"
+	.string "they always seemed closer to you...\l"
+	.string "have you h-heard anything\l"
+	.string "from them at all? Any letters?\p"
+	.string "Nothing for you either, huh...\n"
+	.string "Th-that's a shame. I hope\l"
+	.string "they're doing okay...\p"
+	.string "Either or... I wish you\n"
+	.string "lots of luck doing the\l"
+	.string "new gym challenge! It seems\l"
+	.string "a lot tougher than when\l"
+	.string "I did it back then.\p"
+	.string "I'm going to be on a bit of\n"
+	.string "a trek of my own to search\l"
+	.string "for some medicine. Maybe\l"
+	.string "w-we'll run into each other\l"
+	.string "on the road!\p"
+	.string "I think I've, uh, held you\n"
+	.string "long enough. Have a great\l"
+	.string "day, {PLAYER}!$"
+
+VerdanturfInteriors_Text_ImOnMyOwnJourney:
+	.string "Oh, the time has f-flown by...\n"
+	.string "I'm supposed to be headed\l"
+	.string "out soon to the pharmacy...$"

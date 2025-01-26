@@ -133,31 +133,34 @@ TrickHouseMainPortion_EventScript_BillyBob::
     end
 
 TrickHouseMainPortion_Text_GeiruIntro:
-	.string "intro$"
+	.string "Awoooooga Awoooga!$"
 
 TrickHouseMainPortion_Text_GeiruDefeated:
-	.string "defeat$"
+	.string "Oinka oinka! Wheeeee!$"
 
 TrickHouseMainPortion_Text_GeiruPostBattle:
-	.string "post$"
+	.string "Hneeeeee! Fnrgh!\n"
+	.string "Grunt grunt!\l"
+	.string "Hinggggggg! Whazzo! Boink!$"
 
 TrickHouseMainPortion_Text_CottonIntro:
-	.string "intro$"
+	.string "Time to cook!$"
 
 TrickHouseMainPortion_Text_CottonDefeated:
-	.string "defeat$"
+	.string "I got cooked...$"
 
 TrickHouseMainPortion_Text_CottonPostBattle:
-	.string "post$"
+	.string "What was he cooking?$"
 
 TrickHouseMainPortion_Text_BillyBobIntro:
-	.string "intro$"
+	.string "I found a good cooking trick.$"
 
 TrickHouseMainPortion_Text_BillyBobDefeated:
-	.string "defeat$"
+	.string "Oh, it got a little burnt...$"
 
 TrickHouseMainPortion_Text_BillyBobPostBattle:
-	.string "post$"
+	.string "Maybe just a regular Explosion would do\n"
+	.string "next time.$"
 
 TrickHouseMainPortion_Text_PutInFirstNumber:
 	.string "(It's a stone door with\n"

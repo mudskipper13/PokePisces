@@ -680,7 +680,7 @@
 #define TRAINER_P_BRAWLY                       676
 #define TRAINER_P_SHELLY_1                677
 #define TRAINER_P_ROXANNE                678
-#define TRAINER_P_LANNETTE                679
+#define TRAINER_P_LANETTE                679
 #define TRAINER_P_NORMAN                680
 #define TRAINER_P_SIDNEY              681
 #define TRAINER_P_LUCY              682
