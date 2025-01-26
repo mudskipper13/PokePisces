@@ -178,7 +178,7 @@ static const u8 sHugePowerDescription[] = _(
     "stat.");
 
 static const u8 sPoisonPointDescription[] = _(
-    "Contact with the Pokémon may\n"
+    "Contact with the Pokémon will\n"
     "poison the attacker.");
 
 static const u8 sInnerFocusDescription[] = _(
@@ -433,9 +433,9 @@ static const u8 sHydrationDescription[] = _(
     "conditions cured in rain.");
 
 static const u8 sSolarPowerDescription[] = _(
-    "In harsh sunlight, the Pokémon's\n"
-    "Special Attack stat is boosted,\n"
-    "but its HP decreases every turn.");
+    "In harsh sunlight, deals more\n"
+    "and takes less damage based on\n"
+    "HP lost. Loses HP every turn.");
 
 static const u8 sQuickFeetDescription[] = _(
     "Boosts the Speed stat if the\n"
@@ -777,7 +777,8 @@ static const u8 sMagicianDescription[] = _(
 
 static const u8 sBulletproofDescription[] = _(
     "Protects the Pokémon from ball\n"
-    "and bomb moves.");
+    "and bomb moves. Reduces damage\n" 
+    "taken from non-contact moves.");
 
 static const u8 sCompetitiveDescription[] = _(
     "Boosts the Pokémon's Sp. Atk\n"

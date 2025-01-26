@@ -6610,8 +6610,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_POISON_POINT:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED 
-            && CanBePoisoned(gBattlerTarget, gBattlerAttacker) && IsMoveMakingContact(move, gBattlerAttacker) 
-            && RandomWeighted(RNG_POISON_POINT, 2, 1))
+            && CanBePoisoned(gBattlerTarget, gBattlerAttacker) && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -10791,6 +10790,17 @@ u32 CountBattlerStatIncreases(u32 battler, bool32 countEvasionAcc)
     return count;
 }
 
+u32 GetSolarPowerCounter(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].hp < gBattleMons[battler].maxHP)
+        count += abs(10 - ((gBattleMons[battler].hp / gBattleMons[battler].maxHP) * 10));
+
+    return count;
+}
+
 u32 CountBattlerSpeedIncreases(u32 battler)
 {
     u32 i;
@@ -11834,6 +11844,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case ABILITY_SUPREME_OVERLORD:
         modifier = uq4_12_multiply(modifier, GetSupremeOverlordModifier(battlerAtk));
         break;
+    case ABILITY_SOLAR_POWER:
+        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN))
+            modifier = uq4_12_multiply(modifier, 1.0 + (sPercentToModifier[GetSolarPowerCounter(battlerAtk) * 10]));
+        break;
     }
 
     // field abilities
@@ -12209,10 +12223,6 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     case ABILITY_STARS_GRACE:
         if (gDisableStructs[battlerAtk].slowStartTimer >= 4 && IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
-    case ABILITY_SOLAR_POWER:
-        if (IS_MOVE_SPECIAL(move) && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN))
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_WHITE_OUT:
         if (IS_MOVE_SPECIAL(move) && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_HAIL))
@@ -12996,11 +13006,19 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         if (gDisableStructs[battlerDef].iceScalesCounter != 0)
             return UQ_4_12(1.0 - (sPercentToModifier[gDisableStructs[battlerDef].iceScalesCounter * 10]));
         break;
+    case ABILITY_SOLAR_POWER:
+        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN))
+            return UQ_4_12(1.0 - (sPercentToModifier[GetSolarPowerCounter(battlerDef) * 10]));
+        break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
             return UQ_4_12(2.0);
         if (IsMoveMakingContact(move, battlerAtk) && moveType != TYPE_FIRE)
             return UQ_4_12(0.5);
+        break;
+    case ABILITY_BULLETPROOF:
+        if (!IsMoveMakingContact(move, battlerAtk))
+            return UQ_4_12(0.8);
         break;
     case ABILITY_MAGMA_ARMOR:
         if ((!(gDisableStructs[battlerDef].magmaArmored)) && moveType == TYPE_WATER)
