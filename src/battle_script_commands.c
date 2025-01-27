@@ -7323,6 +7323,19 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         }
+        case MOVEEND_DOUBLE_SLAP:
+        {
+            if (gCurrentMove == MOVE_DOUBLE_SLAP  
+            && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN) 
+            && !(gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT) 
+            && !(gHitMarker & HITMARKER_FAINTED(gBattlerTarget)))
+            {
+                gBattleMons[gBattlerTarget].status2 |= STATUS2_TORMENT;
+                PrepareStringBattle(STRINGID_PKMNSUBJECTEDTOTORMENT, gBattlerTarget);
+            }
+            gBattleScripting.moveendState++;
+            break;
+        }
         case MOVEEND_CLEAR_BITS: // Clear/Set bits for things like using a move for all targets and all hits.
             if (gSpecialStatuses[gBattlerAttacker].instructedChosenTarget)
                 *(gBattleStruct->moveTarget + gBattlerAttacker) = gSpecialStatuses[gBattlerAttacker].instructedChosenTarget & 0x3;
@@ -10935,10 +10948,11 @@ static void Cmd_various(void)
 
         if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
         {
-            gBattleMons[gBattlerTarget].status1 = 0;
+            gBattleMons[gBattlerAttacker].status1 = 0;
             gBattlescriptCurrInstr = cmd->nextInstr;
-            BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
-            MarkBattlerForControllerExec(gBattlerTarget);
+            BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+            
+            MarkBattlerForControllerExec(gBattlerAttacker);
         }
         else
         {
