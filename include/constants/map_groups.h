@@ -282,6 +282,10 @@
 #define MAP_EVER_GRANDE_PEAK            (4 | (20 << 8))
 #define MAP_OZONE_INT                   (5 | (20 << 8))
 #define MAP_OZONE_FLOOR2                (6 | (20 << 8))
+#define MAP_OZONE_MATT_ROOM             (7 | (20 << 8))
+#define MAP_OZONE_TABITHA_ROOM          (8 | (20 << 8))
+#define MAP_OZONE_COURTNEY_ROOM         (9 | (20 << 8))
+#define MAP_OZONE_SHELLY_ROOM           (10 | (20 << 8))
 
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))

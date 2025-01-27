@@ -3775,3 +3775,11 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneInt/scripts.inc"
 
 	.include "data/maps/OzoneFloor2/scripts.inc"
+
+	.include "data/maps/OzoneMattRoom/scripts.inc"
+
+	.include "data/maps/OzoneTabithaRoom/scripts.inc"
+
+	.include "data/maps/OzoneCourtneyRoom/scripts.inc"
+
+	.include "data/maps/OzoneShellyRoom/scripts.inc"

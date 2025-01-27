@@ -6120,6 +6120,46 @@
       "secondary_tileset": "gTileset_OzoneInterior",
       "border_filepath": "data/layouts/OzoneFloor2/border.bin",
       "blockdata_filepath": "data/layouts/OzoneFloor2/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_MATT_ROOM",
+      "name": "OzoneMattRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneMattRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneMattRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_TABITHA_ROOM",
+      "name": "OzoneTabithaRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneTabithaRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneTabithaRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_COURTNEY_ROOM",
+      "name": "OzoneCourtneyRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneCourtneyRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneCourtneyRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_SHELLY_ROOM",
+      "name": "OzoneShellyRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneShellyRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneShellyRoom/map.bin"
     }
   ]
 }
