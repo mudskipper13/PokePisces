@@ -8,6 +8,7 @@ DevonCorp_MapScripts::
 
 DevonCorp_OnFrame:
 	map_script_2 VAR_RUST_GYM_STATE, 15, DevonCorp_EventScript_DevonMeeting
+	map_script_2 VAR_WALLY_QUEST_STATE, 9, DevonCorp_EventScript_DevonMeetingPostWally
 	.2byte 0
 
 DevonCorp_EventScript_DevonMeeting::
@@ -167,6 +168,14 @@ DevonCorp_Movement_EmployeeWalkAway:
 DevonCorp_Movement_StoneLookLeft:
 	face_left
 	step_end
+
+DevonCorp_EventScript_DevonMeetingPostWally::
+	lock
+	setvar VAR_WALLY_QUEST_STATE, 10
+	warp MAP_RUSTBORO_NEW, 61, 35
+	waitstate
+	release
+	end
 
 DevonCorp_Text_NameMrStone:
 	.string "Mr. Stone$"

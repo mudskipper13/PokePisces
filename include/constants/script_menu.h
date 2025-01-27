@@ -145,6 +145,7 @@
 #define MULTI_RUSTGYM_QUESTION_8            133
 #define MULTI_RUSTGYM_QUESTION_9            134
 #define MULTI_RUSTGYM_QUESTION_10           135
+#define MULTI_WHODUNNIT                     136
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

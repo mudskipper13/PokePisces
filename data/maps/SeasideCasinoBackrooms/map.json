@@ -14,13 +14,164 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 20,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "SeasideCasinoBackrooms_EventScript_Penn",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER",
+      "x": 20,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "SeasideCasinoBackrooms_EventScript_Ari",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FEDORA",
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "SeasideCasinoBackrooms_EventScript_Lincoln",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 1,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_11"
+    }
   ],
   "warp_events": [
-
+    {
+      "x": 0,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 1,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 13,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 17,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 17,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 21,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 25,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "9"
+    },
+    {
+      "x": 21,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "8"
+    },
+    {
+      "x": 25,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "11"
+    },
+    {
+      "x": 29,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_VIPLOUNGES",
+      "dest_warp_id": "12"
+    },
+    {
+      "x": 29,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SEASIDE_CASINO_BATTLE_ROOM",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_WALLY_QUEST_STATE",
+      "var_value": "5",
+      "script": "SeasideCasinoBackrooms_EventScript_StevenMeetingNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_WALLY_QUEST_STATE",
+      "var_value": "5",
+      "script": "SeasideCasinoBackrooms_EventScript_StevenMeetingSouth"
+    }
   ],
   "bg_events": [
 

@@ -315,7 +315,10 @@
     "WallyArena",
     "WallyArenaLeadup",
     "SeasideCasinoTheater",
-    "SeasideCasinoBackrooms"
+    "SeasideCasinoBackrooms",
+    "SeasideCasinoVIPLounges",
+    "SeasideCasinoBattleRoom",
+    "SouthMossdeep"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",
@@ -328,7 +331,9 @@
     "MeteorNadir",
     "EverGrandeTransitionCave",
     "EverGrandeRoad",
-    "EverGrandePeak"
+    "EverGrandePeak",
+    "OzoneInt",
+    "OzoneFloor2"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",

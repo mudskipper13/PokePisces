@@ -1028,6 +1028,20 @@ static const struct MenuAction MultichoiceList_RustGymQuestion10[] = {
     {sText_RustGymQ10A5},
 };
 
+static const u8 sText_WhoNorman[] = _("Norman");
+static const u8 sText_WhoWally[] = _("Wally");
+static const u8 sText_WhoLiza[] = _("Liza");
+static const u8 sText_WhoTate[] = _("Tate");
+static const u8 sText_WhoMrBonding[] = _("Mr. Bonding");
+
+static const struct MenuAction MultichoiceList_WhoDunnit[] = {
+    {sText_WhoNorman},
+    {sText_WhoWally},
+    {sText_WhoLiza},
+    {sText_WhoTate},
+    {sText_WhoMrBonding},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1178,6 +1192,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RUSTGYM_QUESTION_8]           = MULTICHOICE(MultichoiceList_RustGymQuestion8),
     [MULTI_RUSTGYM_QUESTION_9]           = MULTICHOICE(MultichoiceList_RustGymQuestion9),
     [MULTI_RUSTGYM_QUESTION_10]          = MULTICHOICE(MultichoiceList_RustGymQuestion10),
+    [MULTI_WHODUNNIT]                    = MULTICHOICE(MultichoiceList_WhoDunnit),
 };
 
 const u8 *const gStdStrings[] =
