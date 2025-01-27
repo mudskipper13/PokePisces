@@ -144,6 +144,8 @@ static const u8 sDoorAnimTiles_MauvilleEntrance[] = INCBIN_U8("graphics/door_ani
 static const u8 sDoorAnimTiles_ZotpyreCivilian[] = INCBIN_U8("graphics/door_anims/zotpyre.4bpp");
 static const u8 sDoorAnimTiles_LavaridgeNew[] = INCBIN_U8("graphics/door_anims/lavaridge_new.4bpp");
 static const u8 sDoorAnimTiles_SweltornCivilian[] = INCBIN_U8("graphics/door_anims/sweltorn.4bpp");
+static const u8 sDoorAnimTiles_CasinoGreen[] = INCBIN_U8("graphics/door_anims/casino_green.4bpp");
+static const u8 sDoorAnimTiles_CasinoRed[] = INCBIN_U8("graphics/door_anims/casino_red.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -241,6 +243,8 @@ static const u8 sDoorAnimPalettes_MauvilleElevatorRed[] = {12, 12, 7, 7, 7, 7, 7
 static const u8 sDoorAnimPalettes_MauvilleElevatorGreen[] = {12, 12, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_MauvilleElevatorBeige[] = {12, 12, 0, 0, 0, 0, 0, 0};
 static const u8 sDoorAnimPalettes_ZotpyreCivilian[] = {6, 6, 6, 6, 6, 6, 6, 6};
+static const u8 sDoorAnimPalettes_CasinoGreen[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_CasinoRed[] = {8, 8, 8, 8, 7, 7, 7, 7};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -313,7 +317,10 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_mauvillenew_doors_entrance,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MauvilleEntrance, sDoorAnimPalettes_MauvilleSlidingDoors},
     {METATILE_Snow_door_zotpyre,                            DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_ZotpyreCivilian, sDoorAnimPalettes_ZotpyreCivilian},
     {METATILE_LavaridgeNew_door_lavaridge,                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_LavaridgeNew, sDoorAnimPalettes_ZotpyreCivilian},
-    {METATILE_desert_door_sweltorn,                         DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SweltornCivilian, sDoorAnimPalettes_Chimney,}
+    {METATILE_desert_door_sweltorn,                         DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SweltornCivilian, sDoorAnimPalettes_Chimney},
+    {METATILE_CasinoNew_doubledoors_red,                    DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoRed, sDoorAnimPalettes_CasinoRed},
+    {METATILE_CasinoNew_doubledoors_green,                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoGreen, sDoorAnimPalettes_CasinoGreen},
+
 };
 
 // NOTE: The tiles of a door's animation must be copied to VRAM because they are not already part of any given tileset.

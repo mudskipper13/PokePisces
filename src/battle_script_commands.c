@@ -10966,10 +10966,11 @@ static void Cmd_various(void)
 
         if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
         {
-            gBattleMons[gBattlerTarget].status1 = 0;
+            gBattleMons[gBattlerAttacker].status1 = 0;
             gBattlescriptCurrInstr = cmd->nextInstr;
-            BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
-            MarkBattlerForControllerExec(gBattlerTarget);
+            BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+            
+            MarkBattlerForControllerExec(gBattlerAttacker);
         }
         else
         {

@@ -2,7 +2,7 @@
   "id": "MAP_SEASIDE_CASINO",
   "name": "SeasideCasino",
   "layout": "LAYOUT_SEASIDE_CASINO",
-  "music": "MUS_RG_GAME_CORNER",
+  "music": "MUS_REALGAM_TOWER",
   "region_map_section": "MAPSEC_SLATEPORT_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
