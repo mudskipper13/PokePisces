@@ -4047,7 +4047,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 {
                     gMultiHitCounter = 3;
                 }
-                else if (gCurrentMove == MOVE_DOUBLE_SLAP && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
+                else if (gCurrentMove == MOVE_DOUBLE_SLAP && IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_MISTY_TERRAIN))
                 {
                     SetRandomMultiHitCounter3To5();
                 }

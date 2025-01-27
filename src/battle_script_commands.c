@@ -4712,14 +4712,32 @@ static void Cmd_seteffectprimary(void)
 {
     CMD_ARGS();
 
-    SetMoveEffect(TRUE, 0);
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && (Random() % 2 == 0))
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        SetMoveEffect(TRUE, 0);
+    }
 }
 
 static void Cmd_seteffectsecondary(void)
 {
     CMD_ARGS();
 
-    SetMoveEffect(FALSE, 0);
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && (Random() % 2 == 0))
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        SetMoveEffect(TRUE, 0);
+    }
 }
 
 static void Cmd_clearstatusfromeffect(void)
@@ -6969,6 +6987,12 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_DefDownSpeedUp;
                     }
 
+                    if (gCurrentMove == MOVE_DOUBLE_SLAP && !NoAliveMonsForEitherParty() && IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_MISTY_TERRAIN))
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_TormentAfter;
+                    }
+
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MultiHitPrintStrings;
                     effect = TRUE;
@@ -7327,19 +7351,6 @@ static void Cmd_moveend(void)
                 gBattleStruct->DancerCount = 0;
             }
             RecordLastUsedMoveBy(gBattlerAttacker, gCurrentMove);
-            gBattleScripting.moveendState++;
-            break;
-        }
-        case MOVEEND_DOUBLE_SLAP:
-        {
-            if (gCurrentMove == MOVE_DOUBLE_SLAP  
-            && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN) 
-            && !(gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT) 
-            && !(gHitMarker & HITMARKER_FAINTED(gBattlerTarget)))
-            {
-                gBattleMons[gBattlerTarget].status2 |= STATUS2_TORMENT;
-                PrepareStringBattle(STRINGID_PKMNSUBJECTEDTOTORMENT, gBattlerTarget);
-            }
             gBattleScripting.moveendState++;
             break;
         }

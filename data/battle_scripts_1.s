@@ -13556,6 +13556,17 @@ BattleScript_DefDownSpeedUpTrySpeed:
 BattleScript_DefDownSpeedUpRet::
 	return
 
+BattleScript_TormentAfter::
+	jumpiffainted BS_TARGET, TRUE, BattleScript_TormentAfterRet
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TormentAfterRet
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TormentAfterRet
+	settorment BattleScript_TormentAfterRet
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+BattleScript_TormentAfterRet::
+	return
+
 BattleScript_SpecialDefenseUp::
 goto BattleScript_EffectSpecialDefenseUp
 
