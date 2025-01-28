@@ -262,9 +262,9 @@ static const u8 sHustleDescription[] = _(
     "stat but lowers its accuracy.");
 
 static const u8 sCuteCharmDescription[] = _(
-    "May infatuate when contact is\n"
-    "made either way. May find more\n"
-    "Pokémon of the opposite gender.");
+    "When contact is made either way,\n"
+    "the foe may be infatuated with\n"
+    "the user.");
 
 static const u8 sPlusDescription[] = _(
     "Boosts power if user or ally are\n"
@@ -847,8 +847,9 @@ static const u8 sParentalBondDescription[] = _(
     "after the other.");
 
 static const u8 sDarkAuraDescription[] = _(
-    "Powers up the Dark-type moves\n"
-    "of all Pokémon on the field.");
+    "Increases the damage taken of\n"
+    "all Pokémon except itself based\n"
+    "on the target's stat drops.");
 
 static const u8 sFairyAuraDescription[] = _(
     "Powers up the Fairy-type moves\n"
@@ -1317,7 +1318,9 @@ static const u8 sCudChewDescription[] = _(
     "the end of the next turn.");
 
 static const u8 sSharpnessDescription[] = _(
-    "Powers up slicing moves.");
+    "Powers up slicing moves, but\n"
+    "becomes weaker for each slicing\n"
+    "move used.");
 
 static const u8 sSupremeOverlordDescription[] = _(
     "When entering battle, its Atk\n"
@@ -1532,7 +1535,7 @@ static const u8 sAquaHeartDescription[] = _(
     "boosted, and ignore the foe's\n"
     "abilities and user's stat drops.");
 
-static const u8 sBrandingClawsDescription[] = _(
+static const u8 sFirebrandDescription[] = _(
     "Attacks become critical hits if\n"
     "the target is burned. May burn a\n"
     "target when making contact.");
@@ -2049,7 +2052,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SPIRALYSIS] = _("Spiralysis"),
     [ABILITY_PINK_MIST] = _("Pink Mist"),
     [ABILITY_AQUA_HEART] = _("Aqua Heart"),
-    [ABILITY_BRANDING_CLAWS] = _("Branding Claws"),
+    [ABILITY_FIREBRAND] = _("Firebrand"),
     [ABILITY_DISDAIN] = _("Disdain"),
     [ABILITY_DISTURB] = _("Disturb"),
     [ABILITY_DRACO_FORCE] = _("Draco Force"),
@@ -2437,7 +2440,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SPIRALYSIS] = _("Spiralysis"),
     [ABILITY_PINK_MIST] = _("Pink Mist"),
     [ABILITY_AQUA_HEART] = _("Aqua Heart"),
-    [ABILITY_BRANDING_CLAWS] = _("Branding Claws"),
+    [ABILITY_FIREBRAND] = _("Firebrand"),
     [ABILITY_DISDAIN] = _("Disdain"),
     [ABILITY_DISTURB] = _("Disturb"),
     [ABILITY_DRACO_FORCE] = _("Draco Force"),
@@ -2826,7 +2829,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SPIRALYSIS] = sSpiralysisDescription,
     [ABILITY_PINK_MIST] = sPinkMistDescription,
     [ABILITY_AQUA_HEART] = sAquaHeartDescription,
-    [ABILITY_BRANDING_CLAWS] = sBrandingClawsDescription,
+    [ABILITY_FIREBRAND] = sFirebrandDescription,
     [ABILITY_DISDAIN] = sDisdainDescription,
     [ABILITY_DISTURB] = sDisturbDescription,
     [ABILITY_DRACO_FORCE] = sDracoForceDescription,

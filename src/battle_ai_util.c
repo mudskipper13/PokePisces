@@ -302,7 +302,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_AMBUSHER] = 6,
     [ABILITY_APPETITE] = 7,
     [ABILITY_ARBITER] = 9,
-    [ABILITY_BRANDING_CLAWS] = 4,
+    [ABILITY_FIREBRAND] = 4,
     [ABILITY_CINDER_WALTZ] = 10,
     [ABILITY_CRUELTY] = 6,
     [ABILITY_DISDAIN] = 7,
@@ -4185,7 +4185,7 @@ void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
         if (HasMoveEffect(battlerAtk, EFFECT_HEX) 
          || HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_HEX)
          || HasMoveEffect(battlerAtk, EFFECT_RADIOACID)
-         || AI_DATA->abilities[battlerAtk] == ABILITY_BRANDING_CLAWS)
+         || AI_DATA->abilities[battlerAtk] == ABILITY_FIREBRAND)
             (*score)++;
     }
 }
