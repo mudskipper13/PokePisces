@@ -133,49 +133,132 @@ WallyArena_Movement_WallyRunAway:
 	step_end
 
 WallyArena_Text_NameWally:
-	.string "$"
+	.string "Wally$"
 
 WallyArena_Text_NameNorman:
-	.string "$"
+	.string "Norman$"
 
 WallyArena_Text_NameSteven:
-	.string "$"
+	.string "Steven$"
 
 WallyArena_Text_HelloPlayerKun:
-	.string "$"
+	.string "Cough, cough...\n"
+	.string "{PLAYER}, is that you?\p"
+	.string "I'm glad. Glad that...\n"
+	.string "you walked right into my trap!$"
 
 WallyArena_Text_FullVillainMonologue:
-	.string "$"
+	.string "I see the look of dismay\n"
+	.string "on your, cough... stupid face!\p"
+	.string "Yes, that's right! I've ALWAYS\n"
+	.string "despised you. Ever since that\l"
+	.string "first gym challenge...!\l"
+	.string "The champ never cared about ME.\l"
+	.string "They were always talking to YOU.\l"
+	.string "I wanted to be their rival!\l"
+	.string "Their best friend!\l"
+	.string "I wanted recognition! Respect!\l"
+	.string "But I was FORGOTTEN.\p"
+	.string "And you.\n"
+	.string "YOU.\p"
+	.string "You just HAD to show back up\n"
+	.string "in Hoenn again. And not just\l"
+	.string "that! You act like YOU'RE the\l"
+	.string "protagonist of life now!\l"
+	.string "It, cough, INFURIATES me to no end!\p"
+	.string "I've tried! Boy, have I tried\n"
+	.string "COUNTLESS times to stop\l"
+	.string "your dumb adventure...!\p"
+	.string "That avalanche in the Cold Mines?\n"
+	.string "I caused it!\p"
+	.string "Those Bolterock in Masonried Hike?\n"
+	.string "I COMMANDED them to block your path!\p"
+	.string "Shelly and Brawly? I lured them\n"
+	.string "away from...cough, cough... the gym!\p"
+	.string "And now, my last hoorah. I couldn't\n"
+	.string "just let you complete the challenge\l"
+	.string "so EASILY, {PLAYER}!\p"
+	.string "I FORGED THE SIGNATURE!\n"
+	.string "AND YOU STILL FOUND ME OUT!$"
 
 WallyArena_Text_WallyIntro:
-	.string "$"
+	.string "I'VE HAD IT!\n"
+	.string "NO MORE GAMES!\l"
+	.string "We are battling RIGHT NOW!\l"
+	.string "And when you lose, and your\l"
+	.string "Pokemon are all incapacitated,\l"
+	.string "and your breath runs thin\l"
+	.string "from exhaustion...!\p"
+	.string "I'LL KILL YOU!$"
 
 WallyArena_Text_WallyDefeated:
-	.string "$"
+	.string "Cough, cough, cough...!\p"
+	.string "NOOOOOOOOOOOOOOOOOOOOOOOO!$"
 
 WallyArena_Text_HowCouldThisBe:
-	.string "$"
+	.string "How did you WIN...!?\n"
+	.string "Even with me throwing myself\l"
+	.string "in the battle, cough...!\l"
+	.string "It wasn't ENOUGH!?$"
 
 WallyArena_Text_ThatsEnoughWally:
-	.string "$"
+	.string "That is IT, Wally. We're\n"
+	.string "here to put an end to things.$"
 
 WallyArena_Text_HowDidYouFindMe:
-	.string "$"
+	.string "How... HOW did you find\n"
+	.string "my secret cave...?$"
 
 WallyArena_Text_TrackedTheScent:
-	.string "$"
+	.string "I had gotten concerned that\n"
+	.string "{PLAYER} hadn't arrived yet.\l"
+	.string "I checked my doorstep, and smelled\l"
+	.string "the scent of spider lilies.\l"
+	.string "This islet is not far from my home.\l"
+	.string "It was... fairly easy to find,\l"
+	.string "in fact.$"
 
 WallyArena_Text_WhatsGonnaHappenNow:
-	.string "$"
+	.string "No... NO....!\n"
+	.string "Foiled...!\p"
+	.string "Sniff... what is going to\n"
+	.string "happen to me now...!?\l"
+	.string "Am I going to... cough, prison?$"
 
 WallyArena_Text_ISeeTheGoodInYou:
-	.string "$"
+	.string "You are very, very lucky I\n"
+	.string "came here to mediate, Wally.\p"
+	.string "I watched you capture your first\n"
+	.string "Pokemon. That year, you grew\l"
+	.string "into a fine trainer. It is\l"
+	.string "because of those memories that\l"
+	.string "I cannot bring myself to have you\l"
+	.string "locked up in jail for the rest\l"
+	.string "of your life.\p"
+	.string "I will let you go free. But\n"
+	.string "only if you leave {PLAYER}\l"
+	.string "alone... and never show\l"
+	.string "your face around the\l"
+	.string "League ever again.$"
 
 WallyArena_Text_AnUnwiseChoice:
-	.string "$"
+	.string "Cough, cough...\p"
+	.string "An... unwise choice...\p"
+	.string "...{PLAYER}. I hope misfortune\n"
+	.string "befalls you. Maybe not by\l"
+	.string "my hands... but I will never\l"
+	.string "lose this grudge.\p"
+	.string "Goodbye...!$"
 
 WallyArena_Text_ThatShouldSettleIt:
-	.string "$"
+	.string "I can act as an eyewitness\n"
+	.string "to these events. That should\l"
+	.string "be enough to overturn the\l"
+	.string "blockage and get you certified.\l"
+	.string "I'm glad we could get everything\l"
+	.string "sorted out!$"
 
 WallyArena_Text_LetsGoToDevonCorp:
-	.string "$"
+	.string "Indeed. Shall we go\n"
+	.string "back to Devon Corp. to make\l"
+	.string "this official?$"

@@ -772,4 +772,9 @@ MossdeepCity_Text_Gugumbir:
 	.string "as you would your own.$"
 
 MossdeepCity_Text_YouFeelFaint:
-	.string "u feel faint$"
+	.string "(You are about to reach Steven's\n"
+	.string "home when...)\p"
+	.string "(The smell of... spider lilies...\n"
+	.string "fills your... nostrils...)\p"
+	.string "(Feeling...\n"
+	.string "                ...faint...)$"

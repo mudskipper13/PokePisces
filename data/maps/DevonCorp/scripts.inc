@@ -172,6 +172,23 @@ DevonCorp_Movement_StoneLookLeft:
 DevonCorp_EventScript_DevonMeetingPostWally::
 	lock
 	setvar VAR_WALLY_QUEST_STATE, 10
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	speakername NULL
+	msgbox DevonCorp_Text_StevenExplainedTheEvents, MSGBOX_DEFAULT
+	speakername DevonCorp_Text_NameMrStone
+	msgbox DevonCorp_Text_LetsGetYouCertified, MSGBOX_DEFAULT
+	speakername NULL
+	message DevonCorp_Text_PlayerIsLeagueCertified
+	waitmessage
+	call Common_EventScript_PlayGymBadgeFanfare
+	speakername DevonCorp_Text_NameMaxie
+	msgbox DevonCorp_Text_OzoneChallenge, MSGBOX_DEFAULT
+	speakername DevonCorp_Text_NameArchie
+	msgbox DevonCorp_Text_WeWannaTakeYouOn, MSGBOX_DEFAULT
+	speakername DevonCorp_Text_NameNorman
+	msgbox DevonCorp_Text_IThinkItllBeFun, MSGBOX_DEFAULT
+	speakername DevonCorp_Text_NameMrStone
+	msgbox DevonCorp_Text_PleaseLeave, MSGBOX_DEFAULT
 	warp MAP_RUSTBORO_NEW, 61, 35
 	waitstate
 	release
@@ -191,6 +208,12 @@ DevonCorp_Text_NameMaxie:
 
 DevonCorp_Text_NameRay:
 	.string "Ray$"
+
+DevonCorp_Text_NameArchie:
+	.string "Archie$"
+
+DevonCorp_Text_NameNorman:
+	.string "Norman$"
 
 DevonCorp_Text_IAmDevonsDirector:
 	.string "Hello, {PLAYER}.\n"
@@ -402,3 +425,67 @@ DevonCorp_Text_AreWeGoodNow:
 	.string "by over 70 scholars):\p"
 	.string "Assuming makes an\n"
 	.string "ass out of u and me.$"
+
+DevonCorp_Text_StevenExplainedTheEvents:
+	.string "(Steven explained the events\n"
+	.string "as they transpired, and\l"
+	.string "the foul play that was involved.)$"
+
+DevonCorp_Text_LetsGetYouCertified:
+	.string "Well now! What a turbulent\n"
+	.string "series of odd events. I am\l"
+	.string "quite happy for you, {PLAYER},\l"
+	.string "that things seem to have\l"
+	.string "worked out in your favor.\p"
+	.string "I am prepared to fill out\n"
+	.string "the necessary files to get\l"
+	.string "you League Certified, trainer.\l"
+	.string "Hand me your trainer card...$"
+
+DevonCorp_Text_PlayerIsLeagueCertified:
+	.string "{PLAYER} is... FINALLY...\n"
+	.string "League Certified!\l"
+	.string "The Gym Challenge\l"
+	.string "has been completed!$"
+
+DevonCorp_Text_OzoneChallenge:
+	.string "If I may have a word.\p"
+	.string "In this day and age, Hoenn has\n"
+	.string "done away with 'champions'\l"
+	.string "and the Elite Four, in the name\l"
+	.string "of unity and equality.\l"
+	.string "I do respect the want to spotlight\l"
+	.string "everyone that takes the challenge,\l"
+	.string "but I also miss that grand\l"
+	.string "final showdown, and I sense you\l"
+	.string "do as well.\p"
+	.string "The members of Team Ozone have all\n"
+	.string "conversed, and we would like to\l"
+	.string "offer you a sort of makeshift\l"
+	.string "final battling challenge at\l"
+	.string "the Ozone Institute.\p"
+	.string "Myself, Archie, as well as all\n"
+	.string "of our admins... and yes, Ray\l"
+	.string "is included...\l"
+	.string "would like to be your\l"
+	.string "last test. If you so desire.$"
+
+DevonCorp_Text_WeWannaTakeYouOn:
+	.string "You really should consider it!\n"
+	.string "I've been planning and setting up\l"
+	.string "the Institute for it all!\l"
+	.string "It'll be a HUGE event!$"
+
+DevonCorp_Text_IThinkItllBeFun:
+	.string "Sounds like it would be\n"
+	.string "just what you'd want, {PLAYER}!\l"
+	.string "I'd take them up on that\l"
+	.string "if I were you, hahaha!$"
+
+DevonCorp_Text_PleaseLeave:
+	.string "Exciting! Most exciting!\p"
+	.string "It pains me to say this, though...\n"
+	.string "I am afraid I must escort you all\l"
+	.string "out of my office for now.\l"
+	.string "We have other meetings to get to.\p"
+	.string "Good luck, {PLAYER}!$"
