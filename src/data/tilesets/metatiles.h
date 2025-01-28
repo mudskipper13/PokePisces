@@ -264,3 +264,6 @@ const u16 gMetatileAttributes_CasinoNew[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_BossArenas[] = INCBIN_U16("data/tilesets/secondary/boss_arenas/metatiles.bin");
 const u16 gMetatileAttributes_BossArenas[] = INCBIN_U16("data/tilesets/secondary/boss_arenas/metatile_attributes.bin");
+
+const u16 gMetatiles_OzoneAdminRooms[] = INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/metatiles.bin");
+const u16 gMetatileAttributes_OzoneAdminRooms[] = INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/metatile_attributes.bin");

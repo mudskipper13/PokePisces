@@ -1034,3 +1034,14 @@ const struct Tileset gTileset_BossArenas =
     .metatileAttributes = gMetatileAttributes_BossArenas,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_OzoneAdminRooms =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_OzoneAdminRooms,
+    .palettes = gTilesetPalettes_OzoneAdminRooms,
+    .metatiles = gMetatiles_OzoneAdminRooms,
+    .metatileAttributes = gMetatileAttributes_OzoneAdminRooms,
+    .callback = NULL,
+};

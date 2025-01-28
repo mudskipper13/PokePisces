@@ -1995,3 +1995,22 @@ const u16 gTilesetPalettes_BossArenas[][16] =
 };
 
 const u32 gTilesetTiles_BossArenas[] = INCBIN_U32("data/tilesets/secondary/boss_arenas/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_OzoneAdminRooms[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_OzoneAdminRooms[] = INCBIN_U32("data/tilesets/secondary/ozone_admin_rooms/tiles.4bpp.lz");

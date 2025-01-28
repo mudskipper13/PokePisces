@@ -333,7 +333,11 @@
     "EverGrandeRoad",
     "EverGrandePeak",
     "OzoneInt",
-    "OzoneFloor2"
+    "OzoneFloor2",
+    "OzoneMattRoom",
+    "OzoneTabithaRoom",
+    "OzoneCourtneyRoom",
+    "OzoneShellyRoom"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",
