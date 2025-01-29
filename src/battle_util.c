@@ -306,7 +306,7 @@ void HandleAction_UseMove(void)
             || (GetBattlerAbility(battler) == ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) 
             || (GetBattlerAbility(battler) == ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)) 
             && GetBattlerTurnOrderNum(battler) < var 
-            && gBattleMoves[gCurrentMove].effect != EFFECT_SNIPE_SHOT 
+            && gBattleMoves[gCurrentMove].effect != EFFECT_SNIPE_SHOT
             && gBattleMoves[gCurrentMove].effect != EFFECT_PSYSTRIKE
             && (GetBattlerAbility(gBattlerAttacker) != ABILITY_PROPELLER_TAIL 
             || GetBattlerAbility(gBattlerAttacker) != ABILITY_STALWART))

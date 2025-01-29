@@ -667,8 +667,18 @@ BattleScript_EffectPhaseForce::
 	jumpifstatus4 BS_ATTACKER, STATUS4_PHANTOM, BattleScript_PhaseForce2ndTurn
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_PhaseForce2ndTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_PhaseForce2ndTurn
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_PHANTOM_FORCE
-	call BattleScriptFirstChargingTurn
+	attackcanceler
+	printstring STRINGID_EMPTYSTRING3
+	ppreduce
+	attackstring
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_VANISHEDINSTANTLY
+	waitmessage B_WAIT_TIME_LONG
+	attackanimation
+	waitanimation
+	orword gHitMarker, HITMARKER_CHARGING
+	setmoveeffect MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
 	setsemiinvulnerablebit
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation
@@ -683,7 +693,7 @@ BattleScript_PhaseForce2ndTurn::
 	clearsemiinvulnerablebit
 	goto BattleScript_HitFromAtkString
 
-BattleScript_EffectPsychoCut::
+BattleScript_EffectPsychoCut:
 	jumpifterrainaffected BS_ATTACKER, STATUS_FIELD_PSYCHIC_TERRAIN, BattleScript_EffectSpecialDefenseDownHit
 	goto BattleScript_EffectHit
 

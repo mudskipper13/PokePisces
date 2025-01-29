@@ -374,12 +374,9 @@
 #define MOVEEND_PICKPOCKET                        31
 #define MOVEEND_DANCER                            32
 #define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_SAME_MOVE_TURNS                   34
-#define MOVEEND_SLICING_MOVE_TURNS                35
-#define MOVEEND_DANCING_MOVE_TURNS                36
-#define MOVEEND_NEXT_DANCE_TARGET                 37
-#define MOVEEND_CLEAR_BITS                        38
-#define MOVEEND_COUNT                             39
+#define MOVEEND_NEXT_DANCE_TARGET                 34
+#define MOVEEND_CLEAR_BITS                        35
+#define MOVEEND_COUNT                             36
 
 // switch cases
 #define B_SWITCH_NORMAL     0

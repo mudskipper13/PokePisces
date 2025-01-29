@@ -1059,7 +1059,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_PASSAWARY]                    = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_BOOZARD]                      = { .size = MON_COORDS_SIZE(24, 48), .y_offset =  8 },
     [SPECIES_COCKABOO]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
-    [SPECIES_AXELFIN]                      = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  0 },
+    [SPECIES_AXELFIN]                      = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  2 },
     [SPECIES_MORAGAN]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_SHIVERSNAP]                   = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_EXCATATOR]                    = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },

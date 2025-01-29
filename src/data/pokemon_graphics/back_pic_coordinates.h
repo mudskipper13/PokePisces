@@ -1077,7 +1077,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_PASSAWARY]                    = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
     [SPECIES_BOOZARD]                      = { .size = MON_COORDS_SIZE(40, 40), .y_offset = 16 },
     [SPECIES_COCKABOO]                     = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  3 },
-    [SPECIES_AXELFIN]                      = { .size = MON_COORDS_SIZE(48, 56), .y_offset =  4 },
+    [SPECIES_AXELFIN]                      = { .size = MON_COORDS_SIZE(48, 56), .y_offset =  7 },
     [SPECIES_MORAGAN]                      = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  8 },
     [SPECIES_SHIVERSNAP]                   = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  3 },
     [SPECIES_EXCATATOR]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },

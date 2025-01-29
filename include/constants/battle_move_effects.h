@@ -637,8 +637,8 @@
 #define EFFECT_POWER_GEM                    632
 #define EFFECT_PSYCHO_CUT                   633
 #define EFFECT_RAZOR_SHELL                  634
-#define EFFECT_PSYSTRIKE                    635
-#define EFFECT_PHASE_FORCE                  636
+#define EFFECT_PHASE_FORCE                  635
+#define EFFECT_PSYSTRIKE                    636
 
 #define NUM_BATTLE_MOVE_EFFECTS             637
 

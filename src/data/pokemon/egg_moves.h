@@ -278,9 +278,6 @@ const u16 gEggMoves[] = {
     egg_moves(MANKEY,
         MOVE_SPITE),
 
-    egg_moves(GROWLITHE,
-        MOVE_PLAY_ROUGH),
-
     egg_moves(POLIWAG,
         MOVE_MIST,
         MOVE_SPLASH,
