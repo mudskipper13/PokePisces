@@ -6114,9 +6114,9 @@
     {
       "id": "LAYOUT_OZONE_FLOOR2",
       "name": "OzoneFloor2_Layout",
-      "width": 27,
+      "width": 34,
       "height": 11,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_OzoneInterior",
       "border_filepath": "data/layouts/OzoneFloor2/border.bin",
       "blockdata_filepath": "data/layouts/OzoneFloor2/map.bin"
@@ -6160,6 +6160,26 @@
       "secondary_tileset": "gTileset_OzoneAdminRooms",
       "border_filepath": "data/layouts/OzoneShellyRoom/border.bin",
       "blockdata_filepath": "data/layouts/OzoneShellyRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_ELITE_FOUR_HUB",
+      "name": "OzoneEliteFourHub_Layout",
+      "width": 27,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneEliteFourHub/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneEliteFourHub/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_MAXIE_ARCHIE_ROOM",
+      "name": "OzoneMaxieArchieRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneAdminRooms",
+      "border_filepath": "data/layouts/OzoneMaxieArchieRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneMaxieArchieRoom/map.bin"
     }
   ]
 }

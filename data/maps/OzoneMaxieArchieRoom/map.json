@@ -1,7 +1,7 @@
 {
-  "id": "MAP_OZONE_SHELLY_ROOM",
-  "name": "OzoneShellyRoom",
-  "layout": "LAYOUT_OZONE_SHELLY_ROOM",
+  "id": "MAP_OZONE_MAXIE_ARCHIE_ROOM",
+  "name": "OzoneMaxieArchieRoom",
+  "layout": "LAYOUT_OZONE_MAXIE_ARCHIE_ROOM",
   "music": "MUS_AQUA_MAGMA_HIDEOUT",
   "region_map_section": "MAPSEC_ROUTE_109",
   "requires_flash": false,
@@ -17,20 +17,7 @@
 
   ],
   "warp_events": [
-    {
-      "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_OZONE_ELITE_FOUR_HUB",
-      "dest_warp_id": "4"
-    },
-    {
-      "x": 5,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_OZONE_ELITE_FOUR_HUB",
-      "dest_warp_id": "4"
-    }
+
   ],
   "coord_events": [
 
