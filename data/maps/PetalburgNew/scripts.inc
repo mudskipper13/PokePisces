@@ -126,11 +126,26 @@ PetalburgNew_Text_NameSteven:
 	.string "Steven$"
 
 PetalburgNew_Text_NormanNotHere:
-	.string "norman aint here dood$"
+	.string "{PLAYER}, I unfortunately have\n"
+	.string "some bad intel to divulge.\p"
+	.string "It appears Norman is not in\n"
+	.string "Petalburg at the moment. I will\l"
+	.string "continue to ask around, but I\l"
+	.string "have a sneaking suspision that\l"
+	.string "he has gone home to Littleroot.\p"
+	.string "If you wish to investigate that\n"
+	.string "further, I encourage it. I will\l"
+	.string "remain here for the time being\l"
+	.string "and collect info.$"
 
 PetalburgNew_Text_StevenIdle:
-	.string "y u still here go to\n"
-	.string "da woods$"
+	.string "The fastest way to Littleroot\n"
+	.string "from here will be through the\l"
+	.string "Petalburg Woods to our east.\p"
+	.string "It is also feasible to travel\n"
+	.string "through Oldale or via the road\l"
+	.string "west of Sea Mauville.\p"
+	.string "The choice is yours.$"
 
 PetalburgNew_Text_ShouldntGoHere:
 	.string "(You have business in\n"

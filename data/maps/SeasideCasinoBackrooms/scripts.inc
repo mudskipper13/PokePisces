@@ -143,4 +143,13 @@ SeasideCasinoBackrooms_Text_NameSteven:
 	.string "Steven$"
 
 SeasideCasinoBackrooms_Text_PointOfNoReturn:
-	.string "$"
+	.string "Hmph. That man was easy enough\n"
+	.string "to trick. He's sleeping like\l"
+	.string "a newborn in the casino's\l"
+	.string "broom closet as we speak.\p"
+	.string "This is a point of no return,\n"
+	.string "{PLAYER}. Jumping the ropes\l"
+	.string "will lock us in here until we\l"
+	.string "find what we're looking for.\p"
+	.string "Let the hesitation leave\n"
+	.string "your body...$"
