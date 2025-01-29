@@ -9583,7 +9583,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PHANTOM_FORCE] =
     {
-        .effect = EFFECT_PHASE_FORCE,
+        .effect = EFFECT_SEMI_INVULNERABLE,
         .power = 90,
         .type = TYPE_GHOST,
         .accuracy = 100,

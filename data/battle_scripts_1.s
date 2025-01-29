@@ -661,37 +661,6 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectPsychoCut               @ EFFECT_PSYCHO_CUT
 	.4byte BattleScript_EffectHit                     @ EFFECT_RAZOR_SHELL
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYSTRIKE
-	.4byte BattleScript_EffectPhaseForce              @ EFFECT_PHASE_FORCE
-
-BattleScript_EffectPhaseForce::
-	jumpifstatus4 BS_ATTACKER, STATUS4_PHANTOM, BattleScript_PhaseForce2ndTurn
-	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_PhaseForce2ndTurn
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_PhaseForce2ndTurn
-	attackcanceler
-	printstring STRINGID_EMPTYSTRING3
-	ppreduce
-	attackstring
-	pause B_WAIT_TIME_LONG
-	printstring STRINGID_VANISHEDINSTANTLY
-	waitmessage B_WAIT_TIME_LONG
-	attackanimation
-	waitanimation
-	orword gHitMarker, HITMARKER_CHARGING
-	setmoveeffect MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
-	seteffectprimary
-	setsemiinvulnerablebit
-	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
-	call BattleScript_PowerHerbActivation
-BattleScript_PhaseForce2ndTurn::
-	attackcanceler
-	setmoveeffect MOVE_EFFECT_CHARGING
-	setbyte sB_ANIM_TURN, 1
-	clearstatusfromeffect BS_ATTACKER
-	orword gHitMarker, HITMARKER_NO_PPDEDUCT
-	argumenttomoveeffect
-	accuracycheck BattleScript_SemiInvulnerableMiss, ACC_CURR_MOVE
-	clearsemiinvulnerablebit
-	goto BattleScript_HitFromAtkString
 
 BattleScript_EffectPsychoCut:
 	jumpifterrainaffected BS_ATTACKER, STATUS_FIELD_PSYCHIC_TERRAIN, BattleScript_EffectSpecialDefenseDownHit
@@ -10729,6 +10698,7 @@ BattleScript_EffectSemiInvulnerable::
 	jumpifmove MOVE_DIVE, BattleScript_FirstTurnDive
 	jumpifmove MOVE_BOUNCE, BattleScript_FirstTurnBounce
 	jumpifmove MOVE_SHADOW_FORCE, BattleScript_FirstTurnPhantomForce
+	jumpifmove MOVE_PHANTOM_FORCE, BattleScript_FirstTurnPhantomForce
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DIG
 	goto BattleScript_FirstTurnSemiInvulnerable
 BattleScript_FirstTurnBounce::
@@ -10781,8 +10751,6 @@ BattleScript_TryTheDigSecondTurnSemiInvulnerable::
 	goto BattleScript_HitFromAtkString
 BattleScript_DigSetGrassyTerrain::
 	setremoveterrain BattleScript_HitFromAtkString
-	attackanimation
-	waitanimation
 	attackstring
 	ppreduce
 	critcalc
