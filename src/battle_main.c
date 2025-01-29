@@ -3303,6 +3303,8 @@ void SwitchInClearSetData(u32 battler)
 
     gBattleStruct->lastTakenMove[battler] = 0;
     gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->slicingMoveTurns[battler] = 0;
+    gBattleStruct->dancingMoveTurns[battler] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
@@ -3431,6 +3433,8 @@ void FaintClearSetData(u32 battler)
 
     gBattleStruct->choicedMove[battler] = MOVE_NONE;
     gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->slicingMoveTurns[battler] = 0;
+    gBattleStruct->dancingMoveTurns[battler] = 0;
     gBattleStruct->lastTakenMove[battler] = MOVE_NONE;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
@@ -4843,6 +4847,7 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
      || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
      || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+     || gBattleMoves[move].effect == EFFECT_PHASE_FORCE
      || gBattleMoves[move].effect == EFFECT_DIVE
      || gBattleMoves[move].effect == EFFECT_BIDE
      || gBattleMoves[move].effect == EFFECT_FLY
