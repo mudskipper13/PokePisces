@@ -4034,7 +4034,7 @@ static const struct TrainerMon sParty_PAshe[] = {
     },
     {
     .species = SPECIES_INFRAREC,
-    .ability = ABILITY_BRANDING_CLAWS,
+    .ability = ABILITY_FIREBRAND,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 36,
     .moves = {MOVE_BURNING_BULWARK, MOVE_FIRE_LASH, MOVE_NEEDLE_ARM, MOVE_DRILL_RUN},
@@ -11798,7 +11798,7 @@ static const struct TrainerMon sParty_PRaoTwunne[] = {
     },
     {
     .species = SPECIES_INFRAREC,
-    .ability = ABILITY_BRANDING_CLAWS,
+    .ability = ABILITY_FIREBRAND,
     .heldItem = ITEM_BELUE_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 76,
@@ -13402,7 +13402,7 @@ static const struct TrainerMon sParty_PNorman[] = {
     },
     {
     .species = SPECIES_INFRAREC,
-    .ability = ABILITY_BRANDING_CLAWS,
+    .ability = ABILITY_FIREBRAND,
     .heldItem = ITEM_LEFTOVERS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 67,

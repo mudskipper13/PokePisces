@@ -625,20 +625,20 @@
 #define EFFECT_ATTACK_ORDER                 619
 #define EFFECT_DEFEND_ORDER                 620
 #define EFFECT_HEAL_ORDER                   621
-#define EFFECT_MOUNTAIN_GALE                623
-#define EFFECT_FORCE_PALM                   624
-#define EFFECT_VACUUM_WAVE                  625
-#define EFFECT_FIERY_WRATH                  626
-#define EFFECT_DUAL_CHOP                    627
-#define EFFECT_BOLT_BEAK                    628
-#define EFFECT_COVET                        629
-#define EFFECT_SWEET_KISS                   630
-#define EFFECT_ROCK_POLISH                  631
-#define EFFECT_POWER_GEM                    632
-#define EFFECT_PSYCHO_CUT                   633
-#define EFFECT_RAZOR_SHELL                  634
-#define EFFECT_PSYSTRIKE                    635
+#define EFFECT_MOUNTAIN_GALE                622
+#define EFFECT_FORCE_PALM                   623
+#define EFFECT_VACUUM_WAVE                  624
+#define EFFECT_FIERY_WRATH                  625
+#define EFFECT_DUAL_CHOP                    626
+#define EFFECT_BOLT_BEAK                    627
+#define EFFECT_COVET                        628
+#define EFFECT_SWEET_KISS                   629
+#define EFFECT_ROCK_POLISH                  630
+#define EFFECT_POWER_GEM                    631
+#define EFFECT_PSYCHO_CUT                   632
+#define EFFECT_RAZOR_SHELL                  633
+#define EFFECT_PSYSTRIKE                    634
 
-#define NUM_BATTLE_MOVE_EFFECTS             636
+#define NUM_BATTLE_MOVE_EFFECTS             635
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

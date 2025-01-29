@@ -703,7 +703,9 @@ struct BattleStruct
     u8 soulheartBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
     bool8 friskedAbility; // If identifies two mons, show the ability pop-up only once.
-    u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESFULLY used.
+    u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESSFULLY used.
+    u8 slicingMoveTurns[MAX_BATTLERS_COUNT]; // For Sharpness, number of times a slicing move has been SUCCESSFULLY used.
+    u8 dancingMoveTurns[MAX_BATTLERS_COUNT]; // For Own Tempo, number of times a dancing move has been SUCCESSFULLY used.
     u16 moveEffect2; // For Knock Off
     u16 changedSpecies[NUM_BATTLE_SIDES][PARTY_SIZE]; // For forms when multiple mons can change into the same pokemon.
     u8 quickClawBattlerId;

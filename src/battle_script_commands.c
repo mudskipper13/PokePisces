@@ -2089,10 +2089,6 @@ static void Cmd_ppreduce(void)
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = TRUE;
 
-        // For item Metronome, echoed voice
-        if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker))
-            gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
-
         if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] > ppToDeduct)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
         else
@@ -2168,7 +2164,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (abilityAtk == ABILITY_MERCILESS && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
              || (abilityAtk == ABILITY_DRIZZLE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
              || (gBattleMoves[move].effect == EFFECT_MANEUVER && gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
-             || (abilityAtk == ABILITY_BRANDING_CLAWS && gBattleMons[battlerDef].status1 & STATUS1_BURN)
+             || (abilityAtk == ABILITY_FIREBRAND && gBattleMons[battlerDef].status1 & STATUS1_BURN)
              || (abilityAtk == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battlerAtk].isFirstTurn || IsTwoTurnsMove(move)))
              || (abilityAtk == ABILITY_PRODIGY && IsMoveMakingContact(move, battlerAtk) )
              || gBattleMons[battlerDef].status1 & STATUS1_SLEEP
@@ -4712,14 +4708,32 @@ static void Cmd_seteffectprimary(void)
 {
     CMD_ARGS();
 
-    SetMoveEffect(TRUE, 0);
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && (Random() % 2 == 0))
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        SetMoveEffect(TRUE, 0);
+    }
 }
 
 static void Cmd_seteffectsecondary(void)
 {
     CMD_ARGS();
 
-    SetMoveEffect(FALSE, 0);
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && (Random() % 2 == 0))
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        SetMoveEffect(TRUE, 0);
+    }
 }
 
 static void Cmd_clearstatusfromeffect(void)
@@ -6969,6 +6983,12 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_DefDownSpeedUp;
                     }
 
+                    if (gCurrentMove == MOVE_DOUBLE_SLAP && !NoAliveMonsForEitherParty() && IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_MISTY_TERRAIN))
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_TormentAfter;
+                    }
+
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MultiHitPrintStrings;
                     effect = TRUE;
@@ -7320,19 +7340,6 @@ static void Cmd_moveend(void)
                 gBattleStruct->DancerCount = 0;
             }
             RecordLastUsedMoveBy(gBattlerAttacker, gCurrentMove);
-            gBattleScripting.moveendState++;
-            break;
-        }
-        case MOVEEND_DOUBLE_SLAP:
-        {
-            if (gCurrentMove == MOVE_DOUBLE_SLAP  
-            && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN) 
-            && !(gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT) 
-            && !(gHitMarker & HITMARKER_FAINTED(gBattlerTarget)))
-            {
-                gBattleMons[gBattlerTarget].status2 |= STATUS2_TORMENT;
-                PrepareStringBattle(STRINGID_PKMNSUBJECTEDTOTORMENT, gBattlerTarget);
-            }
             gBattleScripting.moveendState++;
             break;
         }
@@ -15713,6 +15720,7 @@ static u8 AttacksThisTurn(u8 battler, u16 move) // Note: returns 1 if it's a cha
      || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
      || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
      || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+     || gBattleMoves[move].effect == EFFECT_DIVE
      || gBattleMoves[move].effect == EFFECT_BIDE
      || gBattleMoves[move].effect == EFFECT_FLY
      || gBattleMoves[move].effect == EFFECT_CHEESE_STEAL

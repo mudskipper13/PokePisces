@@ -19,9 +19,9 @@ static const u8 sKarateChopDescription[] = _(
     "more easily.");
 
 static const u8 sDoubleSlapDescription[] = _(
-    "The target is slapped\n"
-    "repeatedly, back and forth, 2 to\n"
-    "5 times in a row.");
+    "The target is slapped repeatedly\n"
+    "2 to 5 times. Hits more times\n"
+    "and torments on Misty Terrain.");
 
 static const u8 sCometPunchDescription[] = _(
     "The target is hit with a flurry\n"

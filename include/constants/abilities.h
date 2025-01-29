@@ -367,7 +367,7 @@
 #define ABILITY_SPIRALYSIS 336 //AI Flags complete
 #define ABILITY_PINK_MIST 337 //AI Flags complete
 #define ABILITY_AQUA_HEART 338 //Should not need special AI code
-#define ABILITY_BRANDING_CLAWS 339 //AI Flags complete
+#define ABILITY_FIREBRAND 339 //AI Flags complete
 #define ABILITY_DISDAIN 340 //AI Flags complete
 #define ABILITY_DISTURB 341                 //Whenever Intimidate gets its switch in code from expansion, return to this
 #define ABILITY_DRACO_FORCE 342 //Should not need special AI code

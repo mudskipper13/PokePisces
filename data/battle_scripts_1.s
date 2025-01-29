@@ -662,7 +662,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHit                     @ EFFECT_RAZOR_SHELL
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYSTRIKE
 
-BattleScript_EffectPsychoCut::
+BattleScript_EffectPsychoCut:
 	jumpifterrainaffected BS_ATTACKER, STATUS_FIELD_PSYCHIC_TERRAIN, BattleScript_EffectSpecialDefenseDownHit
 	goto BattleScript_EffectHit
 
@@ -10697,8 +10697,8 @@ BattleScript_EffectSemiInvulnerable::
 	jumpifmove MOVE_FLY, BattleScript_FirstTurnFly
 	jumpifmove MOVE_DIVE, BattleScript_FirstTurnDive
 	jumpifmove MOVE_BOUNCE, BattleScript_FirstTurnBounce
-	jumpifmove MOVE_PHANTOM_FORCE, BattleScript_FirstTurnPhantomForce
 	jumpifmove MOVE_SHADOW_FORCE, BattleScript_FirstTurnPhantomForce
+	jumpifmove MOVE_PHANTOM_FORCE, BattleScript_FirstTurnPhantomForce
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DIG
 	goto BattleScript_FirstTurnSemiInvulnerable
 BattleScript_FirstTurnBounce::
@@ -10751,8 +10751,6 @@ BattleScript_TryTheDigSecondTurnSemiInvulnerable::
 	goto BattleScript_HitFromAtkString
 BattleScript_DigSetGrassyTerrain::
 	setremoveterrain BattleScript_HitFromAtkString
-	attackanimation
-	waitanimation
 	attackstring
 	ppreduce
 	critcalc
@@ -13555,6 +13553,17 @@ BattleScript_DefDownSpeedUpTrySpeed:
 BattleScript_DefDownSpeedUpRet::
 	return
 
+BattleScript_TormentAfter::
+	jumpiffainted BS_TARGET, TRUE, BattleScript_TormentAfterRet
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TormentAfterRet
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TormentAfterRet
+	settorment BattleScript_TormentAfterRet
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+BattleScript_TormentAfterRet::
+	return
+
 BattleScript_SpecialDefenseUp::
 goto BattleScript_EffectSpecialDefenseUp
 
@@ -14636,7 +14645,6 @@ BattleScript_IntimidateLoop:
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_IntimidatePrevented
-	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_IntimidatePrevented
@@ -17587,7 +17595,6 @@ BattleScript_DisturbLoop:
 	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_DisturbPrevented // SCRAPPY
-	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_DisturbPrevented
@@ -17662,7 +17669,6 @@ BattleScript_MockingLoop:
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_MockingLoopIncrement
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_MockingPrevented
-	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MockingPrevented

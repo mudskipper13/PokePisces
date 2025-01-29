@@ -3303,6 +3303,8 @@ void SwitchInClearSetData(u32 battler)
 
     gBattleStruct->lastTakenMove[battler] = 0;
     gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->slicingMoveTurns[battler] = 0;
+    gBattleStruct->dancingMoveTurns[battler] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
@@ -3431,6 +3433,8 @@ void FaintClearSetData(u32 battler)
 
     gBattleStruct->choicedMove[battler] = MOVE_NONE;
     gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->slicingMoveTurns[battler] = 0;
+    gBattleStruct->dancingMoveTurns[battler] = 0;
     gBattleStruct->lastTakenMove[battler] = MOVE_NONE;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
