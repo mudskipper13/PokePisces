@@ -292,6 +292,7 @@
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F (1 | (21 << 8))
+#define MAP_PLANE_IN_FLIGHT                    (2 | (21 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (22 << 8))

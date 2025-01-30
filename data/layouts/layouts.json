@@ -6174,12 +6174,22 @@
     {
       "id": "LAYOUT_OZONE_MAXIE_ARCHIE_ROOM",
       "name": "OzoneMaxieArchieRoom_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 10,
+      "height": 15,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_OzoneAdminRooms",
       "border_filepath": "data/layouts/OzoneMaxieArchieRoom/border.bin",
       "blockdata_filepath": "data/layouts/OzoneMaxieArchieRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLANE_IN_FLIGHT",
+      "name": "PlaneInFlight_Layout",
+      "width": 15,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OzoneAdminRooms",
+      "border_filepath": "data/layouts/PlaneInFlight/border.bin",
+      "blockdata_filepath": "data/layouts/PlaneInFlight/map.bin"
     }
   ]
 }
