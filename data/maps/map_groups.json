@@ -344,7 +344,9 @@
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",
     "EverGrandeCity_PokemonCenter_2F",
-    "PlaneInFlight"
+    "PlaneInFlight",
+    "OzoneSituationRoom",
+    "OzoneOutsideCutscene"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

@@ -3789,3 +3789,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneMaxieArchieRoom/scripts.inc"
 
 	.include "data/maps/PlaneInFlight/scripts.inc"
+
+	.include "data/maps/OzoneSituationRoom/scripts.inc"
+
+	.include "data/maps/OzoneOutsideCutscene/scripts.inc"

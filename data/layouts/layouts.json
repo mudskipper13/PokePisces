@@ -6190,6 +6190,26 @@
       "secondary_tileset": "gTileset_OzoneAdminRooms",
       "border_filepath": "data/layouts/PlaneInFlight/border.bin",
       "blockdata_filepath": "data/layouts/PlaneInFlight/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_SITUATION_ROOM",
+      "name": "OzoneSituationRoom_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_OzoneInterior",
+      "border_filepath": "data/layouts/OzoneSituationRoom/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneSituationRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OZONE_OUTSIDE_CUTSCENE",
+      "name": "OzoneOutsideCutscene_Layout",
+      "width": 23,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_ozoneinsitute",
+      "border_filepath": "data/layouts/OzoneOutsideCutscene/border.bin",
+      "blockdata_filepath": "data/layouts/OzoneOutsideCutscene/map.bin"
     }
   ]
 }

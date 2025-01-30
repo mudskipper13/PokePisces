@@ -348,7 +348,7 @@ DevonCorp_Text_RayIntro:
 	.string "count. Now, this time,\l"
 	.string "everyone's watching.\l"
 	.string "No place to hide and cheat.\p"
-	.string "Game on.\n$"
+	.string "Game on.$"
 
 DevonCorp_Text_RayDefeated:
 	.string "This match felt a little\n"
