@@ -1262,8 +1262,8 @@
 #define FLAG_DEVON_CORP_VISIT                                           0x4BC // Unused Flag
 #define FLAG_MET_WALLY_VERDANTURF                                           0x4BD // Unused Flag
 #define FLAG_DEFEATED_EVIL_WALLY                                           0x4BE // Unused Flag
-#define FLAG_UNUSED_0x4BF                                           0x4BF // Unused Flag
-#define FLAG_UNUSED_0x4C0                                           0x4C0 // Unused Flag
+#define FLAG_WILD_NO_CATCHING_FLAG                                           0x4BF // Unused Flag
+#define FLAG_WILD_NO_RUNNING_FLAG                                           0x4C0 // Unused Flag
 #define FLAG_UNUSED_0x4C1                                           0x4C1 // Unused Flag
 #define FLAG_UNUSED_0x4C2                                           0x4C2 // Unused Flag
 #define FLAG_UNUSED_0x4C3                                           0x4C3 // Unused Flag

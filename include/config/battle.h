@@ -156,7 +156,8 @@
 #define B_FLAG_FORCE_DOUBLE_WILD    0     // If this flag is set, all land and surfing wild battles will be double battles.
 #define B_SMART_WILD_AI_FLAG        0xe9     // If not 0, you can set this flag in a script to enable smart wild pokemon
 #define B_FLAG_NO_BAG_USE           0     // If this flag is set, the ability to use the bag in battle is disabled.
-#define B_FLAG_NO_CATCHING          0     // If this flag is set, the ability to catch wild Pok?mon is disabled.
+#define B_FLAG_NO_CATCHING          0x4BF     // If this flag is set, the ability to catch wild Pok?mon is disabled.
+#define B_FLAG_NO_RUNNING           0x4C0     // If this flag is set, the ability to escape from wild battles is disabled. Also makes Roar/Whirlwind and Teleport (under Gen8) fail.
 #define B_FLAG_AI_VS_AI_BATTLE      0     // If this flag is set, the player's mons will be controlled by the ai next battles.
 
 // Var Settings
@@ -170,7 +171,7 @@
 
 // Terrain settings
 #define B_TERRAIN_BG_CHANGE         TRUE       // If set to TRUE, terrain moves permanently change the default battle background until the effect fades.
-#define B_THUNDERSTORM_TERRAIN      TRUE       // If TRUE, overworld Thunderstorm generates Rain and Electric Terrain as in Gen 8.
+#define B_THUNDERSTORM_TERRAIN      FALSE       // If TRUE, overworld Thunderstorm generates Rain and Electric Terrain as in Gen 8.
 #define B_FOG_TERRAIN               FALSE       // If TRUE, overworld Fog generates Misty Terrain as in Gen 8.
 #define B_TERRAIN_TYPE_BOOST        GEN_LATEST // In Gen8, damage is boosted by 30% instead of 50%.
 #define B_SECRET_POWER_EFFECT       GEN_LATEST // Secret Power's effects change depending on terrain and generation. See GetSecretPowerMoveEffect.
