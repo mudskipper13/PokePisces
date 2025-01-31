@@ -11,7 +11,15 @@ TrickHousePotRoom_EventScript_Pottricia::
 TrickHousePotRoom_EventScript_PottriciaBattle::
 	setwildbattle SPECIES_POTTRICIA, 100
 	msgbox TrickHousePotRoom_Text_ThisPotIsInYourWay, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_CATCHING_FLAG
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
 	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_CATCHING_FLAG
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
 	goto TrickHousePotRoom_EventScript_PottriciaDefeat
 	release
 	end

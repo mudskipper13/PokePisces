@@ -464,6 +464,14 @@
 #define METATILE_OldStoneBuildings_Painting9TopRight      0x2E1
 #define METATILE_OldStoneBuildings_RelicFloor             0x289
 
+// gTileset_OzoneInterior
+#define METATILE_OzoneInterior_OzoneClosedDoor1  0x2E8
+#define METATILE_OzoneInterior_OzoneClosedDoor2  0x2E9
+#define METATILE_OzoneInterior_OzoneClosedDoor3  0x2EA
+#define METATILE_OzoneInterior_OzoneClosedDoor4  0x2F0
+#define METATILE_OzoneInterior_OzoneClosedDoor5  0x2F1
+#define METATILE_OzoneInterior_OzoneClosedDoor6  0x2F2
+
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
 #define METATILE_Pacifidlog_FloatingLogs_HorizontalLeft        0x250
