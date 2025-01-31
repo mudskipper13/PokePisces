@@ -227,7 +227,7 @@ MauvilleNew_Movement_RayEncounter4:
 
 MauvilleNew_EventScript_RayBattleStart::
 	speakername MauvilleNew_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_3, MauvilleNew_Text_RayIntro, MauvilleNew_Text_RayDefeat, MauvilleNew_EventScript_RayLeaves
+	trainerbattle_single TRAINER_P_RAY_4, MauvilleNew_Text_RayIntro, MauvilleNew_Text_RayDefeat, MauvilleNew_EventScript_RayLeaves
 	speakername NULL
 	release
 	end
