@@ -15,6 +15,8 @@ SeasideCasinoBackrooms_EventScript_RemoveSteven::
 
 SeasideCasinoBackrooms_EventScript_StevenMeetingNorth::
 	lock
+	clearflag FLAG_TEMP_11
+	addobject LOCALID_STEVEN
 	applymovement LOCALID_STEVEN, SeasideCasinoBackrooms_Movement_StevenMeetingNorth
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
@@ -57,6 +59,8 @@ SeasideCasinoBackrooms_Movement_StevenLeavesNorth:
 
 SeasideCasinoBackrooms_EventScript_StevenMeetingSouth::
 	lock
+	clearflag FLAG_TEMP_11
+	addobject LOCALID_STEVEN
 	applymovement LOCALID_STEVEN, SeasideCasinoBackrooms_Movement_StevenMeetingSouth
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST

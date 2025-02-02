@@ -84,7 +84,7 @@
     },
     {
       "x": 2,
-      "y": 9,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_SEASIDE_CASINO",
       "dest_warp_id": "0"
@@ -104,7 +104,7 @@
     {
       "type": "sign",
       "x": 2,
-      "y": 10,
+      "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "NULL"

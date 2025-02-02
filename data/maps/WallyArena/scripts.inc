@@ -122,6 +122,7 @@ WallyArena_Movement_WallyRunAway:
 	walk_fast_left
 	walk_fast_down
 	walk_fast_down
+	walk_fast_down
 	walk_fast_right
 	walk_fast_down
 	walk_fast_down
