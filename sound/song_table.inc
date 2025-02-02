@@ -636,6 +636,8 @@ gSongTable::
 	song mus_mt_blaze, 0, 0
 	song mus_mt_blaze_peak, 0, 0
 	song mus_ninetales_legend, 0, 0
+	song mus_vs_gym_leader_2, 0, 0
+
 
 	.align 2
 dummy_song_header:
