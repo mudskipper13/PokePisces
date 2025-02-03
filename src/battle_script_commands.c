@@ -4053,7 +4053,14 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_AtkDefDown;
                 }
                 break;
-            case MOVE_EFFECT_DEF_SPDEF_DOWN: // Close Combat
+            case MOVE_EFFECT_DEF_SPDEF_DOWN_USER: // Close Combat
+                if (!NoAliveMonsForEitherParty())
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_DefSpDefDownUser;
+                }
+                break;
+            case MOVE_EFFECT_DEF_SPDEF_DOWN:
                 if (!NoAliveMonsForEitherParty())
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
@@ -7078,8 +7085,8 @@ static void Cmd_moveend(void)
                         if (IsBattlerAlive(battler)
                             && CountUsablePartyMons(battler) > 0 // Has mon to switch into
                             // Does not activate if attacker used Parting Shot and can switch out
-                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET 
-                            || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW)
+                            && ((gBattleMoves[gCurrentMove].effect != EFFECT_HIT_SWITCH_TARGET 
+                            || gBattleMoves[gCurrentMove].effect != EFFECT_VITAL_THROW)
                             && CanBattlerSwitch(gBattlerAttacker))
                             )
                         {
@@ -12533,6 +12540,7 @@ static void Cmd_various(void)
             else
                 gBattlescriptCurrInstr = cmd->nextInstr;
         }
+        return;
     }
     case VARIOUS_SHELL_SIDE_ARM_CHECK: // 0% chance GameFreak actually checks this way according to DaWobblefet, but this is the only functional explanation at the moment
     {

@@ -5106,7 +5106,8 @@ const u16 gEggMoves[] = {
         MOVE_RAGING_BULL,
         MOVE_AMNESIA,
         MOVE_STORM_THROW,
-        MOVE_VITAL_THROW),
+        MOVE_VITAL_THROW,
+        MOVE_KOWTOW_CLEAVE),
 
     egg_moves(MUSTYBANE,
         MOVE_AMNESIA,

@@ -3883,8 +3883,8 @@ static const u8 sFilletAwayDescription[] = _(
 
 static const u8 sKowtowCleaveDescription[] = _(
     "The user slashes at the foe\n"
-    "after kowtowing to let down its\n"
-    "guard. This attack never misses.");
+    "after cowtowing to let its guard\n"
+    "down. This attack never moosses.");
 
 static const u8 sFlowerTrickDescription[] = _(
     "This attack never misses and\n"

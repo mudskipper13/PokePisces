@@ -394,7 +394,7 @@
 #define MOVE_EFFECT_SCALE_SHOT          56              
 #define MOVE_EFFECT_THRASH              57              
 #define MOVE_EFFECT_KNOCK_OFF           58              
-#define MOVE_EFFECT_DEF_SPDEF_DOWN      59              
+#define MOVE_EFFECT_DEF_SPDEF_DOWN_USER 59
 #define MOVE_EFFECT_CLEAR_SMOG          60              
 #define MOVE_EFFECT_SP_ATK_TWO_DOWN     61              
 #define MOVE_EFFECT_SMACK_DOWN          62              
@@ -450,8 +450,9 @@
 #define MOVE_EFFECT_DUAL_CHOP           112
 #define MOVE_EFFECT_ATK_SPATK_DOWN_2    113
 #define MOVE_EFFECT_ROCK_SMASH          114
+#define MOVE_EFFECT_DEF_SPDEF_DOWN      115
 
-#define NUM_MOVE_EFFECTS                115
+#define NUM_MOVE_EFFECTS                116
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

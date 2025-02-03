@@ -5594,16 +5594,18 @@ const u8 gLumendelaPokedexText[] = _(
     "output has only resulted in great tragedies.");
 
 const u8 gStomawayPokedexText[] = _(
-    "It's believed by fanatics Stomaway came\n"
-    "to our planet via a meteor shower. Its\n"
-    "eyes work differently from most and can\n"
-    "see all forms of waves.");
+    "It's believed by fanatics that Stomaway came to\n"
+    "our planet via a meteor shower. Their eyes work\n"
+    "differently and can see all forms of waves. This\n"
+    "enables them to avoid danger before it happens\n"
+    "and communicate with undetectable radio waves.");
 
 const u8 gCrawlaxyPokedexText[] = _(
-    "They float around high in the sky,\n"
-    "emitting strange lights. Its vision is\n"
-    "so utopian that it can see beyond what\n"
-    "we comprehend.");
+    "Crawlaxy float high in the sky, emitting strange\n"
+    "lights. Their vision is so utopian that they can\n"
+    "see beyond what we comprehend. The occult says\n"
+    "they see horrors that our eyes can't and that\n"
+    "scientists have been studying them in secret.");
 
 const u8 gMagnalurePokedexText[] = _(
     "It never stays put in one place,\n"
@@ -6052,10 +6054,10 @@ const u8 gBehekoPokedexText[] = _(
 
 const u8 gHemokoPokedexText[] = _(
     "Hemoko are usually found guarding the remains of\n"
-    "Bolterock or Levialago. Hemoko swarm and devour\n"
-    "those they believe will cause harm to their\n"
-    "home. They were once responsible for a string of\n"
-    "missing incidents in a distant province.");
+    "Bolterock or Levialago. They swarm and devour\n"
+    "those they believe will harm their home. Studies\n"
+    "have shown that these Pokémon should be unable\n"
+    "to evolve, which baffles scientists.");
 
 const u8 gLepucytePokedexText[] = _(
     "Despite their docile appearance, they are\n"
@@ -6065,10 +6067,11 @@ const u8 gLepucytePokedexText[] = _(
     "carrots seems to calm them down, however.");
 
 const u8 gLeukunehoPokedexText[] = _(
-    "This Pokémon is not recommended in the\n"
-    "presence of children, as it seems to\n"
-    "attack them without warning. This odd\n"
-    "behavior is unexplained.");
+    "These Pokémon are unrecommended for children, as\n"
+    "they attack them without warning. They despise\n"
+    "children to the point of going on a rampage when\n"
+    "in the prolonged presence of one, charging\n"
+    "straight at the child, ignoring everything else.");
 
 const u8 gWelprootPokedexText[] = _(
     "Welproot live most of its life buried\n"
