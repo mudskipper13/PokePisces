@@ -638,7 +638,8 @@
 #define EFFECT_PSYCHO_CUT                   632
 #define EFFECT_RAZOR_SHELL                  633
 #define EFFECT_PSYSTRIKE                    634
+#define EFFECT_CRAFTY_SHIELD				635
 
-#define NUM_BATTLE_MOVE_EFFECTS             635
+#define NUM_BATTLE_MOVE_EFFECTS             636
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
