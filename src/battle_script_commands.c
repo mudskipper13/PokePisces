@@ -7292,6 +7292,29 @@ static void Cmd_moveend(void)
             }
             gBattleScripting.moveendState++;
             break;
+        case MOVEEND_SAME_MOVE_TURNS:
+            if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
+            else if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
+                gBattleStruct->sameMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
+        case MOVEEND_SLICING_MOVE_TURNS:
+            if (gBattleMoves[gCurrentMove].slicingMove 
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
+            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->slicingMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
+        case MOVEEND_DANCING_MOVE_TURNS:
+            if (gBattleMoves[gCurrentMove].danceMove
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
+            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
         case MOVEEND_NEXT_DANCE_TARGET: // To iterate between all Dance Mania targets
         {
             if (originallyUsedMove == MOVE_DANCE_MANIA)
