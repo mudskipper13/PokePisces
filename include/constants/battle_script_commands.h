@@ -299,6 +299,7 @@
 #define VARIOUS_SPELL_TAG_PP_REDUCE                  208
 #define VARIOUS_SET_PURIFIED                         209
 #define VARIOUS_TRY_CRITICAL_REPAIR                  210
+#define VARIOUS_CRAFTY_SHIELD                        211
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

@@ -1886,6 +1886,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro applycraftyshield failInstr:req
+	various BS_ATTACKER, VARIOUS_CRAFTY_SHIELD
+	.4byte \failInstr
+	.endm
+
 	.macro trycheesing battler:req, failInstr:req
 	various \battler, VARIOUS_CHEESING
 	.4byte \failInstr

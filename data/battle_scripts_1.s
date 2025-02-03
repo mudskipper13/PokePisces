@@ -661,6 +661,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectPsychoCut               @ EFFECT_PSYCHO_CUT
 	.4byte BattleScript_EffectHit                     @ EFFECT_RAZOR_SHELL
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYSTRIKE
+	.4byte BattleScript_EffectCraftyShield            @ EFFECT_CRAFTY_SHIELD
 
 BattleScript_EffectPsychoCut:
 	jumpifterrainaffected BS_ATTACKER, STATUS_FIELD_PSYCHIC_TERRAIN, BattleScript_EffectSpecialDefenseDownHit
@@ -6194,6 +6195,17 @@ BattleScript_EffectAcupressureTry:
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_MoveEnd
 	printstring STRINGID_DEFENDERSSTATROSE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectCraftyShield:
+	attackcanceler
+	attackstring
+	ppreduce
+	applycraftyshield BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_PROTECTEDTEAM
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
