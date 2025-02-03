@@ -1060,6 +1060,7 @@ gBattleAnims_Moves::
     .4byte Move_SUPERCELL_SLAM
     .4byte Move_SWEET_WHISPERS
     .4byte Move_SYRUP_BOMB
+    .4byte Move_DEARLY_DEPART
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -26609,6 +26610,9 @@ Move_SPOOK::
 	createvisualtask AnimTask_SlideOffScreen, 5, ANIM_TARGET, 8
 	waitforvisualfinish
 	end
+
+Move_DEARLY_DEPART::
+	goto Move_SPOOK
 
 Move_CHILLY_AIR::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS

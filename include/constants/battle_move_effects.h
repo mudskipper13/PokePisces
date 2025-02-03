@@ -645,7 +645,9 @@
 #define EFFECT_GEAR_GRIND                   639
 #define EFFECT_MAGNET_BOMB                  640
 #define EFFECT_METAL_SOUND                  641
+#define EFFECT_SHADOW_FORCE                 642
+#define EFFECT_DEARLY_DEPART                643
 
-#define NUM_BATTLE_MOVE_EFFECTS             642
+#define NUM_BATTLE_MOVE_EFFECTS             644
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

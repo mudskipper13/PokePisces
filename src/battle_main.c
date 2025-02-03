@@ -4862,7 +4862,8 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
      || gBattleMoves[move].effect == EFFECT_GEOMANCY
      || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-     || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+     || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+     || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
         return TRUE;
     else
         return FALSE;

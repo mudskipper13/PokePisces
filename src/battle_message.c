@@ -969,6 +969,7 @@ static const u8 sText_TargetIsExhausted[] = _("{B_DEF_NAME_WITH_PREFIX} became e
 static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s Super-charged Magnet\nRise prevented stat loss!");
 static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became Super-charged!");
 static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} gets Geared Up!");
+static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1789,6 +1790,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SUPERMAGNETNOSTATLOSS - BATTLESTRINGS_TABLE_START] = sText_SuperMagnetNoStatLoss,
     [STRINGID_TARGETBECOMESSUPERCHARGED - BATTLESTRINGS_TABLE_START] = sText_TargetBecomesSupercharged,
     [STRINGID_TARGETBECOMESGEAREDUP - BATTLESTRINGS_TABLE_START] = sText_TargetBecomesGearedUp,
+    [STRINGID_USERGAINSPHANTOM - BATTLESTRINGS_TABLE_START] = sText_UserGainsPhantom,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

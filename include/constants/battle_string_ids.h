@@ -829,8 +829,9 @@
 #define STRINGID_SUPERMAGNETNOSTATLOSS                827
 #define STRINGID_TARGETBECOMESSUPERCHARGED            828
 #define STRINGID_TARGETBECOMESGEAREDUP                829
+#define STRINGID_USERGAINSPHANTOM                     830
 
-#define BATTLESTRINGS_COUNT                           830
+#define BATTLESTRINGS_COUNT                           831
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

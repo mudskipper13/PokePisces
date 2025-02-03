@@ -1682,6 +1682,10 @@
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
 
+	.macro tryactivateshadowforce battler:req
+	various \battler, VARIOUS_TRY_ACTIVATE_SHADOW_FORCE
+	.endm
+
 	.macro playmoveanimation battler:req, move:req
 	various \battler, VARIOUS_PLAY_MOVE_ANIMATION
 	.2byte \move
@@ -1903,6 +1907,11 @@
 
 	.macro applygearedup failInstr:req
 	various BS_TARGET, VARIOUS_GEARED_UP
+	.4byte \failInstr
+	.endm
+
+	.macro applyphantom failInstr:req
+	various BS_TARGET, VARIOUS_APPLY_PHANTOM
 	.4byte \failInstr
 	.endm
 

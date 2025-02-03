@@ -11374,6 +11374,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP)
             basePower = 60 + (CountBattlerStatIncreases(battlerDef, TRUE) * 10);
         break;
+    case EFFECT_SHADOW_FORCE:
+        if (gStatuses4[battlerAtk] & STATUS4_PHANTOM)
+            basePower = 150;
+        break;
     case EFFECT_HEAVY_CANNON:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] > DEFAULT_STAT_STAGE || gBattleMons[battlerAtk].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE)
             basePower += 30 * ((gBattleMons[battlerAtk].statStages[STAT_DEF] - DEFAULT_STAT_STAGE) + (gBattleMons[battlerAtk].statStages[STAT_SPDEF] - DEFAULT_STAT_STAGE));

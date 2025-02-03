@@ -306,6 +306,8 @@
 #define VARIOUS_JUMP_IF_GEAR_MAGNET                  215
 #define VARIOUS_SUPERCHARGED                         216
 #define VARIOUS_GEARED_UP                            217
+#define VARIOUS_APPLY_PHANTOM                        218
+#define VARIOUS_TRY_ACTIVATE_SHADOW_FORCE            219
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

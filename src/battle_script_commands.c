@@ -2164,6 +2164,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (gBattleMoves[move].effect == EFFECT_SABRE_BREAK && (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE || gBattleMons[battlerDef].status1 & STATUS1_FREEZE))
              || (gCurrentMove == MOVE_BODY_SLAM && gFieldStatuses & STATUS_FIELD_GRAVITY)
              || (gCurrentMove == MOVE_FLOWER_TRICK)
+             || (gCurrentMove == MOVE_INCENERATE && gBattleMons[battlerDef].status1 & STATUS1_BLOOMING)
              || (gCurrentMove == MOVE_LEAF_BLADE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
              || (gCurrentMove == MOVE_X_SCISSOR && gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP / 2))
              || (gCurrentMove == MOVE_BRANCH_POKE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
@@ -6574,8 +6575,17 @@ static void Cmd_moveend(void)
                     effect = TRUE;
                     break;
                 case EFFECT_RECOIL_33: // Double Edge, 33 % recoil
-                case EFFECT_WOOD_HAMMER: // Wood Hammer, gains switch out effect if user has Blooming
                 case EFFECT_WILD_CHARGE: // Volt Tackle - can paralyze, flame burst effect
+                    gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 3);
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                        gBattleMoveDamage /= 2;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
+                    effect = TRUE;
+                    break;
+                case EFFECT_WOOD_HAMMER: // Wood Hammer, gains switch out effect if user has Blooming
+                    if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+                        break;
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 3);
                     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
                         gBattleMoveDamage /= 2;
@@ -10429,6 +10439,16 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
+    case VARIOUS_APPLY_PHANTOM:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gStatuses4[gBattlerTarget] & STATUS4_PHANTOM)
+            gBattlescriptCurrInstr = cmd->failInstr;
+        else
+            gStatuses4[gBattlerTarget] |= STATUS4_PHANTOM;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_ACUPRESSURE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -10942,6 +10962,21 @@ static void Cmd_various(void)
         }
         break;
     }
+    case VARIOUS_TRY_ACTIVATE_SHADOW_FORCE:
+    {
+        VARIOUS_ARGS();
+        if (gBattleMoves[gCurrentMove].effect == EFFECT_SHADOW_FORCE
+            && HasAttackerFaintedTarget()
+            && !NoAliveMonsForEitherParty()
+            && !(gStatuses4[gBattlerAttacker] & STATUS4_PHANTOM))
+        {
+            gStatuses4[gBattlerTarget] |= STATUS4_PHANTOM;
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_ShadowForceSelfPhantom;
+            return;
+        }
+        break;
+    }
     case VARIOUS_PLAY_MOVE_ANIMATION:
     {
         VARIOUS_ARGS(u16 move);
@@ -11023,8 +11058,13 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_HAS_A_STAT_BOOST:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
-
-        if (CountBattlerStatIncreases(battler, TRUE) > 0)
+        if (CountBattlerStatIncreases(battler, TRUE) >= 3
+            && gCurrentMove == MOVE_BURNING_JEALOUSY)
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        }
+        else if (CountBattlerStatIncreases(battler, TRUE) > 0
+                  && !(gCurrentMove == MOVE_BURNING_JEALOUSY))
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }
@@ -14788,9 +14828,9 @@ static void Cmd_forcerandomswitch(void)
         else
         {
             *(gBattleStruct->battlerPartyIndexes + gBattlerTarget) = gBattlerPartyIndexes[gBattlerTarget];
-            if (gCurrentMove == MOVE_SPOOK)
+            if (gCurrentMove == MOVE_DEARLY_DEPART)
             {
-                gBattlescriptCurrInstr = BattleScript_SpookSuccessSwitch;
+                gBattlescriptCurrInstr = BattleScript_DearlyDepartSuccessSwitch;
             }
             else if (gCurrentMove == MOVE_WHIRLWIND)
             {
@@ -15083,6 +15123,10 @@ static void Cmd_damagetopercentagetargethp(void)
     else if (gCurrentMove == MOVE_TICK_TACK)
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;  
+    }
+    else if (gCurrentMove == MOVE_SPOOK)
+    {
+        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP / 10) * 3;  
     }
     else
     {
@@ -15839,7 +15883,8 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
      || gBattleMoves[move].effect == EFFECT_GEOMANCY
      || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-     || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+     || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+     || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
         return TRUE;
     else
         return FALSE;
@@ -15869,7 +15914,8 @@ static u8 AttacksThisTurn(u8 battler, u16 move) // Note: returns 1 if it's a cha
      || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
      || gBattleMoves[move].effect == EFFECT_GEOMANCY
      || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-     || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+     || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+     || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
     {
         if ((gHitMarker & HITMARKER_CHARGING))
             return 1;
@@ -17560,7 +17606,8 @@ static void Cmd_assistattackselect(void)
                  || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
                  || gBattleMoves[move].effect == EFFECT_GEOMANCY
                  || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-                 || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+                 || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+                 || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
                     continue;
 
                 validMoves[chooseableMovesNo++] = move;
@@ -19359,6 +19406,7 @@ static const u16 sParentalBondBannedEffects[] =
     EFFECT_DRAGON_RUIN,
     EFFECT_FLY,
     EFFECT_CHEESE_STEAL,
+    EFFECT_SHADOW_FORCE,
 };
 
 bool32 IsMoveAffectedByParentalBond(u32 move, u32 battler)
