@@ -10344,6 +10344,13 @@ static void Cmd_various(void)
         gBattleMons[battler].status2 |= STATUS2_POWDER;
         break;
     }
+    case VARIOUS_CRAFTY_SHIELD:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        gStatuses4[gBattlerTarget] |= STATUS4_CRAFTY_SHIELD;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_ACUPRESSURE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
