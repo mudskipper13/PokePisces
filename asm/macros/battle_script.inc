@@ -1712,6 +1712,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro jumpifhasastatdrop battler:req, jumpInstr:req
+	various \battler VARIOUS_JUMP_IF_HAS_A_STAT_DROP
+	.4byte \jumpInstr
+	.endm
+
 	.macro setabilitysimple battler:req, failInstr:req
 	various \battler VARIOUS_SET_SIMPLE_BEAM
 	.4byte \failInstr
@@ -1888,6 +1893,16 @@
 
 	.macro applycraftyshield failInstr:req
 	various BS_ATTACKER, VARIOUS_CRAFTY_SHIELD
+	.4byte \failInstr
+	.endm
+
+	.macro applysupercharged failInstr:req
+	various BS_TARGET, VARIOUS_SUPERCHARGED
+	.4byte \failInstr
+	.endm
+
+	.macro applygearedup failInstr:req
+	various BS_TARGET, VARIOUS_GEARED_UP
 	.4byte \failInstr
 	.endm
 
@@ -2098,6 +2113,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro applyexhaustioncounter battler:req, failInstr:req
+	various \battler, VARIOUS_APPLY_EXHAUSTION_COUNTER
+	.4byte \failInstr
+	.endm
+
 	.macro eeriespellppreduce failInstr:req
 	various BS_TARGET, VARIOUS_EERIE_SPELL_PP_REDUCE
 	.4byte \failInstr
@@ -2133,6 +2153,10 @@
 
 	.macro trytoclearweather
 	various BS_ATTACKER, VARIOUS_TRY_TO_CLEAR_WEATHER
+	.endm
+
+	.macro removesupergear
+	various BS_ATTACKER, VARIOUS_REMOVE_SUPER_GEAR
 	.endm
 
 	.macro setattackertostickywebuser
@@ -2508,6 +2532,11 @@
 
 	.macro jumpifterucharmprotected battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED
+	.4byte \jumpInstr
+	.endm
+
+	.macro jumpifgearmagnet battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_GEAR_MAGNET
 	.4byte \jumpInstr
 	.endm
 

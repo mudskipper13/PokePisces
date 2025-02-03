@@ -450,8 +450,9 @@
 #define MOVE_EFFECT_DUAL_CHOP           112
 #define MOVE_EFFECT_ATK_SPATK_DOWN_2    113
 #define MOVE_EFFECT_ROCK_SMASH          114
+#define MOVE_EFFECT_RANDOM_STAT_RAISE   115
 
-#define NUM_MOVE_EFFECTS                115
+#define NUM_MOVE_EFFECTS                116
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

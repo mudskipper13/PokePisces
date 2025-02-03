@@ -300,6 +300,12 @@
 #define VARIOUS_SET_PURIFIED                         209
 #define VARIOUS_TRY_CRITICAL_REPAIR                  210
 #define VARIOUS_CRAFTY_SHIELD                        211
+#define VARIOUS_APPLY_EXHAUSTION_COUNTER             212
+#define VARIOUS_JUMP_IF_HAS_A_STAT_DROP              213
+#define VARIOUS_REMOVE_SUPER_GEAR                    214
+#define VARIOUS_JUMP_IF_GEAR_MAGNET                  215
+#define VARIOUS_SUPERCHARGED                         216
+#define VARIOUS_GEARED_UP                            217
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

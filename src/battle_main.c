@@ -4752,7 +4752,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer >= 4)
         speed *= 2;
-    else if (gStatuses4[battler] == STATUS4_PHANTOM)
+    else if (gStatuses4[battler] & STATUS4_PHANTOM)
         speed *= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
@@ -4920,6 +4920,10 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    {
+        priority++;
+    }
+    else if ((gCurrentMove == MOVE_HAYWIRE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED))
     {
         priority++;
     }
