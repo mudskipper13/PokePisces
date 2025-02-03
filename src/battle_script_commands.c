@@ -4771,7 +4771,7 @@ static void Cmd_seteffectprimary(void)
     CMD_ARGS();
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
-    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
     && (Random() % 2 == 0))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -4787,7 +4787,7 @@ static void Cmd_seteffectsecondary(void)
     CMD_ARGS();
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
-    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
     && (Random() % 2 == 0))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -7474,17 +7474,17 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (moveType == TYPE_ELECTRIC)
+            if (moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (moveType == TYPE_WATER)
+            if (moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
-            if (!IS_MOVE_STATUS(gCurrentMove))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && (!gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerTarget].purpleHazeDefense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PHANTOM);
-            if (!IS_MOVE_STATUS(gCurrentMove) && (!gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerTarget] &= ~(STATUS4_CRAFTY_SHIELD);
             memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
             gBattleScripting.moveendState++;
@@ -10442,11 +10442,15 @@ static void Cmd_various(void)
     case VARIOUS_CRAFTY_SHIELD:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gStatuses4[gBattlerTarget] & STATUS4_CRAFTY_SHIELD)
+        if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
-            gStatuses4[gBattlerTarget] |= STATUS4_CRAFTY_SHIELD;
+        {
+            gStatuses4[battler] |= STATUS4_CRAFTY_SHIELD;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_SUPERCHARGED:

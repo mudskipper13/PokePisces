@@ -4944,8 +4944,8 @@ static const u8 sSyrupBombDescription[] = _(
     "blooming, traps the foe forever.");
 
 static const u8 sDearlyDepartDescription[] = _(
-    "The foe is spooked and switched.\n"
-    "Lowers the next foe's accuracy.\n"
+    "The foe is forcibly switched.\n"
+    "Lowers the next foe's Sp. Def.\n"
     "In the wild, the battle ends.");
 
 const u8 gNotDoneYetDescription[] = _(

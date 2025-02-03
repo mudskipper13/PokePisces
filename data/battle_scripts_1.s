@@ -6431,10 +6431,10 @@ BattleScript_EffectCraftyShield:
 	attackcanceler
 	attackstring
 	ppreduce
-	applycraftyshield BattleScript_ButItFailed
+	applycraftyshield BS_TARGET, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-	printstring STRINGID_PROTECTEDTEAM
+	printstring STRINGID_PROTECTEDDEFENDER
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
