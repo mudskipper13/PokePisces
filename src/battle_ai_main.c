@@ -871,7 +871,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         }
 
         // check off screen
-        if (IsSemiInvulnerable(battlerDef, move) && moveEffect != (EFFECT_SEMI_INVULNERABLE || EFFECT_DIVE || EFFECT_FLY) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
+        if (IsSemiInvulnerable(battlerDef, move) && moveEffect != (EFFECT_SEMI_INVULNERABLE || EFFECT_DIVE || EFFECT_FLY || EFFECT_SHADOW_FORCE) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
             RETURN_SCORE_MINUS(20);    // if target off screen and we go first, don't use move
 
         // check if negates type
@@ -1758,7 +1758,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
 
         case EFFECT_ROAR:
-        case EFFECT_SPOOK:
+        case EFFECT_DEARLY_DEPART:
         case EFFECT_WHIRLWIND:
         case EFFECT_PSY_SWAP:
             if (CountUsablePartyMons(battlerDef) == 0)
@@ -2746,6 +2746,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SEMI_INVULNERABLE:
         case EFFECT_DIVE:
         case EFFECT_FLY:
+        case EFFECT_SHADOW_FORCE:
             if (predictedMove != MOVE_NONE
               && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
               && gBattleMoves[predictedMove].effect == EFFECT_SEMI_INVULNERABLE)
@@ -4581,7 +4582,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             break;
         // fallthrough
     case EFFECT_ROAR:
-    case EFFECT_SPOOK:
+    case EFFECT_DEARLY_DEPART:
     case EFFECT_CLEAR_SMOG:
     case EFFECT_PSY_SWAP:
         if (isDoubleBattle)
@@ -5736,6 +5737,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SEMI_INVULNERABLE:
     case EFFECT_DIVE:
     case EFFECT_FLY:
+    case EFFECT_SHADOW_FORCE:
         score++;
         if (predictedMove != MOVE_NONE && !isDoubleBattle)
         {

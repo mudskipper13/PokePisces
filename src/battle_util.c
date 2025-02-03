@@ -7742,6 +7742,7 @@ bool32 CanSleep(u32 battler)
     || IsAbilityStatusProtected(battler) 
     || IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_MISTY_TERRAIN) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7762,6 +7763,7 @@ bool32 CanBePoisoned(u32 battlerAttacker, u32 battlerTarget)
     || IsAbilityStatusProtected(battlerTarget) 
     || IsBattlerTerrainAffected(battlerTarget, STATUS_FIELD_MISTY_TERRAIN) 
     || (GetBattlerHoldEffect(battlerTarget, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battlerTarget].species == SPECIES_SEEDOT || gBattleMons[battlerTarget].species == SPECIES_NUZLEAF || gBattleMons[battlerTarget].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battlerTarget)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battlerTarget] & STATUS4_GEARED_UP && gStatuses3[battlerTarget] & STATUS3_MAGNET_RISE)
     || gBattleMons[battlerTarget].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battlerTarget].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battlerTarget].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7782,6 +7784,7 @@ bool32 CanBeBurned(u32 battler)
     || IsAbilityStatusProtected(battler) 
     || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3)
@@ -7803,6 +7806,7 @@ bool32 CanBeParalyzed(u32 battler)
         || IsAbilityStatusProtected(battler)
         || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) 
         || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+        || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
         || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
         || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
         || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7822,6 +7826,7 @@ bool32 CanBeFrozen(u32 battler)
     || IsAbilityStatusProtected(battler) 
     || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7841,6 +7846,7 @@ bool32 CanGetFrostbite(u32 battler)
     || IsAbilityStatusProtected(battler) 
     || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7862,6 +7868,7 @@ bool32 CanGetPanicked(u32 battler)
       || IsAbilityStatusProtected(battler)
       || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
       || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)) 
+      || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
       || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
       || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
       || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
@@ -7890,7 +7897,8 @@ bool32 CanBeExposed(u32 battler)
             || ability == ABILITY_COMATOSE
             || gBattleMons[battler].status1 & STATUS1_ANY
             || IsAbilityStatusProtected(battler)
-            || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)))
+            || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+            || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE))
         return FALSE;
     return TRUE;
 }
@@ -10859,6 +10867,15 @@ static const u8 sFlailHpScaleToPowerTable[] =
         32, 40,
         48, 20};
 
+static const u8 sMiseryWailHpScaleToPowerTable[] =
+    {
+        1, 120,
+        4, 100,
+        9,  80,
+        16, 60,
+        32, 40,
+        48, 20};
+
 static const u8 sLoneSharkHpScaleToPowerTable[] =
     {
         5, 170,
@@ -11059,6 +11076,15 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
                 break;
         }
         basePower = sFlailHpScaleToPowerTable[i + 1];
+        break;
+    case EFFECT_MISERY_WAIL:
+        hpFraction = GetScaledHPFraction(gBattleMons[battlerAtk].hp, gBattleMons[battlerAtk].maxHP, 48);
+        for (i = 0; i < sizeof(sMiseryWailHpScaleToPowerTable); i += 2)
+        {
+            if (hpFraction <= sMiseryWailHpScaleToPowerTable[i])
+                break;
+        }
+        basePower = sMiseryWailHpScaleToPowerTable[i + 1];
         break;
     case EFFECT_LONE_SHARK:
         hpFraction = GetScaledHPFraction(gBattleMons[battlerAtk].hp, gBattleMons[battlerAtk].maxHP, 100);
@@ -11288,6 +11314,25 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_ZAPPER:
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
         break;
+    case EFFECT_DOUBLE_SHOCK:
+        if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP && gStatuses4[battlerAtk] & STATUS4_SUPERCHARGED)
+            basePower = 250;
+        break;
+    case EFFECT_ZAP_CANNON:
+        if (gStatuses4[battlerAtk] & STATUS4_SUPERCHARGED)
+            if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP)
+                basePower = 200;
+                break;
+            basePower = 150;
+        break;
+    case EFFECT_MAGNET_BOMB:
+        if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP)
+            basePower = 60 + (CountBattlerStatIncreases(battlerDef, TRUE) * 10);
+        break;
+    case EFFECT_SHADOW_FORCE:
+        if (gStatuses4[battlerAtk] & STATUS4_PHANTOM)
+            basePower = 150;
+        break;
     case EFFECT_HEAVY_CANNON:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] > DEFAULT_STAT_STAGE || gBattleMons[battlerAtk].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE)
             basePower += 30 * ((gBattleMons[battlerAtk].statStages[STAT_DEF] - DEFAULT_STAT_STAGE) + (gBattleMons[battlerAtk].statStages[STAT_SPDEF] - DEFAULT_STAT_STAGE));
@@ -11511,7 +11556,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_EXECUTION:
-        if (gBattleMons[battlerDef].hp < gBattleMons[battlerDef].maxHP)
+        if (gBattleMons[battlerDef].hp <= ((gBattleMons[battlerDef].maxHP / 4) * 3))
             modifier = uq4_12_multiply(modifier, UQ_4_12(3.0));
         break;
     case EFFECT_BARB_BARRAGE:
@@ -12408,7 +12453,8 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     }
 
     // Self-destruct / Explosion cut defense in half
-    if (gCurrentMove == MOVE_EXPLOSION || gCurrentMove == MOVE_SELF_DESTRUCT || gCurrentMove == MOVE_BLOW_UP)
+    if (gCurrentMove == MOVE_EXPLOSION || gCurrentMove == MOVE_SELF_DESTRUCT || gCurrentMove == MOVE_BLOW_UP
+        || (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED) && (gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP)))
     {
         defStat *= 0.75;
     }
@@ -14704,6 +14750,8 @@ u32 GetBattlerMoveTargetType(u32 battler, u32 move)
         return MOVE_TARGET_BOTH;
     else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING))
         return MOVE_TARGET_BOTH;
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED) && (gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP))
+        return MOVE_TARGET_FOES_AND_ALLY;
     else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 4)))
         return MOVE_TARGET_FOES_AND_ALLY;
     else

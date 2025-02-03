@@ -964,6 +964,12 @@ static const u8 sText_TargetStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s st
 static const u8 sText_TargetPositiveStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s positive stat\nchanges were eliminated!");
 static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered\nan extra heal!");
 static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
+static const u8 sText_UserHasExhaustion[] = _("{B_ATK_NAME_WITH_PREFIX} became exhausted\nfrom overexertion!");
+static const u8 sText_TargetIsExhausted[] = _("{B_DEF_NAME_WITH_PREFIX} became exhausted from\n{B_ATK_NAME_WITH_PREFIX}'s ESP!");
+static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s Super-charged Magnet\nRise prevented stat loss!");
+static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became Super-charged!");
+static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} gets Geared Up!");
+static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1779,6 +1785,12 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSXINFATUATEDYITEMEDITION - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedYItemEdition,
     [STRINGID_PKMNSURROUNDEDWITHVEILS - BATTLESTRINGS_TABLE_START] = sText_PkmnSurroundedWithVeils,
     [STRINGID_SPELONSPIKESSCATTERED - BATTLESTRINGS_TABLE_START] = sText_SpelonSpikesScattered,
+    [STRINGID_USERHASEXHAUSTION - BATTLESTRINGS_TABLE_START] = sText_UserHasExhaustion,
+    [STRINGID_TARGETISEXHAUSTED - BATTLESTRINGS_TABLE_START] = sText_TargetIsExhausted,
+    [STRINGID_SUPERMAGNETNOSTATLOSS - BATTLESTRINGS_TABLE_START] = sText_SuperMagnetNoStatLoss,
+    [STRINGID_TARGETBECOMESSUPERCHARGED - BATTLESTRINGS_TABLE_START] = sText_TargetBecomesSupercharged,
+    [STRINGID_TARGETBECOMESGEAREDUP - BATTLESTRINGS_TABLE_START] = sText_TargetBecomesGearedUp,
+    [STRINGID_USERGAINSPHANTOM - BATTLESTRINGS_TABLE_START] = sText_UserGainsPhantom,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -433,7 +433,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_TIDY_UP,
     EFFECT_CAMOUFLAGE,
     EFFECT_FILLET_AWAY,
-    EFFECT_SPOOK,
+    EFFECT_DEARLY_DEPART,
     EFFECT_FLASH,
     EFFECT_SILENCE,
     EFFECT_WARM_WELCOME,
@@ -800,6 +800,8 @@ bool32 IsTruantMonVulnerable(u32 battlerAI, u32 opposingBattler)
         if (gBattleMoves[move].effect == EFFECT_DIVE && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
             return TRUE;
         if (gBattleMoves[move].effect == EFFECT_FLY && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
+            return TRUE;
+        if (gBattleMoves[move].effect == EFFECT_SHADOW_FORCE && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
             return TRUE;
     }
     return FALSE;

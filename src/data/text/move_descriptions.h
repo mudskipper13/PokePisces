@@ -4943,6 +4943,11 @@ static const u8 sSyrupBombDescription[] = _(
     "3 turns. If the user is\n"
     "blooming, traps the foe forever.");
 
+static const u8 sDearlyDepartDescription[] = _(
+    "The foe is spooked and switched.\n"
+    "Lowers the next foe's accuracy.\n"
+    "In the wild, the battle ends.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -5982,4 +5987,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SUPERCELL_SLAM - 1] = sSupercellSlamDescription,
     [MOVE_SWEET_WHISPERS - 1] = sSweetWhispersDescription,
     [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
+    [MOVE_DEARLY_DEPART - 1] = sDearlyDepartDescription,
 };

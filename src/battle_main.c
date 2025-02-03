@@ -4862,7 +4862,8 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
      || gBattleMoves[move].effect == EFFECT_GEOMANCY
      || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-     || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+     || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+     || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
         return TRUE;
     else
         return FALSE;
@@ -4920,6 +4921,10 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    {
+        priority++;
+    }
+    else if ((gCurrentMove == MOVE_HAYWIRE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED))
     {
         priority++;
     }

@@ -824,8 +824,14 @@
 #define STRINGID_PKMNSXINFATUATEDYITEMEDITION         822
 #define STRINGID_PKMNSURROUNDEDWITHVEILS              823
 #define STRINGID_SPELONSPIKESSCATTERED                824
+#define STRINGID_USERHASEXHAUSTION                    825
+#define STRINGID_TARGETISEXHAUSTED                    826
+#define STRINGID_SUPERMAGNETNOSTATLOSS                827
+#define STRINGID_TARGETBECOMESSUPERCHARGED            828
+#define STRINGID_TARGETBECOMESGEAREDUP                829
+#define STRINGID_USERGAINSPHANTOM                     830
 
-#define BATTLESTRINGS_COUNT                           825
+#define BATTLESTRINGS_COUNT                           831
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

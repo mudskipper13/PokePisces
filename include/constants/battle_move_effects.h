@@ -639,7 +639,15 @@
 #define EFFECT_RAZOR_SHELL                  633
 #define EFFECT_PSYSTRIKE                    634
 #define EFFECT_CRAFTY_SHIELD				635
+#define EFFECT_MISERY_WAIL  				636
+#define EFFECT_ORDER_UP                     637
+#define EFFECT_ZAP_CANNON                   638
+#define EFFECT_GEAR_GRIND                   639
+#define EFFECT_MAGNET_BOMB                  640
+#define EFFECT_METAL_SOUND                  641
+#define EFFECT_SHADOW_FORCE                 642
+#define EFFECT_DEARLY_DEPART                643
 
-#define NUM_BATTLE_MOVE_EFFECTS             636
+#define NUM_BATTLE_MOVE_EFFECTS             644
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
