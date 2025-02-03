@@ -59,6 +59,7 @@ RustGymClassroom_EventScript_TakeTest::
 	closemessage
 	applymovement LOCALID_TEACHER, RustGymClassroom_Movement_TeacherBackToDesk
 	waitmovement 0
+	goto RustGymClassroom_EventScript_TestQuestion1
 	release
 	end
 

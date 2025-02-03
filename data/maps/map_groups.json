@@ -337,11 +337,16 @@
     "OzoneMattRoom",
     "OzoneTabithaRoom",
     "OzoneCourtneyRoom",
-    "OzoneShellyRoom"
+    "OzoneShellyRoom",
+    "OzoneEliteFourHub",
+    "OzoneMaxieArchieRoom"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",
-    "EverGrandeCity_PokemonCenter_2F"
+    "EverGrandeCity_PokemonCenter_2F",
+    "PlaneInFlight",
+    "OzoneSituationRoom",
+    "OzoneOutsideCutscene"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

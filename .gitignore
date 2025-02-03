@@ -41,6 +41,7 @@ prefabs.json
 *.js
 *.toml
 .vs/
+*:Zone.Identifier
 /scripts/sheets_url.txt
 /scripts/Moveset.csv
 /scripts/moveset_path.txt

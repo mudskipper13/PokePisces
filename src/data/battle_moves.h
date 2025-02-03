@@ -9777,17 +9777,17 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_CRAFTY_SHIELD] =
     {
-        .effect = EFFECT_PROTECT,
+        .effect = EFFECT_CRAFTY_SHIELD,
         .power = 0,
         .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 10,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
-        .priority = 3,
+        .target = MOVE_TARGET_USER | MOVE_TARGET_ALLY,
+        .priority = 1,
         .split = SPLIT_STATUS,
-        .argument = TRUE, // Protects the whole side.
         .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
+        .ignoresProtect = TRUE,
         .metronomeBanned = TRUE,
     },
 

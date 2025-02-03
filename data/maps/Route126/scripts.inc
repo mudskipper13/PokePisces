@@ -44,7 +44,15 @@ Route126_EventScript_StartInvasion::
 	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_UhefoeAppears, MSGBOX_DEFAULT
 	speakername NULL
+	setflag FLAG_WILD_NO_CATCHING_FLAG
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
 	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_CATCHING_FLAG
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
 	goto Route126_EventScript_YouDidIt
 	release
 	end

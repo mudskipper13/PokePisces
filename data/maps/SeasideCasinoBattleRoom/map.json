@@ -71,7 +71,7 @@
       "elevation": 0,
       "var": "VAR_WALLY_QUEST_STATE",
       "var_value": "6",
-      "script": "NULL"
+      "script": "SeasideCasinoBattleRoom_EventScript_SidneyLucyBattle"
     }
   ],
   "bg_events": [

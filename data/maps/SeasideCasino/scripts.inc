@@ -150,6 +150,7 @@ SeasideCasino_Movement_StevenLeavesFinal:
 SeasideCasino_EventScript_BackroomGuard::
 	lock
 	goto_if_lt VAR_WALLY_QUEST_STATE, 4, SeasideCasino_EventScript_CantGoPast
+	goto_if_gt VAR_WALLY_QUEST_STATE, 7, SeasideCasino_EventScript_CantGoPast
 	goto_if_eq VAR_FACING, DIR_NORTH, SeasideCasino_EventScript_StevenApproachFromSide
 	goto SeasideCasino_EventScript_StevenApproach
 	release
@@ -162,6 +163,9 @@ SeasideCasino_EventScript_CantGoPast::
 	end
 
 SeasideCasino_EventScript_StevenApproach::
+	speakername NULL
+	clearflag FLAG_TEMP_11
+	addobject LOCALID_STEVEN
 	faceplayer
 	msgbox SeasideCasino_Text_CantGoPast, MSGBOX_DEFAULT
 	applymovement LOCALID_STEVEN, SeasideCasino_Movement_StevenApproach
@@ -172,10 +176,11 @@ SeasideCasino_EventScript_StevenApproach::
 	speakername NULL
 	msgbox SeasideCasino_Text_CantLetInPlayer, MSGBOX_DEFAULT
 	speakername SeasideCasino_Text_NameSteven
-	msgbox SeasideCasino_Text_ComeWithMe, MSGBOX_DEFAULT
+	msgbox SeasideCasino_Text_ComeWithMe, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_STEVEN, SeasideCasino_Movement_StevenWalkAway
 	applymovement LOCALID_DOORGUARD, SeasideCasino_Movement_DoorGuardWalkAway
 	waitmovement 0
+	waitmessage
 	removeobject LOCALID_STEVEN
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_DOORGUARD
@@ -226,6 +231,9 @@ SeasideCasino_Movement_DoorGuardWalkAway:
 
 SeasideCasino_EventScript_StevenApproachFromSide::
 	faceplayer
+	speakername NULL
+	clearflag FLAG_TEMP_11
+	addobject LOCALID_STEVEN
 	msgbox SeasideCasino_Text_CantGoPast, MSGBOX_DEFAULT
 	applymovement LOCALID_STEVEN, SeasideCasino_Movement_StevenApproachFromSide
 	waitmovement 0
@@ -235,10 +243,11 @@ SeasideCasino_EventScript_StevenApproachFromSide::
 	speakername NULL
 	msgbox SeasideCasino_Text_CantLetInPlayer, MSGBOX_DEFAULT
 	speakername SeasideCasino_Text_NameSteven
-	msgbox SeasideCasino_Text_ComeWithMe, MSGBOX_DEFAULT
+	msgbox SeasideCasino_Text_ComeWithMe, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_STEVEN, SeasideCasino_Movement_StevenWalkAwayFromSide
 	applymovement LOCALID_DOORGUARD, SeasideCasino_Movement_DoorGuardWalkAwayFromSide
 	waitmovement 0
+	waitmessage
 	removeobject LOCALID_STEVEN
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_DOORGUARD

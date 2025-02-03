@@ -1,15 +1,22 @@
 .set LOCALID_P_MAN, 7
 .set LOCALID_BONDING, 8
+.set LOCALID_RAY, 9
 
 MauvilleNew_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MauvilleNew_OnLoad
 	.byte 0
 
 MauvilleNew_OnLoad:
+	call_if_gt VAR_RAY_STATE, 3, MauvilleNew_EventScript_RemoveRay
 	call_if_lt VAR_OLD_GUYS_STATE, 2, MauvilleNew_EventScript_RemovePowerlessMan
 	call_if_gt VAR_OLD_GUYS_STATE, 2, MauvilleNew_EventScript_RemovePowerlessMan
 	call_if_lt VAR_OLD_GUYS_STATE, 18, MauvilleNew_EventScript_RemoveMrBonding
 	end
+
+MauvilleNew_EventScript_RemoveRay::
+	removeobject LOCALID_RAY
+	setflag FLAG_TEMP_13
+	return
 
 MauvilleNew_EventScript_RemovePowerlessMan::
 	removeobject LOCALID_P_MAN
@@ -142,6 +149,113 @@ MauvilleNew_EventScript_MrBondingAfterGym::
 	release
 	end
 
+MauvilleNew_EventScript_RayEncounter1::
+	lock
+	applymovement LOCALID_RAY, MauvilleNew_Movement_RayEncounter1
+	waitmovement 0
+	goto MauvilleNew_EventScript_RayBattleStart
+	release
+	end
+
+MauvilleNew_Movement_RayEncounter1:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	step_end
+
+MauvilleNew_EventScript_RayEncounter2::
+	lock
+	applymovement LOCALID_RAY, MauvilleNew_Movement_RayEncounter2
+	waitmovement 0
+	goto MauvilleNew_EventScript_RayBattleStart
+	release
+	end
+
+MauvilleNew_Movement_RayEncounter2:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+MauvilleNew_EventScript_RayEncounter3::
+	lock
+	applymovement LOCALID_RAY, MauvilleNew_Movement_RayEncounter3
+	waitmovement 0
+	goto MauvilleNew_EventScript_RayBattleStart
+	release
+	end
+
+MauvilleNew_Movement_RayEncounter3:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+MauvilleNew_EventScript_RayEncounter4::
+	lock
+	applymovement LOCALID_RAY, MauvilleNew_Movement_RayEncounter4
+	waitmovement 0
+	goto MauvilleNew_EventScript_RayBattleStart
+	release
+	end
+
+MauvilleNew_Movement_RayEncounter4:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+MauvilleNew_EventScript_RayBattleStart::
+	speakername MauvilleNew_Text_NameRay
+	trainerbattle_single TRAINER_P_RAY_4, MauvilleNew_Text_RayIntro, MauvilleNew_Text_RayDefeat, MauvilleNew_EventScript_RayLeaves
+	speakername NULL
+	release
+	end
+
+MauvilleNew_EventScript_RayLeaves::
+	speakername MauvilleNew_Text_NameRay
+	msgbox MauvilleNew_Text_RayLeaves, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RAY, MauvilleNew_Movement_RayLeaves
+	waitmovement 0
+	removeobject LOCALID_RAY
+	speakername NULL
+	setflag FLAG_TEMP_13
+	setvar VAR_RAY_STATE, 4
+	release
+	end
+
+MauvilleNew_Movement_RayLeaves:
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
 MauvilleNew_EventScript_Kurt::
     trainerbattle_single TRAINER_P_KURT, MauvilleNew_Text_KurtIntro, MauvilleNew_Text_KurtDefeated
     msgbox MauvilleNew_Text_KurtPostBattle, MSGBOX_AUTOCLOSE
@@ -230,3 +344,15 @@ MauvilleNew_Text_TheBadgeAwaits:
 
 MauvilleNew_Text_ThankYouSincerely:
 	.string "thank you my friend$"
+
+MauvilleNew_Text_NameRay:
+	.string "Ray$"
+
+MauvilleNew_Text_RayIntro:
+	.string "intro$"
+
+MauvilleNew_Text_RayDefeat:
+	.string "defeat$"
+
+MauvilleNew_Text_RayLeaves:
+	.string "byebye$"

@@ -122,6 +122,7 @@ WallyArena_Movement_WallyRunAway:
 	walk_fast_left
 	walk_fast_down
 	walk_fast_down
+	walk_fast_down
 	walk_fast_right
 	walk_fast_down
 	walk_fast_down
@@ -177,7 +178,7 @@ WallyArena_Text_FullVillainMonologue:
 	.string "away from...cough, cough... the gym!\p"
 	.string "And now, my last hoorah. I couldn't\n"
 	.string "just let you complete the challenge\l"
-	.string "so EASILY, {PLAYER}!\p"
+	.string "so EASILY, PLAYER-KUN!\p"
 	.string "I FORGED THE SIGNATURE!\n"
 	.string "AND YOU STILL FOUND ME OUT!$"
 

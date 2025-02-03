@@ -286,10 +286,15 @@
 #define MAP_OZONE_TABITHA_ROOM          (8 | (20 << 8))
 #define MAP_OZONE_COURTNEY_ROOM         (9 | (20 << 8))
 #define MAP_OZONE_SHELLY_ROOM           (10 | (20 << 8))
+#define MAP_OZONE_ELITE_FOUR_HUB        (11 | (20 << 8))
+#define MAP_OZONE_MAXIE_ARCHIE_ROOM     (12 | (20 << 8))
 
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F (1 | (21 << 8))
+#define MAP_PLANE_IN_FLIGHT                    (2 | (21 << 8))
+#define MAP_OZONE_SITUATION_ROOM               (3 | (21 << 8))
+#define MAP_OZONE_OUTSIDE_CUTSCENE             (4 | (21 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (22 << 8))
