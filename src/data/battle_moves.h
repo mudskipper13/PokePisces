@@ -810,7 +810,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_NORMAL,
         .pp = 20,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .target = MOVE_TARGET_SELECTED,
         .priority = -6,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_DEF_UP_1,
@@ -13418,7 +13418,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_TORCH_SONG] =
     {
         .effect = EFFECT_SP_ATTACK_UP_HIT,
-        .power = 80,
+        .power = 50,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,

@@ -3957,9 +3957,6 @@ BattleScript_EffectTormentHit:
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HitFromCritCalc
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_HitFromCritCalc
-	settorment BattleScript_HitFromCritCalc
 	critcalc
 	damagecalc
 	adjustdamage
@@ -3974,8 +3971,13 @@ BattleScript_EffectTormentHit:
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
 	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	settorment BattleScript_MoveEnd
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotTormentAttacker
