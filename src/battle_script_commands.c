@@ -4062,7 +4062,14 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_AtkDefDown;
                 }
                 break;
-            case MOVE_EFFECT_DEF_SPDEF_DOWN: // Close Combat
+            case MOVE_EFFECT_DEF_SPDEF_DOWN_USER: // Close Combat
+                if (!NoAliveMonsForEitherParty())
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_DefSpDefDownUser;
+                }
+                break;
+            case MOVE_EFFECT_DEF_SPDEF_DOWN:
                 if (!NoAliveMonsForEitherParty())
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
@@ -4764,7 +4771,7 @@ static void Cmd_seteffectprimary(void)
     CMD_ARGS();
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
-    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
     && (Random() % 2 == 0))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -4780,7 +4787,7 @@ static void Cmd_seteffectsecondary(void)
     CMD_ARGS();
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
-    && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER)
+    && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
     && (Random() % 2 == 0))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -7143,8 +7150,8 @@ static void Cmd_moveend(void)
                         if (IsBattlerAlive(battler)
                             && CountUsablePartyMons(battler) > 0 // Has mon to switch into
                             // Does not activate if attacker used Parting Shot and can switch out
-                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET 
-                            || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW)
+                            && ((gBattleMoves[gCurrentMove].effect != EFFECT_HIT_SWITCH_TARGET 
+                            || gBattleMoves[gCurrentMove].effect != EFFECT_VITAL_THROW)
                             && CanBattlerSwitch(gBattlerAttacker))
                             )
                         {
@@ -7350,6 +7357,29 @@ static void Cmd_moveend(void)
             }
             gBattleScripting.moveendState++;
             break;
+        case MOVEEND_SAME_MOVE_TURNS:
+            if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
+            else if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
+                gBattleStruct->sameMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
+        case MOVEEND_SLICING_MOVE_TURNS:
+            if (gBattleMoves[gCurrentMove].slicingMove 
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
+            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->slicingMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
+        case MOVEEND_DANCING_MOVE_TURNS:
+            if (gBattleMoves[gCurrentMove].danceMove
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
+            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
+            gBattleScripting.moveendState++;
+            break;
         case MOVEEND_NEXT_DANCE_TARGET: // To iterate between all Dance Mania targets
         {
             if (originallyUsedMove == MOVE_DANCE_MANIA)
@@ -7444,17 +7474,17 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (moveType == TYPE_ELECTRIC)
+            if (moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (moveType == TYPE_WATER)
+            if (moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
-            if (!IS_MOVE_STATUS(gCurrentMove))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && (!gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerTarget].purpleHazeDefense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PHANTOM);
-            if (!IS_MOVE_STATUS(gCurrentMove) && (!gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerTarget] &= ~(STATUS4_CRAFTY_SHIELD);
             memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
             gBattleScripting.moveendState++;
@@ -10412,11 +10442,15 @@ static void Cmd_various(void)
     case VARIOUS_CRAFTY_SHIELD:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gStatuses4[gBattlerTarget] & STATUS4_CRAFTY_SHIELD)
+        if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
-            gStatuses4[gBattlerTarget] |= STATUS4_CRAFTY_SHIELD;
+        {
+            gStatuses4[battler] |= STATUS4_CRAFTY_SHIELD;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_SUPERCHARGED:
@@ -12695,6 +12729,7 @@ static void Cmd_various(void)
             else
                 gBattlescriptCurrInstr = cmd->nextInstr;
         }
+        return;
     }
     case VARIOUS_SHELL_SIDE_ARM_CHECK: // 0% chance GameFreak actually checks this way according to DaWobblefet, but this is the only functional explanation at the moment
     {
