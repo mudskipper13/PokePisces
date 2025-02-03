@@ -13016,7 +13016,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         break;
     case ABILITY_SOLAR_POWER:
         if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN))
-            return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(GetSolarPowerCounter(battlerDef) * 10), 90]);
+            return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(GetSolarPowerCounter(battlerDef) * 10, 90)]);
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
