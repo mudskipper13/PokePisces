@@ -4223,7 +4223,7 @@ static void HandleTurnActionSelectionState(void)
                 {
                     if (gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[battler].status2 & STATUS2_RECHARGE 
-                        || gStatuses4[battler] == STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
@@ -4371,7 +4371,7 @@ static void HandleTurnActionSelectionState(void)
                     RecordedBattle_ClearBattlerAction(battler, 1);
                     if (gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_RECHARGE
-                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] == STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE)
                     {
                         BtlController_EmitEndBounceEffect(battler, BUFFER_A);
                         MarkBattlerForControllerExec(battler);
@@ -4752,7 +4752,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer >= 4)
         speed *= 2;
-    else if (gStatuses4[battler] == STATUS4_PHANTOM)
+    else if (gStatuses4[battler] & STATUS4_PHANTOM)
         speed *= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
@@ -4862,7 +4862,8 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_AXEL_HEEL
      || gBattleMoves[move].effect == EFFECT_GEOMANCY
      || gBattleMoves[move].effect == EFFECT_DRAGON_RUIN
-     || gBattleMoves[move].effect == EFFECT_AIR_CANNON)
+     || gBattleMoves[move].effect == EFFECT_AIR_CANNON
+     || gBattleMoves[move].effect == EFFECT_SHADOW_FORCE)
         return TRUE;
     else
         return FALSE;
@@ -4920,6 +4921,10 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    {
+        priority++;
+    }
+    else if ((gCurrentMove == MOVE_HAYWIRE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED))
     {
         priority++;
     }

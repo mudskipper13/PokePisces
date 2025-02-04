@@ -300,6 +300,14 @@
 #define VARIOUS_SET_PURIFIED                         209
 #define VARIOUS_TRY_CRITICAL_REPAIR                  210
 #define VARIOUS_CRAFTY_SHIELD                        211
+#define VARIOUS_APPLY_EXHAUSTION_COUNTER             212
+#define VARIOUS_JUMP_IF_HAS_A_STAT_DROP              213
+#define VARIOUS_REMOVE_SUPER_GEAR                    214
+#define VARIOUS_JUMP_IF_GEAR_MAGNET                  215
+#define VARIOUS_SUPERCHARGED                         216
+#define VARIOUS_GEARED_UP                            217
+#define VARIOUS_APPLY_PHANTOM                        218
+#define VARIOUS_TRY_ACTIVATE_SHADOW_FORCE            219
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -375,9 +383,12 @@
 #define MOVEEND_PICKPOCKET                        31
 #define MOVEEND_DANCER                            32
 #define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_NEXT_DANCE_TARGET                 34
-#define MOVEEND_CLEAR_BITS                        35
-#define MOVEEND_COUNT                             36
+#define MOVEEND_SAME_MOVE_TURNS                   34
+#define MOVEEND_SLICING_MOVE_TURNS                35
+#define MOVEEND_DANCING_MOVE_TURNS                36
+#define MOVEEND_NEXT_DANCE_TARGET                 37
+#define MOVEEND_CLEAR_BITS                        38
+#define MOVEEND_COUNT                             39
 
 // switch cases
 #define B_SWITCH_NORMAL     0

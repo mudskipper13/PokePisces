@@ -1163,7 +1163,8 @@ const u16 gEggMoves[] = {
         MOVE_TRICK,
         MOVE_EERIE_SPELL,
         MOVE_DESTINY_BOND,
-        MOVE_SWEET_WHISPERS),
+        MOVE_SWEET_WHISPERS,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(GIRAFARIG,
         MOVE_TAKE_DOWN,
@@ -4519,7 +4520,8 @@ const u16 gEggMoves[] = {
         MOVE_HEX,
         MOVE_WATER_SPOUT,
         MOVE_MOONGEIST_BEAM,
-        MOVE_ASTRAL_BARRAGE),
+        MOVE_ASTRAL_BARRAGE,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(LUMELMO,
         MOVE_SPOTLIGHT,
@@ -4716,7 +4718,8 @@ const u16 gEggMoves[] = {
         MOVE_PHANTASM,
         MOVE_ALLURING_VOICE,
         MOVE_SWEET_WHISPERS,
-        MOVE_DESTINY_BOND),
+        MOVE_DESTINY_BOND,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(FOGGLEHIND,
         MOVE_HAZE,
@@ -4732,7 +4735,8 @@ const u16 gEggMoves[] = {
         MOVE_SWEET_WHISPERS,
         MOVE_LOVELY_KISS,
         MOVE_EERIE_SPELL,
-        MOVE_HEX),
+        MOVE_HEX,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(MEDGEON,
         MOVE_SEIZE_CHANCE,
@@ -4746,7 +4750,8 @@ const u16 gEggMoves[] = {
         MOVE_TRICK,
         MOVE_EERIE_SPELL,
         MOVE_DESTINY_BOND,
-        MOVE_SWEET_WHISPERS),
+        MOVE_SWEET_WHISPERS,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(TRANSERA,
         MOVE_HYPNOSIS,
@@ -4760,7 +4765,8 @@ const u16 gEggMoves[] = {
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
-        MOVE_OMINOUS_WIND),
+        MOVE_OMINOUS_WIND,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(MANNIKO,
         MOVE_SWEET_WHISPERS,
@@ -4768,7 +4774,8 @@ const u16 gEggMoves[] = {
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
-        MOVE_OMINOUS_WIND),
+        MOVE_OMINOUS_WIND,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(KOWAKO,
         MOVE_SWEET_WHISPERS,
@@ -4776,7 +4783,8 @@ const u16 gEggMoves[] = {
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
-        MOVE_OMINOUS_WIND),
+        MOVE_OMINOUS_WIND,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(STRAWNGMAN,
         MOVE_SPIKES,
@@ -5106,7 +5114,8 @@ const u16 gEggMoves[] = {
         MOVE_RAGING_BULL,
         MOVE_AMNESIA,
         MOVE_STORM_THROW,
-        MOVE_VITAL_THROW),
+        MOVE_VITAL_THROW,
+        MOVE_KOWTOW_CLEAVE),
 
     egg_moves(MUSTYBANE,
         MOVE_AMNESIA,
@@ -5141,7 +5150,8 @@ const u16 gEggMoves[] = {
         MOVE_STRENGTH_SAP,
         MOVE_TAKE_HEART,
         MOVE_SWEET_WHISPERS,
-        MOVE_HOLD_HANDS),
+        MOVE_HOLD_HANDS,
+        MOVE_DEARLY_DEPART),
 
     egg_moves(FAERED,
         MOVE_COPYCAT,

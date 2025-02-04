@@ -799,7 +799,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_MORTAL_SPIN] = _("Mortal Spin"),
     [MOVE_DOODLE] = _("Doodle"),
     [MOVE_FILLET_AWAY] = _("Fillet Away"),
-    [MOVE_KOWTOW_CLEAVE] = _("Kowtow Cleave"),
+    [MOVE_KOWTOW_CLEAVE] = _("Cowtow Cleave"),
     [MOVE_FLOWER_TRICK] = _("Flower Trick"),
     [MOVE_TORCH_SONG] = _("Torch Song"),
     [MOVE_AQUA_STEP] = _("Aqua Step"),
@@ -1034,6 +1034,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SUPERCELL_SLAM] = _("Supercell Slam"),
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
+    [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
 };
 #else
 // 12 letters
@@ -2071,6 +2072,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SUPERCELL_SLAM] = _("Supercell Slam"),
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
+    [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
 };
 #endif
 

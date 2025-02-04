@@ -1060,6 +1060,7 @@ gBattleAnims_Moves::
     .4byte Move_SUPERCELL_SLAM
     .4byte Move_SWEET_WHISPERS
     .4byte Move_SYRUP_BOMB
+    .4byte Move_DEARLY_DEPART
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -19996,15 +19997,14 @@ FearFactorIntense:
 	createvisualtask AnimTask_ExtrasensoryDistortion, 5, 2
 	playsewithpan SE_M_LEER, SOUND_PAN_ATTACKER
 	waitforvisualfinish
-	waitforvisualfinish
 	createvisualtask AnimTask_ScaleMonAndRestore, 5, -9, -9, 15, ANIM_TARGET, 1
 	waitforvisualfinish
 	createvisualtask AnimTask_InvertScreenColor, 2, 0x1 | 0x2 | 0x4
 	waitforvisualfinish
-	clearmonbg ANIM_TARGET
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, (F_PAL_BG | F_PAL_ATK_SIDE | F_PAL_DEF_PARTNER), 3, 16, 0, RGB_BLACK
-	createvisualtask AnimTask_HorizontalShake, 5, ANIM_PLAYER_RIGHT, 0, 50
-	createvisualtask AnimTask_HorizontalShake, 5, ANIM_PLAYER_LEFT, 0, 50
+	clearmonbg ANIM_TARGET
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_PLAYER_RIGHT, 0, 30
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_PLAYER_LEFT, 0, 30
 	delay 10
 	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 3, 1, RGB_BLACK, 14, RGB_WHITE, 14
 	delay 16
@@ -26609,6 +26609,9 @@ Move_SPOOK::
 	createvisualtask AnimTask_SlideOffScreen, 5, ANIM_TARGET, 8
 	waitforvisualfinish
 	end
+
+Move_DEARLY_DEPART::
+	goto Move_SPOOK
 
 Move_CHILLY_AIR::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
