@@ -1,5 +1,235 @@
+.set LOCALID_BREAD, 1
+
 PetalburgWoodsNew_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, PetalburgWoodsNew_OnLoad
 	.byte 0
+
+PetalburgWoodsNew_OnLoad:
+	call PetalburgWoodsNew_EventScript_RemoveBreadwinner
+	end
+
+PetalburgWoodsNew_EventScript_RemoveBreadwinner::
+	removeobject LOCALID_BREAD
+	setflag FLAG_TEMP_13
+	return
+
+PetalburgWoodsNew_EventScript_BreadwinnerEncounter1::
+	lock
+	clearflag FLAG_TEMP_13
+	addobject LOCALID_BREAD
+	delay 4
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadEnc1
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	delay 4
+	playse SE_PIN
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadSurprised
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgWoodsNew_Movement_PlayerChaseBread1
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadChased1
+	waitmovement 0
+	goto PetalburgWoodsNew_EventScript_BreadwinnerBattle
+	release
+	end
+
+PetalburgWoodsNew_Movement_BreadEnc1:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	step_end
+
+PetalburgWoodsNew_Movement_BreadSurprised:
+	emote_exclamation_mark
+	step_end
+
+PetalburgWoodsNew_Movement_PlayerChaseBread1:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	face_right
+	step_end
+
+PetalburgWoodsNew_Movement_BreadChased1:
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+PetalburgWoodsNew_EventScript_BreadwinnerEncounter2::
+	lock
+	clearflag FLAG_TEMP_13
+	addobject LOCALID_BREAD
+	delay 4
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadEnc2
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	delay 4
+	playse SE_PIN
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadSurprised
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgWoodsNew_Movement_PlayerChaseBread2
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadChased2
+	waitmovement 0
+	goto PetalburgWoodsNew_EventScript_BreadwinnerBattle
+	release
+	end
+
+PetalburgWoodsNew_Movement_BreadEnc2:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	step_end
+
+PetalburgWoodsNew_Movement_PlayerChaseBread2:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	face_right
+	step_end
+
+PetalburgWoodsNew_Movement_BreadChased2:
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+PetalburgWoodsNew_EventScript_BreadwinnerBattle::
+	delay 8
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadCornered
+	waitmovement 0
+	speakername PetalburgWoodsNew_Text_NamePandou
+	trainerbattle_single TRAINER_P_PANDOU_5, PetalburgWoodsNew_Text_BreadwinnerIntro, PetalburgWoodsNew_Text_BreadwinnerDefeat, PetalburgWoodsNew_EventScript_BreadRun
+	release
+	end
+
+PetalburgWoodsNew_EventScript_BreadRun::
+	setvar VAR_BREADWINNER_STATE, 5
+	speakername PetalburgWoodsNew_Text_NamePandou
+	msgbox PetalburgWoodsNew_Text_BreadwinnerRunAway, MSGBOX_DEFAULT
+	closemessage
+	playse SE_FLEE
+	applymovement LOCALID_BREAD, PetalburgWoodsNew_Movement_BreadEscape
+	waitmovement 0
+	removeobject LOCALID_BREAD
+	setflag FLAG_TEMP_13
+	release
+	end
+
+PetalburgWoodsNew_Movement_BreadCornered:
+	face_right
+	delay_16
+	face_up
+	delay_16
+	face_down
+	delay_16
+	face_left
+	delay_16
+	step_end
+
+PetalburgWoodsNew_Movement_BreadEscape:
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
 
 PetalburgWoodsNew_EventScript_Tutu::
     trainerbattle_single TRAINER_P_TUTU, PetalburgWoodsNew_Text_TutuIntro, PetalburgWoodsNew_Text_TutuDefeated
@@ -157,3 +387,15 @@ PetalburgWoodsNew_Text_InuAndPersiaPostBattle:
 
 PetalburgWoodsNew_Text_InuAndPersiaNeedTwoMons:
 	.string "need 2 dood$"
+
+PetalburgWoodsNew_Text_NamePandou:
+	.string "Pandou$"
+
+PetalburgWoodsNew_Text_BreadwinnerIntro:
+	.string "$"
+
+PetalburgWoodsNew_Text_BreadwinnerDefeat:
+	.string "$"
+
+PetalburgWoodsNew_Text_BreadwinnerRunAway:
+	.string "$"

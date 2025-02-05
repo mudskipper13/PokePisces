@@ -27,8 +27,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BREADWINNER",
-      "x": 26,
-      "y": 7,
+      "x": 22,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_13"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_STUDENT_M",
@@ -192,7 +192,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_BREADWINNER_STATE",
+      "var_value": "2",
+      "script": "PerplumeMaze_EventScript_BreadwinnerEncounter"
+    }
   ],
   "bg_events": [
 
