@@ -971,6 +971,8 @@ static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} 
 static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} gets Geared Up!");
 static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom.");
 static const u8 sText_ProtectedDefender[] = _("{B_DEF_NAME_WITH_PREFIX} gained a Crafty Shield!");
+static const u8 sText_FairyLockDropsEvasion[] = _("Fairy Lock dropped {B_ATK_NAME_WITH_PREFIX}'s\n evasion!");
+static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Acid Armor dropped\n {B_ATK_NAME_WITH_PREFIX}'s\n defense!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1793,6 +1795,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETBECOMESGEAREDUP - BATTLESTRINGS_TABLE_START] = sText_TargetBecomesGearedUp,
     [STRINGID_USERGAINSPHANTOM - BATTLESTRINGS_TABLE_START] = sText_UserGainsPhantom,
     [STRINGID_PROTECTEDDEFENDER - BATTLESTRINGS_TABLE_START] = sText_ProtectedDefender,
+    [STRINGID_FAIRYLOCKDROPSEVASION - BATTLESTRINGS_TABLE_START] = sText_FairyLockDropsEvasion,
+    [STRINGID_ACIDARMORDROPSDEFENSE - BATTLESTRINGS_TABLE_START] = sText_AcidArmorDropsDefense,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

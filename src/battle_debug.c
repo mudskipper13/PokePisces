@@ -223,6 +223,8 @@ static const u8 sText_MiracleEye[] = _("Miracle Eye");
 static const u8 sText_AquaRing[] = _("Aqua Ring");
 static const u8 sText_LaserFocus[] = _("Laser Focused");
 static const u8 sText_Electrified[] = _("Electrified");
+static const u8 sText_FairyLock[] = _("Fairy Lock");
+static const u8 sText_AcidArmor[] = _("Acid Armor");
 static const u8 sText_CraftyShield[] = _("Crafty Shield");
 static const u8 sText_AuroraVeil[] = _("Aurora Veil");
 static const u8 sText_Silence[] = _("The 13 Tolls");
@@ -326,6 +328,8 @@ static const struct BitfieldInfo sStatus3Bitfield[] =
 static const struct BitfieldInfo sStatus4Bitfield[] =
 {
     {/*Electrified*/ 1, 0,},
+    {/*Fairy Lock*/ 1, 12},
+    {/*Acid Armor*/ 1, 16},
     {/*Crafty Shield*/ 1, 22,}
 };
 
@@ -453,7 +457,9 @@ static const struct ListMenuItem sStatus3ListItems[] =
 static const struct ListMenuItem sStatus4ListItems[] =
 {
     {sText_Electrified, 0},
-    {sText_CraftyShield, 1}
+    {sText_FairyLock, 1},
+    {sText_AcidArmor, 2},
+    {sText_CraftyShield, 3}
 };
 
 static const struct ListMenuItem sSideStatusListItems[] =

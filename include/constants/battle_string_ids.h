@@ -831,8 +831,10 @@
 #define STRINGID_TARGETBECOMESGEAREDUP                829
 #define STRINGID_USERGAINSPHANTOM                     830
 #define STRINGID_PROTECTEDDEFENDER                    831
+#define STRINGID_FAIRYLOCKDROPSEVASION                832
+#define STRINGID_ACIDARMORDROPSDEFENSE                833
 
-#define BATTLESTRINGS_COUNT                           832
+#define BATTLESTRINGS_COUNT                           834
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

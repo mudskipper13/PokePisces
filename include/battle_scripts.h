@@ -691,6 +691,7 @@ extern const u8 BattleScript_AttackerUsedAnExtraMove[];
 extern const u8 BattleScript_IceScalesActivatesGain[];
 extern const u8 BattleScript_IceScalesActivatesLoss[];
 extern const u8 BattleScript_IceScalesActivatesHail[];
+extern const u8 BattleScript_FairyLockDropsEvasion[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
