@@ -1099,7 +1099,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_DRAKULARK]                    = { .size = MON_COORDS_SIZE(48, 40), .y_offset = 14 },
     [SPECIES_NOSFERAPTR]                   = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  3 },
     [SPECIES_OLFLOOKIE]                    = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  4 },
-    [SPECIES_JUSTRICHA]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  8 },
+    [SPECIES_JUSTRICHA]                    = { .size = MON_COORDS_SIZE(64, 48), .y_offset = 11 },
     [SPECIES_AJOKUJOKU]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_GARJIRA]                      = { .size = MON_COORDS_SIZE(56, 48), .y_offset =  8 },
     [SPECIES_GARZILLA]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  4 },
