@@ -7,7 +7,8 @@ Route123_MapScripts::
 	.byte 0
 
 Route123_OnTransition:
-	call_if_gt VAR_BREADWINNER_STATE, 1, Route123_EventScript_SetTempFlags
+	call_if_gt VAR_BREADWINNER_STATE, 1, Route123_EventScript_RemoveBreadwinner
+	call Route123_EventScript_RemoveSnowNinja
 	end
 
 Route123_EventScript_FogTrigger::
@@ -20,9 +21,12 @@ Route123_EventScript_SnowTrigger::
 	doweather
 	end
 
-Route123_EventScript_SetTempFlags::
+Route123_EventScript_RemoveBreadwinner::
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_BREAD
+	return
+
+Route123_EventScript_RemoveSnowNinja::
 	setflag FLAG_TEMP_16
 	removeobject LOCALID_SNOWNINJA
 	return
@@ -92,6 +96,8 @@ Route123_EventScript_BreadRun::
 	speakername NULL
 	msgbox Route123_Text_ProtectTM, MSGBOX_DEFAULT
 	giveitem ITEM_TM_PROTECT
+	setweather WEATHER_FOG_DIAGONAL
+	doweather
 	setflag FLAG_TEMP_11
 	removeobject LOCALID_BREAD
 	release

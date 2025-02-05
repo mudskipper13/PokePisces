@@ -114,6 +114,7 @@ DevonCorp_EventScript_RayDefeat::
 	speakername DevonCorp_Text_NameRay
 	msgbox DevonCorp_Text_AreWeGoodNow, MSGBOX_DEFAULT
 	setvar VAR_WALLY_QUEST_STATE, 2
+	setvar VAR_RAY_STATE, 6
 	setflag FLAG_DEVON_CORP_VISIT
 	warp MAP_RUSTBORO_NEW, 61, 35
 	waitstate

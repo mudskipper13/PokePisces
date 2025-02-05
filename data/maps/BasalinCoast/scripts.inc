@@ -114,14 +114,34 @@ BasalinCoast_EventScript_BluePKMNCenters1::
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentTakeYou1
     applymovement OBJ_EVENT_ID_PLAYER, BasalinCoast_Movement_PlayerTakeYou1
     waitmovement 0
+    delay 4
+    special SpawnCameraObject
+	delay 16
+	applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanUp
+	waitmovement 0
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
     clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
-    setflag FLAG_HIDE_LAB_RANGERS
     waitmovement 0
+    applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanDown
+	waitmovement 0
+    special RemoveCameraObject
+	delay 4
+    removeobject LOCALID_STUDENT
+    setflag FLAG_HIDE_LAB_RANGERS
     release
     end
+
+BasalinCoast_Movement_CameraPanUp:
+	walk_up
+	walk_up
+	step_end
+
+BasalinCoast_Movement_CameraPanDown:
+    walk_down
+	walk_down
+	step_end
 
 BasalinCoast_Movement_StudentMeet1:
     walk_down
@@ -171,11 +191,21 @@ BasalinCoast_EventScript_BluePKMNCenters2::
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentTakeYou2
     applymovement OBJ_EVENT_ID_PLAYER, BasalinCoast_Movement_PlayerTakeYou2
     waitmovement 0
+    delay 4
+    special SpawnCameraObject
+	delay 16
+	applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanUp
+	waitmovement 0
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
     clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
     waitmovement 0
+    applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanDown
+	waitmovement 0
+    special RemoveCameraObject
+	delay 4
+    removeobject LOCALID_STUDENT
     setflag FLAG_HIDE_LAB_RANGERS
     release
     end
@@ -212,11 +242,21 @@ BasalinCoast_EventScript_BluePKMNCenters3::
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentTakeYou3
     applymovement OBJ_EVENT_ID_PLAYER, BasalinCoast_Movement_PlayerTakeYou3
     waitmovement 0
+    delay 4
+    special SpawnCameraObject
+	delay 16
+	applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanUp
+	waitmovement 0
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
     clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
     waitmovement 0
+    applymovement OBJ_EVENT_ID_CAMERA, BasalinCoast_Movement_CameraPanDown
+	waitmovement 0
+    special RemoveCameraObject
+	delay 4
+    removeobject LOCALID_STUDENT
     setflag FLAG_HIDE_LAB_RANGERS
     release
     end

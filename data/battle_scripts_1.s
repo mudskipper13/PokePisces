@@ -5777,22 +5777,10 @@ BattleScript_EffectFairyLock:
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	jumpifsafeguard BattleScript_ButItFailed
 	jumpifsubstituteblocks BattleScript_ButItFailed
-	jumpifstatus2 BS_TARGET, STATUS2_ESCAPE_PREVENTION, BattleScript_FairyJustLockOn
-	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_FairyJustLockOn
-	trysetfairylock BS_TARGET, BattleScript_FairyJustLockOn
-	setalwayshitflag
+	trysetfairylock BS_TARGET, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNTOOKAIM2
-	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_TARGETCANTESCAPEFORNOW
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_FairyJustLockOn::
-	setalwayshitflag
-	attackanimation
-	waitanimation
-	printstring STRINGID_PKMNTOOKAIM2
+	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -16341,6 +16329,15 @@ BattleScript_ImposterActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_FairyLockDropsEvasion::
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FairyLockDropsEvasionEnd
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_FAIRYLOCKDROPSEVASION
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FairyLockDropsEvasionEnd::
+	end2
+
 BattleScript_HurtAttacker:
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
@@ -16450,10 +16447,13 @@ BattleScript_GooeyActivates::
 	return
 
 BattleScript_AcidArmoredActivates::
-	waitstate
-	swapattackerwithtarget  @ for defiant, mirror armor
-	seteffectsecondary
-	return
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_AcidArmoredActivatesEnd
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_ACIDARMORDROPSDEFENSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AcidArmoredActivatesEnd::
+	end2
 
 BattleScript_AbilityStatusEffect::
 	waitstate
