@@ -571,7 +571,8 @@
 #define MUS_VS_GYM_LEADER_2         635
 #define MUS_VS_LEGENDARY2           636
 #define MUS_EVER_GRANDE_ROAD        637
-#define MUS_VS_OZONE                638
+#define MUS_EVER_GRANDE_SUMMIT        638
+#define MUS_VS_OZONE                639
 
 #define END_MUS                     MUS_VS_OZONE
 
