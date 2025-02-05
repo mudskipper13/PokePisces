@@ -568,10 +568,10 @@
 #define MUS_MT_BLAZE                632
 #define MUS_MT_BLAZE_PEAK           633
 #define MUS_NINETALES_LEGEND        634
-#define MUS_VS_GYM_LEADER_2        635
-#define MUS_VS_LEGENDARY2        636
+#define MUS_VS_GYM_LEADER_2         635
+#define MUS_VS_LEGENDARY2           636
 #define MUS_EVER_GRANDE_ROAD        637
-#define MUS_VS_OZONE        638
+#define MUS_VS_OZONE                638
 
 #define END_MUS                     MUS_VS_OZONE
 
