@@ -922,7 +922,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_GHAERIAL]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  3 },
     [SPECIES_QUILWARD]                     = { .size = MON_COORDS_SIZE(48, 40), .y_offset =  9 },
     [SPECIES_BONFEU]                       = { .size = MON_COORDS_SIZE(56, 48), .y_offset =  8 },
-    [SPECIES_INFRAREC]                     = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
+    [SPECIES_INFRAREC]                     = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  7 },
     [SPECIES_BERM]                         = { .size = MON_COORDS_SIZE(40, 40), .y_offset =  0 },
     [SPECIES_MOODA]                        = { .size = MON_COORDS_SIZE(56, 40), .y_offset = 10 },
     [SPECIES_BERMUDON]                     = { .size = MON_COORDS_SIZE(64, 40), .y_offset =  0 },

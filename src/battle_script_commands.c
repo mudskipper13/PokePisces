@@ -1596,7 +1596,7 @@ static void Cmd_attackcanceler(void)
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
-    else if (gProtectStructs[gBattlerTarget].defendOrder)
+    else if (gProtectStructs[gBattlerTarget].defendOrder || gProtectStructs[gBattlerTarget].acidArmorCharge)
     {
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -2186,8 +2186,8 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                     + 1 * ((gBattleMons[battlerAtk].status2 & STATUS2_DRAGON_CHEER) != 0)
                     + (gBattleMoves[gCurrentMove].highCritRatio)
                     + (gCurrentMove == MOVE_RETURN && gBattleMons[battlerAtk].hp == gBattleMons[battlerAtk].maxHP)
-                    + (gCurrentMove == MOVE_MYTH_BUSTER && GetBattlerHeight(gBattlerTarget) > GetBattlerHeight(gBattlerAttacker))
-                    + (gCurrentMove == MOVE_MISERY_WAIL && (CountBattlerStatDecreases(gBattlerAttacker, TRUE) > 0))
+                    + (gCurrentMove == MOVE_MYTH_BUSTER && GetBattlerHeight(battlerDef) > GetBattlerHeight(battlerAtk))
+                    + (gCurrentMove == MOVE_MISERY_WAIL && (CountBattlerStatDecreases(battlerAtk, TRUE) > 0))
                     + (gCurrentMove == MOVE_HAYWIRE && (gStatuses4[battlerAtk] & STATUS4_GEARED_UP))
                     + (holdEffectAtk == HOLD_EFFECT_SCOPE_LENS)
                     + (gDisableStructs[battlerAtk].frenzyCounter)
@@ -2199,7 +2199,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                 #endif
                     + (abilityAtk == ABILITY_SUPER_LUCK)
                     + 2 * (abilityAtk == ABILITY_RISKTAKER)
-                    + 2 * ((gStatuses4[gBattlerTarget] & STATUS4_FAIRY_LOCK) != 0);
+                    + 2 * ((gStatuses4[battlerDef] & STATUS4_FAIRY_LOCK) != 0);
 
         // Record ability only if move had at least +3 chance to get a crit
         if (critChance >= 3 && recordAbility && (abilityDef == ABILITY_SHELL_ARMOR))
@@ -6471,6 +6471,17 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
                     effect = 1;
                 }
+                else if (gProtectStructs[gBattlerTarget].acidArmorCharge && gCurrentMove != MOVE_SUCKER_PUNCH)
+                {
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                    i = gBattlerAttacker;
+                    gBattlerAttacker = gBattlerTarget;
+                    gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
+                    gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
+                    effect = 1;
+                }
                 else if (gProtectStructs[gBattlerTarget].silkTrapped)
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
@@ -10190,7 +10201,6 @@ static void Cmd_various(void)
         else
         {
             gStatuses4[battler] |= STATUS4_FAIRY_LOCK;
-            gDisableStructs[battler].fairyLockTimer = 2;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
@@ -13184,6 +13194,12 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gProtectStructs[battler].beakBlastCharge = TRUE;
+        break;
+    }
+    case VARIOUS_SET_ACID_ARMOR:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].acidArmorCharge = TRUE;
         break;
     }
     case VARIOUS_SWAP_SIDE_STATUSES:

@@ -2886,9 +2886,9 @@ static const u8 sBoomburstDescription[] = _(
     "terrible explosive sound.");
 
 static const u8 sFairyLockDescription[] = _(
-    "Prevents foe from fleeing during\n"
-    "the next turn and ensures the\n"
-    "user's next attack will hit.");
+    "Traps the foe permanently, crits\n"
+    "more against them, and their\n"
+    "evasion lowers every turn.");
 
 static const u8 sKingsShieldDescription[] = _(
     "Protects from attacks and lowers\n"
@@ -4629,7 +4629,7 @@ static const u8 sSpiritAwayDescription[] = _(
     "Abosrbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "Boosts Spd and Crits. Can't use\n"
+    "Boosts Spd and crits. Can't use\n"
     "status moves or be attacked.\n"
     "Goes away after attacking.");
 

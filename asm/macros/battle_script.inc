@@ -2357,6 +2357,10 @@
 	various \battler, VARIOUS_SET_BEAK_BLAST
 	.endm
 
+	.macro setacidarmor battler:req
+	various \battler, VARIOUS_SET_ACID_ARMOR
+	.endm
+
 	.macro swapsidestatuses
 	various BS_ATTACKER, VARIOUS_SWAP_SIDE_STATUSES
 	.endm

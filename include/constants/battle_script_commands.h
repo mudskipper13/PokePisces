@@ -308,6 +308,7 @@
 #define VARIOUS_GEARED_UP                            217
 #define VARIOUS_APPLY_PHANTOM                        218
 #define VARIOUS_TRY_ACTIVATE_SHADOW_FORCE            219
+#define VARIOUS_SET_ACID_ARMOR                       220
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

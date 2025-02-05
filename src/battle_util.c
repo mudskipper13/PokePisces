@@ -2577,7 +2577,6 @@ enum
     ENDTURN_HEARTHWARM,
     ENDTURN_FAIRY_LOCK,
     ENDTURN_PUMPED_UP,
-    ENDTURN_ACID_ARMORED,
     ENDTURN_EMERGENCY_EXIT,
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
@@ -3059,25 +3058,6 @@ u8 DoBattlerEndTurnEffects(void)
                 gStatuses4[battler] &= ~STATUS4_PUMPED_UP;
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_ACID_ARMORED:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && gBattleMons[gBattlerAttacker].hp != 0 
-            && (CompareStat(gBattlerAttacker, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN) 
-            || GetBattlerAbility(gBattlerAttacker) == ABILITY_MIRROR_ARMOR
-            || (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_MOON_MIRROR 
-            && gBattleMons[gBattlerAttacker].species == SPECIES_LUNATONE))
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED 
-            && (gStatuses4[battler] & STATUS4_ACID_ARMORED))
-            {
-                SET_STATCHANGER(STAT_DEF, 1, TRUE);
-                gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
-                BattleScriptExecute(BattleScript_AcidArmoredActivates);
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
-                effect++;
-            }
-            gStatuses4[battler] &= ~STATUS4_ACID_ARMORED;
-            gBattleStruct->turnEffectsTracker++;
-            break;
         case ENDTURN_TAUNT: // taunt
             if (gDisableStructs[battler].tauntTimer && --gDisableStructs[battler].tauntTimer == 0)
             {
@@ -3131,12 +3111,11 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_FAIRY_LOCK:
-            if ((gStatuses4[battler] & STATUS4_FAIRY_LOCK) 
-            && (CompareStat(gBattlerAttacker, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN)))
+            if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
             {
-                SET_STATCHANGER(STAT_EVASION, 1, TRUE);
-                gBattleScripting.moveEffect = MOVE_EFFECT_EVS_MINUS_1;
-                BattleScriptExecute(BattleScript_FairyLockDropsEvasion);
+                gBattlerAttacker = gDisableStructs[battler].battlerPreventingEscape;    // needed to track who lowered stats
+                gBattlerTarget = battler;
+                BattleScriptExecute(BattleScript_FairyLockEndTurn);
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;

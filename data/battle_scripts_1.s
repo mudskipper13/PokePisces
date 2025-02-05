@@ -1570,11 +1570,28 @@ BattleScript_EffectPowerShift:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectAcidArmor:
-	jumpifnodamage BattleScript_AcidArmored
-	goto BattleScript_EffectDefenseUp2
-BattleScript_AcidArmored:
-	setuserstatus4 STATUS4_ACID_ARMORED, BattleScript_EffectDefenseUp2
-	goto BattleScript_EffectDefenseUp2
+	setstatchanger STAT_DEF, 2, FALSE
+	attackcanceler
+	attackstring
+	ppreduce
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_AcidArmorStatus
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AcidArmorAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_AcidArmorPrintString
+BattleScript_AcidArmorAttackAnim::
+	attackanimation
+	waitanimation
+BattleScript_AcidArmorDoAnim::
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_AcidArmorPrintString::
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AcidArmorStatus::
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setacidarmor BS_ATTACKER
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectRageFist:
 	jumpifmove MOVE_JUNGLE_RAGE BattleScript_JungleRageCheckBlooming
@@ -5772,15 +5789,14 @@ BattleScript_EffectAllySwitch:
 
 BattleScript_EffectFairyLock:
 	attackcanceler
+	jumpifsubstituteblocks BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	jumpifsafeguard BattleScript_ButItFailed
-	jumpifsubstituteblocks BattleScript_ButItFailed
 	trysetfairylock BS_TARGET, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-	printstring STRINGID_TARGETCANTESCAPENOW
+	printstring STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -16329,13 +16345,14 @@ BattleScript_ImposterActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
-BattleScript_FairyLockDropsEvasion::
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FairyLockDropsEvasionEnd
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_FAIRYLOCKDROPSEVASION
+BattleScript_FairyLockEndTurn::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_EVASION, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_EVASION, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_FairyLockEndTurnEnd
+	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_FairyLockDropsEvasionEnd::
+BattleScript_FairyLockEndTurnEnd:
 	end2
 
 BattleScript_HurtAttacker:
@@ -16446,14 +16463,6 @@ BattleScript_GooeyActivates::
 	seteffectsecondary
 	return
 
-BattleScript_AcidArmoredActivates::
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_AcidArmoredActivatesEnd
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_ACIDARMORDROPSDEFENSE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_AcidArmoredActivatesEnd::
-	end2
 
 BattleScript_AbilityStatusEffect::
 	waitstate
