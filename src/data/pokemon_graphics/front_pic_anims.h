@@ -11633,7 +11633,7 @@ static const union AnimCmd sAnim_EnamorusTherian_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_LottabatsHuddled_1[] =
+static const union AnimCmd sAnim_LottabatsDispersed_1[] =
 {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
@@ -13096,7 +13096,7 @@ SINGLE_ANIMATION(LycanrocDusk);
 #endif
 #if P_GEN_8_POKEMON == TRUE
 SINGLE_ANIMATION(EnamorusTherian);
-SINGLE_ANIMATION(LottabatsHuddled);
+SINGLE_ANIMATION(LottabatsDispersed);
 SINGLE_ANIMATION(DudunsparsThreeSegment);
 SINGLE_ANIMATION(GaoterraSolar);
 SINGLE_ANIMATION(GaoterraLunar);
@@ -14597,7 +14597,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[NUM_SPECIES + 1] =
     [SPECIES_BASCULEGION_FEMALE] = sAnims_Basculegion,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = sAnims_DudunsparsThreeSegment,
     [SPECIES_DUDUNSPARS_EIGHT_SEGMENT] = sAnims_DudunsparsEightSegment,
-    [SPECIES_LOTTABATS_HUDDLED] = sAnims_LottabatsHuddled,
+    [SPECIES_LOTTABATS_DISPERSED] = sAnims_LottabatsDispersed,
     [SPECIES_GAOTERRA_SOLAR] = sAnims_GaoterraSolar,
     [SPECIES_GAOTERRA_LUNAR] = sAnims_ShunyongGoldenOffense,
     [SPECIES_SPINDA_CAVE] = sAnims_Spinda,

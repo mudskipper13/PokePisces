@@ -10662,8 +10662,8 @@ u32 GetBattlerWeight(u32 battler)
     if (gBattleMons[battler].species == SPECIES_DUDUNSPARS_EIGHT_SEGMENT)
         weight = 884;
 
-    if (gBattleMons[battler].species == SPECIES_LOTTABATS_HUDDLED)
-        weight = 2800;
+    if (gBattleMons[battler].species == SPECIES_LOTTABATS_DISPERSED)
+        weight = 1;
 
     if (gBattleMons[battler].species == SPECIES_BISHOUCHA_WARMONGER)
         weight = 862;
@@ -10711,8 +10711,8 @@ u32 GetBattlerHeight(u32 battler)
     if (gBattleMons[battler].species == SPECIES_DUDUNSPARS_EIGHT_SEGMENT)
         height = 90;
 
-    if (gBattleMons[battler].species == SPECIES_LOTTABATS_HUDDLED)
-        height = 25;
+    if (gBattleMons[battler].species == SPECIES_LOTTABATS_DISPERSED)
+        height = 1;
 
     if (gBattleMons[battler].species == SPECIES_PAPYPUS_FEMALE)
         height = 27;

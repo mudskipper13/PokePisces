@@ -1119,7 +1119,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[NUM_SPECIES + 1] =
     SPECIES_SHINY_PAL(SHAYON, gMonShinyPalette_ShaYon),
     SPECIES_SHINY_PAL(LUOSHAN, gMonShinyPalette_LuoShan),
     SPECIES_SHINY_PAL(LOTTABATS, gMonShinyPalette_Lottabats),
-    SPECIES_SHINY_PAL(LOTTABATS_HUDDLED, gMonShinyPalette_LottabatsHuddled),
+    SPECIES_SHINY_PAL(LOTTABATS_DISPERSED, gMonShinyPalette_LottabatsDispersed),
     SPECIES_SHINY_PAL(GAOTERRA, gMonShinyPalette_Gaoterra),
     SPECIES_SHINY_PAL(GAOTERRA_SOLAR, gMonShinyPalette_GaoterraSolar),
     SPECIES_SHINY_PAL(GAOTERRA_LUNAR, gMonShinyPalette_GaoterraLunar),

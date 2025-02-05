@@ -22102,7 +22102,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = DUDUNSPARS_SPECIES_INFO,
     [SPECIES_DUDUNSPARS_EIGHT_SEGMENT] = DUDUNSPARS_SPECIES_INFO,
 
-    [SPECIES_LOTTABATS] =
+    [SPECIES_LOTTABATS_DISPERSED] =
     {
         .baseHP        = 60,
         .baseAttack    = 15,
@@ -29564,7 +29564,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .flags = SPECIES_FLAG_LEGENDARY,
     },
 
-    [SPECIES_LOTTABATS_HUDDLED] =
+    [SPECIES_LOTTABATS] =
     {
         .baseHP        = 60,
         .baseAttack    = 150,

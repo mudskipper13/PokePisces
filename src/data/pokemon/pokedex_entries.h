@@ -11281,13 +11281,13 @@ const struct PokedexEntry gPokedexEntries[] =
     [NATIONAL_DEX_LOTTABATS] =
     {
         .categoryName = _("Linked"),
-        .height = 1,
-        .weight = 10,
+        .height = 25,
+        .weight = 2800,
         .description = gLottabatsPokedexText,
-        .pokemonScale = 682,
-        .pokemonOffset = 24,
-        .trainerScale = 256,
-        .trainerOffset = 0,
+        .pokemonScale = 257,
+        .pokemonOffset = 6,
+        .trainerScale = 423,
+        .trainerOffset = 8,
     },
 
     [NATIONAL_DEX_DUDUNSPARS] =
