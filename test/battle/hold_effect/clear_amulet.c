@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Clear Amulet prevents Intimidate")
         HP_BAR(player, captureDamage: &turnOneHit);
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player); }
-        MESSAGE("Foe Wobbuffet's Attack was not lowered!");
+        MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
         HP_BAR(player, captureDamage: &turnTwoHit);
     } THEN {
         EXPECT_EQ(turnOneHit, turnTwoHit);
@@ -59,25 +59,25 @@ SINGLE_BATTLE_TEST("Clear Amulet prevents stat reducing effects")
         switch (move)
         {
         case MOVE_GROWL:
-            MESSAGE("Foe Wobbuffet's Attack was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_LEER:
-            MESSAGE("Foe Wobbuffet's Defense was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_CONFIDE:
-            MESSAGE("Foe Wobbuffet's Sp. Atk was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_FAKE_TEARS:
-            MESSAGE("Foe Wobbuffet's Sp. Def was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_SCARY_FACE:
-            MESSAGE("Foe Wobbuffet's Speed was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_SWEET_SCENT:
-            MESSAGE("Foe Wobbuffet's evasiveness was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         case MOVE_SAND_ATTACK:
-            MESSAGE("Foe Wobbuffet's accuracy was not lowered!");
+            MESSAGE("Foe Wobbuffet's Clear Amulet prevents\nits stats from being lowered!");
             break;
         }
     }

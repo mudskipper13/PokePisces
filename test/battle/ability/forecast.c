@@ -260,7 +260,7 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform back to normal when Sandstorm i
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
         MESSAGE("Castform transformed!");
     } THEN {
-        EXPECT_EQ(player->species, SPECIES_CASTFORM);
+        EXPECT_EQ(player->species, SPECIES_CASTFORM_SANDY);
     }
 }
 

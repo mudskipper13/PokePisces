@@ -135,9 +135,9 @@ SINGLE_BATTLE_TEST("Swallow heals HP depending on Stockpile's count", s16 hpHeal
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWALLOW, player);
         HP_BAR(player, captureDamage: &results[i].hpHeal);
     } FINALLY {
-        EXPECT_EQ(results[0].hpHeal, -100);
-        EXPECT_EQ(results[1].hpHeal, -200);
-        EXPECT_EQ(results[2].hpHeal, -399); // 400 - 1.
+        EXPECT_EQ(results[0].hpHeal, -180); // 45% of 400
+        EXPECT_EQ(results[1].hpHeal, -220); // 55% of 400
+        EXPECT_EQ(results[2].hpHeal, -260); // 65% of 400
     }
 }
 

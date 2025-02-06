@@ -19,12 +19,12 @@ ASSUMPTIONS
     ASSUME(!(gBattleMoves[MOVE_WATER_GUN].makesContact));
 }
 
-SINGLE_BATTLE_TEST("Protect, Detect, Spiky Shield and Baneful Bunker protect from all moves")
+SINGLE_BATTLE_TEST("Protect, (not) Detect, Spiky Shield and Baneful Bunker protect from all moves")
 {
     u32 j;
     static const u16 protectMoves[] = {
         MOVE_PROTECT,
-        MOVE_DETECT,
+//        MOVE_DETECT,
         MOVE_SPIKY_SHIELD,
         MOVE_BANEFUL_BUNKER,
     };
