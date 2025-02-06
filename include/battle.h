@@ -672,6 +672,7 @@ struct BattleStruct
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 redCardActivates:1;
+    u8 usedEjectItem;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;

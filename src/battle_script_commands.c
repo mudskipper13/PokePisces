@@ -1322,6 +1322,13 @@ static void Cmd_attackcanceler(void)
     u16 attackerAbility = GetBattlerAbility(gBattlerAttacker);
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
+    if (gBattleStruct->usedEjectItem & (1u << gBattlerAttacker))
+    {
+        gBattleStruct->usedEjectItem = 0;
+        gCurrentActionFuncId = B_ACTION_TRY_FINISH;
+        return;
+    }
+
     if (gBattleOutcome != 0)
     {
         gCurrentActionFuncId = B_ACTION_FINISHED;
@@ -7127,9 +7134,9 @@ static void Cmd_moveend(void)
                     u32 holdEffect;
                     holdEffect = GetBattlerHoldEffect(i, TRUE);
                     if (holdEffect == HOLD_EFFECT_EJECT_BUTTON)
-                        ejectButtonBattlers |= gBitTable[i];
+                        ejectButtonBattlers |= 1u << i;
                     else if (holdEffect == HOLD_EFFECT_EJECT_PACK)
-                        ejectPackBattlers |= gBitTable[i];
+                        ejectPackBattlers |= 1u << i;
                 }
                 if (ejectButtonBattlers || ejectPackBattlers)
                 {
@@ -7140,7 +7147,7 @@ static void Cmd_moveend(void)
                     {
                         u32 battler = battlers[i];
 
-                        if (battler != gBattlerAttacker && ejectButtonBattlers & gBitTable[battler])
+                        if (battler != gBattlerAttacker && ejectButtonBattlers & (1u << battler))
                         {
                             if (TestSheerForceFlag(gBattlerAttacker, gCurrentMove)) // Apparently Sheer Force blocks Eject Button, but not Eject Pack
                                 continue;
@@ -7149,7 +7156,7 @@ static void Cmd_moveend(void)
                             if (!BATTLER_DAMAGED(battler))
                                 continue;
                         }
-                        else if (ejectPackBattlers & gBitTable[battler])
+                        else if (ejectPackBattlers & (1u << battler))
                         {
                             if (!gProtectStructs[battler].statFell || gProtectStructs[battler].disableEjectPack)
                                 continue;
@@ -7162,9 +7169,7 @@ static void Cmd_moveend(void)
                         if (IsBattlerAlive(battler)
                             && CountUsablePartyMons(battler) > 0 // Has mon to switch into
                             // Does not activate if attacker used Parting Shot and can switch out
-                            && ((gBattleMoves[gCurrentMove].effect != EFFECT_HIT_SWITCH_TARGET 
-                            || gBattleMoves[gCurrentMove].effect != EFFECT_VITAL_THROW)
-                            && CanBattlerSwitch(gBattlerAttacker))
+                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW) && CanBattlerSwitch(gBattlerAttacker))
                             )
                         {
                             gBattleScripting.battler = battler;
@@ -7175,10 +7180,11 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_MANEUVER
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
-                                gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
+                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
                             effect = TRUE;
                             BattleScriptPushCursor();
-                            if (ejectButtonBattlers & gBitTable[battler])
+                            gBattleStruct->usedEjectItem |= 1u << battler;
+                            if (ejectButtonBattlers & (1u << battler))
                             {
                                 gBattlescriptCurrInstr = BattleScript_EjectButtonActivates;
                             }

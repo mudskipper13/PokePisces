@@ -2499,7 +2499,7 @@ BattleScript_AirCannonOnFirstTurn:
 	goto BattleScript_TwoTurnMovesSecondTurn
 
 BattleScript_EffectFloralHealing:
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_FloralHealingTryCritRateIncrease
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_FloralHealingTryRestoreStatDrops
 	attackcanceler
 	attackstring
 	ppreduce
@@ -2515,39 +2515,30 @@ BattleScript_EffectFloralHealing:
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_FloralHealingTryCritRateIncrease:
+BattleScript_FloralHealingTryRestoreStatDrops:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_FloralHealingTryHeal
-	setfocusenergy
-    jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingJustCritRateIncrease
-    jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingJustCritRateIncrease
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
-	jumpifsubstituteblocks BattleScript_FloralHealingJustCritRateIncrease
-	tryhealpulse BS_TARGET, BattleScript_FloralHealingJustCritRateIncrease
+    jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingRestoreStatDropsOnly
+    jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingRestoreStatDropsOnly
+	jumpifsubstituteblocks BattleScript_FloralHealingRestoreStatDropsOnly
+	tryhealpulse BS_TARGET, BattleScript_FloralHealingRestoreStatDropsOnly
 	attackanimation
 	waitanimation
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_FloralHealingJustCritRateIncrease:
-	printfromtable gFocusEnergyUsedStringIds
+	tryresetnegativestatstages BS_TARGET
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_FloralHealingTryHeal:
-    jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_ButItFailed @ stops pollen puff
-    jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_ButItFailed
-	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
-	jumpifsubstituteblocks BattleScript_ButItFailed
-	tryhealpulse BS_TARGET, BattleScript_ButItFailed
+BattleScript_FloralHealingRestoreStatDropsOnly:
 	attackanimation
 	waitanimation
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	printstring STRINGID_PKMNREGAINEDHEALTH
+	tryresetnegativestatstages BS_TARGET
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 

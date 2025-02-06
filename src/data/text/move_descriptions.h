@@ -3070,9 +3070,9 @@ static const u8 sSparklingAriaDescription[] = _(
     "healed by these bubbles.");
 
 static const u8 sFloralHealingDescription[] = _(
-    "Heals the target, more on Grassy\n"
-    "Terrain. If blooming, boosts the\n"
-    "target's critical hit ratio.");
+    "Heals the ally, more on Grassy\n"
+    "Terrain. If the user is blooming,\n"
+    "clears the ally's stat drops.");
 
 static const u8 sHighHorsepowerDescription[] = _(
     "The user fiercely attacks the\n"

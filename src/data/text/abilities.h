@@ -948,9 +948,9 @@ static const u8 sSurgeSurferDescription[] = _(
     "on Electric Terrain.");
 
 static const u8 sHuddleUpDescription[] = _(
-    "At LVL 25, the Pokémon becomes a\n"
+    "At Lv25, the Pokémon stays a\n"
     "powerful beast until at low HP.\n"
-    "At LVL 40, heals HP every turn.");
+    "At Lv40, heals HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
     "Once per battle, the silk that\n"
