@@ -3131,10 +3131,13 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_FAIRY_LOCK:
-            if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
+            if ((gStatuses4[battler] & STATUS4_FAIRY_LOCK) 
+            && (CompareStat(gBattlerAttacker, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN)))
             {
-                if (gDisableStructs[battler].fairyLockTimer == 0 || --gDisableStructs[battler].fairyLockTimer == 0)
-                    gStatuses4[battler] &= ~STATUS4_FAIRY_LOCK;
+                SET_STATCHANGER(STAT_EVASION, 1, TRUE);
+                gBattleScripting.moveEffect = MOVE_EFFECT_EVS_MINUS_1;
+                BattleScriptExecute(BattleScript_FairyLockDropsEvasion);
+                effect++;
             }
             gBattleStruct->turnEffectsTracker++;
             break;

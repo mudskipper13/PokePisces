@@ -2191,14 +2191,15 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                     + (gCurrentMove == MOVE_HAYWIRE && (gStatuses4[battlerAtk] & STATUS4_GEARED_UP))
                     + (holdEffectAtk == HOLD_EFFECT_SCOPE_LENS)
                     + (gDisableStructs[battlerAtk].frenzyCounter)
-                    + 2 * (gStatuses4[battlerAtk] & STATUS4_PHANTOM)
+                    + 2 * ((gStatuses4[battlerAtk] & STATUS4_PHANTOM) != 0)
                     + 2 * (holdEffectAtk == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[battlerAtk].species == SPECIES_CHANSEY)
                     + 2 * BENEFITS_FROM_LEEK(battlerAtk, holdEffectAtk)
                 #if B_AFFECTION_MECHANICS == TRUE
                     + 2 * (GetBattlerFriendshipScore(battlerAtk) >= FRIENDSHIP_200_TO_254)
                 #endif
                     + (abilityAtk == ABILITY_SUPER_LUCK)
-                    + 2 * (abilityAtk == ABILITY_RISKTAKER);
+                    + 2 * (abilityAtk == ABILITY_RISKTAKER)
+                    + 2 * ((gStatuses4[gBattlerTarget] & STATUS4_FAIRY_LOCK) != 0);
 
         // Record ability only if move had at least +3 chance to get a crit
         if (critChance >= 3 && recordAbility && (abilityDef == ABILITY_SHELL_ARMOR))
@@ -7739,6 +7740,10 @@ bool32 CanBattlerSwitch(u32 battler)
         }
 
         ret = (i != lastMonId + (PARTY_SIZE / 2));
+    }
+    else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
+    {
+        ret = FALSE;
     }
     else
     {
