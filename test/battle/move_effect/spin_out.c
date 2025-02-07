@@ -6,7 +6,7 @@ ASSUMPTIONS
     ASSUME(gBattleMoves[MOVE_SPIN_OUT].effect == EFFECT_SPIN_OUT);
 }
 
-SINGLE_BATTLE_TEST("Spin Out lowers speed by 2 stages")
+SINGLE_BATTLE_TEST("Spin Out lowers speed by 1 stage")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -16,6 +16,6 @@ SINGLE_BATTLE_TEST("Spin Out lowers speed by 2 stages")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Speed harshly fell!");
+        MESSAGE("Wobbuffet's Speed fell!");
     }
 }

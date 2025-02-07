@@ -1,25 +1,22 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Frostbite reduces the special attack by 50 percent")
-{
-    s16 reducedDamage;
-    s16 normaleDamage;
 
+SINGLE_BATTLE_TEST("Frostbite reduces Attack by 50%", s16 damage)
+{
+    bool32 frostbite;
+    PARAMETRIZE { frostbite = FALSE; }
+    PARAMETRIZE { frostbite = TRUE; }
     GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET) { Status1(STATUS1_FROSTBITE); }
+        PLAYER(SPECIES_WOBBUFFET) { if (frostbite) Status1(STATUS1_FROSTBITE); }
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(opponent, MOVE_SWIFT); MOVE(player, MOVE_FLAME_WHEEL); }
-        TURN { MOVE(opponent, MOVE_SWIFT); }
+        TURN { MOVE(player, MOVE_WATER_GUN); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SWIFT, opponent);
-        HP_BAR(player, captureDamage: &reducedDamage);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_FLAME_WHEEL, player);
-        HP_BAR(opponent);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SWIFT, opponent);
-        HP_BAR(player, captureDamage: &normaleDamage);
-   } THEN { EXPECT_EQ(reducedDamage * 2, normaleDamage); }
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, Q_4_12(0.5), results[1].damage);
+    }
 }
 
 SINGLE_BATTLE_TEST("Frostbite deals 1/16 damage to effected pokemon")
@@ -33,7 +30,7 @@ SINGLE_BATTLE_TEST("Frostbite deals 1/16 damage to effected pokemon")
         TURN {}
     } SCENE {
         MESSAGE("Foe Wobbuffet is hurt by its frostbite!");
-        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRS, opponent);
         HP_BAR(opponent, captureDamage: &frostbiteDamage);
    } THEN { EXPECT_EQ(frostbiteDamage, opponent->maxHP / 16); }
 }
@@ -85,11 +82,11 @@ SINGLE_BATTLE_TEST("Frostbite is healed when the user uses a thawing move")
         HP_BAR(opponent);
         if (move == MOVE_EMBER) {
             MESSAGE("Wobbuffet is hurt by its frostbite!");
-            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, player);
+            ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRS, player);
         } else {
             NONE_OF {
                 MESSAGE("Wobbuffet is hurt by its frostbite!");
-                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, player);
+                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRS, player);
             }
         }
    }

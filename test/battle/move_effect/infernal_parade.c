@@ -25,10 +25,10 @@ SINGLE_BATTLE_TEST("Infernal Parade's power doubles if the target has a status c
 {
     u32 status1;
     PARAMETRIZE { status1 = STATUS1_NONE; }
-    PARAMETRIZE { status1 = STATUS1_SLEEP; }
+    PARAMETRIZE { status1 = STATUS1_REST; }
     PARAMETRIZE { status1 = STATUS1_POISON; }
     PARAMETRIZE { status1 = STATUS1_BURN; }
-    PARAMETRIZE { status1 = STATUS1_FREEZE; }
+    PARAMETRIZE { status1 = STATUS1_FROSTBITE; }
     PARAMETRIZE { status1 = STATUS1_PARALYSIS; }
     PARAMETRIZE { status1 = STATUS1_TOXIC_POISON; }
     GIVEN {

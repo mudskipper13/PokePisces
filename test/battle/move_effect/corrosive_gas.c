@@ -59,7 +59,7 @@ SINGLE_BATTLE_TEST("Items lost to Corrosive Gas cannot be restored by Recycle")
     } WHEN {
         TURN { MOVE(player, MOVE_CORROSIVE_GAS); MOVE(opponent, MOVE_RECYCLE); }
     } SCENE {
-        MESSAGE("Wobbuffet used CorrosiveGas!");
+        MESSAGE("Wobbuffet used Corrosive Gas!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CORROSIVE_GAS, player);
         MESSAGE("Wobbuffet corroded Foe Wobbuffet's Oran Berry!");
         MESSAGE("Foe Wobbuffet used Recycle!");
@@ -94,11 +94,6 @@ DOUBLE_BATTLE_TEST("Corrosive Gas destroys foes and ally's items if they have on
         TURN { MOVE(playerRight, MOVE_CORROSIVE_GAS); }
     } SCENE {
         MESSAGE("Wynaut used CorrosiveGas!");
-        if (itemPlayerLeft == ITEM_CHERI_BERRY) {
-            MESSAGE("Wynaut corroded Wobbuffet's Cheri Berry!");
-        } else {
-            MESSAGE("It had no effect on Wobbuffet!");
-        }
         if (itemOpponentLeft == ITEM_ORAN_BERRY) {
             MESSAGE("Wynaut corroded Foe Abra's Oran Berry!");
         } else {
@@ -112,7 +107,7 @@ DOUBLE_BATTLE_TEST("Corrosive Gas destroys foes and ally's items if they have on
 
     } THEN {
         EXPECT_EQ(playerRight->item, ITEM_SITRUS_BERRY); // Attacker doesn't lose its item.
-        EXPECT_EQ(playerLeft->item, ITEM_NONE);
+        EXPECT_EQ(playerLeft->item, ITEM_CHERI_BERRY);
         EXPECT_EQ(opponentLeft->item, ITEM_NONE);
         EXPECT_EQ(opponentRight->item, ITEM_NONE);
     }

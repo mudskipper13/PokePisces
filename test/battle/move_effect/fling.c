@@ -115,7 +115,7 @@ SINGLE_BATTLE_TEST("Fling - Item is lost even when there is no target")
         TURN { MOVE(opponent, MOVE_SELF_DESTRUCT); MOVE(player, MOVE_FLING); SEND_OUT(opponent, 1); }
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Foe Wobbuffet used SelfDestruct!");
+        MESSAGE("Foe Wobbuffet used Self-Destruct!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SELF_DESTRUCT, opponent);
         HP_BAR(player);
         MESSAGE("Foe Wobbuffet fainted!");
@@ -208,7 +208,7 @@ SINGLE_BATTLE_TEST("Fling applies special effects when throwing specific Items")
 
     PARAMETRIZE {item = ITEM_FLAME_ORB; effect = EFFECT_WILL_O_WISP; }
     PARAMETRIZE {item = ITEM_TOXIC_ORB; effect = EFFECT_TOXIC; }
-    PARAMETRIZE {item = ITEM_POISON_BARB; effect = EFFECT_POISON; }
+    PARAMETRIZE {item = ITEM_POISON_ORB; effect = EFFECT_POISON; }
     PARAMETRIZE {item = ITEM_LIGHT_BALL; effect = EFFECT_PARALYZE; }
     PARAMETRIZE {item = ITEM_RAZOR_FANG; effect = EFFECT_FLINCH_HIT; }
     PARAMETRIZE {item = ITEM_KINGS_ROCK; effect = EFFECT_FLINCH_HIT; }
@@ -262,7 +262,7 @@ SINGLE_BATTLE_TEST("Fling - thrown berry's effect activates for the target even 
     PARAMETRIZE { item = ITEM_PECHA_BERRY; effect = HOLD_EFFECT_CURE_PSN; status1 = STATUS1_POISON; }
     PARAMETRIZE { item = ITEM_PECHA_BERRY; effect = HOLD_EFFECT_CURE_PSN; status1 = STATUS1_TOXIC_POISON; }
     PARAMETRIZE { item = ITEM_RAWST_BERRY; effect = HOLD_EFFECT_CURE_BRN; status1 = STATUS1_BURN; }
-    PARAMETRIZE { item = ITEM_ASPEAR_BERRY; effect = HOLD_EFFECT_CURE_FRZ; status1 = STATUS1_FREEZE; }
+//    PARAMETRIZE { item = ITEM_ASPEAR_BERRY; effect = HOLD_EFFECT_CURE_FRZ; status1 = STATUS1_FREEZE; } //Contact moves break Freeze
     PARAMETRIZE { item = ITEM_ASPEAR_BERRY; effect = HOLD_EFFECT_CURE_FRZ; status1 = STATUS1_FROSTBITE; }
     PARAMETRIZE { item = ITEM_APICOT_BERRY; effect = HOLD_EFFECT_SP_DEFENSE_UP; statId = STAT_SPDEF; }
     PARAMETRIZE { item = ITEM_MARANGA_BERRY; effect = HOLD_EFFECT_MARANGA_BERRY; statId = STAT_SPDEF; }
@@ -297,11 +297,11 @@ SINGLE_BATTLE_TEST("Fling - thrown berry's effect activates for the target even 
         else if (status1 != STATUS1_NONE) {
             if (status1 == STATUS1_BURN) {
                 MESSAGE("Foe Wobbuffet's Rawst Berry healed its burn!");
-            } else if (status1 == STATUS1_SLEEP) {
+            } else if (status1 == STATUS1_REST) {
                 MESSAGE("Foe Wobbuffet's Chesto Berry woke it from its sleep!");
             } else if (status1 == STATUS1_FREEZE) {
-                MESSAGE("Foe Wobbuffet's Aspear Berry defrosted it!");
-            } else if (status1 == STATUS1_FROSTBITE) {
+//                MESSAGE("Foe Wobbuffet's Aspear Berry defrosted it!"); //Contact moves break Freeze
+//            } else if (status1 == STATUS1_FROSTBITE) {
                 MESSAGE("Foe Wobbuffet's Aspear Berry healed its frostbite!");
             } else if (status1 == STATUS1_PARALYSIS) {
                 MESSAGE("Foe Wobbuffet's Cheri Berry cured paralysis!");

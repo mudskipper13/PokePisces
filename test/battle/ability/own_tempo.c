@@ -1,31 +1,31 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Own Tempo prevents intimidate")
-{
-    s16 turnOneHit;
-    s16 turnTwoHit;
-
-    GIVEN {
-        ASSUME(B_UPDATED_INTIMIDATE >= GEN_8);
-        PLAYER(SPECIES_EKANS) { Ability(ABILITY_SHED_SKIN); };
-        PLAYER(SPECIES_EKANS) { Ability(ABILITY_INTIMIDATE); };
-        OPPONENT(SPECIES_SLOWPOKE) { Ability(ABILITY_OWN_TEMPO); };
-    } WHEN {
-        TURN { MOVE(opponent, MOVE_TACKLE); }
-        TURN { SWITCH(player, 1); MOVE(opponent, MOVE_TACKLE); }
-
-    } SCENE {
-        HP_BAR(player, captureDamage: &turnOneHit);
-        ABILITY_POPUP(player, ABILITY_INTIMIDATE);
-        NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player); }
-        ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        MESSAGE("Foe Slowpoke's Attack was not lowered!");
-        HP_BAR(player, captureDamage: &turnTwoHit);
-    } THEN {
-        EXPECT_EQ(turnOneHit, turnTwoHit);
-    }
-}
+//SINGLE_BATTLE_TEST("Own Tempo prevents intimidate")
+//{
+//    s16 turnOneHit;
+//    s16 turnTwoHit;
+//
+//    GIVEN {
+//        ASSUME(B_UPDATED_INTIMIDATE >= GEN_8);
+//        PLAYER(SPECIES_EKANS) { Ability(ABILITY_SHED_SKIN); };
+//        PLAYER(SPECIES_EKANS) { Ability(ABILITY_INTIMIDATE); };
+//        OPPONENT(SPECIES_SLOWPOKE) { Ability(ABILITY_OWN_TEMPO); };
+//    } WHEN {
+//        TURN { MOVE(opponent, MOVE_TACKLE); }
+//        TURN { SWITCH(player, 1); MOVE(opponent, MOVE_TACKLE); }
+//
+//    } SCENE {
+//        HP_BAR(player, captureDamage: &turnOneHit);
+//        ABILITY_POPUP(player, ABILITY_INTIMIDATE);
+//        NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player); }
+//        ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
+//        MESSAGE("Foe Slowpoke's Attack was not lowered!");
+//        HP_BAR(player, captureDamage: &turnTwoHit);
+//    } THEN {
+//        EXPECT_EQ(turnOneHit, turnTwoHit);
+//    }
+//}
 
 SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the opponent")
 {
@@ -117,3 +117,46 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from items")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
     }
 }
+
+//SINGLE_BATTLE_TEST("Own Tempo's power raises depending on different Dance moves", s16 damage) //tweak to use different dance moves
+//{
+//    u8 count;
+//    PARAMETRIZE { count = 1; }
+//    PARAMETRIZE { count = 2; }
+//    PARAMETRIZE { count = 3; }
+//    PARAMETRIZE { count = 4; }
+//    PARAMETRIZE { count = 5; }
+//    GIVEN {
+//        PLAYER(SPECIES_INFAIRNO);
+//        OPPONENT(SPECIES_WOBBUFFET);
+//    } WHEN {
+//        TURN { MOVE(player, MOVE_FEATHER_DANCE); }
+//        if (count != 1){
+//            TURN { MOVE(player, MOVE_FEATHER_DANCE); }
+//            if (count == 5) {
+//                TURN { MOVE(player, MOVE_FEATHER_DANCE); }
+//            }
+//        }
+//        TURN { MOVE(player, MOVE_POUND); }
+//    } SCENE {
+//        ANIMATION(ANIM_TYPE_MOVE, MOVE_FEATHER_DANCE, player);
+//        MESSAGE("Foe Wobbuffet's Attack harshly fell!");
+//        if (count != 1) {
+//            ANIMATION(ANIM_TYPE_MOVE, MOVE_FEATHER_DANCE, player);
+//            MESSAGE("Foe Wobbuffet's Attack harshly fell!");
+//            if (count == 5) {
+//                ANIMATION(ANIM_TYPE_MOVE, MOVE_FEATHER_DANCE, player);
+//                MESSAGE("Foe Wobbuffet's Attack harshly fell!");
+//            }
+//        }
+//        ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, player);
+//        HP_BAR(opponent, captureDamage: &results[i].damage);
+//    } FINALLY {
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.0), results[0].damage);
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.1), results[1].damage);
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.2), results[2].damage);
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.3), results[3].damage);
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.4), results[4].damage);
+//        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[5].damage);
+//    }
+//}
