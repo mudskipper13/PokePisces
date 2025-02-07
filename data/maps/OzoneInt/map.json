@@ -24,8 +24,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "OzoneInt_EventScript_DoorGuard",
+      "flag": "FLAG_TEMP_11"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
@@ -37,8 +37,21 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "OzoneInt_EventScript_Archie",
+      "flag": "FLAG_HIDE_ARCHIE_OZONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "x": 19,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneInt_EventScript_Maxie",
+      "flag": "FLAG_HIDE_MAXIE_OZONE"
     }
   ],
   "warp_events": [
@@ -52,6 +65,13 @@
     {
       "x": 15,
       "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_FLOOR2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_OZONE_INT",
       "dest_warp_id": "0"

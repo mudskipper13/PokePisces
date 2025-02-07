@@ -120,6 +120,23 @@ OzoneFloor2_Movement_RayLeaves:
 	walk_right
 	step_end
 
+OzoneFloor2_EventScript_Nurse::
+	lock
+	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, OzoneFloor2_EventScript_HealPkmn
+	message gText_WeHopeToSeeYouAgain
+	return
+
+OzoneFloor2_EventScript_HealPkmn::
+	special HealPlayerParty
+	message gText_RestoredPkmnToFullHealth
+	waitmessage
+	message gText_WeHopeToSeeYouAgain
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
 OzoneFloor2_Text_NameRay:
 	.string "Ray$"
 

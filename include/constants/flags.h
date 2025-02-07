@@ -1269,8 +1269,8 @@
 #define FLAG_FINAL_OZONE_BEAT_COURTNEY                                           0x4C3 // Unused Flag
 #define FLAG_FINAL_OZONE_BEAT_SHELLY                                           0x4C4 // Unused Flag
 #define FLAG_BEAT_RAY_3                                           0x4C5 // Unused Flag
-#define FLAG_UNUSED_0x4C6                                           0x4C6 // Unused Flag
-#define FLAG_UNUSED_0x4C7                                           0x4C7 // Unused Flag
+#define FLAG_HIDE_MAXIE_OZONE                                           0x4C6 // Unused Flag
+#define FLAG_HIDE_ARCHIE_OZONE                                          0x4C7 // Unused Flag
 #define FLAG_UNUSED_0x4C8                                           0x4C8 // Unused Flag
 #define FLAG_UNUSED_0x4C9                                           0x4C9 // Unused Flag
 #define FLAG_UNUSED_0x4CA                                           0x4CA // Unused Flag

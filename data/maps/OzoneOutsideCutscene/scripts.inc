@@ -12,6 +12,7 @@ OzoneOutsideCutscene_OnFrame:
 
 OzoneOutsideCutscene_EventScript_MeetWallace::
 	lock
+	setvar VAR_TEMP_4, 1
 	applymovement OBJ_EVENT_ID_PLAYER, OzoneOutsideCutscene_Movement_PlayerWalkToWallace
 	applymovement LOCALID_MAXIE, OzoneOutsideCutscene_Movement_MaxieWalkToWallace
 	applymovement LOCALID_ARCHIE, OzoneOutsideCutscene_Movement_ArchieWalkToWallace
@@ -26,6 +27,7 @@ OzoneOutsideCutscene_EventScript_MeetWallace::
 	speakername OzoneOutsideCutscene_Text_NameMaxie
 	msgbox OzoneOutsideCutscene_Text_LetsGetTherePostHaste, MSGBOX_DEFAULT
 	closemessage
+	clearflag FLAG_HIDE_MAXIE_OZONE
 	warp MAP_CAVE_OF_ORIGIN, 1, 1
 	waitstate
 	release

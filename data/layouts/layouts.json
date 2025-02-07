@@ -6106,7 +6106,7 @@
       "name": "OzoneInt_Layout",
       "width": 31,
       "height": 15,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_OzoneInterior",
       "border_filepath": "data/layouts/OzoneInt/border.bin",
       "blockdata_filepath": "data/layouts/OzoneInt/map.bin"

@@ -190,6 +190,9 @@ DevonCorp_EventScript_DevonMeetingPostWally::
 	msgbox DevonCorp_Text_IThinkItllBeFun, MSGBOX_DEFAULT
 	speakername DevonCorp_Text_NameMrStone
 	msgbox DevonCorp_Text_PleaseLeave, MSGBOX_DEFAULT
+	setflag FLAG_HIDE_MAXIE_OZONE
+	setflag FLAG_HIDE_ARCHIE_OZONE
+	setvar VAR_NEW_COO_STATE, 5
 	warp MAP_RUSTBORO_NEW, 61, 35
 	waitstate
 	release
