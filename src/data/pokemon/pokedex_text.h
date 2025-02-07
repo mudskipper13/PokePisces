@@ -5619,22 +5619,25 @@ const u8 gMagnanicorPokedexText[] = _(
     "particles into weapons to guard others.");
 
 const u8 gCryplinPokedexText[] = _(
-    "Credible sightings of these Pokémon are\n"
-    "extremely rare, especially because they\n"
-    "wipe the memory of people who witness\n"
-    "them.");
+    "Credible sightings of these Pokémon are scarce,\n"
+    "especially because they wipe the memory of\n"
+    "people who witness them. They use their odd\n"
+    "antennae to propel strong psychic force against\n"
+    "foes.");
 
 const u8 gUhefoePokedexText[] = _(
-    "In the past, this Pokémon only existed\n"
-    "in urban legends, as footage of them was\n"
-    "often fuzzy. They hover extremely fast\n"
-    "up in the sky, making them hard to spot.");
+    "In the past, Uhefoe were only mentioned in\n"
+    "discussions of the occult online, as there was\n"
+    "no concrete proof of these Pokémon's existence.\n"
+    "They hover extremely fast in the sky, moving in\n"
+    "erratic patterns, making them hard to spot.");
 
 const u8 gMystomaniaPokedexText[] = _(
-    "Overflowing with energy, Mystomania has\n"
-    "the power to pulverize boulders and\n"
-    "outspeed jet planes. Only a few dare\n"
-    "challenge it to a battle.");
+    "Overflowing with energy, Mystomania have the\n"
+    "power to pulverize boulders and outspeed jets.\n"
+    "Their kicks can split the seas and skies, and\n"
+    "their roars cause city-wide blackouts. They have\n"
+    "been titled the ultimate life forms.");
 
 const u8 gLyoresaPokedexText[] = _(
     "Lyoresa come from space and communicate\n"
@@ -6124,7 +6127,7 @@ const u8 gLevladePokedexText[] = _(
 
 const u8 gShockorePokedexText[] = _(
     "Shockore store and produce an abundant amount of\n"
-    "energy that can power entire towns. Many trainers\n"
+    "energy that can power entire towns. Many people\n"
     "keep one on hand to charge important devices\n"
     "and even vehicles. However, be careful when\n"
     "handling them as they may cause power surges.");
@@ -6137,16 +6140,18 @@ const u8 gPlasmantisPokedexText[] = _(
     "been deemed symbols of justice among the locals.");
 
 const u8 gHaracePokedexText[] = _(
-    "Harace is made purely of a magnetic\n"
-    "quartz-like gem. Its electromagnetic\n"
-    "properties let it propel itself against\n"
-    "the earth's magnetic field to speed up.");
+    "Harace are made purely of a magnetic quartz-like\n"
+    "gem. Their electromagnetic properties let them\n"
+    "accelerate against the earth's magnetic field.\n"
+    "Due to their sensitivity to magnetic fields,\n"
+    "collectors use them to find buried treasure.");
 
 const u8 gTorstevicPokedexText[] = _(
-    "Torstevic are slow due to their immense\n"
-    "weight, but can accelerate to blazing\n"
-    "speeds by using magnetic fields. They\n"
-    "produce vibrant gems that sell for a lot.");
+    "Torstevic are slow due to their immense weight,\n"
+    "but can accelerate using magnetic fields. They\n"
+    "grow special magnetic gems valued by jewelers,\n"
+    "scientists, and engineers. High-quality ones\n"
+    "may sell for up to ¥15,000,000.");
 
 const u8 gChikaPokedexText[] = _(
     "Naturally, born blind, they exercise\n"

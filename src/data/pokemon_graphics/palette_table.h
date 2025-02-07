@@ -1119,7 +1119,7 @@ const struct CompressedSpritePalette gMonPaletteTable[NUM_SPECIES + 1] =
     SPECIES_PAL(SHAYON, gMonPalette_ShaYon),
     SPECIES_PAL(LUOSHAN, gMonPalette_LuoShan),
     SPECIES_PAL(LOTTABATS, gMonPalette_Lottabats),
-    SPECIES_PAL(LOTTABATS_HUDDLED, gMonPalette_LottabatsHuddled),
+    SPECIES_PAL(LOTTABATS_DISPERSED, gMonPalette_LottabatsDispersed),
     SPECIES_PAL(GAOTERRA, gMonPalette_Gaoterra),
     SPECIES_PAL(GAOTERRA_SOLAR, gMonPalette_GaoterraSolar),
     SPECIES_PAL(GAOTERRA_LUNAR, gMonPalette_GaoterraLunar),
