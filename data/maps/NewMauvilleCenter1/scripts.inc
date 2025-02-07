@@ -2,11 +2,10 @@
 
 NewMauvilleCenter1_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, NewMauvilleCenter1_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 NewMauvilleCenter1_OnTransition:
-	setrespawn HEAL_LOCATION_MAUVILLE_CITY
+	setrespawn HEAL_LOCATION_MAUVILLE_NEW
 	end
 
 NewMauvilleCenter1_EventScript_Nurse::

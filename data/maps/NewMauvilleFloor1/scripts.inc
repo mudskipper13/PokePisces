@@ -82,6 +82,7 @@ NewMauvilleFloor1_EventScript_PowerlessManEvent::
 	playse SE_EXIT
 	removeobject LOCALID_P_MAN
 	setflag FLAG_TEMP_11
+	setflag FLAG_VISITED_MAUVILLE_CITY
 	setvar VAR_OLD_GUYS_STATE, 1
 	releaseall
 	end

@@ -45,6 +45,7 @@ MossdeepCity_EventScript_HideMeteors::
 
 MossdeepCity_EventScript_MonkEncounter1::
 	lock
+	setflag FLAG_VISITED_MOSSDEEP_CITY
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MeetPlayer1
 	waitmovement 0
 	goto MossdeepCity_EventScript_MonkTakeToHouse1
@@ -66,6 +67,7 @@ MossdeepCity_Movement_MeetPlayer1:
 
 MossdeepCity_EventScript_MonkEncounter2::
 	lock
+	setflag FLAG_VISITED_MOSSDEEP_CITY
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MeetPlayer2
 	waitmovement 0
 	goto MossdeepCity_EventScript_MonkTakeToHouse2

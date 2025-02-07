@@ -70,6 +70,7 @@ Route122_EventScript_RayLeaves::
 	speakername NULL
 	setflag FLAG_TEMP_11
 	setvar VAR_RAY_STATE, 2
+	setflag FLAG_VISITED_ZOTPYRE
 	release
 	end
 

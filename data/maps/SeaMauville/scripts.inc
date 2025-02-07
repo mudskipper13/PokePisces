@@ -17,6 +17,7 @@ SeaMauville_MapScripts::
 	.byte 0
 
 SeaMauville_OnLoad:
+	setflag FLAG_VISITED_SLATEPORT_CITY
 	call_if_lt VAR_OLD_GUYS_STATE, 9, SeaMauville_EventScript_SetTraderGfx
 	call_if_eq VAR_OLD_GUYS_STATE, 9, SeaMauville_EventScript_SetBardGfx
 	call_if_eq VAR_OLD_GUYS_STATE, 11, SeaMauville_EventScript_SetTraderGfx

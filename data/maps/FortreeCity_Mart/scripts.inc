@@ -2,11 +2,10 @@
 
 FortreeCity_Mart_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_Mart_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 FortreeCity_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_FORTREE_CITY
+	setrespawn HEAL_LOCATION_OZONE_INSTITUTE
 	end
 
 FortreeCity_Mart_EventScript_Nurse::

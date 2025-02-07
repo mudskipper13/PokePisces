@@ -1,7 +1,12 @@
 .set LOCALID_DEVONEMPLOYEE, 1
 
 RustboroNew_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RustboroNew_OnTransition
 	.byte 0
+
+RustboroNew_OnTransition:
+	setflag FLAG_VISITED_RUSTBORO_CITY
+	end
 
 RustboroNew_EventScript_DevonEncounterStartUpLeft::
 	lock
