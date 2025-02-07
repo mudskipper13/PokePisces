@@ -479,7 +479,7 @@
 #define STRINGID_HEALINGWISHCAMETRUE                  477
 #define STRINGID_HEALINGWISHHEALED                    478
 #define STRINGID_LUNARDANCECAMETRUE                   479
-#define STRINGID_CUSEDBODYDISABLED                    480
+#define STRINGID_CURSEDBODYDISABLED                   480
 #define STRINGID_ATTACKERACQUIREDABILITY              481
 #define STRINGID_TARGETABILITYSTATLOWER               482
 #define STRINGID_TARGETSTATWONTGOHIGHER               483
@@ -833,8 +833,12 @@
 #define STRINGID_PROTECTEDDEFENDER                    831
 #define STRINGID_FAIRYLOCKDROPSEVASION                832
 #define STRINGID_ACIDARMORDROPSDEFENSE                833
+#define STRINGID_CURSEDBODYTORMENTED                  834
+#define STRINGID_CURSEDBODYCURSED                     835
+#define STRINGID_DAYBREAK                             836
+#define STRINGID_SOLARPOWERGAINS                      837
 
-#define BATTLESTRINGS_COUNT                           834
+#define BATTLESTRINGS_COUNT                           838
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

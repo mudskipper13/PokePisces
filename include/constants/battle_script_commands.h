@@ -308,6 +308,9 @@
 #define VARIOUS_GEARED_UP                            217
 #define VARIOUS_APPLY_PHANTOM                        218
 #define VARIOUS_TRY_ACTIVATE_SHADOW_FORCE            219
+#define VARIOUS_SET_ACID_ARMOR                       220
+#define VARIOUS_TRY_ACTIVATE_STAR_ASSAULT            221
+#define VARIOUS_SOLAR_POWER_DAMAGE                   222
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

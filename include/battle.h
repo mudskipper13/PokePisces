@@ -68,6 +68,7 @@ struct DisableStruct
     u8 protectUses;
     u8 stockpileCounter;
     u8 exhaustionCounter;
+    u8 daybreakCounter;
     u8 frenzyCounter;
     u8 purified;
     s8 stockpileDef;
@@ -169,6 +170,7 @@ struct ProtectStruct
     u16 pranksterElevated:1;
     u16 quickDraw:1;
     u16 beakBlastCharge:1;
+    u16 acidArmorCharge:1;
     u16 quash:1;
     u16 shellTrap:1;
     u16 silkTrapped:1;
@@ -671,6 +673,7 @@ struct BattleStruct
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 redCardActivates:1;
+    u8 usedEjectItem;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
@@ -701,8 +704,6 @@ struct BattleStruct
     u8 aiMoveOrAction[MAX_BATTLERS_COUNT];
     u8 aiChosenTarget[MAX_BATTLERS_COUNT];
     u8 soulheartBattlerId;
-    u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
-    bool8 friskedAbility; // If identifies two mons, show the ability pop-up only once.
     u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESSFULLY used.
     u8 slicingMoveTurns[MAX_BATTLERS_COUNT]; // For Sharpness, number of times a slicing move has been SUCCESSFULLY used.
     u8 dancingMoveTurns[MAX_BATTLERS_COUNT]; // For Own Tempo, number of times a dancing move has been SUCCESSFULLY used.
@@ -1112,6 +1113,13 @@ extern u8 gPartyCriticalHits[PARTY_SIZE];
 extern u8 gHitBySlashMove[PARTY_SIZE];
 extern u8 gHitByPierceMove[PARTY_SIZE];
 extern u8 gHitByBluntMove[PARTY_SIZE];
+
+static inline bool32 IsBattlerTurnDamaged(u32 battler)
+{
+    return gSpecialStatuses[battler].physicalDmg != 0
+        || gSpecialStatuses[battler].specialDmg != 0
+        || gBattleStruct->enduredDamage & (1u << battler);
+}
 
 static inline u32 GetBattlerPosition(u32 battler)
 {

@@ -4197,7 +4197,7 @@ Cry_Dudunspars::
 
 	.align 2
 Cry_Lottabats::
-	.incbin "sound/direct_sound_samples/cries/lottabats_dispersed.bin"
+	.incbin "sound/direct_sound_samples/cries/lottabats_huddled.bin"
 
 	.align 2
 Cry_Pomelonian::
@@ -5220,8 +5220,8 @@ Cry_CalyrexShadowRider::
 	.incbin "sound/direct_sound_samples/cries/calyrex_shadow_rider.bin"
 
 	.align 2
-Cry_LottabatsHuddled::
-	.incbin "sound/direct_sound_samples/cries/lottabats_huddled.bin"
+Cry_LottabatsDispersed::
+	.incbin "sound/direct_sound_samples/cries/lottabats_dispersed.bin"
 
 	.align 2
 Cry_GaoterraSolar::

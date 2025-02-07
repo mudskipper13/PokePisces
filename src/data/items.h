@@ -482,7 +482,6 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -504,7 +503,7 @@ const struct Item gItems[] =
         .description = sHealPowderDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceFriendship,
         .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },

@@ -1693,9 +1693,9 @@ static const u8 sMudShotDescription[] = _(
     "also lowers the foe's Speed.");
 
 static const u8 sPoisonTailDescription[] = _(
-    "The user hits the foe with its\n"
-    "tail. This may poison the foe.\n"
-    "Critical hits land more easily.");
+    "Critical hits land more easily.\n"
+    "May poison the foe. Boosted and \n"
+    "badly poisons if a critical.");
 
 static const u8 sCovetDescription[] = _(
     "The user's cuteness lets it\n"
@@ -2886,9 +2886,9 @@ static const u8 sBoomburstDescription[] = _(
     "terrible explosive sound.");
 
 static const u8 sFairyLockDescription[] = _(
-    "Prevents foe from fleeing during\n"
-    "the next turn and ensures the\n"
-    "user's next attack will hit.");
+    "Traps the foe permanently, crits\n"
+    "more against them, and their\n"
+    "evasion lowers every turn.");
 
 static const u8 sKingsShieldDescription[] = _(
     "Protects from attacks and lowers\n"
@@ -3070,9 +3070,9 @@ static const u8 sSparklingAriaDescription[] = _(
     "healed by these bubbles.");
 
 static const u8 sFloralHealingDescription[] = _(
-    "Heals the target, more on Grassy\n"
-    "Terrain. If blooming, boosts the\n"
-    "target's critical hit ratio.");
+    "Heals the ally, more on Grassy\n"
+    "Terrain. If the user is blooming,\n"
+    "clears the ally's stat drops.");
 
 static const u8 sHighHorsepowerDescription[] = _(
     "The user fiercely attacks the\n"
@@ -4629,14 +4629,14 @@ static const u8 sSpiritAwayDescription[] = _(
     "Abosrbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "Boosts Spd and Crits. Can't use\n"
+    "Boosts Spd and crits. Can't use\n"
     "status moves or be attacked.\n"
     "Goes away after attacking.");
 
 static const u8 sSnapblossomDescription[] = _(
-    "A biting attack that restores HP\n"
-    "by some of the damage done.\n"
-    "Makes the user start to bloom.");
+    "A 2-turn move that drains HP and\n"
+    "makes the user bloom. Doesn't\n"
+    "charge if the user is blooming.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"
