@@ -1,7 +1,12 @@
 .set LOCALID_WALLY, 1
 
 VerdanturfNew_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfNew_OnTransition
 	.byte 0
+
+VerdanturfNew_OnTransition:
+	setflag FLAG_VISITED_VERDANTURF_TOWN
+	end
 
 VerdanturfNew_EventScript_InitWally1Trigger1::
 	lock

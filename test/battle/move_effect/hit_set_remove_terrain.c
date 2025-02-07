@@ -42,16 +42,16 @@ SINGLE_BATTLE_TEST("Steel Roller and Ice Spinner can remove a terrain from the f
         switch (terrainMove)
         {
         case MOVE_ELECTRIC_TERRAIN:
-            MESSAGE("The electricity disappeared from the battlefield.");
+            MESSAGE("Wobbuffet destroyed Rooms and Terrains!");
             break;
         case MOVE_PSYCHIC_TERRAIN:
-            MESSAGE("The weirdness disappeared from the battlefield.");
+            MESSAGE("Wobbuffet destroyed Rooms and Terrains!");
             break;
         case MOVE_GRASSY_TERRAIN:
-            MESSAGE("The grass disappeared from the battlefield.");
+            MESSAGE("Wobbuffet destroyed Rooms and Terrains!");
             break;
         case MOVE_MISTY_TERRAIN:
-            MESSAGE("The mist disappeared from the battlefield.");
+            MESSAGE("Wobbuffet destroyed Rooms and Terrains!");
             break;
         }
     }

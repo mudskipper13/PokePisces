@@ -295,6 +295,7 @@
 #define MAP_PLANE_IN_FLIGHT                    (2 | (21 << 8))
 #define MAP_OZONE_SITUATION_ROOM               (3 | (21 << 8))
 #define MAP_OZONE_OUTSIDE_CUTSCENE             (4 | (21 << 8))
+#define MAP_EVER_GRANDE_ROAD_PC                (5 | (21 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (22 << 8))

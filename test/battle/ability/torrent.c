@@ -15,6 +15,6 @@ SINGLE_BATTLE_TEST("Torrent boosts Water-type moves in a pinch", s16 damage)
     } SCENE {
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
-        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[1].damage);
+        EXPECT_MUL_EQ(results[0].damage, Q_4_12(2), results[1].damage);
     }
 }

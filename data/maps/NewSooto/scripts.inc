@@ -1,7 +1,12 @@
 .set LOCALID_DRAKE, 2
 
 NewSooto_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, NewSooto_OnTransition
 	.byte 0
+
+NewSooto_OnTransition:
+	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	end
 
 NewSooto_EventScript_DontGoInCave::
 	lock

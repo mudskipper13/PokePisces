@@ -69,7 +69,7 @@ SINGLE_BATTLE_TEST("Healing Wish effect activates only if the switched pokemon c
             MESSAGE("Wynaut regained health!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
-        MESSAGE("Do it! Wynaut!");
+        MESSAGE("Go! Wynaut!");
         MESSAGE("The healing wish came true for Wynaut!");
         HP_BAR(player, hp: 100);
         STATUS_ICON(player, none: TRUE);

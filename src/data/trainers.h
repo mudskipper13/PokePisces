@@ -7538,7 +7538,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_RAO_TWUNNE] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Rao Twunne"),
@@ -7562,7 +7562,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_UNSELD] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Unseld"),
@@ -7574,7 +7574,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_IMMY] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Immy"),
@@ -7622,7 +7622,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_MAX] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Max"),
@@ -7634,7 +7634,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_ARTEMIS] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Artemis"),
@@ -7670,7 +7670,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_GORO] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Goro"),
@@ -7694,7 +7694,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_BADUMKA] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Badumka"),
@@ -7706,7 +7706,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_ANATINA] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Anatina"),
@@ -7766,7 +7766,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_LANAYA] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Lanaya"),
@@ -7778,7 +7778,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_OPHELIA] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Ophelia"),
@@ -7790,7 +7790,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_KUMQOT] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Kumqot"),
@@ -7814,7 +7814,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_LYTXI] =
     {
-        .trainerClass = TRAINER_CLASS_GILDED_MONK,
+        .trainerClass = TRAINER_CLASS_TOPAZ_ACOLYTE,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_GILDED_MONK,
         .trainerName = _("Lytx¡"),

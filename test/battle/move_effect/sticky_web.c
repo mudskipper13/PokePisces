@@ -111,7 +111,7 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - the 
         ASSUME(P_GEN_8_POKEMON == TRUE);
         PLAYER(SPECIES_SQUIRTLE);
         PLAYER(SPECIES_CHARMANDER);
-        PLAYER(SPECIES_CORVIKNIGHT) { Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); } // Iron Ball, so that flying type Corviknight is affected by Sticky Web.
+        PLAYER(SPECIES_XATU) { Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); } // Iron Ball, so that flying type Xatu is affected by Sticky Web. Not Corviknight becasue Steel types are immune to hazzards.
         OPPONENT(SPECIES_CATERPIE);
         OPPONENT(SPECIES_WEEDLE);
     } WHEN {
@@ -124,8 +124,8 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - the 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, BATTLER_PLAYER);
         MESSAGE("A sticky web spreads out on the ground around the opposing team!");
 
-        MESSAGE("Go! Corviknigh!");
-        MESSAGE("Corviknigh was caught in a Sticky Web!");
+        MESSAGE("Go! Xatu!");
+        MESSAGE("Xatu was caught in a Sticky Web!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, BATTLER_OPPONENT);
         if (opponentSetUpper == 0) {
@@ -151,7 +151,7 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
         ASSUME(P_GEN_8_POKEMON == TRUE);
         PLAYER(SPECIES_SQUIRTLE) { Speed(speedPlayer); }
         PLAYER(SPECIES_CHARMANDER) { Speed(speedPlayer); }
-        PLAYER(SPECIES_CORVIKNIGHT) { Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); Speed(speedOpponent); } // Iron Ball, so that flying type Corviknight is affected by Sticky Web.
+        PLAYER(SPECIES_XATU) { Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); Speed(speedOpponent); } // Iron Ball, so that flying type Xatu is affected by Sticky Web.
         OPPONENT(SPECIES_CATERPIE) { Speed(speedOpponent); }
         OPPONENT(SPECIES_WEEDLE) { Speed(speedOpponent); }
         OPPONENT(SPECIES_PIDGEY) { Speed(speedOpponent); } // Flying type,so not affected by Sticky Web.
@@ -172,8 +172,8 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
             MESSAGE("A sticky web spreads out on the ground around the opposing team!");
         }
 
-        MESSAGE("Go! Corviknigh!");
-        MESSAGE("Corviknigh was caught in a Sticky Web!");
+        MESSAGE("Go! Xatu!");
+        MESSAGE("Xatu was caught in a Sticky Web!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
     } THEN {
@@ -197,7 +197,7 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
         ASSUME(gBattleMoves[MOVE_MEMENTO].effect == EFFECT_MEMENTO);
         PLAYER(SPECIES_SQUIRTLE) {Speed(5); }
         PLAYER(SPECIES_CHARMANDER) {Speed(5); }
-        PLAYER(SPECIES_CORVIKNIGHT) {Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); Speed(5); } // Iron Ball, so that flying type Corviknight is affected by Sticky Web.
+        PLAYER(SPECIES_XATU) {Ability(ABILITY_MIRROR_ARMOR); Item(ITEM_IRON_BALL); Speed(5); } // Iron Ball, so that flying type Xatu is affected by Sticky Web.
         OPPONENT(SPECIES_CATERPIE) {Speed(7); }
         OPPONENT(SPECIES_WEEDLE) {Speed(7); }
         if (hasReplacement) {
@@ -222,8 +222,8 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
             MESSAGE("2 sent out Pidgey!");
         }
 
-        MESSAGE("Go! Corviknigh!");
-        MESSAGE("Corviknigh was caught in a Sticky Web!");
+        MESSAGE("Go! Xatu!");
+        MESSAGE("Xatu was caught in a Sticky Web!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
     } THEN {

@@ -346,7 +346,8 @@
     "EverGrandeCity_PokemonCenter_2F",
     "PlaneInFlight",
     "OzoneSituationRoom",
-    "OzoneOutsideCutscene"
+    "OzoneOutsideCutscene",
+    "EverGrandeRoadPC"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

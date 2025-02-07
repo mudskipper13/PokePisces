@@ -155,6 +155,7 @@ OzoneInstitute_EventScript_RayLeaves::
 	speakername NULL
 	setflag FLAG_BEAT_RAY_3
 	setvar VAR_RAY_STATE, 3
+	setflag FLAG_VISITED_OZONE_INSTITUTE
 	release
 	end
 

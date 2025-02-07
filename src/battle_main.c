@@ -5504,6 +5504,9 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_CHAMPION:
             PlayBGM(MUS_VICTORY_LEAGUE);
             break;
+        case TRAINER_CLASS_TOPAZ_ACOLYTE:
+        case TRAINER_CLASS_GILDED_MONK:
+            break;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
@@ -5658,7 +5661,8 @@ static void HandleEndTurn_FinishBattle(void)
         if (gTestRunnerEnabled)
             TestRunner_Battle_AfterLastTurn();
         BeginFastPaletteFade(3);
-        FadeOutMapMusic(5);
+        if (gTrainers[gTrainerBattleOpponent_A].trainerClass != TRAINER_CLASS_TOPAZ_ACOLYTE)
+            FadeOutMapMusic(5);
     #if B_TRAINERS_KNOCK_OFF_ITEMS == TRUE || B_RESTORE_HELD_BATTLE_ITEMS == TRUE
             TryRestoreHeldItems();
     #endif

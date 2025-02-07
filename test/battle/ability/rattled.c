@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
         if (move != MOVE_TACKLE) {
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Foe Sudowoodo's Speed rose!");
+            MESSAGE("Foe Sudowoodo's Speed sharply rose!");
         }
         MESSAGE("Foe Sudowoodo used Celebrate!");
         // Sudowoodo is now faster
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
             HP_BAR(opponent);
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Foe Sudowoodo's Speed rose!");
+            MESSAGE("Foe Sudowoodo's Speed sharply rose!");
         }
         else {
             ANIMATION(ANIM_TYPE_MOVE, move, player);
@@ -52,7 +52,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
     }
 }
 
-SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when affected by Intimidate")
+SINGLE_BATTLE_TEST("Rattled boosts speed by 2 when affected by Intimidate")
 {
     GIVEN {
         ASSUME(B_UPDATED_INTIMIDATE >= GEN_8);
@@ -66,7 +66,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when affected by Intimidate")
         MESSAGE("Gyarados's Intimidate cuts Foe Sudowoodo's attack!");
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Foe Sudowoodo's Speed rose!");
+        MESSAGE("Foe Sudowoodo's Speed sharply rose!");
     }
 }
 
@@ -87,7 +87,7 @@ SINGLE_BATTLE_TEST("Rattled triggers correctly when hit by U-Turn") // Specific 
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Foe Sudowoodo's Speed rose!");
+        MESSAGE("Foe Sudowoodo's Speed sharply rose!");
         MESSAGE("Go! Wynaut!");
     }
 }

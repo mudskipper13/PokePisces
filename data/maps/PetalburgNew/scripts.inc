@@ -5,6 +5,7 @@ PetalburgNew_MapScripts::
 	.byte 0
 
 PetalburgNew_OnLoad:
+	setflag FLAG_VISITED_PETALBURG_CITY
 	call_if_lt VAR_WALLY_QUEST_STATE, 2, PetalburgNew_EventScript_RemoveSteven
 	call_if_gt VAR_WALLY_QUEST_STATE, 2, PetalburgNew_EventScript_RemoveSteven
 	end
