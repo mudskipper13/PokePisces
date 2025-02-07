@@ -599,7 +599,8 @@ static const u8 sDefeatistDescription[] = _(
     "drops to half or less.");
 
 static const u8 sCursedBodyDescription[] = _(
-    "May disable a move that has\n"
+    "May curse, torment, or disable a\n"
+    "move of an attacker that has\n"
     "dealt damage to the Pokémon.");
 
 static const u8 sHealerDescription[] = _(
@@ -1641,9 +1642,9 @@ static const u8 sStarScreenDescription[] = _(
     "moves.");
 
 static const u8 sStrongholdDescription[] = _(
-    "Boosts the Defense and Special\n"
-    "Defense stats but prevents the\n"
-    "use of status moves.");
+    "Reduces damage taken, more if\n"
+    "under half health. The Pokémon\n"
+    "is unable to heal.");
 
 static const u8 sTransfusionDescription[] = _(
     "When using a draining move, the\n"

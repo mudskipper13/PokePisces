@@ -3497,8 +3497,7 @@ void FaintClearSetData(u32 battler)
                 // If the released mon can be confused, do so.
                 // Don't use CanBeConfused here, since it can cause issues in edge cases.
                 if (!(GetBattlerAbility(otherSkyDropper) == ABILITY_OWN_TEMPO
-                    || gBattleMons[otherSkyDropper].status2 & STATUS2_CONFUSION
-                    || IsBattlerTerrainAffected(otherSkyDropper, STATUS_FIELD_MISTY_TERRAIN)))
+                    || gBattleMons[otherSkyDropper].status2 & STATUS2_CONFUSION))
                 {
                     gBattleMons[otherSkyDropper].status2 |= STATUS2_CONFUSION_TURN(((Random()) % 4) + 2);
                     gBattlerAttacker = otherSkyDropper;

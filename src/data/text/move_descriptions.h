@@ -1693,9 +1693,9 @@ static const u8 sMudShotDescription[] = _(
     "also lowers the foe's Speed.");
 
 static const u8 sPoisonTailDescription[] = _(
-    "The user hits the foe with its\n"
-    "tail. This may poison the foe.\n"
-    "Critical hits land more easily.");
+    "Critical hits land more easily.\n"
+    "May poison the foe. Boosted and \n"
+    "badly poisons if a critical.");
 
 static const u8 sCovetDescription[] = _(
     "The user's cuteness lets it\n"
@@ -4634,9 +4634,9 @@ static const u8 sPhantasmDescription[] = _(
     "Goes away after attacking.");
 
 static const u8 sSnapblossomDescription[] = _(
-    "A biting attack that restores HP\n"
-    "by some of the damage done.\n"
-    "Makes the user start to bloom.");
+    "A 2-turn move that drains HP and\n"
+    "makes the user bloom. Doesn't\n"
+    "charge if the user is blooming.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"

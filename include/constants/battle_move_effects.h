@@ -647,7 +647,8 @@
 #define EFFECT_METAL_SOUND                  641
 #define EFFECT_SHADOW_FORCE                 642
 #define EFFECT_DEARLY_DEPART                643
+#define EFFECT_POISON_TAIL                  644
 
-#define NUM_BATTLE_MOVE_EFFECTS             644
+#define NUM_BATTLE_MOVE_EFFECTS             645
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

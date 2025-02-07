@@ -4780,7 +4780,8 @@ static void Cmd_seteffectprimary(void)
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
     && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
-    && (Random() % 2 == 0))
+    && (Random() % 2 == 0)
+    && !(IS_MOVE_STATUS(gCurrentMove)))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -4796,7 +4797,8 @@ static void Cmd_seteffectsecondary(void)
 
     if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
     && !(gBattleScripting.moveEffect & MOVE_EFFECT_CERTAIN)
-    && (Random() % 2 == 0))
+    && (Random() % 2 == 0)
+    && !(IS_MOVE_STATUS(gCurrentMove)))
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -8324,8 +8326,7 @@ static void Cmd_switchineffects(void)
                 && !IS_BATTLER_OF_TYPE(battler, TYPE_STEEL)
                 && GetBattlerAbility(battler) != ABILITY_IMMUNITY
                 && !IsAbilityOnSide(battler, ABILITY_PASTEL_VEIL)
-                && !(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD)
-                && !(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
+                && !(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD))
             {
                 if (gSideTimers[GetBattlerSide(battler)].toxicSpikesAmount >= 2)
                     gBattleMons[battler].status1 |= STATUS1_TOXIC_POISON;
@@ -10098,6 +10099,7 @@ static void Cmd_various(void)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        return;
     }
    case VARIOUS_DESTINY_KNOT_TORMENT:
     {
@@ -10113,6 +10115,7 @@ static void Cmd_various(void)
             gBattleMons[battler].status2 |= STATUS2_TORMENT;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
+        return;
     }
     case VARIOUS_DESTINY_KNOT_TAUNT:
     {
@@ -10138,6 +10141,7 @@ static void Cmd_various(void)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        return;
     }
     case VARIOUS_DESTINY_KNOT_ENCORE:
     {
@@ -10174,6 +10178,7 @@ static void Cmd_various(void)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        return;
     }
     case VARIOUS_DESTINY_KNOT_HEAL_BLOCK:
     {
@@ -10190,6 +10195,7 @@ static void Cmd_various(void)
             gDisableStructs[battler].healBlockTimer = 5;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
+        return;
     }
     case VARIOUS_SET_LAST_USED_ITEM:
     {
@@ -10306,36 +10312,6 @@ static void Cmd_various(void)
         else
             gBattlescriptCurrInstr = cmd->nextInstr;
         return;
-    }
-    case VARIOUS_TRY_FRISK:
-    {
-        VARIOUS_ARGS();
-        while (gBattleStruct->friskedBattler < gBattlersCount)
-        {
-            gBattlerTarget = gBattleStruct->friskedBattler++;
-            if (GetBattlerSide(battler) != GetBattlerSide(gBattlerTarget)
-                && IsBattlerAlive(gBattlerTarget)
-                && gBattleMons[gBattlerTarget].item != ITEM_NONE)
-            {
-                gLastUsedItem = gBattleMons[gBattlerTarget].item;
-                RecordItemEffectBattle(gBattlerTarget, GetBattlerHoldEffect(gBattlerTarget, FALSE));
-                BattleScriptPushCursor();
-                // If Frisk identifies two mons' items, show the pop-up only once.
-                if (gBattleStruct->friskedAbility)
-                {
-                    gBattlescriptCurrInstr = BattleScript_FriskMsg;
-                }
-                else
-                {
-                    gBattleStruct->friskedAbility = TRUE;
-                    gBattlescriptCurrInstr = BattleScript_FriskMsgWithPopup;
-                }
-                return;
-            }
-        }
-        gBattleStruct->friskedBattler = 0;
-        gBattleStruct->friskedAbility = FALSE;
-        break;
     }
     case VARIOUS_POISON_TYPE_IMMUNITY:
     {
@@ -11017,6 +10993,26 @@ static void Cmd_various(void)
         }
         break;
     }
+    case VARIOUS_TRY_ACTIVATE_STAR_ASSAULT:
+    {
+        VARIOUS_ARGS();
+        if (gCurrentMove == MOVE_METEOR_ASSAULT
+            && HasAttackerFaintedTarget()
+            && !NoAliveMonsForEitherParty()
+            && CompareStat(gBattlerAttacker, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
+        {
+        #if B_FELL_STINGER_STAT_RAISE >= GEN_7
+            SET_STATCHANGER(STAT_ATK, 1, FALSE);
+        #else
+            SET_STATCHANGER(STAT_ATK, 1, FALSE);
+        #endif
+            PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_ATK);
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_FellStingerRaisesStat;
+            return;
+        }
+        break;
+    }
     case VARIOUS_TRY_ACTIVATE_SHADOW_FORCE:
     {
         VARIOUS_ARGS();
@@ -11025,7 +11021,7 @@ static void Cmd_various(void)
             && !NoAliveMonsForEitherParty()
             && !(gStatuses4[gBattlerAttacker] & STATUS4_PHANTOM))
         {
-            gStatuses4[gBattlerTarget] |= STATUS4_PHANTOM;
+            gStatuses4[gBattlerAttacker] |= STATUS4_PHANTOM;
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_ShadowForceSelfPhantom;
             return;
@@ -13481,6 +13477,29 @@ static void Cmd_various(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
+    case VARIOUS_SOLAR_POWER_DAMAGE:
+    {    
+        VARIOUS_ARGS();
+
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
+        {
+            gBattleMoveDamage = 0;
+        }
+        else if (gDisableStructs[battler].daybreakCounter != 0)
+        {
+            gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP / 20) * (gDisableStructs[battler].daybreakCounter);
+        }
+        else
+        {
+            gBattleMoveDamage = 0;
+        }
+
+        if (gBattleMoveDamage == 0)
+            gBattleMoveDamage = 1;
+
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_SET_PUMP:
     {
         VARIOUS_ARGS();
@@ -13966,10 +13985,6 @@ static void Cmd_trysetrest(void)
     {
         gBattlescriptCurrInstr = BattleScript_ElectricTerrainPrevents;
     }
-    else if (IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_MISTY_TERRAIN))
-    {
-        gBattlescriptCurrInstr = BattleScript_MistyTerrainPrevents;
-    }
     else
     {
         if (gBattleMons[gBattlerTarget].status1 & STATUS1_ANY && !(gBattleMons[gBattlerTarget].status1 & STATUS1_REST))
@@ -14150,6 +14165,8 @@ static void Cmd_setdrainedhp(void)
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_SPIRIT_AWAY)
         gBattleMoveDamage = (gHpDealt * 75 / 100);
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_SNAPBLOSSOM)
+        gBattleMoveDamage = (gHpDealt * 3 / 10);
     else if (gBattleMoves[gCurrentMove].effect == EFFECT_VENOM_DRAIN && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY)
         gBattleMoveDamage = (gHpDealt);
     else if (gBattleMoves[gCurrentMove].argument != 0)
@@ -17428,12 +17445,6 @@ static void Cmd_setyawn(void)
         // When Yawn is used while Electric Terrain is set and drowsiness is set from Yawn being used against target in the previous turn:
         // "But it failed" will display first.
         gBattlescriptCurrInstr = BattleScript_ElectricTerrainPrevents;
-    }
-    else if (IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_MISTY_TERRAIN))
-    {
-        // When Yawn is used while Misty Terrain is set and drowsiness is set from Yawn being used against target in the previous turn:
-        // "But it failed" will display first.
-        gBattlescriptCurrInstr = BattleScript_MistyTerrainPrevents;
     }
     else
     {

@@ -1682,6 +1682,10 @@
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
 
+	.macro tryactivatestarassault battler:req
+	various \battler, VARIOUS_TRY_ACTIVATE_STAR_ASSAULT
+	.endm
+
 	.macro tryactivateshadowforce battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_SHADOW_FORCE
 	.endm
@@ -1991,10 +1995,6 @@
 	.macro losetype battler:req, type:req
 	various \battler, VARIOUS_LOSE_TYPE
 	.byte \type
-	.endm
-
-	.macro tryfriskmsg battler:req
-	various \battler, VARIOUS_TRY_FRISK
 	.endm
 
 	.macro jumpifshieldsdown battler:req, jumpInstr:req
@@ -2651,6 +2651,10 @@
 
 	.macro arbiterdamage
 	various 0, VARIOUS_ARBITER_DAMAGE
+	.endm
+
+	.macro solarpowerdamage
+	various 0, VARIOUS_SOLAR_POWER_DAMAGE
 	.endm
 
 	.macro setpump battler:req
