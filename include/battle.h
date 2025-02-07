@@ -1115,6 +1115,13 @@ extern u8 gHitBySlashMove[PARTY_SIZE];
 extern u8 gHitByPierceMove[PARTY_SIZE];
 extern u8 gHitByBluntMove[PARTY_SIZE];
 
+static inline bool32 IsBattlerTurnDamaged(u32 battler)
+{
+    return gSpecialStatuses[battler].physicalDmg != 0
+        || gSpecialStatuses[battler].specialDmg != 0
+        || gBattleStruct->enduredDamage & (1u << battler);
+}
+
 static inline u32 GetBattlerPosition(u32 battler)
 {
     return gBattlerPositions[battler];

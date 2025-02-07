@@ -1558,7 +1558,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     // Basculegion
     [SPECIES_BASCULEGION_FEMALE]           = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_DUDUNSPARS_THREE_SEGMENT]     = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  2 },
-    [SPECIES_LOTTABATS_DISPERSED]          = { .size = MON_COORDS_SIZE(48, 24), .y_offset = 10 },
+    [SPECIES_LOTTABATS_DISPERSED]          = { .size = MON_COORDS_SIZE(48, 32), .y_offset = 17 },
     [SPECIES_GAOTERRA_SOLAR]               = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  1 },
     [SPECIES_GAOTERRA_LUNAR]               = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  1 },
     [SPECIES_SPINDA_CAVE]                  = { .size = MON_COORDS_SIZE(40, 56), .y_offset =  5 },

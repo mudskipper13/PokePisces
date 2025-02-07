@@ -7153,7 +7153,7 @@ static void Cmd_moveend(void)
                                 continue;
                             // Since we check if battler was damaged, we don't need to check move result.
                             // In fact, doing so actually prevents multi-target moves from activating eject button properly
-                            if (!BATTLER_DAMAGED(battler))
+                            if (!IsBattlerTurnDamaged(battler))
                                 continue;
                         }
                         else if (ejectPackBattlers & (1u << battler))
