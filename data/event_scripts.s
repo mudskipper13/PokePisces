@@ -993,6 +993,52 @@ Common_Mart_TannerShop10:
 	release
 	end
 
+Common_EventScript_KodoughShop::
+	lock
+	faceplayer
+	message gText_KodoughAtCounter
+	waitmessage
+	goto Common_EventScript_KodoughInventory
+	msgbox gText_KodoughGoodbye, MSGBOX_DEFAULT
+	release
+	end
+
+Common_EventScript_KodoughInventory::
+	pokemart Common_Mart_KodoughShop
+	msgbox gText_KodoughGoodbye, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+Common_Mart_KodoughShop:
+	.2byte ITEM_DOUGH_STICK
+	.2byte ITEM_FULL_RESTORE
+	.2byte ITEM_MAX_POTION
+	.2byte ITEM_MAX_REVIVE
+	.2byte ITEM_HYPER_POTION
+	.2byte ITEM_MAX_ELIXIR
+	.2byte ITEM_ULTRA_BALL
+	.2byte ITEM_FULL_HEAL
+	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_ELIXIR
+	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_REVIVE
+	.2byte ITEM_POTION
+	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ETHER
+	.2byte ITEM_SODA_POP
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_ICE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_NONE
+	release
+	end
+
 Common_EventScript_BallShop::
 	lock
 	faceplayer
@@ -3793,3 +3839,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneSituationRoom/scripts.inc"
 
 	.include "data/maps/OzoneOutsideCutscene/scripts.inc"
+
+	.include "data/maps/EverGrandeRoadPC/scripts.inc"

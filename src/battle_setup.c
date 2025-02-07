@@ -397,7 +397,8 @@ static void CreateBattleStartTask(u8 transition, u16 song)
     u8 taskId = CreateTask(Task_BattleStart, 1);
 
     gTasks[taskId].tTransition = transition;
-    PlayMapChosenOrBattleBGM(song);
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass != TRAINER_CLASS_TOPAZ_ACOLYTE)
+        PlayMapChosenOrBattleBGM(song);
 }
 
 static void Task_BattleStart_Debug(u8 taskId)

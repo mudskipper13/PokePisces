@@ -8390,6 +8390,9 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
+        case TRAINER_CLASS_TOPAZ_ACOLYTE:
+        case TRAINER_CLASS_GILDED_MONK:
+            return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
             return MUS_VS_AQUA_MAGMA_LEADER;

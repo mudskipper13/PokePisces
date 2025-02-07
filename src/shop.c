@@ -88,7 +88,7 @@ enum
     SELLER_TANNER, // OBJ_EVENT_GFX_MART_EMPLOYEE
     SELLER_TEALA, // OBJ_EVENT_GFX_TEALA
     SELLER_PURPLINA, // OBJ_EVENT_GFX_PURPLINA
-    SELLER_KODOUGH, // OBJ_EVENT_GFX_WINGULL
+    SELLER_KODOUGH, // OBJ_EVENT_GFX_KODOUGH
     SELLER_COUNT,
 };
 
@@ -664,7 +664,7 @@ static const struct Seller sSellers[SELLER_COUNT] = {
 
     },
     [SELLER_KODOUGH] = {
-        {.gfxId=OBJ_EVENT_GFX_WINGULL},
+        {.gfxId=OBJ_EVENT_GFX_KODOUGH},
         .gfx=sShopMenuSellerGfx_Kodough,
         .pal=sShopMenuSellerPal_Kodough,
         .gfxBg = sShopMenuSellerGfxBg_Kodough,

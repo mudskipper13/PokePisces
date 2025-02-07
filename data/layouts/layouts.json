@@ -6210,6 +6210,16 @@
       "secondary_tileset": "gTileset_ozoneinsitute",
       "border_filepath": "data/layouts/OzoneOutsideCutscene/border.bin",
       "blockdata_filepath": "data/layouts/OzoneOutsideCutscene/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVER_GRANDE_ROAD_PC",
+      "name": "EverGrandeRoadPC_Layout",
+      "width": 15,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/EverGrandeRoadPC/border.bin",
+      "blockdata_filepath": "data/layouts/EverGrandeRoadPC/map.bin"
     }
   ]
 }
