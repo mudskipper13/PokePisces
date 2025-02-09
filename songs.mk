@@ -1349,3 +1349,6 @@ $(MID_SUBDIR)/mus_ever_grande_road.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_ever_grande_summit.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V115
+
+$(MID_SUBDIR)/mus_surf_2.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110

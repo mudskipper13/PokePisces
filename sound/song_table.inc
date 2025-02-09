@@ -640,6 +640,7 @@ gSongTable::
 	song mus_vs_legendary2, 0, 0
 	song mus_ever_grande_road, 0, 0
 	song mus_ever_grande_summit, 0, 0
+	song mus_surf_2, 0, 0
 
 	.align 2
 dummy_song_header:
