@@ -70,6 +70,12 @@
 #define FLDEFF_MOVE_DEOXYS_ROCK          66
 #define FLDEFF_CHIMNEY_GRASS             67
 #define FLDEFF_JUMP_CHIMNEY_GRASS        68
+#define FLDEFF_PINK_GRASS                69
+#define FLDEFF_JUMP_PINK_GRASS           70
+#define FLDEFF_SNOWY_GRASS               71
+#define FLDEFF_JUMP_SNOWY_GRASS          72
+#define FLDEFF_GOLD_GRASS                73
+#define FLDEFF_JUMP_GOLD_GRASS           74
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -110,6 +116,12 @@
 #define FLDEFFOBJ_RAYQUAZA              36
 #define FLDEFFOBJ_CHIMNEY_GRASS         37
 #define FLDEFFOBJ_JUMP_CHIMNEY_GRASS    38
+#define FLDEFFOBJ_PINK_GRASS            39
+#define FLDEFFOBJ_JUMP_PINK_GRASS       40
+#define FLDEFFOBJ_SNOWY_GRASS           41
+#define FLDEFFOBJ_JUMP_SNOWY_GRASS      42
+#define FLDEFFOBJ_GOLD_GRASS            43
+#define FLDEFFOBJ_JUMP_GOLD_GRASS       44
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -128,5 +140,8 @@
 #define FLDEFF_PAL_TAG_MAY                0x1110 // OBJ_EVENT_PAL_TAG_MAY
 #define FLDEFF_PAL_TAG_NPC_1              0x1103 // OBJ_EVENT_PAL_TAG_NPC_1
 #define FLDEFF_PAL_TAG_NPC_2              0x1104 // OBJ_EVENT_PAL_TAG_NPC_2
+#define FLDEFF_PAL_TAG_PINK_GRASS         0x1105
+#define FLDEFF_PAL_TAG_SNOWY_GRASS        0x1106
+#define FLDEFF_PAL_TAG_GOLD_GRASS         0x1107
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

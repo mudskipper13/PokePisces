@@ -75,6 +75,12 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
 	.4byte gFieldEffectScript_ChimneyGrass              @ FLDEFF_CHIMNEY_GRASS
 	.4byte gFieldEffectScript_JumpChimneyGrass          @ FLDEFF_JUMP_CHIMNEY_GRASS
+	.4byte gFieldEffectScript_PinkGrass					@ FLDEFF_PINK_GRASS
+	.4byte gFieldEffectScript_JumpPinkGrass				@ FLDEFF_JUMP_PINK_GRASS
+	.4byte gFieldEffectScript_SnowyGrass				@ FLDEFF_SNOWY_GRASS
+	.4byte gFieldEffectScript_JumpSnowyGrass			@ FLDEFF_JUMP_SNOWY_GRASS
+	.4byte gFieldEffectScript_GoldGrass					@ FLDEFF_GOLD_GRASS
+	.4byte gFieldEffectScript_JumpGoldGrass				@ FLDEFF_JUMP_GOLD_GRASS
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -353,4 +359,28 @@ gFieldEffectScript_ChimneyGrass::
 
 gFieldEffectScript_JumpChimneyGrass::
 	field_eff_loadfadedpal_callnative gSpritePalette_ChimneyGrass, FldEff_JumpChimneyGrass
+	field_eff_end
+
+gFieldEffectScript_PinkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_PinkGrass, FldEff_PinkGrass
+	field_eff_end
+	
+gFieldEffectScript_JumpPinkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_PinkGrass, FldEff_JumpPinkGrass
+	field_eff_end
+
+gFieldEffectScript_SnowyGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowyGrass, FldEff_SnowyGrass
+	field_eff_end
+	
+gFieldEffectScript_JumpSnowyGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowyGrass, FldEff_JumpSnowyGrass
+	field_eff_end
+
+gFieldEffectScript_GoldGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GoldGrass, FldEff_GoldGrass
+	field_eff_end
+	
+gFieldEffectScript_JumpGoldGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GoldGrass, FldEff_JumpGoldGrass
 	field_eff_end

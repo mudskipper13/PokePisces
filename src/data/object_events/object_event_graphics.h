@@ -383,3 +383,7 @@ const u16 gObjectEventPal_Lucy[] = INCBIN_U16("graphics/object_events/palettes/l
 const u16 gObjectEventPal_Phoebe[] = INCBIN_U16("graphics/object_events/palettes/phoebe.gbapal");
 const u16 gObjectEventPal_Maxie[] = INCBIN_U16("graphics/object_events/palettes/maxie.gbapal");
 const u16 gObjectEventPal_Juan[] = INCBIN_U16("graphics/object_events/palettes/juan.gbapal");
+const u16 gFieldEffectPal_PinkGrass[] = INCBIN_U16("graphics/field_effects/palettes/pink_grass.gbapal");
+const u16 gFieldEffectPal_SnowyGrass[] = INCBIN_U16("graphics/field_effects/palettes/snowy_grass.gbapal");
+const u16 gFieldEffectPal_GoldGrass[] = INCBIN_U16("graphics/field_effects/palettes/gold_grass.gbapal");
+const u32 gFieldEffectObjectPic_GoldGrass[] = INCBIN_U32("graphics/field_effects/pics/gold_grass.4bpp");
