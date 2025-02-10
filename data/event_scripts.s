@@ -3841,3 +3841,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneOutsideCutscene/scripts.inc"
 
 	.include "data/maps/EverGrandeRoadPC/scripts.inc"
+
+	.include "data/maps/CaveOfOriginCutscene/scripts.inc"
+
+	.include "data/maps/EverGrandeRestArea/scripts.inc"

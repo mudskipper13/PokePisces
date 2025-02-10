@@ -347,7 +347,9 @@
     "PlaneInFlight",
     "OzoneSituationRoom",
     "OzoneOutsideCutscene",
-    "EverGrandeRoadPC"
+    "EverGrandeRoadPC",
+    "CaveOfOriginCutscene",
+    "EverGrandeRestArea"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

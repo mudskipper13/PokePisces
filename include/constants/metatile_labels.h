@@ -294,7 +294,9 @@
 #define METATILE_Lavaridge_AshGrass             0x207
 #define METATILE_Lavaridge_CaveEntrance_Bottom  0x25E
 #define METATILE_Lavaridge_CaveEntrance_Top     0x256
+#define METATILE_Lavaridge_LavaBubbleTile       0x21C
 #define METATILE_Lavaridge_LavaField            0x271
+#define METATILE_Lavaridge_LavaTile             0x2BD
 #define METATILE_Lavaridge_NormalGrass          0x206
 #define METATILE_Lavaridge_RockWall             0x274
 
@@ -993,6 +995,7 @@
 // gTileset_Underwater
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
+#define METATILE_Underwater_SeaBottom    0x256
 
 // gTileset_desert
 #define METATILE_desert_door_poke_mart_sweltorn  0x308

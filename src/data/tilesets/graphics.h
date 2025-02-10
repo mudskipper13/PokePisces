@@ -2014,3 +2014,22 @@ const u16 gTilesetPalettes_OzoneAdminRooms[][16] =
 };
 
 const u32 gTilesetTiles_OzoneAdminRooms[] = INCBIN_U32("data/tilesets/secondary/ozone_admin_rooms/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_EGRestArea[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/egrest_area/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_EGRestArea[] = INCBIN_U32("data/tilesets/secondary/egrest_area/tiles.4bpp.lz");

@@ -27,7 +27,6 @@ OzoneOutsideCutscene_EventScript_MeetWallace::
 	speakername OzoneOutsideCutscene_Text_NameMaxie
 	msgbox OzoneOutsideCutscene_Text_LetsGetTherePostHaste, MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_HIDE_MAXIE_OZONE
 	warp MAP_CAVE_OF_ORIGIN, 1, 1
 	waitstate
 	release

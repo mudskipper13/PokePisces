@@ -1556,7 +1556,8 @@ void PlayTrainerEncounterMusic(void)
         trainerId = gTrainerBattleOpponent_B;
 
     if (sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
-        && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC)
+        && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
+        && gTrainers[trainerId].trainerClass != TRAINER_CLASS_TOPAZ_ACOLYTE)
     {
         switch (GetTrainerEncounterMusicId(trainerId))
         {

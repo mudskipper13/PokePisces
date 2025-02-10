@@ -369,8 +369,8 @@
       "x": 18,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_EVER_GRANDE_ROAD",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_EVER_GRANDE_TRANSITION_CAVE",
+      "dest_warp_id": "1"
     },
     {
       "x": 79,

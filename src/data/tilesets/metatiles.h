@@ -267,3 +267,6 @@ const u16 gMetatileAttributes_BossArenas[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_OzoneAdminRooms[] = INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/metatiles.bin");
 const u16 gMetatileAttributes_OzoneAdminRooms[] = INCBIN_U16("data/tilesets/secondary/ozone_admin_rooms/metatile_attributes.bin");
+
+const u16 gMetatiles_EGRestArea[] = INCBIN_U16("data/tilesets/secondary/egrest_area/metatiles.bin");
+const u16 gMetatileAttributes_EGRestArea[] = INCBIN_U16("data/tilesets/secondary/egrest_area/metatile_attributes.bin");
