@@ -43,5 +43,11 @@ void UpdateSparkleFieldEffect(struct Sprite *);
 void UpdateChimneyGrassFieldEffect(struct Sprite *);
 void SetSpriteInvisible(u8 spriteId);
 void ShowWarpArrowSprite(u8 spriteId, u8 direction, s16 x, s16 y);
+void UpdatePinkGrassFieldEffect(struct Sprite *);
+void UpdateSnowyGrassFieldEffect(struct Sprite *);
+void UpdateGoldGrassFieldEffect(struct Sprite *);
+u8 FindPinkGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
+u8 FindSnowyGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
+u8 FindGoldGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
 
 #endif //GUARD_FIELD_EFFECT_HELPERS_H
