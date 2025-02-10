@@ -786,6 +786,9 @@ $(FLDEFFGFXDIR)/jump_small_splash.4bpp: %.4bpp: %.png
 $(FLDEFFGFXDIR)/jump_tall_grass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 1
 
+$(FLDEFFGFXDIR)/jump_gold_grass.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 1
+
 $(FLDEFFGFXDIR)/jump_chimney_grass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 1
 
