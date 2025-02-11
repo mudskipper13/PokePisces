@@ -47,6 +47,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_LAVARIDGE_GYM_B1F_WARP]          = TILE_FLAG_UNUSED,
     [MB_SEAWEED_NO_SURFACING]            = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_REFLECTION_UNDER_BRIDGE]         = TILE_FLAG_UNUSED,
+    [MB_ENCOUNTER_SHALLOW_WATER]         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_IMPASSABLE_EAST]                 = TILE_FLAG_UNUSED,
     [MB_IMPASSABLE_WEST]                 = TILE_FLAG_UNUSED,
     [MB_IMPASSABLE_NORTH]                = TILE_FLAG_UNUSED,
@@ -921,7 +922,8 @@ bool8 MetatileBehavior_IsShallowFlowingWater(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_SHALLOW_WATER
      || metatileBehavior == MB_STAIRS_OUTSIDE_ABANDONED_SHIP
-     || metatileBehavior == MB_SHOAL_CAVE_ENTRANCE)
+     || metatileBehavior == MB_SHOAL_CAVE_ENTRANCE
+     || metatileBehavior == MB_ENCOUNTER_SHALLOW_WATER)
         return TRUE;
     else
         return FALSE;
