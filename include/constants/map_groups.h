@@ -194,6 +194,7 @@
 #define MAP_GYM6CORRIDOR                      (23 | (13 << 8))
 #define MAP_VERDANTURF_GYM                    (24 | (13 << 8))
 #define MAP_MAUVILLE_CITY_GYM                 (25 | (13 << 8))
+#define MAP_SWELTORN_INTERIORS                (26 | (13 << 8))
 
 // gMapGroup_PiscesLeg8Major
 #define MAP_SLATEPORT_SHORE       (0 | (14 << 8))

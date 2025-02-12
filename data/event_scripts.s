@@ -3845,3 +3845,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/CaveOfOriginCutscene/scripts.inc"
 
 	.include "data/maps/EverGrandeRestArea/scripts.inc"
+
+	.include "data/maps/SweltornInteriors/scripts.inc"
