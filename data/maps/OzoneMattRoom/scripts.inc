@@ -13,7 +13,8 @@ OzoneMattRoom_EventScript_FightMatt::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername OzoneMattRoom_Text_NameMatt
-	trainerbattle_single TRAINER_P_MATT_3, OzoneMattRoom_Text_MattIntro, OzoneMattRoom_Text_MattDefeated, OzoneMattRoom_EventScript_MattBeaten
+	msgbox OzoneMattRoom_Text_MattIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MATT_3, OzoneMattRoom_Text_MattDefeated
 	goto OzoneMattRoom_EventScript_MattBeaten
 	release
 	end

@@ -18,7 +18,9 @@ SailorsPause_EventScript_RayEncounter::
 	applymovement LOCALID_RAY, SailorsPause_Movement_RayEncounter
 	waitmovement 0
 	speakername SailorsPause_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_5, SailorsPause_Text_RayIntro, SailorsPause_Text_RayDefeat, SailorsPause_EventScript_RayLeaves
+	msgbox SailorsPause_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_5, SailorsPause_Text_RayDefeat
+	goto SailorsPause_EventScript_RayLeaves
 	speakername NULL
 	release
 	end

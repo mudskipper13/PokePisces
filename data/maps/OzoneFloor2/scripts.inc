@@ -91,7 +91,9 @@ OzoneFloor2_Movement_RayEncounter4:
 
 OzoneFloor2_EventScript_RayBattleStart::
 	speakername OzoneFloor2_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_7, OzoneFloor2_Text_RayIntro, OzoneFloor2_Text_RayDefeat, OzoneFloor2_EventScript_RayLeaves
+	msgbox OzoneFloor2_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_7, OzoneFloor2_Text_RayDefeat
+	goto OzoneFloor2_EventScript_RayLeaves
 	speakername NULL
 	release
 	end

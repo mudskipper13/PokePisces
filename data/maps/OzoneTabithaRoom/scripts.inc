@@ -13,7 +13,8 @@ OzoneTabithaRoom_EventScript_FightTabitha::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername OzoneTabithaRoom_Text_NameTabitha
-	trainerbattle_single TRAINER_P_TABITHA_3, OzoneTabithaRoom_Text_TabithaIntro, OzoneTabithaRoom_Text_TabithaDefeated, OzoneTabithaRoom_EventScript_TabithaBeaten
+	msgbox OzoneTabithaRoom_Text_TabithaIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_TABITHA_3, OzoneTabithaRoom_Text_TabithaDefeated
 	goto OzoneTabithaRoom_EventScript_TabithaBeaten
 	release
 	end

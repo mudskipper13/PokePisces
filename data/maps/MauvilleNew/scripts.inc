@@ -49,7 +49,9 @@ MauvilleNew_EventScript_MrBonding::
 	call_if_eq VAR_FACING, DIR_WEST, MauvilleNew_EventScript_PlayerWestMove
 	delay 4
 	speakername MauvilleNew_Text_NameMrBonding
-	trainerbattle_single TRAINER_P_MR_BONDING, MauvilleNew_Text_BondingIntro, MauvilleNew_Text_BondingDefeated, MauvilleNew_EventScript_MrBondingBeaten
+	msgbox MauvilleNew_Text_BondingIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MR_BONDING, MauvilleNew_Text_BondingDefeated
+	goto MauvilleNew_EventScript_MrBondingBeaten
 	release
 	end
 
@@ -227,7 +229,9 @@ MauvilleNew_Movement_RayEncounter4:
 
 MauvilleNew_EventScript_RayBattleStart::
 	speakername MauvilleNew_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_4, MauvilleNew_Text_RayIntro, MauvilleNew_Text_RayDefeat, MauvilleNew_EventScript_RayLeaves
+	msgbox MauvilleNew_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_4, MauvilleNew_Text_RayDefeat
+	goto MauvilleNew_EventScript_RayLeaves
 	speakername NULL
 	release
 	end

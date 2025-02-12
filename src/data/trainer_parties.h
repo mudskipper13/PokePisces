@@ -13719,7 +13719,7 @@ static const struct TrainerMon sParty_PRay7[] = {
     {
     .species = SPECIES_NEOROACH,
     .ability = ABILITY_TRANSISTOR,
-    .heldItem = ITEM_DILUTE_MOD,
+    .heldItem = ITEM_DISTILL_MOD,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 74,
     .moves = {MOVE_BUG_BUZZ, MOVE_VAPORIZE, MOVE_THUNDERBOLT, MOVE_POWER_JAM},

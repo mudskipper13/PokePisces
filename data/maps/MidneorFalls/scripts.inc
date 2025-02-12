@@ -76,7 +76,8 @@ MidneorFalls_EventScript_MorganaTrigger::
 	playse SE_PIN
 	applymovement LOCALID_MORGANA, MidneorFalls_Movement_Exclamation
 	waitmovement 0
-	trainerbattle_single TRAINER_P_MORGANA, MidneorFalls_Text_MorganaIntro, MidneorFalls_Text_MorganaDefeated
+	msgbox MidneorFalls_Text_MorganaIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MORGANA, MidneorFalls_Text_MorganaDefeated
 	release
 	end
 
@@ -91,7 +92,8 @@ MidneorFalls_EventScript_ZephyrTrigger::
 	playse SE_PIN
 	applymovement LOCALID_ZEPHYR, MidneorFalls_Movement_Exclamation
 	waitmovement 0
-	trainerbattle_single TRAINER_P_ZEPHYR, MidneorFalls_Text_ZephyrIntro, MidneorFalls_Text_ZephyrDefeated
+	msgbox MidneorFalls_Text_ZephyrIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_ZEPHYR, MidneorFalls_Text_ZephyrDefeated
 	release
 	end
 
@@ -106,7 +108,8 @@ MidneorFalls_EventScript_AnthreenyTrigger::
 	playse SE_PIN
 	applymovement LOCALID_ANTHREENY, MidneorFalls_Movement_Exclamation
 	waitmovement 0
-	trainerbattle_single TRAINER_P_ANTHREENY, MidneorFalls_Text_AnthreenyIntro, MidneorFalls_Text_AnthreenyDefeated
+	msgbox MidneorFalls_Text_AnthreenyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_ANTHREENY, MidneorFalls_Text_AnthreenyDefeated
 	release
 	end
 
@@ -121,7 +124,8 @@ MidneorFalls_EventScript_SchuliTrigger::
 	playse SE_PIN
 	applymovement LOCALID_SCHULI, MidneorFalls_Movement_Exclamation
 	waitmovement 0
-	trainerbattle_single TRAINER_P_SCHULI, MidneorFalls_Text_SchuliIntro, MidneorFalls_Text_SchuliDefeated
+	msgbox MidneorFalls_Text_SchuliIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_SCHULI, MidneorFalls_Text_SchuliDefeated
 	release
 	end
 

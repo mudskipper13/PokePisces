@@ -24,7 +24,9 @@ PerplumeMaze_EventScript_BreadwinnerEncounter::
 	waitmovement 0
 	turnobject LOCALID_BREAD, DIR_SOUTH
 	speakername PerplumeMaze_Text_NamePandou
-	trainerbattle_single TRAINER_P_PANDOU_3, PerplumeMaze_Text_BreadwinnerIntro, PerplumeMaze_Text_BreadwinnerDefeat, PerplumeMaze_EventScript_BreadRun
+	msgbox PerplumeMaze_Text_BreadwinnerIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_PANDOU_3, PerplumeMaze_Text_BreadwinnerDefeat
+	goto PerplumeMaze_EventScript_BreadRun
 	release
 	end
 

@@ -54,7 +54,9 @@ Route124_EventScript_EvilTuber1::
 	applymovement LOCALID_VICTIM1, Route124_Movement_Helpme1
 	waitmovement 0
 	msgbox Route124_Text_DistressedMan, MSGBOX_DEFAULT
-	trainerbattle_single TRAINER_P_TOBY, Route124_Text_TobyIntro, Route124_Text_TobyDefeated, Route124_EventScript_TobyLeaves
+	msgbox Route124_Text_TobyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_TOBY, Route124_Text_TobyDefeated
+	goto Route124_EventScript_TobyLeaves
 	releaseall
 	end
 
@@ -184,7 +186,9 @@ Route124_EventScript_EvilTuber3::
 	lock
 	applymovement LOCALID_TUBER4, Route124_Movement_TobyFaceDown
 	waitmovement 0
-	trainerbattle_single TRAINER_P_JULIO, Route124_Text_JulioIntro, Route124_Text_JulioDefeated, Route124_EventScript_JulioLeaves
+	msgbox Route124_Text_JulioIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_JULIO, Route124_Text_JulioDefeated
+	goto Route124_EventScript_JulioLeaves
 	release
 	end
 

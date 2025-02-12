@@ -46,7 +46,8 @@ DevonCorp_EventScript_DevonMeeting::
 	applymovement LOCALID_RAY, DevonCorp_Movement_RayFightPlayer
 	waitmovement 0
 	speakername DevonCorp_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_6, DevonCorp_Text_RayIntro, DevonCorp_Text_RayDefeated, DevonCorp_EventScript_RayDefeat
+	msgbox DevonCorp_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_6, DevonCorp_Text_RayDefeated
 	goto DevonCorp_EventScript_RayDefeat
 	release
 	end

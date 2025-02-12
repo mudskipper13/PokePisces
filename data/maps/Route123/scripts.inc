@@ -59,7 +59,9 @@ Route123_EventScript_BreadwinnerEncounter::
 	playse SE_WALL_HIT
 	applymovement LOCALID_BREAD, Route123_Movement_BreadBackUp
 	waitmovement 0
-	trainerbattle_single TRAINER_P_PANDOU_2, Route123_Text_BreadwinnerIntro, Route123_Text_BreadwinnerDefeat, Route123_EventScript_BreadRun
+	msgbox Route123_Text_BreadwinnerIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_PANDOU_2, Route123_Text_BreadwinnerDefeat
+	goto Route123_EventScript_BreadRun
 	speakername NULL
 	release
 	end
@@ -411,7 +413,9 @@ Route123_EventScript_SnowNinja::
 	delay 16
 	applymovement LOCALID_SNOWNINJA, Route123_Movement_Ambush
 	waitmovement 0
-	trainerbattle_single TRAINER_P_HAZAKURA, Route123_Text_HazakuraIntro, Route123_Text_HazakuraDefeated, Route123_EventScript_SmokeBall
+	msgbox Route123_Text_HazakuraIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_HAZAKURA, Route123_Text_HazakuraDefeated
+	goto Route123_EventScript_SmokeBall
 	release
 	end
 
@@ -425,8 +429,8 @@ Route123_EventScript_SmokeBall::
 	msgbox Route123_Text_BackToTheSnow, MSGBOX_DEFAULT
 	applymovement LOCALID_SNOWNINJA, Route123_Movement_BackToTheSnow
 	waitmovement 0
-	setflag FLAG_TEMP_16
 	removeobject LOCALID_SNOWNINJA
+	setflag FLAG_TEMP_16
 	msgbox Route123_Text_HeLeftBehindSomething, MSGBOX_DEFAULT
 	giveitem ITEM_SMOKE_BALL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull

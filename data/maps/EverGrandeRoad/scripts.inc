@@ -94,7 +94,9 @@ EverGrandeRoad_EventScript_BreadwinnerBattle::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername EverGrandeRoad_Text_NamePandou
-	trainerbattle_single TRAINER_P_PANDOU_6, EverGrandeRoad_Text_BreadwinnerIntro, EverGrandeRoad_Text_BreadwinnerDefeat, EverGrandeRoad_EventScript_BreadRun
+	msgbox EverGrandeRoad_Text_BreadwinnerIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_PANDOU_6, EverGrandeRoad_Text_BreadwinnerDefeat
+	goto EverGrandeRoad_EventScript_BreadRun
 	release
 	end
 
