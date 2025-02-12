@@ -51,7 +51,7 @@ TrickHouseUpsideDownRoom_EventScript_BreadEncounter::
 	waitmovement 0
 	msgbox TrickHouseUpsideDownRoom_Text_WhatIsGoingOn, MSGBOX_DEFAULT
 	msgbox TrickHouseUpsideDownRoom_Text_BreadwinnerIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_P_LARPER, TrickHouseUpsideDownRoom_Text_BreadwinnerDefeat
+	trainerbattle_no_intro TRAINER_P_PANDOU_4, TrickHouseUpsideDownRoom_Text_BreadwinnerDefeat
 	goto TrickHouseUpsideDownRoom_EventScript_BreadRun
 	release
 	end

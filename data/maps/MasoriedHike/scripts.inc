@@ -1,5 +1,151 @@
+.set LOCALID_TABITHA, 7
+
 MasoriedHike_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MasoriedHike_OnLoad
 	.byte 0
+
+MasoriedHike_OnLoad:
+	call_if_lt VAR_OZONE_ADMINS_STATE, 6, MasoriedHike_EventScript_RemoveTabitha
+	call_if_gt VAR_OZONE_ADMINS_STATE, 6, MasoriedHike_EventScript_RemoveTabithaAndBolterock
+	end
+
+MasoriedHike_EventScript_RemoveTabitha::
+	removeobject LOCALID_TABITHA
+	setflag FLAG_TEMP_11
+	return
+
+MasoriedHike_EventScript_RemoveTabithaAndBolterock::
+	removeobject LOCALID_TABITHA
+	setflag FLAG_TEMP_11
+	setmetatile 27, 14, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 14, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 14, METATILE_Chimney_BolterockGoneCliff, TRUE
+	setmetatile 26, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 27, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 30, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 26, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 27, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 30, 16, METATILE_Chimney_BolterockGone, FALSE
+	special DrawWholeMapView
+	return
+
+MasonriedHike_EventScript_Tabitha::
+	lock
+	faceplayer
+	goto_if_eq VAR_OZONE_ADMINS_STATE, 7, MasonriedHike_EventScript_TabithaPostBolt
+	speakername MasonriedHike_Text_NameTabitha
+	msgbox MasonriedHike_Text_HowToWakeEmUp, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_TABITHA, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	delay 16
+	playse SE_M_EXPLOSION
+	waitse
+	delay 32
+	setwildbattle SPECIES_BOLTEROCK, 35
+	playmoncry SPECIES_BOLTEROCK, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	speakername NULL
+	msgbox MasonriedHike_Text_BolterockJoltedAwake, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
+	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
+	delay 8
+	setmetatile 27, 14, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 14, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 14, METATILE_Chimney_BolterockGoneCliff, TRUE
+	setmetatile 26, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 27, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 30, 15, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 26, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 27, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 28, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 29, 16, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 30, 16, METATILE_Chimney_BolterockGone, FALSE
+	special DrawWholeMapView
+	setflag FLAG_TEMP_11
+	setvar VAR_OZONE_ADMINS_STATE, 7
+	speakername MasonriedHike_Text_NameTabitha
+	msgbox MasonriedHike_Text_DealtWithItGood, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MasonriedHike_EventScript_TabithaPostBolt::
+	speakername MasonriedHike_Text_NameTabitha
+	msgbox MasonriedHike_Text_IllMeetYouAhead, MSGBOX_AUTOCLOSE
+	release
+    end
+
+MasonriedHike_EventScript_BlockingBolterock::
+	lock
+	goto_if_lt VAR_OZONE_ADMINS_STATE, 7, MasonriedHike_EventScript_CantPassBolterock
+	msgbox MasonriedHike_Text_BolterockGone, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MasonriedHike_EventScript_CantPassBolterock::
+	msgbox MasonriedHike_Text_CantPassBolterock, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MasonriedHike_EventScript_BlockingBolterock2::
+	lock
+	goto_if_lt VAR_OZONE_ADMINS_STATE, 7, MasonriedHike_EventScript_CantPassBolterock
+	goto_if_set FLAG_TEMP_12, MasonriedHike_EventScript_BolterockGone
+	msgbox MasonriedHike_Text_YouMadeAnExplosionSound, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	playse SE_M_EXPLOSION
+	waitse
+	delay 32
+	setwildbattle SPECIES_BOLTEROCK, 35
+	playmoncry SPECIES_BOLTEROCK, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	speakername NULL
+	msgbox MasonriedHike_Text_BolterockJoltedAwake, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
+	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
+	delay 8
+	setmetatile 39, 29, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 40, 29, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 41, 29, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 38, 30, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 39, 30, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 40, 30, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 41, 30, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 42, 30, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 38, 31, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 39, 31, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 40, 31, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 41, 31, METATILE_Chimney_BolterockGone, FALSE
+	setmetatile 42, 31, METATILE_Chimney_BolterockGone, FALSE
+	special DrawWholeMapView
+	msgbox MasonriedHike_Text_TheWildBoltFled, MSGBOX_AUTOCLOSE
+	setflag FLAG_TEMP_12
+	release
+	end
+
+MasonriedHike_EventScript_BolterockGone::
+	msgbox MasonriedHike_Text_BolterockGone, MSGBOX_AUTOCLOSE
+	release
+	end
 
 MasonriedHike_EventScript_Michael::
     trainerbattle_single TRAINER_P_MICHAEL, MasonriedHike_Text_MichaelIntro, MasonriedHike_Text_MichaelDefeated
@@ -90,4 +236,31 @@ MasonriedHike_Text_JayAndEmNeedTwoMons:
 	.string "Doesn't make for a good double battle.\n"
 	.string "EM: One plus two...\n"
 	.string "That's three, right?$"
+
+MasonriedHike_Text_NameTabitha:
+	.string "$"
+
+MasonriedHike_Text_HowToWakeEmUp:
+	.string "$"
+
+MasonriedHike_Text_BolterockJoltedAwake:
+	.string "$"
+
+MasonriedHike_Text_DealtWithItGood:
+	.string "$"
+
+MasonriedHike_Text_IllMeetYouAhead:
+	.string "$"
+
+MasonriedHike_Text_BolterockGone:
+	.string "$"
+
+MasonriedHike_Text_CantPassBolterock:
+	.string "$"
+
+MasonriedHike_Text_YouMadeAnExplosionSound:
+	.string "$"
+
+MasonriedHike_Text_TheWildBoltFled:
+	.string "$"
 

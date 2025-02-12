@@ -1,4 +1,5 @@
 .set LOCALID_DOORGUARD, 1
+.set LOCALID_TABITHA, 4
 
 OzoneInt_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OzoneInt_OnTransition
@@ -86,11 +87,65 @@ OzoneInt_EventScript_ArchieGatherOthers::
 	release
 	end
 
+OzoneInt_EventScript_Tabitha::
+	lock
+	faceplayer
+	speakername OzoneInt_Text_NameTabitha
+	msgbox OzoneInt_Text_TabithaBolterockAdvice, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_OZONE_ADMINS_STATE, 6
+	goto_if_eq VAR_FACING, DIR_NORTH, OzoneInt_EventScript_TabithaLeaveGoAroundPlayer
+	applymovement LOCALID_TABITHA, OzoneInt_Movement_TabithaLeave
+	waitmovement 0
+	removeobject LOCALID_TABITHA
+	setflag FLAG_HIDE_TABITHA_OZONE
+	release
+	end
+
+OzoneInt_Movement_TabithaLeave:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+OzoneInt_EventScript_TabithaLeaveGoAroundPlayer::
+	applymovement LOCALID_TABITHA, OzoneInt_Movement_TabithaLeaveGoAroundPlayer
+	waitmovement 0
+	removeobject LOCALID_TABITHA
+	setflag FLAG_HIDE_TABITHA_OZONE
+	release
+	end
+
+OzoneInt_Movement_TabithaLeaveGoAroundPlayer:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 OzoneInt_Text_NameMaxie:
 	.string "Maxie$"
 
 OzoneInt_Text_NameArchie:
 	.string "Archie$"
+
+OzoneInt_Text_NameTabitha:
+	.string "Tabitha$"
 
 OzoneInt_Text_DockNeedsMe:
 	.string "dock needs me to show tf up$"
@@ -120,4 +175,7 @@ OzoneInt_Text_PrepareAdequately:
 	.string "$"
 
 OzoneInt_Text_NoGoingBack:
+	.string "$"
+
+OzoneInt_Text_TabithaBolterockAdvice:
 	.string "$"
