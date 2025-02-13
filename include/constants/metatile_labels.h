@@ -9,6 +9,16 @@
 #define METATILE_BattleDome_Door_Lobby          0x209
 #define METATILE_BattleDome_Door_PreBattleRoom  0x20A
 
+// gTileset_BattleFactory
+#define METATILE_BattleFactory_CordelictFace1    0x3B4
+#define METATILE_BattleFactory_CordelictFace2    0x3B5
+#define METATILE_BattleFactory_CordelictGone2    0x289
+#define METATILE_BattleFactory_CordelictGone3    0x291
+#define METATILE_BattleFactory_CordelictOff      0x3B1
+#define METATILE_BattleFactory_CordelictTurnOn1  0x3B2
+#define METATILE_BattleFactory_CordelictTurnOn2  0x3B3
+#define METATILE_BattleFactory_CordlecitGone1    0x2E2
+
 // gTileset_BattleFrontierOutsideEast
 #define METATILE_BattleFrontierOutsideEast_Door              0x3FC
 #define METATILE_BattleFrontierOutsideEast_Door_BattleArena  0x291

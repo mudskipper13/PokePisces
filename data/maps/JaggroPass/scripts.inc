@@ -1,6 +1,120 @@
 JaggroPass_MapScripts::
 	.byte 0
 
+JaggroPass_EventScript_GravelitoIdle::
+	lock
+	setflag FLAG_TEMP_A
+	clearflag FLAG_TEMP_B
+	msgbox JaggroPass_Text_ItsHumming, MSGBOX_DEFAULT
+	goto JaggroPass_EventScript_CheckSing
+	release
+	end
+
+JaggroPass_EventScript_MegalitoIdle::
+	lock
+	clearflag FLAG_TEMP_A
+	setflag FLAG_TEMP_B
+	msgbox JaggroPass_Text_ItsBellowing, MSGBOX_DEFAULT
+	goto JaggroPass_EventScript_CheckSing
+	release
+	end
+
+JaggroPass_EventScript_CheckSing::
+	checkpartynonhmmove MOVE_SING
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckPerishSong
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckPerishSong::
+	checkpartynonhmmove MOVE_PERISH_SONG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckGrassWhistle
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckGrassWhistle::
+	checkpartynonhmmove MOVE_GRASS_WHISTLE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckRound
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckRound::
+	checkpartynonhmmove MOVE_ROUND
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckSparklingAria
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckSparklingAria::
+	checkpartynonhmmove MOVE_SPARKLING_ARIA
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckTorchSong
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckTorchSong::
+	checkpartynonhmmove MOVE_TORCH_SONG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckBeatbox
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckBeatbox::
+	checkpartynonhmmove MOVE_BEATBOX
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_CheckBeatDrop
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_CheckBeatDrop::
+	checkpartynonhmmove MOVE_BEAT_DROP
+	goto_if_eq VAR_RESULT, PARTY_SIZE, JaggroPass_EventScript_NoSingingMoves
+	goto_if_set FLAG_TEMP_A, JaggroPass_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, JaggroPass_EventScript_MegalitoBattle
+	release
+	end
+
+JaggroPass_EventScript_NoSingingMoves::
+	msgbox JaggroPass_Text_NoSingingMove, MSGBOX_AUTOCLOSE
+	speakername NULL
+	release
+	end
+
+JaggroPass_EventScript_GravelitoBattle::
+	lock
+	msgbox JaggroPass_Text_ItBecameLively, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_GRAVELITO, 31
+	playmoncry SPECIES_GRAVELITO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
+JaggroPass_EventScript_MegalitoBattle::
+	lock
+	msgbox JaggroPass_Text_ItBecameLively, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_MEGALITO, 35
+	playmoncry SPECIES_MEGALITO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
 JaggroPass_EventScript_Emmy::
     trainerbattle_single TRAINER_P_EMMY, JaggroPass_Text_EmmyIntro, JaggroPass_Text_EmmyDefeated
     msgbox JaggroPass_Text_EmmyPostBattle, MSGBOX_AUTOCLOSE
@@ -105,3 +219,15 @@ JaggroPass_Text_JellyDefeated:
 
 JaggroPass_Text_JellyPostBattle:
 	.string "post$"
+
+JaggroPass_Text_ItsHumming:
+	.string "$"
+
+JaggroPass_Text_ItsBellowing:
+	.string "$"
+
+JaggroPass_Text_NoSingingMove:
+	.string "$"
+
+JaggroPass_Text_ItBecameLively:
+	.string "$"

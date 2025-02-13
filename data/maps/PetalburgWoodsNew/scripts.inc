@@ -231,6 +231,149 @@ PetalburgWoodsNew_Movement_BreadEscape:
 	walk_fast_up
 	step_end
 
+PetalburgWoodsNew_EventScript_BirdhouseShishima::
+	lock
+	goto_if_set FLAG_DEFEATED_SHISHIMA, PetalburgWoodsNew_EventScript_BirdPost
+	msgbox PetalburgWoodsNew_Text_DoYouLookInside, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PetalburgWoodsNew_EventScript_ShishimaBattle
+	msgbox PetalburgWoodsNew_Text_ProbablyShouldnt, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PetalburgWoodsNew_EventScript_ShishimaBattle::
+	setwildbattle SPECIES_SHISHIMA, 66
+	settotemboost B_POSITION_OPPONENT_LEFT, 1, 5, 0, 1, 5, 1, 1
+	playmoncry SPECIES_SHISHIMA, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	msgbox PetalburgWoodsNew_Text_PunishingPresence, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_CATCHING_FLAG
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
+	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_CATCHING_FLAG
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
+	goto PetalburgWoodsNew_EventScript_ShishimaDefeat
+	release
+	end
+
+PetalburgWoodsNew_EventScript_ShishimaDefeat::
+	msgbox PetalburgWoodsNew_Text_ShishimaBecameEgg, MSGBOX_DEFAULT
+	setflag FLAG_DEFEATED_SHISHIMA
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	giveegg SPECIES_SHISHIMA
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+PetalburgWoodsNew_EventScript_BirdhouseOlFlookie::
+	lock
+	goto_if_set FLAG_DEFEATED_OLFLOOKIE, PetalburgWoodsNew_EventScript_BirdPost
+	msgbox PetalburgWoodsNew_Text_DoYouLookInside, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PetalburgWoodsNew_EventScript_OlFlookieBattle
+	msgbox PetalburgWoodsNew_Text_ProbablyShouldnt, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PetalburgWoodsNew_EventScript_OlFlookieBattle::
+	setwildbattle SPECIES_OLFLOOKIE, 66
+	settotemboost B_POSITION_OPPONENT_LEFT, 1, 5, 0, 1, 5, 1, 1
+	playmoncry SPECIES_OLFLOOKIE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	msgbox PetalburgWoodsNew_Text_BigPresence, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_CATCHING_FLAG
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
+	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_CATCHING_FLAG
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
+	goto PetalburgWoodsNew_EventScript_OlFlookieDefeat
+	release
+	end
+
+PetalburgWoodsNew_EventScript_OlFlookieDefeat::
+	msgbox PetalburgWoodsNew_Text_OlFlookieBecameEgg, MSGBOX_DEFAULT
+	setflag FLAG_DEFEATED_OLFLOOKIE
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	giveegg SPECIES_OLFLOOKIE
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+PetalburgWoodsNew_EventScript_BirdhouseJustricha::
+	lock
+	goto_if_set FLAG_DEFEATED_JUSTRICHA, PetalburgWoodsNew_EventScript_BirdPost
+	msgbox PetalburgWoodsNew_Text_DoYouLookInside, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PetalburgWoodsNew_EventScript_JustrichaBattle
+	msgbox PetalburgWoodsNew_Text_ProbablyShouldnt, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PetalburgWoodsNew_EventScript_JustrichaBattle::
+	setwildbattle SPECIES_JUSTRICHA, 66
+	settotemboost B_POSITION_OPPONENT_LEFT, 1, 5, 0, 1, 5, 1, 1
+	playmoncry SPECIES_JUSTRICHA, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	msgbox PetalburgWoodsNew_Text_JudgingPresence, MSGBOX_DEFAULT
+	setflag FLAG_WILD_NO_CATCHING_FLAG
+	setflag FLAG_WILD_NO_RUNNING_FLAG
+	setflag FLAG_SMART_WILD_AI_FLAG
+	delay 4
+	dowildbattle
+	delay 8
+	clearflag FLAG_WILD_NO_CATCHING_FLAG
+	clearflag FLAG_WILD_NO_RUNNING_FLAG
+	clearflag FLAG_SMART_WILD_AI_FLAG
+	goto PetalburgWoodsNew_EventScript_JustrichaDefeat
+	release
+	end
+
+PetalburgWoodsNew_EventScript_JustrichaDefeat::
+	msgbox PetalburgWoodsNew_Text_JustrichaBecameEgg, MSGBOX_DEFAULT
+	setflag FLAG_DEFEATED_JUSTRICHA
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	giveegg SPECIES_JUSTRICHA
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+PetalburgWoodsNew_EventScript_BirdPost::
+	msgbox PetalburgWoodsNew_Text_BirdIsGone, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PetalburgWoodsNew_EventScript_ReceiveEggParty::
+	call PetalburgWoodsNew_EventScript_ReceivedEggFanfare
+	release
+	end
+
+PetalburgWoodsNew_EventScript_ReceiveEggPC::
+	call PetalburgWoodsNew_EventScript_ReceivedEggFanfare
+	call Common_EventScript_TransferredToPC
+	release
+	end
+
+PetalburgWoodsNew_EventScript_ReceivedEggFanfare::
+	playfanfare MUS_OBTAIN_ITEM
+	message PetalburgWoodsNew_Text_PlayerReceivedEgg
+	waitmessage
+	waitfanfare
+	return
+
 PetalburgWoodsNew_EventScript_Tutu::
     trainerbattle_single TRAINER_P_TUTU, PetalburgWoodsNew_Text_TutuIntro, PetalburgWoodsNew_Text_TutuDefeated
     msgbox PetalburgWoodsNew_Text_TutuPostBattle, MSGBOX_AUTOCLOSE
@@ -398,4 +541,34 @@ PetalburgWoodsNew_Text_BreadwinnerDefeat:
 	.string "$"
 
 PetalburgWoodsNew_Text_BreadwinnerRunAway:
+	.string "$"
+
+PetalburgWoodsNew_Text_DoYouLookInside:
+	.string "$"
+
+PetalburgWoodsNew_Text_ProbablyShouldnt:
+	.string "$"
+
+PetalburgWoodsNew_Text_PunishingPresence:
+	.string "$"
+
+PetalburgWoodsNew_Text_BigPresence:
+	.string "$"
+
+PetalburgWoodsNew_Text_JudgingPresence:
+	.string "$"
+
+PetalburgWoodsNew_Text_ShishimaBecameEgg:
+	.string "$"
+
+PetalburgWoodsNew_Text_OlFlookieBecameEgg:
+	.string "$"
+
+PetalburgWoodsNew_Text_JustrichaBecameEgg:
+	.string "$"
+
+PetalburgWoodsNew_Text_PlayerReceivedEgg:
+	.string "$"
+
+PetalburgWoodsNew_Text_BirdIsGone:
 	.string "$"

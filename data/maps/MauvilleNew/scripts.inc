@@ -260,6 +260,25 @@ MauvilleNew_Movement_RayLeaves:
 	walk_left
 	step_end
 
+MauvilleNew_EventScript_Meralcore::
+	lock
+	msgbox MauvilleNew_Text_DisturbMeralcore, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, MauvilleNew_EventScript_MeralcoreBattle
+	closemessage
+	release
+	end
+
+MauvilleNew_EventScript_MeralcoreBattle::
+	delay 16
+	setwildbattle SPECIES_MERALCORE, 40
+	playmoncry SPECIES_MERALCORE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
 MauvilleNew_EventScript_Kurt::
     trainerbattle_single TRAINER_P_KURT, MauvilleNew_Text_KurtIntro, MauvilleNew_Text_KurtDefeated
     msgbox MauvilleNew_Text_KurtPostBattle, MSGBOX_AUTOCLOSE
@@ -360,3 +379,6 @@ MauvilleNew_Text_RayDefeat:
 
 MauvilleNew_Text_RayLeaves:
 	.string "byebye$"
+
+MauvilleNew_Text_DisturbMeralcore:
+	.string "disturb this mf?$"

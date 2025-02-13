@@ -53,6 +53,10 @@ CrimneyCaldera_EventScript_LegendaryEncounter::
 	closemessage
 	setflag FLAG_DEFEATED_SHA_GROU
 	delay 16
+	setseenmon SPECIES_GROUDON
+	setcaughtmon SPECIES_GROUDON
+	setseenmon SPECIES_SHAYON
+	setcaughtmon SPECIES_SHAYON
 	setvar VAR_NEW_COO_STATE, 7
 	warp MAP_CRIMNEY_CALDERA, 19, 9
 	waitstate

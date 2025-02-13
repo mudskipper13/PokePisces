@@ -51,6 +51,10 @@ MeteorNadir_EventScript_LegendaryEncounter::
 	closemessage
 	setflag FLAG_DEFEATED_LUO_KYO
 	delay 16
+	setseenmon SPECIES_KYOGRE
+	setcaughtmon SPECIES_KYOGRE
+	setseenmon SPECIES_LUOSHAN
+	setcaughtmon SPECIES_LUOSHAN
 	setvar VAR_NEW_COO_STATE, 8
 	warp MAP_METEOR_NADIR, 26, 14
 	waitstate
