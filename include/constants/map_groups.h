@@ -289,6 +289,7 @@
 #define MAP_OZONE_SHELLY_ROOM           (10 | (20 << 8))
 #define MAP_OZONE_ELITE_FOUR_HUB        (11 | (20 << 8))
 #define MAP_OZONE_MAXIE_ARCHIE_ROOM     (12 | (20 << 8))
+#define MAP_SHUNYONG_BATTLE_ARENA       (13 | (20 << 8))
 
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))

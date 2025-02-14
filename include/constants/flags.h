@@ -1275,8 +1275,8 @@
 #define FLAG_DEFEATED_SHISHIMA                                           0x4C9 // Unused Flag
 #define FLAG_DEFEATED_OLFLOOKIE                                           0x4CA // Unused Flag
 #define FLAG_DEFEATED_JUSTRICHA                                           0x4CB // Unused Flag
-#define FLAG_UNUSED_0x4CC                                           0x4CC // Unused Flag
-#define FLAG_UNUSED_0x4CD                                           0x4CD // Unused Flag
+#define FLAG_SHAYON_ORB                                           0x4CC // Unused Flag
+#define FLAG_LUOSHAN_ORB                                           0x4CD // Unused Flag
 #define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
 #define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
 #define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag

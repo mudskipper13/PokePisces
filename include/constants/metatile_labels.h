@@ -276,6 +276,12 @@
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x219
 
+// gTileset_Golden
+#define METATILE_Golden_LuoShanOrbBottom  0x301
+#define METATILE_Golden_LuoShanOrbTop     0x2F9
+#define METATILE_Golden_ShaYonOrbBottom   0x306
+#define METATILE_Golden_ShaYonOrbTop      0x2FE
+
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x21D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x215

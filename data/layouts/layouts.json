@@ -6250,6 +6250,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/SweltornInteriors/border.bin",
       "blockdata_filepath": "data/layouts/SweltornInteriors/map.bin"
+    },
+    {
+      "id": "LAYOUT_SHUNYONG_BATTLE_ARENA",
+      "name": "ShunyongBattleArena_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Golden",
+      "border_filepath": "data/layouts/ShunyongBattleArena/border.bin",
+      "blockdata_filepath": "data/layouts/ShunyongBattleArena/map.bin"
     }
   ]
 }
