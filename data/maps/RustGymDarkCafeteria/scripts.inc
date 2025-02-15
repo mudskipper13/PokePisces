@@ -68,7 +68,8 @@ RustGymDarkCafeteria_EventScript_GangWar::
 	applymovement LOCALID_PEON6, RustGymDarkCafeteria_Movement_Peon6GoToCenter
 	waitmovement 0
 	delay 32
-	trainerbattle_single TRAINER_P_DIOGENES, RustGymDarkCafeteria_Text_DiogenesIntro, RustGymDarkCafeteria_Text_DiogenesDefeated, RustGymDarkCafeteria_EventScript_DiogenesDefeat
+	msgbox RustGymDarkCafeteria_Text_DiogenesIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_DIOGENES, RustGymDarkCafeteria_Text_DiogenesDefeated
 	goto RustGymDarkCafeteria_EventScript_DiogenesDefeat
 	release
 	end

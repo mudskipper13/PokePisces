@@ -91,7 +91,9 @@ OzoneFloor2_Movement_RayEncounter4:
 
 OzoneFloor2_EventScript_RayBattleStart::
 	speakername OzoneFloor2_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_7, OzoneFloor2_Text_RayIntro, OzoneFloor2_Text_RayDefeat, OzoneFloor2_EventScript_RayLeaves
+	msgbox OzoneFloor2_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_7, OzoneFloor2_Text_RayDefeat
+	goto OzoneFloor2_EventScript_RayLeaves
 	speakername NULL
 	release
 	end
@@ -119,6 +121,23 @@ OzoneFloor2_Movement_RayLeaves:
 	walk_right
 	walk_right
 	step_end
+
+OzoneFloor2_EventScript_Nurse::
+	lock
+	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, OzoneFloor2_EventScript_HealPkmn
+	message gText_WeHopeToSeeYouAgain
+	return
+
+OzoneFloor2_EventScript_HealPkmn::
+	special HealPlayerParty
+	message gText_RestoredPkmnToFullHealth
+	waitmessage
+	message gText_WeHopeToSeeYouAgain
+	waitmessage
+	waitbuttonpress
+	release
+	end
 
 OzoneFloor2_Text_NameRay:
 	.string "Ray$"

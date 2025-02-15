@@ -49,7 +49,9 @@ MauvilleNew_EventScript_MrBonding::
 	call_if_eq VAR_FACING, DIR_WEST, MauvilleNew_EventScript_PlayerWestMove
 	delay 4
 	speakername MauvilleNew_Text_NameMrBonding
-	trainerbattle_single TRAINER_P_MR_BONDING, MauvilleNew_Text_BondingIntro, MauvilleNew_Text_BondingDefeated, MauvilleNew_EventScript_MrBondingBeaten
+	msgbox MauvilleNew_Text_BondingIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MR_BONDING, MauvilleNew_Text_BondingDefeated
+	goto MauvilleNew_EventScript_MrBondingBeaten
 	release
 	end
 
@@ -227,7 +229,9 @@ MauvilleNew_Movement_RayEncounter4:
 
 MauvilleNew_EventScript_RayBattleStart::
 	speakername MauvilleNew_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_4, MauvilleNew_Text_RayIntro, MauvilleNew_Text_RayDefeat, MauvilleNew_EventScript_RayLeaves
+	msgbox MauvilleNew_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_4, MauvilleNew_Text_RayDefeat
+	goto MauvilleNew_EventScript_RayLeaves
 	speakername NULL
 	release
 	end
@@ -255,6 +259,25 @@ MauvilleNew_Movement_RayLeaves:
 	walk_left
 	walk_left
 	step_end
+
+MauvilleNew_EventScript_Meralcore::
+	lock
+	msgbox MauvilleNew_Text_DisturbMeralcore, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, MauvilleNew_EventScript_MeralcoreBattle
+	closemessage
+	release
+	end
+
+MauvilleNew_EventScript_MeralcoreBattle::
+	delay 16
+	setwildbattle SPECIES_MERALCORE, 40
+	playmoncry SPECIES_MERALCORE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
 
 MauvilleNew_EventScript_Kurt::
     trainerbattle_single TRAINER_P_KURT, MauvilleNew_Text_KurtIntro, MauvilleNew_Text_KurtDefeated
@@ -356,3 +379,6 @@ MauvilleNew_Text_RayDefeat:
 
 MauvilleNew_Text_RayLeaves:
 	.string "byebye$"
+
+MauvilleNew_Text_DisturbMeralcore:
+	.string "disturb this mf?$"

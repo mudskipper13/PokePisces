@@ -388,7 +388,9 @@ MangrottoTunnel_EventScript_BreadwinnerEnc1::
 	playse SE_WALL_HIT
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadBackUp
 	waitmovement 0
-	trainerbattle_single TRAINER_P_PANDOU_1, MangrottoTunnel_Text_BreadwinnerIntro, MangrottoTunnel_Text_BreadwinnerDefeat, MangrottoTunnel_EventScript_BreadRun
+	msgbox MangrottoTunnel_Text_BreadwinnerIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_PANDOU_1, MangrottoTunnel_Text_BreadwinnerDefeat
+	goto MangrottoTunnel_EventScript_BreadRun
 	release
 	end
 

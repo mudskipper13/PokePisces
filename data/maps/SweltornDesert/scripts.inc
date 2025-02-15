@@ -1,5 +1,306 @@
+.set LOCALID_MATT, 14
+.set LOCALID_OZONE1, 15
+.set LOCALID_OZONE2, 16
+.set LOCALID_OZONE3, 17
+
 SweltornDesert_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, SweltornDesert_OnLoad
 	.byte 0
+
+SweltornDesert_OnLoad:
+	call_if_lt VAR_OZONE_ADMINS_STATE, 8, SweltornDesert_EventScript_RemoveMattAndMinions
+	call_if_gt VAR_OZONE_ADMINS_STATE, 8, SweltornDesert_EventScript_RemoveMattAndMinions
+	end
+
+SweltornDesert_EventScript_RemoveMattAndMinions::
+	removeobject LOCALID_MATT
+	setflag FLAG_TEMP_11
+	removeobject LOCALID_OZONE1
+	setflag FLAG_TEMP_12
+	removeobject LOCALID_OZONE2
+	setflag FLAG_TEMP_13
+	removeobject LOCALID_OZONE3
+	setflag FLAG_TEMP_14
+	return
+
+SweltornDesert_EventScript_MattEncounterLeft1::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerLeft
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetLeft1
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleLeft
+	release
+	end
+
+SweltornDesert_Movement_MattNoticePlayerLeft:
+	face_left
+	emote_exclamation_mark
+	step_end
+
+SweltornDesert_Movement_PlayerMeetLeft1:
+	walk_right
+	walk_down
+	walk_right
+	walk_down
+	face_right
+	step_end
+
+SweltornDesert_EventScript_MattEncounterLeft2::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerLeft
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetLeft2
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleLeft
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetLeft2:
+	walk_right
+	walk_down
+	walk_right
+	step_end
+
+SweltornDesert_EventScript_MattEncounterLeft3::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerLeft
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetLeft3
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleLeft
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetLeft3:
+	walk_right
+	walk_right
+	step_end
+
+SweltornDesert_EventScript_MattEncounterLeft4::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerLeft
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetLeft4
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleLeft
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetLeft4:
+	walk_right
+	walk_up
+	walk_right
+	step_end
+
+SweltornDesert_EventScript_MattEncounterLeft5::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerLeft
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetLeft5
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleLeft
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetLeft5:
+	walk_up
+	walk_right
+	walk_up
+	walk_right
+	step_end
+
+SweltornDesert_EventScript_MattBattleLeft::
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_BeenSpelunking, MSGBOX_DEFAULT
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_MattIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MATT_2, SweltornDesert_Text_MattDefeated
+	goto SweltornDesert_EventScript_MattPostBattleLeft
+	release
+	end
+
+SweltornDesert_EventScript_MattPostBattleLeft::
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_GoodBattleIllMoveMyGuys, MSGBOX_DEFAULT
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattLeavesLeft
+	waitmovement 0
+	setvar VAR_OZONE_ADMINS_STATE, 9
+	removeobject LOCALID_MATT
+	setflag FLAG_TEMP_11
+	removeobject LOCALID_OZONE1
+	setflag FLAG_TEMP_12
+	removeobject LOCALID_OZONE2
+	setflag FLAG_TEMP_13
+	removeobject LOCALID_OZONE3
+	setflag FLAG_TEMP_14
+	release
+	end
+
+SweltornDesert_Movement_MattLeavesLeft:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+SweltornDesert_EventScript_MattEncounterRight1::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerRight
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetRight1
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleRight
+	release
+	end
+
+SweltornDesert_Movement_MattNoticePlayerRight:
+	face_right
+	emote_exclamation_mark
+	step_end
+
+SweltornDesert_Movement_PlayerMeetRight1:
+	walk_down
+	walk_left
+	walk_down
+	walk_left
+	step_end
+
+SweltornDesert_EventScript_MattEncounterRight2::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerRight
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetRight2
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleRight
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetRight2:
+	walk_left
+	walk_down
+	walk_left
+	step_end
+
+SweltornDesert_EventScript_MattEncounterRight3::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerRight
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetRight3
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleRight
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetRight3:
+	walk_left
+	walk_left
+	step_end
+
+SweltornDesert_EventScript_MattEncounterRight4::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattNoticePlayerRight
+	waitmovement 0
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_IsThatYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, SweltornDesert_Movement_PlayerMeetRight4
+	waitmovement 0
+	goto SweltornDesert_EventScript_MattBattleRight
+	release
+	end
+
+SweltornDesert_Movement_PlayerMeetRight4:
+	walk_left
+	walk_up
+	walk_left
+	step_end
+
+SweltornDesert_EventScript_MattBattleRight::
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_BeenSpelunking, MSGBOX_DEFAULT
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_MattIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_MATT_2, SweltornDesert_Text_MattDefeated
+	goto SweltornDesert_EventScript_MattPostBattleRight
+	release
+	end
+
+SweltornDesert_EventScript_MattPostBattleRight::
+	speakername SweltornDesert_Text_NameMatt
+	msgbox SweltornDesert_Text_GoodBattleIllMoveMyGuys, MSGBOX_DEFAULT
+	applymovement LOCALID_MATT, SweltornDesert_Movement_MattLeavesRight
+	waitmovement 0
+	setvar VAR_OZONE_ADMINS_STATE, 9
+	removeobject LOCALID_MATT
+	setflag FLAG_TEMP_11
+	removeobject LOCALID_OZONE1
+	setflag FLAG_TEMP_12
+	removeobject LOCALID_OZONE2
+	setflag FLAG_TEMP_13
+	removeobject LOCALID_OZONE3
+	setflag FLAG_TEMP_14
+	release
+	end
+
+SweltornDesert_Movement_MattLeavesRight:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SweltornDesert_EventScript_OzoneRoadblocker1::
+	msgbox SweltornDesert_Text_OzoneRoadblocker1, MSGBOX_NPC
+    end
+
+SweltornDesert_EventScript_OzoneRoadblocker2::
+	msgbox SweltornDesert_Text_OzoneRoadblocker2, MSGBOX_NPC
+    end
+
+SweltornDesert_EventScript_OzoneRoadblocker3::
+	msgbox SweltornDesert_Text_OzoneRoadblocker3, MSGBOX_NPC
+    end
 
 SweltornDesert_EventScript_Santo::
     trainerbattle_single TRAINER_P_SANTO, SweltornDesert_Text_SantoIntro, SweltornDesert_Text_SantoDefeated
@@ -191,3 +492,30 @@ SweltornDesert_Text_DottyDefeated:
 
 SweltornDesert_Text_DottyPostBattle:
 	.string "post$"
+
+SweltornDesert_Text_NameMatt:
+	.string "$"
+
+SweltornDesert_Text_IsThatYou:
+	.string "$"
+
+SweltornDesert_Text_BeenSpelunking:
+	.string "$"
+
+SweltornDesert_Text_MattIntro:
+	.string "$"
+
+SweltornDesert_Text_MattDefeated:
+	.string "$"
+
+SweltornDesert_Text_GoodBattleIllMoveMyGuys:
+	.string "$"
+
+SweltornDesert_Text_OzoneRoadblocker1:
+	.string "$"
+
+SweltornDesert_Text_OzoneRoadblocker2:
+	.string "$"
+
+SweltornDesert_Text_OzoneRoadblocker3:
+	.string "$"

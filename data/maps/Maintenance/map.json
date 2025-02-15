@@ -236,8 +236,8 @@
       "dest_warp_id": "4"
     },
     {
-      "x": 44,
-      "y": 15,
+      "x": 43,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_INSIDE",
       "dest_warp_id": "6"
@@ -255,6 +255,13 @@
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR1",
       "dest_warp_id": "15"
+    },
+    {
+      "x": 44,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_MAINTENANCE_BONDING_ARENA",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

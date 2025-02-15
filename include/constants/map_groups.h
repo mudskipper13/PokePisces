@@ -194,6 +194,7 @@
 #define MAP_GYM6CORRIDOR                      (23 | (13 << 8))
 #define MAP_VERDANTURF_GYM                    (24 | (13 << 8))
 #define MAP_MAUVILLE_CITY_GYM                 (25 | (13 << 8))
+#define MAP_SWELTORN_INTERIORS                (26 | (13 << 8))
 
 // gMapGroup_PiscesLeg8Major
 #define MAP_SLATEPORT_SHORE       (0 | (14 << 8))
@@ -288,6 +289,7 @@
 #define MAP_OZONE_SHELLY_ROOM           (10 | (20 << 8))
 #define MAP_OZONE_ELITE_FOUR_HUB        (11 | (20 << 8))
 #define MAP_OZONE_MAXIE_ARCHIE_ROOM     (12 | (20 << 8))
+#define MAP_SHUNYONG_BATTLE_ARENA       (13 | (20 << 8))
 
 // gMapGroup_PiscesLeg11Minor
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (0 | (21 << 8))
@@ -296,6 +298,8 @@
 #define MAP_OZONE_SITUATION_ROOM               (3 | (21 << 8))
 #define MAP_OZONE_OUTSIDE_CUTSCENE             (4 | (21 << 8))
 #define MAP_EVER_GRANDE_ROAD_PC                (5 | (21 << 8))
+#define MAP_CAVE_OF_ORIGIN_CUTSCENE            (6 | (21 << 8))
+#define MAP_EVER_GRANDE_REST_AREA              (7 | (21 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (22 << 8))

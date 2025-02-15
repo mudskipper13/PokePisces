@@ -94,7 +94,9 @@ EverGrandeRoad_EventScript_BreadwinnerBattle::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername EverGrandeRoad_Text_NamePandou
-	trainerbattle_single TRAINER_P_PANDOU_6, EverGrandeRoad_Text_BreadwinnerIntro, EverGrandeRoad_Text_BreadwinnerDefeat, EverGrandeRoad_EventScript_BreadRun
+	msgbox EverGrandeRoad_Text_BreadwinnerIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_PANDOU_6, EverGrandeRoad_Text_BreadwinnerDefeat
+	goto EverGrandeRoad_EventScript_BreadRun
 	release
 	end
 
@@ -128,122 +130,122 @@ EverGrandeRoad_Movement_BreadGoThruDoor:
 	step_end
 
 EverGrandeRoad_EventScript_RaoTwunne::
-    trainerbattle_single TRAINER_P_RAO_TWUNNE, EverGrandeRoad_Text_RaoTwunneIntro, EverGrandeRoad_Text_RaoTwunneDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_RAO_TWUNNE, EverGrandeRoad_Text_RaoTwunneIntro, EverGrandeRoad_Text_RaoTwunneDefeated
     msgbox EverGrandeRoad_Text_RaoTwunnePostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Jamiroquai::
-    trainerbattle_single TRAINER_P_JAMIROQUAI, EverGrandeRoad_Text_JamiroquaiIntro, EverGrandeRoad_Text_JamiroquaiDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_JAMIROQUAI, EverGrandeRoad_Text_JamiroquaiIntro, EverGrandeRoad_Text_JamiroquaiDefeated
     msgbox EverGrandeRoad_Text_JamiroquaiPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Kumqot::
-    trainerbattle_single TRAINER_P_KUMQOT, EverGrandeRoad_Text_KumqotIntro, EverGrandeRoad_Text_KumqotDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_KUMQOT, EverGrandeRoad_Text_KumqotIntro, EverGrandeRoad_Text_KumqotDefeated
     msgbox EverGrandeRoad_Text_KumqotPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Dorian::
-    trainerbattle_single TRAINER_P_DORIAN, EverGrandeRoad_Text_DorianIntro, EverGrandeRoad_Text_DorianDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_DORIAN, EverGrandeRoad_Text_DorianIntro, EverGrandeRoad_Text_DorianDefeated
     msgbox EverGrandeRoad_Text_DorianPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Lytxi::
-    trainerbattle_single TRAINER_P_LYTXI, EverGrandeRoad_Text_LytxiIntro, EverGrandeRoad_Text_LytxiDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_LYTXI, EverGrandeRoad_Text_LytxiIntro, EverGrandeRoad_Text_LytxiDefeated
     msgbox EverGrandeRoad_Text_LytxiPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Sherimoya::
-    trainerbattle_single TRAINER_P_SHERIMOYA, EverGrandeRoad_Text_SherimoyaIntro, EverGrandeRoad_Text_SherimoyaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_SHERIMOYA, EverGrandeRoad_Text_SherimoyaIntro, EverGrandeRoad_Text_SherimoyaDefeated
     msgbox EverGrandeRoad_Text_SherimoyaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Melulu::
-    trainerbattle_single TRAINER_P_MELULU, EverGrandeRoad_Text_MeluluIntro, EverGrandeRoad_Text_MeluluDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_MELULU, EverGrandeRoad_Text_MeluluIntro, EverGrandeRoad_Text_MeluluDefeated
     msgbox EverGrandeRoad_Text_MeluluPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_PyoRin::
-    trainerbattle_single TRAINER_P_PYORIN, EverGrandeRoad_Text_PyoRinIntro, EverGrandeRoad_Text_PyoRinDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_PYORIN, EverGrandeRoad_Text_PyoRinIntro, EverGrandeRoad_Text_PyoRinDefeated
     msgbox EverGrandeRoad_Text_PyoRinPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Min::
-    trainerbattle_single TRAINER_P_MIN, EverGrandeRoad_Text_MinIntro, EverGrandeRoad_Text_MinDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_MIN, EverGrandeRoad_Text_MinIntro, EverGrandeRoad_Text_MinDefeated
     msgbox EverGrandeRoad_Text_MinPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Max::
-    trainerbattle_single TRAINER_P_MAX, EverGrandeRoad_Text_MaxIntro, EverGrandeRoad_Text_MaxDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_MAX, EverGrandeRoad_Text_MaxIntro, EverGrandeRoad_Text_MaxDefeated
     msgbox EverGrandeRoad_Text_MaxPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Artemis::
-    trainerbattle_single TRAINER_P_ARTEMIS, EverGrandeRoad_Text_ArtemisIntro, EverGrandeRoad_Text_ArtemisDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_ARTEMIS, EverGrandeRoad_Text_ArtemisIntro, EverGrandeRoad_Text_ArtemisDefeated
     msgbox EverGrandeRoad_Text_ArtemisPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Garena::
-    trainerbattle_single TRAINER_P_GARENA, EverGrandeRoad_Text_GarenaIntro, EverGrandeRoad_Text_GarenaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_GARENA, EverGrandeRoad_Text_GarenaIntro, EverGrandeRoad_Text_GarenaDefeated
     msgbox EverGrandeRoad_Text_GarenaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Goro::
-    trainerbattle_single TRAINER_P_GORO, EverGrandeRoad_Text_GoroIntro, EverGrandeRoad_Text_GoroDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_GORO, EverGrandeRoad_Text_GoroIntro, EverGrandeRoad_Text_GoroDefeated
     msgbox EverGrandeRoad_Text_GoroPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Miernie::
-    trainerbattle_single TRAINER_P_MIERNIE, EverGrandeRoad_Text_MiernieIntro, EverGrandeRoad_Text_MiernieDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_MIERNIE, EverGrandeRoad_Text_MiernieIntro, EverGrandeRoad_Text_MiernieDefeated
     msgbox EverGrandeRoad_Text_MierniePostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Badumka::
-    trainerbattle_single TRAINER_P_BADUMKA, EverGrandeRoad_Text_BadumkaIntro, EverGrandeRoad_Text_BadumkaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_BADUMKA, EverGrandeRoad_Text_BadumkaIntro, EverGrandeRoad_Text_BadumkaDefeated
     msgbox EverGrandeRoad_Text_BadumkaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Anatina::
-    trainerbattle_single TRAINER_P_ANATINA, EverGrandeRoad_Text_AnatinaIntro, EverGrandeRoad_Text_AnatinaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_ANATINA, EverGrandeRoad_Text_AnatinaIntro, EverGrandeRoad_Text_AnatinaDefeated
     msgbox EverGrandeRoad_Text_AnatinaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Taipus::
-    trainerbattle_single TRAINER_P_TAIPUS, EverGrandeRoad_Text_TaipusIntro, EverGrandeRoad_Text_TaipusDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_TAIPUS, EverGrandeRoad_Text_TaipusIntro, EverGrandeRoad_Text_TaipusDefeated
     msgbox EverGrandeRoad_Text_TaipusPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Marcelus::
-    trainerbattle_single TRAINER_P_MARCELUS, EverGrandeRoad_Text_MarcelusIntro, EverGrandeRoad_Text_MarcelusDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_MARCELUS, EverGrandeRoad_Text_MarcelusIntro, EverGrandeRoad_Text_MarcelusDefeated
     msgbox EverGrandeRoad_Text_MarcelusPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Devia::
-    trainerbattle_single TRAINER_P_DEVIA, EverGrandeRoad_Text_DeviaIntro, EverGrandeRoad_Text_DeviaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_DEVIA, EverGrandeRoad_Text_DeviaIntro, EverGrandeRoad_Text_DeviaDefeated
     msgbox EverGrandeRoad_Text_DeviaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Unseld::
-    trainerbattle_single TRAINER_P_UNSELD, EverGrandeRoad_Text_UnseldIntro, EverGrandeRoad_Text_UnseldDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_UNSELD, EverGrandeRoad_Text_UnseldIntro, EverGrandeRoad_Text_UnseldDefeated
     msgbox EverGrandeRoad_Text_UnseldPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Immy::
-    trainerbattle_single TRAINER_P_IMMY, EverGrandeRoad_Text_ImmyIntro, EverGrandeRoad_Text_ImmyDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_IMMY, EverGrandeRoad_Text_ImmyIntro, EverGrandeRoad_Text_ImmyDefeated
     msgbox EverGrandeRoad_Text_ImmyPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Parponix::
-    trainerbattle_single TRAINER_P_PARPONIX, EverGrandeRoad_Text_ParponixIntro, EverGrandeRoad_Text_ParponixDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_PARPONIX, EverGrandeRoad_Text_ParponixIntro, EverGrandeRoad_Text_ParponixDefeated
     msgbox EverGrandeRoad_Text_ParponixPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Lanaya::
-    trainerbattle_single TRAINER_P_LANAYA, EverGrandeRoad_Text_LanayaIntro, EverGrandeRoad_Text_LanayaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_LANAYA, EverGrandeRoad_Text_LanayaIntro, EverGrandeRoad_Text_LanayaDefeated
     msgbox EverGrandeRoad_Text_LanayaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 EverGrandeRoad_EventScript_Ophelia::
-    trainerbattle_single TRAINER_P_OPHELIA, EverGrandeRoad_Text_OpheliaIntro, EverGrandeRoad_Text_OpheliaDefeated, EverGrandeRoad_EventScript_MusicTrigger, FALSE
+    trainerbattle_single TRAINER_P_OPHELIA, EverGrandeRoad_Text_OpheliaIntro, EverGrandeRoad_Text_OpheliaDefeated
     msgbox EverGrandeRoad_Text_OpheliaPostBattle, MSGBOX_AUTOCLOSE
     end
 

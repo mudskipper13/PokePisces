@@ -1,6 +1,6 @@
     .align 2
 voicegroup193::
-    voice_keysplit_all voicegroup003
+    voice_keysplit_all voicegroup002
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_directsound 60, 0, DirectSoundWaveData_steinway_b_piano, 255, 165, 103, 235
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -18,13 +18,13 @@ voicegroup193::
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 128, 160, 123, 165
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 85, 127, 180, 165
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-    voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-    voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_nylon_str_guitar, 255, 249, 25, 76
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -90,6 +90,6 @@ voicegroup193::
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-    voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_programmable_wave 60, 0, ProgrammableWaveData_17, 0, 7, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_programmable_wave_alt 60, 0, ProgrammableWaveData_1, 0, 0, 15, 0

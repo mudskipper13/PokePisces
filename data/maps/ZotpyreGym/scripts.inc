@@ -222,6 +222,7 @@ ZotpyreGym_EventScript_LeadersDefeated::
 	setflag FLAG_BADGE03_GET
 	setflag FLAG_DEFEATED_PETALBURG_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 4
+	setvar VAR_OZONE_ADMINS_STATE, 5
 	giveitem ITEM_DILATANT_MOD
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	giveitem ITEM_TM_FEAR_FACTOR

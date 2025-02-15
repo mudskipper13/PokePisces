@@ -140,7 +140,9 @@ OzoneInstitute_Movement_RayEncounterEast4:
 
 OzoneInstitute_EventScript_RayBattleStart::
 	speakername OzoneInstitute_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_3, OzoneInstitute_Text_RayIntro, OzoneInstitute_Text_RayDefeat, OzoneInstitute_EventScript_RayLeaves
+	msgbox OzoneInstitute_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_3, OzoneInstitute_Text_RayDefeat
+	goto OzoneInstitute_EventScript_RayLeaves
 	speakername NULL
 	release
 	end
@@ -156,6 +158,7 @@ OzoneInstitute_EventScript_RayLeaves::
 	setflag FLAG_BEAT_RAY_3
 	setvar VAR_RAY_STATE, 3
 	setflag FLAG_VISITED_OZONE_INSTITUTE
+	setflag FLAG_HIDE_MAXIE_OZONE
 	release
 	end
 

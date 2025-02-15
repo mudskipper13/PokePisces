@@ -245,7 +245,8 @@
     "VerdanturfTransition",
     "Gym6Corridor",
     "VerdanturfGym",
-    "MauvilleCity_Gym"
+    "MauvilleCity_Gym",
+    "SweltornInteriors"
   ],
   "gMapGroup_PiscesLeg8Major": [
     "SlateportShore",
@@ -339,7 +340,8 @@
     "OzoneCourtneyRoom",
     "OzoneShellyRoom",
     "OzoneEliteFourHub",
-    "OzoneMaxieArchieRoom"
+    "OzoneMaxieArchieRoom",
+    "ShunyongBattleArena"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",
@@ -347,7 +349,9 @@
     "PlaneInFlight",
     "OzoneSituationRoom",
     "OzoneOutsideCutscene",
-    "EverGrandeRoadPC"
+    "EverGrandeRoadPC",
+    "CaveOfOriginCutscene",
+    "EverGrandeRestArea"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

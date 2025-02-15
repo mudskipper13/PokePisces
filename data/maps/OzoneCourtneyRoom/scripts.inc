@@ -13,7 +13,8 @@ OzoneCourtneyRoom_EventScript_FightCourtney::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername OzoneCourtneyRoom_Text_NameCourtney
-	trainerbattle_single TRAINER_P_COURTNEY_2, OzoneCourtneyRoom_Text_CourtneyIntro, OzoneCourtneyRoom_Text_CourtneyDefeated, OzoneCourtneyRoom_EventScript_CourtneyBeaten
+	msgbox OzoneCourtneyRoom_Text_CourtneyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_COURTNEY_2, OzoneCourtneyRoom_Text_CourtneyDefeated
 	goto OzoneCourtneyRoom_EventScript_CourtneyBeaten
 	release
 	end

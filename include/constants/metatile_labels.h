@@ -9,6 +9,16 @@
 #define METATILE_BattleDome_Door_Lobby          0x209
 #define METATILE_BattleDome_Door_PreBattleRoom  0x20A
 
+// gTileset_BattleFactory
+#define METATILE_BattleFactory_CordelictFace1    0x3B4
+#define METATILE_BattleFactory_CordelictFace2    0x3B5
+#define METATILE_BattleFactory_CordelictGone2    0x289
+#define METATILE_BattleFactory_CordelictGone3    0x291
+#define METATILE_BattleFactory_CordelictOff      0x3B1
+#define METATILE_BattleFactory_CordelictTurnOn1  0x3B2
+#define METATILE_BattleFactory_CordelictTurnOn2  0x3B3
+#define METATILE_BattleFactory_CordlecitGone1    0x2E2
+
 // gTileset_BattleFrontierOutsideEast
 #define METATILE_BattleFrontierOutsideEast_Door              0x3FC
 #define METATILE_BattleFrontierOutsideEast_Door_BattleArena  0x291
@@ -144,6 +154,8 @@
 #define METATILE_Cave_ShoalCave_DirtPile_Small           0x35A
 
 // gTileset_Chimney
+#define METATILE_Chimney_BolterockGone                 0x3E0
+#define METATILE_Chimney_BolterockGoneCliff            0x3DA
 #define METATILE_Chimney_door_chimney                  0x311
 #define METATILE_Chimney_door_chimney_pokecenter_brow  0x3D1
 #define METATILE_Chimney_door_chimney_pokemart_green   0x3D0
@@ -264,6 +276,12 @@
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x219
 
+// gTileset_Golden
+#define METATILE_Golden_LuoShanOrbBottom  0x301
+#define METATILE_Golden_LuoShanOrbTop     0x2F9
+#define METATILE_Golden_ShaYonOrbBottom   0x306
+#define METATILE_Golden_ShaYonOrbTop      0x2FE
+
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x21D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x215
@@ -294,7 +312,9 @@
 #define METATILE_Lavaridge_AshGrass             0x207
 #define METATILE_Lavaridge_CaveEntrance_Bottom  0x25E
 #define METATILE_Lavaridge_CaveEntrance_Top     0x256
+#define METATILE_Lavaridge_LavaBubbleTile       0x21C
 #define METATILE_Lavaridge_LavaField            0x271
+#define METATILE_Lavaridge_LavaTile             0x2BD
 #define METATILE_Lavaridge_NormalGrass          0x206
 #define METATILE_Lavaridge_RockWall             0x274
 
@@ -993,6 +1013,7 @@
 // gTileset_Underwater
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
+#define METATILE_Underwater_SeaBottom    0x256
 
 // gTileset_desert
 #define METATILE_desert_door_poke_mart_sweltorn  0x308

@@ -44,7 +44,9 @@ TrickHouseDarkRoom_EventScript_DemoJumpscare::
 	waitse
 	applymovement LOCALID_JUMPSCARER, TrickHouseDarkRoom_Movement_Challenge
 	waitmovement 0
-	trainerbattle_single TRAINER_P_ANTON, TrickHouseDarkRoom_Text_AntonIntro, TrickHouseDarkRoom_Text_AntonDefeated, TrickHouseDarkRoom_EventScript_Explosion
+	msgbox TrickHouseDarkRoom_Text_AntonIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_ANTON, TrickHouseDarkRoom_Text_AntonDefeated
+	goto TrickHouseDarkRoom_EventScript_Explosion
 	releaseall
 	end
 

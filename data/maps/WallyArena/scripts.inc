@@ -31,7 +31,8 @@ WallyArena_EventScript_WallyBattle::
 	playbgm MUS_VICTORY_ROAD, FALSE
 	speakername WallyArena_Text_NameWally
 	msgbox WallyArena_Text_FullVillainMonologue, MSGBOX_DEFAULT
-	trainerbattle_single TRAINER_P_WALLY, WallyArena_Text_WallyIntro, WallyArena_Text_WallyDefeated, WallyArena_EventScript_WallyBeaten
+	msgbox WallyArena_Text_WallyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_WALLY, WallyArena_Text_WallyDefeated
 	goto WallyArena_EventScript_WallyBeaten
 	release
 	end

@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "OzoneFloor2_EventScript_Nurse",
       "flag": "0"
     }
   ],
@@ -47,7 +47,7 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_OZONE_INT",
-      "dest_warp_id": "1"
+      "dest_warp_id": "2"
     },
     {
       "x": 28,

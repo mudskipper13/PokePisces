@@ -1042,6 +1042,18 @@ static const struct MenuAction MultichoiceList_WhoDunnit[] = {
     {sText_WhoMrBonding},
 };
 
+static const u8 sText_HealingBerries[] = _("Healing");
+static const u8 sText_ResistanceBerries[] = _("Resistance");
+static const u8 sText_StatBerries[] = _("Stat");
+static const u8 sText_OtherBerries[] = _("Other");
+
+static const struct MenuAction MultichoiceList_BerryShopCategory[] = {
+    {sText_HealingBerries},
+    {sText_ResistanceBerries},
+    {sText_StatBerries},
+    {sText_OtherBerries},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1193,6 +1205,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RUSTGYM_QUESTION_9]           = MULTICHOICE(MultichoiceList_RustGymQuestion9),
     [MULTI_RUSTGYM_QUESTION_10]          = MULTICHOICE(MultichoiceList_RustGymQuestion10),
     [MULTI_WHODUNNIT]                    = MULTICHOICE(MultichoiceList_WhoDunnit),
+    [MULTI_BERRY_SHOP_CATEGORY]          = MULTICHOICE(MultichoiceList_BerryShopCategory),
 };
 
 const u8 *const gStdStrings[] =

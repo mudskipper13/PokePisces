@@ -55,8 +55,9 @@ Route122_Movement_RayEncounterEast:
 
 Route122_EventScript_RayBattleStart::
 	speakername Route122_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_2, Route122_Text_RayIntro, Route122_Text_RayDefeat, Route122_EventScript_RayLeaves
-	speakername NULL
+	msgbox Route122_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_2, Route122_Text_RayDefeat
+	goto Route122_EventScript_RayLeaves
 	release
 	end
 

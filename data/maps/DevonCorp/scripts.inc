@@ -46,7 +46,8 @@ DevonCorp_EventScript_DevonMeeting::
 	applymovement LOCALID_RAY, DevonCorp_Movement_RayFightPlayer
 	waitmovement 0
 	speakername DevonCorp_Text_NameRay
-	trainerbattle_single TRAINER_P_RAY_6, DevonCorp_Text_RayIntro, DevonCorp_Text_RayDefeated, DevonCorp_EventScript_RayDefeat
+	msgbox DevonCorp_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_6, DevonCorp_Text_RayDefeated
 	goto DevonCorp_EventScript_RayDefeat
 	release
 	end
@@ -190,6 +191,9 @@ DevonCorp_EventScript_DevonMeetingPostWally::
 	msgbox DevonCorp_Text_IThinkItllBeFun, MSGBOX_DEFAULT
 	speakername DevonCorp_Text_NameMrStone
 	msgbox DevonCorp_Text_PleaseLeave, MSGBOX_DEFAULT
+	setflag FLAG_HIDE_MAXIE_OZONE
+	setflag FLAG_HIDE_ARCHIE_OZONE
+	setvar VAR_NEW_COO_STATE, 5
 	warp MAP_RUSTBORO_NEW, 61, 35
 	waitstate
 	release

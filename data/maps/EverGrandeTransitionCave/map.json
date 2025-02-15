@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_EVER_GRANDE_REST_AREA",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 35,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_EVER_GRANDE_ROAD",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

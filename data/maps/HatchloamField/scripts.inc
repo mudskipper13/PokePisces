@@ -2,6 +2,7 @@
 .set LOCALID_ROADBLOCKER_2, 17
 .set LOCALID_ROADBLOCKER_3, 18
 .set LOCALID_ROADBLOCKER_4, 19
+.set LOCALID_COURTNEY, 15
 
 HatchloamField_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, HatchloamField_OnLoad
@@ -21,6 +22,53 @@ HatchloamField_EventScript_RemoveRoadblock::
 	removeobject LOCALID_ROADBLOCKER_4
 	setflag FLAG_TEMP_14
 	return
+
+HatchloamField_EventScript_Courtney::
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_A, HatchloamField_EventScript_CourtneyIdlePostBattle
+	goto_if_eq VAR_OZONE_ADMINS_STATE, 9, HatchloamField_EventScript_CourtneyWantToBattle
+	goto_if_gt VAR_OZONE_ADMINS_STATE, 9, HatchloamField_EventScript_CourtneyIdle
+	release
+	end
+
+HatchloamField_EventScript_CourtneyWantToBattle::
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_NiceToSeeYou, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, YES, HatchloamField_EventScript_CourtneyBattle
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_ThatsTooBad, MSGBOX_AUTOCLOSE
+	release
+	end
+
+HatchloamField_EventScript_CourtneyBattle::
+	msgbox HatchloamField_Text_CourtneyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_COURTNEY_1, HatchloamField_Text_CourtneyDefeated
+	goto HatchloamField_EventScript_CourtneyPostBattle
+
+HatchloamField_EventScript_CourtneyPostBattle::
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_ThatWasFun, MSGBOX_DEFAULT
+	setvar VAR_OZONE_ADMINS_STATE, 10
+	setflag FLAG_TEMP_A
+	turnobject LOCALID_COURTNEY, DIR_NORTH
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_IllStockNewBerries, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+HatchloamField_EventScript_CourtneyIdlePostBattle::
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_TrickHouseIsNorth, MSGBOX_AUTOCLOSE
+	release
+	end
+
+HatchloamField_EventScript_CourtneyIdle::
+	speakername HatchloamField_Text_NameCourtney
+	msgbox HatchloamField_Text_HowIsYourJourney, MSGBOX_AUTOCLOSE
+	release
+	end
 
 HatchloamField_EventScript_Dustin::
     trainerbattle_single TRAINER_P_DUSTIN, HatchloamField_Text_DustinIntro, HatchloamField_Text_DustinDefeated
@@ -185,3 +233,30 @@ HatchloamField_Text_LexAndTrishPostBattle:
 
 HatchloamField_Text_LexAndTrishNeedTwoMons:
 	.string "need 2 dood$"
+
+HatchloamField_Text_NameCourtney:
+	.string "$"
+
+HatchloamField_Text_NiceToSeeYou:
+	.string "$"
+
+HatchloamField_Text_ThatsTooBad:
+	.string "$"
+
+HatchloamField_Text_CourtneyIntro:
+	.string "$"
+
+HatchloamField_Text_CourtneyDefeated:
+	.string "$"
+
+HatchloamField_Text_ThatWasFun:
+	.string "$"
+
+HatchloamField_Text_IllStockNewBerries:
+	.string "$"
+
+HatchloamField_Text_TrickHouseIsNorth:
+	.string "$"
+
+HatchloamField_Text_HowIsYourJourney:
+	.string "$"

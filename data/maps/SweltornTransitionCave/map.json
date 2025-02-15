@@ -87,15 +87,15 @@
       "x": 21,
       "y": 27,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_INTERIORS",
+      "dest_warp_id": "8"
     },
     {
       "x": 18,
       "y": 36,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_TRANSITION_CAVE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_INTERIORS",
+      "dest_warp_id": "9"
     },
     {
       "x": 10,

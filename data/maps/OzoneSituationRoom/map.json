@@ -98,7 +98,7 @@
       "x": 2,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_OZONE_SITUATION_ROOM",
+      "dest_map": "MAP_OZONE_OUTSIDE_CUTSCENE",
       "dest_warp_id": "0"
     }
   ],

@@ -23,7 +23,8 @@ OzoneSituationRoom_EventScript_Situation::
 	speakername OzoneSituationRoom_Text_NameMaxie
 	msgbox OzoneSituationRoom_Text_ToTheCaveOfOrigin, MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_NEW_COO_STATE, 5
+	setvar VAR_NEW_COO_STATE, 6
+	setvar VAR_TEMP_4, 1
 	release
 	end
 

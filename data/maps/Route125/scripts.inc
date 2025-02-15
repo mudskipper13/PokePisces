@@ -389,6 +389,120 @@ Route125_EventScript_ShellRiddle3::
 	release
 	end
 
+Route125_EventScript_GravelitoIdle::
+	lock
+	setflag FLAG_TEMP_A
+	clearflag FLAG_TEMP_B
+	msgbox Route125_Text_ItsHumming, MSGBOX_DEFAULT
+	goto Route125_EventScript_CheckSing
+	release
+	end
+
+Route125_EventScript_MegalitoIdle::
+	lock
+	clearflag FLAG_TEMP_A
+	setflag FLAG_TEMP_B
+	msgbox Route125_Text_ItsBellowing, MSGBOX_DEFAULT
+	goto Route125_EventScript_CheckSing
+	release
+	end
+
+Route125_EventScript_CheckSing::
+	checkpartynonhmmove MOVE_SING
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckPerishSong
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckPerishSong::
+	checkpartynonhmmove MOVE_PERISH_SONG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckGrassWhistle
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckGrassWhistle::
+	checkpartynonhmmove MOVE_GRASS_WHISTLE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckRound
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckRound::
+	checkpartynonhmmove MOVE_ROUND
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckSparklingAria
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckSparklingAria::
+	checkpartynonhmmove MOVE_SPARKLING_ARIA
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckTorchSong
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckTorchSong::
+	checkpartynonhmmove MOVE_TORCH_SONG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckBeatbox
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckBeatbox::
+	checkpartynonhmmove MOVE_BEATBOX
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_CheckBeatDrop
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_CheckBeatDrop::
+	checkpartynonhmmove MOVE_BEAT_DROP
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route125_EventScript_NoSingingMoves
+	goto_if_set FLAG_TEMP_A, Route125_EventScript_GravelitoBattle
+	goto_if_set FLAG_TEMP_B, Route125_EventScript_MegalitoBattle
+	release
+	end
+
+Route125_EventScript_NoSingingMoves::
+	msgbox Route125_Text_NoSingingMove, MSGBOX_AUTOCLOSE
+	speakername NULL
+	release
+	end
+
+Route125_EventScript_GravelitoBattle::
+	lock
+	msgbox Route125_Text_ItBecameLively, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_GRAVELITO, 16
+	playmoncry SPECIES_GRAVELITO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
+Route125_EventScript_MegalitoBattle::
+	lock
+	msgbox Route125_Text_ItBecameLively, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_MEGALITO, 35
+	playmoncry SPECIES_MEGALITO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	dowildbattle
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
 Route125_EventScript_Van::
     trainerbattle_single TRAINER_P_VAN, Route125_Text_VanIntro, Route125_Text_VanDefeated
     msgbox Route125_Text_VanPostBattle, MSGBOX_AUTOCLOSE
@@ -572,3 +686,15 @@ Route125_Text_Right_2:
 
 Route125_Text_GotYouBitch:
 	.string "give us your money$"
+
+Route125_Text_ItsHumming:
+	.string "$"
+
+Route125_Text_ItsBellowing:
+	.string "$"
+
+Route125_Text_NoSingingMove:
+	.string "$"
+
+Route125_Text_ItBecameLively:
+	.string "$"

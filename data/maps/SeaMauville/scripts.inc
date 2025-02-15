@@ -433,7 +433,9 @@ SeaMauville_EventScript_AmbushNue::
 	delay 16
 	playse SE_PIN
 	applymovement LOCALID_NUE, SeaMauville_Movement_NueSurprised
-	trainerbattle_single TRAINER_P_NUE, SeaMauville_Text_NueIntro, SeaMauville_Text_NueDefeated, SeaMauville_EventScript_TakeNueSuitcase
+	msgbox SeaMauville_Text_NueIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_NUE, SeaMauville_Text_NueDefeated
+	goto SeaMauville_EventScript_TakeNueSuitcase
 	release
 	end
 
@@ -538,7 +540,9 @@ SeaMauville_EventScript_GetTeeth::
 	playse SE_DING_DONG
 	waitse
 	msgbox SeaMauville_Text_SorryLetMeTakeThis, MSGBOX_DEFAULT
-    trainerbattle_single TRAINER_P_GARY, SeaMauville_Text_GaryIntro, SeaMauville_Text_GaryDefeated, SeaMauville_EventScript_GiveTea
+	msgbox SeaMauville_Text_GaryIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_GARY, SeaMauville_Text_GaryDefeated
+	goto SeaMauville_EventScript_GiveTea
 	release
 	end
 

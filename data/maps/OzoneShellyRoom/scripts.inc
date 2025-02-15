@@ -13,7 +13,8 @@ OzoneShellyRoom_EventScript_FightShelly::
 	delay 8
 	setvar VAR_TEMP_4, 1
 	speakername OzoneShellyRoom_Text_NameShelly
-	trainerbattle_single TRAINER_P_SHELLY_2, OzoneShellyRoom_Text_ShellyIntro, OzoneShellyRoom_Text_ShellyDefeated, OzoneShellyRoom_EventScript_ShellyBeaten
+	msgbox OzoneShellyRoom_Text_ShellyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_SHELLY_2, OzoneShellyRoom_Text_ShellyDefeated
 	goto OzoneShellyRoom_EventScript_ShellyBeaten
 	release
 	end

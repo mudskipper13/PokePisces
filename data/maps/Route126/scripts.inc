@@ -221,7 +221,9 @@ Route126_Movement_RayEncounterSouth:
 	step_end
 
 Route126_EventScript_RayBattleStart::
-	trainerbattle_single TRAINER_P_RAY_1, Route126_Text_RayIntro, Route126_Text_RayDefeat, Route126_EventScript_RayLeaves
+	msgbox Route126_Text_RayIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RAY_1, Route126_Text_RayDefeat
+	goto Route126_EventScript_RayLeaves
 	release
 	end
 
