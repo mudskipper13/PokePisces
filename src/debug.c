@@ -4051,7 +4051,6 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_MT_BLAZE) \
     X(MUS_MT_BLAZE_PEAK) \
     X(MUS_NINETALES_LEGEND) \
-    X(MUS_VS_GYM_LEADER_2) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \
