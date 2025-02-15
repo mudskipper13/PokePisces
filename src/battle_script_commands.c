@@ -1880,7 +1880,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 130) / 100; // 1.3 compound eyes boost
         break;
     case ABILITY_VICTORY_STAR:
-        calc = (calc * 125) / 100; // 1.25 victory star boost
+        calc = (calc * 120) / 100; // 1.2 victory star boost
         break;
     case ABILITY_HUSTLE:
         if (IS_MOVE_PHYSICAL(move))
@@ -1918,7 +1918,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     {
     case ABILITY_VICTORY_STAR:
         if (IsBattlerAlive(atkAlly))
-            calc = (calc * 125) / 100; // 1.25 ally's victory star boost
+            calc = (calc * 120) / 100; // 1.2 ally's victory star boost
         break;
     }
 
@@ -2081,26 +2081,43 @@ static void Cmd_ppreduce(void)
         for (i = 0; i < gBattlersCount; i++)
         {
             if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
-                ppToDeduct += (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
-                ppToDeduct += (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
-                ppToDeduct += (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+                if (GetBattlerAbility(i) == ABILITY_PRESSURE);
+                    ppToDeduct++;
+                if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
+                    ppToDeduct++;
+                if (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+                    ppToDeduct++;
+                if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
+                    ppToDeduct++;
+                if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+                    ppToDeduct++;
         }
     }
     else if (moveTarget != MOVE_TARGET_OPPONENTS_FIELD)
     {
         if (gBattlerAttacker != gBattlerTarget)
-            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
-            ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
-            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
-            ppToDeduct += (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
-            ppToDeduct += (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+            if (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
+                ppToDeduct++;
+            if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
+                ppToDeduct++;
+            if (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+                ppToDeduct++;
+            if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
+                ppToDeduct++;
+            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+                ppToDeduct++;
     }
 
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = TRUE;
+
+        // For item Metronome, echoed voice
+        if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker))
+            gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
+
+        if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker) || !gBattleMoves[gCurrentMove].danceMove)
+            gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
 
         if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] > ppToDeduct)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
@@ -7393,10 +7410,13 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCING_MOVE_TURNS:
-            if (gBattleMoves[gCurrentMove].danceMove
-            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
-            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
-            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
+                || gMoveResultFlags & MOVE_RESULT_NO_EFFECT 
+                || gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
+            else if (gBattleMoves[gCurrentMove].danceMove 
+                && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
+                && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;
@@ -10454,30 +10474,42 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_SUPERCHARGED)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_SUPERCHARGED;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_GEARED_UP:
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_GEARED_UP)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_GEARED_UP;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_APPLY_PHANTOM:
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_PHANTOM)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_PHANTOM;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_ACUPRESSURE:
@@ -18489,14 +18521,16 @@ static void Cmd_handleballthrow(void)
             break;
         case ITEM_HEAL_BALL:
             i = gBattleMons[gBattlerAttacker].hp;
-            if (i < 180)
+            if (i < 150)
                 ballAddition = -20;
-            else if (i < 360)
+            else if (i < 300)
                 ballAddition = 0;
-            else if (i < 540)
+            else if (i < 450)
                 ballAddition = 20;
-            else
+            else if (i < 600)
                 ballAddition = 30;
+            else
+                ballAddition = 40;
         case ITEM_FAST_BALL:
             if (gSpeciesInfo[gBattleMons[gBattlerTarget].species].baseSpeed >= 100)
                 ballMultiplier = 400;

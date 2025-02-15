@@ -7766,7 +7766,7 @@ bool32 CanSleep(u32 battler)
     || (IS_BATTLER_OF_TYPE(battler, TYPE_RELIC))
     || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
     || gBattleMons[battler].status1 & STATUS1_ANY 
-    || IsAbilityOnSide(battler, ABILITY_SWEET_VEIL) 
+    || IsAbilityOnSide(battler, ABILITY_SWEET_VEIL)
     || IsAbilityStatusProtected(battler) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
     || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE)
@@ -9883,8 +9883,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(gBattlerTarget))
                 {
                     effect = ITEM_EFFECT_OTHER;
-                    BattleScriptExecute(BattleScript_KamenScarfActivates);
-                    RecordItemEffectBattle(battler, battlerHoldEffect);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_KamenScarfActivates;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
                 }
                 break;
             case HOLD_EFFECT_WEAKNESS_POLICY:
@@ -11847,11 +11849,11 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_SHARPNESS:
         if (gBattleMoves[move].slicingMove)
-            modifier = uq4_12_multiply(modifier, uq4_12_subtract(UQ_4_12(1.75), sPercentToModifier[max(gBattleStruct->slicingMoveTurns[battlerAtk] * 25, 150)]));
+            modifier = uq4_12_multiply(modifier, uq4_12_subtract(UQ_4_12(1.75), sPercentToModifier[min(gBattleStruct->slicingMoveTurns[battlerAtk] * 25, 150)]));
         break;
     case ABILITY_OWN_TEMPO:
         if (gBattleMoves[move].danceMove)
-            modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), sPercentToModifier[max(gBattleStruct->dancingMoveTurns[battlerAtk] * 10, 50)]));
+            modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), sPercentToModifier[min(gBattleStruct->dancingMoveTurns[battlerAtk] * 10, 50)]));
         break;
     case ABILITY_PURPLE_HAZE:
         if (gDisableStructs[battlerAtk].purpleHazeOffense)
@@ -11879,7 +11881,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
     }
 
-    if (IsAbilityOnOpposingSide(battlerAtk, ABILITY_FALLING) && atkAbility != ABILITY_FALLING && (IS_MOVE_SPECIAL(gCurrentMove) || IS_MOVE_PHYSICAL(gCurrentMove)))
+    if (IsAbilityOnOpposingSide(battlerAtk, ABILITY_FALLING) && atkAbility != ABILITY_FALLING)
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
 
     if (IsAbilityOnField(ABILITY_VESSEL_OF_RUIN) && atkAbility != ABILITY_VESSEL_OF_RUIN && IS_MOVE_SPECIAL(gCurrentMove))
@@ -11887,6 +11889,9 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
 
     if (IsAbilityOnField(ABILITY_TABLETS_OF_RUIN) && atkAbility != ABILITY_TABLETS_OF_RUIN && IS_MOVE_PHYSICAL(gCurrentMove))
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
+
+    if (IsAbilityOnSide(battlerAtk, ABILITY_VICTORY_STAR))
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
 
     // attacker partner's abilities
     if (IsBattlerAlive(BATTLE_PARTNER(battlerAtk)))
@@ -12596,7 +12601,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
 
     if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
-        modifier = uq4_12_multiply_half_down(modifier, uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(CountBattlerStatDecreases(battlerDef, TRUE) * 10, 90)]));
+        modifier = uq4_12_multiply_half_down(modifier, uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(CountBattlerStatDecreases(battlerDef, TRUE) * 10, 90)]));
 
     // target's hold effects
     switch (holdEffectDef)
@@ -12903,21 +12908,21 @@ static inline uq4_12_t GetFrenzyDefenderModifier(u32 battlerDef)
 static inline uq4_12_t GetExhaustionAttackerModifier(u32 battlerAtk)
 {
     if (gDisableStructs[battlerAtk].exhaustionCounter != 0)
-        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
+        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetDaybreakAttackerModifier(u32 battlerAtk)
 {
     if (gDisableStructs[battlerAtk].daybreakCounter != 0)
-        return uq4_12_add(UQ_4_12(1.0), sPercentToModifier[max(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
+        return uq4_12_add(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetDaybreakDefenderModifier(u32 battlerDef)
 {
     if (gDisableStructs[battlerDef].daybreakCounter != 0)
-        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(gDisableStructs[battlerDef].exhaustionCounter * 25, 75)]);
+        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerDef].exhaustionCounter * 25, 75)]);
     return UQ_4_12(1.0);
 }
 
@@ -13043,7 +13048,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         break;
     case ABILITY_ICE_SCALES:
         if (gDisableStructs[battlerDef].iceScalesCounter != 0)
-            return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[max(gDisableStructs[battlerDef].iceScalesCounter * 10, 50)]);
+            return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerDef].iceScalesCounter * 10, 50)]);
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
@@ -13110,19 +13115,20 @@ static inline uq4_12_t GetDefenderPartnerAbilitiesModifier(u32 battlerPartnerDef
 
 static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEffectivenessModifier, u32 holdEffectAtk)
 {
-    u32 percentBoost;
+    u32 metronomeTurns;
+    uq4_12_t metronomeBoostBase;
     switch (holdEffectAtk)
     {
     case HOLD_EFFECT_METRONOME:
-        percentBoost = min((gBattleStruct->sameMoveTurns[battlerAtk] * GetBattlerHoldEffectParam(battlerAtk)), 100);
-        return uq4_12_add(sPercentToModifier[percentBoost], UQ_4_12(1.0));
+        metronomeBoostBase = sPercentToModifier[GetBattlerHoldEffectParam(battlerAtk)];
+        metronomeTurns = min(gBattleStruct->sameMoveTurns[battlerAtk], 5);
+        return uq4_12_add(UQ_4_12(1.0), metronomeBoostBase * metronomeTurns);
         break;
     case HOLD_EFFECT_ODD_STONE:
+        metronomeBoostBase = sPercentToModifier[GetBattlerHoldEffectParam(battlerAtk)];
+        metronomeTurns = min(gBattleStruct->sameMoveTurns[battlerAtk], 5);
         if (gBattleMoves[gCurrentMove].soundMove)
-        {
-            percentBoost = min((gBattleStruct->sameMoveTurns[battlerAtk] * GetBattlerHoldEffectParam(battlerAtk)), 100);
-            return uq4_12_add(sPercentToModifier[percentBoost], UQ_4_12(1.0));
-        }
+            return uq4_12_add(UQ_4_12(1.0), metronomeBoostBase * metronomeTurns);
         break;
     case HOLD_EFFECT_EXPERT_BELT:
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
@@ -14920,19 +14926,21 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
     if (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND)
         secondaryEffectChance *= 3;
 
-    if (IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
-    && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_HIT
-    && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_STATUS 
-    && gBattleMoves[gCurrentMove].effect != EFFECT_TRIPLE_ARROWS
-    && GetBattlerAbility(battler) != ABILITY_SERENE_GRACE
-    && !IsAbilityOnSide(battler, ABILITY_SERENE_AURA))
-        secondaryEffectChance *= 1.5;
-
     if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 
     || GetBattlerAbility(battler) == ABILITY_RISKTAKER
     || IsAbilityOnSide(battler, ABILITY_SERENE_AURA) 
     || (GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
         secondaryEffectChance *= 2;
+
+    if (IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
+    && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_HIT
+    && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_STATUS 
+    && gBattleMoves[gCurrentMove].effect != EFFECT_TRIPLE_ARROWS
+    && GetBattlerAbility(battler) != ABILITY_SERENE_GRACE
+    && GetBattlerAbility(battler) != ABILITY_RISKTAKER
+    && (!(GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
+    && (!(IsAbilityOnSide(battler, ABILITY_SERENE_AURA))))
+        secondaryEffectChance *= 1.5;
 
     if (GetBattlerAbility(battler) == ABILITY_SHUNYONG && (gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 2)))
         secondaryEffectChance *= 2;
