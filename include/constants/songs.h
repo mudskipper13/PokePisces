@@ -573,8 +573,10 @@
 #define MUS_EVER_GRANDE_ROAD        637
 #define MUS_EVER_GRANDE_SUMMIT        638
 #define MUS_SURF_2                639
+#define MUS_VS_OZONE                640
+#define MUS_PISCES_TITLE            641
 
-#define END_MUS                     MUS_SURF_2
+#define END_MUS                     MUS_PISCES_TITLE
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
