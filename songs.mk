@@ -1337,7 +1337,3 @@ $(MID_SUBDIR)/mus_mt_blaze_peak.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_ninetales_legend.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G195 -V110
-
-
-$(MID_SUBDIR)/mus_vs_gym_leader_2.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G195 -V100
