@@ -568,8 +568,13 @@
 #define MUS_MT_BLAZE                632
 #define MUS_MT_BLAZE_PEAK           633
 #define MUS_NINETALES_LEGEND        634
+#define MUS_VS_GYM_LEADER_2         635
+#define MUS_VS_LEGENDARY2           636
+#define MUS_EVER_GRANDE_ROAD        637
+#define MUS_EVER_GRANDE_SUMMIT        638
+#define MUS_SURF_2                639
 
-#define END_MUS                     MUS_NINETALES_LEGEND
+#define END_MUS                     MUS_SURF_2
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
