@@ -1,0 +1,99 @@
+{
+  "id": "MAP_OZONE_INT",
+  "name": "OzoneInt",
+  "layout": "LAYOUT_OZONE_INT",
+  "music": "MUS_B_FRONTIER",
+  "region_map_section": "MAPSEC_ROUTE_109",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OZONE_M",
+      "x": 15,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneInt_EventScript_DoorGuard",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
+      "x": 22,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneInt_EventScript_Archie",
+      "flag": "FLAG_HIDE_ARCHIE_OZONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "x": 19,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneInt_EventScript_Maxie",
+      "flag": "FLAG_HIDE_MAXIE_OZONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GRETA",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneInt_EventScript_Tabitha",
+      "flag": "FLAG_HIDE_TABITHA_OZONE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_INSTITUTE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_FLOOR2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_INT",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

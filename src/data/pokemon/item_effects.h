@@ -605,11 +605,5 @@ const u8 *const gItemEffectTable[ITEMS_COUNT] =
     [ITEM_PERSIM_BERRY]       = gItemEffect_PersimBerry,
     [ITEM_LUM_BERRY]          = gItemEffect_FullHeal,
     [ITEM_SITRUS_BERRY]       = gItemEffect_SitrusBerry,
-    [ITEM_POMEG_BERRY]        = gItemEffect_PomegBerry,
-    [ITEM_KELPSY_BERRY]       = gItemEffect_KelpsyBerry,
-    [ITEM_QUALOT_BERRY]       = gItemEffect_QualotBerry,
-    [ITEM_HONDEW_BERRY]       = gItemEffect_HondewBerry,
-    [ITEM_GREPA_BERRY]        = gItemEffect_GrepaBerry,
-    [ITEM_TAMATO_BERRY]       = gItemEffect_TamatoBerry,
     [LAST_BERRY_INDEX]        = NULL,
 };

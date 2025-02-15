@@ -5,7 +5,7 @@ VerdanturfTown_PokemonCenter_1F_MapScripts::
 	.byte 0
 
 VerdanturfTown_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_VERDANTURF_TOWN
+	setrespawn HEAL_LOCATION_ZOTPYRE_VILLAGE
 	end
 
 VerdanturfTown_PokemonCenter_1F_EventScript_Nurse::

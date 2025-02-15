@@ -258,7 +258,7 @@
 #define TRAINER_P_AUDREY_II                    254
 #define TRAINER_P_EMMY                       255
 #define TRAINER_P_DAYTON                      256
-#define TRAINER_P_LIBRA                    257
+#define TRAINER_P_ANTO                    257
 #define TRAINER_P_BAZE                    258
 #define TRAINER_P_CHINZAO                    259
 #define TRAINER_P_MARIMAR                    260
@@ -400,7 +400,7 @@
 #define TRAINER_P_BRODY                   396
 #define TRAINER_P_DELA                       397
 #define TRAINER_P_KIERA                       398
-#define TRAINER_P_ANTO                        399
+#define TRAINER_P_LIBRA                        399
 #define TRAINER_P_MARY                        400
 #define TRAINER_P_JOSE                       401
 #define TRAINER_P_DARIA                    402
@@ -680,7 +680,7 @@
 #define TRAINER_P_BRAWLY                       676
 #define TRAINER_P_SHELLY_1                677
 #define TRAINER_P_ROXANNE                678
-#define TRAINER_P_LANNETTE                679
+#define TRAINER_P_LANETTE                679
 #define TRAINER_P_NORMAN                680
 #define TRAINER_P_SIDNEY              681
 #define TRAINER_P_LUCY              682
@@ -704,7 +704,7 @@
 #define TRAINER_P_CENTAURIPH                      700
 #define TRAINER_ALYSSA                      701
 #define TRAINER_P_JIMMYOS                      702
-#define TRAINER_RHETT                       703
+#define TRAINER_P_SADFISHER_3                       703
 #define TRAINER_TYRON                       704
 #define TRAINER_CELINA                      705
 #define TRAINER_BIANCA                      706

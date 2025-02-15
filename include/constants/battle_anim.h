@@ -434,6 +434,12 @@
 #define ANIM_TAG_ROCK_SHADOW                (ANIM_SPRITES_START + 420)
 #define ANIM_TAG_WATER_BLADE                (ANIM_SPRITES_START + 421)
 #define ANIM_TAG_WIND_BALL                  (ANIM_SPRITES_START + 422)
+#define ANIM_TAG_SYRUP_BLOB_RED             (ANIM_SPRITES_START + 423)
+#define ANIM_TAG_SYRUP_SHELL_RED            (ANIM_SPRITES_START + 424)
+#define ANIM_TAG_SYRUP_SPLAT_RED            (ANIM_SPRITES_START + 425)
+#define ANIM_TAG_PINKVIO_ORB                (ANIM_SPRITES_START + 426)
+#define ANIM_TAG_PURPLE_SMALL_EMBER         (ANIM_SPRITES_START + 427)
+#define ANIM_TAG_PURPLE_FIRE_PLUME          (ANIM_SPRITES_START + 428)
 
 // battlers
 #define ANIM_ATTACKER         0
@@ -652,6 +658,7 @@
 #define TRAP_ANIM_THUNDER_CAGE 8
 #define TRAP_ANIM_CONSTRICT 9
 #define TRAP_ANIM_LEECH_SEED 10
+#define TRAP_ANIM_VERGLASTROM 11
 
 // Weather defines for battle animation scripts.
 #define ANIM_WEATHER_NONE 0

@@ -387,7 +387,7 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_HOENN(VAIKING),
 
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = HOENN_DEX_DUDUNSPARS,
-    [SPECIES_LOTTABATS_HUDDLED - 1] = HOENN_DEX_LOTTABATS,
+    [SPECIES_LOTTABATS_DISPERSED - 1] = HOENN_DEX_LOTTABATS,
     [SPECIES_GAOTERRA_SOLAR - 1] = HOENN_DEX_GAOTERRA,
     [SPECIES_GAOTERRA_LUNAR - 1] = HOENN_DEX_GAOTERRA,
     [SPECIES_BISHOUCHA_WARMONGER - 1] = HOENN_DEX_BISHOUCHA,
@@ -406,6 +406,7 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_SHISHIMA_ALT - 1] = HOENN_DEX_SHISHIMA,
     [SPECIES_SHISHIMA_PUNISHER_ALT - 1] = HOENN_DEX_SHISHIMA,
     [SPECIES_LYOLICA - 1] = HOENN_DEX_LYORESA,
+    [SPECIES_FAKYSNAKY_BUSTED - 1] = HOENN_DEX_FAKYSNAKY,
 };
 
 // Assigns all species to the National Dex Index (Summary No. for National Dex)
@@ -1635,7 +1636,7 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_ZIGZAGOON_GALARIAN - 1] = NATIONAL_DEX_ZIGZAGOON,
     [SPECIES_LINOONE_GALARIAN - 1] = NATIONAL_DEX_LINOONE,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = NATIONAL_DEX_DUDUNSPARS,
-    [SPECIES_LOTTABATS_HUDDLED - 1] = NATIONAL_DEX_LOTTABATS,
+    [SPECIES_LOTTABATS_DISPERSED - 1] = NATIONAL_DEX_LOTTABATS,
     [SPECIES_GAOTERRA_SOLAR - 1] = NATIONAL_DEX_GAOTERRA,
     [SPECIES_GAOTERRA_LUNAR - 1] = NATIONAL_DEX_GAOTERRA,
     [SPECIES_BISHOUCHA_WARMONGER - 1] = NATIONAL_DEX_BISHOUCHA,
@@ -3448,7 +3449,7 @@ const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_DEOXYS_ATTACK - 1]            = ANIM_GROW_VIBRATE,
     [SPECIES_DEOXYS_DEFENSE - 1]           = ANIM_GROW_VIBRATE,
     [SPECIES_DEOXYS_SPEED - 1]             = ANIM_GROW_VIBRATE,
-    [SPECIES_LOTTABATS_HUDDLED - 1]        = ANIM_V_SQUISH_AND_BOUNCE,
+    [SPECIES_LOTTABATS_DISPERSED - 1]      = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_GAOTERRA_SOLAR - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_GAOTERRA_LUNAR - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
@@ -4702,12 +4703,10 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         newMaxHP = 5;
     }
-
     else if (species == SPECIES_SHUNYONG || species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
     {
         newMaxHP = 2500;
     }
-
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
@@ -7084,6 +7083,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
     switch (mode)
     {
     case EVO_MODE_NORMAL:
+    case EVO_MODE_BATTLE_ONLY:
         level = GetMonData(mon, MON_DATA_LEVEL, 0);
         friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, 0);
         stat = GAME_STAT_SILENCE_ACTIVATED;
@@ -7224,8 +7224,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && ((personality % 1000) > 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
+            case EVO_LEVEL_HEMOKO:
+                if (mode == EVO_MODE_BATTLE_ONLY && gEvolutionTable[species][i].param <= level)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
             case EVO_MOVE_THREE_SEGMENT:
-                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (1 <= (personality % 1000) <= 100))
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (0 <= (personality % 1000) <= 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_MOVE_EIGHT_SEGMENT:
@@ -7412,15 +7416,15 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_HIT_BY_SLASH_MOVE:
-                if (gBattleMoves[gLastLandedMoves[evolutionItem]].slicingMove && gBattlerTarget == SPECIES_SPRYTE && gEvolutionTable[species][i].param <= level)
+                if (gHitBySlashMove[evolutionItem] >= 1 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_HIT_BY_PIERCE_MOVE:
-                if (gBattleMoves[gLastLandedMoves[evolutionItem]].piercingMove && gBattlerTarget == SPECIES_SPRYTE && gEvolutionTable[species][i].param <= level)
+                if (gHitByPierceMove[evolutionItem] >= 1 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_HIT_BY_BLUNT_MOVE:
-                if ((gBattleMoves[gLastLandedMoves[evolutionItem]].punchingMove || gBattleMoves[gLastLandedMoves[evolutionItem]].kickingMove || gBattleMoves[gLastLandedMoves[evolutionItem]].ballisticMove) && gBattlerTarget == SPECIES_SPRYTE && gEvolutionTable[species][i].param <= level)
+                if (gHitByBluntMove[evolutionItem] >= 1 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             }
@@ -7648,6 +7652,17 @@ void DrawSpindaSpots(u32 personality, u8 *dest, bool32 isSecondFrame)
 
         personality >>= 8;
     }
+}
+
+void EvolveMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
+{
+    u32 zero = 0;
+    SetMonData(mon, MON_DATA_SPECIES, &newSpecies);
+    CalculateMonStats(mon);
+    EvolutionRenameMon(mon, oldSpecies, newSpecies);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_SEEN);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_CAUGHT);
+    IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
 }
 
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
@@ -8373,28 +8388,33 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
+        case TRAINER_CLASS_MONK:
+        case TRAINER_CLASS_DOME_ACE:
+        case TRAINER_CLASS_STROLLER:
+        case TRAINER_CLASS_PRESENTER:
+            return MUS_VS_ZINNIA;
+        case TRAINER_CLASS_TOPAZ_ACOLYTE:
+        case TRAINER_CLASS_GILDED_MONK:
+            return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_AQUA_MAGMA_LEADER;
-        case TRAINER_CLASS_TEAM_AQUA:
-        case TRAINER_CLASS_TEAM_MAGMA:
+            return MUS_VS_OZONE;
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_AQUA_MAGMA;
+            return MUS_VS_OZONE;
         case TRAINER_CLASS_LEADER:
-            return MUS_VS_GYM_LEADER;
+            return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                return MUS_VS_RIVAL;
+                return MUS_VS_RAY;
             if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
                 return MUS_VS_PTRAINER;
-            return MUS_VS_RIVAL;
+            return MUS_VS_RAY;
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_SALON_MAIDEN:
-        case TRAINER_CLASS_DOME_ACE:
         case TRAINER_CLASS_PALACE_MAVEN:
         case TRAINER_CLASS_ARENA_TYCOON:
         case TRAINER_CLASS_FACTORY_HEAD:
@@ -9095,14 +9115,14 @@ u8 GetCurrentLevelCap(void)
         return 33;
     else if (!FlagGet(FLAG_BADGE05_GET))
         return 39;
-    else if (!FlagGet(FLAG_DEFEATED_MR_BONDING))
-        return 47;
     else if (!FlagGet(FLAG_BADGE06_GET)) 
         return 48;
     else if (!FlagGet(FLAG_BADGE07_GET))
         return 54;
     else if (!FlagGet(FLAG_BADGE08_GET))
         return 62;
+    else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
+        return 72;
     else if (!FlagGet(FLAG_IS_CHAMPION))
         return 75;
     else

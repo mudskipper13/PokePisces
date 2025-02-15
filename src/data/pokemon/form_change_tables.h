@@ -578,8 +578,8 @@ static const struct FormChange sEnamorusFormChangeTable[] = {
 };
 
 static const struct FormChange sLottabatsFormChangeTable[] = {
-    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_LOTTABATS_HUDDLED, ABILITY_HUDDLE_UP, HP_HIGHER_THAN,   25},
-    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_LOTTABATS,         ABILITY_HUDDLE_UP, HP_LOWER_EQ_THAN, 25},
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_LOTTABATS,           ABILITY_HUDDLE_UP, HP_HIGHER_THAN,   25},
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_LOTTABATS_DISPERSED, ABILITY_HUDDLE_UP, HP_LOWER_EQ_THAN, 25},
     {FORM_CHANGE_BATTLE_SWITCH,     SPECIES_LOTTABATS},
     {FORM_CHANGE_FAINT,             SPECIES_LOTTABATS},
     {FORM_CHANGE_END_BATTLE,        SPECIES_LOTTABATS},
@@ -633,6 +633,12 @@ static const struct FormChange sShishimaAltFormChangeTable[] = {
 static const struct FormChange sPottriciaFormChangeTable[] = {
     {FORM_CHANGE_FAINT,         SPECIES_POTTRICIA},
     {FORM_CHANGE_END_BATTLE,    SPECIES_POTTRICIA},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sFakysnakyFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_FAKYSNAKY},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_FAKYSNAKY},
     {FORM_CHANGE_TERMINATOR},
 };
 #endif

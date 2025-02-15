@@ -652,7 +652,7 @@ static const struct SpriteSheet sSwap_SpriteSheets[] =
 
 static const struct CompressedSpriteSheet sSwap_BallGfx[] =
 {
-    {gPokeballSelection_Gfx, 0x800, GFXTAG_BALL},
+    {sPokeball_Gfx, 0x800, GFXTAG_BALL},
     {},
 };
 

@@ -10,6 +10,7 @@ StevenCorridor_EventScript_SetFlashLevel::
 	goto_if_lt VAR_PISCES_STORY_PROGRESS, 2, StevenCorridor_EventScript_DarkRoom
 	goto_if_eq VAR_PISCES_STORY_PROGRESS, 2, StevenCorridor_EventScript_BrightRoom
 	goto_if_gt VAR_PISCES_STORY_PROGRESS, 2, StevenCorridor_EventScript_BrightRoom
+	end
 
 StevenCorridor_EventScript_DarkRoom::
 	setflashlevel 6
@@ -23,6 +24,7 @@ StevenCorridor_EventScript_NoBadge2::
 	lock
 	msgbox StevenCorridor_Text_TooDark, MSGBOX_AUTOCLOSE
 	applymovement OBJ_EVENT_ID_PLAYER, StevenCorridor_Movement_BackAway
+	waitmovement 0
 	release
 	end
 

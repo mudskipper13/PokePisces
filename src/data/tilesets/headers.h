@@ -968,3 +968,91 @@ const struct Tileset gTileset_LavaridgeNew =
     .metatileAttributes = gMetatileAttributes_LavaridgeNew,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_FortreeGymNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_FortreeGymNew,
+    .palettes = gTilesetPalettes_FortreeGymNew,
+    .metatiles = gMetatiles_FortreeGymNew,
+    .metatileAttributes = gMetatileAttributes_FortreeGymNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_LavaridgeGymNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LavaridgeGymNew,
+    .palettes = gTilesetPalettes_LavaridgeGymNew,
+    .metatiles = gMetatiles_LavaridgeGymNew,
+    .metatileAttributes = gMetatileAttributes_LavaridgeGymNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_TrickHouseNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_TrickHouseNew,
+    .palettes = gTilesetPalettes_TrickHouseNew,
+    .metatiles = gMetatiles_TrickHouseNew,
+    .metatileAttributes = gMetatileAttributes_TrickHouseNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_RustboroGymNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RustboroGymNew,
+    .palettes = gTilesetPalettes_RustboroGymNew,
+    .metatiles = gMetatiles_RustboroGymNew,
+    .metatileAttributes = gMetatileAttributes_RustboroGymNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CasinoNew =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasinoNew,
+    .palettes = gTilesetPalettes_CasinoNew,
+    .metatiles = gMetatiles_CasinoNew,
+    .metatileAttributes = gMetatileAttributes_CasinoNew,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_BossArenas =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BossArenas,
+    .palettes = gTilesetPalettes_BossArenas,
+    .metatiles = gMetatiles_BossArenas,
+    .metatileAttributes = gMetatileAttributes_BossArenas,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_OzoneAdminRooms =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_OzoneAdminRooms,
+    .palettes = gTilesetPalettes_OzoneAdminRooms,
+    .metatiles = gMetatiles_OzoneAdminRooms,
+    .metatileAttributes = gMetatileAttributes_OzoneAdminRooms,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_EGRestArea =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_EGRestArea,
+    .palettes = gTilesetPalettes_EGRestArea,
+    .metatiles = gMetatiles_EGRestArea,
+    .metatileAttributes = gMetatileAttributes_EGRestArea,
+    .callback = NULL,
+};

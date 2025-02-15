@@ -49,21 +49,21 @@
       "x": 10,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "2"
     },
     {
       "x": 11,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_WOODS_NEW",
+      "dest_warp_id": "3"
     },
     {
       "x": 39,
       "y": 31,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_NEW",
+      "dest_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
     },
     {

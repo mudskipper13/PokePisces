@@ -1505,7 +1505,7 @@ const u8 *const gMonIconTable[NUM_SPECIES + 1] =
     [SPECIES_ENAMORUS_THERIAN] = gMonIcon_EnamorusTherian,
     [SPECIES_BASCULEGION_FEMALE] = gMonIcon_BasculegionFemale,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = gMonIcon_DudunsparsThreeSegment,
-    [SPECIES_LOTTABATS_HUDDLED] = gMonIcon_LottabatsHuddled,
+    [SPECIES_LOTTABATS_DISPERSED] = gMonIcon_LottabatsDispersed,
     [SPECIES_GAOTERRA_SOLAR] = gMonIcon_GaoterraSolar,
     [SPECIES_GAOTERRA_LUNAR] = gMonIcon_GaoterraLunar,
     [SPECIES_BISHOUCHA_WARMONGER] = gMonIcon_BishouchaWarmonger,
@@ -1525,6 +1525,7 @@ const u8 *const gMonIconTable[NUM_SPECIES + 1] =
     [SPECIES_SHISHIMA_ALT] = gMonIcon_Shishima,
     [SPECIES_SHISHIMA_PUNISHER_ALT] = gMonIcon_ShishimaPunisherAlt,
     [SPECIES_LYOLICA] = gMonIcon_Lyolica,
+    [SPECIES_FAKYSNAKY_BUSTED] = gMonIcon_FakysnakyBusted,
 #endif
     [SPECIES_EGG] = gMonIcon_Egg,
 };
@@ -2970,7 +2971,7 @@ const u8 gMonIconPaletteIndices[] =
     [SPECIES_ENAMORUS_THERIAN] = 1,
     [SPECIES_BASCULEGION_FEMALE] = 0,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = 0,
-    [SPECIES_LOTTABATS_HUDDLED] = 0,
+    [SPECIES_LOTTABATS_DISPERSED] = 0,
     [SPECIES_GAOTERRA_SOLAR] = 3,
     [SPECIES_GAOTERRA_LUNAR] = 3,
     [SPECIES_BISHOUCHA_WARMONGER] = 3,
@@ -2991,6 +2992,7 @@ const u8 gMonIconPaletteIndices[] =
     [SPECIES_SHISHIMA_PUNISHER_ALT] = 0,
     [SPECIES_LYOLICA] = 4,
     [SPECIES_POTTRICIA_SHATTERED] = 0,
+    [SPECIES_FAKYSNAKY_BUSTED] = 1,
 #endif
     [SPECIES_EGG] = 1,
 };

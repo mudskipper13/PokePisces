@@ -45,6 +45,7 @@ MossdeepCity_EventScript_HideMeteors::
 
 MossdeepCity_EventScript_MonkEncounter1::
 	lock
+	setflag FLAG_VISITED_MOSSDEEP_CITY
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MeetPlayer1
 	waitmovement 0
 	goto MossdeepCity_EventScript_MonkTakeToHouse1
@@ -66,6 +67,7 @@ MossdeepCity_Movement_MeetPlayer1:
 
 MossdeepCity_EventScript_MonkEncounter2::
 	lock
+	setflag FLAG_VISITED_MOSSDEEP_CITY
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MeetPlayer2
 	waitmovement 0
 	goto MossdeepCity_EventScript_MonkTakeToHouse2
@@ -667,6 +669,12 @@ MossdeepCity_Movement_PlayerBlockRight:
 	face_up
 	step_end
 
+MossdeepCity_EventScript_ThicketTooThick::
+	lock
+	msgbox MossdeepCity_Text_ThicketTooThick, MSGBOX_AUTOCLOSE
+	release
+	end
+
 MossdeepCity_EventScript_BrineyFastTravel::
 	lock
 	faceplayer
@@ -685,17 +693,31 @@ MossdeepCity_EventScript_WarpToTidal::
 	release
 	end
 
+MossdeepCity_EventScript_WallyBlackout::
+	lock
+	msgbox MossdeepCity_Text_YouFeelFaint, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	warp MAP_WALLY_ARENA, 9, 24
+	waitstate
+	release
+	end
+
 MossdeepCity_Text_NameBriney:
 	.string "Cpt. Briney$"
 
 MossdeepCity_Text_WantToVoyage:
-	.string "wanna go to ss tidle$"
+	.string "Ahoy there {PLAYER}!\p"
+	.string "The Tidal is docked and\n"
+	.string "itching for another voyage.\p"
+	.string "Will you be joining us?$"
 
 MossdeepCity_Text_IllBeHere:
-	.string "ill be waitin$"
+	.string "You're always welcome aboard!\n"
+	.string "Have a good one.$"
 
 MossdeepCity_Text_BonVoyage:
-	.string "bon voyage$"
+	.string "About time to haul anchor, then!$"
 
 MossdeepCity_Text_DroppedEgg:
 	.string "(The strange wild Pokémon dropped\n"
@@ -703,6 +725,10 @@ MossdeepCity_Text_DroppedEgg:
 
 MossdeepCity_Text_PlayerReceivedEgg:
 	.string "{PLAYER} received an Egg!$"
+
+MossdeepCity_Text_ThicketTooThick:
+	.string "(This thicket is too thick\n"
+	.string "...et, to venture into.)$"
 
 MossdeepCity_Text_HaveMudShot:
 	.string "I love the feel of the beach\n"
@@ -746,3 +772,11 @@ MossdeepCity_Text_Gugumbir:
 	.string "Please treat his dwellings with\n"
 	.string "the same amount of respect\l"
 	.string "as you would your own.$"
+
+MossdeepCity_Text_YouFeelFaint:
+	.string "(You are about to reach Steven's\n"
+	.string "home when...)\p"
+	.string "(The smell of... spider lilies...\n"
+	.string "fills your... nostrils...)\p"
+	.string "(Feeling...\n"
+	.string "                ...faint...)$"

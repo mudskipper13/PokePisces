@@ -196,16 +196,55 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TUCKER",
-      "x": 51,
-      "y": 49,
+      "x": 50,
+      "y": 33,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OZONE_F",
+      "x": 55,
+      "y": 51,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SweltornDesert_EventScript_OzoneRoadblocker1",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OZONE_F",
+      "x": 54,
+      "y": 52,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SweltornDesert_EventScript_OzoneRoadblocker2",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OZONE_M",
+      "x": 55,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SweltornDesert_EventScript_OzoneRoadblocker3",
+      "flag": "FLAG_TEMP_14"
     }
   ],
   "warp_events": [
@@ -213,29 +252,29 @@
       "x": 46,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
+      "dest_map": "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F",
       "dest_warp_id": "0"
     },
     {
       "x": 39,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
+      "dest_map": "MAP_SWELTORN_INTERIORS",
       "dest_warp_id": "0"
     },
     {
       "x": 57,
       "y": 50,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_INTERIORS",
+      "dest_warp_id": "7"
     },
     {
       "x": 11,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_TRANSITION_CAVE",
+      "dest_warp_id": "3"
     },
     {
       "x": 50,
@@ -248,15 +287,15 @@
       "x": 30,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_INTERIORS",
+      "dest_warp_id": "2"
     },
     {
       "x": 33,
       "y": 18,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_DESERT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_INTERIORS",
+      "dest_warp_id": "4"
     },
     {
       "x": 53,
@@ -290,30 +329,84 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 47,
-      "y": 51,
+      "x": 46,
+      "y": 31,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
-      "var_value": "0",
-      "script": "NULL"
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterLeft1"
     },
     {
       "type": "trigger",
-      "x": 47,
-      "y": 52,
+      "x": 46,
+      "y": 32,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
-      "var_value": "0",
-      "script": "NULL"
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterLeft2"
     },
     {
       "type": "trigger",
-      "x": 47,
-      "y": 53,
+      "x": 46,
+      "y": 33,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
-      "var_value": "0",
-      "script": "NULL"
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterLeft3"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterLeft4"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 35,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterLeft5"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 31,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterRight1"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 32,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterRight2"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterRight3"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_OZONE_ADMINS_STATE",
+      "var_value": "8",
+      "script": "SweltornDesert_EventScript_MattEncounterRight4"
     }
   ],
   "bg_events": [

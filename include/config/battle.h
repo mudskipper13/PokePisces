@@ -41,7 +41,7 @@
 #define B_PARALYZE_ELECTRIC         GEN_LATEST // In Gen6+, Electric-type Pok?mon can't be paralyzed.
 #define B_POWDER_GRASS              GEN_LATEST // In Gen6+, Grass-type Pok?mon are immune to powder and spore moves.
 #define B_STEEL_RESISTANCES         GEN_LATEST // In Gen6+, Steel-type Pok?mon are no longer resistant to Dark-type and Ghost-type moves.
-#define B_PRANKSTER_DARK_TYPES      GEN_LATEST // In Gen7+, Prankster-elevated status moves do not affect Dark type Pok?mon.
+#define B_PRANKSTER_DARK_TYPES      GEN_6 // In Gen7+, Prankster-elevated status moves do not affect Dark type Pok?mon.
 #define B_SHEER_COLD_IMMUNITY       GEN_LATEST // In Gen7+, Ice-types are immune to Sheer Cold
 #define B_ROOST_PURE_FLYING         GEN_LATEST // In Gen5+, Roost makes pure Flying-types into Normal-type.
 
@@ -156,7 +156,8 @@
 #define B_FLAG_FORCE_DOUBLE_WILD    0     // If this flag is set, all land and surfing wild battles will be double battles.
 #define B_SMART_WILD_AI_FLAG        0xe9     // If not 0, you can set this flag in a script to enable smart wild pokemon
 #define B_FLAG_NO_BAG_USE           0     // If this flag is set, the ability to use the bag in battle is disabled.
-#define B_FLAG_NO_CATCHING          0     // If this flag is set, the ability to catch wild Pok?mon is disabled.
+#define B_FLAG_NO_CATCHING          0x4BF     // If this flag is set, the ability to catch wild Pok?mon is disabled.
+#define B_FLAG_NO_RUNNING           0x4C0     // If this flag is set, the ability to escape from wild battles is disabled. Also makes Roar/Whirlwind and Teleport (under Gen8) fail.
 #define B_FLAG_AI_VS_AI_BATTLE      0     // If this flag is set, the player's mons will be controlled by the ai next battles.
 
 // Var Settings
@@ -170,7 +171,7 @@
 
 // Terrain settings
 #define B_TERRAIN_BG_CHANGE         TRUE       // If set to TRUE, terrain moves permanently change the default battle background until the effect fades.
-#define B_THUNDERSTORM_TERRAIN      TRUE       // If TRUE, overworld Thunderstorm generates Rain and Electric Terrain as in Gen 8.
+#define B_THUNDERSTORM_TERRAIN      FALSE       // If TRUE, overworld Thunderstorm generates Rain and Electric Terrain as in Gen 8.
 #define B_FOG_TERRAIN               FALSE       // If TRUE, overworld Fog generates Misty Terrain as in Gen 8.
 #define B_TERRAIN_TYPE_BOOST        GEN_LATEST // In Gen8, damage is boosted by 30% instead of 50%.
 #define B_SECRET_POWER_EFFECT       GEN_LATEST // Secret Power's effects change depending on terrain and generation. See GetSecretPowerMoveEffect.
@@ -197,7 +198,7 @@
 #define B_LAST_USED_BALL_CYCLE      TRUE      // If TRUE, then holding B_LAST_USED_BALL_BUTTON while pressing the D-Pad cycles through the balls
 
 // Other settings
-#define B_DOUBLE_WILD_CHANCE            10         // % chance of encountering two Pok?mon in a Wild Encounter.
+#define B_DOUBLE_WILD_CHANCE            20         // % chance of encountering two Pok?mon in a Wild Encounter.
 #define B_DOUBLE_WILD_REQUIRE_2_MONS    TRUE      // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pok?mon, ignoring B_DOUBLE_WILD_CHANCE and B_FLAG_FORCE_DOUBLE_WILD.
 #define B_MULTI_BATTLE_WHITEOUT         GEN_LATEST // In Gen4+, multi battles end when the Player and also their Partner don't have any more Pok?mon to fight.
 #define B_EVOLUTION_AFTER_WHITEOUT      GEN_LATEST // In Gen6+, Pokemon that qualify for evolution after battle will evolve even if the player loses.

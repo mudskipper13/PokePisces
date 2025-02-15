@@ -1949,7 +1949,7 @@ u8 GetAilmentFromStatus(u32 status)
         return AILMENT_PSN;
     if (status & STATUS1_PARALYSIS)
         return AILMENT_PRZ;
-    if (status & STATUS1_SLEEP_ANY)
+    if (status & STATUS1_SLEEP)
         return AILMENT_SLP;
     if (status & STATUS1_FREEZE)
         return AILMENT_FRZ;
@@ -4602,24 +4602,17 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     u16 hp = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     u16 item = gSpecialVar_ItemId;
-    bool8 cannotUseEffect;
     bool8 canHeal, cannotUse;
+    u32 oldStatus = GetMonData(mon, MON_DATA_STATUS);
 
-    if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE)
+    canHeal = IsHPRecoveryItem(item);
+    if (canHeal == TRUE)
     {
-        cannotUse = TRUE;
+        hp = GetMonData(mon, MON_DATA_HP);
+        if (hp == GetMonData(mon, MON_DATA_MAX_HP))
+            canHeal = FALSE;
     }
-    else
-    {
-        canHeal = IsHPRecoveryItem(item);
-        if (canHeal == TRUE)
-        {
-            hp = GetMonData(mon, MON_DATA_HP);
-            if (hp == GetMonData(mon, MON_DATA_MAX_HP))
-                canHeal = FALSE;
-        }
-        cannotUseEffect = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
-    }
+    cannotUse = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
 
     if (cannotUse != FALSE)
     {
@@ -4660,7 +4653,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
         else
         {
             GetMonNickname(mon, gStringVar1);
-            GetMedicineItemEffectMessage(item, 0);
+            GetMedicineItemEffectMessage(item, oldStatus);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(item, 1))
@@ -4972,6 +4965,42 @@ void ItemUseCB_ReduceEV(u8 taskId, TaskFunc task)
     }
 }
 
+void ItemUseCB_ReduceFriendship(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 item = gSpecialVar_ItemId;
+    u16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+    bool8 cannotUseEffect = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
+    u16 newFriendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+
+    if (cannotUseEffect || (friendship == newFriendship))
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        PlaySE(SE_SELECT);
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+    }
+    else
+    {
+        gPartyMenuUseExitCallback = TRUE;
+        PlaySE(SE_USE_ITEM);
+        RemoveBagItem(item, 1);
+        GetMonNickname(mon, gStringVar1);
+        if (friendship != newFriendship)
+        {
+            StringExpandPlaceholders(gStringVar4, gText_PkmnFriendlyBaseVar2Fell);
+        }
+        else
+        {
+            StringExpandPlaceholders(gStringVar4, gText_PkmnAdoresBaseVar2Fell);
+        }
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+    }
+}
+
 static u16 ItemEffectToMonEv(struct Pokemon *mon, u8 effectType)
 {
     switch (effectType)
@@ -5023,7 +5052,7 @@ static void ShowMoveSelectWindow(u8 slot)
 {
     u8 i;
     u8 moveCount = 0;
-    u8 fontId = FONT_NORMAL;
+    u8 fontId = FONT_SMALL;
     u8 windowId = DisplaySelectionWindow(SELECTWINDOW_MOVES);
     u16 move;
 

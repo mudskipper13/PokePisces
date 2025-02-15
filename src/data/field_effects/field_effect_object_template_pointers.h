@@ -37,6 +37,12 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_SmallSparkle;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_ChimneyGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpChimneyGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_PinkGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpPinkGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowyGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSnowyGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_GoldGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpGoldGrass;
 
 const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SHADOW_S]              = &gFieldEffectObjectTemplate_ShadowSmall,
@@ -78,4 +84,10 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_RAYQUAZA]              = &gFieldEffectObjectTemplate_Rayquaza,
     [FLDEFFOBJ_CHIMNEY_GRASS]         = &gFieldEffectObjectTemplate_ChimneyGrass,
     [FLDEFFOBJ_JUMP_CHIMNEY_GRASS]    = &gFieldEffectObjectTemplate_JumpChimneyGrass,
+    [FLDEFFOBJ_PINK_GRASS]            = &gFieldEffectObjectTemplate_PinkGrass,
+    [FLDEFFOBJ_JUMP_PINK_GRASS]       = &gFieldEffectObjectTemplate_JumpPinkGrass,
+    [FLDEFFOBJ_SNOWY_GRASS]           = &gFieldEffectObjectTemplate_SnowyGrass,
+    [FLDEFFOBJ_JUMP_SNOWY_GRASS]      = &gFieldEffectObjectTemplate_JumpSnowyGrass,
+    [FLDEFFOBJ_GOLD_GRASS]            = &gFieldEffectObjectTemplate_GoldGrass,
+    [FLDEFFOBJ_JUMP_GOLD_GRASS]       = &gFieldEffectObjectTemplate_JumpGoldGrass,
 };

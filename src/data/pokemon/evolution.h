@@ -598,7 +598,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
                                        {EVO_ITEM, ITEM_PEBBLERITE, SPECIES_PEBLRANIUM}}, 
     [SPECIES_CAPYBARA]              = {{EVO_LEVEL, 42, SPECIES_ABARBINASH}},
     [SPECIES_BIYAKO]                = {{EVO_ITEM, ITEM_SHINY_STONE, SPECIES_BEHEKO}},
-    [SPECIES_HEMOKO]                = {{EVO_LEVEL, 20, SPECIES_LEPUCYTE}},
+    [SPECIES_HEMOKO]                = {{EVO_LEVEL_HEMOKO, 20, SPECIES_LEPUCYTE}},
     [SPECIES_LEPUCYTE]              = {{EVO_LEVEL, 40, SPECIES_LEUKUNEHO}},
     [SPECIES_WELPROOT]              = {{EVO_LEVEL, 20, SPECIES_DRAEKAROT}},
     [SPECIES_DRAEKAROT]             = {{EVO_LEVEL, 40, SPECIES_KARODORAUG}},

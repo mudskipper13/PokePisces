@@ -2761,6 +2761,9 @@ void AnimTask_GetTrappedMoveAnimId(u8 taskId)
     case MOVE_INFESTATION:
         gBattleAnimArgs[0] = TRAP_ANIM_INFESTATION;
         break;
+    case MOVE_ATTACK_ORDER:
+        gBattleAnimArgs[0] = TRAP_ANIM_INFESTATION;
+        break;
     case MOVE_SNAP_TRAP:
         gBattleAnimArgs[0] = TRAP_ANIM_SNAP_TRAP;
         break;
@@ -2772,6 +2775,9 @@ void AnimTask_GetTrappedMoveAnimId(u8 taskId)
         break;
     case MOVE_LEECH_SEED:
         gBattleAnimArgs[0] = TRAP_ANIM_LEECH_SEED;
+        break;
+    case MOVE_VERGLASTROM:
+        gBattleAnimArgs[0] = TRAP_ANIM_VERGLASTROM;
         break;
     default:
         gBattleAnimArgs[0] = TRAP_ANIM_BIND;

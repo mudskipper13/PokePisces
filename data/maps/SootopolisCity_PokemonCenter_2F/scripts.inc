@@ -5,7 +5,7 @@ SootopolisCity_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 SootopolisCity_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_SOOTOPOLIS_CITY
+	setrespawn HEAL_LOCATION_NEW_SOOTO
 	end
 
 SootopolisCity_PokemonCenter_2F_EventScript_Nurse::

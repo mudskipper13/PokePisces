@@ -37,7 +37,7 @@ NewMauville_Inside_EventScript_ShowVoltorb3::
 	return
 
 NewMauville_Inside_OnLoad:
-	call_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_ge VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	end
 
 NewMauville_Inside_EventScript_BlueButton::
@@ -163,7 +163,7 @@ NewMauville_Inside_EventScript_SetGeneratorOffMetatiles::
 
 NewMauville_Inside_EventScript_Generator::
 	lockall
-	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_ge VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_GeneratorOff
 	msgbox NewMauville_Inside_Text_GeneratorRadiatingHeat, MSGBOX_DEFAULT
 	releaseall
 	end

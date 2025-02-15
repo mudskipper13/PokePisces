@@ -2287,7 +2287,7 @@ gCryTable::
 	@ Dudunspars
 	cry Cry_Dudunspars
 	@ Lottabats
-	cry Cry_LottabatsHuddled
+	cry Cry_LottabatsDispersed
 	@ Gaoterra
 	cry Cry_GaoterraSolar
 	cry Cry_GaoterraLunar
@@ -4636,7 +4636,7 @@ gCryTable_Reverse::
 	@ Dudunspars
 	cry_reverse Cry_Dudunspars
 	@ Lottabats
-	cry_reverse Cry_LottabatsHuddled
+	cry_reverse Cry_LottabatsDispersed
 	@ Gaoterra
 	cry_reverse Cry_GaoterraSolar
 	cry_reverse Cry_GaoterraLunar

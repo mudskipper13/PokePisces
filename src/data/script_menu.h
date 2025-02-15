@@ -293,7 +293,7 @@ static const struct MenuAction MultichoiceList_BrineyBoat[] =
     {gText_Desti1},
     {gText_Desti2},
     {gText_Desti3},
-    {gText_Desti4},
+    {gText_DestiWait},
 };
 
 static const struct MenuAction MultichoiceList_SSTidalSlateportWithBF[] =
@@ -802,6 +802,258 @@ static const struct MenuAction MultichoiceList_LifePhilosophy[] = {
     {sText_Tragedy},
 };
 
+static const u8 sText_LavaGymQ1A1[] = _("Study Pokémon");
+static const u8 sText_LavaGymQ1A2[] = _("Taste test soup");
+static const u8 sText_LavaGymQ1A3[] = _("Cop");
+static const struct MenuAction MultichoiceList_LavaGymQuestion1[] = {
+    {sText_LavaGymQ1A1},
+    {sText_LavaGymQ1A2},
+    {sText_LavaGymQ1A3},
+};
+
+static const u8 sText_LavaGymQ2A1[] = _("None");
+static const u8 sText_LavaGymQ2A2[] = _("All");
+static const u8 sText_LavaGymQ2A3[] = _("Name your price!");
+static const struct MenuAction MultichoiceList_LavaGymQuestion2[] = {
+    {sText_LavaGymQ2A1},
+    {sText_LavaGymQ2A2},
+    {sText_LavaGymQ2A3},
+};
+
+static const u8 sText_LavaGymQ3A1[] = _("Haven't");
+static const u8 sText_LavaGymQ3A2[] = _("Several");
+static const u8 sText_LavaGymQ3A3[] = _("Only a woman");
+static const struct MenuAction MultichoiceList_LavaGymQuestion3[] = {
+    {sText_LavaGymQ3A1},
+    {sText_LavaGymQ3A2},
+    {sText_LavaGymQ3A3},
+};
+
+static const u8 sText_LavaGymQ4A1[] = _("A little");
+static const u8 sText_LavaGymQ4A2[] = _("A lottle");
+static const u8 sText_LavaGymQ4A3[] = _("(Have coughing fit)");
+static const struct MenuAction MultichoiceList_LavaGymQuestion4[] = {
+    {sText_LavaGymQ4A1},
+    {sText_LavaGymQ4A2},
+    {sText_LavaGymQ4A3},
+};
+
+static const u8 sText_LavaGymQ5A1[] = _("Fight Him");
+static const u8 sText_LavaGymQ5A2[] = _("Fight Him");
+static const u8 sText_LavaGymQ5A3[] = _("Fight Him");
+static const struct MenuAction MultichoiceList_LavaGymQuestion5[] = {
+    {sText_LavaGymQ5A1},
+    {sText_LavaGymQ5A2},
+    {sText_LavaGymQ5A3},
+};
+
+static const u8 sText_EatDurin[] = _("Eat...");
+static const u8 sText_DontEatDurin[] = _("Don't Eat!!");
+static const struct MenuAction MultichoiceList_EatOrDontEat[] = {
+    {sText_EatDurin},
+    {sText_DontEatDurin},
+};
+
+static const u8 sText_Trick1[] = _("1");
+static const u8 sText_Trick2[] = _("2");
+static const u8 sText_Trick3[] = _("3");
+static const u8 sText_Trick4[] = _("4");
+static const u8 sText_Trick5[] = _("5");
+static const u8 sText_Trick6[] = _("6");
+static const u8 sText_Trick7[] = _("7");
+static const u8 sText_Trick8[] = _("8");
+static const u8 sText_Trick9[] = _("9");
+static const struct MenuAction MultichoiceList_TrickHouseFinalDoor[] = {
+    {sText_Trick1},
+    {sText_Trick2},
+    {sText_Trick3},
+    {sText_Trick4},
+    {sText_Trick5},
+    {sText_Trick6},
+    {sText_Trick7},
+    {sText_Trick8},
+    {sText_Trick9},
+};
+
+static const u8 sText_Desti4[] = _("Sea Mauville");
+static const u8 sText_Desti5[] = _("Southern Isl.");
+static const struct MenuAction MultichoiceList_BrineyBoat2[] =
+{
+    {gText_Desti1},
+    {gText_Desti2},
+    {gText_Desti3},
+    {sText_Desti4},
+    {sText_Desti5},
+    {gText_DestiWait},
+};
+
+static const u8 sText_Desti6[] = _("Dewford");
+static const struct MenuAction MultichoiceList_BrineyBoat3[] =
+{
+    {gText_Desti1},
+    {gText_Desti2},
+    {gText_Desti3},
+    {sText_Desti4},
+    {sText_Desti5},
+    {sText_Desti6},
+};
+
+static const u8 sText_RustGymQ1A1[] = _("Bread");
+static const u8 sText_RustGymQ1A2[] = _("Buildings");
+static const u8 sText_RustGymQ1A3[] = _("Forests");
+static const u8 sText_RustGymQ1A4[] = _("Oceans");
+static const u8 sText_RustGymQ1A5[] = _("Donuts");
+static const struct MenuAction MultichoiceList_RustGymQuestion1[] = {
+    {sText_RustGymQ1A1},
+    {sText_RustGymQ1A2},
+    {sText_RustGymQ1A3},
+    {sText_RustGymQ1A4},
+    {sText_RustGymQ1A5},
+};
+
+static const u8 sText_RustGymQ2A1[] = _("Tension");
+static const u8 sText_RustGymQ2A2[] = _("Unity");
+static const u8 sText_RustGymQ2A3[] = _("Wealth");
+static const u8 sText_RustGymQ2A4[] = _("Confusion");
+static const u8 sText_RustGymQ2A5[] = _("Nothing");
+static const struct MenuAction MultichoiceList_RustGymQuestion2[] = {
+    {sText_RustGymQ2A1},
+    {sText_RustGymQ2A2},
+    {sText_RustGymQ2A3},
+    {sText_RustGymQ2A4},
+    {sText_RustGymQ2A5},
+};
+
+static const u8 sText_RustGymQ3A1[] = _("Attack");
+static const u8 sText_RustGymQ3A2[] = _("Defense");
+static const u8 sText_RustGymQ3A3[] = _("Sp Atk");
+static const u8 sText_RustGymQ3A4[] = _("Sp Def");
+static const u8 sText_RustGymQ3A5[] = _("Speed");
+static const struct MenuAction MultichoiceList_RustGymQuestion3[] = {
+    {sText_RustGymQ3A1},
+    {sText_RustGymQ3A2},
+    {sText_RustGymQ3A3},
+    {sText_RustGymQ3A4},
+    {sText_RustGymQ3A5},
+};
+
+static const u8 sText_RustGymQ4A1[] = _("Money");
+static const u8 sText_RustGymQ4A2[] = _("More Fish");
+static const u8 sText_RustGymQ4A3[] = _("New Wife");
+static const u8 sText_RustGymQ4A4[] = _("House");
+static const u8 sText_RustGymQ4A5[] = _("A Pokemon");
+static const struct MenuAction MultichoiceList_RustGymQuestion4[] = {
+    {sText_RustGymQ4A1},
+    {sText_RustGymQ4A2},
+    {sText_RustGymQ4A3},
+    {sText_RustGymQ4A4},
+    {sText_RustGymQ4A5},
+};
+
+static const u8 sText_RustGymQ5A1[] = _("Cave of Origin");
+static const u8 sText_RustGymQ5A2[] = _("Sootopolis");
+static const u8 sText_RustGymQ5A3[] = _("Mt. Chimney");
+static const u8 sText_RustGymQ5A4[] = _("Mossdeep");
+static const u8 sText_RustGymQ5A5[] = _("Sky Pillar");
+static const struct MenuAction MultichoiceList_RustGymQuestion5[] = {
+    {sText_RustGymQ5A1},
+    {sText_RustGymQ5A2},
+    {sText_RustGymQ5A3},
+    {sText_RustGymQ5A4},
+    {sText_RustGymQ5A5},
+};
+
+static const u8 sText_RustGymQ6A1[] = _("Skellywarg");
+static const u8 sText_RustGymQ6A2[] = _("Kodough");
+static const u8 sText_RustGymQ6A3[] = _("Icksqueek");
+static const u8 sText_RustGymQ6A4[] = _("Flague");
+static const u8 sText_RustGymQ6A5[] = _("Weroberra");
+static const struct MenuAction MultichoiceList_RustGymQuestion6[] = {
+    {sText_RustGymQ6A1},
+    {sText_RustGymQ6A2},
+    {sText_RustGymQ6A3},
+    {sText_RustGymQ6A4},
+    {sText_RustGymQ6A5},
+};
+
+static const u8 sText_RustGymQ7A1[] = _("Fire");
+static const u8 sText_RustGymQ7A2[] = _("Ice");
+static const u8 sText_RustGymQ7A3[] = _("Bug");
+static const u8 sText_RustGymQ7A4[] = _("Steel");
+static const u8 sText_RustGymQ7A5[] = _("Fighting");
+static const struct MenuAction MultichoiceList_RustGymQuestion7[] = {
+    {sText_RustGymQ7A1},
+    {sText_RustGymQ7A2},
+    {sText_RustGymQ7A3},
+    {sText_RustGymQ7A4},
+    {sText_RustGymQ7A5},
+};
+
+static const u8 sText_RustGymQ8A1[] = _("Bisharp");
+static const u8 sText_RustGymQ8A2[] = _("Sworduc");
+static const u8 sText_RustGymQ8A3[] = _("Nuzleaf");
+static const u8 sText_RustGymQ8A4[] = _("Plasmantis");
+static const u8 sText_RustGymQ8A5[] = _("Ninjask");
+static const struct MenuAction MultichoiceList_RustGymQuestion8[] = {
+    {sText_RustGymQ8A1},
+    {sText_RustGymQ8A2},
+    {sText_RustGymQ8A3},
+    {sText_RustGymQ8A4},
+    {sText_RustGymQ8A5},
+};
+
+static const u8 sText_RustGymQ9A1[] = _("11 am");
+static const u8 sText_RustGymQ9A2[] = _("12 pm");
+static const u8 sText_RustGymQ9A3[] = _("1 pm");
+static const u8 sText_RustGymQ9A4[] = _("2 pm");
+static const u8 sText_RustGymQ9A5[] = _("3 pm");
+static const struct MenuAction MultichoiceList_RustGymQuestion9[] = {
+    {sText_RustGymQ9A1},
+    {sText_RustGymQ9A2},
+    {sText_RustGymQ9A3},
+    {sText_RustGymQ9A4},
+    {sText_RustGymQ9A5},
+};
+
+static const u8 sText_RustGymQ10A1[] = _("Sunday");
+static const u8 sText_RustGymQ10A2[] = _("Monday");
+static const u8 sText_RustGymQ10A3[] = _("Wednesday");
+static const u8 sText_RustGymQ10A4[] = _("Friday");
+static const u8 sText_RustGymQ10A5[] = _("Saturday");
+static const struct MenuAction MultichoiceList_RustGymQuestion10[] = {
+    {sText_RustGymQ10A1},
+    {sText_RustGymQ10A2},
+    {sText_RustGymQ10A3},
+    {sText_RustGymQ10A4},
+    {sText_RustGymQ10A5},
+};
+
+static const u8 sText_WhoNorman[] = _("Norman");
+static const u8 sText_WhoWally[] = _("Wally");
+static const u8 sText_WhoLiza[] = _("Liza");
+static const u8 sText_WhoTate[] = _("Tate");
+static const u8 sText_WhoMrBonding[] = _("Mr. Bonding");
+
+static const struct MenuAction MultichoiceList_WhoDunnit[] = {
+    {sText_WhoNorman},
+    {sText_WhoWally},
+    {sText_WhoLiza},
+    {sText_WhoTate},
+    {sText_WhoMrBonding},
+};
+
+static const u8 sText_HealingBerries[] = _("Healing");
+static const u8 sText_ResistanceBerries[] = _("Resistance");
+static const u8 sText_StatBerries[] = _("Stat");
+static const u8 sText_OtherBerries[] = _("Other");
+
+static const struct MenuAction MultichoiceList_BerryShopCategory[] = {
+    {sText_HealingBerries},
+    {sText_ResistanceBerries},
+    {sText_StatBerries},
+    {sText_OtherBerries},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -932,7 +1184,28 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     // new
     [MULTI_SLATEPORT_MAJOR_MINOR_LEAGUE] = MULTICHOICE(MultichoiceList_SlateportTentTwoLeagues),
     [MULTI_SLATEPORT_ANY_LEAGUE]         = MULTICHOICE(MultichoiceList_SlateportTentAnyLeague),
-    [MULTI_LIFE_PHILOSOPHY]         = MULTICHOICE(MultichoiceList_LifePhilosophy),
+    [MULTI_LIFE_PHILOSOPHY]              = MULTICHOICE(MultichoiceList_LifePhilosophy),
+    [MULTI_LAVAGYM_QUESTION_1]           = MULTICHOICE(MultichoiceList_LavaGymQuestion1),
+    [MULTI_LAVAGYM_QUESTION_2]           = MULTICHOICE(MultichoiceList_LavaGymQuestion2),
+    [MULTI_LAVAGYM_QUESTION_3]           = MULTICHOICE(MultichoiceList_LavaGymQuestion3),
+    [MULTI_LAVAGYM_QUESTION_4]           = MULTICHOICE(MultichoiceList_LavaGymQuestion4),
+    [MULTI_LAVAGYM_QUESTION_5]           = MULTICHOICE(MultichoiceList_LavaGymQuestion5),
+    [MULTI_EAT_OR_DONT_EAT]              = MULTICHOICE(MultichoiceList_EatOrDontEat),
+    [MULTI_TRICK_HOUSE_FINAL_DOOR]       = MULTICHOICE(MultichoiceList_TrickHouseFinalDoor),
+    [MULTI_BRINEY_BOAT_2]                = MULTICHOICE(MultichoiceList_BrineyBoat2),
+    [MULTI_BRINEY_BOAT_3]                = MULTICHOICE(MultichoiceList_BrineyBoat3),
+    [MULTI_RUSTGYM_QUESTION_1]           = MULTICHOICE(MultichoiceList_RustGymQuestion1),
+    [MULTI_RUSTGYM_QUESTION_2]           = MULTICHOICE(MultichoiceList_RustGymQuestion2),
+    [MULTI_RUSTGYM_QUESTION_3]           = MULTICHOICE(MultichoiceList_RustGymQuestion3),
+    [MULTI_RUSTGYM_QUESTION_4]           = MULTICHOICE(MultichoiceList_RustGymQuestion4),
+    [MULTI_RUSTGYM_QUESTION_5]           = MULTICHOICE(MultichoiceList_RustGymQuestion5),
+    [MULTI_RUSTGYM_QUESTION_6]           = MULTICHOICE(MultichoiceList_RustGymQuestion6),
+    [MULTI_RUSTGYM_QUESTION_7]           = MULTICHOICE(MultichoiceList_RustGymQuestion7),
+    [MULTI_RUSTGYM_QUESTION_8]           = MULTICHOICE(MultichoiceList_RustGymQuestion8),
+    [MULTI_RUSTGYM_QUESTION_9]           = MULTICHOICE(MultichoiceList_RustGymQuestion9),
+    [MULTI_RUSTGYM_QUESTION_10]          = MULTICHOICE(MultichoiceList_RustGymQuestion10),
+    [MULTI_WHODUNNIT]                    = MULTICHOICE(MultichoiceList_WhoDunnit),
+    [MULTI_BERRY_SHOP_CATEGORY]          = MULTICHOICE(MultichoiceList_BerryShopCategory),
 };
 
 const u8 *const gStdStrings[] =

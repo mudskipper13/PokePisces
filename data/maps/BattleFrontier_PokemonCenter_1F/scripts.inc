@@ -2,11 +2,10 @@
 
 BattleFrontier_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_PokemonCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 BattleFrontier_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST
+	setrespawn HEAL_LOCATION_VERDANTURF_NEW
 	end
 
 BattleFrontier_PokemonCenter_1F_EventScript_Nurse::

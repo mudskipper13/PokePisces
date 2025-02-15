@@ -6,7 +6,7 @@ VerdanturfTown_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 VerdanturfTown_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_VERDANTURF_TOWN
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
 	end
 
 VerdanturfTown_PokemonCenter_2F_EventScript_Nurse::

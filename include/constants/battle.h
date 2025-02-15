@@ -127,7 +127,7 @@
 #define STATUS1_SLEEP_ANY        (STATUS1_SLEEP | STATUS1_REST)
 #define STATUS1_PSN_ANY          (STATUS1_POISON | STATUS1_TOXIC_POISON)
 #define STATUS1_ANY              (STATUS1_SLEEP_ANY | STATUS1_BURN | STATUS1_FREEZE | STATUS1_PARALYSIS | STATUS1_PSN_ANY | STATUS1_TOXIC_COUNTER | STATUS1_FROSTBITE | STATUS1_PANIC | STATUS1_BLOOMING | STATUS1_EXPOSED)
-#define STATUS1_ANY_NEGATIVE     (STATUS1_ANY & ~(STATUS1_BLOOMING))
+#define STATUS1_ANY_NEGATIVE     (STATUS1_ANY & ~(STATUS1_BLOOMING | STATUS1_BLOOMING_TURN(1) | STATUS1_BLOOMING_TURN(2) | STATUS1_BLOOMING_TURN(3)))
 
 // Volatile status ailments
 // These are removed after exiting the battle or switching out
@@ -191,7 +191,7 @@
 #define STATUS3_LASER_FOCUS             (1 << 29)
 #define STATUS3_POWER_TRICK             (1 << 30)
 #define STATUS3_SKY_DROPPED             (1 << 31) // Target of Sky Drop
-#define STATUS3_SEMI_INVULNERABLE       (STATUS3_UNDERGROUND | STATUS3_ON_AIR | STATUS3_UNDERWATER | STATUS3_PHANTOM_FORCE)
+#define STATUS3_SEMI_INVULNERABLE       (STATUS3_UNDERGROUND | STATUS3_ON_AIR | STATUS3_UNDERWATER | STATUS3_PHANTOM_FORCE | STATUS4_PHANTOM)
 
 #define STATUS4_ELECTRIFIED             (1 << 0)
 #define STATUS4_PLASMA_FISTS            (1 << 1)
@@ -209,8 +209,12 @@
 #define STATUS4_RECHARGE_REDUCE         (1 << 13)
 #define STATUS4_REFLECTED_TYPE          (1 << 14)
 #define STATUS4_PUMPED_UP               (1 << 15)
-#define STATUS4_ACID_ARMORED            (1 << 16)
-#define STATUS4_POWER_SHIFT             (1 << 17)
+#define STATUS4_POWER_SHIFT             (1 << 16)
+#define STATUS4_SYRUP_BOMB              (1 << 17)
+#define STATUS4_GEARED_UP               (1 << 18)
+#define STATUS4_SUPERCHARGED            (1 << 19)
+#define STATUS4_PHANTOM                 (1 << 20)
+#define STATUS4_CRAFTY_SHIELD           (1 << 21)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -225,6 +229,7 @@
 #define HITMARKER_SYNCHRONISE_EFFECT    (1 << 14)
 #define HITMARKER_RUN                   (1 << 15)
 #define HITMARKER_IGNORE_DISGUISE       (1 << 16)
+#define HITMARKER_FORCE_NO_PPDEDUCT     (1 << 17)
 // 3 free spots because of change in handling of UNDERGROUND/UNDERWATER/ON AIR
 #define HITMARKER_UNABLE_TO_USE_MOVE    (1 << 19)
 #define HITMARKER_PASSIVE_DAMAGE        (1 << 20)
@@ -256,9 +261,9 @@
 // Missing flags previously were SIDE_STATUS_TOXIC_SPIKES_DAMAGED, SIDE_STATUS_STEALTH_ROCK_DAMAGED, SIDE_STATUS_STICKY_WEB_DAMAGED
 #define SIDE_STATUS_QUICK_GUARD             (1 << 18)
 #define SIDE_STATUS_WIDE_GUARD              (1 << 19)
-#define SIDE_STATUS_CRAFTY_SHIELD           (1 << 20)
-#define SIDE_STATUS_MAT_BLOCK               (1 << 21)
-#define SIDE_STATUS_SILENCE                 (1 << 22)
+#define SIDE_STATUS_MAT_BLOCK               (1 << 20)
+#define SIDE_STATUS_SILENCE                 (1 << 21)
+#define SIDE_STATUS_HEAL_ORDER              (1 << 22)
 
 #define SIDE_STATUS_HAZARDS_ANY    (SIDE_STATUS_SPIKES | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_STEALTH_ROCK)
 #define SIDE_STATUS_SCREEN_ANY     (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)
@@ -388,7 +393,7 @@
 #define MOVE_EFFECT_SCALE_SHOT          56              
 #define MOVE_EFFECT_THRASH              57              
 #define MOVE_EFFECT_KNOCK_OFF           58              
-#define MOVE_EFFECT_DEF_SPDEF_DOWN      59              
+#define MOVE_EFFECT_DEF_SPDEF_DOWN_USER 59
 #define MOVE_EFFECT_CLEAR_SMOG          60              
 #define MOVE_EFFECT_SP_ATK_TWO_DOWN     61              
 #define MOVE_EFFECT_SMACK_DOWN          62              
@@ -413,35 +418,41 @@
 #define MOVE_EFFECT_TRIPLE_ARROWS       81              
 #define MOVE_EFFECT_VIPER_STRIKE        82              
 #define MOVE_EFFECT_ALL_STATS_UP_2      83              
-#define MOVE_EFFECT_SIGNAL_BEAM         84              
-#define MOVE_EFFECT_ATK_TWO_DOWN        85              
-#define MOVE_EFFECT_DEF_SPDEF_UP        86              
-#define MOVE_EFFECT_CINDER_TWIRL        87              
-#define MOVE_EFFECT_CINDER_DRILL        88              
-#define MOVE_EFFECT_RADIOACID           89              
-#define MOVE_EFFECT_HEART_CARVE         90              
-#define MOVE_EFFECT_DEF_ACC_DOWN        91              
-#define MOVE_EFFECT_ALL_STATS_DOWN      92              
-#define MOVE_EFFECT_TOXIC_SPIKES        93
-#define MOVE_EFFECT_ATK_DOWN            94
-#define MOVE_EFFECT_ALL_STATS_UP_2_FOE  95
-#define MOVE_EFFECT_TICKED              96
-#define MOVE_EFFECT_BANSHRIEK           97
-#define MOVE_EFFECT_SPD_ACC_UP          98
-#define MOVE_EFFECT_RECHARGE_REDUCE     99
-#define MOVE_EFFECT_ATK_SPATK_DOWN      100
-#define MOVE_EFFECT_SNOWFADE            101
-#define MOVE_EFFECT_ATK_SPEED_PLUS      102
-#define MOVE_EFFECT_SMOG                103
-#define MOVE_EFFECT_PLUNDER             104
-#define MOVE_EFFECT_GRAV_APPLE          105
-#define MOVE_EFFECT_ATK_SPEED_DOWN      106
-#define MOVE_EFFECT_CINDER_WALTZ        107
-#define MOVE_EFFECT_SPATK_SPDEF_UP      108
-#define MOVE_EFFECT_WILD_CHARGE         109
-#define MOVE_EFFECT_CONSTRICT           110
+#define MOVE_EFFECT_ATK_TWO_DOWN        84              
+#define MOVE_EFFECT_DEF_SPDEF_UP        85              
+#define MOVE_EFFECT_CINDER_TWIRL        86              
+#define MOVE_EFFECT_CINDER_DRILL        87              
+#define MOVE_EFFECT_RADIOACID           88              
+#define MOVE_EFFECT_HEART_CARVE         89              
+#define MOVE_EFFECT_DEF_ACC_DOWN        90              
+#define MOVE_EFFECT_ALL_STATS_DOWN      91              
+#define MOVE_EFFECT_TOXIC_SPIKES        92
+#define MOVE_EFFECT_ATK_DOWN            93
+#define MOVE_EFFECT_ALL_STATS_UP_2_FOE  94
+#define MOVE_EFFECT_TICKED              95
+#define MOVE_EFFECT_SPD_ACC_UP          96
+#define MOVE_EFFECT_RECHARGE_REDUCE     97
+#define MOVE_EFFECT_ATK_SPATK_DOWN      98
+#define MOVE_EFFECT_SNOWFADE            99
+#define MOVE_EFFECT_ATK_SPEED_PLUS      100
+#define MOVE_EFFECT_PLUNDER             101
+#define MOVE_EFFECT_GRAV_APPLE          102
+#define MOVE_EFFECT_ATK_SPEED_DOWN      103
+#define MOVE_EFFECT_CINDER_WALTZ        104
+#define MOVE_EFFECT_SPATK_SPDEF_UP      105
+#define MOVE_EFFECT_WILD_CHARGE         106
+#define MOVE_EFFECT_CONSTRICT           107
+#define MOVE_EFFECT_SYRUP_BOMB          108
+#define MOVE_EFFECT_OCTAZOOKA           109
+#define MOVE_EFFECT_ATTACK_ORDER        110
+#define MOVE_EFFECT_RANDOM_STAT_DROP_2  111
+#define MOVE_EFFECT_DUAL_CHOP           112
+#define MOVE_EFFECT_ATK_SPATK_DOWN_2    113
+#define MOVE_EFFECT_ROCK_SMASH          114
+#define MOVE_EFFECT_DEF_SPDEF_DOWN      115
+#define MOVE_EFFECT_RANDOM_STAT_RAISE   116
 
-#define NUM_MOVE_EFFECTS                111
+#define NUM_MOVE_EFFECTS                117
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

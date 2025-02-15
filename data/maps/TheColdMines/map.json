@@ -2,7 +2,7 @@
   "id": "MAP_THE_COLD_MINES",
   "name": "TheColdMines",
   "layout": "LAYOUT_THE_COLD_MINES",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_MT_FREEZE",
   "region_map_section": "MAPSEC_ROUTE_107",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -429,6 +429,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TheColdMines_EventScript_Bulldoze",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OZONE_M",
+      "x": 3,
+      "y": 26,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -457,8 +470,8 @@
       "x": 3,
       "y": 25,
       "elevation": 0,
-      "dest_map": "MAP_OZONE_INSTITUTE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_OZONE_TRANSITION_BUILDINGS",
+      "dest_warp_id": "2"
     },
     {
       "x": 31,

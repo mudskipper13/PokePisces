@@ -28,8 +28,17 @@ Gym8Corridor_EventScript_PrepForGym::
 	clearflag FLAG_PISCES_D
 	clearflag FLAG_PISCES_E
 	clearflag FLAG_PISCES_F
+	cleartrainerflag TRAINER_P_JEAN_PAUL
+	cleartrainerflag TRAINER_P_SIMONE
+	cleartrainerflag TRAINER_P_MARX
+	cleartrainerflag TRAINER_P_QIU
+	cleartrainerflag TRAINER_P_PLATO_AND_ARIS
+	cleartrainerflag TRAINER_P_DIOGENES
+	cleartrainerflag TRAINER_P_GOOMBELLA
+	cleartrainerflag TRAINER_P_TIMPANI
+	setvar VAR_RUST_GYM_STATE, 0
 	msgbox Gym8Corridor_Text_TimeForGym, MSGBOX_DEFAULT
-	warp MAP_RUSTBORO_CITY_GYM, 0, 0
+	warp MAP_RUST_GYM_ENTRY_HALLWAYS, 1, 8
 	waitstate
 	release
 	end
