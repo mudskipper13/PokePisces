@@ -2091,9 +2091,9 @@ static void Cmd_ppreduce(void)
     else if (moveTarget != MOVE_TARGET_OPPONENTS_FIELD)
     {
         if (gBattlerAttacker != gBattlerTarget)
-            ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
-            ppToDeduct += (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
-            ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
+            ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
+            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
             ppToDeduct += (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
             ppToDeduct += (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
     }
