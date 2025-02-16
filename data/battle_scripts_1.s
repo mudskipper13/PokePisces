@@ -15452,6 +15452,32 @@ BattleScript_ArbiterLoopIncrement:
 	pause B_WAIT_TIME_MED
 	end3
 
+BattleScript_WatcherActivates::
+	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_WATCHERSALVATION
+	waitmessage B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_WatcherLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_WatcherLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_WatcherLoopIncrement
+BattleScript_WatcherEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	setalwayshitflag
+BattleScript_WatcherEffect_WaitString:
+	waitmessage B_WAIT_TIME_LONG
+	copybyte sBATTLER, gBattlerTarget
+BattleScript_WatcherLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_WatcherLoop
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	restoretarget
+	pause B_WAIT_TIME_MED
+	end3
+
 BattleScript_SolarPowerActivatesEveryone::
 	savetarget
 	showabilitypopup BS_ATTACKER

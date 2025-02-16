@@ -1239,11 +1239,7 @@ const u8 gForretressPokedexText[] = _(
     "inside cannot be seen.");
 
 const u8 gDunsparcePokedexText[] = _(
-    "Dunsparce are Pokémon known for their rarity,\n"
-    "yet recently have become increasingly common due\n"
-    "to them migrating to urban environments. Despite\n"
-    "this, collectors still obsess over Dunsparce since\n"
-    "since an odd mutation has caused them to evolve.");
+    "...");
 
 const u8 gGligarPokedexText[] = _(
     "It produces toxins that can incapacitate\n"
@@ -5688,11 +5684,7 @@ const u8 gHappeaPokedexText[] = _(
     "others, therefore it's best to avoid them.");
 
 const u8 gDudunsparsPokedexText[] = _(
-    "What started as a singular case in a region from\n"
-    "afar has spread around the globe, even to Hoenn.\n"
-    "Dunsparce left and right have gained the ability\n"
-    "to evolve to a form unseen before; some even say\n"
-    "they have a form rarer than the 3-legged Faered.");
+    "...");
 
 const u8 gLottabatsPokedexText[] = _(
     "Even though Lottabats are quite weak,\n"
@@ -6611,18 +6603,10 @@ const u8 gLuoShanPokedexText[] = _(
     "all things fall to the “God of Valleys.”");
 
 const u8 gCoffiddlePokedexText[] = _(
-    "Coffiddle are odd Pokémon, as they rarely engage\n"
-    "with others. Coffiddle always appear happy,\n"
-    "dancing with every step they take. Some think\n"
-    "they simply have joyful spirits, while others\n"
-    "believe they communicate with joyful spirits.");
+    "...");
 
 const u8 gCraveravePokedexText[] = _(
-    "While intimidating, Craverave are actually very\n"
-    "caring and passionate Pokémon. It has become a\n"
-    "tradition in Hoenn to let these Pokémon dance at\n"
-    "funerals as it is believed to bring peace to the\n"
-    "deceased.");
+    "...");
 
 const u8 gFuzkyPokedexText[] = _(
     "Packs of them can be seen foraging and\n"

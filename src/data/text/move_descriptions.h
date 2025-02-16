@@ -2766,9 +2766,9 @@ static const u8 sBelchDescription[] = _(
     "a held Berry to use this move.");
 
 static const u8 sRototillerDescription[] = _(
-    "The user and ally start blooming\n"
-    "and have their offenses raised\n"
-    "if they are Grass-type.");
+    "Pokémon on the field start\n"
+    "blooming and have their offenses\n"
+    "raised if they are Grass-type.");
 
 static const u8 sStickyWebDescription[] = _(
     "Weaves a sticky net at the foes'\n"
@@ -2846,9 +2846,9 @@ static const u8 sCraftyShieldDescription[] = _(
     "take less damage. Breaks on hit.");
 
 static const u8 sFlowerShieldDescription[] = _(
-    "The user and ally start blooming\n"
-    "and have their defenses raised\n"
-    "if they are Grass-type.");
+    "Pokémon on the field start\n"
+    "blooming and have their defenses\n"
+    "raised if they are Grass-type.");
 
 static const u8 sGrassyTerrainDescription[] = _(
     "Turns the ground to grass for 5\n"
