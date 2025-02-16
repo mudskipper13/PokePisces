@@ -157,7 +157,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemPokeBall",
       "flag": "0"
     },
     {
@@ -170,7 +170,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemSodaPop",
       "flag": "0"
     },
     {
@@ -183,7 +183,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemPotion",
       "flag": "0"
     },
     {
@@ -196,7 +196,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemAntidote",
       "flag": "0"
     },
     {
@@ -209,7 +209,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemIceHeal",
       "flag": "0"
     },
     {
@@ -222,7 +222,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemRepel",
       "flag": "0"
     },
     {
