@@ -669,3 +669,167 @@ Route123_EventScript_ItemTMSkyDrop::
 Route123_EventScript_ItemTMAuroraBeam::
 	finditem ITEM_TM_AURORA_BEAM
 	end
+
+SkyPillarNew_EventScript_ItemSodaPop::
+	finditem ITEM_SODA_POP
+	end
+
+SkyPillarNew_EventScript_ItemTinyMushroom::
+	finditem ITEM_TINY_MUSHROOM
+	end
+
+SkyPillarInteriors_EventScript_ItemSodaPop::
+	finditem ITEM_SODA_POP
+	end
+
+SkyPillarInteriors_EventScript_ItemRepel::
+	finditem ITEM_REPEL
+	end
+
+SkyPillarInteriors_EventScript_ItemAntidote::
+	finditem ITEM_ANTIDOTE
+	end
+
+SkyPillarInteriors_EventScript_ItemSodaPop2::
+	finditem ITEM_SODA_POP
+	end
+
+SkyPillarInteriors_EventScript_ItemRepel2::
+	finditem ITEM_REPEL
+	end
+
+Flotshore_EventScript_ItemAntidote::
+	finditem ITEM_ANTIDOTE
+	end
+
+Flotshore_EventScript_ItemSodaPop::
+	finditem ITEM_SODA_POP
+	end
+
+Flotshore_EventScript_ItemRepel::
+	finditem ITEM_REPEL
+	end
+
+Flotshore_EventScript_ItemPokeBall::
+	finditem ITEM_POKE_BALL
+	end
+
+Flotshore_EventScript_ItemOranBerry::
+	finditem ITEM_ORAN_BERRY
+	end
+
+BasalinCoast_EventScript_ItemPokeBall::
+	finditem ITEM_POKE_BALL
+	end
+
+BasalinCoast_EventScript_ItemSodaPop::
+	finditem ITEM_SODA_POP
+	end
+
+BasalinCoast_EventScript_ItemPotion::
+	finditem ITEM_POTION
+	end
+
+BasalinCoast_EventScript_ItemAntidote::
+	finditem ITEM_ANTIDOTE
+	end
+
+BasalinCoast_EventScript_ItemIceHeal::
+	finditem ITEM_ICE_HEAL
+	end
+
+BasalinCoast_EventScript_ItemRepel::
+	finditem ITEM_REPEL
+	end
+
+NewSooto_EventScript_ItemRevive::
+	finditem ITEM_REVIVE
+	end
+
+NewSooto_EventScript_ItemIceHeal::
+	finditem ITEM_ICE_HEAL
+	end
+
+NewSooto_EventScript_ItemSodaPop::
+	finditem ITEM_SODA_POP
+	end
+
+NewSooto_EventScript_ItemTinyMushroom::
+	finditem ITEM_TINY_MUSHROOM
+	end
+
+MangrottoTunnel_EventScript_ItemPokeball::
+	finditem ITEM_POKE_BALL
+	end
+
+MangrottoTunnel_EventScript_ItemAwakening::
+	finditem ITEM_AWAKENING
+	end
+
+MangrottoTunnel_EventScript_ItemPotion::
+	finditem ITEM_POTION
+	end
+
+MangrottoTunnel_EventScript_ItemRepel::
+	finditem ITEM_REPEL
+	end
+
+MangrottoTunnel_EventScript_ItemRepeatball::
+	finditem ITEM_REPEAT_BALL
+	end
+
+MangrottoTunnel_EventScript_ItemSilverPowder::
+	finditem ITEM_SILVER_POWDER
+	end
+
+Route126_EventScript_ItemPotion::
+	finditem ITEM_POTION
+	end
+
+Route126_EventScript_ItemEther::
+	finditem ITEM_ETHER
+	end
+
+Route126_EventScript_ItemStardust::
+	finditem ITEM_STARDUST
+	end
+
+Route126_EventScript_ItemPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route126_EventScript_ItemLureBall::
+	finditem ITEM_LURE_BALL
+	end
+
+CosmossSpaceCenter_EventScript_ItemStardust::
+	finditem ITEM_STARDUST
+	end
+
+MossdeepCity_EventScript_ItemPPersimBerry::
+	finditem ITEM_PERSIM_BERRY
+	end
+
+MossdeepCity_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+MossdeepCity_EventScript_ItemPEther::
+	finditem ITEM_ETHER
+	end
+
+MossdeepCity_EventScript_ItemPPotion::
+	finditem ITEM_POTION
+	end
+
+MossdeepCity_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+MossdeepCity_EventScript_ItemPRevive2::
+	finditem ITEM_REVIVE
+	end
+
+MossdeepCity_EventScript_ItemPStardust::
+	finditem ITEM_STARDUST
+	end

@@ -29,7 +29,8 @@ SSTidalExterior_EventScript_Breadwinner::
 	end
 
 SSTidalExterior_EventScript_Hardhatter::
-	msgbox SSTidalExterior_Text_Hardhatter, MSGBOX_NPC
+	msgbox SSTidalExterior_Text_Hardhatter, MSGBOX_DEFAULT
+	closemessage
 	end
 
 SSTidalExterior_EventScript_Electrician::

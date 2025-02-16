@@ -311,6 +311,99 @@ BasalinCoast_EventScript_GaveMagicalLeaf::
     release
     end
 
+BasalinCoast_EventScript_BuoyantBoy::
+	msgbox BasalinCoast_Text_BuoyantBoy, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_SeaBreezeLiker::
+	msgbox BasalinCoast_Text_SeaBreezeLiker, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_ImpactLakeFisher::
+	msgbox BasalinCoast_Text_ImpactLakeFisher, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_VacationLady::
+	msgbox BasalinCoast_Text_VacationLady, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_SootopolisAheadMan::
+	msgbox BasalinCoast_Text_SootopolisAheadMan, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_FishingBadHere::
+	msgbox BasalinCoast_Text_FishingBadHere, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_WetKidsMom::
+	msgbox BasalinCoast_Text_WetKidsMom, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_InclineMan::
+	msgbox BasalinCoast_Text_InclineMan, MSGBOX_NPC
+	end
+
+BasalinCoast_EventScript_BasalinSign::
+	msgbox BasalinCoast_Text_BasalinSign, MSGBOX_SIGN
+	end
+
+BasalinCoast_Text_BuoyantBoy:
+	.string "(This child is so small that\n"
+	.string "even in this shallow water,\l"
+	.string "he is floating.)\p"
+	.string "(A rather buoyant boy indeed.)$"
+
+BasalinCoast_Text_SeaBreezeLiker:
+	.string "They only recently installed these\n"
+	.string "new paths atop these rocks.\p"
+	.string "It's become one of my new favorite\n"
+	.string "walking routes. The feel of the\l"
+	.string "sea breeze is heavenly!$"
+
+BasalinCoast_Text_ImpactLakeFisher:
+	.string "These lil' lakes were created\n"
+	.string "by jettisoned rock many years\l"
+	.string "ago when the volcano that is now\l"
+	.string "modern-day Sootopolis erupted.$"
+
+BasalinCoast_Text_VacationLady:
+	.string "Ah, Basalin Coast. A worthy place\n"
+	.string "for a 30-minute vacation.\p"
+	.string "If Papa keeps up his indolence,\n"
+	.string "it will become a 30-hour vacation.$"
+
+BasalinCoast_Text_SootopolisAheadMan:
+	.string "You look a bit tired, trainer!\n"
+	.string "These steps lead up to\l"
+	.string "Sootopolis City, so you're\l"
+	.string "almost there! Tough it out!$"
+
+BasalinCoast_Text_FishingBadHere:
+	.string "Bulk fishing is not as popular\n"
+	.string "here as it is in Flotshore.\p"
+	.string "Too close to Sootopolis.\n"
+	.string "All the good fish have been\l"
+	.string "scared away at this point.$"
+
+BasalinCoast_Text_WetKidsMom:
+	.string "Gah, my kids have ran off to\n"
+	.string "lord knows where...\p"
+	.string "They have on clothes I don't\n"
+	.string "want to get soaking wet!\l"
+	.string "Might as well just accept\l"
+	.string "what's going to happen...$"
+
+BasalinCoast_Text_InclineMan:
+	.string "Some people like to take jogs\n"
+	.string "on these inclines to up the\l"
+	.string "ante on their cardio.\p"
+	.string "I'm inclined to dislike\n"
+	.string "these inclines, personally.$"
+
+BasalinCoast_Text_BasalinSign:
+	.string "BASALIN COAST\n"
+	.string "The Bridge Between Two Islands$"
+
 BasalinCoast_Text_WantToSeeGrassMon:
     .string "Aren't Grass type Pokémon magical?\p"
     .string "If you've caught any, I would\n"

@@ -65,7 +65,7 @@ Flotshore_EventScript_VacuumWaveJanitor::
     lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_VACUUM_WAVE, Flotshore_EventScript_GaveVacuumWave
-	msgbox Flotshore_Text_Gugumbir, MSGBOX_DEFAULT
+	msgbox Flotshore_Text_VacuumingTheWater, MSGBOX_DEFAULT
 	giveitem ITEM_TM_VACUUM_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_VACUUM_WAVE
@@ -73,7 +73,7 @@ Flotshore_EventScript_VacuumWaveJanitor::
 	end
 
 Flotshore_EventScript_GaveVacuumWave::
-    msgbox Flotshore_Text_Gugumbir, MSGBOX_AUTOCLOSE
+    msgbox Flotshore_Text_MakingProgress, MSGBOX_AUTOCLOSE
     release
     end
 
@@ -116,6 +116,30 @@ Flotshore_EventScript_GavePounce::
     release
     end
 
+Flotshore_EventScript_Starfishmonger::
+	msgbox Flotshore_Text_Starfishmonger, MSGBOX_NPC
+	end
+
+Flotshore_EventScript_FloatieGirl::
+	msgbox Flotshore_Text_FloatieGirl, MSGBOX_NPC
+	end
+
+Flotshore_EventScript_GoldAngler::
+	msgbox Flotshore_Text_GoldAngler, MSGBOX_NPC
+	end
+
+Flotshore_EventScript_PacifidlogSign::
+	msgbox Flotshore_Text_PacifidlogSign, MSGBOX_SIGN
+	end
+
+Flotshore_EventScript_BasalinSign::
+	msgbox Flotshore_Text_BasalinSign, MSGBOX_SIGN
+	end
+
+Flotshore_EventScript_SailorsPauseSign::
+	msgbox Flotshore_Text_SailorsPauseSign, MSGBOX_SIGN
+	end
+
 Flotshore_Text_GotYou:
 	.string "BOOGA BOOGA BOOGA!!!\p"
 	.string "Haha! Did I getcha? Come on now,\n"
@@ -131,26 +155,55 @@ Flotshore_Text_AlreadyGotYou:
 	.string "Hey! I already jumpscared you\n"
 	.string "before! Leave room for another sucker!$"
 
+Flotshore_Text_VacuumingTheWater:
+	.string "(This janitor is using her\n"
+	.string "vacuum to shhhhhlerrrp up\l"
+	.string "gallons of sea water.)\p"
+	.string "I'm cleaning! All in a day's\n"
+	.string "work for a janitor!\p"
+	.string "You're a trainer, right? Why\n"
+	.string "not take this TM with you?\l"
+	.string "That way your Pokemon can...\l"
+	.string "giggle... clean up\l"
+	.string "the competition!$"
+
+Flotshore_Text_MakingProgress:
+	.string "(Is she making progress?\n"
+	.string "Not particularly. The vacuum\l"
+	.string "is almost filled with water.\l"
+	.string "What then? Who can say.)$"
+
 Flotshore_Text_Gugumbir:
 	.string "test$"
 
 Flotshore_Text_SeanIntro:
-	.string "test$"
+	.string "Sand Dollars for sale!\p"
+	.string "1 Sand Dollar will cost...\n"
+	.string "1000 PokeDollars!\p"
+	.string "Th-that conversion rate is\n"
+	.string "a good deal...!$"
 
 Flotshore_Text_SeanDefeated:
-	.string "test$"
+	.string "I see you AREN'T interested!$"
 
 Flotshore_Text_SeanPostBattle:
-	.string "test$"
+	.string "I'm trying to create a\n"
+	.string "new economy here! My momma\l"
+	.string "told me to be an entrepeneur!\p"
+	.string "(He pronounced it wrong.)$"
 
 Flotshore_Text_JaniceIntro:
-	.string "test$"
+	.string "You'll beat me when pigs fly!$"
 
 Flotshore_Text_JaniceDefeated:
-	.string "test$"
+	.string "Pigs fly all over!\n"
+	.string "I was t-telling you that\l"
+	.string "I wasn't very tough...$"
 
 Flotshore_Text_JanicePostBattle:
-	.string "test$"
+	.string "I wish my piggy didn't fly too\n"
+	.string "fast when she's excited...\l"
+	.string "I can't catch up...$"
 
 Flotshore_Text_JimmyIntro:
 	.string "I'm something of a boy\n"
@@ -178,22 +231,32 @@ Flotshore_Text_DanPostBattle:
 	.string "There's a little wisdom for ya'.$"
 
 Flotshore_Text_LadIntro:
-	.string "test$"
+	.string "I'm a simple lad.\p"
+	.string "Caught one fish.\p"
+	.string "Stickin' with him.$"
 
 Flotshore_Text_LadDefeated:
-	.string "test$"
+	.string "TOO simple.$"
 
 Flotshore_Text_LadPostBattle:
-	.string "test$"
+	.string "I just know my guppy'll\n"
+	.string "grow to a downright ginormous\l"
+	.string "shark one day.\p"
+	.string "Then they won't be laughin'.$"
 
 Flotshore_Text_SammieIntro:
-	.string "test$"
+	.string "I found the coolest shells\n"
+	.string "today! Cooler than my friends'!$"
 
 Flotshore_Text_SammieDefeated:
-	.string "test$"
+	.string "Even though I lost, I'm still\n"
+	.string "winning the shell contest!$"
 
 Flotshore_Text_SammiePostBattle:
-	.string "test$"
+	.string "Look real hard the next time\n"
+	.string "ya go shell huntin'!\l"
+	.string "You never know when you might\l"
+	.string "pass up something shiny!$"
 
 Flotshore_Text_BarbaraIntro:
 	.string "I wonder, what kind of\n"
@@ -219,3 +282,41 @@ Flotshore_Text_HaveMyShell:
 Flotshore_Text_GaveSeashellAlr:
 	.string "I think I'll make a fort\n"
 	.string "down there… just for me!$"
+
+Flotshore_Text_Starfishmonger:
+	.string "My business partner and I\n"
+	.string "exclusively deal in starfish.\p"
+	.string "Not to eat. Just for, like,\n"
+	.string "decoration.\p"
+	.string "I have no idea why they sell,\n"
+	.string "but they do, so off to collect\l"
+	.string "them I go.$"
+
+Flotshore_Text_FloatieGirl:
+	.string "I hate these stupid floaties!\n"
+	.string "They look real dumb! I want\l"
+	.string "an inner tube like the cool kids!$"
+
+Flotshore_Text_GoldAngler:
+	.string "Keep this on the down low, but\n"
+	.string "I've been findin' some gold coins\l"
+	.string "when fishin' around this dock.\p"
+	.string "Y'know, that rocky outcropping\n"
+	.string "next to us has a little cave\l"
+	.string "in it. Maybe the coins are\l"
+	.string "remnants of some long-gone\l"
+	.string "pirate crew's treasure lost\l"
+	.string "within it?\p"
+	.string "Nah, that's too out there.$"
+
+Flotshore_Text_PacifidlogSign:
+	.string "WEST - Pacifidlog Town$"
+
+Flotshore_Text_BasalinSign:
+	.string "NORTH - Basalin Coast\p"
+	.string "Please keep the stone\n"
+	.string "pathways free of litter!$"
+
+Flotshore_Text_SailorsPauseSign:
+	.string "Recreational travel strongly\n"
+	.string "discouraged south of this point.$"

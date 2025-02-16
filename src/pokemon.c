@@ -8400,10 +8400,10 @@ u16 GetBattleBGM(void)
             return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_OZONE;
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_OZONE;
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:

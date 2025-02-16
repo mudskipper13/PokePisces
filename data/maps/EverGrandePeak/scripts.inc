@@ -454,6 +454,7 @@ EverGrandePeak_EventScript_ShunyongAwakens::
 	waitse
 	delay 16
 	pike_flashscreen
+	special HealPlayerParty
 	playmoncry SPECIES_SHUNYONG, CRY_MODE_NORMAL
 	waitmoncry
 	delay 8
