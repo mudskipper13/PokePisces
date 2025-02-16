@@ -15256,8 +15256,6 @@ BattleScript_FriskActivates::
 	savetarget
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	printfromtable gSwitchInAbilityStringIds
-	waitmessage B_WAIT_TIME_LONG
 	destroyabilitypopup
 	setbyte gBattlerTarget, 0
 BattleScript_FriskLoop:

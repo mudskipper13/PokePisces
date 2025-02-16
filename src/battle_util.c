@@ -9886,7 +9886,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_KamenScarfActivates;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_KAMEN_SCARF);
                 }
                 break;
             case HOLD_EFFECT_WEAKNESS_POLICY:
