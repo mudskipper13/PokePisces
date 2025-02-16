@@ -1675,8 +1675,8 @@ static const u8 sToxicChainDescription[] = _(
     "Pokémon hits with a move.");
 
 static const u8 sWatcherDescription[] = _(
-    "Uses the move Mind Reader at the\n"
-    "end of every other turn.");
+    "Every 2 turns, ensures the\n"
+    "Pokémon's attacks always land.");
 
 static const u8 sAppetiteDescription[] = _(
     "When the Pokémon knocks out a\n"

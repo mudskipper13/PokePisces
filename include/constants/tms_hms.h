@@ -91,14 +91,14 @@
     F(AQUA_TAIL) \
     F(FOUL_PLAY) \
     F(MOONBLAST) \
-    F(ROADBLOCK) \
     F(RAZOR_WIND) \
-    F(DUAL_WINGBEAT) \
     F(EARTHQUAKE) \
-    F(BLEAKWIND_STORM) \
+    F(DUAL_WINGBEAT) \
     F(MIND_BREAK) \
-    F(ZAP_CANNON) \
+    F(BLEAKWIND_STORM) \
     F(FIRE_BLAST) \
+    F(ZAP_CANNON) \
+    F(ROADBLOCK) \
     F(RAGING_FURY) \
     F(GUNK_SHOT) \
     F(IRON_TAIL)

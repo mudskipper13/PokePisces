@@ -950,7 +950,8 @@ static const u8 sText_EggsRoyale[] = _("{B_DEF_NAME_WITH_PREFIX} royal aura\nis 
 static const u8 sText_DragonClawBoosted[] = _("{B_ATK_NAME_WITH_PREFIX} landed a\ncrushing blow!");
 static const u8 sText_FoundARandomCheese[] = _("{B_ATK_NAME_WITH_PREFIX} found a\nrandom cheese!");
 static const u8 sText_PkmnBurningUp[] = _("{B_ATK_NAME_WITH_PREFIX} is burning up\nwithin the Infernal Reign!");
-static const u8 sText_InfernalReignEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} radiates the\naura of a king!");
+static const u8 sText_WatcherEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is\nwatching intently...");
+static const u8 sText_WatcherSalvation[] = _("All of {B_ATK_NAME_WITH_PREFIX}'s\neyes look at {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnIsSpinning[] = _("{B_ATK_NAME_WITH_PREFIX} is\nspinning rapidly!");
 static const u8 sText_SloppyToppy[] = _("{B_ATK_NAME_WITH_PREFIX} kissed {B_DEF_NAME_WITH_PREFIX}\nin a show of true compassion!");
 static const u8 sText_NoSex[] = _("With {B_ATK_NAME_WITH_PREFIX}'s ally gone there\nis no more love for it to spread...");
@@ -1762,7 +1763,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DRAGONCLAWBOOSTED - BATTLESTRINGS_TABLE_START] = sText_DragonClawBoosted,
     [STRINGID_FOUNDARANDOMCHEESE - BATTLESTRINGS_TABLE_START] = sText_FoundARandomCheese,
     [STRINGID_PKMNBURNINGUP - BATTLESTRINGS_TABLE_START] = sText_PkmnBurningUp,
-    [STRINGID_INFERNALREIGNENTERS - BATTLESTRINGS_TABLE_START] = sText_InfernalReignEnters,
+    [STRINGID_WATCHERENTERS - BATTLESTRINGS_TABLE_START] = sText_WatcherEnters,
     [STRINGID_PKMNISSPINNING - BATTLESTRINGS_TABLE_START] = sText_PkmnIsSpinning,
     [STRINGID_SLOPPYTOPPY - BATTLESTRINGS_TABLE_START] = sText_SloppyToppy,
     [STRINGID_NOSEX - BATTLESTRINGS_TABLE_START] = sText_NoSex,
@@ -1805,6 +1806,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_CURSEDBODYCURSED - BATTLESTRINGS_TABLE_START] = sText_CursedBodyCursed,
     [STRINGID_DAYBREAK - BATTLESTRINGS_TABLE_START] = sText_Daybreak,
     [STRINGID_SOLARPOWERGAINS - BATTLESTRINGS_TABLE_START] = sText_SolarPowerGains,
+    [STRINGID_WATCHERSALVATION - BATTLESTRINGS_TABLE_START] = sText_WatcherSalvation,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1896,7 +1898,7 @@ const u16 gSwitchInAbilityStringIds[] =
     [B_MSG_SWITCHIN_PASTEL_VEIL] = STRINGID_PASTELVEILENTERS,
     [B_MSG_SWITCHIN_WATER_VEIL] = STRINGID_WATERVEILENTERS,
     [B_MSG_SWITCHIN_NEUTRALIZING_GAS] = STRINGID_NEUTRALIZINGGASENTERS,
-    [B_MSG_SWITCHIN_INFERNAL_REIGN] = STRINGID_INFERNALREIGNENTERS,
+    [B_MSG_SWITCHIN_WATCHER] = STRINGID_WATCHERENTERS,
 };
 
 const u16 gMissStringIds[] =
