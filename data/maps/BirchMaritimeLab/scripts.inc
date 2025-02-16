@@ -112,8 +112,8 @@ BirchMaritimeLab_EventScript_PickYourStarter::
 BirchMaritimeLab_EventScript_GiveStarterEvent::
 	lockall
 	bufferleadmonspeciesname STR_VAR_1
-	setmetatile 9, 2, METATILE_BirchLab_BirchTable1, TRUE
-	setmetatile 10, 2, METATILE_BirchLab_BirchTable2, TRUE
+	setmetatile 9, 2, METATILE_BirchLab_BirchTable1, FALSE
+	setmetatile 10, 2, METATILE_BirchLab_BirchTable2, FALSE
 	setmetatile 9, 3, METATILE_BirchLab_BirchTable3, TRUE
 	setmetatile 10, 3, METATILE_BirchLab_BirchTable4, TRUE
 	special DrawWholeMapView
@@ -135,6 +135,8 @@ BirchMaritimeLab_EventScript_NicknameStarter::
 	end
 
 BirchMaritimeLab_EventScript_GivePokedex::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	delay 4
 	playbgm MUS_ENCOUNTER_MAY, FALSE
 	speakername BirchMaritimeLab_Text_NameBirch
 	msgbox BirchMaritimeLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
@@ -170,6 +172,7 @@ BirchMaritimeLab_EventScript_GivePokeBalls::
 	return
 
 BirchMaritimeLab_EventScript_PokemonAwait::
+	faceplayer
 	speakername BirchMaritimeLab_Text_NameBirch
 	msgbox BirchMaritimeLab_Text_AfterGettingStarter, MSGBOX_AUTOCLOSE
 	speakername NULL
@@ -181,6 +184,7 @@ BirchMaritimeLab_EventScript_NoRoomForPokeBalls::
 	return
 
 BirchMaritimeLab_EventScript_BeatenRangers::
+	special HealPlayerParty
 	setflag FLAG_HIDE_SKY_PILLAR_RANGERS
 	setvar VAR_BIRCH_LAB_STATE, 7
 	applymovement OBJ_EVENT_ID_PLAYER, BirchMaritimeLab_Movement_PlayerReturnFromSkyPillar
@@ -190,6 +194,8 @@ BirchMaritimeLab_EventScript_BeatenRangers::
 	setflag FLAG_RECEIVED_TM_POUNCE
 	setflag FLAG_RECEIVED_EXP_SHARE
 	setvar VAR_BALL_QUEST_STATE, 69
+	delay 4
+	setflag FLAG_I_EXP_SHARE
 	msgbox BirchMaritimeLab_Text_GoToSootopolis, MSGBOX_AUTOCLOSE
 	speakername NULL
 	releaseall
@@ -254,7 +260,7 @@ BirchMaritimeLab_Text_ReceivedStarter:
 	.string "Starter Pokémon, {STR_VAR_1}!$"
 
 BirchMaritimeLab_Text_AfterGettingStarter:
-	.string "Go get em champ!$"
+	.string "Go get 'em, champ!$"
 
 BirchMaritimeLab_Text_WhyNotGiveNicknameToMon:
 	.string "Ah! Your new friend is wanting\n"
