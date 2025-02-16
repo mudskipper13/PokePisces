@@ -229,6 +229,18 @@ BirchMaritimeLab_Movement_PlayerReturnFromSkyPillar:
 	face_up
 	step_end
 
+BirchMaritimeLab_EventScript_JollyAide::
+	msgbox BirchMaritimeLab_Text_JollyAide, MSGBOX_NPC
+	end
+
+BirchMaritimeLab_EventScript_TiredAide::
+	msgbox BirchMaritimeLab_Text_TiredAide, MSGBOX_NPC
+	end
+
+BirchMaritimeLab_EventScript_StudiousAide::
+	msgbox BirchMaritimeLab_Text_StudiousAide, MSGBOX_NPC
+	end
+
 BirchMaritimeLab_Text_NameBirch:
 	.string "Dad$"
 
@@ -370,3 +382,24 @@ BirchMaritimeLab_Text_RickyPostSkyPillar:
 	.string "Keep it up, don't let that passion'a\n"
 	.string "yours die out. Go show Hoenn\l"
 	.string "what you're made of!$"
+
+BirchMaritimeLab_Text_JollyAide:
+	.string "I was pleased as punch when\n"
+	.string "the Professor relocated to\l"
+	.string "Pacifidlog Town!\l"
+	.string "It's my dream settle-down-town!$"
+
+BirchMaritimeLab_Text_TiredAide:
+	.string "Moving all of the lab's\n"
+	.string "notes and equipment here was\l"
+	.string "one big process, I tell you.\p"
+	.string "Your pops has got a knack\n"
+	.string "for keeping his records\l"
+	.string "physical over digital, which\l"
+	.string "has its pros and cons...$"
+
+BirchMaritimeLab_Text_StudiousAide:
+	.string "I'm really wanting to branch\n"
+	.string "out in this new environment\l"
+	.string "and take on projects I\l"
+	.string "wouldn't back in Littleroot.$"
