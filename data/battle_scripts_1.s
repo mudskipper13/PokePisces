@@ -3407,7 +3407,6 @@ BattleScript_EffectBrutalize::
 	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
 	argumentstatuseffect
-	seteffectwithchance
 	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
@@ -4375,7 +4374,7 @@ BattleScript_SignalBeamStatDrop::
 	tryfaintmon BS_TARGET
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
+	setmoveeffect MOVE_EFFECT_ACC_MINUS_1
 	seteffectprimary
 	moveendall
 	end
@@ -10234,7 +10233,7 @@ BattleScript_EffectDestinyBond::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMiseryWail::
-	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_EffectMiseryWailTorments
+	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_EffectMiseryWailTorments
 	goto BattleScript_EffectHit
 BattleScript_EffectMiseryWailTorments::
 	attackcanceler
@@ -15257,8 +15256,6 @@ BattleScript_FriskActivates::
 	savetarget
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	printfromtable gSwitchInAbilityStringIds
-	waitmessage B_WAIT_TIME_LONG
 	destroyabilitypopup
 	setbyte gBattlerTarget, 0
 BattleScript_FriskLoop:
@@ -15449,6 +15446,32 @@ BattleScript_ArbiterEffect_WaitString:
 BattleScript_ArbiterLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ArbiterLoop
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	restoretarget
+	pause B_WAIT_TIME_MED
+	end3
+
+BattleScript_WatcherActivates::
+	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_WATCHERSALVATION
+	waitmessage B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_WatcherLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_WatcherLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_WatcherLoopIncrement
+BattleScript_WatcherEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	setalwayshitflag
+BattleScript_WatcherEffect_WaitString:
+	waitmessage B_WAIT_TIME_LONG
+	copybyte sBATTLER, gBattlerTarget
+BattleScript_WatcherLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_WatcherLoop
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	restoretarget
@@ -17115,6 +17138,7 @@ BattleScript_HeartGift::
 	playanimation BS_ATTACKER, B_ANIM_MON_HIT
 	waitanimation
 	setmoveeffect MOVE_EFFECT_WRAP | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
 	call BattleScript_ItemHurtRet
 BattleScript_HeartGiftStatDownEnd::
 	removeitem BS_ATTACKER

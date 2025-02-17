@@ -1880,7 +1880,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 130) / 100; // 1.3 compound eyes boost
         break;
     case ABILITY_VICTORY_STAR:
-        calc = (calc * 125) / 100; // 1.25 victory star boost
+        calc = (calc * 120) / 100; // 1.2 victory star boost
         break;
     case ABILITY_HUSTLE:
         if (IS_MOVE_PHYSICAL(move))
@@ -1918,7 +1918,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     {
     case ABILITY_VICTORY_STAR:
         if (IsBattlerAlive(atkAlly))
-            calc = (calc * 125) / 100; // 1.25 ally's victory star boost
+            calc = (calc * 120) / 100; // 1.2 ally's victory star boost
         break;
     }
 
@@ -2073,10 +2073,10 @@ static void Cmd_ppreduce(void)
     if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
         gHitMarker |= HITMARKER_NO_PPDEDUCT;
 
-    if ((moveTarget == MOVE_TARGET_BOTH
+    if (moveTarget == MOVE_TARGET_BOTH
         || moveTarget == MOVE_TARGET_FOES_AND_ALLY
-        || moveTarget == MOVE_TARGET_ALL_BATTLERS)
-        && !gSpecialStatuses[gBattlerAttacker].ppNotAffectedByPressure)
+        || moveTarget == MOVE_TARGET_ALL_BATTLERS
+        || gSpecialStatuses[gBattlerAttacker].ppNotAffectedByPressure)
     {
         for (i = 0; i < gBattlersCount; i++)
         {
@@ -2101,6 +2101,13 @@ static void Cmd_ppreduce(void)
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = TRUE;
+
+        // For item Metronome, echoed voice
+        if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker))
+            gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
+
+        if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker) || !gBattleMoves[gCurrentMove].danceMove)
+            gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
 
         if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] > ppToDeduct)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
@@ -4204,7 +4211,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
                         && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
                         && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_MAGIC_GUARD
-                        && !((GetBattlerHoldEffect(BATTLE_PARTNER(gBattlerTarget), TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[BATTLE_PARTNER(gBattlerTarget)].species == SPECIES_CHIROBERRA)))
+                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_SUGAR_COAT
+                        && !TestTeruCharm(BATTLE_PARTNER(gBattlerTarget)))
                 {
                     gBattleScripting.savedBattler = BATTLE_PARTNER(gBattlerTarget);
                     gBattleMoveDamage = gBattleMons[BATTLE_PARTNER(gBattlerTarget)].hp / 16;
@@ -4217,7 +4225,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
                         && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
                         && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_MAGIC_GUARD
-                        && !((GetBattlerHoldEffect(BATTLE_PARTNER(gBattlerTarget), TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[BATTLE_PARTNER(gBattlerTarget)].species == SPECIES_CHIROBERRA)))
+                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_SUGAR_COAT
+                        && !TestTeruCharm(BATTLE_PARTNER(gBattlerTarget)))
                 {
                     gBattleScripting.savedBattler = BATTLE_PARTNER(gBattlerTarget);
                     gBattleMoveDamage = gBattleMons[BATTLE_PARTNER(gBattlerTarget)].hp / 8;
@@ -4230,7 +4239,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
                         && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
                         && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_MAGIC_GUARD
-                        && !((GetBattlerHoldEffect(BATTLE_PARTNER(gBattlerTarget), TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[BATTLE_PARTNER(gBattlerTarget)].species == SPECIES_CHIROBERRA)))
+                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_SUGAR_COAT
+                        && !TestTeruCharm(BATTLE_PARTNER(gBattlerTarget)))
                 {
                     gBattleScripting.savedBattler = BATTLE_PARTNER(gBattlerTarget);
                     gBattleMoveDamage = gBattleMons[BATTLE_PARTNER(gBattlerTarget)].hp / 8;
@@ -6403,7 +6413,10 @@ static void Cmd_moveend(void)
         case MOVEEND_PROTECT_LIKE_EFFECT:
             if (gProtectStructs[gBattlerAttacker].touchedProtectLike)
             {
-                if (gProtectStructs[gBattlerTarget].spikyShielded && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[gBattlerAttacker].species == SPECIES_CHIROBERRA)))
+                if (gProtectStructs[gBattlerTarget].spikyShielded 
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD 
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+                    && !TestTeruCharm(gBattlerAttacker))
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
                     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
@@ -6417,7 +6430,10 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
                     effect = 1;
                 }
-                else if (gProtectStructs[gBattlerTarget].defendOrder && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[gBattlerAttacker].species == SPECIES_CHIROBERRA)))
+                else if (gProtectStructs[gBattlerTarget].defendOrder 
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD 
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+                    && !TestTeruCharm(gBattlerAttacker))
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
@@ -7393,10 +7409,13 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCING_MOVE_TURNS:
-            if (gBattleMoves[gCurrentMove].danceMove
-            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
-            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
-            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
+                || gMoveResultFlags & MOVE_RESULT_NO_EFFECT 
+                || gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
+            else if (gBattleMoves[gCurrentMove].danceMove 
+                && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
+                && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;
@@ -8282,9 +8301,9 @@ static void Cmd_switchineffects(void)
         && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SPIKES)
         && GetBattlerAbility(battler) != ABILITY_MAGIC_GUARD
         && GetBattlerAbility(battler) != ABILITY_SUGAR_COAT
+        && !TestTeruCharm(battler)
         && IsBattlerAffectedByHazards(battler, FALSE)
-        && IsBattlerGrounded(battler)
-        && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+        && IsBattlerGrounded(battler))
     {
         u8 spikesDmg = (5 - gSideTimers[GetBattlerSide(battler)].spikesAmount) * 2;
         gBattleMoveDamage = gBattleMons[battler].maxHP / (spikesDmg);
@@ -8299,7 +8318,7 @@ static void Cmd_switchineffects(void)
         && IsBattlerAffectedByHazards(battler, FALSE)
         && GetBattlerAbility(battler) != ABILITY_MAGIC_GUARD
         && GetBattlerAbility(battler) != ABILITY_SUGAR_COAT
-        && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+        && !TestTeruCharm(battler))
     {
         gDisableStructs[battler].stealthRockDone = TRUE;
         gBattleMoveDamage = GetStealthHazardDamage(gBattleMoves[MOVE_STEALTH_ROCK].type, battler);
@@ -10454,30 +10473,42 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_SUPERCHARGED)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_SUPERCHARGED;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_GEARED_UP:
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_GEARED_UP)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_GEARED_UP;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_APPLY_PHANTOM:
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_PHANTOM)
+        {
             gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
+        {
             gStatuses4[gBattlerTarget] |= STATUS4_PHANTOM;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_ACUPRESSURE:
@@ -15241,7 +15272,11 @@ static void Cmd_weatherdamage(void)
     u32 ability = GetBattlerAbility(gBattlerAttacker);
 
     gBattleMoveDamage = 0;
-    if (IsBattlerAlive(gBattlerAttacker) && WEATHER_HAS_EFFECT && ability != ABILITY_MAGIC_GUARD && ability != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[gBattlerAttacker].species == SPECIES_CHIROBERRA)))
+    if (IsBattlerAlive(gBattlerAttacker) 
+    && WEATHER_HAS_EFFECT 
+    && ability != ABILITY_MAGIC_GUARD 
+    && ability != ABILITY_SUGAR_COAT 
+    && !TestTeruCharm(gBattlerAttacker))
     {
         if (gBattleWeather & B_WEATHER_SANDSTORM)
         {
@@ -18489,14 +18524,16 @@ static void Cmd_handleballthrow(void)
             break;
         case ITEM_HEAL_BALL:
             i = gBattleMons[gBattlerAttacker].hp;
-            if (i < 180)
+            if (i < 150)
                 ballAddition = -20;
-            else if (i < 360)
+            else if (i < 300)
                 ballAddition = 0;
-            else if (i < 540)
+            else if (i < 450)
                 ballAddition = 20;
-            else
+            else if (i < 600)
                 ballAddition = 30;
+            else
+                ballAddition = 40;
         case ITEM_FAST_BALL:
             if (gSpeciesInfo[gBattleMons[gBattlerTarget].species].baseSpeed >= 100)
                 ballMultiplier = 400;

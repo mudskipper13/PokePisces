@@ -2579,7 +2579,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_ELECTRIC,
         .pp = 10,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_SELECTED,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_EVSN_UP_1,
@@ -4672,7 +4672,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_CHARGE,
         .power = 0,
         .type = TYPE_ELECTRIC,
-        .accuracy = 100,
+        .accuracy = 0,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
@@ -10598,7 +10598,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .accuracy = 0,
         .pp = 10,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_ALLY,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_RESET_STATS,
@@ -13912,7 +13912,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .power = 130,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
-        .pp = 10,
+        .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -13997,6 +13997,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresSubstitute = TRUE,
+        .soundMove = TRUE,
     },
 
     [MOVE_ALLURING_VOICE] =
@@ -14194,7 +14195,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .minimizeDoubleDamage = TRUE,
     },
 
-    [MOVE_BURNING_SPIRIT] =
+    [MOVE_BLAZING_SOUL] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
             .power = 90,
