@@ -6,7 +6,13 @@ NewSooto_MapScripts::
 
 NewSooto_OnTransition:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, NewSooto_EventScript_RemoveYandemic
 	end
+
+NewSooto_EventScript_RemoveYandemic::
+	removeobject LOCALID_YANDEMIC
+	setflag FLAG_TEMP_11
+	return
 
 NewSooto_EventScript_DontGoInCave::
 	lock
@@ -248,6 +254,22 @@ NewSooto_EventScript_GaveFloatStone::
 NewSooto_EventScript_OzoneRoadblockAhead::
     msgbox NewSooto_Text_OzoneRoadblockAhead, MSGBOX_NPC
 	end
+
+NewSooto_EventScript_YandemicNoticed::
+	lock
+	setvar VAR_TEMP_4, 1
+	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, NewSooto_EventScript_YandemicAddVar
+	msgbox NewSooto_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSooto_EventScript_YandemicAddVar::
+	addvar VAR_NOTICED_BY_YANDEMIC, 1
+	return
+
+NewSooto_Text_YouFeelWatched:
+	.string "(You begin to notice that\n"
+	.string "you are being intently watched...)$"
 
 NewSooto_Text_NameDrake:
 	.string "Drake$"

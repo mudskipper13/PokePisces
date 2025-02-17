@@ -70,7 +70,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_12"
     }
   ],
   "warp_events": [
@@ -146,20 +146,11 @@
     {
       "type": "trigger",
       "x": 24,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
-      "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 24,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route122_EventScript_YandemicNoticed"
     }
   ],
   "bg_events": [
