@@ -240,58 +240,56 @@ SootopolisCity_Gym_B1F_Text_DropIn:
 	.string "drop in from above…!$"
 
 SootopolisCity_Gym_B1F_Text_ArthurIntro:
-	.string "I'll show you the sublime techniques\n"
-	.string "I learned from our LEADER JUAN!$"
+	.string "Ice and Fairy are the two\n"
+	.string "most elegant types.\l"
+	.string "Befitting a man of my status,\l"
+	.string "would you not say?$"
 
 SootopolisCity_Gym_B1F_Text_ArthurDefeat:
-	.string "Please forgive me, JUAN…$"
+	.string "Elegant, yet not unbeatable...$"
 
 SootopolisCity_Gym_B1F_Text_ArthurPostBattle:
-	.string "Watch what happens if you crack all\n"
-	.string "the floor tiles.$"
+	.string "Try walking with a purpose.\n"
+	.string "Not planning your movement\l"
+	.string "can lead to you faltering.$"
 
 SootopolisCity_Gym_B1F_Text_HasparothIntro:
-	.string "You came all the way here, but you won't\n"
-	.string "get to see JUAN.\p"
-	.string "Not if you lose to me, you won't!$"
+	.string "Cards on the table, I shall\n"
+	.string "fend you off from interrupting\l"
+	.string "my comrade Juan's performance!$"
 
 SootopolisCity_Gym_B1F_Text_HasparothDefeat:
-	.string "You're strong!\n"
-	.string "I was fooled by your cute looks!$"
+	.string "I tip my hat to you, trainer.$"
 
 SootopolisCity_Gym_B1F_Text_HasparothPostBattle:
-	.string "You might be good enough to avoid\n"
-	.string "being wiped out in one hit by JUAN.$"
+	.string "Mayhaps you do belong up\n"
+	.string "on the stage after all...$"
 
 SootopolisCity_Gym_B1F_Text_EmilyIntro:
-	.string "The sight of JUAN conducting\n"
-	.string "a battle…\p"
-	.string "The very beauty of it compelled me to\n"
-	.string "become a TRAINER.$"
+	.string "I purchased this speically bred\n"
+	.string "Pokemon for a high price!\l"
+	.string "She won't be losing, trust me!$"
 
 SootopolisCity_Gym_B1F_Text_EmilyDefeat:
-	.string "You battled with more beauty than\n"
-	.string "I could muster…$"
+	.string "B-But...! It was so much money!$"
 
 SootopolisCity_Gym_B1F_Text_EmilyPostBattle:
-	.string "The grace you bring to battle is\n"
-	.string "fabulous.\p"
-	.string "Oh… I'm so fortunate to have found\n"
-	.string "POKéMON.$"
+	.string "I shudder to think it...\n"
+	.string "but I may have been fleeced...$"
 
 SootopolisCity_Gym_B1F_Text_LisaIntro:
-	.string "A graceful glide across the ice while\n"
-	.string "crossing no lines…\p"
-	.string "A TRAINER putting on that performance\n"
-	.string "would be elegantly beautiful!$"
+	.string "Apologies, challenger.\n"
+	.string "But I cannot allow you\l"
+	.string "up these stairs.$"
 
 SootopolisCity_Gym_B1F_Text_LisaDefeat:
-	.string "Well, excuse me?!$"
+	.string "Great tactical play...$"
 
 SootopolisCity_Gym_B1F_Text_LisaPostBattle:
-	.string "This is really obvious, but how strong\n"
-	.string "you are as a TRAINER has nothing to do\l"
-	.string "with how young or old you are.$"
+	.string "I may not look it, but I am\n"
+	.string "the captain of Juan's bodyguards.\l"
+	.string "If you can get through me,\l"
+	.string "you can get through anything.$"
 
 SootopolisCity_Gym_B1F_Text_MiikachanIntro:
 	.string "When I'm with my POKéMON, the time\n"
