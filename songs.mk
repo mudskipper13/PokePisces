@@ -1359,3 +1359,6 @@ $(MID_SUBDIR)/mus_vs_ozone.s: %.s: %.mid
 	
 $(MID_SUBDIR)/mus_pisces_title.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+
+$(MID_SUBDIR)/mus_vs_legendary2_testing.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V100

@@ -4066,6 +4066,7 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_SURF_2) \
     X(MUS_VS_OZONE) \
     X(MUS_PISCES_TITLE) \
+    X(MUS_VS_LEGENDARY2_TESTING) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \
