@@ -6294,7 +6294,7 @@
     {
       "id": "LAYOUT_PERPLUME_TREEHOUSE",
       "name": "PerplumeTreehouse_Layout",
-      "width": 15,
+      "width": 32,
       "height": 18,
       "primary_tileset": "gTileset_SecretBase",
       "secondary_tileset": "gTileset_SecretBaseTree",
