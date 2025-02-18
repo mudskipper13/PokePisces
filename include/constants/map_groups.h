@@ -215,6 +215,7 @@
 #define MAP_SAILORS_PAUSE_UNDERWATER       (3 | (15 << 8))
 #define MAP_STRAE_SEAPATH_UNDERWATER       (4 | (15 << 8))
 #define MAP_DEWFORD_INTERIORS              (5 | (15 << 8))
+#define MAP_MIRAGE_ISLAND                  (6 | (15 << 8))
 
 // gMapGroup_PiscesLeg9Major
 #define MAP_DETERMANITE_BEACH    (0 | (16 << 8))

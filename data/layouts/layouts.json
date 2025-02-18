@@ -6260,6 +6260,16 @@
       "secondary_tileset": "gTileset_Golden",
       "border_filepath": "data/layouts/ShunyongBattleArena/border.bin",
       "blockdata_filepath": "data/layouts/ShunyongBattleArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_ISLAND",
+      "name": "MirageIsland_Layout",
+      "width": 20,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/MirageIsland/border.bin",
+      "blockdata_filepath": "data/layouts/MirageIsland/map.bin"
     }
   ]
 }

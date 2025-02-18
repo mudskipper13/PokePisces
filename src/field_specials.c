@@ -1586,6 +1586,18 @@ bool8 CheckPapypusAndMamypus(void)
     return FALSE;
 }
 
+bool8 CheckZorua(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_ZORUA)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 bool8 ScriptCheckFreePokemonStorageSpace(void)
 {
     return CheckFreePokemonStorageSpace();

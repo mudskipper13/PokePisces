@@ -3849,3 +3849,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SweltornInteriors/scripts.inc"
 
 	.include "data/maps/ShunyongBattleArena/scripts.inc"
+
+	.include "data/maps/MirageIsland/scripts.inc"
