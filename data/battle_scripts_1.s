@@ -18572,7 +18572,7 @@ BattleScript_DownfallTrySpite:
     tryspiteppreduce BattleScript_DownfallTryPanic
 BattleScript_DownfallTryPanic:
     jumpifstatus BS_TARGET, STATUS1_PANIC, BattleScript_DownfallTryLowerStats
-    setmoveeffect MOVE_EFFECT_PANIC
+    setmoveeffect MOVE_EFFECT_PANIC | MOVE_EFFECT_CERTAIN
 	seteffectprimary
 BattleScript_DownfallTryLowerStats:
     setmoveeffect MOVE_EFFECT_ALL_STATS_DOWN
