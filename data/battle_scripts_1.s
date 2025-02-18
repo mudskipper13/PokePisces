@@ -18535,8 +18535,8 @@ BattleScript_EffectGoldPlains_Loop:
     jumpifabsent BS_TARGET, BattleScript_EffectGoldPlains_NextBattler
     dogoldplains BS_TARGET, BattleScript_EffectGoldPlains_UpdateStatus
     orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_EffectGoldPlains_UpdateStatus:
