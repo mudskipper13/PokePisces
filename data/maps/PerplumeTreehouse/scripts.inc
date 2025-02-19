@@ -84,7 +84,7 @@ PerplumeTreehouse_EventScript_ObtainBloomOrb::
 	playse SE_M_SWORDS_DANCE
 	waitse
 	playse SE_M_BUBBLE_BEAM2
-	msgbox SootopolisCastle_Text_TheMapPointsToLilycove, MSGBOX_AUTOCLOSE
+	msgbox PerplumeTreehouse_Text_TheMapPointsToLilycove, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -157,7 +157,7 @@ PerplumeTreehouse_Text_ItsTheBloomOrb:
 	.string "(It's the second Orb that\n"
 	.string "was marked by the map...)$"
 
-SootopolisCastle_Text_TheMapPointsToLilycove:
+PerplumeTreehouse_Text_TheMapPointsToLilycove:
 	.string "(Your magical map shines once more,\n"
 	.string "pointing you to a new location.)\p"
 	.string "(This time, it is leading you\n"

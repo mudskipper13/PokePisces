@@ -14220,10 +14220,12 @@ static const struct TrainerMon sParty_PSadfisher3[] = {
     }
 };
 
-static const struct TrainerMon sParty_Tyron[] = {
+static const struct TrainerMon sParty_PDaddyBigbucks[] = {
     {
-    .lvl = 19,
-    .species = SPECIES_SANDSHREW,
+    .species = SPECIES_BISHOUCHA,
+    .ability = ABILITY_DORMANT,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 40,
     }
 };
 

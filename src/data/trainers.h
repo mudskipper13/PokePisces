@@ -8448,16 +8448,16 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_PSadfisher3),
     },
 
-    [TRAINER_TYRON] =
+    [TRAINER_P_DADDY_BIGBUCKS] =
     {
-        .trainerClass = TRAINER_CLASS_CAMPER,
+        .trainerClass = TRAINER_CLASS_PROFITEER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_CAMPER,
-        .trainerName = _("TYRON"),
+        .trainerPic = TRAINER_PIC_PROFITEER,
+        .trainerName = _("Bigbucks"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = TRAINER_PARTY(sParty_Tyron),
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .party = TRAINER_PARTY(sParty_PDaddyBigbucks),
     },
 
     [TRAINER_CELINA] =
