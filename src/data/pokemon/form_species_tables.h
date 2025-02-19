@@ -1226,4 +1226,10 @@ static const u16 sFakysnakyFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
+static const u16 sFlagueFormSpeciesIdTable[] = {
+    SPECIES_FLAGUE,
+    SPECIES_FLAGUE_PRINCE,
+    FORM_SPECIES_END,
+};
+
 #endif

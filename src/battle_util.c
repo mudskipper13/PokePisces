@@ -9670,6 +9670,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
         }
@@ -9724,20 +9725,20 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattlescriptCurrInstr = BattleScript_AttackerItemStatRaise;
             }
             break;
-        case HOLD_EFFECT_BLACK_GLASSES: // dark type moves have 20% chance to inflict panic
-            if (gBattleMoveDamage != 0 // Need to have done damage
-                    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-                    && gBattleMoves[gCurrentMove].type == TYPE_DARK
-                    && IsBattlerAlive(gBattlerTarget)
-                    && TARGET_TURN_DAMAGED
-                    && !IS_MOVE_STATUS(gCurrentMove)
-                    && RandomPercentage(RNG_HOLD_EFFECT_BLACK_GLASSES, 20)
-                    && CanGetPanicked(gBattlerTarget)) 
+        case HOLD_EFFECT_FAIRY_FEATHER:
+            if (gBattleMoveDamage != 0
+            && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerAttacker].hp != 0
+            && TARGET_TURN_DAMAGED
+            && CanBeConfused(gBattlerTarget) 
+            && !IS_MOVE_STATUS(gCurrentMove)
+            && gBattleMoves[gCurrentMove].type == TYPE_FAIRY
+            && RandomPercentage(RNG_HOLD_EFFECT_BLACK_GLASSES, 20))
             {
-                gEffectBattler = gBattlerTarget;
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED;
+                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_MoveEffectPanic;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
@@ -9922,14 +9923,37 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
                 && TARGET_TURN_DAMAGED 
-                && gStatuses3[battler] != STATUS3_CHARGED_UP
-                && IsBattlerAlive(gBattlerTarget))
+                && !gStatuses3[gBattlerTarget] & STATUS3_CHARGED_UP
+                && IsBattlerAlive(gBattlerTarget)
+                && gBattleMons[gBattlerTarget].species == SPECIES_SHOCKORE)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_KamenScarfActivates;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    RecordItemEffectBattle(battler, HOLD_EFFECT_KAMEN_SCARF);
+                    RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_KAMEN_SCARF);
+                }
+                break;
+            case HOLD_EFFECT_SILVER_CROWN:
+                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+                && TARGET_TURN_DAMAGED 
+                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED
+                && IsBattlerAlive(gBattlerAttacker)
+                && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE)
+                {
+                    effect = ITEM_EFFECT_OTHER;
+
+                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_WRAPPED;
+                    gDisableStructs[gBattlerAttacker].wrapTurns = (Random() % 2) + 4;
+
+                    gBattleStruct->wrappedMove[gBattlerAttacker] = MOVE_INFESTATION;
+                    gBattleStruct->wrappedBy[gBattlerAttacker] = gBattlerAttacker;
+
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_SilverCrownActivates;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+                    RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_SILVER_CROWN);
                 }
                 break;
             case HOLD_EFFECT_WEAKNESS_POLICY:
@@ -14962,20 +14986,8 @@ bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2)
 
 u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
 {
-    if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_FAIRY_FEATHER) 
-    {
-        u8 moveType;
-        GET_MOVE_TYPE(gCurrentMove, moveType);
-        if (moveType == TYPE_FAIRY)
-            return 100;
-    }
-
     if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance = 100;
-
-    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
-            && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER))
-        secondaryEffectChance /= 2;
 
     if (CanUseLastResort(battler) && gCurrentMove == MOVE_ANCIENT_POWER)
         secondaryEffectChance *= 3;
@@ -14992,7 +15004,16 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
     || (GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
         secondaryEffectChance *= 2;
 
+    if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_BLACK_GLASSES
+    && !IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
+    && GetBattlerAbility(battler) != ABILITY_SERENE_GRACE
+    && GetBattlerAbility(battler) != ABILITY_RISKTAKER
+    && (!(GetBattlerAbility(battler) == ABILITY_FROST_JAW && gBattleMoves[gCurrentMove].bitingMove))
+    && (!(IsAbilityOnSide(battler, ABILITY_SERENE_AURA))))
+        secondaryEffectChance *= 1.5;
+    
     if (IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
+    && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_BLACK_GLASSES
     && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_HIT
     && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_STATUS 
     && gBattleMoves[gCurrentMove].effect != EFFECT_TRIPLE_ARROWS
@@ -15004,6 +15025,10 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
 
     if (GetBattlerAbility(battler) == ABILITY_SHUNYONG && (gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 2)))
         secondaryEffectChance *= 2;
+
+    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_METAL_COAT
+        && !(gBattleScripting.moveEffect & MOVE_EFFECT_AFFECTS_USER))
+    secondaryEffectChance /= 2;
 
     return secondaryEffectChance;
 }

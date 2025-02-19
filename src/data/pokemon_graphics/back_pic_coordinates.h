@@ -1585,6 +1585,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_SHISHIMA_PUNISHER_ALT]        = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_LYOLICA]                      = { .size = MON_COORDS_SIZE(64, 48), .y_offset =  6 },
     [SPECIES_FAKYSNAKY_BUSTED]             = { .size = MON_COORDS_SIZE(24, 16), .y_offset = 27 },
+    [SPECIES_FLAGUE_PRINCE]                = { .size = MON_COORDS_SIZE(64, 48), .y_offset = 10 },
 #endif
     [SPECIES_EGG]                          = { .size = MON_COORDS_SIZE(24, 24), .y_offset = 20 },
 };

@@ -6572,54 +6572,60 @@ BattleScript_EffectDefenseUp2Hit:
 	setmoveeffect MOVE_EFFECT_DEF_PLUS_2 | MOVE_EFFECT_AFFECTS_USER
 	goto BattleScript_EffectHit
 
-BattleScript_EffectFlowerShield:
+BattleScript_EffectFlowerShield::
 	attackcanceler
 	attackstring
 	ppreduce
-	selectfirstvalidtarget
-BattleScript_FlowerShieldIsAnyGrass:
-	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_FlowerShieldLoopStart
-	jumpifnexttargetvalid BattleScript_FlowerShieldIsAnyGrass
-	goto BattleScript_FlowerShieldFailedBloomingUser
-BattleScript_FlowerShieldLoopStart:
-	selectfirstvalidtarget
-BattleScript_FlowerShieldLoop:
-	movevaluescleanup
-	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_FlowerShieldLoop2
-	goto BattleScript_FlowerShieldMoveTargetEnd
-BattleScript_FlowerShieldLoop2:
-	setstatchanger STAT_DEF, 1, FALSE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_FlowerShieldMoveTargetEnd
-	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FlowerShieldDoAnim
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_ROSE_EMPTY, BattleScript_FlowerShieldMoveTargetEnd
-	pause 21
-	goto BattleScript_FlowerShieldString
-BattleScript_FlowerShieldDoAnim:
+	getrototillertargets BattleScript_ButItFailed
+	@ at least one battler is affected
 	attackanimation
 	waitanimation
-	setgraphicalstatchangevalues
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-BattleScript_FlowerShieldString:
+	savetarget
+	setbyte gBattlerTarget, 0
+BattleScript_FlowerShieldLoop:
+	movevaluescleanup
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_FlowerShieldCheckAffected
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_FlowerShieldCantRaiseMultipleStats
+BattleScript_FlowerShieldCheckAffected:
+	jumpifnotrototilleraffected BS_TARGET, BattleScript_FlowerShieldNoEffect
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
+	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_FlowerShieldTrySpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FlowerShieldTrySpDef
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_FlowerShieldTrySpDef::
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FlowerShieldTryApplyBlooming
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FlowerShieldTryApplyBlooming::
+	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_FlowerShieldMoveTargetEnd
+	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	goto BattleScript_FlowerShieldMoveTargetEnd
 BattleScript_FlowerShieldMoveTargetEnd:
 	moveendto MOVEEND_NEXT_TARGET
-	jumpifnexttargetvalid BattleScript_FlowerShieldLoop
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_MoveEnd
-	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_MoveEnd
-	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_MoveEnd
-	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_MoveEnd
-	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
-	seteffectprimary
-	goto BattleScript_MoveEnd
-BattleScript_FlowerShieldFailedBloomingUser:
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_ButItFailed
-	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_ButItFailed
-	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_ButItFailed
-	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_ButItFailed
-	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
-	seteffectprimary
-	goto BattleScript_ButItFailed
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_FlowerShieldLoop
+	restoretarget
+	end
+
+BattleScript_FlowerShieldCantRaiseMultipleStats:
+	copybyte gBattlerAttacker, gBattlerTarget
+	printstring STRINGID_STATSWONTINCREASE2
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_FlowerShieldTryApplyBlooming
+
+BattleScript_FlowerShieldNoEffect:
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_NOEFFECTONTARGET
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_FlowerShieldMoveTargetEnd
 
 BattleScript_EffectRototiller::
 	attackcanceler
@@ -6646,21 +6652,29 @@ BattleScript_RototillerCheckAffected:
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RototillerTrySpAtk::
 	setstatchanger STAT_SPATK, 1, FALSE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_RototillerMoveTargetEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RototillerMoveTargetEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_RototillerTryApplyBlooming
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RototillerTryApplyBlooming
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_RototillerTryApplyBlooming::
+	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_RototillerMoveTargetEnd
+	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_RototillerMoveTargetEnd
+	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_RototillerMoveTargetEnd
+	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	goto BattleScript_RototillerMoveTargetEnd
 BattleScript_RototillerMoveTargetEnd:
 	moveendto MOVEEND_NEXT_TARGET
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_RototillerLoop
+	restoretarget
 	end
 
 BattleScript_RototillerCantRaiseMultipleStats:
 	copybyte gBattlerAttacker, gBattlerTarget
 	printstring STRINGID_STATSWONTINCREASE2
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_RototillerMoveTargetEnd
+	goto BattleScript_RototillerTryApplyBlooming
 
 BattleScript_RototillerNoEffect:
 	pause B_WAIT_TIME_SHORT
@@ -8283,6 +8297,10 @@ BattleScript_EffectEmbargo:
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNCANTUSEITEMSANYMORE
+	waitmessage B_WAIT_TIME_LONG
+	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
+	seteffectprimary
+	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -10360,10 +10378,10 @@ BattleScript_EffectMeanLook::
 	waitanimation
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
 	seteffectprimary
-	setmoveeffect MOVE_EFFECT_FLINCH
-	seteffectsecondary
 	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
+	setmoveeffect MOVE_EFFECT_FLINCH
+	seteffectsecondary
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectNightmare::
@@ -13421,6 +13439,13 @@ BattleScript_KamenScarfActivates::
 	printstring STRINGID_SCARFWASCHARGEDBYBEINGHIT
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_KamenScarfActivates_Ret:
+	return
+
+BattleScript_SilverCrownActivates::
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printfromtable STRINGID_CROWNINFESTEDATTACKER
+	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_ToxicDebrisActivates::

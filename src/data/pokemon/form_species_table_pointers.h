@@ -621,5 +621,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaFormSpeciesIdTable,
     [SPECIES_FAKYSNAKY] = sFakysnakyFormSpeciesIdTable,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyFormSpeciesIdTable,
+    [SPECIES_FLAGUE] = sFlagueFormSpeciesIdTable,
+    [SPECIES_FLAGUE_PRINCE] = sFlagueFormSpeciesIdTable,
 #endif
 };

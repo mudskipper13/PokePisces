@@ -710,6 +710,7 @@ static const u8 sText_MegaEvoEvolved[] = _("{B_ATK_NAME_WITH_PREFIX} has Mega Ev
 static const u8 sText_drastically[] = _("drastically ");
 static const u8 sText_severely[] = _("severely ");
 static const u8 sText_Infestation[] = _("{B_DEF_NAME_WITH_PREFIX} has been afflicted\nwith an infestation by {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_CrownInfestedAttacker[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\ninfested {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_NoEffectOnTarget[] = _("It had no effect\non {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_BurstingFlames[] = _("The bursting flames\nhit {B_SCR_ACTIVE_NAME_WITH_PREFIX}!");
 static const u8 sText_BestowItemGiving[] = _("{B_DEF_NAME_WITH_PREFIX} received {B_LAST_ITEM}\nfrom {B_ATK_NAME_WITH_PREFIX}!");
@@ -1807,6 +1808,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DAYBREAK - BATTLESTRINGS_TABLE_START] = sText_Daybreak,
     [STRINGID_SOLARPOWERGAINS - BATTLESTRINGS_TABLE_START] = sText_SolarPowerGains,
     [STRINGID_WATCHERSALVATION - BATTLESTRINGS_TABLE_START] = sText_WatcherSalvation,
+    [STRINGID_CROWNINFESTEDATTACKER - BATTLESTRINGS_TABLE_START] = sText_CrownInfestedAttacker,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -1839,8 +1839,8 @@ static const u8 sAssuranceDescription[] = _(
 
 static const u8 sEmbargoDescription[] = _(
     "Negates the foe's held item and\n"
-    "stops escape. Its Trainer is also\n"
-    "stopped from using items on it.");
+    "prevents escape. Its Trainer is\n"
+    "also stopped from using items.");
 
 static const u8 sFlingDescription[] = _(
     "The user flings its held item at\n"
@@ -2857,7 +2857,7 @@ static const u8 sGrassyTerrainDescription[] = _(
 
 static const u8 sMistyTerrainDescription[] = _(
     "Covers the ground with mist for\n"
-    "5 turns. Grounded Pokémon are\n"
+    "5 turns. Grounded Pokémon\n"
     "activate secondary effects more.");
 
 static const u8 sElectrifyDescription[] = _(
