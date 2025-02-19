@@ -118,6 +118,9 @@
 #define METATILE_BirchLab_BirchTable3  0x28B
 #define METATILE_BirchLab_BirchTable4  0x28C
 
+// gTileset_BossCave
+#define METATILE_BossCave_GrottoTile  0x271
+
 // gTileset_BrendansMaysHouse
 #define METATILE_BrendansMaysHouse_BookOnTable       0x293
 #define METATILE_BrendansMaysHouse_BrendanPC_Off     0x25A

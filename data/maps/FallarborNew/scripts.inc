@@ -17,8 +17,7 @@ FallarborNew_OnLoad:
 	call FallarborNew_EventScript_RemoveTabitha
 	call_if_lt VAR_ORBS_QUEST_STATE, 1, FallarborNew_EventScript_RemoveMerchant
 	call_if_lt VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemovePigs
-	call_if_eq VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemoveGatekeepers
-	call_if_gt VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemovePigs
+	call_if_ge VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemoveGatekeepers
 	end
 
 FallarborNew_EventScript_SetRydelGfx::
@@ -258,6 +257,22 @@ FallarborNew_EventScript_MerchantPost::
 	release
 	end
 
+FallarborNew_EventScript_Gatekeeper1::
+	msgbox FallarborNew_Text_Gatekeeper1, MSGBOX_NPC
+	end
+
+FallarborNew_EventScript_Gatekeeper2::
+	msgbox FallarborNew_Text_Gatekeeper2, MSGBOX_NPC
+	end
+
+FallarborNew_EventScript_Pig1::
+	msgbox FallarborNew_Text_Pig1, MSGBOX_NPC
+	end
+
+FallarborNew_EventScript_Pig2::
+	msgbox FallarborNew_Text_Pig2, MSGBOX_NPC
+	end
+
 FallarborNew_Text_NameTabitha:
 	.string "$"
 
@@ -324,3 +339,21 @@ FallarborNew_Text_ListenToTheMap:
 	.string "on a journey, I can tell...\p"
 	.string "That map will lead you\n"
 	.string "to places wondrous...$"
+
+FallarborNew_Text_Gatekeeper1:
+	.string "We can't let you past this point.\n"
+	.string "In a house in the woods, lives\l"
+	.string "a dark creature. We will be\l"
+	.string "keeping the townsfolk safe from it.$"
+
+FallarborNew_Text_Gatekeeper2:
+	.string "There's a monster with magic powers\n"
+	.string "in those woods! Too unsafe\l"
+	.string "to let you pass.$"
+
+FallarborNew_Text_Pig1:
+	.string "Oink! Hoinko! Snort!$"
+
+FallarborNew_Text_Pig2:
+	.string "Puhiiii....!\n"
+	.string "Puhihoink!$"

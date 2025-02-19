@@ -4,6 +4,7 @@ SootopolisInteriors_MapScripts::
 SootopolisInteriors_EventScript_ShellBellMaker::
 	lock
 	speakername SootopolisInteriors_Text_NameLBelle
+	goto_if_ge VAR_ORBS_QUEST_STATE, 5, SootopolisInteriors_EventScript_LunasterDefeated
 	goto_if_set FLAG_RECEIVED_SOOTHE_BELL, SootopolisInteriors_EventScript_LunasterTale
 	goto_if_set FLAG_RECEIVED_SHELL_BELL, SootopolisInteriors_EventScript_HealBellQuest
 	msgbox SootopolisInteriors_Text_IMakeShellBells, MSGBOX_DEFAULT
@@ -52,6 +53,12 @@ NewSooto_EventScript_Hint::
 
 SootopolisInteriors_EventScript_LunasterTale::
 	msgbox SootopolisInteriors_Text_BellStory, MSGBOX_AUTOCLOSE
+	speakername NULL
+	release
+	end
+
+SootopolisInteriors_EventScript_LunasterDefeated:
+	msgbox SootopolisInteriors_Text_LunasterDefeated, MSGBOX_AUTOCLOSE
 	speakername NULL
 	release
 	end

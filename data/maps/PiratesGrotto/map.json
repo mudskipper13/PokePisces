@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "PiratesGrotto_EventScript_ItemBigNugget1",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "PiratesGrotto_EventScript_ItemCursedAmulet",
       "flag": "0"
     },
     {
@@ -50,8 +50,21 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "PiratesGrotto_EventScript_ItemBigNugget2",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PiratesGrotto_EventScript_ObtainFrostOrb",
+      "flag": "FLAG_TEMP_A"
     }
   ],
   "warp_events": [
@@ -59,7 +72,7 @@
       "x": 11,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_PIRATES_GROTTO",
+      "dest_map": "MAP_FLOTSHORE",
       "dest_warp_id": "0"
     }
   ],
@@ -69,18 +82,18 @@
       "x": 7,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "PiratesGrotto_EventScript_SkellywargTriggerLeft"
     },
     {
       "type": "trigger",
       "x": 8,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "PiratesGrotto_EventScript_SkellywargTriggerRight"
     }
   ],
   "bg_events": [

@@ -718,6 +718,18 @@ Flotshore_EventScript_ItemOranBerry::
 	finditem ITEM_ORAN_BERRY
 	end
 
+PiratesGrotto_EventScript_ItemCursedAmulet::
+	finditem ITEM_CURSED_AMULET
+	end
+
+PiratesGrotto_EventScript_ItemBigNugget1::
+	finditem ITEM_BIG_NUGGET
+	end
+
+PiratesGrotto_EventScript_ItemBigNugget2::
+	finditem ITEM_BIG_NUGGET
+	end
+
 BasalinCoast_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL
 	end
