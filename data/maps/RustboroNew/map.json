@@ -44,7 +44,7 @@
       "flag": "FLAG_DEVON_CORP_VISIT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 19,
       "y": 28,
       "elevation": 0,
@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 64,
       "y": 15,
       "elevation": 0,

@@ -195,7 +195,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 26,
       "y": 33,
       "elevation": 0,
@@ -208,7 +208,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 48,
       "y": 44,
       "elevation": 0,
@@ -221,7 +221,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
       "x": 41,
       "y": 30,
       "elevation": 0,
@@ -234,7 +234,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
       "x": 15,
       "y": 41,
       "elevation": 0,
@@ -247,7 +247,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
       "x": 51,
       "y": 8,
       "elevation": 0,
@@ -260,7 +260,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 9,
       "y": 11,
       "elevation": 0,
@@ -273,7 +273,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 17,
       "y": 25,
       "elevation": 0,
