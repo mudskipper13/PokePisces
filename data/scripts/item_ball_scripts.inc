@@ -886,11 +886,11 @@ CanopourWilds_EventScript_ItemPQuickClaw::
 	finditem ITEM_QUICK_CLAW
 	end
 
-CanopourWilds_EventScript_ItemPBigRoot::
+CanopourBushes_EventScript_ItemPBigRoot::
 	finditem ITEM_BIG_ROOT
 	end
 
-PerplumeMaze_EventScript_ItemPThunderStone::
+Route113_EventScript_ItemPThunderStone::
 	finditem ITEM_THUNDER_STONE
 	end
 
@@ -898,7 +898,7 @@ MasoriedHike_EventScript_ItemPLightClay::
 	finditem ITEM_LIGHT_CLAY
 	end
 
-Route113_EventScript_ItemPChupacabra::
+PerplumeMaze_EventScript_ItemPChupacabra::
 	finditem ITEM_CHUPACABRA
 	end
 
@@ -990,7 +990,7 @@ NavigulfWaves_EventScript_ItemPBrightPowder::
 	finditem ITEM_BRIGHT_POWDER
 	end
 
-StraeSeapath_EventScript_ItemPDawnStone::
+ShoalCaveNewFloor2_EventScript_ItemPDawnStone::
 	finditem ITEM_DAWN_STONE
 	end
 
@@ -1014,15 +1014,15 @@ SailorsPauseShips_EventScript_ItemPThroatSpray::
 	finditem ITEM_THROAT_SPRAY
 	end
 
-ShoalCaveNewFloor2_EventScript_ItemPIceStone::
-	finditem ITEM_ICE_STONE
+StraeSeapathUnderwater_EventScript_ItemPCorrodeMod::
+	finditem ITEM_CORRODE_MOD
 	end
 
 ShoalCaveNewFloor2_EventScript_ItemPIcyRock::
 	finditem ITEM_ICY_ROCK
 	end
 
-StraeSeapathUnderwater_EventScript_ItemPShinyStone::
+StraeSeapath_EventScript_ItemPShinyStone::
 	finditem ITEM_SHINY_STONE
 	end
 
