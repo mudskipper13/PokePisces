@@ -1035,6 +1035,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
+    [MOVE_FIREBRAND] = _("Firebrand"),
 };
 #else
 // 12 letters
@@ -2073,6 +2074,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
+    [MOVE_FIREBRAND] = _("Firebrand"),
 };
 #endif
 

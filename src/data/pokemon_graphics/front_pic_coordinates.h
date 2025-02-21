@@ -1570,7 +1570,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_KODOUGH_BLUNT]                = { .size = MON_COORDS_SIZE(40, 32), .y_offset = 12 },
     [SPECIES_CASTFORM_SANDY]               = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_FAKYSNAKY_BUSTED]             = { .size = MON_COORDS_SIZE(32, 24), .y_offset =  3 },
-    [SPECIES_FLAGUE_PRINCE]                = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  4 },
+    [SPECIES_FLAGUE_PRINCE]                = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
 #endif
     // Egg
     [SPECIES_EGG]                          = { .size = MON_COORDS_SIZE(24, 24), .y_offset = 20 },

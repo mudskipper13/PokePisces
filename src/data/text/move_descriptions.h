@@ -3629,9 +3629,9 @@ static const u8 sScorchingSandsDescription[] = _(
     "also leave the foe with a burn.");
 
 static const u8 sJungleHealingDescription[] = _(
-    "The user becomes one with nature,\n"
-    "healing status for and giving\n"
-    "blooming to itself and allies.");
+    "If the user or ally has a status\n"
+    "condition they are cured of it,\n"
+    "otherwise they start to bloom.");
 
 static const u8 sSurgingStrikesDescription[] = _(
     "Strikes the foe with a flowing\n"
@@ -4105,9 +4105,9 @@ static const u8 sPixiePowDescription[] = _(
     "lower the foe's Attack stat.");
 
 static const u8 sBlazingSoulDescription[] = _(
-    "The user attacks the foe by\n"
-    "emitting its pure passionate\n"
-    "aura. This may burn the foe.");
+    "Emits pure passionate aura. This\n"
+    "may burn the foe and heal the\n"
+    "user when its health is low.");
 
 static const u8 sPurgingFlamesDescription[] = _(
     "Spews flames that reset the\n"
@@ -4259,9 +4259,9 @@ static const u8 sRealTearsDescription[] = _(
     "with no effect at all... ");
 
 static const u8 sRazingSunDescription[] = _(
-    "Ignores the foe's stat boosts,\n"
-    "Ability, barriers, substitute,\n"
-    "and protection. Hurts the user.");
+    "Gains 1 Daybreak Counter, in Sun\n"
+    "gains 2 instead. Gains effects\n"
+    "based on amount of counters.");
 
 static const u8 sDragonPokerDescription[] = _(
     "Damage category is based on which\n"
@@ -4300,7 +4300,7 @@ static const u8 sGunkFunkDescription[] = _(
 
 static const u8 sStellarFistsDescription[] = _(
     "The user punches the foe with\n"
-    "cosmic fists 4 times. This move\n"
+    "cosmic fists 2 times. This move\n"
     "uses Sp. Def to deal damage.");
 
 static const u8 sWillpowerDescription[] = _(
@@ -5988,4 +5988,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SWEET_WHISPERS - 1] = sSweetWhispersDescription,
     [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
     [MOVE_DEARLY_DEPART - 1] = sDearlyDepartDescription,
+    [MOVE_FIREBRAND - 1] = sTackleDescription,
 };
