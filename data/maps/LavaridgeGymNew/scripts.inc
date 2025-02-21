@@ -116,7 +116,7 @@ LavaridgeGymNew_EventScript_EatMaxResist::
 LavaridgeGymNew_EventScript_InterrogationPart2::
 	msgbox LavaridgeGymNew_Text_DurinPride, MSGBOX_DEFAULT
 	msgbox LavaridgeGymNew_Text_WhatDoForLiving, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_1, FALSE
+	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_1, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeGymNew_EventScript_StudyPokemon
@@ -194,7 +194,7 @@ LavaridgeGymNew_EventScript_InterrogationPart4::
 	waitmovement 0
 	msgbox LavaridgeGymNew_Text_WillQuestionYou, MSGBOX_DEFAULT
 	msgbox LavaridgeGymNew_Text_HowMuchWouldYouSpend, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_2, FALSE
+	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_2, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeGymNew_EventScript_MoneyNone
@@ -226,7 +226,7 @@ LavaridgeGymNew_EventScript_MoneyNameYourPrice::
 
 LavaridgeGymNew_EventScript_GameraQuestion2::
 	msgbox LavaridgeGymNew_Text_HaveYouEverDropKicked, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_3, FALSE
+	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_3, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeGymNew_EventScript_DropKickNo
@@ -262,7 +262,7 @@ LavaridgeGymNew_EventScript_DropKickWoman::
 
 LavaridgeGymNew_EventScript_GameraQuestion3::
 	msgbox LavaridgeGymNew_Text_HowMuchSmokeInhaled, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_4, FALSE
+	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_4, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeGymNew_EventScript_SmokeALittle
@@ -294,7 +294,7 @@ LavaridgeGymNew_EventScript_SmokeCoughingFit::
 
 LavaridgeGymNew_EventScript_GameraQuestion4::
 	msgbox LavaridgeGymNew_Text_ManWithFuschiaHair, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_5, FALSE
+	multichoice 19, 4, MULTI_LAVAGYM_QUESTION_5, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeGymNew_EventScript_BreadFightHim
@@ -541,14 +541,14 @@ LavaridgeGymNew_Movement_FlanneryGoToTable:
 LavaridgeGymNew_Movement_MooreEnterRoom:
 	set_visible
 	walk_slow_down
-	walk_slow_left
+	walk_slow_right
 	face_down
 	step_end
 
 LavaridgeGymNew_Movement_FlanneryEnterRoom:
 	set_visible
 	walk_down
-	walk_right
+	walk_left
 	face_down
 	step_end
 

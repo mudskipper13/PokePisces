@@ -37,7 +37,7 @@ SeasideCasino_EventScript_StevenDiscussion::
 	msgbox SeasideCasino_Text_WhatAreOurOptions, MSGBOX_DEFAULT
 	speakername NULL
 	msgbox SeasideCasino_Text_ThinkingItOver, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	multichoice 19, 4, MULTI_WHODUNNIT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SeasideCasino_EventScript_AnswerNorman
@@ -53,7 +53,7 @@ SeasideCasino_EventScript_AnswerNorman::
 	msgbox SeasideCasino_Text_CantBeNorman, MSGBOX_DEFAULT
 	speakername NULL
 	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	multichoice 19, 4, MULTI_WHODUNNIT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SeasideCasino_EventScript_AnswerNorman
@@ -69,7 +69,7 @@ SeasideCasino_EventScript_AnswerLiza::
 	msgbox SeasideCasino_Text_CantBeLiza, MSGBOX_DEFAULT
 	speakername NULL
 	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	multichoice 19, 4, MULTI_WHODUNNIT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SeasideCasino_EventScript_AnswerNorman
@@ -85,7 +85,7 @@ SeasideCasino_EventScript_AnswerTate::
 	msgbox SeasideCasino_Text_CantBeTate, MSGBOX_DEFAULT
 	speakername NULL
 	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	multichoice 19, 4, MULTI_WHODUNNIT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SeasideCasino_EventScript_AnswerNorman
@@ -101,7 +101,7 @@ SeasideCasino_EventScript_AnswerMrBonding::
 	msgbox SeasideCasino_Text_CantBeMrBonding, MSGBOX_DEFAULT
 	speakername NULL
 	msgbox SeasideCasino_Text_ThinkingItOverAgain, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_WHODUNNIT, FALSE
+	multichoice 19, 4, MULTI_WHODUNNIT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SeasideCasino_EventScript_AnswerNorman
