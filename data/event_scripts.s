@@ -3849,3 +3849,19 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SweltornInteriors/scripts.inc"
 
 	.include "data/maps/ShunyongBattleArena/scripts.inc"
+
+	.include "data/maps/MirageIsland/scripts.inc"
+
+	.include "data/maps/SootopolisCastle/scripts.inc"
+
+	.include "data/maps/CanopourBushes/scripts.inc"
+
+	.include "data/maps/PerplumeTreehouse/scripts.inc"
+
+	.include "data/maps/FallarborSteeple/scripts.inc"
+
+	.include "data/maps/FallarborSteepleInterior/scripts.inc"
+
+	.include "data/maps/PiratesGrotto/scripts.inc"
+
+	.include "data/maps/MuseumSanctum/scripts.inc"

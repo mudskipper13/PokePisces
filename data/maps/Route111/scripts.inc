@@ -545,7 +545,7 @@ Route111_EventScript_Bianca::
 	end
 
 Route111_EventScript_Tyron::
-	trainerbattle_single TRAINER_TYRON, Route111_Text_TyronIntro, Route111_Text_TyronDefeat
+	trainerbattle_single TRAINER_P_DADDY_BIGBUCKS, Route111_Text_TyronIntro, Route111_Text_TyronDefeat
 	msgbox Route111_Text_TyronPostBattle, MSGBOX_AUTOCLOSE
 	end
 

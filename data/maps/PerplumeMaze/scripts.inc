@@ -1,16 +1,50 @@
 .set LOCALID_BREAD, 1
+.set LOCALID_KITIKITI1, 5
+.set LOCALID_KITIKITI2, 6
+.set LOCALID_KITIKITI3, 7
+.set LOCALID_KITIKITI4, 8
+.set LOCALID_KITIKITI5, 9
+.set LOCALID_KITIKITI6, 10
+.set LOCALID_KITIKITI7, 11
+.set LOCALID_KITIKITI8, 12
 
 PerplumeMaze_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, PerplumeMaze_OnLoad
 	.byte 0
 
 PerplumeMaze_OnLoad:
+	call_if_lt VAR_KITIKITI_QUEST_STATE, 1, PerplumeMaze_EventScript_RemoveKitikiti
+	call_if_gt VAR_KITIKITI_QUEST_STATE, 1, PerplumeMaze_EventScript_ResetKitikiti
 	call_if_gt VAR_BREADWINNER_STATE, 2, PerplumeMaze_EventScript_RemoveBreadwinner
 	end
 
 PerplumeMaze_EventScript_RemoveBreadwinner::
 	removeobject LOCALID_BREAD
 	setflag FLAG_TEMP_13
+	return
+
+PerplumeMaze_EventScript_ResetKitikiti::
+	goto_if_ge VAR_KITIKITI_QUEST_STATE, 9, PerplumeMaze_EventScript_RemoveKitikiti
+	setvar VAR_KITIKITI_QUEST_STATE, 1
+	return
+
+PerplumeMaze_EventScript_RemoveKitikiti::
+	removeobject LOCALID_KITIKITI1
+	removeobject LOCALID_KITIKITI2
+	removeobject LOCALID_KITIKITI3
+	removeobject LOCALID_KITIKITI4
+	removeobject LOCALID_KITIKITI5
+	removeobject LOCALID_KITIKITI6
+	removeobject LOCALID_KITIKITI7
+	removeobject LOCALID_KITIKITI8
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
 	return
 
 PerplumeMaze_EventScript_BreadwinnerEncounter::
@@ -85,6 +119,24 @@ PerplumeMaze_Movement_BreadEscape:
 	jump_2_up
 	step_end
 
+PerplumeMaze_EventScript_KitikitiFound::
+	lock
+	faceplayer
+	playmoncry SPECIES_KITIKITI, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox PerplumeMaze_Text_KitikitiFound, MSGBOX_DEFAULT
+	addvar VAR_KITIKITI_QUEST_STATE, 1
+	removeobject VAR_LAST_TALKED
+	closemessage
+	goto_if_eq VAR_KITIKITI_QUEST_STATE, 9, PerplumeMaze_EventScript_FoundAllKitikiti
+	release
+	end
+
+PerplumeMaze_EventScript_FoundAllKitikiti::
+	msgbox PerplumeMaze_Text_FoundAllKitikiti, MSGBOX_AUTOCLOSE
+	release
+	end
+
 PerplumeMaze_EventScript_Kris::
     trainerbattle_single TRAINER_P_KRIS, PerplumeMaze_Text_KrisIntro, PerplumeMaze_Text_KrisDefeated
     msgbox PerplumeMaze_Text_KrisPostBattle, MSGBOX_AUTOCLOSE
@@ -140,3 +192,11 @@ PerplumeMaze_Text_BreadwinnerDefeat:
 
 PerplumeMaze_Text_BreadwinnerRunAway:
 	.string "$"
+
+PerplumeMaze_Text_KitikitiFound:
+	.string "(You've found one of\n"
+	.string "the lost Kitikiti!)$"
+
+PerplumeMaze_Text_FoundAllKitikiti:
+	.string "(You've found all eight Kitikiti!\n"
+	.string "Time to tell Olimar.)$"

@@ -19299,6 +19299,8 @@ void BS_DoGoldPlains(void)
     ClearScreens(GetBattlerSide(battler));
     // reset primary status
     gBattleMons[battler].status1 = 0;
+    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[battler].status1), &gBattleMons[battler].status1);
+    MarkBattlerForControllerExec(battler);
     // reset stat stages
     TryResetBattlerStatChanges(battler);
     if (gBattleMons[battler].hp == gBattleMons[battler].maxHP)
@@ -19307,9 +19309,8 @@ void BS_DoGoldPlains(void)
     }
     else
     {
-        if (gBattleMons[battler].maxHP - gBattleMons[battler].hp < 100)
-            gBattleMoveDamage = gBattleMons[battler].maxHP - gBattleMons[battler].hp;
-        else
+        gBattleMoveDamage = gBattleMons[battler].maxHP - gBattleMons[battler].hp;
+        if (gBattleMoveDamage > 100)
             gBattleMoveDamage = 100;
         gBattleMoveDamage *= -1;
         

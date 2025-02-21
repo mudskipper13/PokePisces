@@ -130,3 +130,46 @@ LilycoveMuseumNew_EventScript_PlacePainting14::
 	setmetatile 1, 11, METATILE_OldStoneBuildings_Painting14BottomRight, TRUE
 	special DrawWholeMapView
 	return
+
+LilycoveMuseumNew_EventScript_JumpIntoPainting::
+	lock
+	goto_if_lt VAR_ORBS_QUEST_STATE, 6, LilycoveMuseumNew_EventScript_PaintingOfMuseum
+	goto_if_gt VAR_ORBS_QUEST_STATE, 6, LilycoveMuseumNew_EventScript_PaintingOfMuseum
+	msgbox LilycoveMuseumNew_Text_JumpIntoPainting, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, LilycoveMuseumNew_EventScript_WarpToSanctum
+	msgbox LilycoveMuseumNew_Text_SillyThought, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingOfMuseum::
+	msgbox LilycoveMuseumNew_Text_PaintingOfMuseum, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_WarpToSanctum::
+	delay 4
+	playse SE_BIKE_HOP
+	applymovement OBJ_EVENT_ID_PLAYER, LilycoveMuseumNew_Movement_JumpIntoPainting
+	waitmovement 0
+	warp MAP_MUSEUM_SANCTUM, 1, 10
+	waitstate
+	release
+	end
+
+LilycoveMuseumNew_Movement_JumpIntoPainting:
+	jump_up
+	step_end
+
+LilycoveMuseumNew_Text_PaintingOfMuseum:
+	.string "(It's a painting of a museum,\n"
+	.string "much like the one you\l"
+	.string "are currently standing in.)$"
+
+LilycoveMuseumNew_Text_JumpIntoPainting:
+	.string "(...)\p"
+	.string "(Something compells you to jump\n"
+	.string "into the painting. Is that\l"
+	.string "where the map wants you to go...?)$"
+
+LilycoveMuseumNew_Text_SillyThought:
+	.string "(A silly thought, yeah.)$"

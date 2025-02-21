@@ -60,6 +60,31 @@ SailorsPause_Movement_RayLeaves:
 	jump_2_right
 	step_end
 
+SailorsPause_EventScript_MirageIslandSailor::
+	lock
+	faceplayer
+	goto_if_ge VAR_ZORUA_QUEST_STATE, 4, SailorsPause_EventScript_MirageIslandGone
+	msgbox SailorsPause_Text_NeedMiragePokemon, MSGBOX_DEFAULT
+	specialvar VAR_RESULT, CheckZorua
+	goto_if_eq VAR_RESULT, TRUE, SailorsPause_EventScript_SailToMirageIsland
+	msgbox SailorsPause_Text_ComeBackIfYouFind, MSGBOX_AUTOCLOSE
+	release
+	end
+
+SailorsPause_EventScript_SailToMirageIsland::
+	msgbox SailorsPause_Text_LetsSetSail, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	warp MAP_MIRAGE_ISLAND, 6, 16
+	waitstate
+	release
+	end
+
+SailorsPause_EventScript_MirageIslandGone::
+	msgbox SailorsPause_Text_MirageIslandGone, MSGBOX_AUTOCLOSE
+	release
+	end
+
 SailorsPause_EventScript_Valerie::
     trainerbattle_single TRAINER_P_VALERIE, SailorsPause_Text_ValerieIntro, SailorsPause_Text_ValerieDefeated
     msgbox SailorsPause_Text_ValeriePostBattle, MSGBOX_AUTOCLOSE
@@ -113,3 +138,45 @@ SailorsPause_Text_RayDefeat:
 
 SailorsPause_Text_RayLeaves:
 	.string "byebye$"
+
+SailorsPause_Text_NeedMiragePokemon:
+	.string "Ahoy, trainer. I have been\n"
+	.string "researchin' the tale o'\l"
+	.string "Mirage Island extensively.\p"
+	.string "Y'ever hear of the island?\n"
+	.string "Said to lie in the seas of\l"
+	.string "Hoenn, it only fully appears\l"
+	.string "extremely rarely. Buncha\l"
+	.string "seadogs don't even believe\l"
+	.string "it to be a real place.\p"
+	.string "But, I've been chartin' the waters.\n"
+	.string "I'd wager I've pinpointed\l"
+	.string "its location, dead on.\p"
+	.string "Problem is, if I'm gonna head\n"
+	.string "out there, I would want a\l"
+	.string "Pokemon with me that has\l"
+	.string "an affinity for mirages.\l"
+	.string "Y'know... in case I somehow\l"
+	.string "get my tuckus trapped there.$"
+
+SailorsPause_Text_ComeBackIfYouFind:
+	.string "If you can find me a Pokemon\n"
+	.string "that's a veritable mirage expert,\l"
+	.string "head on back here n' I'll\l"
+	.string "take ya to the island with me.$"
+
+SailorsPause_Text_LetsSetSail:
+	.string "That Zorua you have...\n"
+	.string "It will do nicely.\p"
+	.string "I've 'eard many a tale of\n"
+	.string "their powers of illusion.\l"
+	.string "Hope the little bugger\l"
+	.string "will assist us 'ere.\p"
+	.string "Let's set off!$"
+
+SailorsPause_Text_MirageIslandGone:
+	.string "Ahoy. How've ya been?\p"
+	.string "Mirage Island, from what I\n"
+	.string "can tell, has disappeared again.\l"
+	.string "Couldn't take ya back if I\l"
+	.string "wanted to. Shame.$"

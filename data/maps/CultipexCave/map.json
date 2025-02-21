@@ -59,8 +59,8 @@
       "x": 5,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_CULTIPEX_CAVE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CANOPOUR_BUSHES",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [

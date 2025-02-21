@@ -234,12 +234,6 @@ void HandleAction_UseMove(void)
         gDisableStructs[gBattlerAttacker].encoreTimer = 0;
         *(gBattleStruct->moveTarget + gBattlerAttacker) = GetMoveTarget(gCurrentMove, NO_TARGET_OVERRIDE);
     }
-    else if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-    {
-        // shunyong
-        gCurrentMove = gChosenMove = gBattleStruct->shunyongChosenMove;
-        gBattleStruct->moveTarget[gBattlerAttacker] = gBattleStruct->shunyongTarget;
-    }
     else if (gBattleMons[gBattlerAttacker].moves[gCurrMovePos] != gChosenMoveByBattler[gBattlerAttacker])
     {
         gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
