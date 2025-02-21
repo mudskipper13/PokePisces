@@ -1233,3 +1233,403 @@ TechnicalMachines_EventScript_ItemPTMZapCannon::
 TechnicalMachines_EventScript_ItemPTMRagingFury::
 	finditem ITEM_TM_RAGING_FURY
 	end
+
+Route125_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route125_EventScript_ItemPSuperRepel::
+	finditem ITEM_SUPER_REPEL
+	end
+
+Route125_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+NewSunbeach_EventScript_ItemPPokeDoll::
+	finditem ITEM_POKE_DOLL
+	end
+
+NewSunbeach_EventScript_ItemPSuperPotion::
+	finditem ITEM_SUPER_POTION
+	end
+
+NewSunbeach_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+NewSunbeach_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+NewSunbeach_EventScript_ItemPBigMushroom::
+	finditem ITEM_BIG_MUSHROOM
+	end
+
+LilycoveCity_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+LilycoveCity_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+LilycoveCity_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+LilycoveCity_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+TheColdMines_EventScript_ItemPNugget::
+	finditem ITEM_NUGGET
+	end
+
+TheColdMines_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+TheColdMines_EventScript_ItemPPokedoll::
+	finditem ITEM_POKE_DOLL
+	end
+
+TheColdMines_EventScript_ItemPIceHeal::
+	finditem ITEM_ICE_HEAL
+	end
+
+TheColdMines_EventScript_ItemPSuperPotion::
+	finditem ITEM_SUPER_POTION
+	end
+
+Route121_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+Route121_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route121_EventScript_ItemPRelaxant::
+	finditem ITEM_RELAXANT
+	end
+
+Route121_EventScript_ItemPXSpeed::
+	finditem ITEM_X_SPEED
+	end
+
+Route123_EventScript_ItemPRelaxant::
+	finditem ITEM_RELAXANT
+	end
+
+Route123_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+Route123_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route123_EventScript_ItemPXSpAtk::
+	finditem ITEM_X_SP_ATK
+	end
+
+Route123_EventScript_ItemPElixir::
+	finditem ITEM_ELIXIR
+	end
+
+MtPyre_1F_EventScript_ItemPPokedoll::
+	finditem ITEM_POKE_DOLL
+	end
+
+MtPyre_1F_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+MtPyre_1F_EventScript_ItemPSuperPotion::
+	finditem ITEM_SUPER_POTION
+	end
+
+MtPyre_2F_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+MtPyre_2F_EventScript_ItemPGuardSpec::
+	finditem ITEM_GUARD_SPEC
+	end
+
+MtPyre_2F_EventScript_ItemPSpDef::
+	finditem ITEM_X_SP_DEF
+	end
+
+MtPyre_2F_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route122_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+Route120_EventScript_ItemPEscapeRope::
+	finditem ITEM_ESCAPE_ROPE
+	end
+
+Route120_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+Route120_EventScript_ItemPSeriousMint::
+	finditem ITEM_SERIOUS_MINT
+	end
+
+Route120_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route120_EventScript_ItemPXDefense::
+	finditem ITEM_X_DEFENSE
+	end
+
+ScutillHuts_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+ScutillHuts_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+ScutillHuts_EventScript_ItemPSuperPotion::
+	finditem ITEM_SUPER_POTION
+	end
+
+ScutillHuts_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+ScutillHuts_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+ScutillHuts_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+ScutillHuts_EventScript_ItemPBigMushroom::
+	finditem ITEM_BIG_MUSHROOM
+	end
+
+ScutillHuts_EventScript_ItemPEscapeRope::
+	finditem ITEM_ESCAPE_ROPE
+	end
+
+CanopourWilds_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+CanopourWilds_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+PerplumeMaze_EventScript_ItemPXAttack::
+	finditem ITEM_X_ATTACK
+	end
+
+PerplumeMaze_EventScript_ItemPDireHit::
+	finditem ITEM_DIRE_HIT
+	end
+
+PerplumeMaze_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+PerplumeMaze_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+PerplumeMaze_EventScript_ItemPAdamantMint::
+	finditem ITEM_ADAMANT_MINT
+	end
+
+ScuttillSecretTreeHouse_EventScript_ItemPNestBall::
+	finditem ITEM_NEST_BALL
+	end
+
+OzoneInstitute_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+OzoneInstitute_EventScript_ItemPBigMushroom::
+	finditem ITEM_BIG_MUSHROOM
+	end
+
+OzoneInstitute_EventScript_ItemPHyperPotion::
+	finditem ITEM_HYPER_POTION
+	end
+
+MasoriedHike_EventScript_ItemPXSpAtk::
+	finditem ITEM_X_SP_ATK
+	end
+
+MasoriedHike_EventScript_ItemPModestMint::
+	finditem ITEM_MODEST_MINT
+	end
+
+Route113_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+Route113_EventScript_ItemPNugget::
+	finditem ITEM_NUGGET
+	end
+
+Route113_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+Route113_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+Route113_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+Route113_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+CrimneyClimb_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+CrimneyClimb_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+CrimneyClimb_EventScript_ItemPXSpeed::
+	finditem ITEM_X_SPEED
+	end
+
+CrimneyClimb_EventScript_ItemPNugget::
+	finditem ITEM_NUGGET
+	end
+
+CrimneyClimb_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+CrimneyClimb_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+JaggroPass_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+JaggroPass_EventScript_ItemPJollyMint::
+	finditem ITEM_JOLLY_MINT
+	end
+
+JaggroPass_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+JaggroPass_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+JaggroPass_EventScript_ItemPHyperPotion::
+	finditem ITEM_HYPER_POTION
+	end
+
+JaggroPass_EventScript_ItemPXDefense::
+	finditem ITEM_X_DEFENSE
+	end
+
+FallarborNew_EventScript_ItemPSeriousMint::
+	finditem ITEM_SERIOUS_MINT
+	end
+
+FallarborNew_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+FallarborNew_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+MidneorFallsCave_EventScript_ItemPOrbitBall::
+	finditem ITEM_MOON_BALL
+	end
+
+MidneorFallsCave_EventScript_ItemPStarPiece::
+	finditem ITEM_STAR_PIECE
+	end
+
+MidneorFallsCave_EventScript_ItemPDuskBall::
+	finditem ITEM_DUSK_BALL
+	end
+
+FieryPath_EventScript_ItemPCoralCrown1::
+	finditem ITEM_CORAL_CROWN
+	end
+
+FieryPath_EventScript_ItemPCoralCrown2::
+	finditem ITEM_CORAL_CROWN
+	end
+
+FieryPath_EventScript_ItemPCoralCrown3::
+	finditem ITEM_CORAL_CROWN
+	end
+
+FieryPath_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+FieryPath_EventScript_ItemPRareBone::
+	finditem ITEM_RARE_BONE
+	end
+
+FieryPath_EventScript_ItemPEscapeRope::
+	finditem ITEM_ESCAPE_ROPE
+	end
+
+FieryPath_EventScript_ItemPDireHit::
+	finditem ITEM_DIRE_HIT
+	end
+
+LavaridgeInt_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+LavaridgeInt_EventScript_ItemPCarefulMint::
+	finditem ITEM_CAREFUL_MINT
+	end
+
+LavaridgeInt_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+LavaridgeInt_EventScript_ItemPXSpDef::
+	finditem ITEM_X_SP_DEF
+	end
+
+SootopolisCastle_EventScript_ItemPRareBone::
+	finditem ITEM_RARE_BONE
+	end
+
+SootopolisCastle_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+SootopolisCastle_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+PiratesGrotto_EventScript_ItemPBigNugget::
+	finditem ITEM_BIG_NUGGET
+	end
+
+PiratesGrotto_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end

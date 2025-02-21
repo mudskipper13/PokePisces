@@ -391,7 +391,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NewSunbeach_EventScript_ItemPSuperPotion",
       "flag": "0"
     },
     {
@@ -404,7 +404,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NewSunbeach_EventScript_ItemPBigMushroom",
       "flag": "0"
     },
     {
@@ -430,7 +430,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NewSunbeach_EventScript_ItemPPokeDoll",
       "flag": "0"
     },
     {
@@ -443,7 +443,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NewSunbeach_EventScript_ItemPCoralCrown",
       "flag": "0"
     },
     {
@@ -456,7 +456,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NewSunbeach_EventScript_ItemPPPUp",
       "flag": "0"
     }
   ],
