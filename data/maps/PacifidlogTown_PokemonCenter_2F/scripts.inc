@@ -137,7 +137,7 @@ PacifidlogTown_PokemonCenter_2F_Text_HaveYouCaughtThisMon:
 PacifidlogTown_PokemonCenter_2F_Text_CaughtMonReminder:
 	.string "Berm, Ebibi, and Kitikiti...\n"
 	.string "I very much would like to see them!\p"
-	.string "Do you have them registered\l"
+	.string "Do you have them registered\n"
 	.string "in your Pokédex?$"
 
 PacifidlogTown_PokemonCenter_2F_Text_GoCatchIt:

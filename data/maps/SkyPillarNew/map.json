@@ -135,7 +135,7 @@
     },
     {
       "x": 20,
-      "y": 7,
+      "y": 8,
       "elevation": 5,
       "dest_map": "MAP_SKY_PILLAR_INTERIORS",
       "dest_warp_id": "7"
