@@ -6955,11 +6955,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 90,
         #endif
-        .effect = EFFECT_PARALYZE_HIT,
+        .effect = EFFECT_DRAGON_PULSE,
         .type = TYPE_DRAGON,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 15,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -12486,7 +12486,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .power = 0,
         .type = TYPE_GRASS,
         .accuracy = 0,
-        .pp = 10,
+        .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
         .priority = 0,
@@ -14198,14 +14198,14 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_BLAZING_SOUL] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
-            .power = 90,
+            .power = 85,
         #else
-            .power = 95,
+            .power = 85,
         #endif
-        .effect = EFFECT_BURN_HIT,
+        .effect = EFFECT_BLAZING_SOUL,
         .type = TYPE_FIGHTING,
-        .accuracy = 100,
-        .pp = 15,
+        .accuracy = 95,
+        .pp = 10,
         .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -14737,12 +14737,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_RAZING_SUN] =
     {
         .effect = EFFECT_RAZING_SUN,
-        .power = 110,
+        .power = 95,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 100,
-        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
@@ -17220,6 +17220,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .ignoresProtect = B_UPDATED_MOVE_FLAGS >= GEN_6,
         .magicCoatAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .copycatBanned = TRUE,
+    },
+
+    [MOVE_FIREBRAND] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 100,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
     },
 
     // Z-Moves

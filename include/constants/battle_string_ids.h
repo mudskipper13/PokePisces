@@ -836,10 +836,12 @@
 #define STRINGID_CURSEDBODYTORMENTED                  834
 #define STRINGID_CURSEDBODYCURSED                     835
 #define STRINGID_DAYBREAK                             836
-#define STRINGID_SOLARPOWERGAINS                      837
-#define STRINGID_WATCHERSALVATION                     838
+#define STRINGID_WATCHERSALVATION                     837
+#define STRINGID_CROWNINFESTEDATTACKER                838
+#define STRINGID_USERGAINEDDAYBREAK                   839
+#define STRINGID_USERUSEDUPALLDAYBREAK                840
 
-#define BATTLESTRINGS_COUNT                           839
+#define BATTLESTRINGS_COUNT                           841
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

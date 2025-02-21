@@ -240,5 +240,7 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaFormChangeTable,
     [SPECIES_FAKYSNAKY] = sFakysnakyFormChangeTable,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyFormChangeTable,
+    [SPECIES_FLAGUE] = sFlagueFormChangeTable,
+    [SPECIES_FLAGUE_PRINCE] = sFlagueFormChangeTable,
 #endif
 };

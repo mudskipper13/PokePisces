@@ -10300,7 +10300,7 @@ const struct Item gItems[] =
     {
         .name = _("Silver Crown"),
         .price = 60000,
-        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffect = HOLD_EFFECT_SILVER_CROWN,
         .description = sSilverCrownDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,

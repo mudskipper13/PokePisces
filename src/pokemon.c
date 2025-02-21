@@ -407,6 +407,7 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_SHISHIMA_PUNISHER_ALT - 1] = HOENN_DEX_SHISHIMA,
     [SPECIES_LYOLICA - 1] = HOENN_DEX_LYORESA,
     [SPECIES_FAKYSNAKY_BUSTED - 1] = HOENN_DEX_FAKYSNAKY,
+    [SPECIES_FLAGUE_PRINCE - 1] = HOENN_DEX_FLAGUE,
 };
 
 // Assigns all species to the National Dex Index (Summary No. for National Dex)
@@ -4706,6 +4707,11 @@ void CalculateMonStats(struct Pokemon *mon)
     else if (species == SPECIES_SHUNYONG || species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
     {
         newMaxHP = 2500;
+    }
+    else if (species == SPECIES_FLAGUE_PRINCE)
+    {
+        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 210;
     }
     else
     {
