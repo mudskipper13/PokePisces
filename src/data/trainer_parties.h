@@ -3455,7 +3455,7 @@ static const struct TrainerMon sParty_PPickleLou[] = {
     .heldItem = ITEM_WIDE_ARMOR,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 31,
-    .moves = {MOVE_EXTREME_SPEED, MOVE_BURNING_SPIRIT, MOVE_FOCUS_BLAST, MOVE_TELEPORT},
+    .moves = {MOVE_EXTREME_SPEED, MOVE_BLAZING_SOUL, MOVE_FOCUS_BLAST, MOVE_TELEPORT},
     }
 };
 
@@ -3697,7 +3697,7 @@ static const struct TrainerMon sParty_PSummer[] = {
     .ability = ABILITY_SOLAR_POWER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 34,
-    .moves = {MOVE_SOLAR_BEAM, MOVE_BURNING_SPIRIT, MOVE_PURGING_FLAMES, MOVE_SUNNY_DAY},
+    .moves = {MOVE_SOLAR_BEAM, MOVE_BLAZING_SOUL, MOVE_PURGING_FLAMES, MOVE_SUNNY_DAY},
     }
 };
 
@@ -3823,7 +3823,7 @@ static const struct TrainerMon sParty_PGabbyAndTy3[] = {
     .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 99,
-    .moves = {MOVE_FEATHER_DANCE, MOVE_BURNING_SPIRIT, MOVE_BLAZE_KICK, MOVE_ROOST},
+    .moves = {MOVE_FEATHER_DANCE, MOVE_BLAZING_SOUL, MOVE_BLAZE_KICK, MOVE_ROOST},
     }
 };
 
@@ -8086,7 +8086,7 @@ static const struct TrainerMon sParty_PCaspian[] = {
     .ability = ABILITY_INNER_FOCUS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 51,
-    .moves = {MOVE_FOCUS_ENERGY, MOVE_ROCK_SLIDE, MOVE_UPPER_HAND, MOVE_BURNING_SPIRIT},
+    .moves = {MOVE_FOCUS_ENERGY, MOVE_ROCK_SLIDE, MOVE_UPPER_HAND, MOVE_BLAZING_SOUL},
     },
     {
     .species = SPECIES_TARDRITCH,
@@ -13083,7 +13083,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     .heldItem = ITEM_FLOAT_STONE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 39,
-    .moves = {MOVE_HEAT_WAVE, MOVE_PARTING_SHOT, MOVE_DAZZLING_GLEAM, MOVE_BURNING_SPIRIT},
+    .moves = {MOVE_HEAT_WAVE, MOVE_PARTING_SHOT, MOVE_DAZZLING_GLEAM, MOVE_BLAZING_SOUL},
     },
     {
     .species = SPECIES_YAGANGRAN,
@@ -13964,7 +13964,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
-    .moves = {MOVE_FIERY_DANCE, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BURNING_SPIRIT},
+    .moves = {MOVE_FIERY_DANCE, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
     }
 };
 
@@ -14220,10 +14220,12 @@ static const struct TrainerMon sParty_PSadfisher3[] = {
     }
 };
 
-static const struct TrainerMon sParty_Tyron[] = {
+static const struct TrainerMon sParty_PDaddyBigbucks[] = {
     {
-    .lvl = 19,
-    .species = SPECIES_SANDSHREW,
+    .species = SPECIES_BISHOUCHA,
+    .ability = ABILITY_DORMANT,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 40,
     }
 };
 

@@ -1568,5 +1568,6 @@ const u8 gSpeciesNames[NUM_SPECIES][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_LYOLICA] = _("Lyolica"),
     [SPECIES_POTTRICIA_SHATTERED] = _("Pottricia"),
     [SPECIES_FAKYSNAKY_BUSTED] = _("Fakysnaky"),
+    [SPECIES_FLAGUE_PRINCE] = _("Flague"),
 #endif
 };

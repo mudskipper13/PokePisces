@@ -8506,4 +8506,9 @@ const u32 gMonPalette_FakysnakyBusted[] = INCBIN_U32("graphics/pokemon/232fakysn
 const u32 gMonBackPic_FakysnakyBusted[] = INCBIN_U32("graphics/pokemon/232fakysnaky/busted/back.4bpp.lz");
 const u32 gMonShinyPalette_FakysnakyBusted[] = INCBIN_U32("graphics/pokemon/232fakysnaky/busted/shiny.gbapal.lz");
 const u8 gMonIcon_FakysnakyBusted[] = INCBIN_U8("graphics/pokemon/232fakysnaky/busted/icon.4bpp");
+const u32 gMonFrontPic_FlaguePrince[] = INCBIN_U32("graphics/pokemon/60flague/prince/front.4bpp.lz");
+const u32 gMonPalette_FlaguePrince[] = INCBIN_U32("graphics/pokemon/60flague/prince/normal.gbapal.lz");
+const u32 gMonBackPic_FlaguePrince[] = INCBIN_U32("graphics/pokemon/60flague/prince/back.4bpp.lz");
+const u32 gMonShinyPalette_FlaguePrince[] = INCBIN_U32("graphics/pokemon/60flague/prince/shiny.gbapal.lz");
+const u8 gMonIcon_FlaguePrince[] = INCBIN_U8("graphics/pokemon/60flague/prince/icon.4bpp");
 #endif

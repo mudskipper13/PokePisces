@@ -7,7 +7,7 @@ LavaridgeHouses_EventScript_DurinGrandma::
 	goto_if_set FLAG_TEMP_11, LavaridgeHouses_EventScript_DurinGrandmaPostEat
 	goto_if_ge VAR_DURIN_RESISTANCE, 5, LavaridgeHouses_EventScript_DurinGrandmaPostEat
 	msgbox LavaridgeHouses_Text_MyGrandkidsDidntShow, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, FALSE
+	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeHouses_EventScript_DurinGrandmaEat

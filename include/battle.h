@@ -91,6 +91,7 @@ struct DisableStruct
     u8 truantSwitchInHack:1;
     u8 mimickedMoves:4;
     u8 rechargeTimer;
+    u8 watcherTimer;
     u8 autotomizeCount;
     u8 slowStartTimer;
     u8 embargoTimer;
@@ -749,8 +750,6 @@ struct BattleStruct
     u8 stickySyrupdBy[MAX_BATTLERS_COUNT];
     u8 enduredDamage;
     /* shunyong battle */
-    u16 shunyongChosenMove;
-    u8 shunyongTarget;
     u8 shunyongGoldPlainsHpUses:2; // 75%, 50%, 25% flags
     u8 distortedTypeMatchups;
     u8 aiCalcInProgress:1;

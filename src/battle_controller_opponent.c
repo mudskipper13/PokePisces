@@ -533,12 +533,6 @@ static void OpponentHandleChooseMove(u32 battler)
             default:
                 {
                     u16 chosenMove = moveInfo->moves[chosenMoveId];
-                    
-                    if (IsShunyongBattle()) {
-                        gChosenMoveByBattler[battler] = chosenMove = gBattleStruct->shunyongChosenMove;
-                        gBattlerTarget = gBattleStruct->shunyongTarget;
-                    }
-
                     if (GetBattlerMoveTargetType(battler, chosenMove) & (MOVE_TARGET_USER_OR_SELECTED | MOVE_TARGET_USER))
                         gBattlerTarget = battler;
                     if (GetBattlerMoveTargetType(battler, chosenMove) & MOVE_TARGET_BOTH)

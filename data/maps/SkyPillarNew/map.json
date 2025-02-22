@@ -61,7 +61,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 21,
+      "x": 20,
       "y": 33,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -97,6 +97,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SkyPillarNew_EventScript_Forester",
       "flag": "FLAG_HIDE_SKY_PILLAR_RANGERS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 28,
+      "y": 33,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SkyPillarNew_EventScript_ItemSodaPop",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 31,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SkyPillarNew_EventScript_ItemTinyMushroom",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -109,7 +135,7 @@
     },
     {
       "x": 20,
-      "y": 7,
+      "y": 8,
       "elevation": 5,
       "dest_map": "MAP_SKY_PILLAR_INTERIORS",
       "dest_warp_id": "7"

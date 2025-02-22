@@ -793,7 +793,7 @@
 #define STRINGID_DRAGONCLAWBOOSTED                    791
 #define STRINGID_FOUNDARANDOMCHEESE                   792
 #define STRINGID_PKMNBURNINGUP                        793
-#define STRINGID_INFERNALREIGNENTERS                  794
+#define STRINGID_WATCHERENTERS                        794
 #define STRINGID_PKMNISSPINNING                       795
 #define STRINGID_SLOPPYTOPPY                          796
 #define STRINGID_NOSEX                                797
@@ -836,9 +836,12 @@
 #define STRINGID_CURSEDBODYTORMENTED                  834
 #define STRINGID_CURSEDBODYCURSED                     835
 #define STRINGID_DAYBREAK                             836
-#define STRINGID_SOLARPOWERGAINS                      837
+#define STRINGID_WATCHERSALVATION                     837
+#define STRINGID_CROWNINFESTEDATTACKER                838
+#define STRINGID_USERGAINEDDAYBREAK                   839
+#define STRINGID_USERUSEDUPALLDAYBREAK                840
 
-#define BATTLESTRINGS_COUNT                           838
+#define BATTLESTRINGS_COUNT                           841
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1107,7 +1110,7 @@
 #define B_MSG_SWITCHIN_NEUTRALIZING_GAS     16
 #define B_MSG_SWITCHIN_WATER_VEIL           17
 #define B_MSG_SWITCHIN_ANTICIPATION_EVADE   18
-#define B_MSG_SWITCHIN_INFERNAL_REIGN       19
+#define B_MSG_SWITCHIN_WATCHER              19
 
 // gMentalHerbCureStringIds
 #define B_MSG_MENTALHERBCURE_INFATUATION       0

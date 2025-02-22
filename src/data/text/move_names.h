@@ -849,7 +849,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_WYVERN_WAVE] = _("Wyvern Wave"),
     [MOVE_STORM_FURY] = _("Storm Fury"),
     [MOVE_PIXIE_POW] = _("Pixie Pow"),
-    [MOVE_BURNING_SPIRIT] = _("Burning Spirit"),
+    [MOVE_BLAZING_SOUL] = _("Blazing Soul"),
     [MOVE_PURGING_FLAMES] = _("Purging Flames"),
     [MOVE_SNUFF_OUT] = _("Snuff Out"),
     [MOVE_SPIRIT_DANCE] = _("Spirit Dance"),
@@ -1035,6 +1035,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
+    [MOVE_FIREBRAND] = _("Firebrand"),
 };
 #else
 // 12 letters
@@ -1887,7 +1888,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_WYVERN_WAVE] = _("Wyvern Wave"),
     [MOVE_STORM_FURY] = _("Storm Fury"),
     [MOVE_PIXIE_POW] = _("Pixie Pow"),
-    [MOVE_BURNING_SPIRIT] = _("BurninSpirit"),
+    [MOVE_BLAZING_SOUL] = _("Blazing Soul"),
     [MOVE_PURGING_FLAMES] = _("PurginFlames"),
     [MOVE_SNUFF_OUT] = _("Snuff Out"),
     [MOVE_SPIRIT_DANCE] = _("Spirit Dance"),
@@ -2073,6 +2074,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_SWEET_WHISPERS] = _("Sweet Whispers"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
+    [MOVE_FIREBRAND] = _("Firebrand"),
 };
 #endif
 

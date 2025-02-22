@@ -482,6 +482,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -1385,7 +1386,7 @@ const struct Item gItems[] =
     [ITEM_MAX_REPEL] =
     {
         .name = _("Max Repel"),
-        .price = 900,
+        .price = 850,
         .holdEffectParam = 250,
         .description = sMaxRepelDesc,
         .pocket = POCKET_ITEMS,
@@ -1820,7 +1821,7 @@ const struct Item gItems[] =
     [ITEM_HEART_SCALE] =
     {
         .name = _("Heart Scale"),
-        .price = 100,
+        .price = 10000,
         .description = sHeartScaleDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -8277,7 +8278,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_MOONBLAST, // Todo
     },
 
-    [ITEM_TM_ROADBLOCK] =
+    [ITEM_TM_RAZOR_WIND] =
     {
         .name = _("TM90"),
         .price = 3000,
@@ -8286,10 +8287,10 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ROADBLOCK, // Todo
+        .secondaryId = MOVE_RAZOR_WIND, // Todo
     },
 
-    [ITEM_TM_RAZOR_WIND] =
+    [ITEM_TM_EARTHQUAKE] =
     {
         .name = _("TM91"),
         .price = 3000,
@@ -8298,7 +8299,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_RAZOR_WIND, // Todo
+        .secondaryId = MOVE_EARTHQUAKE, // Todo
     },
 
     [ITEM_TM_DUAL_WINGBEAT] =
@@ -8313,7 +8314,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_DUAL_WINGBEAT, // Todo
     },
 
-    [ITEM_TM_EARTHQUAKE] =
+    [ITEM_TM_MIND_BREAK] =
     {
         .name = _("TM93"),
         .price = 3000,
@@ -8322,7 +8323,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_EARTHQUAKE, // Todo
+        .secondaryId = MOVE_MIND_BREAK, // Todo
     },
 
     [ITEM_TM_BLEAKWIND_STORM] =
@@ -8337,7 +8338,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_BLEAKWIND_STORM, // Todo
     },
 
-    [ITEM_TM_MIND_BREAK] =
+    [ITEM_TM_FIRE_BLAST] =
     {
         .name = _("TM95"),
         .price = 3000,
@@ -8346,7 +8347,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_MIND_BREAK, // Todo
+        .secondaryId = MOVE_FIRE_BLAST, // Todo
     },
 
     [ITEM_TM_ZAP_CANNON] =
@@ -8361,7 +8362,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_ZAP_CANNON, // Todo
     },
 
-    [ITEM_TM_FIRE_BLAST] =
+    [ITEM_TM_ROADBLOCK] =
     {
         .name = _("TM97"),
         .price = 3000,
@@ -8370,7 +8371,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FIRE_BLAST, // Todo
+        .secondaryId = MOVE_ROADBLOCK, // Todo
     },
 
     [ITEM_TM_RAGING_FURY] =
@@ -10204,7 +10205,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .flingPower = 1,
+        .flingPower = 20,
     },
 
     [ITEM_ICE_POP] =
@@ -10299,7 +10300,7 @@ const struct Item gItems[] =
     {
         .name = _("Silver Crown"),
         .price = 60000,
-        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffect = HOLD_EFFECT_SILVER_CROWN,
         .description = sSilverCrownDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -10369,7 +10370,7 @@ const struct Item gItems[] =
     [ITEM_GOLD_TOOTH] =
     {
         .name = _("Gold Tooth"),
-        .price = 7500,
+        .price = 15000,
         .holdEffect = HOLD_EFFECT_NONE,
         .description = sGoldToothDesc,
         .pocket = POCKET_ITEMS,
@@ -10393,7 +10394,7 @@ const struct Item gItems[] =
     [ITEM_CORAL_CROWN] =
     {
         .name = _("Coral Crown"),
-        .price = 7500,
+        .price = 5000,
         .holdEffect = HOLD_EFFECT_NONE,
         .description = sCoralCrownDesc,
         .pocket = POCKET_ITEMS,

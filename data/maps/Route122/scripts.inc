@@ -6,7 +6,13 @@ Route122_MapScripts::
 
 Route122_OnTransition:
 	call_if_gt VAR_RAY_STATE, 1, Route122_EventScript_SetTempFlags
+	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, Route122_EventScript_RemoveYandemic
 	end
+
+Route122_EventScript_RemoveYandemic::
+	removeobject LOCALID_YANDEMIC
+	setflag FLAG_TEMP_12
+	return
 
 Route122_EventScript_SetTempFlags::
 	setflag FLAG_TEMP_11
@@ -146,6 +152,22 @@ Route122_EventScript_WarpToCenter::
 	warp MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 12, 3
 	release
 	end
+
+Route122_EventScript_YandemicNoticed::
+	lock
+	setvar VAR_TEMP_4, 1
+	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, Route122_EventScript_YandemicAddVar
+	msgbox MossdeepCity_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route122_EventScript_YandemicAddVar::
+	addvar VAR_NOTICED_BY_YANDEMIC, 1
+	return
+
+Route122_Text_YouFeelWatched:
+	.string "(You begin to notice that\n"
+	.string "you are being intently watched...)$"
 
 Route122_Text_WouldYouLikeToWarp:
 	.string "wanna warp$"

@@ -875,7 +875,7 @@ gBattleAnims_Moves::
     .4byte Move_WYVERN_WAVE
     .4byte Move_STORM_FURY
     .4byte Move_PIXIE_POW
-    .4byte Move_BURNING_SPIRIT
+    .4byte Move_BLAZING_SOUL
     .4byte Move_PURGING_FLAMES
     .4byte Move_SNUFF_OUT
     .4byte Move_SPIRIT_DANCE
@@ -1061,6 +1061,7 @@ gBattleAnims_Moves::
     .4byte Move_SWEET_WHISPERS
     .4byte Move_SYRUP_BOMB
     .4byte Move_DEARLY_DEPART
+    .4byte Move_FIREBRAND
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -6752,6 +6753,11 @@ Move_VOLT_SWITCH::
 	call VoltSwitchElectricFlashes
 	delay 6
 	call VoltSwitchElectricFlashes
+	waitforvisualfinish
+	createvisualtask AnimTask_CanBattlerSwitch, 1, ANIM_ATTACKER
+	jumprettrue UTurnLast
+	visible ANIM_ATTACKER
+	blendoff
 	waitforvisualfinish
 	end
 
@@ -19389,11 +19395,11 @@ PinkCloudSpreadEffect:
 	createsprite gPinkCloudSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 10, 112, -128, 40
 	return
 
-Move_BURNING_SPIRIT::
+Move_BLAZING_SOUL::
 	createvisualtask AnimTask_IsTargetPlayerSide, 2
-	jumpretfalse BurningSpiritOpponent
-	jumprettrue BurningSpiritPlayer
-BurningSpiritContinue:
+	jumpretfalse BlazingSoulOpponent
+	jumprettrue BlazingSoulPlayer
+BlazingSoulContinue:
 	loadspritegfx ANIM_TAG_FOCUS_ENERGY
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
@@ -19433,12 +19439,12 @@ BurningSpiritContinue:
 	waitbgfadein
 	clearmonbg ANIM_TARGET
 	end
-BurningSpiritOpponent:
+BlazingSoulOpponent:
 	fadetobg BG_IMPACT_PLAYER
-	goto BurningSpiritContinue
-BurningSpiritPlayer:
+	goto BlazingSoulContinue
+BlazingSoulPlayer:
 	fadetobg BG_IMPACT_OPPONENT
-	goto BurningSpiritContinue
+	goto BlazingSoulContinue
 
 
 Move_PURGING_FLAMES::
@@ -21755,6 +21761,7 @@ Move_MISERY_WAIL::
 	waitforvisualfinish
 	fadetobg BG_DARK
 	waitbgfadein
+	waitforvisualfinish
 	createvisualtask AnimTask_RockMonBackAndForth, 5, ANIM_ATTACKER, 2, 1
 	loopsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER, 12, 4
 	delay 8
@@ -26221,8 +26228,8 @@ Move_GLACIAL_SHIFT::
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	createvisualtask AnimTask_CanBattlerSwitch, 1, ANIM_ATTACKER
-	jumpretfalse UTurnLast
-	invisible ANIM_ATTACKER
+	jumprettrue UTurnLast
+	visible ANIM_ATTACKER
 	blendoff
 	waitforvisualfinish
 	end
@@ -26612,6 +26619,9 @@ Move_SPOOK::
 
 Move_DEARLY_DEPART::
 	goto Move_SPOOK
+
+Move_FIREBRAND::
+	goto Move_FIRE_PUNCH
 
 Move_CHILLY_AIR::
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS

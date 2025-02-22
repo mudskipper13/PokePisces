@@ -29,12 +29,15 @@ SSTidalExterior_EventScript_Breadwinner::
 	end
 
 SSTidalExterior_EventScript_Hardhatter::
-	msgbox SSTidalExterior_Text_Hardhatter, MSGBOX_NPC
+	lock
+	msgbox SSTidalExterior_Text_Hardhatter, MSGBOX_AUTOCLOSE
+	release
 	end
 
 SSTidalExterior_EventScript_Electrician::
-	msgbox SSTidalExterior_Text_Electrician, MSGBOX_DEFAULT
-	closemessage
+	lock
+	msgbox SSTidalExterior_Text_Electrician, MSGBOX_AUTOCLOSE
+	release
 	end
 
 SSTidalExterior_EventScript_Fisher::

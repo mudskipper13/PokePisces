@@ -6,7 +6,13 @@ NewSooto_MapScripts::
 
 NewSooto_OnTransition:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, NewSooto_EventScript_RemoveYandemic
 	end
+
+NewSooto_EventScript_RemoveYandemic::
+	removeobject LOCALID_YANDEMIC
+	setflag FLAG_TEMP_11
+	return
 
 NewSooto_EventScript_DontGoInCave::
 	lock
@@ -249,6 +255,98 @@ NewSooto_EventScript_OzoneRoadblockAhead::
     msgbox NewSooto_Text_OzoneRoadblockAhead, MSGBOX_NPC
 	end
 
+NewSooto_EventScript_YandemicNoticed::
+	lock
+	setvar VAR_TEMP_4, 1
+	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, NewSooto_EventScript_YandemicAddVar
+	msgbox NewSooto_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSooto_EventScript_YandemicAddVar::
+	addvar VAR_NOTICED_BY_YANDEMIC, 1
+	return
+
+NewSooto_EventScript_NaturalLandscapeBoy::
+	msgbox NewSooto_Text_NaturalLandscapeBoy, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_UsedToBeExclusive::
+	msgbox NewSooto_Text_UsedToBeExclusive, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_LegendaryKid::
+	msgbox NewSooto_Text_LegendaryKid, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_CaveOfOriginImportantGirl::
+	msgbox NewSooto_Text_CaveOfOriginImportantGirl, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_JuanFangirl::
+	msgbox NewSooto_Text_JuanFangirl, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_LivedHereManyYears::
+	msgbox NewSooto_Text_LivedHereManyYears, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_JuanEntrepeneur::
+	msgbox NewSooto_Text_JuanEntrepeneur, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_CastleHiker::
+	msgbox NewSooto_Text_CastleHiker, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_YoungCoupleGirl::
+	lock
+	msgbox NewSooto_Text_YoungCoupleGirl, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSooto_EventScript_YoungCoupleBoy::
+	lock
+	msgbox NewSooto_Text_YoungCoupleBoy, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSooto_EventScript_SebastianFriend::
+	msgbox NewSooto_Text_SebastianFriend, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_MangrottoBlocker::
+	msgbox NewSooto_Text_MangrottoBlocker, MSGBOX_NPC
+	end
+
+NewSooto_EventScript_SootopolisSign::
+	msgbox NewSooto_Text_SootopolisSign, MSGBOX_SIGN
+	end
+
+NewSooto_EventScript_NoSwimmingInCratersSign::
+	msgbox NewSooto_Text_NoSwimmingInCratersSign, MSGBOX_SIGN
+	end
+
+NewSooto_EventScript_CaveOfOriginSign::
+	msgbox NewSooto_Text_CaveOfOriginSign, MSGBOX_SIGN
+	end
+
+NewSooto_EventScript_MangrottoTunnelSign::
+	msgbox NewSooto_Text_MangrottoTunnelSign, MSGBOX_SIGN
+	end
+
+NewSooto_EventScript_JuancoreRestaurantSign::
+	msgbox NewSooto_Text_JuancoreRestaurantSign, MSGBOX_SIGN
+	end
+
+NewSooto_EventScript_CosmossBridgeSign::
+	msgbox NewSooto_Text_CosmossBridgeSign, MSGBOX_SIGN
+	end
+
+NewSooto_Text_YouFeelWatched:
+	.string "(You begin to notice that\n"
+	.string "you are being intently watched...)$"
+
 NewSooto_Text_NameDrake:
 	.string "Drake$"
 
@@ -361,3 +459,127 @@ NewSooto_Text_BestNotTo:
 	.string "(Looks like an intimidating cave.\n"
 	.string "...best to wait until you're\l"
 	.string "a bit stronger.)$"
+
+NewSooto_Text_NaturalLandscapeBoy:
+	.string "Sootopolis is quite a\n"
+	.string "beautiful natural landscape, huh?\l"
+	.string "Amazing how an event that caused\l"
+	.string "so much destruction resulted\l"
+	.string "in so much life years later.$"
+
+NewSooto_Text_UsedToBeExclusive:
+	.string "I somewhat missed the days when\n"
+	.string "Sootopolis City was more exclusive.\p"
+	.string "With all these bridges getting\n"
+	.string "built, we've drawn in some\l"
+	.string "increasing tourism.$"
+
+NewSooto_Text_LegendaryKid:
+	.string "My paw told me that some\n"
+	.string "real big animals made those\l"
+	.string "rocks and holes in the lake!\p"
+	.string "I wanna see the big\n"
+	.string "strong animals!$"
+
+NewSooto_Text_CaveOfOriginImportantGirl:
+	.string "The Cave of Origin in the center\n"
+	.string "of the city is protected as\l"
+	.string "a place of worship.\l"
+	.string "I'm not allowed in there,\l"
+	.string "but that just makes me want in\l"
+	.string "even more...!$"
+
+NewSooto_Text_JuanFangirl:
+	.string "My gosh, Juan is just\n"
+	.string "THE dreamiest! He's by far\l"
+	.string "the most suave of the\l"
+	.string "gym leaders...!\p"
+	.string "He puts on a one-man show\n"
+	.string "once a week. He's a singer,\l"
+	.string "comedian, debater, the whole\l"
+	.string "nine yards. Such a talented\l"
+	.string "catch of a man...!$"
+
+NewSooto_Text_LivedHereManyYears:
+	.string "Despite being an island, the water\n"
+	.string "in the caldera is fresh and warm.\l"
+	.string "The local water in other\l"
+	.string "cities doesn't quite match up.\p"
+	.string "I couldn't have picked a\n"
+	.string "better locale to retire!$"
+
+NewSooto_Text_JuanEntrepeneur:
+	.string "Juan is a self-made man, you know.\n"
+	.string "The city loved to boast about him.\l"
+	.string "Wallace, a former Champion, also\l"
+	.string "hails from Sootopolis.\l"
+	.string "Stars here are just\l"
+	.string "born differently!$"
+
+NewSooto_Text_CastleHiker:
+	.string "This city's great for the legs!\n"
+	.string "So many stairs!\p"
+	.string "Been wantin' to hike up to that\n"
+	.string "there old castle, but the rocks\l"
+	.string "are too steep to walk up.\l"
+	.string "Gotta be some better way\l"
+	.string "to get on up there...$"
+
+NewSooto_Text_YoungCoupleGirl:
+	.string "I'm excited to have front\n"
+	.string "row seats for Juan's next\l"
+	.string "performance! We're going\l"
+	.string "to have a splendid time!$"
+
+NewSooto_Text_YoungCoupleBoy:
+	.string "My wallet is thick enough\n"
+	.string "to keep affording show tickets,\l"
+	.string "but that Juan is charging\l"
+	.string "ridiculous prices...$"
+
+NewSooto_Text_SebastianFriend:
+	.string "Juan's family butler Sebastian\n"
+	.string "is an old friend of mine.\l"
+	.string "That man is not very assertive,\l"
+	.string "but he has more innate talent\l"
+	.string "than Juan could ever hope to boast.\p"
+	.string "He seems content to stay\n"
+	.string "in the background, however.$"
+
+NewSooto_Text_MangrottoBlocker:
+	.string "Sorry, young one.\n"
+	.string "There is a worship ceremony\l"
+	.string "being carried out in the\l"
+	.string "Cave of Origin right now.\l"
+	.string "The surrounding cave system\l"
+	.string "must be clear so there is\l"
+	.string "minimal interfering noise.\p"
+	.string "It won't be too much longer.\n"
+	.string "Why not attend the show or\l"
+	.string "eat at the restaurant?$"
+
+NewSooto_Text_SootopolisSign:
+	.string "SOOTOPOLIS CITY\n"
+	.string "The mystical place\l"
+	.string "where history slumbers.$"
+
+NewSooto_Text_NoSwimmingInCratersSign:
+	.string "CITY NOTICE\n"
+	.string "No recreational swimming\l"
+	.string "in the central crater!\l"
+	.string "It is a historic site.$"
+
+NewSooto_Text_CaveOfOriginSign:
+	.string "THE CAVE OF ORIGIN$"
+
+NewSooto_Text_MangrottoTunnelSign:
+	.string "NORTH - MANGROTTO TUNNEL\n"
+	.string "Closed during worship hours.$"
+
+NewSooto_Text_JuancoreRestaurantSign:
+	.string "Juan-Core Cuisine!\n"
+	.string "OPEN$"
+
+NewSooto_Text_CosmossBridgeSign:
+	.string "EAST - COSMOSS BRIDGE,\n"
+	.string "COSMOSS SPACE CENTER$"

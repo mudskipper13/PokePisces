@@ -407,6 +407,7 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_SHISHIMA_PUNISHER_ALT - 1] = HOENN_DEX_SHISHIMA,
     [SPECIES_LYOLICA - 1] = HOENN_DEX_LYORESA,
     [SPECIES_FAKYSNAKY_BUSTED - 1] = HOENN_DEX_FAKYSNAKY,
+    [SPECIES_FLAGUE_PRINCE - 1] = HOENN_DEX_FLAGUE,
 };
 
 // Assigns all species to the National Dex Index (Summary No. for National Dex)
@@ -4707,6 +4708,11 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         newMaxHP = 2500;
     }
+    else if (species == SPECIES_FLAGUE_PRINCE)
+    {
+        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 210;
+    }
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
@@ -6336,19 +6342,19 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
     {                                                                                                   \
         friendshipChange = itemEffect[itemEffectParam];                                                 \
         friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                        \
-        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                            \
-            friendship += 150 * friendshipChange / 100;                                                 \
-        else if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)                          \
-            friendship += friendshipChange * -1;                                                        \
-        else                                                                                            \
-            friendship += friendshipChange;                                                             \
         if (friendshipChange > 0)                                                                       \
         {                                                                                               \
             if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)                           \
-                friendship++;                                                                           \
+                friendshipChange++;                                                                     \
             if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())         \
-                friendship++;                                                                           \
+                friendshipChange++;                                                                     \
+            if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                                                \
+                friendshipChange == 150 * friendshipChange / 100;                                       \
         }                                                                                               \
+        if (holdEffect == HOLD_EFFECT_SALTY_TEAR)                                                       \
+            friendship -= friendshipChange;                                                             \
+        else                                                                                            \
+            friendship += friendshipChange;                                                             \
         if (friendship < 0)                                                                             \
             friendship = 0;                                                                             \
         if (friendship > MAX_FRIENDSHIP)                                                                \
@@ -7812,19 +7818,21 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
          && (event != FRIENDSHIP_EVENT_LEAGUE_BATTLE || IS_LEAGUE_BATTLE))
         {
             s8 mod = sFriendshipEventModifiers[event][friendshipLevel];
-            if (mod > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
-                mod = (150 * mod) / 100;
-            friendship += mod;
-            if (mod > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
-                mod *= -1;
-            friendship += mod;
             if (mod > 0)
             {
-                if (GetMonData(mon, MON_DATA_POKEBALL, 0) == ITEM_LUXURY_BALL)
-                    friendship++;
-                if (GetMonData(mon, MON_DATA_MET_LOCATION, 0) == GetCurrentRegionMapSectionId())
-                    friendship++;
+                if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)
+                mod++;
+                if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())
+                mod++;
+                if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
+                mod == 150 * mod / 100;
             }
+
+            if (holdEffect == HOLD_EFFECT_SALTY_TEAR)
+                friendship -= mod;
+            else
+                friendship += mod;
+
             if (friendship < 0)
                 friendship = 0;
             if (friendship > MAX_FRIENDSHIP)
@@ -8398,10 +8406,10 @@ u16 GetBattleBGM(void)
             return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_OZONE;
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_OZONE;
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:

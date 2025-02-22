@@ -28,6 +28,43 @@ PacifidlogTown_PokemonCenter_1F_EventScript_OldMan::
 	msgbox PacifidlogTown_PokemonCenter_1F_Text_AncestorsLivedOnBoats, MSGBOX_NPC
 	end
 
+PacifidlogTown_EventScript_BlackSheepWoman::
+	msgbox PacifidlogTown_Text_BlackSheepWoman, MSGBOX_NPC
+	end
+
+PacifidlogTown_EventScript_BoredKidsWoman::
+	msgbox PacifidlogTown_Text_BoredKidsWoman, MSGBOX_NPC
+	end
+
+PacifidlogTown_EventScript_VisitSadFisher::
+	msgbox PacifidlogTown_Text_VisitSadFisher, MSGBOX_NPC
+	end
+
+PacifidlogTown_Text_BlackSheepWoman:
+	.string "Pacifidlog Town definitely used\n"
+	.string "to be the black sheep of Hoenn's\l"
+	.string "settlements.\p"
+	.string "I've seen the community really\n"
+	.string "blossom here as of late. They've\l"
+	.string "earned their place among\l"
+	.string "the other cities, I'd say.$"
+
+PacifidlogTown_Text_BoredKidsWoman:
+	.string "My little ones used to be more\n"
+	.string "easily entertained by the beach...\l"
+	.string "but now they're bored of it.\p"
+	.string "They want a vacation from\n"
+	.string "their vacation...$"
+
+PacifidlogTown_Text_VisitSadFisher:
+	.string "You a trainer? Ya got that\n"
+	.string "look in your eye.\p"
+	.string "If you're wantin' to train\n"
+	.string "some fish Pokemon, maybe go hit\l"
+	.string "up that one angler at the\l"
+	.string "southeastern part of town.\l"
+	.string "He's been advertisin'.$"
+
 PacifidlogTown_PokemonCenter_1F_Text_WhatColorTrainerCard:
 	.string "What color is your TRAINER CARD?\n"
 	.string "Mine's copper!$"

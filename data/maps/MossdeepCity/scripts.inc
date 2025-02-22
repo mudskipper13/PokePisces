@@ -12,8 +12,14 @@ MossdeepCity_MapScripts::
 
 MossdeepCity_OnTransition:
 	call MossdeepCity_EventScript_SetEggState
+	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, MossdeepCity_EventScript_RemoveYandemic
 	goto_if_lt VAR_SPACE_CENTER_QUEST_STATE, 3, MossdeepCity_EventScript_HideMeteors
 	end
+
+MossdeepCity_EventScript_RemoveYandemic::
+	removeobject LOCALID_YANDEMIC
+	setflag FLAG_TEMP_B
+	return
 
 MossdeepCity_EventScript_SetEggState::
 	goto_if_set FLAG_MOSSDEEP_EGG, MossdeepCity_EventScript_EggGotten
@@ -702,6 +708,22 @@ MossdeepCity_EventScript_WallyBlackout::
 	waitstate
 	release
 	end
+
+MossdeepCity_EventScript_YandemicNoticed::
+	lock
+	setvar VAR_TEMP_4, 1
+	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, MossdeepCity_EventScript_YandemicAddVar
+	msgbox MossdeepCity_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MossdeepCity_EventScript_YandemicAddVar::
+	addvar VAR_NOTICED_BY_YANDEMIC, 1
+	return
+
+MossdeepCity_Text_YouFeelWatched:
+	.string "(You begin to notice that\n"
+	.string "you are being intently watched...)$"
 
 MossdeepCity_Text_NameBriney:
 	.string "Cpt. Briney$"

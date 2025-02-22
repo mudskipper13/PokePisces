@@ -1563,5 +1563,6 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_SHISHIMA_PUNISHER_ALT] = sShishimaTeachableLearnset,
     [SPECIES_LYOLICA] = sLyoresaTeachableLearnset,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyTeachableLearnset,
+    [SPECIES_FLAGUE_PRINCE] = sFlagueTeachableLearnset,
 #endif
 };

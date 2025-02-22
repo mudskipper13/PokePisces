@@ -21,8 +21,8 @@
       "x": 48,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_NEW_MAP1",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_BATTLE_STUDIO_LOBBY",
+      "dest_warp_id": "2"
     },
     {
       "x": 48,
