@@ -373,7 +373,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPGoldBall2",
       "flag": "0"
     },
     {
@@ -386,7 +386,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "TechnicalMachines_EventScript_ItemPTMRagingFury",
       "flag": "0"
     },
     {
@@ -399,7 +399,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPGoldBall1",
       "flag": "0"
     },
     {
@@ -412,7 +412,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPPPMax",
       "flag": "0"
     },
     {
@@ -425,7 +425,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPBigNugget",
       "flag": "0"
     },
     {
@@ -438,7 +438,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPCoralCrown",
       "flag": "0"
     },
     {
@@ -451,7 +451,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPCarrotHorn",
       "flag": "0"
     },
     {
@@ -464,7 +464,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPMaxElixir",
       "flag": "0"
     },
     {
@@ -477,7 +477,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EverGrandeRoad_EventScript_ItemPMaxRevive",
       "flag": "0"
     },
     {
@@ -490,7 +490,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "TechnicalMachines_EventScript_ItemPTMEarthquake",
       "flag": "0"
     }
   ],

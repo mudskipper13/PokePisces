@@ -2321,6 +2321,10 @@ gCryTable::
 	cry Cry_Lyolica
 	@ Pottricia
 	cry Cry_PottriciaShattered
+	@ Fakysnaky
+	cry Cry_Fakysnaky
+	@ Flague
+	cry Cry_Flague
 .else
 	@ Cramorant
 	cry Cry_Unown
@@ -2360,23 +2364,6 @@ gCryTable::
 	cry Cry_Unown
 	cry Cry_Unown
 	@ Basculegion
-	cry Cry_Unown
-	@ Dudunspars
-	cry Cry_Unown
-	@ Lottabats
-	cry Cry_Unown
-	@ Gaoterra
-	cry Cry_Unown
-	@ Bishoucha
-	cry Cry_Unown
-	@ Papypus
-	cry Cry_Unown
-	@ Shishima
-	cry Cry_Unown
-	@ Cindrillon
-	cry Cry_Unown
-	cry Cry_Unown
-	@ Shunyong
 	cry Cry_Unown
 .endif
 
@@ -4670,6 +4657,10 @@ gCryTable_Reverse::
 	cry_reverse Cry_Lyolica
 	@ Pottricia
 	cry_reverse Cry_PottriciaShattered
+	@ Fakysnaky
+	cry_reverse Cry_Fakysnaky
+	@ Flague
+	cry_reverse Cry_Flague
 .else
 	cry_reverse Cry_Unown
 	cry_reverse Cry_Unown

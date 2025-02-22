@@ -22323,6 +22323,28 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
+    [SPECIES_FLAGUE_PRINCE] =
+    {
+        .baseHP        = 65,
+        .baseAttack    = 45,
+        .baseDefense   = 65,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 45,
+        .baseSpDefense = 65,
+        .types = { TYPE_BUG,TYPE_POISON },
+        .catchRate = 120,
+        .expYield = 53,
+        .evYield_Speed = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
+        .abilities = {ABILITY_DISTURB, ABILITY_SWARM, ABILITY_LEVITATE},
+        .bodyColor = BODY_COLOR_GREEN,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_CULTIPEX] =
     {
         .baseHP        = 166,

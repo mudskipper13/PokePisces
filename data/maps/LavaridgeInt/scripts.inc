@@ -50,7 +50,7 @@ LavaridgeInt_EventScript_AngryLadySouth::
 	call LavaridgeInt_EventScript_RemoveAngryLady
 	setvar VAR_DURIN_RESISTANCE, 1
 	msgbox LavaridgeInt_Text_SheLeftBehindAGreenBerry, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, FALSE
+	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeInt_EventScript_AngryLadyEat
@@ -115,7 +115,7 @@ LavaridgeInt_EventScript_AngryLadyNorth::
 	call LavaridgeInt_EventScript_RemoveAngryLady
 	setvar VAR_DURIN_RESISTANCE, 1
 	msgbox LavaridgeInt_Text_SheLeftBehindAGreenBerry, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, FALSE
+	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeInt_EventScript_AngryLadyEat
@@ -151,7 +151,7 @@ LavaridgeInt_EventScript_DurinCollector::
 	goto_if_set FLAG_TEMP_11, LavaridgeInt_EventScript_DurinCollectorPostEat
 	goto_if_ge VAR_DURIN_RESISTANCE, 5, LavaridgeInt_EventScript_DurinCollectorPostEat
 	msgbox LavaridgeInt_Text_EverTryADurinBefore, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, FALSE
+	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeInt_EventScript_DurinCollectorEat
@@ -201,7 +201,7 @@ LavaridgeInt_EventScript_CantFly::
 
 LavaridgeInt_EventScript_DurinFlyHarvesterPostHM::
 	msgbox LavaridgeInt_Text_WannaSplitIt, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, FALSE
+	multichoice 19, 4, MULTI_EAT_OR_DONT_EAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, LavaridgeInt_EventScript_DurinFlyHarvesterEat

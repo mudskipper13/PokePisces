@@ -8575,6 +8575,11 @@ extern const u32 gMonPalette_FakysnakyBusted[];
 extern const u32 gMonBackPic_FakysnakyBusted[];
 extern const u32 gMonShinyPalette_FakysnakyBusted[];
 extern const u8 gMonIcon_FakysnakyBusted[];
+extern const u32 gMonFrontPic_FlaguePrince[];
+extern const u32 gMonPalette_FlaguePrince[];
+extern const u32 gMonBackPic_FlaguePrince[];
+extern const u32 gMonShinyPalette_FlaguePrince[];
+extern const u8 gMonIcon_FlaguePrince[];
 #endif
 
 // trainer sprites

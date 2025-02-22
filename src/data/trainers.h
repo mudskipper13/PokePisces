@@ -8044,7 +8044,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_LEADER_FLANNERY,
         .trainerName = _("Flannery"),
         .items = {ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
@@ -8056,7 +8056,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
         .trainerName = _("Mr. Moore"),
         .items = {ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
@@ -8092,7 +8092,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_LEADER_WATTSON,
         .trainerName = _("Wattson"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8104,7 +8104,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_FACTORY_HEAD_NOLAND,
         .trainerName = _("Scott"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8116,7 +8116,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_LEADER_BRAWLY,
         .trainerName = _("Brawly"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8128,7 +8128,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
         .trainerName = _("Shelly"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8140,7 +8140,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_LEADER_ROXANNE,
         .trainerName = _("Roxanne"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8152,7 +8152,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_SALON_MAIDEN_ANABEL,
         .trainerName = _("Lanette"),
         .items = {},
         .doubleBattle = FALSE,
@@ -8164,7 +8164,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
+        .trainerPic = TRAINER_PIC_LEADER_NORMAN,
         .trainerName = _("Norman"),
         .items = {},
         .doubleBattle = FALSE,

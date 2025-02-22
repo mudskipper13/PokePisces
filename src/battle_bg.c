@@ -992,7 +992,7 @@ void LoadBattleTextboxAndBackground(void)
     CopyBgTilemapBufferToVram(0);
     LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
     LoadBattleMenuWindowGfx();
-#if B_TERRAIN_BG_CHANGE == TRUE
+
     if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
     {
         LoadMoveBg(BG_TRICK_ROOM);
@@ -1009,13 +1009,15 @@ void LoadBattleTextboxAndBackground(void)
     {
         LoadMoveBg(BG_INVERSE_ROOM);
     }
-    else
+    else if (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
     {
         DrawTerrainTypeBattleBackground();
     }
-#else
-    DrawMainBattleBackground();
-#endif
+    else 
+    {
+        DrawMainBattleBackground();
+    }
+
     gBattleMoveTypeSpriteId = MAX_SPRITES;
     LoadCompressedPalette(gMoveTypes_Pal, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
 }

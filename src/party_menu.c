@@ -5504,7 +5504,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel > 49)
+    if (sInitialLevel >= 50)
     {
         cannotUseEffect = TRUE;
     }
@@ -5527,7 +5527,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
         sInitialLevel = 0;
         sFinalLevel = 0;
 
-        if (holdEffectParam == 69)
+        if (holdEffectParam == 0)
             targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL);
 
         if (targetSpecies != SPECIES_NONE)
@@ -5556,7 +5556,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            if (holdEffectParam == 69) // Rare Candy
+            if (holdEffectParam == 0) // Rare Candy
             {
                 ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
                 StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);

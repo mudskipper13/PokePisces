@@ -8,7 +8,7 @@ SSTidalMidgame_EventScript_Briney::
 	goto_if_set FLAG_BRINEY_DEWFORD_VISIT, SSTidalMidgame_EventScript_BrineyPostDewford
 	goto_if_ge VAR_OLD_GUYS_STATE, 1, SSTidalMidgame_EventScript_BrineyPostSeaMauville
 	msgbox SSTidalMidgame_Text_WantToGoSomewhere, MSGBOX_DEFAULT
-	multichoice 19, 0, MULTI_BRINEY_BOAT, FALSE
+	multichoice 19, 0, MULTI_BRINEY_BOAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SSTidalMidgame_EventScript_GotoPacifidlog
@@ -21,7 +21,7 @@ SSTidalMidgame_EventScript_Briney::
 
 SSTidalMidgame_EventScript_BrineyPostSeaMauville::
 	msgbox SSTidalMidgame_Text_WantToGoSomewhere, MSGBOX_DEFAULT
-	multichoice 19, 0, MULTI_BRINEY_BOAT_2, FALSE
+	multichoice 19, 0, MULTI_BRINEY_BOAT_2, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SSTidalMidgame_EventScript_GotoPacifidlog
@@ -36,7 +36,7 @@ SSTidalMidgame_EventScript_BrineyPostSeaMauville::
 
 SSTidalMidgame_EventScript_BrineyPostDewford::
 	msgbox SSTidalMidgame_Text_WantToGoSomewhere, MSGBOX_DEFAULT
-	multichoice 19, 0, MULTI_BRINEY_BOAT_3, FALSE
+	multichoice 19, 0, MULTI_BRINEY_BOAT_3, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SSTidalMidgame_EventScript_GotoPacifidlog

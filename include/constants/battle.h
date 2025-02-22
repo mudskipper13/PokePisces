@@ -451,8 +451,9 @@
 #define MOVE_EFFECT_ROCK_SMASH          114
 #define MOVE_EFFECT_DEF_SPDEF_DOWN      115
 #define MOVE_EFFECT_RANDOM_STAT_RAISE   116
+#define MOVE_EFFECT_FIREBRAND           117
 
-#define NUM_MOVE_EFFECTS                117
+#define NUM_MOVE_EFFECTS                118
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

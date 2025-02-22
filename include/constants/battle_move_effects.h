@@ -648,7 +648,9 @@
 #define EFFECT_SHADOW_FORCE                 642
 #define EFFECT_DEARLY_DEPART                643
 #define EFFECT_POISON_TAIL                  644
+#define EFFECT_DRAGON_PULSE                 645
+#define EFFECT_BLAZING_SOUL                 646
 
-#define NUM_BATTLE_MOVE_EFFECTS             645
+#define NUM_BATTLE_MOVE_EFFECTS             647
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

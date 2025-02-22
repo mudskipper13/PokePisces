@@ -5,7 +5,11 @@ SkyPillarInteriors_EventScript_FieldNurse::
 	lock
 	faceplayer
 	msgbox SkyPillarInteriors_Text_Healing, MSGBOX_DEFAULT
-	call Common_EventScript_OutOfCenterPartyHeal
+	delay 4
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	delay 8
 	msgbox SkyPillarInteriors_Text_WontBeThereInFuture, MSGBOX_DEFAULT
 	release
 	end
