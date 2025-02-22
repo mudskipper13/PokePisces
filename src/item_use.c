@@ -802,6 +802,12 @@ void ItemUseOutOfBattle_ReduceEV(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void ItemUseOutOfBattle_ReduceFriendship(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_ReduceFriendship;
+    SetUpItemUseCallback(taskId);
+}
+
 void ItemUseOutOfBattle_SacredAsh(u8 taskId)
 {
     gItemUseCB = ItemUseCB_SacredAsh;

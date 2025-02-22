@@ -1338,5 +1338,20 @@ $(MID_SUBDIR)/mus_mt_blaze_peak.s: %.s: %.mid
 $(MID_SUBDIR)/mus_ninetales_legend.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G195 -V110
 
+$(MID_SUBDIR)/mus_vs_legendary2.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V100
+
+$(MID_SUBDIR)/mus_vs_gym_leader2.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+
+$(MID_SUBDIR)/mus_ever_grande_road.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V115
+
+$(MID_SUBDIR)/mus_ever_grande_summit.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V115
+
+$(MID_SUBDIR)/mus_surf_2.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+
 $(MID_SUBDIR)/mus_vs_wally.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G193 -V100

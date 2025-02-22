@@ -131,58 +131,69 @@ Route121_Text_BarneyPostBattle:
 	.string "post$"
 
 Route121_Text_CharonIntro:
-	.string "intro$"
+	.string "Charon likes snow, it feels chilly\n"
+	.string "chilled...$"
 
 Route121_Text_CharonDefeated:
-	.string "defeat$"
+	.string "So cold, brrr-brrr.$"
 
 Route121_Text_CharonPostBattle:
-	.string "post$"
+	.string "I want to vroom vroom a snow mobile but\n"
+	.string "uncle Vergil is busy looking for uncle \l"
+	.string "Dante...$"
 
 Route121_Text_GarnetIntro:
-	.string "intro$"
+	.string "I love the snow! Wanna know why?!$"
 
 Route121_Text_GarnetDefeated:
-	.string "defeat$"
+	.string "Snow means no school!$"
 
 Route121_Text_GarnetPostBattle:
-	.string "post$"
+	.string "Snow is the best!...\n"
+	.string "Unless you're my sister.\p"
+	.string "For some reason she loves going to school!\n"
+	.string "I don't get it.$"
 
 Route121_Text_LapizIntro:
-	.string "intro$"
+	.string "I hate the snow...$"
 
 Route121_Text_LapizDefeated:
-	.string "defeat$"
+	.string "Snow means no school...$"
 
 Route121_Text_LapizPostBattle:
-	.string "post$"
+	.string "All my brother wants to do is play\n"
+	.string "around in the cold.\p"
+	.string "I don't see the fun in such a thing...$"
 
 Route121_Text_VergilIntro:
-	.string "intro$"
+	.string "Where is he...$"
 
 Route121_Text_VergilDefeated:
-	.string "defeat$"
+	.string "Cho lum kuh...$"
 
 Route121_Text_VergilPostBattle:
-	.string "post$"
+	.string "Dantuhhh... Where are you...\n"
+	.string "time to do dailies...$"
 
 Route121_Text_YoshIntro:
-	.string "intro$"
+	.string "I remain ambivalent about the snow.$"
 
 Route121_Text_YoshDefeated:
-	.string "defeat$"
+	.string "I have sno' opinion on this\n"
+	.string "whatsoever...$"
 
 Route121_Text_YoshPostBattle:
-	.string "post$"
+	.string "Snow is, like, cool, I guess.$"
 
 Route121_Text_KaijiIntro:
-	.string "intro$"
+	.string "Heads I win, tails you lose!$"
 
 Route121_Text_KaijiDefeated:
-	.string "defeat$"
+	.string "I haven't even flipped the coin yet!$"
 
 Route121_Text_KaijiPostBattle:
-	.string "post$"
+	.string "...Hey! My coin landed on its side!\n"
+	.string "That's no fair!$"
 
 Route121_Text_LarsIntro:
 	.string "intro$"
@@ -203,10 +214,10 @@ Route121_Text_DarciePostBattle:
 	.string "post$"
 
 Route121_Text_WyntonIntro:
-	.string "intro$"
+	.string "Ski, free!$"
 
 Route121_Text_WyntonDefeated:
-	.string "defeat$"
+	.string "Well, that prize money isn't free...$"
 
 Route121_Text_WyntonPostBattle:
-	.string "post$"
+	.string "Wheeeeeeee!$"

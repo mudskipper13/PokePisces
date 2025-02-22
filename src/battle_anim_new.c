@@ -61,7 +61,6 @@ static void SpriteCB_CentredElectricity(struct Sprite *sprite);
 static void AnimSkyDropBallUp(struct Sprite *sprite);
 static void SpriteCB_SearingShotRock(struct Sprite *sprite);
 static void AnimHappyHourCoinShower(struct Sprite *sprite);
-static void AnimMakingItRain(struct Sprite *sprite);
 static void SpriteCB_Geyser(struct Sprite *sprite);
 static void SpriteCB_GeyserTarget(struct Sprite *sprite);
 static void SpriteCB_TwinkleOnBattler(struct Sprite *sprite);
@@ -678,16 +677,12 @@ const struct SpriteTemplate gHeartStampSpinningHeartTemplate =
     .callback = AnimSpinningKickOrPunch
 };
 
-//horn leech
-const struct SpriteTemplate gHornLeechHornTemplate =
-{
-    .tileTag = ANIM_TAG_HORN_LEECH,
-    .paletteTag = ANIM_TAG_HORN_LEECH,
-    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimShadowBall
+static const union AnimCmd sAnimCmdFlippedX[] = {
+	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+	ANIMCMD_END,
+};
+static const union AnimCmd *const sAnimCmdTable_FlippedX[] = {
+	sAnimCmdFlippedX,
 };
 
 //dual chop
@@ -1766,28 +1761,6 @@ const struct SpriteTemplate gHappyHourCoinShowerTemplate =
     .callback = AnimHappyHourCoinShower
 };
 
-const struct SpriteTemplate gMakingItRainTemplate =
-{
-    .tileTag = ANIM_TAG_COIN,
-    .paletteTag = ANIM_TAG_COIN,
-    .oam = &gOamData_AffineNormal_ObjNormal_16x16,
-    .anims = gCoinAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimMakingItRain,
-};
-
-const struct SpriteTemplate gFallingMudSpriteTemplate =
-{
-    .tileTag = ANIM_TAG_MUDSLIDE,
-    .paletteTag = ANIM_TAG_MUDSLIDE,
-    .oam = &gOamData_AffineNormal_ObjNormal_16x16,
-    .anims = gCoinAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimMakingItRain,
-};
-
 //electric terrain
 const struct SpriteTemplate gElectricTerrainOrbsTemplate =
 {
@@ -2271,7 +2244,7 @@ const struct SpriteTemplate gSpiritShackleArrowTemplate =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimSonicBoomProjectile
+    .callback = AnimTranslateStinger
 };
 
 //darkest lariat
@@ -4637,13 +4610,6 @@ const struct SpriteTemplate gSpriteTemplate_PowerShiftDefenseBall = {
 };
 
 // stone axe
-static const union AnimCmd sAnimCmdFlippedX[] = {
-	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
-	ANIMCMD_END,
-};
-static const union AnimCmd *const sAnimCmdTable_FlippedX[] = {
-	sAnimCmdFlippedX,
-};
 const struct SpriteTemplate gSpriteTemplate_StoneAxeSlash = {
     .tileTag = ANIM_TAG_SLAM_HIT_2,
     .paletteTag = ANIM_TAG_SLAM_HIT_2,
@@ -4794,7 +4760,7 @@ static const union AffineAnimCmd* const sSpriteAffineAnimTable_Flutterby[] = {
 const struct SpriteTemplate gSpriteTemplate_InfernalParadeFlame = {
     .tileTag = ANIM_TAG_PURPLE_FLAME,
     .paletteTag = ANIM_TAG_PURPLE_FLAME,
-    .oam = &gOamData_AffineDouble_ObjBlend_32x16,
+    .oam = &gOamData_AffineDouble_ObjBlend_16x32,
     .anims = gAnims_GrudgeFlame,
     .images = NULL,
     .affineAnims = sSpriteAffineAnimTable_Flutterby,
@@ -5540,6 +5506,34 @@ const struct SpriteTemplate gGiantsSpearLaunchSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimSuperpowerFireball
+};
+static const union AnimCmd sAnimCmdFlippedXY[] = {
+	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+	ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+	ANIMCMD_END,
+};
+static const union AnimCmd *const sAnimCmdTable_FlippedXY[] = {
+	sAnimCmdFlippedXY,
+};
+const struct SpriteTemplate gGiantsSpearLaunchOpponentSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GIANTS_SPEAR,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .oam = &gOamData_AffineNormal_ObjNormal_64x64,
+    .anims = sAnimCmdTable_FlippedXY,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimSuperpowerFireball
+};
+const struct SpriteTemplate gGiantsSpearChargingOpponentSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GIANTS_SPEAR,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .oam = &gOamData_AffineNormal_ObjNormal_64x64,
+    .anims = sAnimCmdTable_FlippedXY,
+    .images = NULL,
+    .affineAnims = gAffineAnims_GrowingElectricOrb,
+    .callback = AnimGrowingChargeOrb
 };
 const struct SpriteTemplate gGigavoltHavocRingsSpriteTemplate =
 {
@@ -6892,6 +6886,16 @@ const struct SpriteTemplate gSplinteredShardsRisingSpearSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimAssistPawprint
+};
+const struct SpriteTemplate gFreezyFrostRisingSpearSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ICICLE_SPEAR,
+    .paletteTag = ANIM_TAG_ICICLE_SPEAR,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_GeyserTarget
 };
 static const union AffineAnimCmd sSplinteredShardsOpponentSteepAffineAnims[] = {
     AFFINEANIMCMD_FRAME(0, 0, 0xca, 1),
@@ -8397,26 +8401,6 @@ static void AnimHappyHourCoinShower(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[3] != 0)
         SetAverageBattlerPositions(gBattleAnimAttacker, 0, &sprite->x, &sprite->y);   //coin shower on attacker
-
-    sprite->x += gBattleAnimArgs[0];
-    sprite->y += 14;
-    StartSpriteAnim(sprite, gBattleAnimArgs[1]);
-    AnimateSprite(sprite);
-    sprite->data[0] = 0;
-    sprite->data[1] = 0;
-    sprite->data[2] = 4;
-    sprite->data[3] = 16;
-    sprite->data[4] = -70;
-    sprite->data[5] = gBattleAnimArgs[2];
-    StoreSpriteCallbackInData6(sprite, AnimFallingRock_Step);
-    sprite->callback = TranslateSpriteInEllipse;
-    sprite->callback(sprite);
-}
-
-static void AnimMakingItRain(struct Sprite *sprite)
-{
-    if (gBattleAnimArgs[3] != 0)
-        SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);   //coin shower on target
 
     sprite->x += gBattleAnimArgs[0];
     sprite->y += 14;

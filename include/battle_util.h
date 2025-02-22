@@ -15,9 +15,9 @@
 #define MOVE_LIMITATION_BELCH                   (1 << 11)
 #define MOVE_LIMITATION_THROAT_CHOP             (1 << 12)
 #define MOVE_LIMITATION_STUFF_CHEEKS            (1 << 13)
-#define MOVE_LIMITATION_GIGATON_HAMMER          (1 << 14)
-#define MOVE_LIMITATION_ION_DELUGE              (1 << 15)
-#define MOVE_LIMITATION_PSY_SWAP                (1 << 16)
+#define MOVE_LIMITATION_CANT_USE_TWICE          (1 << 14)
+#define MOVE_LIMITATION_BLOOMING                (1 << 15)
+#define MOVE_LIMITATION_PHANTOM                 (1 << 16)
 
 #define MOVE_LIMITATION_PLACEHOLDER             (1 << 17)
 #define MOVE_LIMITATIONS_ALL                    0xFFFF
@@ -54,6 +54,7 @@
 #define ITEMEFFECT_ORBS                         6
 #define ITEMEFFECT_LIFEORB_SHELLBELL            7
 #define ITEMEFFECT_USE_LAST_ITEM                8 // move end effects for just the battler, not whole field
+#define ITEMEFFECT_STATS_CHANGED                9 // For White Herb and Eject Pack
 
 #define WEATHER_HAS_EFFECT ((!IsAbilityOnField(ABILITY_CLOUD_NINE) && !IsAbilityOnField(ABILITY_AIR_LOCK)))
 
@@ -167,14 +168,19 @@ u32 SetRandomTarget(u32 battler);
 u32 GetMoveTarget(u16 move, u8 setTarget);
 u8 IsMonDisobedient(void);
 u32 GetBattlerHoldEffect(u32 battler, bool32 checkNegating);
+u32 GetBattlerHoldEffectIgnoreAbility(u32 battler, bool32 checkNegating);
+u32 GetBattlerHoldEffectInternal(u32 battler, bool32 checkNegating, bool32 checkAbility);
 u32 GetBattlerHoldEffectParam(u32 battler);
 bool32 IsMoveMakingContact(u32 move, u32 battlerAtk);
 bool32 IsBattlerGrounded(u32 battler);
 bool32 IsBattlerAlive(u32 battler);
 u32 GetMoveSlot(u16 *moves, u32 move);
 u32 GetBattlerWeight(u32 battler);
+u32 GetBattlerHeight(u32 battler);
 u32 CalcRolloutBasePower(u32 battlerAtk, u32 basePower, u32 rolloutTimer);
 u32 CalcFuryCutterBasePower(u32 basePower, u32 furyCutterCounter);
+u32 CalcRageFistPower(u32 basePower, u32 ragefistCounter);
+u32 CalcBariBariBeamPower(u32 basePower, u32 baribaribeamCounter);
 s32 CalculateMoveDamage(u32 move, u32 battlerAtk, u32 battlerDef, u32 moveType, s32 fixedBasePower, bool32 isCrit, bool32 randomFactor, bool32 updateFlags);
 s32 CalculateMoveDamageVars(u32 move, u32 battlerAtk, u32 battlerDef, u32 moveType, s32 fixedBasePower, uq4_12_t typeEffectivenessModifier,
                                           u32 weather, bool32 isCrit, u32 holdEffectAtk, u32 holdEffectDef, u32 abilityAtk, u32 abilityDef);
@@ -250,7 +256,9 @@ bool32 IsBattlerTerrainAffected(u32 battler, u32 terrainFlag);
 u32 GetBattlerFriendshipScore(u32 battler);
 u32 CountBattlerStatIncreases(u32 battler, bool32 countEvasionAcc);
 u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc);
-bool32 IsMyceliumMightOnField(void);
+u32 CountBattlerSpeedIncreases(u32 battler);
+u32 CountBattlerSpeedDecreases(u32 battler);
+u32 CountBattlerSpDefIncreases(u32 battler);
 bool32 ChangeTypeBasedOnTerrain(u32 battler);
 void RemoveConfusionStatus(u32 battler);
 u8 GetBattlerGender(u32 battler);

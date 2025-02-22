@@ -87,6 +87,7 @@ const struct SpriteTemplate gSlideMonToOffsetSpriteTemplate =
     .callback = SlideMonToOffset,
 };
 
+
 const struct SpriteTemplate gSlideMonToOffsetPartnerSpriteTemplate =
 {
     .tileTag = 0,
@@ -539,40 +540,6 @@ static void SlideMonToOriginalPos(struct Sprite *sprite)
     sprite->callback = SlideMonToOriginalPos_Step;
 }
 
-static void SlideMonToOriginalPos_Step(struct Sprite *sprite)
-{
-    s8 monSpriteId;
-    u8 lo;
-    struct Sprite *monSprite;
-
-    lo = sprite->data[7] & 0xff;
-    monSpriteId = sprite->data[7] >> 8;
-    monSprite = &gSprites[monSpriteId];
-    if (sprite->data[0] == 0)
-    {
-        if (lo < 2)
-            monSprite->x2 = 0;
-
-        if (lo == 2 || lo == 0)
-            monSprite->y2 = 0;
-
-        DestroyAnimSprite(sprite);
-    }
-    else
-    {
-        sprite->data[0]--;
-        sprite->data[3] += sprite->data[1];
-        sprite->data[4] += sprite->data[2];
-        monSprite->x2 = (s8)(sprite->data[3] >> 8) + sprite->data[5];
-        monSprite->y2 = (s8)(sprite->data[4] >> 8) + sprite->data[6];
-    }
-}
-
-// Linearly slides a mon's bg picture back to its original sprite position.
-// The sprite parameter is a dummy sprite used for facilitating the movement with its callback.
-// arg 0: 1 = target partner or 0 = attacker parter
-// arg 1: direction (0 = horizontal and vertical, 1 = horizontal only, 2 = vertical only)
-// arg 2: duration
 static void SlideMonToOriginalPosPartner(struct Sprite *sprite)
 {
     u32 monSpriteId;
@@ -603,6 +570,35 @@ static void SlideMonToOriginalPosPartner(struct Sprite *sprite)
     sprite->callback = SlideMonToOriginalPos_Step;
 }
 
+static void SlideMonToOriginalPos_Step(struct Sprite *sprite)
+{
+    s8 monSpriteId;
+    u8 lo;
+    struct Sprite *monSprite;
+
+    lo = sprite->data[7] & 0xff;
+    monSpriteId = sprite->data[7] >> 8;
+    monSprite = &gSprites[monSpriteId];
+    if (sprite->data[0] == 0)
+    {
+        if (lo < 2)
+            monSprite->x2 = 0;
+
+        if (lo == 2 || lo == 0)
+            monSprite->y2 = 0;
+
+        DestroyAnimSprite(sprite);
+    }
+    else
+    {
+        sprite->data[0]--;
+        sprite->data[3] += sprite->data[1];
+        sprite->data[4] += sprite->data[2];
+        monSprite->x2 = (s8)(sprite->data[3] >> 8) + sprite->data[5];
+        monSprite->y2 = (s8)(sprite->data[4] >> 8) + sprite->data[6];
+    }
+}
+
 // Linearly translates a mon to a target offset. The horizontal offset
 // is mirrored for the opponent's pokemon, and the vertical offset
 // is only mirrored if arg 3 is set to 1.
@@ -615,7 +611,6 @@ static void SlideMonToOffset(struct Sprite *sprite)
 {
     u8 battler;
     u8 monSpriteId;
-
     if (!gBattleAnimArgs[0])
         battler = gBattleAnimAttacker;
     else
@@ -645,14 +640,6 @@ static void SlideMonToOffset(struct Sprite *sprite)
     sprite->callback = TranslateSpriteLinearByIdFixedPoint;
 }
 
-// Linearly translates a mon to a target offset. The horizontal offset
-// is mirrored for the opponent's Pokémon, and the vertical offset
-// is only mirrored if arg 3 is set to 1.
-// arg 0: 0 = attacker partner, 1 = target partner
-// arg 1: target x pixel offset
-// arg 2: target y pixel offset
-// arg 3: mirror vertical translation for opposite battle side
-// arg 4: duration
 static void SlideMonToOffsetPartner(struct Sprite *sprite)
 {
     u8 battler;

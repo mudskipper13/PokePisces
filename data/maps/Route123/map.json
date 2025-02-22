@@ -5,7 +5,7 @@
   "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_ROUTE_108",
   "requires_flash": false,
-  "weather": "WEATHER_FOG_DIAGONAL",
+  "weather": "WEATHER_SNOW",
   "map_type": "MAP_TYPE_SNOW_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -260,6 +260,177 @@
       "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "Route123_EventScript_SnowNinjaTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 1,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 2,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 3,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 36,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 36,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 35,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 35,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 39,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 39,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 38,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 38,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 37,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 1,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 2,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 3,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 35,
+      "y": 38,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_SnowTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 34,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 34,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 35,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route123_EventScript_FogTrigger"
     }
   ],
   "bg_events": [

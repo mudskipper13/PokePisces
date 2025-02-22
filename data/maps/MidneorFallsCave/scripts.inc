@@ -37,64 +37,64 @@ MidneorFallsCave_EventScript_Iwan::
     end
 
 MidneorFallsCave_Text_KrayIntro:
-	.string "intro$"
+	.string "Ahahahahaha!$"
 
 MidneorFallsCave_Text_KrayDefeated:
-	.string "defeat$"
+	.string "Ka-boooooom!$"
 
 MidneorFallsCave_Text_KrayPostBattle:
-	.string "post$"
+	.string "Kyahahahaha!$"
 
 MidneorFallsCave_Text_ZiiIntro:
-	.string "intro$"
+	.string "Here, hold this.$"
 
 MidneorFallsCave_Text_ZiiDefeated:
-	.string "defeat$"
+	.string "Happy Birthday!$"
 
 MidneorFallsCave_Text_ZiiPostBattle:
-	.string "post$"
+	.string "Hope you liked my gift!$"
 
 MidneorFallsCave_Text_IvanIntro:
-	.string "intro$"
+	.string "Ivan's not home.$"
 
 MidneorFallsCave_Text_IvanDefeated:
-	.string "defeat$"
+	.string "Heh-heh-heh-heh.$"
 
 MidneorFallsCave_Text_IvanPostBattle:
-	.string "post$"
+	.string "Kuheh...$"
 
 MidneorFallsCave_Text_LibyaIntro:
-	.string "intro$"
+	.string "Beepbeepbeepbeep...$"
 
 MidneorFallsCave_Text_LibyaDefeated:
-	.string "defeat$"
+	.string "What the fuu-$"
 
 MidneorFallsCave_Text_LibyaPostBattle:
-	.string "post$"
+	.string "BOOOOOUMMMMM!"
 
 MidneorFallsCave_Text_CarvilleIntro:
-	.string "intro$"
+	.string "It's too quiet here...$"
 
 MidneorFallsCave_Text_CarvilleDefeated:
-	.string "defeat$"
+	.string "Shhhh.....$"
 
 MidneorFallsCave_Text_CarvillePostBattle:
-	.string "post$"
+	.string "KABLAM!!$"
 
 MidneorFallsCave_Text_BoomIntro:
-	.string "intro$"
+	.string "Adios, amigo!$"
 
 MidneorFallsCave_Text_BoomDefeated:
-	.string "defeat$"
+	.string "iVamos!$"
 
 MidneorFallsCave_Text_BoomPostBattle:
-	.string "post$"
+	.string "Heh heh heh.$"
 
 MidneorFallsCave_Text_IwanIntro:
-	.string "intro$"
+	.string "Here's some hot papaya!$"
 
 MidneorFallsCave_Text_IwanDefeated:
-	.string "defeat$"
+	.string "Served hot!$"
 
 MidneorFallsCave_Text_IwanPostBattle:
-	.string "post$"
+	.string "How'd you like that?$"

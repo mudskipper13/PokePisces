@@ -2,11 +2,10 @@
 
 VerdanturfTown_Mart_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_Mart_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 VerdanturfTown_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_VERDANTURF_TOWN
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
 	end
 
 VerdanturfTown_Mart_EventScript_Nurse::

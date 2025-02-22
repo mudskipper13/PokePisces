@@ -32,31 +32,33 @@ NavigulfWaves_EventScript_Libra::
     end
 
 NavigulfWaves_Text_ChadIntro:
-	.string "intro$"
+	.string "Wanna have a totally tubular battle?$"
 
 NavigulfWaves_Text_ChadDefeated:
-	.string "defeat$"
+	.string "Awww, wipeout!$"
 
 NavigulfWaves_Text_ChadPostBattle:
-	.string "post$"
+	.string "Where do I keep my Poké Balls?\n"
+	.string "Teehee, man's secret!$"
 
 NavigulfWaves_Text_ChazIntro:
-	.string "intro$"
+	.string "Way Cool!$"
 
 NavigulfWaves_Text_ChazDefeated:
-	.string "defeat$"
+	.string "Gnarly...$"
 
 NavigulfWaves_Text_ChazPostBattle:
-	.string "post$"
+	.string "Groovy! Mondo! Outrageous! Funky!$"
 
 NavigulfWaves_Text_BrodyIntro:
-	.string "intro$"
+	.string "Surf's up, dude!$"
 
 NavigulfWaves_Text_BrodyDefeated:
-	.string "defeat$"
+	.string "Surf's.... down!?!?$"
 
 NavigulfWaves_Text_BrodyPostBattle:
-	.string "post$"
+	.string "Duuude...\n"
+	.string "I don't know where the surf went.$"
 
 NavigulfWaves_Text_DelaIntro:
 	.string "intro$"
@@ -77,10 +79,10 @@ NavigulfWaves_Text_KieraPostBattle:
 	.string "post$"
 
 NavigulfWaves_Text_LibraIntro:
-	.string "intro$"
+	.string "I won't hurt your Pokemon... too much.$"
 
 NavigulfWaves_Text_LibraDefeated:
-	.string "defeat$"
+	.string "Make them STOP!!!$"
 
 NavigulfWaves_Text_LibraPostBattle:
-	.string "post$"
+	.string "I am not amused.$"

@@ -636,6 +636,11 @@ gSongTable::
 	song mus_mt_blaze, 0, 0
 	song mus_mt_blaze_peak, 0, 0
 	song mus_ninetales_legend, 0, 0
+	song mus_vs_gym_leader2, 0, 0
+	song mus_vs_legendary2, 0, 0
+	song mus_ever_grande_road, 0, 0
+	song mus_ever_grande_summit, 0, 0
+	song mus_surf_2, 0, 0
 	song mus_vs_wally, 0, 0
 
 	.align 2

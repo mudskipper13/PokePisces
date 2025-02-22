@@ -1542,7 +1542,7 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusTeachableLearnset,
     [SPECIES_BASCULEGION_FEMALE] = sBasculegionTeachableLearnset,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = sDudunsparsTeachableLearnset,
-    [SPECIES_LOTTABATS_HUDDLED] = sLottabatsTeachableLearnset,
+    [SPECIES_LOTTABATS_DISPERSED] = sLottabatsTeachableLearnset,
     [SPECIES_GAOTERRA_SOLAR] = sGaoterraTeachableLearnset,
     [SPECIES_GAOTERRA_LUNAR] = sGaoterraTeachableLearnset,
     [SPECIES_BISHOUCHA_WARMONGER] = sBishouchaTeachableLearnset,
@@ -1562,5 +1562,6 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_SHISHIMA_ALT] = sShishimaTeachableLearnset,
     [SPECIES_SHISHIMA_PUNISHER_ALT] = sShishimaTeachableLearnset,
     [SPECIES_LYOLICA] = sLyoresaTeachableLearnset,
+    [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyTeachableLearnset,
 #endif
 };

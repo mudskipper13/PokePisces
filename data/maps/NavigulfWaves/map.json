@@ -22,6 +22,11 @@
       "map": "MAP_DEWFORD_NEW",
       "offset": 0,
       "direction": "left"
+    },
+    {
+      "map": "MAP_NAVIGULF_UNDERWATER",
+      "offset": 0,
+      "direction": "dive"
     }
   ],
   "object_events": [

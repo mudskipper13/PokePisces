@@ -7,7 +7,7 @@
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
-  "allow_cycling": true,
+  "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
@@ -22,8 +22,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
-      "x": 39,
-      "y": 45,
+      "x": 35,
+      "y": 49,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -32,21 +32,301 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EverGrandePeak_EventScripts_ShunyongTest",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
+      "x": 12,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
+      "x": 13,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
+      "x": 56,
+      "y": 33,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
+      "x": 57,
+      "y": 33,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WALLACE",
+      "x": 38,
+      "y": 45,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 40,
+      "y": 45,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_14"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
+      "x": 38,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "x": 40,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_11"
     }
   ],
   "warp_events": [
     {
-      "x": 38,
-      "y": 47,
+      "x": 39,
+      "y": 50,
       "elevation": 0,
       "dest_map": "MAP_EVER_GRANDE_PEAK",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerWest1"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerWest2"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerSouth1"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerSouth2"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerSouth3"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerEast1"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerEast2"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 47,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerWest3"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 47,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "10",
+      "script": "EverGrandePeak_EventScript_SWTriggerEast3"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerWest1"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerWest2"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 47,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerWest3"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerSouth1"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerSouth2"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 48,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerSouth3"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 47,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerEast3"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerEast2"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NEW_COO_STATE",
+      "var_value": "12",
+      "script": "EverGrandePeak_EventScript_BMTriggerEast1"
+    }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_ShayonShrine"
+    },
+    {
+      "type": "sign",
+      "x": 70,
+      "y": 68,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_LuoshanShrine"
+    }
   ]
 }

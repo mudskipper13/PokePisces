@@ -451,7 +451,7 @@ const struct Berry gBerries[] =
 
     [ITEM_BLUK_BERRY - FIRST_BERRY_INDEX] =
     {
-        .name = _("Soda"),
+        .name = _("Bluk"),
         .firmness = BERRY_FIRMNESS_VERY_HARD,
         .size = 108,
         .maxYield = 6,

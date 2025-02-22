@@ -32,6 +32,7 @@ TheColdMines_OnFrame:
 	.2byte 0
 
 TheColdMines_OnLoad:
+	call_if_lt VAR_OZONE_ADMINS_STATE, 3, TheColdMines_EventScript_RemoveTabitha
 	call_if_gt VAR_OZONE_ADMINS_STATE, 3, TheColdMines_EventScript_ReplaceSouthSnow
 	call_if_gt VAR_OZONE_ADMINS_STATE, 4, TheColdMines_EventScript_ReplaceNorthSnow
 	call_if_eq VAR_MINES_MERALCORE_STATE, 0, TheColdMines_EventScript_SetupMeralcorePuzzle1
@@ -65,6 +66,11 @@ TheColdMines_EventScript_SetupMeralcorePuzzle3::
 	removeobject LOCALID_MERAL16
 	removeobject LOCALID_MERAL17
 	removeobject LOCALID_MERAL19
+	return
+
+TheColdMines_EventScript_RemoveTabitha::
+	setflag FLAG_TEMP_1D
+	removeobject LOCALID_TABITHA
 	return
 
 TheColdMines_EventScript_ReplaceSouthSnow::

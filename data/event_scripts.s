@@ -705,8 +705,7 @@ Common_EventScript_TannerShop0Progress::
 
 	.align 2
 Common_Mart_TannerShop0:
-	.2byte ITEM_SODA_POP
-	.2byte ITEM_POKE_BALL
+	.2byte ITEM_TM_THIEF
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_NONE
 	release
@@ -967,6 +966,52 @@ Common_EventScript_TannerShop10Progress::
 
 	.align 2
 Common_Mart_TannerShop10:
+	.2byte ITEM_FULL_RESTORE
+	.2byte ITEM_MAX_POTION
+	.2byte ITEM_MAX_REVIVE
+	.2byte ITEM_HYPER_POTION
+	.2byte ITEM_MAX_ELIXIR
+	.2byte ITEM_ULTRA_BALL
+	.2byte ITEM_FULL_HEAL
+	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_ELIXIR
+	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_REVIVE
+	.2byte ITEM_POTION
+	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ETHER
+	.2byte ITEM_SODA_POP
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_ICE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_NONE
+	release
+	end
+
+Common_EventScript_KodoughShop::
+	lock
+	faceplayer
+	message gText_KodoughAtCounter
+	waitmessage
+	goto Common_EventScript_KodoughInventory
+	msgbox gText_KodoughGoodbye, MSGBOX_DEFAULT
+	release
+	end
+
+Common_EventScript_KodoughInventory::
+	pokemart Common_Mart_KodoughShop
+	msgbox gText_KodoughGoodbye, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+Common_Mart_KodoughShop:
+	.2byte ITEM_DOUGH_STICK
 	.2byte ITEM_FULL_RESTORE
 	.2byte ITEM_MAX_POTION
 	.2byte ITEM_MAX_REVIVE
@@ -3658,3 +3703,149 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SailorsPauseUnderwater/scripts.inc"
 
 	.include "data/maps/StraeSeapathUnderwater/scripts.inc"
+
+	.include "data/maps/FortreeGymNew/scripts.inc"
+
+	.include "data/maps/FortreeTransitionArea/scripts.inc"
+
+	.include "data/maps/FortreeGymBattleLocation/scripts.inc"
+
+	.include "data/maps/LavaridgeGymNew/scripts.inc"
+
+	.include "data/maps/LavaridgeHouses/scripts.inc"
+
+	.include "data/maps/TrickHousePotRoom/scripts.inc"
+
+	.include "data/maps/TrickHouseUpsideDownRoom/scripts.inc"
+
+	.include "data/maps/TrickHouseMainPortion/scripts.inc"
+
+	.include "data/maps/TrickHouseDarkRoom/scripts.inc"
+
+	.include "data/maps/TrickHouseLeverRooms/scripts.inc"
+
+	.include "data/maps/TrickHouseBallRoom/scripts.inc"
+
+	.include "data/maps/TrickHouseEntrance/scripts.inc"
+
+	.include "data/maps/NewMauvilleFloor2Rooms/scripts.inc"
+
+	.include "data/maps/NewMauvilleRydelCycles/scripts.inc"
+
+	.include "data/maps/OceanicMuseumNew/scripts.inc"
+
+	.include "data/maps/SouthernIsland/scripts.inc"
+
+	.include "data/maps/VerdanturfGym/scripts.inc"
+
+	.include "data/maps/SlateportInteriors/scripts.inc"
+
+	.include "data/maps/FossilShore/scripts.inc"
+
+	.include "data/maps/FossilShoreHouses/scripts.inc"
+
+	.include "data/maps/SmokingArea/scripts.inc"
+
+	.include "data/maps/VerdanturfInteriors/scripts.inc"
+
+	.include "data/maps/VerdanturfTransition/scripts.inc"
+
+	.include "data/maps/HatchloamDayCare/scripts.inc"
+
+	.include "data/maps/DewfordGymNew/scripts.inc"
+
+	.include "data/maps/DewfordInteriors/scripts.inc"
+
+	.include "data/maps/FortreeInteriors/scripts.inc"
+
+	.include "data/maps/FallarborInteriors/scripts.inc"
+
+	.include "data/maps/OzoneTransitionBuildings/scripts.inc"
+
+	.include "data/maps/FortreeGymTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustGymEntryHallways/scripts.inc"
+
+	.include "data/maps/RustGymLockerHallway/scripts.inc"
+
+	.include "data/maps/RustGymExtracurricularHallway/scripts.inc"
+
+	.include "data/maps/RustGymCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymGym/scripts.inc"
+
+	.include "data/maps/RustGymComputerLab/scripts.inc"
+
+	.include "data/maps/RustGymLibrary/scripts.inc"
+
+	.include "data/maps/RustGymClassroom/scripts.inc"
+
+	.include "data/maps/RustGymDarkHallway/scripts.inc"
+
+	.include "data/maps/RustGymDarkLockers/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeteria/scripts.inc"
+
+	.include "data/maps/RustGymDarkClassroom/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOffice/scripts.inc"
+
+	.include "data/maps/SeasideCasino/scripts.inc"
+
+	.include "data/maps/RustGymPrincipalsOfficeShort/scripts.inc"
+
+	.include "data/maps/RustGymDarkCafeArena/scripts.inc"
+
+	.include "data/maps/RustboroTransitionBuilding/scripts.inc"
+
+	.include "data/maps/RustboroInteriors/scripts.inc"
+
+	.include "data/maps/DevonCorp/scripts.inc"
+
+	.include "data/maps/WallyArena/scripts.inc"
+
+	.include "data/maps/WallyArenaLeadup/scripts.inc"
+
+	.include "data/maps/LittlerootNormanHouse/scripts.inc"
+
+	.include "data/maps/SeasideCasinoTheater/scripts.inc"
+
+	.include "data/maps/SeasideCasinoBackrooms/scripts.inc"
+
+	.include "data/maps/SeasideCasinoVIPLounges/scripts.inc"
+
+	.include "data/maps/SeasideCasinoBattleRoom/scripts.inc"
+
+	.include "data/maps/SouthMossdeep/scripts.inc"
+
+	.include "data/maps/OzoneInt/scripts.inc"
+
+	.include "data/maps/OzoneFloor2/scripts.inc"
+
+	.include "data/maps/OzoneMattRoom/scripts.inc"
+
+	.include "data/maps/OzoneTabithaRoom/scripts.inc"
+
+	.include "data/maps/OzoneCourtneyRoom/scripts.inc"
+
+	.include "data/maps/OzoneShellyRoom/scripts.inc"
+
+	.include "data/maps/OzoneEliteFourHub/scripts.inc"
+
+	.include "data/maps/OzoneMaxieArchieRoom/scripts.inc"
+
+	.include "data/maps/PlaneInFlight/scripts.inc"
+
+	.include "data/maps/OzoneSituationRoom/scripts.inc"
+
+	.include "data/maps/OzoneOutsideCutscene/scripts.inc"
+
+	.include "data/maps/EverGrandeRoadPC/scripts.inc"
+
+	.include "data/maps/CaveOfOriginCutscene/scripts.inc"
+
+	.include "data/maps/EverGrandeRestArea/scripts.inc"
+
+	.include "data/maps/SweltornInteriors/scripts.inc"
+
+	.include "data/maps/ShunyongBattleArena/scripts.inc"

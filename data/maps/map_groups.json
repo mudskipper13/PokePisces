@@ -160,14 +160,19 @@
     "PerplumeMaze",
     "FortreeCity",
     "FortreeCity_Gym",
-    "CultipexCave"
+    "CultipexCave",
+    "FortreeGymNew"
   ],
   "gMapGroup_PiscesLeg5Minor": [
     "VerdanturfTown_PokemonCenter_2F",
     "VerdanturfTown_Mart",
     "FortreeCity_PokemonCenter_1F",
     "ScuttillSecretTreeHouse",
-    "Gym4Corridor"
+    "Gym4Corridor",
+    "FortreeTransitionArea",
+    "FortreeGymBattleLocation",
+    "FortreeInteriors",
+    "FortreeGymTransitionBuilding"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",
@@ -176,20 +181,27 @@
     "CrimneyClimb",
     "JaggroPass",
     "FallarborNew",
+    "WhisperCliff",
+    "MidneorFallsCave",
     "FieryPath",
     "LavaridgeInt",
-    "LavaridgeTown_Gym_1F",
-    "LavaridgeTown_Gym_B1F"
+    "LavaridgeGymNew"
   ],
   "gMapGroup_PiscesLeg6Minor": [
     "FortreeCity_PokemonCenter_2F",
     "FortreeCity_Mart",
     "FallarborTown_PokemonCenter_1F",
     "LavaridgeTown_PokemonCenter_1F",
-    "Gym5Corridor"
+    "LavaridgeHouses",
+    "Gym5Corridor",
+    "LavaridgeTown_Gym_1F",
+    "LavaridgeTown_Gym_B1F",
+    "FossilShore",
+    "FossilShoreHouses",
+    "FallarborInteriors",
+    "OzoneTransitionBuildings"
   ],
   "gMapGroup_PiscesLeg7Major": [
-    "SweltornTransitionCave",
     "SweltornDesert",
     "SweltornPalace",
     "SweltornPalaceOutside",
@@ -199,34 +211,42 @@
     "HatchloamField",
     "CyclingRoad",
     "SeaMauville",
-    "Maintenance",
-    "NewMauville_Entrance",
-    "NewMauville_Inside",
     "MauvilleCity_GameCorner",
+    "NewMauville_Entrance",
+    "Maintenance",
+    "NewMauville_Inside",
     "MaintenanceBondingArena",
     "VerdanturfNew",
-    "MauvilleCity_Gym"
+    "VerdanturfInteriors"
   ],
   "gMapGroup_PiscesLeg7Minor": [
     "LavaridgeTown_PokemonCenter_2F",
     "NewMauvilleCenter1",
     "NewMauvilleCenter2",
-    "Route110_TrickHouseEntrance",
-    "Route110_TrickHouseEnd",
-    "Route110_TrickHouseCorridor",
-    "Route110_TrickHousePuzzle1",
-    "Route110_TrickHousePuzzle2",
-    "Route110_TrickHousePuzzle3",
-    "Route110_TrickHousePuzzle4",
-    "Route110_TrickHousePuzzle5",
-    "Route110_TrickHousePuzzle6",
-    "Route110_TrickHousePuzzle7",
-    "Route110_TrickHousePuzzle8",
     "MauvilleCity_PokemonCenter_2F",
     "SlateportCity_PokemonCenter_1F",
     "BattleFrontier_PokemonCenter_1F",
+    "SweltornTransitionCave",
+    "SweltornTransitionHallway",
+    "NewMauvilleFloor2Rooms",
+    "HatchloamDayCare",
+    "TrickHouseEntrance",
+    "TrickHouseMainPortion",
+    "TrickHouseLeverRooms",
+    "TrickHouseDarkRoom",
+    "TrickHouseUpsideDownRoom",
+    "TrickHouseBallRoom",
+    "TrickHousePotRoom",
+    "NewMauvilleRydelCycles",
+    "SlateportInteriors",
+    "OceanicMuseumNew",
+    "SouthernIsland",
+    "SmokingArea",
+    "VerdanturfTransition",
     "Gym6Corridor",
-    "SweltornTransitionHallway"
+    "VerdanturfGym",
+    "MauvilleCity_Gym",
+    "SweltornInteriors"
   ],
   "gMapGroup_PiscesLeg8Major": [
     "SlateportShore",
@@ -237,14 +257,16 @@
     "SailorsPauseShips",
     "ShoalCaveNewFloor1",
     "ShoalCaveNewFloor2",
-    "DewfordTown_Gym"
+    "DewfordTown_Gym",
+    "DewfordGymNew"
   ],
   "gMapGroup_PiscesLeg8Minor": [
     "DewfordTown_PokemonCenter_1F",
     "Gym7Corridor",
     "NavigulfUnderwater",
     "SailorsPauseUnderwater",
-    "StraeSeapathUnderwater"
+    "StraeSeapathUnderwater",
+    "DewfordInteriors"
   ],
   "gMapGroup_PiscesLeg9Major": [
     "DetermaniteBeach",
@@ -254,9 +276,7 @@
     "RustburgWharf",
     "UnduraTunnels",
     "UnduraTunnelsDeep",
-    "WhisperCliff",
     "MidneorFalls",
-    "MidneorFallsCave",
     "RustboroNew",
     "RustboroCity_Gym"
   ],
@@ -264,7 +284,25 @@
     "DewfordTown_PokemonCenter_2F",
     "FallarborTown_PokemonCenter_2F",
     "RustboroCity_PokemonCenter_1F",
-    "Gym8Corridor"
+    "RustboroTransitionBuilding",
+    "RustboroInteriors",
+    "Gym8Corridor",
+    "RustGymEntryHallways",
+    "RustGymClassroom",
+    "RustGymLockerHallway",
+    "RustGymExtracurricularHallway",
+    "RustGymComputerLab",
+    "RustGymLibrary",
+    "RustGymCafeteria",
+    "RustGymGym",
+    "RustGymPrincipalsOfficeShort",
+    "RustGymPrincipalsOffice",
+    "RustGymDarkHallway",
+    "RustGymDarkLockers",
+    "RustGymDarkClassroom",
+    "RustGymDarkCafeteria",
+    "RustGymDarkCafeArena",
+    "DevonCorp"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
@@ -273,23 +311,47 @@
     "NoviceWalk",
     "LittlerootNew",
     "PendingDev",
-    "TestMap"
+    "TestMap",
+    "SeasideCasino",
+    "WallyArena",
+    "WallyArenaLeadup",
+    "SeasideCasinoTheater",
+    "SeasideCasinoBackrooms",
+    "SeasideCasinoVIPLounges",
+    "SeasideCasinoBattleRoom",
+    "SouthMossdeep"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_1F",
-    "OldaleTown_PokemonCenter_2F"
+    "OldaleTown_PokemonCenter_2F",
+    "LittlerootNormanHouse"
   ],
   "gMapGroup_PiscesLeg11Major": [
     "CrimneyCaldera",
     "MeteorNadir",
     "EverGrandeTransitionCave",
     "EverGrandeRoad",
-    "EverGrandePeak"
+    "EverGrandePeak",
+    "OzoneInt",
+    "OzoneFloor2",
+    "OzoneMattRoom",
+    "OzoneTabithaRoom",
+    "OzoneCourtneyRoom",
+    "OzoneShellyRoom",
+    "OzoneEliteFourHub",
+    "OzoneMaxieArchieRoom",
+    "ShunyongBattleArena"
   ],
   "gMapGroup_PiscesLeg11Minor": [
     "EverGrandeCity_PokemonCenter_1F",
-    "EverGrandeCity_PokemonCenter_2F"
+    "EverGrandeCity_PokemonCenter_2F",
+    "PlaneInFlight",
+    "OzoneSituationRoom",
+    "OzoneOutsideCutscene",
+    "EverGrandeRoadPC",
+    "CaveOfOriginCutscene",
+    "EverGrandeRestArea"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -783,7 +845,18 @@
   ],
   "gMapGroup_IndoorRoute110": [
     "Route110_SeasideCyclingRoadNorthEntrance",
-    "Route110_SeasideCyclingRoadSouthEntrance"
+    "Route110_SeasideCyclingRoadSouthEntrance",
+    "Route110_TrickHouseEntrance",
+    "Route110_TrickHouseEnd",
+    "Route110_TrickHouseCorridor",
+    "Route110_TrickHousePuzzle1",
+    "Route110_TrickHousePuzzle2",
+    "Route110_TrickHousePuzzle3",
+    "Route110_TrickHousePuzzle4",
+    "Route110_TrickHousePuzzle5",
+    "Route110_TrickHousePuzzle6",
+    "Route110_TrickHousePuzzle7",
+    "Route110_TrickHousePuzzle8"
   ],
   "gMapGroup_IndoorRoute113": [
     "Route113_GlassWorkshop"

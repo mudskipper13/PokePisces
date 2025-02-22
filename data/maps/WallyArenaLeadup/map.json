@@ -1,0 +1,75 @@
+{
+  "id": "MAP_WALLY_ARENA_LEADUP",
+  "name": "WallyArenaLeadup",
+  "layout": "LAYOUT_WALLY_ARENA_LEADUP",
+  "music": "MUS_NONE",
+  "region_map_section": "MAPSEC_VERDANTURF_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_WALLY_ARENA_LEADUP",
+      "offset": 0,
+      "direction": "left"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_WALLY_ARENA",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

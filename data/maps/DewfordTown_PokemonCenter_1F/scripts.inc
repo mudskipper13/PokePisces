@@ -2,12 +2,10 @@
 
 DewfordTown_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_PokemonCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 DewfordTown_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_DEWFORD_TOWN
-	call Common_EventScript_UpdateBrineyLocation
+	setrespawn HEAL_LOCATION_DEWFORD_NEW
 	end
 
 DewfordTown_PokemonCenter_1F_EventScript_Nurse::

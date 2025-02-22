@@ -5,14 +5,20 @@
   "music": "MUS_B_PIKE",
   "region_map_section": "MAPSEC_UNDERWATER_124",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_UNDERWATER_BUBBLES",
   "map_type": "MAP_TYPE_UNDERWATER",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "map": "MAP_SAILORS_PAUSE_SHIPS",
+      "offset": 0,
+      "direction": "emerge"
+    }
+  ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_DIVER",

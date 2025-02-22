@@ -223,6 +223,9 @@ static const u8 sText_MiracleEye[] = _("Miracle Eye");
 static const u8 sText_AquaRing[] = _("Aqua Ring");
 static const u8 sText_LaserFocus[] = _("Laser Focused");
 static const u8 sText_Electrified[] = _("Electrified");
+static const u8 sText_FairyLock[] = _("Fairy Lock");
+static const u8 sText_AcidArmor[] = _("Acid Armor");
+static const u8 sText_CraftyShield[] = _("Crafty Shield");
 static const u8 sText_AuroraVeil[] = _("Aurora Veil");
 static const u8 sText_Silence[] = _("The 13 Tolls");
 static const u8 sText_LuckyChant[] = _("Lucky Chant");
@@ -254,9 +257,9 @@ static const u8 sText_EmptyString[] = _("");
 static const struct BitfieldInfo sStatus1Bitfield[] =
 {
     {/*Sleep*/ 2, 0},
-    {/*Poison*/ 1, 3},
-    {/*Burn*/ 1, 4},
-    {/*Freeze*/ 1, 5},
+    {/*Freeze*/ 1, 3},
+    {/*Poison*/ 1, 4},
+    {/*Burn*/ 1, 5},
     {/*Paralysis*/1, 6},
     {/*Toxic Poison*/ 1, 7},
     {/*Toxic Counter*/ 4, 8},
@@ -324,7 +327,10 @@ static const struct BitfieldInfo sStatus3Bitfield[] =
 
 static const struct BitfieldInfo sStatus4Bitfield[] =
 {
-    {/*Electrified*/ 1, 0,}
+    {/*Electrified*/ 1, 0,},
+    {/*Fairy Lock*/ 1, 12},
+    {/*Acid Armor*/ 1, 16},
+    {/*Crafty Shield*/ 1, 22,}
 };
 
 static const struct BitfieldInfo sAIBitfield[] =
@@ -398,9 +404,9 @@ static const struct ListMenuItem sStatsListItems[] =
 static const struct ListMenuItem sStatus1ListItems[] =
 {
     {gText_Sleep, 0},
-    {gText_Poison, 1},
-    {gText_Burn, 2},
-    {sText_Freeze, 3},
+    {sText_Freeze, 1},
+    {gText_Poison, 2},
+    {gText_Burn, 3},
     {gText_Paralysis, 4},
     {sText_ToxicPoison, 5},
     {sText_ToxicCounter, 6},
@@ -451,6 +457,9 @@ static const struct ListMenuItem sStatus3ListItems[] =
 static const struct ListMenuItem sStatus4ListItems[] =
 {
     {sText_Electrified, 0},
+    {sText_FairyLock, 1},
+    {sText_AcidArmor, 2},
+    {sText_CraftyShield, 3}
 };
 
 static const struct ListMenuItem sSideStatusListItems[] =
@@ -2315,6 +2324,25 @@ static const u8 *const sHoldEffectNames[] =
     [HOLD_EFFECT_BLUNDER_POLICY] = sText_HoldEffectBlunderPolicy,
     [HOLD_EFFECT_HEAVY_DUTY_BOOTS] = sText_HoldEffectHeavyDutyBoots,
     [HOLD_EFFECT_THROAT_SPRAY] = sText_HoldEffectThroatSpray,
+    
+    [HOLD_EFFECT_SILVER_POWDER] = sText_HoldEffectBugPower, 
+    [HOLD_EFFECT_METAL_COAT] = sText_HoldEffectSteelPower,
+    [HOLD_EFFECT_SOFT_SAND] = sText_HoldEffectGroundPower,
+    [HOLD_EFFECT_HARD_STONE] = sText_HoldEffectRockPower,
+    [HOLD_EFFECT_MIRACLE_SEED] = sText_HoldEffectGrassPower,
+    [HOLD_EFFECT_BLACK_GLASSES] = sText_HoldEffectDarkPower,
+    [HOLD_EFFECT_BLACK_BELT] = sText_HoldEffectFightingPower,
+    [HOLD_EFFECT_MAGNET] = sText_HoldEffectElectricPower,
+    [HOLD_EFFECT_MYSTIC_WATER] = sText_HoldEffectWaterPower,
+    [HOLD_EFFECT_SHARP_BEAK] = sText_HoldEffectFlyingPower,
+    [HOLD_EFFECT_POISON_BARB] = sText_HoldEffectPoisonPower,
+    [HOLD_EFFECT_NEVER_MELT_ICE] = sText_HoldEffectIcePower,
+    [HOLD_EFFECT_SPELL_TAG] = sText_HoldEffectGhostPower,
+    [HOLD_EFFECT_TWISTED_SPOON] = sText_HoldEffectPsychicPower,
+    [HOLD_EFFECT_CHARCOAL] = sText_HoldEffectFirePower,
+    [HOLD_EFFECT_DRAGON_FANG] = sText_HoldEffectDragonPower,
+    [HOLD_EFFECT_SILK_SCARF] = sText_HoldEffectNormalPower,
+    [HOLD_EFFECT_FAIRY_FEATHER] = sText_HoldEffectFairyPower,
 };
 static const u8 *GetHoldEffectName(u16 holdEffect)
 {

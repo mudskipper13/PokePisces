@@ -1148,7 +1148,7 @@ static const u16 sDudunsparsFormSpeciesIdTable[] = {
 
 static const u16 sLottabatsFormSpeciesIdTable[] = {
     SPECIES_LOTTABATS,
-    SPECIES_LOTTABATS_HUDDLED,
+    SPECIES_LOTTABATS_DISPERSED,
     FORM_SPECIES_END,
 };
 
@@ -1219,4 +1219,11 @@ static const u16 sPottriciaFormSpeciesIdTable[] = {
     SPECIES_POTTRICIA_SHATTERED,
     FORM_SPECIES_END,
 };
+
+static const u16 sFakysnakyFormSpeciesIdTable[] = {
+    SPECIES_FAKYSNAKY,
+    SPECIES_FAKYSNAKY_BUSTED,
+    FORM_SPECIES_END,
+};
+
 #endif

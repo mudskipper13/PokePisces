@@ -1,0 +1,101 @@
+{
+  "id": "MAP_OZONE_FLOOR2",
+  "name": "OzoneFloor2",
+  "layout": "LAYOUT_OZONE_FLOOR2",
+  "music": "MUS_B_FRONTIER",
+  "region_map_section": "MAPSEC_ROUTE_109",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NOLAND",
+      "x": 22,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NURSE_FIELD",
+      "x": 22,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OzoneFloor2_EventScript_Nurse",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_INT",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 28,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_OZONE_ELITE_FOUR_HUB",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_RAY_STATE",
+      "var_value": "6",
+      "script": "OzoneFloor2_EventScript_RayEncounter1"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_RAY_STATE",
+      "var_value": "6",
+      "script": "OzoneFloor2_EventScript_RayEncounter2"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_RAY_STATE",
+      "var_value": "6",
+      "script": "OzoneFloor2_EventScript_RayEncounter3"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_RAY_STATE",
+      "var_value": "6",
+      "script": "OzoneFloor2_EventScript_RayEncounter4"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

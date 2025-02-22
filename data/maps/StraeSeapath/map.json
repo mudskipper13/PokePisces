@@ -27,6 +27,11 @@
       "map": "MAP_EVER_GRANDE_ROAD",
       "offset": 26,
       "direction": "down"
+    },
+    {
+      "map": "MAP_STRAE_SEAPATH_UNDERWATER",
+      "offset": 0,
+      "direction": "dive"
     }
   ],
   "object_events": [

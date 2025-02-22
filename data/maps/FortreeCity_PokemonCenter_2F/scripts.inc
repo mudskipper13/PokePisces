@@ -2,11 +2,10 @@
 
 FortreeCity_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_PokemonCenter_2F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 FortreeCity_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_FORTREE_CITY
+	setrespawn HEAL_LOCATION_OZONE_INSTITUTE
 	end
 
 FortreeCity_PokemonCenter_2F_EventScript_Nurse::

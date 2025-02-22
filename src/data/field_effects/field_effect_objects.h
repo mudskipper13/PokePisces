@@ -136,6 +136,97 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_ChimneyGrass = {
     .callback = UpdateChimneyGrassFieldEffect,
 };
 
+const struct SpritePalette gSpritePalette_PinkGrass = {gFieldEffectPal_PinkGrass, FLDEFF_PAL_TAG_PINK_GRASS};
+const struct SpritePalette gSpritePalette_SnowyGrass = {gFieldEffectPal_SnowyGrass, FLDEFF_PAL_TAG_SNOWY_GRASS};
+const struct SpritePalette gSpritePalette_GoldGrass = {gFieldEffectPal_GoldGrass, FLDEFF_PAL_TAG_GOLD_GRASS};
+
+//pink grass
+static const union AnimCmd sAnim_PinkGrass[] =
+{
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(2, 10),
+    ANIMCMD_FRAME(3, 10),
+    ANIMCMD_FRAME(4, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_PinkGrass[] =
+{
+    sAnim_PinkGrass,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_PinkGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_PINK_GRASS,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_PinkGrass,
+    .images = sPicTable_TallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdatePinkGrassFieldEffect,
+};
+
+//snowy grass
+static const union AnimCmd sAnim_SnowyGrass[] =
+{
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(2, 10),
+    ANIMCMD_FRAME(3, 10),
+    ANIMCMD_FRAME(4, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_SnowyGrass[] =
+{
+    sAnim_SnowyGrass,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_SnowyGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOWY_GRASS,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_SnowyGrass,
+    .images = sPicTable_TallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowyGrassFieldEffect,
+};
+
+//gold grass
+static const struct SpriteFrameImage sPicTable_GoldGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_GoldGrass, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_GoldGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_GoldGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_GoldGrass, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_GoldGrass, 2, 2, 4),
+};
+
+
+static const union AnimCmd sAnim_GoldGrass[] =
+{
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(2, 10),
+    ANIMCMD_FRAME(3, 10),
+    ANIMCMD_FRAME(4, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_GoldGrass[] =
+{
+    sAnim_GoldGrass,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_GoldGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GOLD_GRASS,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_GoldGrass,
+    .images = sPicTable_GoldGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateGoldGrassFieldEffect,
+};
+
 static const struct SpriteFrameImage sPicTable_Ripple[] = {
     overworld_frame(gFieldEffectObjectPic_Ripple, 2, 2, 0),
     overworld_frame(gFieldEffectObjectPic_Ripple, 2, 2, 1),
@@ -397,6 +488,104 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_JumpChimneyGrass = {
     .oam = &gObjectEventBaseOam_16x8,
     .anims = sAnimTable_JumpChimneyGrass,
     .images = sPicTable_JumpChimneyGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateJumpImpactEffect,
+};
+
+//jump pink
+static const union AnimCmd sAnim_JumpPinkGrass[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_JumpPinkGrass[] =
+{
+    sAnim_JumpPinkGrass,
+};
+
+static const struct SpriteFrameImage sPicTable_JumpPinkGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 0),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 1),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 2),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_JumpPinkGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_PINK_GRASS,
+    .oam = &gObjectEventBaseOam_16x8,
+    .anims = sAnimTable_JumpPinkGrass,
+    .images = sPicTable_JumpPinkGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateJumpImpactEffect,
+};
+
+//jump snowy
+static const union AnimCmd sAnim_JumpSnowyGrass[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_JumpSnowyGrass[] =
+{
+    sAnim_JumpSnowyGrass,
+};
+
+static const struct SpriteFrameImage sPicTable_JumpSnowyGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 0),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 1),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 2),
+    overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSnowyGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOWY_GRASS,
+    .oam = &gObjectEventBaseOam_16x8,
+    .anims = sAnimTable_JumpSnowyGrass,
+    .images = sPicTable_JumpSnowyGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateJumpImpactEffect,
+};
+
+//jump gold
+
+static const struct SpriteFrameImage sPicTable_JumpGoldGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_JumpGoldGrass, 2, 1, 0),
+    overworld_frame(gFieldEffectObjectPic_JumpGoldGrass, 2, 1, 1),
+    overworld_frame(gFieldEffectObjectPic_JumpGoldGrass, 2, 1, 2),
+    overworld_frame(gFieldEffectObjectPic_JumpGoldGrass, 2, 1, 3),
+};
+
+
+static const union AnimCmd sAnim_JumpGoldGrass[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_JumpGoldGrass[] =
+{
+    sAnim_JumpGoldGrass,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_JumpGoldGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GOLD_GRASS,
+    .oam = &gObjectEventBaseOam_16x8,
+    .anims = sAnimTable_JumpGoldGrass,
+    .images = sPicTable_JumpGoldGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateJumpImpactEffect,
 };

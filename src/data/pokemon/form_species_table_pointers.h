@@ -598,7 +598,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     // Basculegion
     [SPECIES_BASCULEGION_FEMALE] = sBasculegionFormSpeciesIdTable,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = sDudunsparsFormSpeciesIdTable,
-    [SPECIES_LOTTABATS_HUDDLED] = sLottabatsFormSpeciesIdTable,
+    [SPECIES_LOTTABATS_DISPERSED] = sLottabatsFormSpeciesIdTable,
     [SPECIES_GAOTERRA_SOLAR] = sGaoterraFormSpeciesIdTable,
     [SPECIES_GAOTERRA_LUNAR] = sGaoterraFormSpeciesIdTable,
     [SPECIES_BISHOUCHA_WARMONGER] = sBishouchaFormSpeciesIdTable,
@@ -619,5 +619,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_SHISHIMA_PUNISHER_ALT] = sShishimaFormSpeciesIdTable,
     [SPECIES_LYOLICA] = sLyoresaFormSpeciesIdTable,
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaFormSpeciesIdTable,
+    [SPECIES_FAKYSNAKY] = sFakysnakyFormSpeciesIdTable,
+    [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyFormSpeciesIdTable,
 #endif
 };

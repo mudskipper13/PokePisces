@@ -662,18 +662,18 @@
 #define FLAG_PISCES_E  0x26B // Unused Flag in Vanilla. Used as one of six "generic" flags that are to be reset whenever doing their part for a major script.
 #define FLAG_PISCES_F  0x26C // Unused Flag in Vanilla. Used as one of six "generic" flags that are to be reset whenever doing their part for a major script.
 #define FLAG_PACIFIDLOG_ROADBLOCK  0x26D // Unused Flag in Vanilla.
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_POTTRICIA_DEFEATED  0x26E // Unused Flag
+#define FLAG_DEFEATED_ANTON  0x26F // Unused Flag
+#define FLAG_SOLVED_TRICK_HOUSE_CODE  0x270 // Unused Flag
+#define FLAG_SOLVED_5_FAERED_PUZZLE  0x271 // Unused Flag
+#define FLAG_DOCK_QUEST_FOUND_STERN  0x272 // Unused Flag
+#define FLAG_DOCK_QUEST_FOUND_DRAKE  0x273 // Unused Flag
+#define FLAG_DOCK_QUEST_FOUND_ARCHIE  0x274 // Unused Flag
+#define FLAG_RECEIVED_POKE_FLUTE  0x275 // Unused Flag
+#define FLAG_RECEIVED_GOLD_TEETH  0x276 // Unused Flag
+#define FLAG_RECEIVED_TEA  0x277 // Unused Flag
+#define FLAG_DEFEATED_LUO_KYO  0x278 // Unused Flag
+#define FLAG_DEFEATED_SHA_GROU  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
@@ -1254,29 +1254,29 @@
 #define FLAG_ITEM_TM_ZING_ZAP                                           0x4B4 // Unused Flag
 #define FLAG_TALKED_TO_MOSS_GUY                                           0x4B5 // Unused Flag
 #define FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR                                           0x4B6 // Unused Flag
-#define FLAG_DEFEATED_MR_BONDING                                           0x4B7 // Unused Flag
-#define FLAG_UNUSED_0x4B8                                           0x4B8 // Unused Flag
-#define FLAG_UNUSED_0x4B9                                           0x4B9 // Unused Flag
-#define FLAG_UNUSED_0x4BA                                           0x4BA // Unused Flag
-#define FLAG_UNUSED_0x4BB                                           0x4BB // Unused Flag
-#define FLAG_UNUSED_0x4BC                                           0x4BC // Unused Flag
-#define FLAG_UNUSED_0x4BD                                           0x4BD // Unused Flag
-#define FLAG_UNUSED_0x4BE                                           0x4BE // Unused Flag
-#define FLAG_UNUSED_0x4BF                                           0x4BF // Unused Flag
-#define FLAG_UNUSED_0x4C0                                           0x4C0 // Unused Flag
-#define FLAG_UNUSED_0x4C1                                           0x4C1 // Unused Flag
-#define FLAG_UNUSED_0x4C2                                           0x4C2 // Unused Flag
-#define FLAG_UNUSED_0x4C3                                           0x4C3 // Unused Flag
-#define FLAG_UNUSED_0x4C4                                           0x4C4 // Unused Flag
-#define FLAG_UNUSED_0x4C5                                           0x4C5 // Unused Flag
-#define FLAG_UNUSED_0x4C6                                           0x4C6 // Unused Flag
-#define FLAG_UNUSED_0x4C7                                           0x4C7 // Unused Flag
-#define FLAG_UNUSED_0x4C8                                           0x4C8 // Unused Flag
-#define FLAG_UNUSED_0x4C9                                           0x4C9 // Unused Flag
-#define FLAG_UNUSED_0x4CA                                           0x4CA // Unused Flag
-#define FLAG_UNUSED_0x4CB                                           0x4CB // Unused Flag
-#define FLAG_UNUSED_0x4CC                                           0x4CC // Unused Flag
-#define FLAG_UNUSED_0x4CD                                           0x4CD // Unused Flag
+#define FLAG_PAID_FOR_BADGE_06                                           0x4B7 // Unused Flag
+#define FLAG_FOUND_SHELLY                                           0x4B8 // Unused Flag
+#define FLAG_FOUND_BRAWLY                                           0x4B9 // Unused Flag
+#define FLAG_BRINEY_DEWFORD_VISIT                                           0x4BA // Unused Flag
+#define FLAG_MET_AARUNE                                           0x4BB // Unused Flag
+#define FLAG_DEVON_CORP_VISIT                                           0x4BC // Unused Flag
+#define FLAG_MET_WALLY_VERDANTURF                                           0x4BD // Unused Flag
+#define FLAG_DEFEATED_EVIL_WALLY                                           0x4BE // Unused Flag
+#define FLAG_WILD_NO_CATCHING_FLAG                                           0x4BF // Unused Flag
+#define FLAG_WILD_NO_RUNNING_FLAG                                           0x4C0 // Unused Flag
+#define FLAG_FINAL_OZONE_BEAT_TABITHA                                           0x4C1 // Unused Flag
+#define FLAG_FINAL_OZONE_BEAT_MATT                                           0x4C2 // Unused Flag
+#define FLAG_FINAL_OZONE_BEAT_COURTNEY                                           0x4C3 // Unused Flag
+#define FLAG_FINAL_OZONE_BEAT_SHELLY                                           0x4C4 // Unused Flag
+#define FLAG_BEAT_RAY_3                                           0x4C5 // Unused Flag
+#define FLAG_HIDE_MAXIE_OZONE                                           0x4C6 // Unused Flag
+#define FLAG_HIDE_ARCHIE_OZONE                                          0x4C7 // Unused Flag
+#define FLAG_HIDE_TABITHA_OZONE                                           0x4C8 // Unused Flag
+#define FLAG_DEFEATED_SHISHIMA                                           0x4C9 // Unused Flag
+#define FLAG_DEFEATED_OLFLOOKIE                                           0x4CA // Unused Flag
+#define FLAG_DEFEATED_JUSTRICHA                                           0x4CB // Unused Flag
+#define FLAG_SHAYON_ORB                                           0x4CC // Unused Flag
+#define FLAG_LUOSHAN_ORB                                           0x4CD // Unused Flag
 #define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
 #define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
 #define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag
@@ -1384,8 +1384,8 @@
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
 #define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
+#define FLAG_VISITED_ZOTPYRE                           (SYSTEM_FLAGS + 0x22) // Unused Flag
+#define FLAG_VISITED_OZONE_INSTITUTE                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag

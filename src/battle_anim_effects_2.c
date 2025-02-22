@@ -732,6 +732,28 @@ const struct SpriteTemplate gRedExplosionSpriteTemplate =
     .callback = AnimSpriteOnMonPos,
 };
 
+const union AnimCmd gSproutAnimCmds[] =
+{
+    ANIMCMD_FRAME(96, 5),
+    ANIMCMD_END,
+};
+
+const union AnimCmd *const gSproutAnimTable[] =
+{
+    gSproutAnimCmds,
+};
+
+const struct SpriteTemplate gSproutGrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SPROUT,
+    .paletteTag = ANIM_TAG_SPROUT,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gSproutAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimSpriteOnMonPos,
+};
+
 const union AffineAnimCmd gSoftBoiledEggAffineAnimCmds1[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, -8, 2),
@@ -1018,6 +1040,18 @@ const struct SpriteTemplate gRedHeartRisingSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimRedHeartRising,
+};
+
+// New struct that's just a copy of 'gMagentaHeartSpriteTemplate', without need to make new anim tags 
+const struct SpriteTemplate gRedHeartCharmSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_RED_HEART,
+    .paletteTag = ANIM_TAG_RED_HEART,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimMagentaHeart,
 };
 
 const union AffineAnimCmd gHiddenPowerOrbAffineAnimCmds[] =

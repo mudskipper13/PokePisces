@@ -149,7 +149,9 @@ PrettyPetalsScuttill_EventScript_FightRita::
 	speakername PrettyPetalsScuttill_Text_NameRita
 	applymovement LOCALID_SISTER2, PrettyPetalsScuttill_Movement_SisterTalk
 	waitmovement 0
-	trainerbattle_single TRAINER_P_RITA, PrettyPetalsScuttill_Text_Rita2, PrettyPetalsScuttill_Text_RitaDefeat, PrettyPetalsScuttill_EventScript_BloomingEventDone
+	msgbox PrettyPetalsScuttill_Text_Rita2, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_P_RITA, PrettyPetalsScuttill_Text_RitaDefeat
+	goto PrettyPetalsScuttill_EventScript_BloomingEventDone
 	release
 	end
 

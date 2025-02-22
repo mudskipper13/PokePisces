@@ -620,6 +620,357 @@ u32 FldEff_LongGrass(void)
     return 0;
 }
 
+//pink grass
+u32 FldEff_PinkGrass(void)
+{
+    s16 x;
+    s16 y;
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    x = gFieldEffectArguments[0];
+    y = gFieldEffectArguments[1];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_PINK_GRASS], x, y, 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sX = gFieldEffectArguments[0];
+        sprite->sY = gFieldEffectArguments[1];
+        sprite->sMapNum = gFieldEffectArguments[4]; // Also sLocalId
+        sprite->sMapGroup = gFieldEffectArguments[5];
+        sprite->sCurrentMap = gFieldEffectArguments[6];
+
+        if (gFieldEffectArguments[7])
+            SeekSpriteAnim(sprite, 4); // Skip to end of anim
+    }
+    return 0;
+}
+
+void UpdatePinkGrassFieldEffect(struct Sprite *sprite)
+{
+    u8 mapNum;
+    u8 mapGroup;
+    u8 metatileBehavior;
+    u8 localId;
+    u8 objectEventId;
+    struct ObjectEvent *objectEvent;
+
+    mapNum = sprite->sCurrentMap >> 8;
+    mapGroup = sprite->sCurrentMap;
+    if (gCamera.active && (gSaveBlock1Ptr->location.mapNum != mapNum || gSaveBlock1Ptr->location.mapGroup != mapGroup))
+    {
+        sprite->sX -= gCamera.x;
+        sprite->sY -= gCamera.y;
+        sprite->sCurrentMap = ((u8)gSaveBlock1Ptr->location.mapNum << 8) | (u8)gSaveBlock1Ptr->location.mapGroup;
+    }
+    localId = sprite->sLocalId;
+    mapNum = sprite->sMapNum;
+    mapGroup = sprite->sMapGroup;
+    metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
+
+    if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
+     || !MetatileBehavior_IsPinkGrass(metatileBehavior)
+     || (sprite->sObjectMoved && sprite->animEnded))
+    {
+        FieldEffectStop(sprite, FLDEFF_PINK_GRASS);
+    }
+    else
+    {
+        // Check if the object that triggered the effect has moved away
+        objectEvent = &gObjectEvents[objectEventId];
+        if ((objectEvent->currentCoords.x != sprite->sX
+          || objectEvent->currentCoords.y != sprite->sY)
+        && (objectEvent->previousCoords.x != sprite->sX
+         || objectEvent->previousCoords.y != sprite->sY))
+            sprite->sObjectMoved = TRUE;
+
+        // Metatile behavior var re-used as subpriority
+        metatileBehavior = 0;
+        if (sprite->animCmdIndex == 0)
+            metatileBehavior = 4;
+
+        UpdateObjectEventSpriteInvisibility(sprite, FALSE);
+        UpdateGrassFieldEffectSubpriority(sprite, sprite->sElevation, metatileBehavior);
+    }
+}
+
+u32 FldEff_JumpPinkGrass(void)
+{
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 12);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_JUMP_PINK_GRASS], gFieldEffectArguments[0], gFieldEffectArguments[1], 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sFldEff = FLDEFF_JUMP_PINK_GRASS;
+    }
+    return 0;
+}
+
+u8 FindPinkGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y)
+{
+    struct Sprite *sprite;
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i ++)
+    {
+        if (gSprites[i].inUse)
+        {
+            sprite = &gSprites[i];
+            if (sprite->callback == UpdatePinkGrassFieldEffect
+                && (x == sprite->sX && y == sprite->sY)
+                && localId == (u8)(sprite->sLocalId)
+                && mapNum == (sprite->sMapNum & 0xFF)
+                && mapGroup == sprite->sMapGroup)
+                return i;
+        }
+    }
+    return MAX_SPRITES;
+}
+
+//snowy grass
+u32 FldEff_SnowyGrass(void)
+{
+    s16 x;
+    s16 y;
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    x = gFieldEffectArguments[0];
+    y = gFieldEffectArguments[1];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SNOWY_GRASS], x, y, 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sX = gFieldEffectArguments[0];
+        sprite->sY = gFieldEffectArguments[1];
+        sprite->sMapNum = gFieldEffectArguments[4]; // Also sLocalId
+        sprite->sMapGroup = gFieldEffectArguments[5];
+        sprite->sCurrentMap = gFieldEffectArguments[6];
+
+        if (gFieldEffectArguments[7])
+            SeekSpriteAnim(sprite, 4); // Skip to end of anim
+    }
+    return 0;
+}
+
+void UpdateSnowyGrassFieldEffect(struct Sprite *sprite)
+{
+    u8 mapNum;
+    u8 mapGroup;
+    u8 metatileBehavior;
+    u8 localId;
+    u8 objectEventId;
+    struct ObjectEvent *objectEvent;
+
+    mapNum = sprite->sCurrentMap >> 8;
+    mapGroup = sprite->sCurrentMap;
+    if (gCamera.active && (gSaveBlock1Ptr->location.mapNum != mapNum || gSaveBlock1Ptr->location.mapGroup != mapGroup))
+    {
+        sprite->sX -= gCamera.x;
+        sprite->sY -= gCamera.y;
+        sprite->sCurrentMap = ((u8)gSaveBlock1Ptr->location.mapNum << 8) | (u8)gSaveBlock1Ptr->location.mapGroup;
+    }
+    localId = sprite->sLocalId;
+    mapNum = sprite->sMapNum;
+    mapGroup = sprite->sMapGroup;
+    metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
+
+    if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
+     || !MetatileBehavior_IsSnowyGrass(metatileBehavior)
+     || (sprite->sObjectMoved && sprite->animEnded))
+    {
+        FieldEffectStop(sprite, FLDEFF_SNOWY_GRASS);
+    }
+    else
+    {
+        // Check if the object that triggered the effect has moved away
+        objectEvent = &gObjectEvents[objectEventId];
+        if ((objectEvent->currentCoords.x != sprite->sX
+          || objectEvent->currentCoords.y != sprite->sY)
+        && (objectEvent->previousCoords.x != sprite->sX
+         || objectEvent->previousCoords.y != sprite->sY))
+            sprite->sObjectMoved = TRUE;
+
+        // Metatile behavior var re-used as subpriority
+        metatileBehavior = 0;
+        if (sprite->animCmdIndex == 0)
+            metatileBehavior = 4;
+
+        UpdateObjectEventSpriteInvisibility(sprite, FALSE);
+        UpdateGrassFieldEffectSubpriority(sprite, sprite->sElevation, metatileBehavior);
+    }
+}
+
+u32 FldEff_JumpSnowyGrass(void)
+{
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 12);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_JUMP_SNOWY_GRASS], gFieldEffectArguments[0], gFieldEffectArguments[1], 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sFldEff = FLDEFF_JUMP_SNOWY_GRASS;
+    }
+    return 0;
+}
+
+u8 FindSnowyGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y)
+{
+    struct Sprite *sprite;
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i ++)
+    {
+        if (gSprites[i].inUse)
+        {
+            sprite = &gSprites[i];
+            if (sprite->callback == UpdateSnowyGrassFieldEffect
+                && (x == sprite->sX && y == sprite->sY)
+                && localId == (u8)(sprite->sLocalId)
+                && mapNum == (sprite->sMapNum & 0xFF)
+                && mapGroup == sprite->sMapGroup)
+                return i;
+        }
+    }
+    return MAX_SPRITES;
+}
+
+//gold grass
+u32 FldEff_GoldGrass(void)
+{
+    s16 x;
+    s16 y;
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    x = gFieldEffectArguments[0];
+    y = gFieldEffectArguments[1];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_GOLD_GRASS], x, y, 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sX = gFieldEffectArguments[0];
+        sprite->sY = gFieldEffectArguments[1];
+        sprite->sMapNum = gFieldEffectArguments[4]; // Also sLocalId
+        sprite->sMapGroup = gFieldEffectArguments[5];
+        sprite->sCurrentMap = gFieldEffectArguments[6];
+
+        if (gFieldEffectArguments[7])
+            SeekSpriteAnim(sprite, 4); // Skip to end of anim
+    }
+    return 0;
+}
+
+void UpdateGoldGrassFieldEffect(struct Sprite *sprite)
+{
+    u8 mapNum;
+    u8 mapGroup;
+    u8 metatileBehavior;
+    u8 localId;
+    u8 objectEventId;
+    struct ObjectEvent *objectEvent;
+
+    mapNum = sprite->sCurrentMap >> 8;
+    mapGroup = sprite->sCurrentMap;
+    if (gCamera.active && (gSaveBlock1Ptr->location.mapNum != mapNum || gSaveBlock1Ptr->location.mapGroup != mapGroup))
+    {
+        sprite->sX -= gCamera.x;
+        sprite->sY -= gCamera.y;
+        sprite->sCurrentMap = ((u8)gSaveBlock1Ptr->location.mapNum << 8) | (u8)gSaveBlock1Ptr->location.mapGroup;
+    }
+    localId = sprite->sLocalId;
+    mapNum = sprite->sMapNum;
+    mapGroup = sprite->sMapGroup;
+    metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
+
+    if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
+     || !MetatileBehavior_IsGoldGrass(metatileBehavior)
+     || (sprite->sObjectMoved && sprite->animEnded))
+    {
+        FieldEffectStop(sprite, FLDEFF_GOLD_GRASS);
+    }
+    else
+    {
+        // Check if the object that triggered the effect has moved away
+        objectEvent = &gObjectEvents[objectEventId];
+        if ((objectEvent->currentCoords.x != sprite->sX
+          || objectEvent->currentCoords.y != sprite->sY)
+        && (objectEvent->previousCoords.x != sprite->sX
+         || objectEvent->previousCoords.y != sprite->sY))
+            sprite->sObjectMoved = TRUE;
+
+        // Metatile behavior var re-used as subpriority
+        metatileBehavior = 0;
+        if (sprite->animCmdIndex == 0)
+            metatileBehavior = 4;
+
+        UpdateObjectEventSpriteInvisibility(sprite, FALSE);
+        UpdateGrassFieldEffectSubpriority(sprite, sprite->sElevation, metatileBehavior);
+    }
+}
+
+u32 FldEff_JumpGoldGrass(void)
+{
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 12);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_JUMP_GOLD_GRASS], gFieldEffectArguments[0], gFieldEffectArguments[1], 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sElevation = gFieldEffectArguments[2];
+        sprite->sFldEff = FLDEFF_JUMP_GOLD_GRASS;
+    }
+    return 0;
+}
+
+u8 FindGoldGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y)
+{
+    struct Sprite *sprite;
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i ++)
+    {
+        if (gSprites[i].inUse)
+        {
+            sprite = &gSprites[i];
+            if (sprite->callback == UpdateGoldGrassFieldEffect
+                && (x == sprite->sX && y == sprite->sY)
+                && localId == (u8)(sprite->sLocalId)
+                && mapNum == (sprite->sMapNum & 0xFF)
+                && mapGroup == sprite->sMapGroup)
+                return i;
+        }
+    }
+    return MAX_SPRITES;
+}
+
 void UpdateLongGrassFieldEffect(struct Sprite *sprite)
 {
     u8 mapNum;

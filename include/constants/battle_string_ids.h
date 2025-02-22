@@ -479,7 +479,7 @@
 #define STRINGID_HEALINGWISHCAMETRUE                  477
 #define STRINGID_HEALINGWISHHEALED                    478
 #define STRINGID_LUNARDANCECAMETRUE                   479
-#define STRINGID_CUSEDBODYDISABLED                    480
+#define STRINGID_CURSEDBODYDISABLED                   480
 #define STRINGID_ATTACKERACQUIREDABILITY              481
 #define STRINGID_TARGETABILITYSTATLOWER               482
 #define STRINGID_TARGETSTATWONTGOHIGHER               483
@@ -752,7 +752,7 @@
 #define STRINGID_PKMNTICKED                           750
 #define STRINGID_PKMNSHEDTICK                         751
 #define STRINGID_SPEEDSTATCHANGESGONE                 752
-#define STRINGID_USERSTATCHANGESGONE                  753
+#define STRINGID_USERNEGATIVESTATCHANGESGONE          753
 #define STRINGID_PKMNISPREPARINGFORDECIMATION         754
 #define STRINGID_PKMNISALREADYEXPOSED                 755
 #define STRINGID_HEARTHWARMHEAL                       756
@@ -797,8 +797,48 @@
 #define STRINGID_PKMNISSPINNING                       795
 #define STRINGID_SLOPPYTOPPY                          796
 #define STRINGID_NOSEX                                797
+#define STRINGID_DEFENSESWERENOTLOWERED               798
+#define STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP      799
+#define	STRINGID_POMEGSWITCHEDNEGATIVESTATS           800
+#define	STRINGID_WATMELBERRYEXPLODED                  801
+#define STRINGID_ICESCALESGAINS                       802
+#define STRINGID_ICESCALESLOSS                        803
+#define	STRINGID_PURPLEHAZE                           804
+#define	STRINGID_MAGMAARMORED                         805
+#define STRINGID_PKMNOVERTOOKATTACK                   806
+#define STRINGID_TARGETNEGATIVESTATCHANGESGONE        807
+#define STRINGID_USERSTATCHANGESGONE                  808
+#define STRINGID_TARGETSTATCHANGESGONE                809
+#define STRINGID_TARGETPOSITIVESTATCHANGESGONE        810
+#define STRINGID_ORDEREDANEXTRAHEAL                   811
+#define STRINGID_THEHEALORDERCAMEIN                   812
+#define STRINGID_TARGETHURTBYITEM                     813
+#define STRINGID_TARGETSTOCKPILED                     814
+#define STRINGID_FLIPCOINCHANGEDATTACKERSSTATS        815
+#define STRINGID_ATTACKERBECAMEWEAKERTOFIRE           816
+#define STRINGID_ATKPKMNREDUCEDPP                     817
+#define STRINGID_CLEARAMULETWONTLOWERSTATS            818 // remember to do these
+#define STRINGID_ITEMWONTLOWERCERTAINSTAT             819
+#define STRINGID_PURIFIEDNOSTATCHANGE                 820
+#define STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS  821
+#define STRINGID_PKMNSXINFATUATEDYITEMEDITION         822
+#define STRINGID_PKMNSURROUNDEDWITHVEILS              823
+#define STRINGID_SPELONSPIKESSCATTERED                824
+#define STRINGID_USERHASEXHAUSTION                    825
+#define STRINGID_TARGETISEXHAUSTED                    826
+#define STRINGID_SUPERMAGNETNOSTATLOSS                827
+#define STRINGID_TARGETBECOMESSUPERCHARGED            828
+#define STRINGID_TARGETBECOMESGEAREDUP                829
+#define STRINGID_USERGAINSPHANTOM                     830
+#define STRINGID_PROTECTEDDEFENDER                    831
+#define STRINGID_FAIRYLOCKDROPSEVASION                832
+#define STRINGID_ACIDARMORDROPSDEFENSE                833
+#define STRINGID_CURSEDBODYTORMENTED                  834
+#define STRINGID_CURSEDBODYCURSED                     835
+#define STRINGID_DAYBREAK                             836
+#define STRINGID_SOLARPOWERGAINS                      837
 
-#define BATTLESTRINGS_COUNT                           798
+#define BATTLESTRINGS_COUNT                           838
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1108,7 +1148,10 @@
 #define B_MSG_WRAPPED_THUNDER_CAGE 9
 #define B_MSG_CONSTRICTED          10
 #define B_MSG_SEED_WRAP            11
-#define NUM_TRAPPING_MOVES         12
+#define B_MSG_WRAPPED_VINE_WHIP    12
+#define B_MSG_WRAPPED_VERGLASTROM  13
+#define B_MSG_WRAPPED_ATTACK_ORDER 14
+#define NUM_TRAPPING_MOVES         15
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0

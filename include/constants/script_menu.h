@@ -126,6 +126,27 @@
 #define MULTI_SLATEPORT_MAJOR_MINOR_LEAGUE  114
 #define MULTI_SLATEPORT_ANY_LEAGUE          115
 #define MULTI_LIFE_PHILOSOPHY               116
+#define MULTI_LAVAGYM_QUESTION_1            117
+#define MULTI_LAVAGYM_QUESTION_2            118
+#define MULTI_LAVAGYM_QUESTION_3            119
+#define MULTI_LAVAGYM_QUESTION_4            120
+#define MULTI_LAVAGYM_QUESTION_5            121
+#define MULTI_EAT_OR_DONT_EAT               122
+#define MULTI_TRICK_HOUSE_FINAL_DOOR        123
+#define MULTI_BRINEY_BOAT_2                 124
+#define MULTI_BRINEY_BOAT_3                 125
+#define MULTI_RUSTGYM_QUESTION_1            126
+#define MULTI_RUSTGYM_QUESTION_2            127
+#define MULTI_RUSTGYM_QUESTION_3            128
+#define MULTI_RUSTGYM_QUESTION_4            129
+#define MULTI_RUSTGYM_QUESTION_5            130
+#define MULTI_RUSTGYM_QUESTION_6            131
+#define MULTI_RUSTGYM_QUESTION_7            132
+#define MULTI_RUSTGYM_QUESTION_8            133
+#define MULTI_RUSTGYM_QUESTION_9            134
+#define MULTI_RUSTGYM_QUESTION_10           135
+#define MULTI_WHODUNNIT                     136
+#define MULTI_BERRY_SHOP_CATEGORY           137
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

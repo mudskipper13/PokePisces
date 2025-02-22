@@ -1045,6 +1045,22 @@
 	.2byte \item
 	.endm
 
+	.macro givecommonegg
+	.byte 0xe8
+	.endm
+
+	.macro giveuncommonegg
+	.byte 0xe9
+	.endm
+
+	.macro giverareegg
+	.byte 0xea
+	.endm
+
+	.macro givescarceegg
+	.byte 0xeb
+	.endm
+
 	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
 	@ If given anything else it will output it directly.
 	@ Note: Because the STR_VAR_# arguments given to this macro are not part of a processed string they are not
@@ -2116,4 +2132,14 @@
     .macro doshunyongbattle
     callnative ScriptSetShunyongBattle
     dowildbattle
+    .endm
+
+    @ Poisons a set number of mons in the player's party based on VAR_DURIN_RESISTANCE
+    .macro poisonplayerparty
+    special PoisonPlayerParty
+    .endm
+
+    @ Poisons 4 mons in the player's party
+    .macro burnplayerparty
+    special BurnPlayerParty
     .endm

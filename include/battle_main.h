@@ -102,7 +102,8 @@ extern const u8 gStatusConditionString_LoveJpn[11];
 extern const u8 gStatusConditionString_PanicJpn[11];
 extern const u8 gStatusConditionString_ExposedJpn[11];
 extern const u8 gStatusConditionString_BloomingJpn[11];
+extern const u8 gStatusConditionString_RestJpn[11];
 
-extern const u8 *const gStatusConditionStringsTable[10][2];
+extern const u8 *const gStatusConditionStringsTable[11][2];
 
 #endif // GUARD_BATTLE_MAIN_H

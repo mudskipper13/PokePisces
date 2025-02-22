@@ -1544,7 +1544,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusLevelUpLearnset,
     [SPECIES_BASCULEGION_FEMALE] = sBasculegionLevelUpLearnset,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT] = sDudunsparsLevelUpLearnset,
-    [SPECIES_LOTTABATS_HUDDLED] = sLottabatsLevelUpLearnset,
+    [SPECIES_LOTTABATS_DISPERSED] = sLottabatsLevelUpLearnset,
     [SPECIES_GAOTERRA_SOLAR] = sGaoterraLevelUpLearnset,
     [SPECIES_GAOTERRA_LUNAR] = sGaoterraLevelUpLearnset,
     [SPECIES_BISHOUCHA_WARMONGER] = sBishouchaLevelUpLearnset,
@@ -1565,5 +1565,6 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_SHISHIMA_PUNISHER_ALT] = sShishimaLevelUpLearnset,
     [SPECIES_LYOLICA] = sLyoresaLevelUpLearnset,
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaLevelUpLearnset,
+    [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyLevelUpLearnset,
 #endif
 };

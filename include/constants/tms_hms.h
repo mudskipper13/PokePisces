@@ -57,7 +57,6 @@
     F(AURORA_BEAM) \
     F(DRAGON_CLAW) \
     F(PSYSHOCK) \
-    F(GEO_PULSE) \
     F(DAZZLING_GLEAM) \
     F(AURA_SPHERE) \
     F(DARK_PULSE) \
@@ -76,6 +75,7 @@
     F(SEED_BOMB) \
     F(DRAGON_PULSE) \
     F(ICICLE_CRASH) \
+    F(GEO_PULSE) \
     F(BODY_SLAM) \
     F(BUG_BUZZ) \
     F(THUNDERBOLT) \
@@ -96,12 +96,12 @@
     F(DUAL_WINGBEAT) \
     F(EARTHQUAKE) \
     F(BLEAKWIND_STORM) \
+    F(MIND_BREAK) \
     F(ZAP_CANNON) \
     F(FIRE_BLAST) \
     F(RAGING_FURY) \
     F(GUNK_SHOT) \
-    F(IRON_TAIL) \
-    F(MIND_BREAK) 
+    F(IRON_TAIL)
 
 #define FOREACH_HM(F) \
     F(CUT) \

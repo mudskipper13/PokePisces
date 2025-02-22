@@ -167,6 +167,12 @@ static bool8 IsElevationMismatchAt(u8, s16, s16);
 static bool8 AreElevationsCompatible(u8, u8);
 static u8 UpdateSpritePalette(const struct SpritePalette *spritePalette, struct Sprite *sprite);
 static void ObjectEventSetGraphics(struct ObjectEvent *, const struct ObjectEventGraphicsInfo *);
+static void GetGroundEffectFlags_PinkGrassOnSpawn(struct ObjectEvent *, u32 *);
+static void GetGroundEffectFlags_PinkGrassOnBeginStep(struct ObjectEvent *, u32 *);
+static void GetGroundEffectFlags_SnowyGrassOnSpawn(struct ObjectEvent *, u32 *);
+static void GetGroundEffectFlags_SnowyGrassOnBeginStep(struct ObjectEvent *, u32 *);
+static void GetGroundEffectFlags_GoldGrassOnSpawn(struct ObjectEvent *, u32 *);
+static void GetGroundEffectFlags_GoldGrassOnBeginStep(struct ObjectEvent *, u32 *);
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
 
@@ -1332,6 +1338,14 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     sprite->sObjEventId = objectEventId;
     objectEvent->spriteId = spriteId;
     objectEvent->inanimate = graphicsInfo->inanimate;
+    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_UPSIDE_DOWN_ROOM)
+     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_UPSIDE_DOWN_ROOM)
+     && graphicsInfo->paletteTag != OBJ_EVENT_PAL_TAG_BRENDAN
+     && graphicsInfo->paletteTag != OBJ_EVENT_PAL_TAG_MAY)
+    {
+        sprite->anims = sAnimTable_FlippedY;
+        sprite->y += 8;
+    }
     if (!objectEvent->inanimate)
         StartSpriteAnim(sprite, GetFaceDirectionAnimNum(objectEvent->facingDirection));
 
@@ -1635,6 +1649,14 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         sprite->x += 8;
         sprite->y += 16 + sprite->centerToCornerVecY;
         sprite->images = graphicsInfo->images;
+        if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_UPSIDE_DOWN_ROOM)
+         && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_UPSIDE_DOWN_ROOM)
+         && graphicsInfo->paletteTag != OBJ_EVENT_PAL_TAG_BRENDAN
+         && graphicsInfo->paletteTag != OBJ_EVENT_PAL_TAG_MAY)
+        {
+            sprite->anims = sAnimTable_FlippedY;
+            sprite->y += 8;
+        }
         if (objectEvent->movementType == MOVEMENT_TYPE_PLAYER)
         {
             SetPlayerAvatarObjectEventIdAndObjectId(objectEventId, i);
@@ -7348,6 +7370,34 @@ bool8 MovementAction_StopLevitateAtTop_Step0(struct ObjectEvent *objectEvent, st
     return FALSE;
 }
 
+bool8 MovementAction_FaeredReveal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    SetAndStartSpriteAnim(sprite, ANIM_REMOVE_OBSTACLE, 0);
+    sprite->sActionFuncId = 1;
+    return FALSE;
+}
+
+bool8 MovementAction_FaeredReveal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (SpriteAnimEnded(sprite))
+    {
+        SetMovementDelay(sprite, 32);
+        sprite->sActionFuncId = 2;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_FaeredReveal_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->invisible ^= FALSE;
+    if (WaitForMovementDelay(sprite))
+    {
+        objectEvent->invisible = FALSE;
+        sprite->sActionFuncId = 3;
+    }
+    return FALSE;
+}
+
 u8 MovementAction_Finish(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     return TRUE;
@@ -7430,6 +7480,9 @@ static void GetAllGroundEffectFlags_OnSpawn(struct ObjectEvent *objEvent, u32 *f
     GetGroundEffectFlags_ShallowFlowingWater(objEvent, flags);
     GetGroundEffectFlags_ShortGrass(objEvent, flags);
     GetGroundEffectFlags_HotSprings(objEvent, flags);
+    GetGroundEffectFlags_PinkGrassOnSpawn(objEvent, flags);
+    GetGroundEffectFlags_SnowyGrassOnSpawn(objEvent, flags);
+    GetGroundEffectFlags_GoldGrassOnSpawn(objEvent, flags);
 }
 
 static void GetAllGroundEffectFlags_OnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
@@ -7445,6 +7498,9 @@ static void GetAllGroundEffectFlags_OnBeginStep(struct ObjectEvent *objEvent, u3
     GetGroundEffectFlags_Puddle(objEvent, flags);
     GetGroundEffectFlags_ShortGrass(objEvent, flags);
     GetGroundEffectFlags_HotSprings(objEvent, flags);
+    GetGroundEffectFlags_PinkGrassOnBeginStep(objEvent, flags);
+    GetGroundEffectFlags_SnowyGrassOnBeginStep(objEvent, flags);
+    GetGroundEffectFlags_GoldGrassOnBeginStep(objEvent, flags);
 }
 
 static void GetAllGroundEffectFlags_OnFinishStep(struct ObjectEvent *objEvent, u32 *flags)
@@ -7510,6 +7566,45 @@ static void GetGroundEffectFlags_ChimneyGrassOnBeginStep(struct ObjectEvent *obj
 {
     if (MetatileBehavior_IsChimneyGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_CHIMNEY_GRASS_ON_MOVE;
+}
+
+//pink grass
+static void GetGroundEffectFlags_PinkGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsPinkGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_PINK_GRASS_ON_SPAWN;
+}
+
+static void GetGroundEffectFlags_PinkGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsPinkGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_PINK_GRASS_ON_MOVE;
+}
+
+//snowy grass
+static void GetGroundEffectFlags_SnowyGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsSnowyGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_SNOWY_GRASS_ON_SPAWN;
+}
+
+static void GetGroundEffectFlags_SnowyGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsSnowyGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_SNOWY_GRASS_ON_MOVE;
+}
+
+//gold grass
+static void GetGroundEffectFlags_GoldGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsGoldGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_GOLD_GRASS_ON_SPAWN;
+}
+
+static void GetGroundEffectFlags_GoldGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if (MetatileBehavior_IsGoldGrass(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_GOLD_GRASS_ON_MOVE;
 }
 
 static void GetGroundEffectFlags_LongGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
@@ -7640,15 +7735,22 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
         MetatileBehavior_IsPuddle,
         MetatileBehavior_IsSurfableWaterOrUnderwater,
         MetatileBehavior_IsShallowFlowingWater,
+        MetatileBehavior_IsPinkGrass,
+        MetatileBehavior_IsSnowyGrass,
+        MetatileBehavior_IsGoldGrass,
         MetatileBehavior_IsATile,
     };
 
     static const u32 jumpLandingFlags[] = {
         GROUND_EFFECT_FLAG_LAND_IN_TALL_GRASS,
+        GROUND_EFFECT_FLAG_LAND_IN_CHIMNEY_GRASS,
         GROUND_EFFECT_FLAG_LAND_IN_LONG_GRASS,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_DEEP_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
+        GROUND_EFFECT_FLAG_LAND_IN_PINK_GRASS,
+        GROUND_EFFECT_FLAG_LAND_IN_SNOWY_GRASS,
+        GROUND_EFFECT_FLAG_LAND_IN_GOLD_GRASS,
         GROUND_EFFECT_FLAG_LAND_ON_NORMAL_GROUND,
     };
 
@@ -7902,6 +8004,87 @@ void GroundEffect_StepOnChimneyGrass(struct ObjectEvent *objEvent, struct Sprite
     FieldEffectStart(FLDEFF_CHIMNEY_GRASS);
 }
 
+//pink grass
+void GroundEffect_SpawnOnPinkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = TRUE; // skip to end of anim
+    FieldEffectStart(FLDEFF_PINK_GRASS);
+}
+
+void GroundEffect_StepOnPinkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
+    FieldEffectStart(FLDEFF_PINK_GRASS);
+}
+
+//snowy grass
+void GroundEffect_SpawnOnSnowyGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = TRUE; // skip to end of anim
+    FieldEffectStart(FLDEFF_SNOWY_GRASS);
+}
+
+void GroundEffect_StepOnSnowyGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
+    FieldEffectStart(FLDEFF_SNOWY_GRASS);
+}
+
+//gold grass
+void GroundEffect_SpawnOnGoldGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = TRUE; // skip to end of anim
+    FieldEffectStart(FLDEFF_GOLD_GRASS);
+}
+
+void GroundEffect_StepOnGoldGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
+    FieldEffectStart(FLDEFF_GOLD_GRASS);
+}
+
 void GroundEffect_SpawnOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
@@ -8066,6 +8249,72 @@ void GroundEffect_JumpOnChimneyGrass(struct ObjectEvent *objEvent, struct Sprite
         GroundEffect_SpawnOnChimneyGrass(objEvent, sprite);
 }
 
+//pink grass
+void GroundEffect_JumpOnPinkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    u8 spriteId;
+
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    FieldEffectStart(FLDEFF_JUMP_PINK_GRASS);
+
+    spriteId = FindPinkGrassFieldEffectSpriteId(
+        objEvent->localId,
+        objEvent->mapNum,
+        objEvent->mapGroup,
+        objEvent->currentCoords.x,
+        objEvent->currentCoords.y);
+
+    if (spriteId == MAX_SPRITES)
+        GroundEffect_SpawnOnPinkGrass(objEvent, sprite);
+}
+
+//snowy grass
+void GroundEffect_JumpOnSnowyGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    u8 spriteId;
+
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    FieldEffectStart(FLDEFF_JUMP_SNOWY_GRASS);
+
+    spriteId = FindSnowyGrassFieldEffectSpriteId(
+        objEvent->localId,
+        objEvent->mapNum,
+        objEvent->mapGroup,
+        objEvent->currentCoords.x,
+        objEvent->currentCoords.y);
+
+    if (spriteId == MAX_SPRITES)
+        GroundEffect_SpawnOnSnowyGrass(objEvent, sprite);
+}
+
+//gold grass
+void GroundEffect_JumpOnGoldGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    u8 spriteId;
+
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    FieldEffectStart(FLDEFF_JUMP_GOLD_GRASS);
+
+    spriteId = FindGoldGrassFieldEffectSpriteId(
+        objEvent->localId,
+        objEvent->mapNum,
+        objEvent->mapGroup,
+        objEvent->currentCoords.x,
+        objEvent->currentCoords.y);
+
+    if (spriteId == MAX_SPRITES)
+        GroundEffect_SpawnOnGoldGrass(objEvent, sprite);
+}
+
 void GroundEffect_JumpOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
@@ -8139,10 +8388,19 @@ static void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct S
     GroundEffect_JumpLandingDust,       // GROUND_EFFECT_FLAG_LAND_ON_NORMAL_GROUND
     GroundEffect_ShortGrass,            // GROUND_EFFECT_FLAG_SHORT_GRASS
     GroundEffect_HotSprings,            // GROUND_EFFECT_FLAG_HOT_SPRINGS
-    GroundEffect_Seaweed,                // GROUND_EFFECT_FLAG_SEAWEED
+    GroundEffect_Seaweed,               // GROUND_EFFECT_FLAG_SEAWEED
     GroundEffect_SpawnOnChimneyGrass,   // GROUND_EFFECT_FLAG_CHIMNEY_GRASS_ON_SPAWN
     GroundEffect_StepOnChimneyGrass,    // GROUND_EFFECT_FLAG_CHIMNEY_GRASS_ON_MOVE
-    GroundEffect_JumpOnChimneyGrass    // GROUND_EFFECT_FLAG_LAND_IN_CHIMNEY_GRASS
+    GroundEffect_JumpOnChimneyGrass,    // GROUND_EFFECT_FLAG_LAND_IN_CHIMNEY_GRASS
+    GroundEffect_SpawnOnPinkGrass,      // GROUND_EFFECT_FLAG_PINK_GRASS_ON_SPAWN
+    GroundEffect_StepOnPinkGrass,       // GROUND_EFFECT_FLAG_PINK_GRASS_ON_MOVE
+    GroundEffect_JumpOnPinkGrass,       // GROUND_EFFECT_FLAG_LAND_IN_PINK_GRASS
+    GroundEffect_SpawnOnSnowyGrass,     // GROUND_EFFECT_FLAG_SNOWY_GRASS_ON_SPAWN
+    GroundEffect_StepOnSnowyGrass,      // GROUND_EFFECT_FLAG_SNOWY_GRASS_ON_MOVE
+    GroundEffect_JumpOnSnowyGrass,      // GROUND_EFFECT_FLAG_LAND_IN_SNOWY_GRASS
+    GroundEffect_SpawnOnGoldGrass,      // GROUND_EFFECT_FLAG_GOLD_GRASS_ON_SPAWN
+    GroundEffect_StepOnGoldGrass,       // GROUND_EFFECT_FLAG_GOLD_GRASS_ON_MOVE
+    GroundEffect_JumpOnGoldGrass        // GROUND_EFFECT_FLAG_LAND_IN_GOLD_GRASS
 };
 
 static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)
