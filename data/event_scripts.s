@@ -3865,3 +3865,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/PiratesGrotto/scripts.inc"
 
 	.include "data/maps/MuseumSanctum/scripts.inc"
+
+	.include "data/maps/DetermaniteUnderwater/scripts.inc"
