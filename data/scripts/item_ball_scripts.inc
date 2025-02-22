@@ -1633,3 +1633,463 @@ PiratesGrotto_EventScript_ItemPBigNugget::
 PiratesGrotto_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
 	end
+
+SweltornDesert_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+SweltornDesert_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+SweltornDesert_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+SweltornDesert_EventScript_ItemPStardust::
+	finditem ITEM_STARDUST
+	end
+
+SweltornDesert_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+SweltornDesert_EventScript_ItemPHyperPotion::
+	finditem ITEM_HYPER_POTION
+	end
+
+SweltornDesert_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+SweltornDesert_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
+
+SweltornPalace_EventScript_ItemPRareBone::
+	finditem ITEM_RARE_BONE
+	end
+
+SweltornPalace_EventScript_ItemPBitterRoot::
+	finditem ITEM_ENERGY_ROOT
+	end
+
+SweltornPalace_EventScript_ItemPNugget::
+	finditem ITEM_NUGGET
+	end
+
+SweltornPalaceOutside_EventScript_ItemPEscapeRope::
+	finditem ITEM_ESCAPE_ROPE
+	end
+
+SweltornPalaceOutside_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+SweltornPalaceOutside_EventScript_ItemPLuxuryBall::
+	finditem ITEM_LUXURY_BALL
+	end
+
+SweltornTransitionCave_EventScript_ItemPXAccuracy::
+	finditem ITEM_X_ACCURACY
+	end
+
+SweltornTransitionCave_EventScript_ItemPLaxMint::
+	finditem ITEM_LAX_MINT
+	end
+
+SweltornTransitionCave_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+SweltornTransitionHallway_EventScript_ItemPTimerBall::
+	finditem ITEM_TIMER_BALL
+	end
+
+SweltornTransitionHallway_EventScript_ItemPQuickBall::
+	finditem ITEM_QUICK_BALL
+	end
+
+MauvilleNew_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+MauvilleNew_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+MauvilleNew_EventScript_ItemPGuardSpec::
+	finditem ITEM_GUARD_SPEC
+	end
+
+HatchloamField_EventScript_ItemPCarrotHorn1::
+	finditem ITEM_CARROT_HORN
+	end
+
+HatchloamField_EventScript_ItemPCarrotHorn2::
+	finditem ITEM_CARROT_HORN
+	end
+
+HatchloamField_EventScript_ItemPPPUp::
+	finditem ITEM_PP_UP
+	end
+
+HatchloamField_EventScript_ItemPTimidMint::
+	finditem ITEM_TIMID_MINT
+	end
+
+HatchloamField_EventScript_ItemPRevive::
+	finditem ITEM_REVIVE
+	end
+
+TrickHouseMainPortion_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
+TrickHouseLeverRooms_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+TrickHouseLeverRooms_EventScript_ItemPXAttack::
+	finditem ITEM_X_ATTACK
+	end
+
+TrickHouseLeverRooms_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+SouthernIsland_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
+
+CyclingRoad_EventScript_ItemPXSpeed::
+	finditem ITEM_X_SPEED
+	end
+
+CyclingRoad_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+CyclingRoad_EventScript_ItemPHyperPotion::
+	finditem ITEM_HYPER_POTION
+	end
+
+CyclingRoad_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+SeaMauville_EventScript_ItemPElixir::
+	finditem ITEM_ELIXIR
+	end
+
+SeaMauville_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+Maintenance_EventScript_ItemPUltraBall::
+	finditem ITEM_ULTRA_BALL
+	end
+
+Maintenance_EventScript_ItemPFastBall::
+	finditem ITEM_FAST_BALL
+	end
+
+Maintenance_EventScript_ItemPDireHit::
+	finditem ITEM_DIRE_HIT
+	end
+
+NewMauville_Inside_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+NewMauville_Inside_EventScript_ItemPXDefense::
+	finditem ITEM_X_DEFENSE
+	end
+
+VerdanturfNew_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+VerdanturfNew_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+VerdanturfNew_EventScript_ItemPLonelyMint::
+	finditem ITEM_LONELY_MINT
+	end
+
+SlateportShore_EventScript_ItemPMaxPotion::
+	finditem ITEM_MAX_POTION
+	end
+
+SlateportShore_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+DewfordNew_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+StraeSeapath_EventScript_ItemPXSpAtk::
+	finditem ITEM_X_SP_ATK
+	end
+
+StraeSeapath_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+StraeSeapath_EventScript_ItemPNugget::
+	finditem ITEM_NUGGET
+	end
+
+Flotshore_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+SailorsPauseShips_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+SailorsPauseShips_EventScript_ItemPMaxPotion::
+	finditem ITEM_MAX_POTION
+	end
+
+NewSunbeach_EventScript_ItemPCoralCrownPostSurf::
+	finditem ITEM_CORAL_CROWN
+	end
+
+NewSunbeach_EventScript_ItemPStarPiece::
+	finditem ITEM_STAR_PIECE
+	end
+
+ShoalCaveNewFloor1_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+ShoalCaveNewFloor2_EventScript_ItemPHeavyBall::
+	finditem ITEM_HEAVY_BALL
+	end
+
+NavigulfUnderwater_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+NavigulfUnderwater_EventScript_ItemPDuskBall::
+	finditem ITEM_DUSK_BALL
+	end
+
+StraeSeapathUnderwater_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+StraeSeapathUnderwater_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+StraeSeapathUnderwater_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+DetermaniteBeach_EventScript_ItemPXSpDef::
+	finditem ITEM_X_SP_DEF
+	end
+
+DetermaniteBeach_EventScript_ItemPCoolBall::
+	finditem ITEM_COOL_BALL
+	end
+
+DetermaniteBeach_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+DetermaniteBeach_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+DetermaniteQuarry_EventScript_ItemPLoveBall::
+	finditem ITEM_LOVE_BALL
+	end
+
+DetermaniteQuarB1F_EventScript_ItemPExtrapolator::
+	finditem ITEM_EXTRAPOLATOR
+	end
+
+DetermaniteQuarB1F_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+DetermaniteQuarB1F_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+WishwellOcean_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+WishwellOcean_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+WishwellOcean_EventScript_ItemPQuietMint::
+	finditem ITEM_QUIET_MINT
+	end
+
+RustburgWharf_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+RustburgWharf_EventScript_ItemPMaxRepel::
+	finditem ITEM_MAX_REPEL
+	end
+
+RustburgWharf_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+RustburgWharf_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+RustburgWharf_EventScript_ItemPFullRestore::
+	finditem ITEM_FULL_RESTORE
+	end
+
+UnduraTunnels_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
+
+UnduraTunnelsDeep_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+UnduraTunnelsDeep_EventScript_ItemPStarPiece::
+	finditem ITEM_STAR_PIECE
+	end
+
+UnduraTunnelsDeep_EventScript_ItemPBeastBall::
+	finditem ITEM_BEAST_BALL
+	end
+
+MidneorFalls_EventScript_ItemPStarPiece::
+	finditem ITEM_STAR_PIECE
+	end
+
+MidneorFalls_EventScript_ItemPCometShard::
+	finditem ITEM_COMET_SHARD
+	end
+
+MidneorFalls_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
+
+MidneorFalls_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+MidneorFalls_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+MidneorFalls_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+MidneorFalls_EventScript_ItemPFullRestore::
+	finditem ITEM_FULL_RESTORE
+	end
+
+MidneorFalls_EventScript_ItemPDreamBall::
+	finditem ITEM_DREAM_BALL
+	end
+
+RustboroNew_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+RustboroNew_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+PetalburgNew_EventScript_ItemPCalmMint::
+	finditem ITEM_CALM_MINT
+	end
+
+PetalburgWoodsNew_EventScript_ItemPStarPiece::
+	finditem ITEM_STAR_PIECE
+	end
+
+PetalburgWoodsNew_EventScript_ItemPAbilityCookie::
+	finditem ITEM_ABILITY_CAPSULE
+	end
+
+PetalburgWoodsNew_EventScript_ItemPPokeDoll::
+	finditem ITEM_POKE_DOLL
+	end
+
+OldaleNew_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+NoviceWalk_EventScript_ItemPFullRestore::
+	finditem ITEM_FULL_RESTORE
+	end
+
+NoviceWalk_EventScript_ItemPMaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+
+NoviceWalk_EventScript_ItemPRareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+
+NoviceWalk_EventScript_ItemPLevelBall::
+	finditem ITEM_LEVEL_BALL
+	end
+
+PendingDev_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+EverGrandeTransitionCave_EventScript_ItemPGoldTooth::
+	finditem ITEM_GOLD_TOOTH
+	end
+
+EverGrandeTransitionCave_EventScript_ItemPFullRestore::
+	finditem ITEM_FULL_RESTORE
+	end
+
+EverGrandeRoad_EventScript_ItemPCoralCrown::
+	finditem ITEM_CORAL_CROWN
+	end
+
+EverGrandeRoad_EventScript_ItemPCarrotHorn::
+	finditem ITEM_CARROT_HORN
+	end
+
+EverGrandeRoad_EventScript_ItemPMaxElixir::
+	finditem ITEM_MAX_ELIXIR
+	end
+
+EverGrandeRoad_EventScript_ItemPGoldBall1::
+	finditem ITEM_PARK_BALL
+	end
+
+EverGrandeRoad_EventScript_ItemPGoldBall2::
+	finditem ITEM_PARK_BALL
+	end
+
+EverGrandeRoad_EventScript_ItemPBigNugget::
+	finditem ITEM_BIG_NUGGET
+	end
+
+EverGrandeRoad_EventScript_ItemPPPMax::
+	finditem ITEM_PP_MAX
+	end
+
+EverGrandeRoad_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
+
+EverGrandePeak_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
+	end
