@@ -641,6 +641,7 @@ gSongTable::
 	song mus_ever_grande_road, 0, 0
 	song mus_ever_grande_summit, 0, 0
 	song mus_surf_2, 0, 0
+	song mus_vs_wally, 0, 0
 	song mus_vs_ozone, 0, 0
 	song mus_pisces_title, 0, 0
 	song mus_vs_legendary2_testing, 0, 0
