@@ -6340,6 +6340,16 @@
       "secondary_tileset": "gTileset_OldStoneBuildings",
       "border_filepath": "data/layouts/MuseumSanctum/border.bin",
       "blockdata_filepath": "data/layouts/MuseumSanctum/map.bin"
+    },
+    {
+      "id": "LAYOUT_DETERMANITE_UNDERWATER",
+      "name": "DetermaniteUnderwater_Layout",
+      "width": 64,
+      "height": 52,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/DetermaniteUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/DetermaniteUnderwater/map.bin"
     }
   ]
 }

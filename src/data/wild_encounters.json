@@ -16366,9 +16366,9 @@
                 "species": "SPECIES_GHAERIAL"
               },
               {
-                "min_level": 40,
-                "max_level": 45,
-                "species": "SPECIES_ALOMOMOLA"
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SQUEESHY"
               }
             ]
           }
