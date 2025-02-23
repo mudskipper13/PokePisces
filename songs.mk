@@ -1352,3 +1352,19 @@ $(MID_SUBDIR)/mus_ever_grande_summit.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_surf_2.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+	
+$(MID_SUBDIR)/mus_vs_ozone.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+
+	
+$(MID_SUBDIR)/mus_pisces_title.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G197 -V110
+
+$(MID_SUBDIR)/mus_vs_legendary2_testing.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V100
+
+$(MID_SUBDIR)/se_ever_grande_road_wild.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G192 -V127
+
+$(MID_SUBDIR)/se_encounter_topaz.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G196 -V127
