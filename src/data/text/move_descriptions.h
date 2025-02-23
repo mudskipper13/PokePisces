@@ -842,7 +842,7 @@ static const u8 sSpiderWebDescription[] = _(
 
 static const u8 sMindReaderDescription[] = _(
     "Ensures the next attack will\n"
-    "hit. Flinches the foe if its\n"
+    "hit. Flinches the foe if it's\n"
     "using a status move. Goes first.");
 
 static const u8 sNightmareDescription[] = _(

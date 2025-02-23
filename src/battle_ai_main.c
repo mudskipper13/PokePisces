@@ -51,6 +51,7 @@ static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_Safari(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_FirstBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
+static s32 AI_JuansTrick(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 
 #define MAX_SHUNYONG_MOVES  10
 // defense form
@@ -89,7 +90,7 @@ static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
     [6] = AI_PreferBatonPass,        // AI_FLAG_PREFER_BATON_PASS
     [7] = AI_DoubleBattle,           // AI_FLAG_DOUBLE_BATTLE
     [8] = AI_HPAware,                // AI_FLAG_HP_AWARE
-    [9] = NULL,                      // AI_FLAG_NEGATE_UNAWARE
+    [9] = AI_JuansTrick,             // AI_FLAG_JUANS_TRICK
     [10] = NULL,                     // AI_FLAG_WILL_SUICIDE
     [11] = NULL,                     // AI_FLAG_HELP_PARTNER
     [12] = NULL,                     // Unused
@@ -448,7 +449,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
     if (CountUsablePartyMons(battler) > 0
         && !IsBattlerTrapped(battler, TRUE)
         && !(gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_PALACE))
-        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS))
+        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS | AI_FLAG_JUANS_TRICK))
     {
         // Consider switching if all moves are worthless to use.
         if (GetTotalBaseStat(gBattleMons[battler].species) >= 310 // Mon is not weak.
@@ -7303,6 +7304,18 @@ static s32 AI_PreferBatonPass(u32 battlerAtk, u32 battlerDef, u32 move, s32 scor
     default:
         break;
     }
+
+    return score;
+}
+
+static s32 AI_JuansTrick(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
+{
+    u32 i;
+    
+    if (gBattleMons[battlerAtk].item == ITEM_FROST_ORB && gBattleMoves[move].effect == EFFECT_TRICK)
+        score += 100;
+    else if (gBattleMons[battlerAtk].item != ITEM_FROST_ORB && gBattleMoves[move].effect == EFFECT_TRICK)
+        score -= 100;
 
     return score;
 }
