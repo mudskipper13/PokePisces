@@ -49,6 +49,172 @@ TestMap_EventScript_GymLeader::
 	release
 	end
 
+TestMap_EventScript_Gym1::
+	lock
+	trainerbattle_two_trainers TRAINER_P_SEBASTIAN, TestMap_Text_MendelIntro, TRAINER_P_JUAN, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Ray1::
+    trainerbattle_single TRAINER_P_RAY_1, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym2::
+    trainerbattle_single TRAINER_P_LIZA, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_MattTab::
+	lock
+	trainerbattle_two_trainers TRAINER_P_OZONE_TABITHA_1, TestMap_Text_MendelIntro, TRAINER_P_OZONE_MATT_1, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Ray2::
+    trainerbattle_single TRAINER_P_RAY_2, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym3::
+	lock
+	trainerbattle_two_trainers TRAINER_P_SPENSER, TestMap_Text_MendelIntro, TRAINER_P_PHOEBE, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Gym4::
+	lock
+	trainerbattle_two_trainers TRAINER_P_AARUNE, TestMap_Text_MendelIntro, TRAINER_P_WINONA, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Ray3::
+    trainerbattle_single TRAINER_P_RAY_3, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Tab1::
+    trainerbattle_single TRAINER_P_TABITHA_2, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym5::
+	lock
+	trainerbattle_two_trainers TRAINER_P_MR_MOORE, TestMap_Text_MendelIntro, TRAINER_P_FLANNERY, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Matt1::
+    trainerbattle_single TRAINER_P_MATT_2, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Ray4::
+    trainerbattle_single TRAINER_P_RAY_4, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Courtney1::
+    trainerbattle_single TRAINER_P_COURTNEY_1, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_MrBonding::
+    trainerbattle_single TRAINER_P_MR_BONDING, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym6::
+	lock
+	trainerbattle_two_trainers TRAINER_P_WATTSON, TestMap_Text_MendelIntro, TRAINER_P_SCOTT, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Ray5::
+    trainerbattle_single TRAINER_P_RAY_5, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym7::
+	lock
+	trainerbattle_two_trainers TRAINER_P_BRAWLY, TestMap_Text_MendelIntro, TRAINER_P_SHELLY_1, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Gym8::
+	lock
+	trainerbattle_two_trainers TRAINER_P_ROXANNE, TestMap_Text_MendelIntro, TRAINER_P_LANETTE, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Ray6::
+    trainerbattle_single TRAINER_P_RAY_6, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Norman::
+    trainerbattle_single TRAINER_P_NORMAN, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Gym9::
+	lock
+	trainerbattle_two_trainers TRAINER_P_SIDNEY, TestMap_Text_MendelIntro, TRAINER_P_LUCY, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Wally::
+    trainerbattle_double TRAINER_P_WALLY, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated, TestMap_Text_MendelPostBattle
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Ray7::
+    trainerbattle_single TRAINER_P_RAY_7, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Tab2::
+    trainerbattle_single TRAINER_P_TABITHA_3, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Matt2::
+    trainerbattle_single TRAINER_P_MATT_3, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Courtney2::
+    trainerbattle_single TRAINER_P_COURTNEY_2, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Shelly2::
+    trainerbattle_single TRAINER_P_SHELLY_2, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_OzoneLeaders::
+	lock
+	trainerbattle_two_trainers TRAINER_P_MAXIE, TestMap_Text_MendelIntro, TRAINER_P_ARCHIE, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_Champions::
+	lock
+	trainerbattle_two_trainers TRAINER_P_WALLACE, TestMap_Text_MendelIntro, TRAINER_P_STEVEN, TestMap_Text_MendelDefeated
+	release
+	end
+
+TestMap_EventScript_May::
+    trainerbattle_single TRAINER_P_MAY_FINAL, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TestMap_EventScript_Brendan::
+    trainerbattle_single TRAINER_P_BRENDAN_FINAL, TestMap_Text_MendelIntro, TestMap_Text_MendelDefeated
+    msgbox TestMap_Text_MendelPostBattle, MSGBOX_AUTOCLOSE
+    end
+
 TestMap_EventScript_ItemBurntBranch::
 	finditem ITEM_BURNT_BRANCH
 	end
