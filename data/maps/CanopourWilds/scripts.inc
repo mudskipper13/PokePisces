@@ -96,6 +96,67 @@ CanopourWilds_EventScript_PickleLou::
     msgbox CanopourWilds_Text_PickleLouPostBattle, MSGBOX_AUTOCLOSE
     end
 
+CanopourWilds_EventScript_Trader::
+	lock
+	faceplayer
+	goto_if_set FLAG_TOXITIDE_TRADE_COMPLETED, CanopourWilds_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_TOXITIDE
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox CanopourWilds_Text_IllTradeIfYouWant, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CanopourWilds_EventScript_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, CanopourWilds_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	goto_if_ne VAR_RESULT, VAR_0x8009, CanopourWilds_EventScript_NotRequestedMon
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox CanopourWilds_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
+	setflag FLAG_TOXITIDE_TRADE_COMPLETED
+	release
+	end
+
+CanopourWilds_EventScript_DeclineTrade::
+	msgbox CanopourWilds_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
+	end
+
+CanopourWilds_EventScript_NotRequestedMon::
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox CanopourWilds_Text_DoesntLookLikeMonToMe, MSGBOX_DEFAULT
+	release
+	end
+
+CanopourWilds_EventScript_TradeCompleted::
+	msgbox CanopourWilds_Text_ThanksForTrading, MSGBOX_DEFAULT
+	release
+	end
+
+CanopourWilds_Text_IllTradeIfYouWant:
+	.string "I'll trade you my {STR_VAR_2} for\n"
+	.string "a {STR_VAR_1} if you want.$"
+
+CanopourWilds_Text_PleaseBeGoodToMyPokemon:
+	.string "Please be good to my POKéMON.$"
+
+CanopourWilds_Text_DoesntLookLikeMonToMe:
+	.string "Huh? That doesn't look anything like\n"
+	.string "a {STR_VAR_1} to me.$"
+
+CanopourWilds_Text_YouDontWantToThatsOkay:
+	.string "Oh, if you don't want to, that's okay.$"
+
+CanopourWilds_Text_ThanksForTrading:
+	.string "Thanks for the trade.$"
+
 CanopourWilds_Text_JustinIntro:
 	.string "Hey?! What are you doing?!\p"
 	.string "This is MY bug hunting spot!\n"

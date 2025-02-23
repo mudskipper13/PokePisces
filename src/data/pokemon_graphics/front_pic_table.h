@@ -1152,6 +1152,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[NUM_SPECIES + 1] =
     SPECIES_SPRITE(POTTRICIA, gMonFrontPic_Pottricia),
     SPECIES_SPRITE(POTTRICIA_SHATTERED, gMonFrontPic_PottriciaShattered),
     SPECIES_SPRITE(FAKYSNAKY_BUSTED, gMonFrontPic_FakysnakyBusted),
+    SPECIES_SPRITE(FLAGUE_PRINCE, gMonFrontPic_FlaguePrince),
 #endif
     SPECIES_SPRITE(VENUSAUR_MEGA, gMonFrontPic_VenusaurMega),
     SPECIES_SPRITE(CHARIZARD_MEGA_X, gMonFrontPic_CharizardMegaX),

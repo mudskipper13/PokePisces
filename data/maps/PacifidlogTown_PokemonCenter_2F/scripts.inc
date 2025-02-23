@@ -83,6 +83,28 @@ PacifidlogTown_PokemonCenter_2F_EventScript_BadgeCounterTest::
 	release
 	end
 
+PacifidlogTown_PokemonCenter_2F_EventScript_Guy::
+	msgbox PacifidlogTown_PokemonCenter_2F_Text_Guy, MSGBOX_NPC
+	end
+
+PacifidlogTown_PokemonCenter_2F_EventScript_Girl::
+	msgbox PacifidlogTown_PokemonCenter_2F_Text_Girl, MSGBOX_NPC
+	end
+
+PacifidlogTown_PokemonCenter_2F_Text_Guy:
+	.string "Route Pokemon Centers have a much\n"
+	.string "better vibe, man.\l"
+	.string "I could fall asleep in one of these.\p"
+	.string "And that may... just be what I do.$"
+
+PacifidlogTown_PokemonCenter_2F_Text_Girl:
+	.string "The lady at the counter\n"
+	.string "is named Purplina. She can be\l"
+	.string "a little prickly, but I think\l"
+	.string "she'd be chill to hang with.\l"
+	.string "I'm really into the scene look\l"
+	.string "she has going on!$"
+
 PacifidlogTown_PokemonCenter_2F_Text_BallCounterTest:
 	.string "ball quest plus 1$"
 
@@ -115,7 +137,7 @@ PacifidlogTown_PokemonCenter_2F_Text_HaveYouCaughtThisMon:
 PacifidlogTown_PokemonCenter_2F_Text_CaughtMonReminder:
 	.string "Berm, Ebibi, and Kitikiti...\n"
 	.string "I very much would like to see them!\p"
-	.string "Do you have them registered\l"
+	.string "Do you have them registered\n"
 	.string "in your Pokédex?$"
 
 PacifidlogTown_PokemonCenter_2F_Text_GoCatchIt:

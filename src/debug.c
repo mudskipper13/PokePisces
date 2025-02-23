@@ -4065,6 +4065,9 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_EVER_GRANDE_SUMMIT) \
     X(MUS_SURF_2) \
     X(MUS_VS_WALLY) \
+    X(MUS_VS_OZONE) \
+    X(MUS_PISCES_TITLE) \
+    X(MUS_VS_LEGENDARY2_TESTING) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \
@@ -4336,6 +4339,8 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(SE_PIKE_CURTAIN_CLOSE) \
     X(SE_PIKE_CURTAIN_OPEN) \
     X(SE_SUDOWOODO_SHAKE) \
+    X(SE_ENCOUNTER_TOPAZ) \
+    X(SE_EVER_GRANDE_ROAD_WILD)\
 
 // Create BGM list
 #define X(songId) static const u8 sBGMName_##songId[] = _(#songId);

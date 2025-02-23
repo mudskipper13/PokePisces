@@ -276,7 +276,9 @@
 #define SE_PIKE_CURTAIN_CLOSE       267 // SE_CURTAIN
 #define SE_PIKE_CURTAIN_OPEN        268 // SE_CURTAIN1
 #define SE_SUDOWOODO_SHAKE          269 // SE_USSOKI
-#define END_SE                      SE_SUDOWOODO_SHAKE
+#define SE_ENCOUNTER_TOPAZ          270
+#define SE_EVER_GRANDE_ROAD_WILD    271
+#define END_SE                      SE_EVER_GRANDE_ROAD_WILD
 
 // Music
 #define START_MUS                   350

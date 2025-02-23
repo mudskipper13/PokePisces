@@ -30,10 +30,28 @@
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
+      "x": 31,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TechnicalMachines_EventScript_ItemPTMAuraSphere",
+      "flag": "0"
+    }
   ],
   "warp_events": [
-
+    {
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_WHISPER_CLIFF",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

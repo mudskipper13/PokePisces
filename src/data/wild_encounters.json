@@ -11816,22 +11816,22 @@
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_SANCTISOW"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_NANGGAL"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_SANCTISOW"
               },
               {
                 "min_level": 50,
                 "max_level": 50,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_NANGGAL"
               },
               {
                 "min_level": 50,
@@ -17912,6 +17912,144 @@
                 "min_level": 48,
                 "max_level": 52,
                 "species": "SPECIES_ORROCAST"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_SOOTOPOLIS_CASTLE",
+          "base_label": "gSootopolisCastle0",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_SPRYTE"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_PAWNIARD"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_MAGNALURE"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_BIVAGUE"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_SACKYTWACK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_MANNIKO"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_MISDREAVUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_CHIROBERRA"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_CHIROBERRA"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_SYLVREIGN"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_MISDREAVUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_RETROROACH"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_PIRATES_GROTTO",
+          "base_label": "gPiratesGrotto0",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SCALLYWARG"
+              },
+              {
+                "min_level": 32,
+                "max_level": 32,
+                "species": "SPECIES_RETROROACH"
               }
             ]
           }

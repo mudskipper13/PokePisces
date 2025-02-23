@@ -136,8 +136,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_BOY",
-      "x": 47,
-      "y": 40,
+      "x": 65,
+      "y": 50,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -152,12 +152,12 @@
       "x": 17,
       "y": 48,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemPokeBall",
       "flag": "0"
     },
     {
@@ -165,12 +165,12 @@
       "x": 56,
       "y": 39,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemSodaPop",
       "flag": "0"
     },
     {
@@ -178,12 +178,12 @@
       "x": 65,
       "y": 34,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemPotion",
       "flag": "0"
     },
     {
@@ -196,7 +196,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemAntidote",
       "flag": "0"
     },
     {
@@ -209,7 +209,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemIceHeal",
       "flag": "0"
     },
     {
@@ -222,11 +222,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ItemRepel",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_BOY",
       "x": 62,
       "y": 28,
       "elevation": 0,
@@ -235,7 +235,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_BuoyantBoy",
       "flag": "0"
     },
     {
@@ -261,7 +261,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_SeaBreezeLiker",
       "flag": "0"
     },
     {
@@ -278,7 +278,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
       "x": 15,
       "y": 13,
       "elevation": 0,
@@ -287,7 +287,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_ImpactLakeFisher",
       "flag": "0"
     },
     {
@@ -304,7 +304,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_MLADY",
       "x": 72,
       "y": 21,
       "elevation": 0,
@@ -313,11 +313,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_VacationLady",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
       "x": 42,
       "y": 10,
       "elevation": 0,
@@ -326,11 +326,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_SootopolisAheadMan",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_SADFISH",
       "x": 28,
       "y": 25,
       "elevation": 0,
@@ -339,11 +339,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_FishingBadHere",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_WOMAN",
       "x": 40,
       "y": 25,
       "elevation": 0,
@@ -352,20 +352,20 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_WetKidsMom",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
-      "x": 65,
-      "y": 50,
+      "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_MAN",
+      "x": 47,
+      "y": 40,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "BasalinCoast_EventScript_InclineMan",
       "flag": "0"
     },
     {
@@ -421,6 +421,13 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 51,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "BasalinCoast_EventScript_BasalinSign"
+    }
   ]
 }

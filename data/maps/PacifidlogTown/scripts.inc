@@ -495,7 +495,7 @@ PacifidlogTown_Text_HaveThisShell:
 
 PacifidlogTown_Text_Seasheller1:
 	.string "I heard from my friend that\n"
-	.string "there's a nice lady in Sootopolis\l"
+	.string "there's a nice man in Sootopolis\l"
 	.string "that makes a special item\l"
 	.string "out of sea shells!\p"
 	.string "And I think something else, but...\n"

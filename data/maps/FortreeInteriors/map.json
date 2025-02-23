@@ -14,7 +14,32 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FortreeInteriors_EventScript_Trader",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
+      "x": 30,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_11"
+    }
   ],
   "warp_events": [
     {
@@ -60,15 +85,15 @@
       "dest_warp_id": "3"
     },
     {
-      "x": 29,
-      "y": 5,
+      "x": 28,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CITY",
       "dest_warp_id": "4"
     },
     {
-      "x": 30,
-      "y": 5,
+      "x": 29,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CITY",
       "dest_warp_id": "4"
@@ -102,22 +127,48 @@
       "dest_warp_id": "6"
     },
     {
-      "x": 28,
-      "y": 16,
+      "x": 29,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CITY",
       "dest_warp_id": "7"
     },
     {
-      "x": 29,
-      "y": 16,
+      "x": 30,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CITY",
       "dest_warp_id": "7"
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NOTICED_BY_YANDEMIC",
+      "var_value": "4",
+      "script": "FortreeInteriors_EventScript_YandemicEncounterWest1"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_NOTICED_BY_YANDEMIC",
+      "var_value": "4",
+      "script": "FortreeInteriors_EventScript_YandemicEncounterNorth1"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_NOTICED_BY_YANDEMIC",
+      "var_value": "4",
+      "script": "FortreeInteriors_EventScript_YandemicEncounterNorth2"
+    }
   ],
   "bg_events": [
 

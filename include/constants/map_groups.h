@@ -121,6 +121,8 @@
 #define MAP_FORTREE_GYM_BATTLE_LOCATION       (6 | (9 << 8))
 #define MAP_FORTREE_INTERIORS                 (7 | (9 << 8))
 #define MAP_FORTREE_GYM_TRANSITION_BUILDING   (8 | (9 << 8))
+#define MAP_CANOPOUR_BUSHES                   (9 | (9 << 8))
+#define MAP_PERPLUME_TREEHOUSE                (10 | (9 << 8))
 
 // gMapGroup_PiscesLeg6Major
 #define MAP_OZONE_INSTITUTE    (0 | (10 << 8))
@@ -148,6 +150,11 @@
 #define MAP_FOSSIL_SHORE_HOUSES              (9 | (11 << 8))
 #define MAP_FALLARBOR_INTERIORS              (10 | (11 << 8))
 #define MAP_OZONE_TRANSITION_BUILDINGS       (11 | (11 << 8))
+#define MAP_SOOTOPOLIS_CASTLE                (12 | (11 << 8))
+#define MAP_FALLARBOR_STEEPLE                (13 | (11 << 8))
+#define MAP_FALLARBOR_STEEPLE_INTERIOR       (14 | (11 << 8))
+#define MAP_PIRATES_GROTTO                   (15 | (11 << 8))
+#define MAP_MUSEUM_SANCTUM                   (16 | (11 << 8))
 
 // gMapGroup_PiscesLeg7Major
 #define MAP_SWELTORN_DESERT           (0 | (12 << 8))
@@ -215,6 +222,7 @@
 #define MAP_SAILORS_PAUSE_UNDERWATER       (3 | (15 << 8))
 #define MAP_STRAE_SEAPATH_UNDERWATER       (4 | (15 << 8))
 #define MAP_DEWFORD_INTERIORS              (5 | (15 << 8))
+#define MAP_MIRAGE_ISLAND                  (6 | (15 << 8))
 
 // gMapGroup_PiscesLeg9Major
 #define MAP_DETERMANITE_BEACH    (0 | (16 << 8))
@@ -251,6 +259,7 @@
 #define MAP_RUST_GYM_DARK_CAFETERIA          (19 | (17 << 8))
 #define MAP_RUST_GYM_DARK_CAFE_ARENA         (20 | (17 << 8))
 #define MAP_DEVON_CORP                       (21 | (17 << 8))
+#define MAP_DETERMANITE_UNDERWATER           (22 | (17 << 8))
 
 // gMapGroup_PiscesLeg10Major
 #define MAP_PETALBURG_NEW              (0 | (18 << 8))

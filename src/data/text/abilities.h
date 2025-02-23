@@ -1537,10 +1537,10 @@ static const u8 sAquaHeartDescription[] = _(
     "abilities and user's stat drops.");
 
 static const u8 sFirebrandDescription[] = _(
-    "Attacks become critical hits if\n"
-    "the target is burned. May burn a\n"
-    "target when making contact.");
-
+    "Boosts the burn chance of moves.\n"
+    "After using a contact move on a\n"
+    "burned Pokémon, uses Firebrand.");
+    
 static const u8 sDisdainDescription[] = _(
     "When the Pokémon knocks out a\n"
     "target, it shows disdain, which\n"
@@ -1675,8 +1675,8 @@ static const u8 sToxicChainDescription[] = _(
     "Pokémon hits with a move.");
 
 static const u8 sWatcherDescription[] = _(
-    "Uses the move Mind Reader at the\n"
-    "end of every other turn.");
+    "Every 2 turns, ensures the\n"
+    "Pokémon's attacks always land.");
 
 static const u8 sAppetiteDescription[] = _(
     "When the Pokémon knocks out a\n"

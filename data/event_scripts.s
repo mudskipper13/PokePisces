@@ -705,7 +705,7 @@ Common_EventScript_TannerShop0Progress::
 
 	.align 2
 Common_Mart_TannerShop0:
-	.2byte ITEM_TM_THIEF
+	.2byte ITEM_SODA_POP
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_NONE
 	release
@@ -3849,3 +3849,21 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SweltornInteriors/scripts.inc"
 
 	.include "data/maps/ShunyongBattleArena/scripts.inc"
+
+	.include "data/maps/MirageIsland/scripts.inc"
+
+	.include "data/maps/SootopolisCastle/scripts.inc"
+
+	.include "data/maps/CanopourBushes/scripts.inc"
+
+	.include "data/maps/PerplumeTreehouse/scripts.inc"
+
+	.include "data/maps/FallarborSteeple/scripts.inc"
+
+	.include "data/maps/FallarborSteepleInterior/scripts.inc"
+
+	.include "data/maps/PiratesGrotto/scripts.inc"
+
+	.include "data/maps/MuseumSanctum/scripts.inc"
+
+	.include "data/maps/DetermaniteUnderwater/scripts.inc"

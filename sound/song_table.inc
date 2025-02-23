@@ -271,8 +271,8 @@ gSongTable::
 	song se_pike_curtain_close, 1, 1
 	song se_pike_curtain_open, 1, 1
 	song se_sudowoodo_shake, 1, 1
-	song dummy_song_header, 0, 0
-	song dummy_song_header, 0, 0
+	song se_encounter_topaz, 1, 1
+	song se_ever_grande_road_wild, 1, 1
 	song dummy_song_header, 0, 0
 	song dummy_song_header, 0, 0
 	song dummy_song_header, 0, 0
@@ -642,6 +642,9 @@ gSongTable::
 	song mus_ever_grande_summit, 0, 0
 	song mus_surf_2, 0, 0
 	song mus_vs_wally, 0, 0
+	song mus_vs_ozone, 0, 0
+	song mus_pisces_title, 0, 0
+	song mus_vs_legendary2_testing, 0, 0
 
 	.align 2
 dummy_song_header:

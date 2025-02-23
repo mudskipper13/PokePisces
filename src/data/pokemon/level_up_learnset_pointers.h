@@ -1566,5 +1566,6 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_LYOLICA] = sLyoresaLevelUpLearnset,
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaLevelUpLearnset,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyLevelUpLearnset,
+    [SPECIES_FLAGUE_PRINCE] = sFlagueLevelUpLearnset,
 #endif
 };

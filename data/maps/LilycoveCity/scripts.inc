@@ -4,7 +4,13 @@ LilycoveCity_MapScripts::
 
 LilycoveCity_OnTransition:
 	setflag FLAG_VISITED_LILYCOVE_CITY
+	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, LilycoveCity_EventScript_RemoveYandemic
 	end
+
+LilycoveCity_EventScript_RemoveYandemic::
+	removeobject LOCALID_YANDEMIC
+	setflag FLAG_TEMP_11
+	return
 
 LilycoveCity_EventScript_FalseSwipeGiver::
 	lock
@@ -38,6 +44,22 @@ LilycoveCity_EventScript_GaveFalseSwipe::
 LilycoveCity_EventScript_ThisIsMyWorkplace::
 	msgbox LilycoveCity_Text_ThisIsMyWorkplace, MSGBOX_NPC
 	end
+
+LilycoveCity_EventScript_YandemicNoticed::
+	lock
+	setvar VAR_TEMP_4, 1
+	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, LilycoveCity_EventScript_YandemicAddVar
+	msgbox MossdeepCity_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveCity_EventScript_YandemicAddVar::
+	addvar VAR_NOTICED_BY_YANDEMIC, 1
+	return
+
+LilycoveCity_Text_YouFeelWatched:
+	.string "(You begin to notice that\n"
+	.string "you are being intently watched...)$"
 
 LilycoveCity_Text_ThisIsMyWorkplace:
 	.string "This here is my workplace! The\n"

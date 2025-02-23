@@ -172,7 +172,9 @@
     "FortreeTransitionArea",
     "FortreeGymBattleLocation",
     "FortreeInteriors",
-    "FortreeGymTransitionBuilding"
+    "FortreeGymTransitionBuilding",
+    "CanopourBushes",
+    "PerplumeTreehouse"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",
@@ -199,7 +201,12 @@
     "FossilShore",
     "FossilShoreHouses",
     "FallarborInteriors",
-    "OzoneTransitionBuildings"
+    "OzoneTransitionBuildings",
+    "SootopolisCastle",
+    "FallarborSteeple",
+    "FallarborSteepleInterior",
+    "PiratesGrotto",
+    "MuseumSanctum"
   ],
   "gMapGroup_PiscesLeg7Major": [
     "SweltornDesert",
@@ -266,7 +273,8 @@
     "NavigulfUnderwater",
     "SailorsPauseUnderwater",
     "StraeSeapathUnderwater",
-    "DewfordInteriors"
+    "DewfordInteriors",
+    "MirageIsland"
   ],
   "gMapGroup_PiscesLeg9Major": [
     "DetermaniteBeach",
@@ -302,7 +310,8 @@
     "RustGymDarkClassroom",
     "RustGymDarkCafeteria",
     "RustGymDarkCafeArena",
-    "DevonCorp"
+    "DevonCorp",
+    "DetermaniteUnderwater"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",

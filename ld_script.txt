@@ -988,6 +988,8 @@ SECTIONS {
         sound/songs/midi/se_pike_curtain_close.o(.rodata);
         sound/songs/midi/se_pike_curtain_open.o(.rodata);
         sound/songs/midi/se_sudowoodo_shake.o(.rodata);
+        sound/songs/midi/se_encounter_topaz.o(.rodata);
+        sound/songs/midi/se_ever_grande_road_wild.o(.rodata);
         sound/songs/midi/mus_littleroot_test.o(.rodata);
         sound/songs/midi/mus_gsc_route38.o(.rodata);
         sound/songs/midi/mus_caught.o(.rodata);
@@ -1279,6 +1281,9 @@ SECTIONS {
         sound/songs/midi/mus_ever_grande_summit.o(.rodata);
         sound/songs/midi/mus_surf_2.o(.rodata);
         sound/songs/midi/mus_vs_wally.o(.rodata);
+        sound/songs/midi/mus_vs_ozone.o(.rodata);
+        sound/songs/midi/mus_pisces_title.o(.rodata);
+        sound/songs/midi/mus_vs_legendary2_testing.o(.rodata);
 
     } =0
 

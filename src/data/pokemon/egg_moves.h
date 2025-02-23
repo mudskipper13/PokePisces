@@ -4204,7 +4204,7 @@ const u16 gEggMoves[] = {
         MOVE_COUNTER,
         MOVE_IGNITION,
         MOVE_DRAGON_DANCE,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_DRAGON_RUSH,
         MOVE_FIERY_WRATH),
 
@@ -4378,7 +4378,7 @@ const u16 gEggMoves[] = {
         MOVE_SPITE,
         MOVE_REVENGE,
         MOVE_RAGING_BULL,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_SHADOW_PUNCH,
         MOVE_COUNTER),
 
@@ -4399,7 +4399,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(KOMBAKYU,
         MOVE_TELEPORT,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_FOCUS_BLAST,
         MOVE_UPPER_HAND,
         MOVE_CRUSH_CLAW,
@@ -4603,7 +4603,8 @@ const u16 gEggMoves[] = {
     egg_moves(LEDIAN,
         MOVE_FOCUS_PUNCH,
         MOVE_MEGA_PUNCH,
-        MOVE_METEOR_MASH),
+        MOVE_METEOR_MASH,
+        MOVE_MEDITATE),
 
     egg_moves(LINOONE,
         MOVE_SWITCHEROO,
@@ -5381,7 +5382,7 @@ const u16 gEggMoves[] = {
     egg_moves(MARSOYART,
         MOVE_SURGING_STRIKES,
         MOVE_WICKED_BLOW,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_THUNDEROUS_KICK,
         MOVE_UPPER_HAND,
         MOVE_DOUBLE_KICK,
@@ -5598,7 +5599,7 @@ const u16 gEggMoves[] = {
         MOVE_HOLD_HANDS,
         MOVE_ALLURING_VOICE,
         MOVE_EXORCISM,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_HEX,
         MOVE_MORNING_SUN),
 
@@ -5606,7 +5607,7 @@ const u16 gEggMoves[] = {
         MOVE_HOLD_HANDS,
         MOVE_ALLURING_VOICE,
         MOVE_EXORCISM,
-        MOVE_BURNING_SPIRIT,
+        MOVE_BLAZING_SOUL,
         MOVE_HEX,
         MOVE_MORNING_SUN,
         MOVE_SPRINGTIDE_STORM,

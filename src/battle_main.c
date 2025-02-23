@@ -3283,6 +3283,7 @@ void SwitchInClearSetData(u32 battler)
         gDisableStructs[battler].battlerWithSureHit = disableStructCopy.battlerWithSureHit;
         gDisableStructs[battler].perishSongTimer = disableStructCopy.perishSongTimer;
         gDisableStructs[battler].battlerPreventingEscape = disableStructCopy.battlerPreventingEscape;
+        gDisableStructs[battler].embargoTimer = disableStructCopy.embargoTimer;
     }
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_SHED_TAIL)
@@ -4936,6 +4937,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         switch (gBattleMoves[move].effect)
         {
         case EFFECT_RESTORE_HP:
+        case EFFECT_BLAZING_SOUL:
         case EFFECT_CRITICAL_REPAIR:
         case EFFECT_REST:
         case EFFECT_MORNING_SUN:

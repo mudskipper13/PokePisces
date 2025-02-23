@@ -65,7 +65,7 @@ RustGymClassroom_EventScript_TakeTest::
 
 RustGymClassroom_EventScript_TestQuestion1::
 	msgbox RustGymClassroom_Text_TestQuestion1, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_1, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_1, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 2, RustGymClassroom_EventScript_TestQuestion2
 	addvar VAR_TEMP_5, 1
@@ -76,7 +76,7 @@ RustGymClassroom_EventScript_TestQuestion1::
 
 RustGymClassroom_EventScript_TestQuestion2::
 	msgbox RustGymClassroom_Text_TestQuestion2, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_2, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_2, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 1, RustGymClassroom_EventScript_TestQuestion3
 	addvar VAR_TEMP_5, 1
@@ -87,7 +87,7 @@ RustGymClassroom_EventScript_TestQuestion2::
 
 RustGymClassroom_EventScript_TestQuestion3::
 	msgbox RustGymClassroom_Text_TestQuestion3, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_3, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_3, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 0, RustGymClassroom_EventScript_TestQuestion4
 	addvar VAR_TEMP_5, 1
@@ -98,7 +98,7 @@ RustGymClassroom_EventScript_TestQuestion3::
 
 RustGymClassroom_EventScript_TestQuestion4::
 	msgbox RustGymClassroom_Text_TestQuestion4, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_4, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_4, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 3, RustGymClassroom_EventScript_TestQuestion5
 	addvar VAR_TEMP_5, 1
@@ -109,7 +109,7 @@ RustGymClassroom_EventScript_TestQuestion4::
 
 RustGymClassroom_EventScript_TestQuestion5::
 	msgbox RustGymClassroom_Text_TestQuestion5, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_5, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_5, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 4, RustGymClassroom_EventScript_TestQuestion6
 	addvar VAR_TEMP_5, 1
@@ -120,7 +120,7 @@ RustGymClassroom_EventScript_TestQuestion5::
 
 RustGymClassroom_EventScript_TestQuestion6::
 	msgbox RustGymClassroom_Text_TestQuestion6, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_6, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_6, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 1, RustGymClassroom_EventScript_TestQuestion7
 	addvar VAR_TEMP_5, 1
@@ -131,7 +131,7 @@ RustGymClassroom_EventScript_TestQuestion6::
 
 RustGymClassroom_EventScript_TestQuestion7::
 	msgbox RustGymClassroom_Text_TestQuestion7, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_7, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_7, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 2, RustGymClassroom_EventScript_TestQuestion8
 	addvar VAR_TEMP_5, 1
@@ -142,7 +142,7 @@ RustGymClassroom_EventScript_TestQuestion7::
 
 RustGymClassroom_EventScript_TestQuestion8::
 	msgbox RustGymClassroom_Text_TestQuestion8, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_8, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_8, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 4, RustGymClassroom_EventScript_TestQuestion9
 	addvar VAR_TEMP_5, 1
@@ -153,7 +153,7 @@ RustGymClassroom_EventScript_TestQuestion8::
 
 RustGymClassroom_EventScript_TestQuestion9::
 	msgbox RustGymClassroom_Text_TestQuestion9, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_9, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_9, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 0, RustGymClassroom_EventScript_TestQuestion10
 	addvar VAR_TEMP_5, 1
@@ -164,7 +164,7 @@ RustGymClassroom_EventScript_TestQuestion9::
 
 RustGymClassroom_EventScript_TestQuestion10::
 	msgbox RustGymClassroom_Text_TestQuestion10, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_10, FALSE
+	multichoice 19, 4, MULTI_RUSTGYM_QUESTION_10, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 0, RustGymClassroom_EventScript_TestFinished
 	addvar VAR_TEMP_5, 1

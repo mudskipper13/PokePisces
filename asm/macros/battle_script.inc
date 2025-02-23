@@ -1437,6 +1437,18 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkdaybreakcounter counter:req, ptr:req
+	callnative BS_CheckDaybreakCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
+	.macro checkstatboosts counter:req, ptr:req
+	callnative BS_CheckStatBoosts
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro jumpifcantloseitem battler:req, ptr:req
 	callnative BS_JumpIfCantLoseItem
 	.byte \battler
@@ -1712,16 +1724,6 @@
 
 	.macro jumpifhpthreshold battler:req, jumpInstr:req
 	various \battler VARIOUS_JUMP_IF_HP_THRESHOLD
-	.4byte \jumpInstr
-	.endm
-
-	.macro jumpifhasastatboost battler:req, jumpInstr:req
-	various \battler VARIOUS_JUMP_IF_HAS_A_STAT_BOOST
-	.4byte \jumpInstr
-	.endm
-
-	.macro jumpifhasastatdrop battler:req, jumpInstr:req
-	various \battler VARIOUS_JUMP_IF_HAS_A_STAT_DROP
 	.4byte \jumpInstr
 	.endm
 
@@ -2124,6 +2126,16 @@
 
 	.macro applyexhaustioncounter battler:req, failInstr:req
 	various \battler, VARIOUS_APPLY_EXHAUSTION_COUNTER
+	.4byte \failInstr
+	.endm
+
+	.macro applydaybreakcounter battler:req, failInstr:req
+	various \battler, VARIOUS_APPLY_DAYBREAK_COUNTER
+	.4byte \failInstr
+	.endm
+
+	.macro removealldaybreakcounters battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_DAYBREAK_COUNTER
 	.4byte \failInstr
 	.endm
 
@@ -2642,6 +2654,11 @@
 
 	.macro trycriticalrepair battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_CRITICAL_REPAIR
+	.4byte \failInstr
+	.endm
+
+	.macro tryblazingsoul battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_BLAZING_SOUL
 	.4byte \failInstr
 	.endm
 

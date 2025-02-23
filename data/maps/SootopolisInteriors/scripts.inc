@@ -4,6 +4,7 @@ SootopolisInteriors_MapScripts::
 SootopolisInteriors_EventScript_ShellBellMaker::
 	lock
 	speakername SootopolisInteriors_Text_NameLBelle
+	goto_if_ge VAR_ORBS_QUEST_STATE, 5, SootopolisInteriors_EventScript_LunasterDefeated
 	goto_if_set FLAG_RECEIVED_SOOTHE_BELL, SootopolisInteriors_EventScript_LunasterTale
 	goto_if_set FLAG_RECEIVED_SHELL_BELL, SootopolisInteriors_EventScript_HealBellQuest
 	msgbox SootopolisInteriors_Text_IMakeShellBells, MSGBOX_DEFAULT
@@ -56,6 +57,12 @@ SootopolisInteriors_EventScript_LunasterTale::
 	release
 	end
 
+SootopolisInteriors_EventScript_LunasterDefeated:
+	msgbox SootopolisInteriors_Text_LunasterDefeated, MSGBOX_AUTOCLOSE
+	speakername NULL
+	release
+	end
+
 SootopolisInteriors_EventScript_DragonResearcher::
     lock
 	faceplayer
@@ -71,6 +78,58 @@ SootopolisInteriors_EventScript_GaveDB::
     msgbox SootopolisInteriors_Text_GaveDB, MSGBOX_AUTOCLOSE
     release
     end
+
+SootopolisInteriors_EventScript_SaintisowChild::
+	msgbox SootopolisInteriors_Text_SaintisowChild, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_ReligiousSister::
+	msgbox SootopolisInteriors_Text_ReligiousSister, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_DragonWife::
+	msgbox SootopolisInteriors_Text_DragonWife, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_BellLiker::
+	msgbox SootopolisInteriors_Text_BellLiker, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_BerriesComeBackWoman::
+	msgbox SootopolisInteriors_Text_BerriesComeBackWoman, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_StairJogger::
+	msgbox SootopolisInteriors_Text_StairJogger, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_SeaSwimmer::
+	msgbox SootopolisInteriors_Text_SeaSwimmer, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_DevoutPiscesWoman::
+	msgbox SootopolisInteriors_Text_DevoutPiscesWoman, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_DevoutPiscesMan::
+	msgbox SootopolisInteriors_Text_DevoutPiscesMan, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_CheerOnJuan::
+	msgbox SootopolisInteriors_Text_CheerOnJuan, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_KidPlayingTomatoAdventure::
+	msgbox SootopolisInteriors_Text_KidPlayingTomatoAdventure, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_GroudonKyogreMan::
+	msgbox SootopolisInteriors_Text_GroudonKyogreMan, MSGBOX_NPC
+	end
+
+SootopolisInteriors_EventScript_WorshippersAreWeird::
+	msgbox SootopolisInteriors_Text_WorshippersAreWeird, MSGBOX_NPC
+	end
 
 SootopolisInteriors_EventScript_Trader::
 	lock
@@ -256,3 +315,101 @@ SootopolisInteriors_Text_LunasterDefeated:
 	.string "has been properly dealt with.\p"
 	.string "You are more than worthy of taking my\n"
 	.string "throne as the Bell Master!$"
+
+SootopolisInteriors_Text_SaintisowChild:
+	.string "Saintisow is my favorite Pokemon!\n"
+	.string "Such a cute lil piggy!$"
+
+SootopolisInteriors_Text_ReligiousSister:
+	.string "Saintisow's evolution, Sanctisow,\n"
+	.string "some people believe to be angelic.\l"
+	.string "I just think they're a\l"
+	.string "little too goofy to be angels.$"
+
+SootopolisInteriors_Text_DragonWife:
+	.string "My husband is descended from\n"
+	.string "that ancient Draconid tribe.\l"
+	.string "He has a special interest\l"
+	.string "in all things scaly and powerful.$"
+
+SootopolisInteriors_Text_BellLiker:
+	.string "Ring-a-ding-ding...\n"
+	.string "I love jingling the bell I\l"
+	.string "got from Mr. L'Belle!\l"
+	.string "You should seek him out\l"
+	.string "if you want one! He's\l"
+	.string "awfully generous!$"
+
+SootopolisInteriors_Text_BerriesComeBackWoman:
+	.string "Don't be afraid to give your\n"
+	.string "Pokemon berries to hold.\l"
+	.string "They have many different effects,\l"
+	.string "and your Pokemon can use them\l"
+	.string "in many battles; they don't just\l"
+	.string "get used up permanently!$"
+
+SootopolisInteriors_Text_StairJogger:
+	.string "There's so many flights of\n"
+	.string "stairs in Sootopolis.\p"
+	.string "I keep in shape by jogging a\n"
+	.string "route that takes me up and down\l"
+	.string "every single stairway in\l"
+	.string "the morning.$"
+
+SootopolisInteriors_Text_SeaSwimmer:
+	.string "About once a week I challenge myself\n"
+	.string "to swim around the circumference\l"
+	.string "of Sootopolis City. It's an\l"
+	.string "exhausting, yet rewarding workout!$"
+
+SootopolisInteriors_Text_DevoutPiscesWoman:
+	.string "I tend to go to the worship\n"
+	.string "service in the Cave of Origin\l"
+	.string "whenever I have the availability.\p"
+	.string "Those who pray to the fish\n"
+	.string "are said to feel a heightened\l"
+	.string "sense of balance and unity.$"
+
+SootopolisInteriors_Text_DevoutPiscesMan:
+	.string "I thank Sha-yon and Luo-shan\n"
+	.string "every day for keeping the\l"
+	.string "Hoenn region harmonious.\l"
+	.string "I shudder to think what\l"
+	.string "we would do without their\l"
+	.string "unifying presence.$"
+
+SootopolisInteriors_Text_CheerOnJuan:
+	.string "I'm almost late to cheer on\n"
+	.string "Juan at his big show!\l"
+	.string "He will have to notice me\l"
+	.string "sooner or later!!$"
+
+SootopolisInteriors_Text_KidPlayingTomatoAdventure:
+	.string "Hey. Are you a gamer?\n"
+	.string "Got a Game Boy Advance?\l"
+	.string "I'd recommend checking out\l"
+	.string "this game called Tomato Adventure.\p"
+	.string "It's pretty unknown by most\n"
+	.string "people, because it wasn't\l"
+	.string "translated into English 'till\l"
+	.string "a bunch of fans got together\l"
+	.string "and patched it themselves.\l"
+	.string "It's a fun, weird experience.$"
+
+SootopolisInteriors_Text_GroudonKyogreMan:
+	.string "I'll never forget the day\n"
+	.string "Groudon and Kyogre warred\l"
+	.string "in the center of town.\p"
+	.string "It was like the end of the\n"
+	.string "world. I'd hope it would\l"
+	.string "never happen again, but...$"
+
+SootopolisInteriors_Text_WorshippersAreWeird:
+	.string "If you ask me, those religious\n"
+	.string "folk who worship the two\l"
+	.string "fish in the Cave of Origin\l"
+	.string "are nutjobs.\p"
+	.string "How are fish going to affect\n"
+	.string "you in any way? Let alone\l"
+	.string "unify the world, or whatever\l"
+	.string "they claim can do.$"

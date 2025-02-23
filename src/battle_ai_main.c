@@ -51,6 +51,7 @@ static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_Safari(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_FirstBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
+static s32 AI_JuansTrick(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 
 #define MAX_SHUNYONG_MOVES  10
 // defense form
@@ -89,7 +90,7 @@ static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
     [6] = AI_PreferBatonPass,        // AI_FLAG_PREFER_BATON_PASS
     [7] = AI_DoubleBattle,           // AI_FLAG_DOUBLE_BATTLE
     [8] = AI_HPAware,                // AI_FLAG_HP_AWARE
-    [9] = NULL,                      // AI_FLAG_NEGATE_UNAWARE
+    [9] = AI_JuansTrick,             // AI_FLAG_JUANS_TRICK
     [10] = NULL,                     // AI_FLAG_WILL_SUICIDE
     [11] = NULL,                     // AI_FLAG_HELP_PARTNER
     [12] = NULL,                     // Unused
@@ -409,6 +410,9 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     memset(aiData, 0, sizeof(struct AiLogicData));
     if (!(gBattleTypeFlags & BATTLE_TYPE_HAS_AI) && !IsWildMonSmart())
         return;
+    
+    if (IsShunyongBattle())
+        return;
 
     // Set delay timer to count how long it takes for AI to choose action/move
     gBattleStruct->aiDelayTimer = gMain.vblankCounter1;
@@ -445,7 +449,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
     if (CountUsablePartyMons(battler) > 0
         && !IsBattlerTrapped(battler, TRUE)
         && !(gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_PALACE))
-        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS))
+        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS | AI_FLAG_JUANS_TRICK))
     {
         // Consider switching if all moves are worthless to use.
         if (GetTotalBaseStat(gBattleMons[battler].species) >= 310 // Mon is not weak.
@@ -559,37 +563,45 @@ static u32 ChooseMoveOrAction_Singles(u32 battlerAi)
 static u32 ChooseMoveOrAction_Shunyong(u32 battlerAi)
 {
     const u16 *moves = (gBattleMons[1].species == SPECIES_SHUNYONG) ? sShunyongMoves : sShunyongGoldenOffenseMoves;
-    s32 i, j, score, bestScore;
+    s32 battlerDef, dmg, i, j, score, bestScore;
     s32 moveidx = 0;
     u32 flags, move, viableMoveCount;
-    
-    s32 scoresLeft[MAX_SHUNYONG_MOVES] = {0};
-    s32 scoresRight[MAX_SHUNYONG_MOVES] = {0};
-    
+    u8 effectiveness;
+    u32 weather;
+
     u16 *bestMoves;
     u8 *bestTargets;
     
     if (battlerAi == B_POSITION_OPPONENT_RIGHT)
         return 0;
     
-    bestMoves = AllocZeroed(sizeof(u16) * 2 * MAX_SHUNYONG_MOVES);;
-    bestTargets = AllocZeroed(sizeof(u8) * 2 * MAX_SHUNYONG_MOVES);
-    for (i = 0; i < MAX_SHUNYONG_MOVES; i++) {
-        scoresLeft[i] = 0;
-        scoresRight[i] = 0;
-    }
+    bestMoves = AllocZeroed(sizeof(u16) * 2 * (MAX_SHUNYONG_MOVES+1));
+    bestTargets = AllocZeroed(sizeof(u8) * 2 * (MAX_SHUNYONG_MOVES+1));
     
-    // loop through targets
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    bestScore = -1;
+    
+    // get AI assumed info, e.g. abilities
+    SetBattlerAiData(battlerAi, AI_DATA);
+    SetBattlerAiData(B_POSITION_PLAYER_LEFT, AI_DATA);
+    
+    // backup battlemons
+    SaveBattlerData(battlerAi);
+    SetBattlerData(battlerAi);
+    
+    weather = AI_GetWeather(AI_DATA);
+
+    // loop through moves/targets
+    for (battlerDef = 0; battlerDef < MAX_BATTLERS_COUNT; battlerDef++)
     {
-        if (GetBattlerSide(i) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerDef) == B_SIDE_OPPONENT
+                || !IsBattlerAlive(battlerDef))
         {
             continue;
         }
         else
         {
             BattleAI_SetupAIData(0xF, battlerAi);
-            gBattlerTarget = i;
+            gBattlerTarget = battlerDef;
             AI_DATA->partnerMove = MOVE_NONE;
             AI_THINKING_STRUCT->movesetIndex = 0;
             for (moveidx = 0; moveidx < MAX_SHUNYONG_MOVES; moveidx++)
@@ -600,6 +612,19 @@ static u32 ChooseMoveOrAction_Shunyong(u32 battlerAi)
                 if (IsMoveUnusable(battlerAi, move, 1, MOVE_LIMITATIONS_ALL))
                     continue;
                 
+                // backup gBattleMons, set assumed battler data
+                SaveBattlerData(battlerDef);
+                SetBattlerData(battlerDef);
+                // compute dmg, effectiveness
+                effectiveness = AI_EFFECTIVENESS_x0;
+                dmg = AI_CalcDamage(move, battlerAi, battlerDef, &effectiveness, TRUE, weather);
+                
+                AI_THINKING_STRUCT->movesetIndex = 0;
+                AI_THINKING_STRUCT->moveConsidered = move;
+                AI_DATA->simulatedDmg[battlerAi][battlerDef][AI_THINKING_STRUCT->movesetIndex] = dmg;
+                AI_DATA->effectiveness[battlerAi][battlerDef][AI_THINKING_STRUCT->movesetIndex] = effectiveness;
+        
+                // compute score
                 score = 100;
                 AI_THINKING_STRUCT->aiLogicId = 0;
                 flags = AI_THINKING_STRUCT->aiFlags;
@@ -617,54 +642,45 @@ static u32 ChooseMoveOrAction_Shunyong(u32 battlerAi)
                     flags >>= 1;
                     AI_THINKING_STRUCT->aiLogicId++;
                 } // flags
-                if (i == B_POSITION_PLAYER_LEFT) {
-                    scoresLeft[moveidx] = score;
-                } else if (i == B_POSITION_PLAYER_RIGHT) {
-                    scoresRight[moveidx] = score;
+                
+                // restore gBattleMons
+                RestoreBattlerData(battlerDef);
+                
+                if (bestScore == -1)
+                {
+                    bestMoves[0] = moves[0];
+                    bestTargets[0] = 0;
+                    viableMoveCount = 1;
+                    bestScore = score;
+                }
+                else
+                {
+                    if (score > bestScore)
+                    {
+                        bestMoves[0] = move;
+                        bestTargets[0] = battlerDef;
+                        bestScore = score;
+                        viableMoveCount = 1;
+                    }
+                    else if (score == bestScore)
+                    {
+                        bestMoves[viableMoveCount] = move;
+                        bestTargets[viableMoveCount] = battlerDef;
+                        viableMoveCount++;
+                    }
                 }
                 
-                //DebugPrintfLevel(MGBA_LOG_WARN, "attacker %d tgt %d move %d score %d", battlerAi, gBattlerTarget, move, score);
+                // DebugPrintfLevel(MGBA_LOG_WARN, "attacker %d tgt %d move %d score %d", battlerAi, gBattlerTarget, move, score);
             } // moves loop
         }
     }
-    
-    // get best score(s) from all moves/targets
-    bestScore = scoresLeft[0];
-    
-    bestMoves[0] = moves[0];
-    bestTargets[0] = 0;
-    viableMoveCount = 1;
-    for (i = 1; i < MAX_SHUNYONG_MOVES; i++) {
-        // left
-        if (scoresLeft[i] > bestScore) {
-            bestScore = scoresLeft[i];
-            bestMoves[0] = moves[i];
-            bestTargets[0] = 0;
-            viableMoveCount = 1;
-        } else if (scoresLeft[i] == bestScore) {
-            bestMoves[viableMoveCount] = moves[i];
-            bestTargets[viableMoveCount] = B_POSITION_PLAYER_LEFT;
-            viableMoveCount++;
-        }
-        
-        // right
-        if (scoresRight[i] > bestScore) {
-            bestScore = scoresLeft[i];
-            bestMoves[0] = moves[i];
-            bestTargets[0] = 0;
-            viableMoveCount = 1;
-        } else if (scoresRight[i] == bestScore) {
-            bestMoves[viableMoveCount] = moves[i];
-            bestTargets[viableMoveCount] = B_POSITION_PLAYER_RIGHT;
-            viableMoveCount++;
-        }
-    }
-    
+
     i = Random() % viableMoveCount;
-    gBattleStruct->shunyongChosenMove = bestMoves[i];
-    gBattleStruct->shunyongTarget = bestTargets[i];
+    gBattleMons[battlerAi].moves[0] = bestMoves[i];
+    gBattleMons[battlerAi].pp[0] = 1; // can always use (TODO maybe not?)
+    gBattleStruct->aiChosenTarget[battlerAi] = bestTargets[i];
     
-    //DebugPrintfLevel(MGBA_LOG_WARN, "Shunyong choosing %d targeting %d", bestMoves[i], bestTargets[i]);
+    // DebugPrintfLevel(MGBA_LOG_WARN, "Shunyong choosing move %d index %d targeting %d", bestMoves[i], i, bestTargets[i]);
     
     Free(bestMoves);
     Free(bestTargets);
@@ -6931,6 +6947,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 playerRightTotalStatStages += gBattleMons[B_POSITION_PLAYER_RIGHT].statStages[i] - DEFAULT_STAT_STAGE;
             }
             
+            // DebugPrintfLevel(MGBA_LOG_WARN, "shunyong hp pct %d", AI_DATA->hpPercents[battlerAtk]);
+            
             // use at hp thresholds 75%, 50% and 25%
             if (!(gBattleStruct->shunyongGoldPlainsHpUses & (1 << 0)) && AI_DATA->hpPercents[battlerAtk] <= 75)
             {
@@ -7286,6 +7304,18 @@ static s32 AI_PreferBatonPass(u32 battlerAtk, u32 battlerDef, u32 move, s32 scor
     default:
         break;
     }
+
+    return score;
+}
+
+static s32 AI_JuansTrick(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
+{
+    u32 i;
+    
+    if (gBattleMons[battlerAtk].item == ITEM_FROST_ORB && gBattleMoves[move].effect == EFFECT_TRICK)
+        score += 100;
+    else if (gBattleMons[battlerAtk].item != ITEM_FROST_ORB && gBattleMoves[move].effect == EFFECT_TRICK)
+        score -= 100;
 
     return score;
 }

@@ -4437,7 +4437,7 @@
       "width": 60,
       "height": 60,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Chimney",
+      "secondary_tileset": "gTileset_Snow",
       "border_filepath": "data/layouts/TestMap/border.bin",
       "blockdata_filepath": "data/layouts/TestMap/map.bin"
     },
@@ -6260,6 +6260,96 @@
       "secondary_tileset": "gTileset_Golden",
       "border_filepath": "data/layouts/ShunyongBattleArena/border.bin",
       "blockdata_filepath": "data/layouts/ShunyongBattleArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_ISLAND",
+      "name": "MirageIsland_Layout",
+      "width": 20,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/MirageIsland/border.bin",
+      "blockdata_filepath": "data/layouts/MirageIsland/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CASTLE",
+      "name": "SootopolisCastle_Layout",
+      "width": 23,
+      "height": 52,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_OldStoneBuildings",
+      "border_filepath": "data/layouts/SootopolisCastle/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCastle/map.bin"
+    },
+    {
+      "id": "LAYOUT_CANOPOUR_BUSHES",
+      "name": "CanopourBushes_Layout",
+      "width": 42,
+      "height": 12,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseShrub",
+      "border_filepath": "data/layouts/CanopourBushes/border.bin",
+      "blockdata_filepath": "data/layouts/CanopourBushes/map.bin"
+    },
+    {
+      "id": "LAYOUT_PERPLUME_TREEHOUSE",
+      "name": "PerplumeTreehouse_Layout",
+      "width": 32,
+      "height": 18,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseTree",
+      "border_filepath": "data/layouts/PerplumeTreehouse/border.bin",
+      "blockdata_filepath": "data/layouts/PerplumeTreehouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_FALLARBOR_STEEPLE",
+      "name": "FallarborSteeple_Layout",
+      "width": 24,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Chimney",
+      "border_filepath": "data/layouts/FallarborSteeple/border.bin",
+      "blockdata_filepath": "data/layouts/FallarborSteeple/map.bin"
+    },
+    {
+      "id": "LAYOUT_FALLARBOR_STEEPLE_INTERIOR",
+      "name": "FallarborSteepleInterior_Layout",
+      "width": 5,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/FallarborSteepleInterior/border.bin",
+      "blockdata_filepath": "data/layouts/FallarborSteepleInterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_PIRATES_GROTTO",
+      "name": "PiratesGrotto_Layout",
+      "width": 20,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BossCave",
+      "border_filepath": "data/layouts/PiratesGrotto/border.bin",
+      "blockdata_filepath": "data/layouts/PiratesGrotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_MUSEUM_SANCTUM",
+      "name": "MuseumSanctum_Layout",
+      "width": 30,
+      "height": 35,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_OldStoneBuildings",
+      "border_filepath": "data/layouts/MuseumSanctum/border.bin",
+      "blockdata_filepath": "data/layouts/MuseumSanctum/map.bin"
+    },
+    {
+      "id": "LAYOUT_DETERMANITE_UNDERWATER",
+      "name": "DetermaniteUnderwater_Layout",
+      "width": 64,
+      "height": 52,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/DetermaniteUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/DetermaniteUnderwater/map.bin"
     }
   ]
 }
