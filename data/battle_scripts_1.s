@@ -673,6 +673,12 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectPoisonTail              @ EFFECT_POISON_TAIL
 	.4byte BattleScript_EffectHit                     @ EFFECT_DRAGON_PULSE
 	.4byte BattleScript_EffectBlazingSoul             @ EFFECT_BLAZING_SOUL
+	.4byte BattleScript_EffectConfuseHit              @ EFFECT_BARRAGE
+	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
+
+BattleScript_EffectRandomStatDropHit::
+	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP
+	goto BattleScript_EffectHit
 
 BattleScript_EffectBlazingSoul::
 	setmoveeffect MOVE_EFFECT_BURN
@@ -823,31 +829,26 @@ BattleScript_EffectRockPolish:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_RockPolishDoMoveAnim
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
-BattleScript_RockPolishDoMoveAnim:
+BattleScript_EffectRockPolishFromStatUp::
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_RockPolishDoMoveAnim
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
+BattleScript_RockPolishDoMoveAnim::
 	attackanimation
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_SPEED, 10, BattleScript_RockPolishSpeedBy1
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_SPDEF, STAT_CHANGE_BY_TWO
-	setstatchanger STAT_SPEED, 2, FALSE
-	goto BattleScript_RockPolishDoSpeed
-BattleScript_RockPolishSpeedBy1:
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_SPDEF, 0
-	setstatchanger STAT_SPEED, 1, FALSE
-BattleScript_RockPolishDoSpeed:
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishTrySpDef
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishTrySpDef
+	playstatchangeanimation BS_ATTACKER, BIT_SPDEF | BIT_SPEED, 0
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishTrySpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishTrySpeed
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_RockPolishTrySpDef:
-	setstatchanger STAT_SPDEF, 1, FALSE
+BattleScript_RockPolishTrySpeed::
+	setstatchanger STAT_SPEED, 1, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishEnd
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_RockPolishEnd:
+BattleScript_RockPolishEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSweetKiss:
@@ -5939,6 +5940,22 @@ BattleScript_DefDown::
 BattleScript_DefDown_Ret:
 	return
 
+BattleScript_AtkDownAgain::
+	modifybattlerstatstage BS_TARGET, STAT_SPATK, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_SpeedDown::
+	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_SpAtkDown::
+	modifybattlerstatstage BS_TARGET, STAT_SPATK, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_EvaDown::
+	modifybattlerstatstage BS_TARGET, STAT_EVASION, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
 BattleScript_SpDefDown::
 	modifybattlerstatstage BS_TARGET, STAT_SPDEF, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
 	return
@@ -6014,12 +6031,6 @@ BattleScript_TormentTauntString::
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotTormentAttacker
 	call BattleScript_TryDestinyKnotTauntAttacker
-	return
-
-BattleScript_SpeedDown::
-	updatestatusicon BS_TARGET
-	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_SpeedDown_Ret, ANIM_ON
-BattleScript_SpeedDown_Ret:
 	return
 
 BattleScript_AtkUp::

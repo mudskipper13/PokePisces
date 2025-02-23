@@ -13408,7 +13408,7 @@ static const struct TrainerMon sParty_PNorman[] = {
     .heldItem = ITEM_LEFTOVERS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 67,
-    .moves = {MOVE_ACUPRESSURE, MOVE_FIRE_LASH, MOVE_SPIKE_CANNON, MOVE_SPIKY_SHIELD},
+    .moves = {MOVE_ACUPRESSURE, MOVE_FIRE_PUNCH, MOVE_SPIKE_CANNON, MOVE_BURNING_BULWARK},
     },
     {
     .species = SPECIES_RAPSCALEON,

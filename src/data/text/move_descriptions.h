@@ -213,9 +213,9 @@ static const u8 sTwineedleDescription[] = _(
     "poison the target.");
 
 static const u8 sPinMissileDescription[] = _(
-    "The user attacks by shooting\n"
-    "sharp spikes at the target. This\n"
-    "move hits 2 to 5 times in a row.");
+    "The user shoots sharp spikes at\n"
+    "the foe 2 to 5 times. This may\n"
+    "lower a random stat of the foe's.");
 
 static const u8 sLeerDescription[] = _(
     "The user gives opposing Pokémon\n"
@@ -698,8 +698,8 @@ static const u8 sPoisonGasDescription[] = _(
 
 static const u8 sBarrageDescription[] = _(
     "Round objects are hurled at the\n"
-    "target to strike 2 to 5 times in\n"
-    "a row.");
+    "foe to strike 2 to 5 times.\n"
+    "This may also confuse the foe.");
 
 static const u8 sLeechLifeDescription[] = _(
     "A blood-draining attack. The\n"
@@ -761,9 +761,9 @@ static const u8 sCrabhammerDescription[] = _(
     "critical hits more easily.");
 
 static const u8 sFurySwipesDescription[] = _(
-    "The target is raked with sharp\n"
-    "claws or scythes quickly 2 to 5\n"
-    "times in a row.");
+    "The foe is raked with sharp\n"
+    "claws or scythes 2 to 5 times.\n"
+    "Critical hits land more easily.");
 
 static const u8 sBonemerangDescription[] = _(
     "The user throws a bone that\n"
@@ -1091,7 +1091,7 @@ static const u8 sFrustrationDescription[] = _(
     "the user has a stat drop.");
 
 static const u8 sSafeguardDescription[] = _(
-    "Prevents certain status for 6\n"
+    "Prevents certain statuses for 6\n"
     "turns. This move always goes\n"
     "first.");
 
@@ -1695,7 +1695,7 @@ static const u8 sMudShotDescription[] = _(
 static const u8 sPoisonTailDescription[] = _(
     "Critical hits land more easily.\n"
     "May poison the foe. Boosted and \n"
-    "badly poisons if a critical.");
+    "badly poisons if a critical hit.");
 
 static const u8 sCovetDescription[] = _(
     "The user's cuteness lets it\n"
@@ -1968,9 +1968,9 @@ static const u8 sAuraSphereDescription[] = _(
     "stat nerfs and foe's stat buffs.");
 
 static const u8 sRockPolishDescription[] = _(
-    "The user polishes its body,\n"
-    "boosting its Sp. Def stat and\n"
-    "sharply boosting its Speed stat.");
+    "The user polishes its body to\n"
+    "reduce drag. This boosts the\n"
+    "user's Sp. Def and Speed stats.");
 
 static const u8 sPoisonJabDescription[] = _(
     "The foe is stabbed with a\n"

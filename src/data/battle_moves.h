@@ -543,9 +543,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FURY_ATTACK] =
     {
         .effect = EFFECT_MULTI_HIT,
-        .power = 25,
+        .power = 20,
         .type = TYPE_FLYING,
-        .accuracy = 90,
+        .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -733,10 +733,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_PIN_MISSILE] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
-            .power = 25,
+            .power = 20,
             .accuracy = 90,
         #else
-            .power = 25,
+            .power = 20,
             .accuracy = 90,
         #endif
         .effect = EFFECT_MULTI_HIT,
@@ -2429,12 +2429,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_BARRAGE] =
     {
-        .effect = EFFECT_MULTI_HIT,
+        .effect = EFFECT_BARRAGE,
         .power = 25,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 20,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -2680,7 +2680,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FURY_SWIPES] =
     {
         .effect = EFFECT_MULTI_HIT,
-        .power = 25,
+        .power = 20,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 20,
@@ -2690,6 +2690,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .highCritRatio = TRUE,
     },
 
     [MOVE_BONEMERANG] =

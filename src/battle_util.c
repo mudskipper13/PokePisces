@@ -4036,7 +4036,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_MULTIHIT_MOVES:
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
             {
                 u16 ability = gBattleMons[gBattlerAttacker].ability;
 
@@ -4089,10 +4089,6 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 if (gBattleMoves[gCurrentMove].effect == EFFECT_POPULATION_BOMB && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
                 {
                     gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 10);
-                }
-                else if (gBattleMoves[gCurrentMove].effect == EFFECT_GATTLING_PINS && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
-                {
-                    gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
                 }
                 else if ((gBattleMoves[gCurrentMove].effect == EFFECT_FROST_SHRED) && (gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE))
                 {
@@ -7191,6 +7187,25 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 32;
                 else
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_IronBarbsActivates;
+                effect++;
+            }
+            break;
+        case ABILITY_LIQUID_OOZE:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED 
+            && gBattleMoves[gBattlerAttacker].oozeMove)
+            {
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 10;
+                else
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -13467,7 +13482,6 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     }
     else if (move == MOVE_NEEDLE_ARM 
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
-    || (abilityAtk == ABILITY_LIQUID_OOZE && gBattleMoves[move].oozeMove)
     || holdEffectAtk == HOLD_EFFECT_CHUPACABRA
     || move == MOVE_SOUL_CUTTER
     || (move == MOVE_ZING_ZAP && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN))
