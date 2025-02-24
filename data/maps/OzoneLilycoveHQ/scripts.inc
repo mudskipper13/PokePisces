@@ -3,8 +3,10 @@
 .set LOCALID_WORKER3, 17
 .set LOCALID_TABITHA, 18
 .set LOCALID_MATT, 19
+.set LOCALID_GUARD, 21
 
 OzoneLilycoveHQ_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, OzoneLilycoveHQ_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, OzoneLilycoveHQ_OnFrame
 	.byte 0
 
@@ -12,6 +14,15 @@ OzoneLilycoveHQ_OnFrame:
 	map_script_2 VAR_OZONE_ADMINS_STATE, 0, OzoneLilycoveHQ_EventScript_NoBusinessHere
 	map_script_2 VAR_OZONE_ADMINS_STATE, 1, OzoneLilycoveHQ_EventScript_SomeBusinessHere
 	.2byte 0
+
+OzoneLilycoveHQ_OnLoad:
+	call_if_lt VAR_OZONE_ADMINS_STATE, 3, OzoneLilycoveHQ_EventScript_RemoveGuard
+	end
+
+OzoneLilycoveHQ_EventScript_RemoveGuard::
+	removeobject LOCALID_GUARD
+	setflag FLAG_TEMP_11
+	return
 
 OzoneLilycoveHQ_EventScript_NoBusinessHere::
 	lock

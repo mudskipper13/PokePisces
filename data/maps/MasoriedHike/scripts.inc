@@ -238,29 +238,84 @@ MasonriedHike_Text_JayAndEmNeedTwoMons:
 	.string "That's three, right?$"
 
 MasonriedHike_Text_NameTabitha:
-	.string "$"
+	.string "Tabitha$"
 
 MasonriedHike_Text_HowToWakeEmUp:
-	.string "$"
+	.string "{PLAYER}, it appears our path\n"
+	.string "has been blocked.\p"
+	.string "This Pokemon is called Bolterock.\n"
+	.string "It is, barring few, one of the\l"
+	.string "largest species of Pokemon\l"
+	.string "I have laid eyes on.\p"
+	.string "As you might surmise... a\n"
+	.string "sleeping Bolterock is no easy\l"
+	.string "mass to move. However, I have\l"
+	.string "personally developed a solution.\p"
+	.string "When all else fails when getting\n"
+	.string "a Bolterock to move from its spot,\l"
+	.string "miners and demolitionists will\l"
+	.string "utilize explosives. Over time,\l"
+	.string "Bolterock have come to recognize\l"
+	.string "this, and will jolt awake at\l"
+	.string "the sound of a detonation.\p"
+	.string "If you make a convincing enough\n"
+	.string "explosion noise directly next\l"
+	.string "to its ear, it should awake.\p"
+	.string "Ahem.\n"
+	.string "KAAAAAA-POOOOWWWW!!!!$"
 
 MasonriedHike_Text_BolterockJoltedAwake:
-	.string "$"
+	.string "(The Wild Bolterock has awoken!)$"
 
 MasonriedHike_Text_DealtWithItGood:
-	.string "$"
+	.string "I... did neglect to mention\n"
+	.string "how agitated the Bolterock\l"
+	.string "would become. No matter.\l"
+	.string "You dealt with it swimmingly.\p"
+	.string "The path to our left up Mt. Chimney\n"
+	.string "splits into three ways.\p"
+	.string "One leads to the cavern system\n"
+	.string "beneath the mountain, which I\l"
+	.string "believe is currently impossible\l"
+	.string "for you to fully traverse.\p"
+	.string "The other two paths lead around\n"
+	.string "the mountain, and over the mountain.\l"
+	.string "Both paths converge on\l"
+	.string "Fallarbor Town, but each has their\l"
+	.string "own terrain and fauna to\l"
+	.string "contend with.\p"
+	.string "The choice is yours. I will\n"
+	.string "be meeting you at the town proper.$"
 
 MasonriedHike_Text_IllMeetYouAhead:
-	.string "$"
+	.string "The path to our left up Mt. Chimney\n"
+	.string "splits into three ways.\p"
+	.string "One leads to the cavern system\n"
+	.string "beneath the mountain, which I\l"
+	.string "believe is currently impossible\l"
+	.string "for you to fully traverse.\p"
+	.string "The other two paths lead around\n"
+	.string "the mountain, and over the mountain.\l"
+	.string "Both paths converge on\l"
+	.string "Fallarbor Town, but each has their\l"
+	.string "own terrain and fauna to\l"
+	.string "contend with.\p"
+	.string "The choice is yours. I will\n"
+	.string "be meeting you at the town proper.$"
 
 MasonriedHike_Text_BolterockGone:
-	.string "$"
+	.string "(The path is no longer\n"
+	.string "Bolte-blocked.)$"
 
 MasonriedHike_Text_CantPassBolterock:
-	.string "$"
+	.string "(This ginormous Pokemon is\n"
+	.string "gently snoring.\l"
+	.string "And is also blocking your way.)$"
 
 MasonriedHike_Text_YouMadeAnExplosionSound:
-	.string "$"
+	.string "(You follow Tabitha's advice\n"
+	.string "a make an explosion sound...)$"
 
 MasonriedHike_Text_TheWildBoltFled:
-	.string "$"
-
+	.string "(Bolterock has left its\n"
+	.string "resting spot.)$"

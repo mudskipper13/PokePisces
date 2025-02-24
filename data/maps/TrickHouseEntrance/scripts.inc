@@ -274,49 +274,122 @@ TrickHouseEntrance_Text_ConcealedInCabinet:
 	.string "Let's talk by the table!$"
 
 TrickHouseEntrance_Text_OrdinaryCabinet:
-	.string "ordinary cabinet$"
+	.string "(It's an ordinary cabinet...)$"
 
 TrickHouseEntrance_Text_GiddyPreQuestStart:
-	.string "hey this is var state 1$"
+	.string "Gehee-hee... time to plan\n"
+	.string "out a new maze for the\l"
+	.string "Trick House...\p"
+	.string "...Hmm? Who are you?\n"
+	.string "Kindly get outta here!$"
 
 TrickHouseEntrance_Text_IAmTrickMaster:
-	.string "im da trick master$"
+	.string "I... am the fabulous\n"
+	.string "Trick Master, Giddy!\l"
+	.string "What brings you to my abode,\l"
+	.string "traveller?$"
 
 TrickHouseEntrance_Text_ThisIsOurLead:
-	.string "this is our lead$"
+	.string "Well, looks like I found this\n"
+	.string "place just in the nick of time!\l"
+	.string "This is exactly who I\l"
+	.string "wanted to see!$"
 
 TrickHouseEntrance_Text_WhatDoYouNeed:
-	.string "whatcha need$"
+	.string "Oh, an entourage? Gehee-hee..!\p"
+	.string "You two are clearly in pursuit\n"
+	.string "of something. Knowledge, perhaps?\l"
+	.string "Or maybe a little... adventure?$"
 
 TrickHouseEntrance_Text_NeedAWayIn:
-	.string "need answers bro$"
+	.string "You could say we are in pursuit\n"
+	.string "of knowledge, yes.\l"
+	.string "We are looking to meet\l"
+	.string "The Storyteller. And we know that\l"
+	.string "you two are friends.\l"
+	.string "Would you be willing to point\l"
+	.string "us towards him?$"
 
 TrickHouseEntrance_Text_DoMyPuzzle:
-	.string "do my puzzle then$"
+	.string "Geh! Geheheheh! Geheheheheheh!\p"
+	.string "I will give you the information\n"
+	.string "you so desperately seek!\p"
+	.string "But!\p"
+	.string "You must solve my maze of\n"
+	.string "tricks and turns first!\p"
+	.string "Jump into the scroll!\n"
+	.string "Adventure... awaits! Gehee-hee!$"
 
 TrickHouseEntrance_Text_MustExplore:
-	.string "must explore$"
+	.string "Whelp. I should have pegged that\n"
+	.string "he was looney.\p"
+	.string "It looks like we're going to\n"
+	.string "have to 'solve his maze'.\l"
+	.string "Let's get exploring, {PLAYER}.$"
 
 TrickHouseEntrance_Text_YouCompletedMyPuzzle:
-	.string "you did it!$"
+	.string "Geheheheh! Geheh!\n"
+	.string "I am pleased as punch!\l"
+	.string "You've solved all of my puzzles!$"
 
 TrickHouseEntrance_Text_GiveUsInfo:
-	.string "give us info$"
+	.string "My... head feels like it\n"
+	.string "got unscrewed and put back on wrong.\p"
+	.string "Are you going to give us the\n"
+	.string "information we want now, Giddy?\l"
+	.string "That's the deal, right?$"
 
 TrickHouseEntrance_Text_CanIHaveAMoment:
-	.string "can i have a moment$"
+	.string "Indeedily-doo! Gehee-hee!\n"
+	.string "Come a bit closer, my boy.\l"
+	.string "I don't wanna have to speak\l"
+	.string "louder than I must.$"
 
 TrickHouseEntrance_Text_YesGiddy:
-	.string "yes giddy$"
+	.string "Alright. Please, tell us\n"
+	.string "where we can find The Storyteller.$"
 
 TrickHouseEntrance_Text_TimeToRetire:
-	.string "time to retire$"
+	.string "The Storyteller...\n"
+	.string "geh-heh... what a dear friend\l"
+	.string "of mine he was. We used to\l"
+	.string "draft up puzzles together!\l"
+	.string "Those were the days.\p"
+	.string "Geh.... I fear my mind's been\n"
+	.string "on the fritz these recent years.\l"
+	.string "Maybe it's time for ol' Giddy\l"
+	.string "to retire.\p"
+	.string "Will you do that for me?\n"
+	.string "Let me be at peace?$"
 
 TrickHouseEntrance_Text_MyBodyDidThatOnItsOwn:
-	.string "oh shit bro$"
+	.string "W-W-What....\p"
+	.string "You... saw that happen, right?\p"
+	.string "My.. m-my body did that on\n"
+	.string "its own, it felt...\l"
+	.string "It was like... I absorbed him...\p"
+	.string "What... is going on...\p"
+	.string "Giddy... I can feel his memories\n"
+	.string "coursing through me...\l"
+	.string "Maybe I really did absorb\l"
+	.string "him in some way...\p"
+	.string "Hmm. Judging by what Giddy's\n"
+	.string "memories tell me...\l"
+	.string "our best bet is to look for their\l"
+	.string "mutual friend, Rydel...\p"
+	.string "I believe he owns a bike shop\n"
+	.string "in New Mauville. Let's...\l"
+	.string "head there.\p"
+	.string "And I'll try to... process\n"
+	.string "what has happened to me...$"
 
 TrickHouseEntrance_Text_Unreadable:
-	.string "unreadable$"
+	.string "(You try to read the scroll,\n"
+	.string "but your brain feels like it is\l"
+	.string "blurring out the words somehow...)$"
 
 TrickHouseEntrance_Text_YouCanNowReadScroll:
-	.string "go into trick house?$"
+	.string "(You try to read the scroll,\n"
+	.string "and it is difficult, but you\l"
+	.string "manage to make out the following...)\p"
+	.string "GO TO THE TRICK HOUSE?$"

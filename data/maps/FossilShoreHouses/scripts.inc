@@ -91,11 +91,11 @@ FossilShoreHouses_EventScript_GiveGoodAndSuperRod::
 	end
 
 FossilShoreHouses_EventScript_BattleSadFisher::
-	trainerbattle_single TRAINER_P_SADFISHER_2, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveGoodRod
+	trainerbattle_single TRAINER_P_SADFISHER_2, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveSuperRod
 	release
 	end
 
-FossilShoreHouses_EventScript_GiveGoodRod::
+FossilShoreHouses_EventScript_GiveSuperRod::
 	msgbox FossilShoreHouses_Text_GiveYouOneOfMyRods, MSGBOX_DEFAULT
 	giveitem ITEM_SUPER_ROD
 	setflag FLAG_RECEIVED_SUPER_ROD
@@ -138,36 +138,50 @@ FossilShoreHouses_Text_NameSadFisher:
 	.string "Sad Fisher$"
 
 FossilShoreHouses_Text_GettingItchToFish:
-	.string "Surprised to come upon me again, eh?\n"
-	.string "Well, the shores have a way of\l"
-	.string "keepin' fishers connected.\p"
-	.string "I see you've been gettin' good use\n"
-	.string "out of your current fishin' skills.\l"
-	.string "Maybe it's time you got yourself\l"
-	.string "a shiny new upgrade.\p"
-	.string "Lucky you. I have a spare rod.\n"
-	.string "Bit of a step up from your gear.\l"
-	.string "But I ain't givin' it up\l"
-	.string "without a battle, rookie.\p"
-	.string "You prepared?\n"
-	.string "I ain't goin' easy on ya this time.$"
+	.string "We meet again, not-so-stranger.\n"
+	.string "I've become fond of our meetin's.\p"
+	.string "You might be ready for the ultimate\n"
+	.string "in fishin' apparel; the Super Rod.\l"
+	.string "Ain't no fish in the land, or sea,\l"
+	.string "rather, that won't be lured\l"
+	.string "in by this.\p"
+	.string "You know the drill by now though.\n"
+	.string "I ain't forkin' it over unless\l"
+	.string "you can beat me fair n' square.\l"
+	.string "This'll be your biggest hill yet.\l"
+	.string "My fully decked-out team... I ain't\l"
+	.string "messin' around by no means today.\p"
+	.string "So? Ya ready to battle?\n$"
 
 FossilShoreHouses_Text_NoOldRod:
-	.string "placeholder$"
-
-FossilShoreHouses_Text_NoGoodRod:
 	.string "...Hey, stranger.\p"
 	.string "Hmm... you've gotten this far\n"
 	.string "without any fishin' whatsoever!?\l"
 	.string "Must be equally foolish, and lucky.\p"
 	.string "MAYBE I shouldn't give you the\n"
-	.string "courtesy of offerin' a Good Rod.\l"
+	.string "courtesy of offerin' a Super Rod.\l"
 	.string "But... eh, what's a hobby\l"
 	.string "if ya don't try sharin' it.\p"
 	.string "Best me in battle, I give ya\n"
-	.string "an Old AND Good Rod. But I'm\l"
+	.string "an Old, Good, AND Super Rod. But I'm\l"
 	.string "a high level competitor...\p"
-	.string "Sound like a plan?\n$"
+	.string "Sound like a plan?$"
+
+FossilShoreHouses_Text_NoGoodRod:
+	.string "What brings ya in here, eh?\n"
+	.string "It's been a lil' while. Still\l"
+	.string "fishin' with that Old Rod?\p"
+	.string "I 'spose it takes a level of skill\n"
+	.string "to master the Old Rod for as long\l"
+	.string "as ya have. Trust me, though...\l"
+	.string "you can do better.\p"
+	.string "Tell ya what. Beat me in another\n"
+	.string "no-holds-barred brawl, n' you'll\l"
+	.string "net yourself a Good Rod AND\l"
+	.string "a Super Rod. Ain't gonna be easy.\l"
+	.string "Far from it. I'm usin' my best\l"
+	.string "team of champs this time around.\p"
+	.string "You on board for that?$"
 
 FossilShoreHouses_Text_SadFisherIntro:
 	.string "Don't you shed a tear\n"
@@ -177,14 +191,19 @@ FossilShoreHouses_Text_SadFisherDefeat:
 	.string "...Showed me up.$"
 
 FossilShoreHouses_Text_GiveYouOneOfMyRods:
-	.string "Time for the next level, {PLAYER}.$"
+	.string "All righty. I ain't got no room\n"
+	.string "to complain. You really went and\l"
+	.string "trounced my team'a all stars.\l"
+	.string "No small feat.\p"
+	.string "You've more than earned this.$"
 
 FossilShoreHouses_Text_ThrowInFishingAdvice:
-	.string "This rod is more enticing\n"
-	.string "to a broad range of aquatic Pokemon.\l"
-	.string "I'd advise usin' it whenever\l"
-	.string "you see water. You'll haul in\l"
-	.string "quite a few new catches.$"
+	.string "I mean it when I say the Super Rod's\n"
+	.string "the best o' the best. Bar none.\l"
+	.string "Ain't a fish out there ya can't\l"
+	.string "haul in with it.\p"
+	.string "Nothin' more I can teach ya. The\n"
+	.string "rod's now in your hands, {PLAYER}.$"
 
 FossilShoreHouses_Text_ThatsTooBadThen:
 	.string "Hah!\n"
@@ -195,15 +214,9 @@ FossilShoreHouses_Text_DontLetDoorHitYa:
 	.string "on your way out.$"
 
 FossilShoreHouses_Text_PostNoOld:
-	.string "placeholder$"
-
-FossilShoreHouses_Text_FishingAdviceNoOld:
-	.string "placeholder$"
-
-FossilShoreHouses_Text_PostNoGood:
 	.string "Fair n' square. Here's your gear.$"
 
-FossilShoreHouses_Text_FishingAdviceNoGood:
+FossilShoreHouses_Text_FishingAdviceNoOld:
 	.string "Take them there rods out to any\n"
 	.string "shoreline and let 'em rip.\l"
 	.string "Huge variety of Pokemon in\l"
@@ -212,6 +225,20 @@ FossilShoreHouses_Text_FishingAdviceNoGood:
 	.string "Don't remain ignorant to the\n"
 	.string "call of the seas, got it?\l"
 	.string "...n' best of luck to ya.$"
+
+FossilShoreHouses_Text_PostNoGood:
+	.string "Hah! Good one there, rookie.\n"
+	.string "...Heh, maybe that ain't a good\l"
+	.string "title for you anymore.$"
+
+FossilShoreHouses_Text_FishingAdviceNoGood:
+	.string "You've gotten so used to the Old Rod\n"
+	.string "that these rods'll blown your\l"
+	.string "dang mind with how enticing they\l"
+	.string "are to water-dwellin' Pokemon.\p"
+	.string "Try 'em in all sorts'a places.\n"
+	.string "Good luck out there... n' never\l"
+	.string "stray too far from the shores.$"
 
 FossilShoreHouses_Text_HowsYourFishing:
 	.string "Sadsod's my most liked Pokemon.\n"

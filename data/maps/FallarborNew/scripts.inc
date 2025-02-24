@@ -145,7 +145,7 @@ FallarborNew_EventScript_TabithaPostBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerWalkToRydel
 	waitmovement 0
 	delay 32
-	speakername FallarborNew_Text_NameRydel
+	speakername NULL
 	msgbox FallarborNew_Text_WhatsUp, MSGBOX_DEFAULT
 	speakername FallarborNew_Text_NameTabitha
 	msgbox FallarborNew_Text_PlayerNeedsABike, MSGBOX_DEFAULT
@@ -274,43 +274,95 @@ FallarborNew_EventScript_Pig2::
 	end
 
 FallarborNew_Text_NameTabitha:
-	.string "$"
+	.string "Tabitha$"
 
 FallarborNew_Text_NameRydel:
-	.string "$"
+	.string "Rydel$"
 
 FallarborNew_Text_JustVisitedCosmo:
-	.string "$"
+	.string "You are a bit tardy, {PLAYER}.\n"
+	.string "I have gotten what I needed\l"
+	.string "from the good professor.$"
 
 FallarborNew_Text_TabithaIntro:
-	.string "$"
+	.string "Hmmm... you know, {PLAYER},\n"
+	.string "I keep thinking back to our\l"
+	.string "initial battle. Without words,\l"
+	.string "it told me a lot about you\l"
+	.string "as a person. Especially given\l"
+	.string "how you are quite the mute.\p"
+	.string "I would like to connect with\n"
+	.string "you again in battle, if\l"
+	.string "that is alright. My old partner...\l"
+	.string "if you could not tell, never\l"
+	.string "stimulated my brain as I would\l"
+	.string "like from a close comrade.\p"
+	.string "This time, it will be just\n"
+	.string "you and I. Show me how\l"
+	.string "you have grown as a trainer!$"
 
 FallarborNew_Text_TabithaDefeated:
-	.string "$"
+	.string "You have accelerated beyond\n"
+	.string "my expectations, {PLAYER}.$"
 
 FallarborNew_Text_GoodBattle:
-	.string "$"
+	.string "I am fully satisfied with that...\n"
+	.string "thank you very much.\p"
+	.string "Right. I did promise that I\n"
+	.string "would provide you means of\l"
+	.string "traversing the mountain easier.\l"
+	.string "As luck would have it, just\l"
+	.string "the right man is in town for this.\l"
+	.string "Come.$"
 
 FallarborNew_Text_WhatsUp:
-	.string "$"
+	.string "Hey-YO, my dudes!\n"
+	.string "What's crack-a-lackin'?$"
 
 FallarborNew_Text_PlayerNeedsABike:
-	.string "$"
+	.string "My comrade here is in dire need\n"
+	.string "of an Acro Bike, Rydel.\l"
+	.string "They are a valued part of\l"
+	.string "Team Ozone's operations, so could\l"
+	.string "I bother you to part with one?$"
 
 FallarborNew_Text_FineByMe:
-	.string "$"
+	.string "Sounds like a radical idea!\n"
+	.string "Eeeeyyyyikers, I'm shocked thatcha\l"
+	.string "even got here without one.$"
 
 FallarborNew_Text_ThatShouldGetYouUpMt:
-	.string "$"
+	.string "Dude, you'll love it. This beaut'll\n"
+	.string "getcha over those rough slopes\l"
+	.string "no problemo! It lets you pop\l"
+	.string "wheelies for sick trick action, too!\l"
+	.string "Yowza! You'll soon be a BMX champ!$"
 
 FallarborNew_Text_HopeThatHelpsSeeYa:
-	.string "$"
+	.string "This will be your key to deeply\n"
+	.string "exploring Mt. Chimney's many\l"
+	.string "nooks and crannies.\l"
+	.string "Take it for a productive ride.\l"
+	.string "It should be the only way you\l"
+	.string "can access Lavaridge Town, and\l"
+	.string "hence, your next badge.\p"
+	.string "I must be going, {PLAYER}.\n"
+	.string "Safe travels.$"
 
 FallarborNew_Text_StrangeBikeMan:
-	.string "$"
+	.string "(Its a strange looking man\n"
+	.string "with a pack full of bicycles.)\p"
+	.string "Bro, WHERE can a guy get enough\n"
+	.string "speed for a nine-hundo\l"
+	.string "around here...!?$"
 
 FallarborNew_Text_HowsTheAcroBike:
-	.string "$"
+	.string "Hey, dudeski! How's the bike?\n"
+	.string "Sick as can be?\p"
+	.string "There's a lot of GNARLY terrain\n"
+	.string "on the mountain to take it for\l"
+	.string "a spin on! No insurance policy\l"
+	.string "for broken ankles, though! Hah!$"
 
 FallarborNew_Text_LookingForSomeonePure:
 	.string "Ahh...\p"
