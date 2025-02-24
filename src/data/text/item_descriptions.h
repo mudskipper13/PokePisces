@@ -590,7 +590,7 @@ static const u8 sRareCandyDesc[] = _(
     "A candy that is packed\n"
     "with energy. If\n"
     "consumed, it raises a\n"
-    "Pokémon's level by one.");
+    "Pokémon's level by 1.");
 
 static const u8 sExpCandyXSDesc[] = _(
     "A candy that is packed\n"
@@ -2543,8 +2543,8 @@ static const u8 sAmuletCoinDesc[] = _(
 static const u8 sCleanseTagDesc[] = _(
     "A tag that repels wild\n"
     "Pokémon and boosts the\n"
-    "holder's moves based on\n"
-    "the foe's stat drops.");
+    "holder's moves based\n"
+    "on foes' stat drops.");
 
 static const u8 sSmokeBallDesc[] = _(
     "A smoky orb that lets\n"
@@ -2578,8 +2578,8 @@ static const u8 sLeftoversDesc[] = _(
 
 static const u8 sShellBellDesc[] = _(
     "A bell of shell and\n"
-    "salt that restores the\n"
-    "holder's HP when\n"
+    "salt that restores\n"
+    "the holder's HP when\n"
     "attacking the foe.");
 
 static const u8 sWideLensDesc[] = _(
@@ -2851,13 +2851,13 @@ static const u8 sAspearBerryDesc[] = _(
 static const u8 sLeppaBerryDesc[] = _(
     "If a Pokémon holds one\n"
     "of these Berries, it\n"
-    "will be able to restore\n"
+    "will be able to give\n"
     "10 PP to a move.");
 
 static const u8 sOranBerryDesc[] = _(
     "If a Pokémon holds one\n"
     "of these Berries, it\n"
-    "will be able to restore\n"
+    "will be able to heal\n"
     "10 HP to itself.");
 
 static const u8 sPersimBerryDesc[] = _(
@@ -2875,7 +2875,7 @@ static const u8 sLumBerryDesc[] = _(
 static const u8 sSitrusBerryDesc[] = _(
     "If a Pokémon holds one\n"
     "of these Berries, it\n"
-    "will be able to restore\n"
+    "will be able to heal\n"
     "a small amount of HP.");
 
 static const u8 sFigyBerryDesc[] = _(

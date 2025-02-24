@@ -11285,7 +11285,7 @@ const struct PokedexEntry gPokedexEntries[] =
         .weight = 2800,
         .description = gLottabatsPokedexText,
         .pokemonScale = 257,
-        .pokemonOffset = 6,
+        .pokemonOffset = 0,
         .trainerScale = 423,
         .trainerOffset = 8,
     },

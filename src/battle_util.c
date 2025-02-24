@@ -64,9 +64,10 @@ static void SetRandomMultiHitCounter();
 static void SetRandomMultiHitCounter3To5();
 static u32 GetBattlerItemHoldEffectParam(u32 battler, u32 item);
 static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier);
-static uq4_12_t GetSupremeOverlordModifier(u32 battler);
 static bool32 CanBeInfinitelyConfused(u32 battler);
 static u32 BufferStatusCondition(u32 battler, bool32 checkStatus2);
+NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent);
+NOINLINE static uq4_12_t PercentToUQ4_12_Floored(u32 percent);
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForRunningByItem[];
@@ -851,111 +852,15 @@ static const u8 sHoldEffectToType[][2] =
         {HOLD_EFFECT_FAIRY_POWER, TYPE_FAIRY},
 };
 
-// percent in UQ_4_12 format
-static const uq4_12_t sPercentToModifier[] =
-    {
-        UQ_4_12(0.00), // 0
-        UQ_4_12(0.01), // 1
-        UQ_4_12(0.02), // 2
-        UQ_4_12(0.03), // 3
-        UQ_4_12(0.04), // 4
-        UQ_4_12(0.05), // 5
-        UQ_4_12(0.06), // 6
-        UQ_4_12(0.07), // 7
-        UQ_4_12(0.08), // 8
-        UQ_4_12(0.09), // 9
-        UQ_4_12(0.10), // 10
-        UQ_4_12(0.11), // 11
-        UQ_4_12(0.12), // 12
-        UQ_4_12(0.13), // 13
-        UQ_4_12(0.14), // 14
-        UQ_4_12(0.15), // 15
-        UQ_4_12(0.16), // 16
-        UQ_4_12(0.17), // 17
-        UQ_4_12(0.18), // 18
-        UQ_4_12(0.19), // 19
-        UQ_4_12(0.20), // 20
-        UQ_4_12(0.21), // 21
-        UQ_4_12(0.22), // 22
-        UQ_4_12(0.23), // 23
-        UQ_4_12(0.24), // 24
-        UQ_4_12(0.25), // 25
-        UQ_4_12(0.26), // 26
-        UQ_4_12(0.27), // 27
-        UQ_4_12(0.28), // 28
-        UQ_4_12(0.29), // 29
-        UQ_4_12(0.30), // 30
-        UQ_4_12(0.31), // 31
-        UQ_4_12(0.32), // 32
-        UQ_4_12(0.33), // 33
-        UQ_4_12(0.34), // 34
-        UQ_4_12(0.35), // 35
-        UQ_4_12(0.36), // 36
-        UQ_4_12(0.37), // 37
-        UQ_4_12(0.38), // 38
-        UQ_4_12(0.39), // 39
-        UQ_4_12(0.40), // 40
-        UQ_4_12(0.41), // 41
-        UQ_4_12(0.42), // 42
-        UQ_4_12(0.43), // 43
-        UQ_4_12(0.44), // 44
-        UQ_4_12(0.45), // 45
-        UQ_4_12(0.46), // 46
-        UQ_4_12(0.47), // 47
-        UQ_4_12(0.48), // 48
-        UQ_4_12(0.49), // 49
-        UQ_4_12(0.50), // 50
-        UQ_4_12(0.51), // 51
-        UQ_4_12(0.52), // 52
-        UQ_4_12(0.53), // 53
-        UQ_4_12(0.54), // 54
-        UQ_4_12(0.55), // 55
-        UQ_4_12(0.56), // 56
-        UQ_4_12(0.57), // 57
-        UQ_4_12(0.58), // 58
-        UQ_4_12(0.59), // 59
-        UQ_4_12(0.60), // 60
-        UQ_4_12(0.61), // 61
-        UQ_4_12(0.62), // 62
-        UQ_4_12(0.63), // 63
-        UQ_4_12(0.64), // 64
-        UQ_4_12(0.65), // 65
-        UQ_4_12(0.66), // 66
-        UQ_4_12(0.67), // 67
-        UQ_4_12(0.68), // 68
-        UQ_4_12(0.69), // 69
-        UQ_4_12(0.70), // 70
-        UQ_4_12(0.71), // 71
-        UQ_4_12(0.72), // 72
-        UQ_4_12(0.73), // 73
-        UQ_4_12(0.74), // 74
-        UQ_4_12(0.75), // 75
-        UQ_4_12(0.76), // 76
-        UQ_4_12(0.77), // 77
-        UQ_4_12(0.78), // 78
-        UQ_4_12(0.79), // 79
-        UQ_4_12(0.80), // 80
-        UQ_4_12(0.81), // 81
-        UQ_4_12(0.82), // 82
-        UQ_4_12(0.83), // 83
-        UQ_4_12(0.84), // 84
-        UQ_4_12(0.85), // 85
-        UQ_4_12(0.86), // 86
-        UQ_4_12(0.87), // 87
-        UQ_4_12(0.88), // 88
-        UQ_4_12(0.89), // 89
-        UQ_4_12(0.90), // 90
-        UQ_4_12(0.91), // 91
-        UQ_4_12(0.92), // 92
-        UQ_4_12(0.93), // 93
-        UQ_4_12(0.94), // 94
-        UQ_4_12(0.95), // 95
-        UQ_4_12(0.96), // 96
-        UQ_4_12(0.97), // 97
-        UQ_4_12(0.98), // 98
-        UQ_4_12(0.99), // 99
-        UQ_4_12(1.00), // 100
-};
+NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent)
+{
+    return (4096 * percent + 50) / 100;
+}
+
+NOINLINE static uq4_12_t PercentToUQ4_12_Floored(u32 percent)
+{
+    return (4096 * percent) / 100;
+}
 
 #define X UQ_4_12
 
@@ -1756,7 +1661,7 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CHOICE_ITEM && HOLD_EFFECT_CHOICE(holdEffect) && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
         return TRUE;
     // Assault Vest
-    else if (check & MOVE_LIMITATION_ASSAULT_VEST && ((holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
+    else if (check & MOVE_LIMITATION_ASSAULT_VEST && ((holdEffect == HOLD_EFFECT_ASSAULT_VEST) || (holdEffect == HOLD_EFFECT_BATTLE_HELM) || (gStatuses4[battler] & STATUS4_PHANTOM)) && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
         return TRUE;
     // Gravity
     else if (check & MOVE_LIMITATION_GRAVITY && IsGravityPreventingMove(move))
@@ -1782,8 +1687,6 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CANT_USE_TWICE && gBattleMoves[move].cantUseTwice && move == gLastResultingMoves[battler])
         return TRUE;
     else if (check & MOVE_LIMITATION_BLOOMING && gBattleMoves[move].cantUseTwiceBlooming && move == gLastResultingMoves[battler] && gBattleMons[battler].status1 & STATUS1_BLOOMING)
-        return TRUE;
-    else if (check & MOVE_LIMITATION_PHANTOM && gStatuses4[battler] & STATUS4_PHANTOM && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
         return TRUE;
     return 0;
 }
@@ -4494,15 +4397,32 @@ bool32 ChangeTypeBasedOnTerrain(u32 battler)
 }
 
 // Supreme Overlord adds a x0.1 damage boost for each fainted ally.
-static uq4_12_t GetSupremeOverlordModifier(u32 battler)
+static inline uq4_12_t GetSupremeOverlordModifier(u32 battler)
 {
-    u32 i;
-    uq4_12_t modifier = UQ_4_12(1.0);
+    return UQ_4_12(1.0) + (PercentToUQ4_12(gBattleStruct->supremeOverlordCounter[battler] * 10));
+}
 
-    for (i = 0; i < gBattleStruct->supremeOverlordCounter[battler]; i++)
-        modifier += UQ_4_12(0.1);
+static inline uq4_12_t GetSharpnessModifier(u32 battler)
+{
+    return UQ_4_12(1.75) - (PercentToUQ4_12(gBattleStruct->slicingMoveTurns[battler] * 25));
+}
 
-    return modifier;
+static inline uq4_12_t GetOwnTempoModifier(u32 battler)
+{
+    return UQ_4_12(1.0) + (PercentToUQ4_12(gBattleStruct->dancingMoveTurns[battler] * 10));
+}
+
+static inline uq4_12_t GetCleanseTagModifier(u32 battler)
+{
+    return UQ_4_12(1.0) + (PercentToUQ4_12(CountBattlerStatDecreases(battler, TRUE) * 15));
+}
+
+static inline uq4_12_t GetDarkAuraModifier(u32 battler)
+{
+    if (CountBattlerStatDecreases(battler, TRUE) > 9)
+        CountBattlerStatDecreases(battler, TRUE) == 9;
+
+    return UQ_4_12(1.0) - (PercentToUQ4_12(CountBattlerStatDecreases(battler, TRUE) * 10));
 }
 
 static inline bool32 IsMoveDraining(u32 move)
@@ -6156,7 +6076,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_STAMINA:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler) && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattlerAttacker != gBattlerTarget
+             && TARGET_TURN_DAMAGED
+             && IsBattlerAlive(battler)
+             && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gEffectBattler = battler;
                 SET_STATCHANGER(STAT_DEF, 1, FALSE);
@@ -6269,7 +6193,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_LINGERING_AROMA:
         case ABILITY_MUMMY:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker) && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED 
+            && IsMoveMakingContact(move, gBattlerAttacker) 
+            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
             {
                 if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
@@ -6293,7 +6220,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_MELANCHOLIA:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED 
+            && IsBattlerAlive(gBattlerAttacker) 
+            && TARGET_TURN_DAMAGED 
+            && (!(IS_MOVE_STATUS(gCurrentMove)))
             && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
             {
                 if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
@@ -6308,7 +6237,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         break;
                     }
 
-                    gLastUsedAbility == gBattleMons[gBattlerAttacker].ability == gBattleStruct->overwrittenAbilities[gBattlerAttacker] == ABILITY_SADDENED;
+                    gLastUsedAbility = gBattleMons[gBattlerAttacker].ability = gBattleStruct->overwrittenAbilities[gBattlerAttacker] = ABILITY_SADDENED;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MummyActivates;
                     effect++;
@@ -6986,7 +6915,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMons[gBattlerTarget].hp != 0 
             && TARGET_TURN_DAMAGED
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && gBattleMoves[move].gasMove)
+            && gBattleMoves[move].gasMove
+            && !gDisableStructs[gBattlerAttacker].purpleHazeOffense
+            && !gDisableStructs[gBattlerAttacker].purpleHazeDefense)
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilitySetPurpleHaze;
@@ -11646,7 +11577,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
 
 #define TYPE_POWER_INCREASE_CHECK(typeCheck) {    \
     if (moveType == typeCheck) { \
-        holdEffectModifier = uq4_12_add(UQ_4_12(1.0), sPercentToModifier[20]); \
+        holdEffectModifier = uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12(20)); \
         modifier = uq4_12_multiply(modifier, holdEffectModifier);   \
     }                                                               \
 }
@@ -11737,12 +11668,14 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     if (gProtectStructs[battlerAtk].helpingHand)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (gSpecialStatuses[battlerAtk].gemBoost)
-        modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), sPercentToModifier[gSpecialStatuses[battlerAtk].gemParam]));
+        modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12(gSpecialStatuses[battlerAtk].gemParam)));
     if (gStatuses3[battlerAtk] & STATUS3_CHARGED_UP && moveType == TYPE_ELECTRIC)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gStatuses4[battlerAtk] & STATUS4_PUMPED_UP && moveType == TYPE_WATER)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP && moveType == TYPE_STEEL)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+    if (gStatuses4[battlerAtk] & STATUS4_PHANTOM && gIsCriticalHit)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (gStatuses4[battlerAtk] & STATUS4_SUPERCHARGED && moveType == TYPE_ELECTRIC)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
@@ -11962,14 +11895,14 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_SHARPNESS:
         if (gBattleMoves[move].slicingMove)
-            modifier = uq4_12_multiply(modifier, uq4_12_subtract(UQ_4_12(1.75), sPercentToModifier[min(gBattleStruct->slicingMoveTurns[battlerAtk] * 25, 150)]));
+            modifier = uq4_12_multiply(modifier, GetSharpnessModifier(battlerAtk));
         break;
     case ABILITY_OWN_TEMPO:
         if (gBattleMoves[move].danceMove)
-            modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), sPercentToModifier[min(gBattleStruct->dancingMoveTurns[battlerAtk] * 10, 50)]));
+            modifier = uq4_12_multiply(modifier, GetOwnTempoModifier(battlerAtk));
         break;
     case ABILITY_PURPLE_HAZE:
-        if (gDisableStructs[battlerAtk].purpleHazeOffense)
+        if (gDisableStructs[battlerAtk].purpleHazeOffense && IS_MOVE_PHYSICAL(gCurrentMove))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_RISING:
@@ -12070,18 +12003,18 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     if (holdEffectParamAtk > 100)
         holdEffectParamAtk = 100;
 
-    holdEffectModifier = uq4_12_add(UQ_4_12(1.0), sPercentToModifier[holdEffectParamAtk]);
+    holdEffectModifier = uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12(holdEffectParamAtk));
 
     // attacker's hold effect
     switch (holdEffectAtk)
     {
     case HOLD_EFFECT_MUSCLE_BAND:
         if (IS_MOVE_PHYSICAL(move))
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12_Floored(holdEffectParamAtk)));
         break;
     case HOLD_EFFECT_WISE_GLASSES:
         if (IS_MOVE_SPECIAL(move))
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12_Floored(holdEffectParamAtk)));
         break;
     case HOLD_EFFECT_LUSTROUS_ORB:
         if (GET_BASE_SPECIES_ID(gBattleMons[battlerAtk].species) == SPECIES_PALKIA && (moveType == TYPE_WATER || moveType == TYPE_DRAGON))
@@ -12161,16 +12094,16 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case HOLD_EFFECT_SHARP_BEAK:
         if (moveType == TYPE_FLYING) {
             holdEffectModifier = UQ_4_12(1.0);
-            holdEffectModifier += sPercentToModifier[20];
+            holdEffectModifier += PercentToUQ4_12(20);
             if (IsBattlerGrounded(battlerDef))
-                holdEffectModifier += sPercentToModifier[10];
+                holdEffectModifier += PercentToUQ4_12(10);
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         }
         break;
     case HOLD_EFFECT_POISON_BARB:
         if (moveType == TYPE_POISON)
         {
-            holdEffectModifier = uq4_12_add(UQ_4_12(1.0), sPercentToModifier[20]);
+            holdEffectModifier = uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12(20));
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         }
         break;
@@ -12182,9 +12115,9 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case HOLD_EFFECT_TWISTED_SPOON:
         if (moveType == TYPE_PSYCHIC) {
-            holdEffectModifier = uq4_12_add(UQ_4_12(1.0), sPercentToModifier[20]);
+            holdEffectModifier = uq4_12_add(UQ_4_12(1.0), PercentToUQ4_12(20));
             if (CountNegativeStatStages(battlerAtk) > 0)
-                holdEffectModifier += sPercentToModifier[30];
+                holdEffectModifier += PercentToUQ4_12(30);
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         }
         break;
@@ -12192,9 +12125,9 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (moveType == TYPE_FIRE)
         {
             holdEffectModifier = UQ_4_12(1.0);
-            holdEffectModifier += sPercentToModifier[20];
+            holdEffectModifier += PercentToUQ4_12(20);
             if (gBattleMons[battlerDef].status1 & STATUS1_BURN)
-                holdEffectModifier += sPercentToModifier[20];
+                holdEffectModifier += PercentToUQ4_12(20);
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         }
         break;
@@ -12205,9 +12138,9 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         // either boosts 20% for normal moves or 10%
         holdEffectModifier = UQ_4_12(1.0);
         if (moveType == TYPE_NORMAL) {
-            holdEffectModifier += sPercentToModifier[20];
+            holdEffectModifier += PercentToUQ4_12(20);
         } else {
-            holdEffectModifier += sPercentToModifier[10];
+            holdEffectModifier += PercentToUQ4_12(10);
         }
         modifier = uq4_12_multiply(modifier, holdEffectModifier);
         break;
@@ -12505,7 +12438,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case HOLD_EFFECT_CLEANSE_TAG:
         if ((CountBattlerStatDecreases(battlerDef, TRUE)) > 0)
-            modifier = uq4_12_multiply_half_down(modifier, uq4_12_add(UQ_4_12(1.0), sPercentToModifier[CountBattlerStatDecreases(battlerDef, TRUE) * 15]));
+            modifier = uq4_12_multiply_half_down(modifier, GetCleanseTagModifier(battlerDef));
         break;
     case HOLD_EFFECT_CHOICE_BAND:
         if (IS_MOVE_PHYSICAL(move) && atkAbility != ABILITY_ONE_WAY_TRIP)
@@ -12714,7 +12647,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
 
     if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
-        modifier = uq4_12_multiply_half_down(modifier, uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(CountBattlerStatDecreases(battlerDef, TRUE) * 10, 90)]));
+        modifier = uq4_12_multiply_half_down(modifier, GetDarkAuraModifier(battlerDef));
 
     // target's hold effects
     switch (holdEffectDef)
@@ -13006,36 +12939,59 @@ static inline uq4_12_t GetDiveModifier(u32 move, u32 battlerDef)
 
 static inline uq4_12_t GetFrenzyAttackerModifier(u32 battlerAtk, bool32 isCrit)
 {
-    if (gDisableStructs[battlerAtk].frenzyCounter != 0 && isCrit)
-        return uq4_12_add(UQ_4_12(1.0), sPercentToModifier[gDisableStructs[battlerAtk].frenzyCounter * 30]);
+    if (isCrit)
+    {
+        if (gDisableStructs[battlerAtk].frenzyCounter > 2)
+            return UQ_4_12(1.9);
+        else if (gDisableStructs[battlerAtk].frenzyCounter > 1)
+            return UQ_4_12(1.6);
+        else if (gDisableStructs[battlerAtk].frenzyCounter > 0)
+            return UQ_4_12(1.3);
+    }
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetFrenzyDefenderModifier(u32 battlerDef)
 {
-    if (gDisableStructs[battlerDef].frenzyCounter != 0)
-        return uq4_12_add(UQ_4_12(1.0), sPercentToModifier[gDisableStructs[battlerDef].frenzyCounter * 20]);
+    if (gDisableStructs[battlerDef].frenzyCounter > 2)
+        return UQ_4_12(1.6);
+    else if (gDisableStructs[battlerDef].frenzyCounter > 1)
+        return UQ_4_12(1.4);
+    else if (gDisableStructs[battlerDef].frenzyCounter > 0)
+        return UQ_4_12(1.2);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetExhaustionAttackerModifier(u32 battlerAtk)
 {
-    if (gDisableStructs[battlerAtk].exhaustionCounter != 0)
-        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
+    if (gDisableStructs[battlerAtk].exhaustionCounter > 2)
+        return UQ_4_12(0.25);
+    else if (gDisableStructs[battlerAtk].exhaustionCounter > 1)
+        return UQ_4_12(0.5);
+    else if (gDisableStructs[battlerAtk].exhaustionCounter > 0)
+        return UQ_4_12(0.75);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetDaybreakAttackerModifier(u32 battlerAtk)
 {
-    if (gDisableStructs[battlerAtk].daybreakCounter != 0)
-        return uq4_12_add(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerAtk].exhaustionCounter * 25, 75)]);
+    if (gDisableStructs[battlerAtk].daybreakCounter > 2)
+        return UQ_4_12(1.75);
+    else if (gDisableStructs[battlerAtk].daybreakCounter > 1)
+        return UQ_4_12(1.5);
+    else if (gDisableStructs[battlerAtk].daybreakCounter > 0)
+        return UQ_4_12(1.25);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetDaybreakDefenderModifier(u32 battlerDef)
 {
-    if (gDisableStructs[battlerDef].daybreakCounter != 0)
-        return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerDef].exhaustionCounter * 25, 75)]);
+    if (gDisableStructs[battlerDef].daybreakCounter > 2)
+        return UQ_4_12(0.25);
+    else if (gDisableStructs[battlerDef].daybreakCounter > 1)
+        return UQ_4_12(0.5);
+    else if (gDisableStructs[battlerDef].daybreakCounter > 0)
+        return UQ_4_12(0.75);
     return UQ_4_12(1.0);
 }
 
@@ -13160,8 +13116,16 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
             return UQ_4_12(0.5);
         break;
     case ABILITY_ICE_SCALES:
-        if (gDisableStructs[battlerDef].iceScalesCounter != 0)
-            return uq4_12_subtract(UQ_4_12(1.0), sPercentToModifier[min(gDisableStructs[battlerDef].iceScalesCounter * 10, 50)]);
+        if (gDisableStructs[battlerDef].iceScalesCounter > 4)
+            return UQ_4_12(0.5);
+        else if (gDisableStructs[battlerDef].iceScalesCounter > 3)
+            return UQ_4_12(0.6);
+        else if (gDisableStructs[battlerDef].iceScalesCounter > 2)
+            return UQ_4_12(0.7);
+        else if (gDisableStructs[battlerDef].iceScalesCounter > 1)
+            return UQ_4_12(0.8);
+        else if (gDisableStructs[battlerDef].iceScalesCounter > 0)
+            return UQ_4_12(0.9);
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
@@ -13233,12 +13197,12 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
     switch (holdEffectAtk)
     {
     case HOLD_EFFECT_METRONOME:
-        metronomeBoostBase = sPercentToModifier[GetBattlerHoldEffectParam(battlerAtk)];
+        metronomeBoostBase = PercentToUQ4_12(GetBattlerHoldEffectParam(battlerAtk));
         metronomeTurns = min(gBattleStruct->sameMoveTurns[battlerAtk], 5);
         return uq4_12_add(UQ_4_12(1.0), metronomeBoostBase * metronomeTurns);
         break;
     case HOLD_EFFECT_ODD_STONE:
-        metronomeBoostBase = sPercentToModifier[GetBattlerHoldEffectParam(battlerAtk)];
+        metronomeBoostBase = PercentToUQ4_12(GetBattlerHoldEffectParam(battlerAtk));
         metronomeTurns = min(gBattleStruct->sameMoveTurns[battlerAtk], 5);
         if (gBattleMoves[gCurrentMove].soundMove)
             return uq4_12_add(UQ_4_12(1.0), metronomeBoostBase * metronomeTurns);
@@ -13258,7 +13222,8 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
             return UQ_4_12(1.2);
         break;
     case HOLD_EFFECT_LIFE_ORB:
-        return UQ_4_12(1.3);
+        return UQ_4_12_FLOORED(1.3);
+        break;
     case HOLD_EFFECT_BLACK_BELT:
         { // +20% if super effective fighting move
             u8 moveType;
@@ -13624,8 +13589,10 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
     else if ((moveType == TYPE_PSYCHIC) && defType == TYPE_DARK && GetBattlerAbility(battlerAtk) == ABILITY_DOMINEER && mod == UQ_4_12(0.0))
     {
         mod = UQ_4_12(1.0);
+        if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_DOMINEER);
     }
-    else if (defType == TYPE_ICE && GetBattlerAbility(battlerDef) == ABILITY_PERMAFROST)
+    else if (defType == TYPE_ICE && GetBattlerAbility(battlerDef) == ABILITY_PERMAFROST && mod >= UQ_4_12(1.0) && IsBattlerWeatherAffected(battlerDef, B_WEATHER_HAIL))
     {
         mod = UQ_4_12(1.0);
         if (recordAbilities)

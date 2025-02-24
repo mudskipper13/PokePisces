@@ -1285,8 +1285,8 @@ static const u8 sHailDescription[] = _(
     "Pokémon except Ice-types.");
 
 static const u8 sTormentDescription[] = _(
-    "The user torments and enrages the\n"
-    "foe, making it incapable of using\n"
+    "The user torments and the foe,\n"
+    "making it incapable of using\n"
     "the same move twice in a row.");
 
 static const u8 sFlatterDescription[] = _(
@@ -2766,9 +2766,9 @@ static const u8 sBelchDescription[] = _(
     "a held Berry to use this move.");
 
 static const u8 sRototillerDescription[] = _(
-    "Pokémon on the field start\n"
-    "blooming and have their offenses\n"
-    "raised if they are Grass-type.");
+    "Pokémon start blooming and have\n"
+    "their offenses raised if they're\n"
+    "Grass-type and aren't blooming.");
 
 static const u8 sStickyWebDescription[] = _(
     "Weaves a sticky net at the foes'\n"
@@ -2846,9 +2846,9 @@ static const u8 sCraftyShieldDescription[] = _(
     "take less damage. Breaks on hit.");
 
 static const u8 sFlowerShieldDescription[] = _(
-    "Pokémon on the field start\n"
-    "blooming and have their defenses\n"
-    "raised if they are Grass-type.");
+    "Pokémon start blooming and have\n"
+    "their defenses raised if they're\n"
+    "Grass-type and aren't blooming.");
 
 static const u8 sGrassyTerrainDescription[] = _(
     "Turns the ground to grass for 5\n"
@@ -4298,7 +4298,7 @@ static const u8 sGunkFunkDescription[] = _(
     "lower all the foe's stats,\n"
     "always if the foe is poisoned.");
 
-static const u8 sStellarFistsDescription[] = _(
+static const u8 sStellarFistDescription[] = _(
     "The user punches the foe with\n"
     "cosmic fists 2 times. This move\n"
     "uses Sp. Def to deal damage.");
@@ -5847,7 +5847,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_VENOM_GALE - 1] = sVenomGaleDescription,
     [MOVE_VENOM_DRAIN - 1] = sVenomDrainDescription,
     [MOVE_GUNK_FUNK - 1] = sGunkFunkDescription,
-    [MOVE_STELLAR_FISTS - 1] = sStellarFistsDescription,
+    [MOVE_STELLAR_FIST - 1] = sStellarFistDescription,
     [MOVE_WILLPOWER - 1] = sWillpowerDescription,
     [MOVE_MISERY_WAIL - 1] = sMiseryWailDescription,
     [MOVE_FINAL_SHRIEK - 1] = sFinalShriekDescription,
