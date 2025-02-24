@@ -1673,6 +1673,8 @@ bool32 IsSemiInvulnerable(u32 battlerDef, u32 move)
 {
     if (gStatuses3[battlerDef] & STATUS3_PHANTOM_FORCE)
         return TRUE;
+    if (gStatuses4[battlerDef] & STATUS4_PHANTOM)
+        return TRUE;
     else if (!gBattleMoves[move].damagesAirborne && gStatuses3[battlerDef] & STATUS3_ON_AIR)
         return TRUE;
     else if (!gBattleMoves[move].damagesUnderwater && gStatuses3[battlerDef] & STATUS3_UNDERWATER)
@@ -3074,14 +3076,13 @@ static bool32 AI_CanBloom(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     u32 ability = AI_DATA->abilities[battlerDef];
 
-    if (!(AI_CanBloomType(battlerAtk, battlerDef, move))
-     || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
+    if ((!(AI_CanBloomType(battlerAtk, battlerDef, move)))
      || gBattleMons[battlerDef].status1 & STATUS1_ANY
      || ability == ABILITY_COMATOSE
-     || AI_IsAbilityOnSide(battlerDef, ABILITY_PASTEL_VEIL)
      || gBattleMons[battlerDef].status1 & STATUS1_ANY
-     || IsAbilityStatusProtected(battlerDef)
-     || AI_IsTerrainAffected(battlerDef, STATUS_FIELD_MISTY_TERRAIN))
+     || gBattleMons[battlerDef].status1 & STATUS1_BLOOMING_TURN(1) 
+     || gBattleMons[battlerDef].status1 & STATUS1_BLOOMING_TURN(2) 
+     || gBattleMons[battlerDef].status1 & STATUS1_BLOOMING_TURN(3))
         return FALSE;
     return TRUE;
 }
@@ -3357,7 +3358,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       || AI_GetMoveEffectiveness(AI_THINKING_STRUCT->moveConsidered, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || defAbility == ABILITY_OBLIVIOUS
       || defAbility == ABILITY_TITANIC
-      || !AreBattlersOfOppositeGender(battlerAtk, battlerDef)
+      || (!AreBattlersOfOppositeGender(battlerAtk, battlerDef) && AI_DATA->abilities[battlerAtk] != ABILITY_FREE_LOVE)
       || AI_IsAbilityOnSide(battlerDef, ABILITY_AROMA_VEIL))
         return FALSE;
     return TRUE;

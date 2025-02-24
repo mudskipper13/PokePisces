@@ -1508,8 +1508,8 @@ static const u8 sOneWayTripDescription[] = _(
 
 static const u8 sPurpleHazeDescription[] = _(
     "After using a gas-based move,\n"
-    "boosts damage done and halves\n"
-    "damage taken for the next moves.");
+    "boosts physical moves and halves\n"
+    "damage taken for the next move.");
 
 static const u8 sRapidFireDescription[] = _(
     "The Pokémon uses moves twice in\n"
