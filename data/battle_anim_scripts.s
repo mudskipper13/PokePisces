@@ -24921,6 +24921,9 @@ Move_PENALIZE::
 	end
 
 Move_SNAPBLOSSOM::
+	loadspritegfx ANIM_TAG_ORBS
+	choosetwoturnanim SolarBeamSetUp SnapBlossomUnleash
+SnapBlossomUnleash::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_FLOWER
