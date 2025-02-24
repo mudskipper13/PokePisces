@@ -917,7 +917,7 @@ gBattleAnims_Moves::
 	.4byte Move_VENOM_GALE
 	.4byte Move_VENOM_DRAIN
 	.4byte Move_GUNK_FUNK
-	.4byte Move_STELLAR_FISTS
+	.4byte Move_STELLAR_FIST
 	.4byte Move_WILLPOWER
 	.4byte Move_MISERY_WAIL
 	.4byte Move_FINAL_SHRIEK
@@ -8999,7 +8999,6 @@ Move_PETAL_BLIZZARD::
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
 	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_TARGET, 3, 0, 12, 1
 	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_DEF_PARTNER, 3, 0, 12, 1
-	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_ATK_PARTNER, 3, 0, 12, 1
 	delay 0x4
 	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, 0x1, 0x3
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
@@ -21694,7 +21693,7 @@ Move_GUNK_FUNK::
 	blendoff
 	end
 
-Move_STELLAR_FISTS::
+Move_STELLAR_FIST::
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
 	panse SE_M_BARRIER, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +3, 0
@@ -21703,8 +21702,8 @@ Move_STELLAR_FISTS::
 	waitforvisualfinish
 	monbg ANIM_TARGET
 	setalpha 12, 8
-	choosetwoturnanim StellarFistsLeft, StellarFistsRight
-StellarFistsContinue:
+	choosetwoturnanim StellarFistLeft, StellarFistRight
+StellarFistContinue:
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
 	waitforvisualfinish
@@ -21714,14 +21713,14 @@ StellarFistsContinue:
 	waitbgfadein
 	waitforvisualfinish
 	end
-StellarFistsLeft:
+StellarFistLeft:
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, -8, -8, ANIM_TARGET, 2
 	createsprite gFistFootSpriteTemplate, ANIM_ATTACKER, 3, -8, 0, 8, 1, 0
-	goto StellarFistsContinue
-StellarFistsRight:
+	goto StellarFistContinue
+StellarFistRight:
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 8, -8, ANIM_TARGET, 2
 	createsprite gFistFootSpriteTemplate, ANIM_ATTACKER, 3, 8, 0, 8, 1, 0
-	goto StellarFistsContinue
+	goto StellarFistContinue
 
 Move_WILLPOWER::
 	loadspritegfx ANIM_TAG_IMPACT
@@ -24922,6 +24921,9 @@ Move_PENALIZE::
 	end
 
 Move_SNAPBLOSSOM::
+	loadspritegfx ANIM_TAG_ORBS
+	choosetwoturnanim SolarBeamSetUp SnapBlossomUnleash
+SnapBlossomUnleash::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_FLOWER

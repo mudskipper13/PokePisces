@@ -673,29 +673,19 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectPoisonTail              @ EFFECT_POISON_TAIL
 	.4byte BattleScript_EffectHit                     @ EFFECT_DRAGON_PULSE
 	.4byte BattleScript_EffectBlazingSoul             @ EFFECT_BLAZING_SOUL
+	.4byte BattleScript_EffectConfuseHit              @ EFFECT_BARRAGE
+	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
+
+BattleScript_EffectRandomStatDropHit::
+	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP
+	goto BattleScript_EffectHit
 
 BattleScript_EffectBlazingSoul::
 	setmoveeffect MOVE_EFFECT_BURN
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	tryblazingsoul BS_ATTACKER, BattleScript_MoveEnd
@@ -745,6 +735,7 @@ BattleScript_SuperPoisonTail::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_TOXIC
@@ -763,50 +754,18 @@ BattleScript_GearGrindLowerDef:
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
 	goto BattleScript_EffectHit
 BattleScript_GearGrindDestroyItem:
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_KNOCK_OFF
 	seteffectprimary
 	goto BattleScript_MoveEnd
 BattleScript_GearGrindLowerDefDestroyItem:
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
@@ -823,31 +782,26 @@ BattleScript_EffectRockPolish:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_RockPolishDoMoveAnim
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
-BattleScript_RockPolishDoMoveAnim:
+BattleScript_EffectRockPolishFromStatUp::
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_RockPolishDoMoveAnim
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
+BattleScript_RockPolishDoMoveAnim::
 	attackanimation
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_SPEED, 10, BattleScript_RockPolishSpeedBy1
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_SPDEF, STAT_CHANGE_BY_TWO
-	setstatchanger STAT_SPEED, 2, FALSE
-	goto BattleScript_RockPolishDoSpeed
-BattleScript_RockPolishSpeedBy1:
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_SPDEF, 0
-	setstatchanger STAT_SPEED, 1, FALSE
-BattleScript_RockPolishDoSpeed:
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishTrySpDef
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishTrySpDef
+	playstatchangeanimation BS_ATTACKER, BIT_SPDEF | BIT_SPEED, 0
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishTrySpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishTrySpeed
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_RockPolishTrySpDef:
-	setstatchanger STAT_SPDEF, 1, FALSE
+BattleScript_RockPolishTrySpeed::
+	setstatchanger STAT_SPEED, 1, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_RockPolishEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_RockPolishEnd
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_RockPolishEnd:
+BattleScript_RockPolishEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSweetKiss:
@@ -928,26 +882,10 @@ BattleScript_EffectCovet::
 	goto BattleScript_EffectHit
 BattleScript_EffectCovetInfatuate::
 	setmoveeffect MOVE_EFFECT_STEAL_ITEM
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
@@ -963,25 +901,9 @@ BattleScript_EffectForcePalm::
 	jumpifstatus BS_TARGET, STATUS1_PARALYSIS, BattleScript_RandomStatLowerHit2
 	goto BattleScript_EffectParalyzeHit
 BattleScript_RandomStatLowerHit2::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP_2
@@ -990,25 +912,9 @@ BattleScript_RandomStatLowerHit2::
 	end
 
 BattleScript_EffectOrderUp::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_RANDOM_STAT_RAISE
@@ -1049,25 +955,9 @@ BattleScript_EffectDefendOrder::
 	goto BattleScript_StatUpPrintString
 
 BattleScript_EffectAttackOrder::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATTACK_ORDER
@@ -1520,6 +1410,7 @@ BattleScript_EffectMoonBeam:
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
 	tryfaintmon BS_TARGET
+	updatestatusicon BS_ATTACKER
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -1644,24 +1535,7 @@ BattleScript_EffectGravApple::
 BattleScript_GravAppleFlinch::
 	setmoveeffect MOVE_EFFECT_GRAV_APPLE
 BattleScript_GravAppleNormal::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
 	seteffectsecondary
 	seteffectwithchance
@@ -1817,24 +1691,7 @@ BattleScript_KinesisApplyExhaustion:
 BattleScript_EffectMistBall::
 	jumpifsideaffecting BS_ATTACKER, SIDE_STATUS_MIST, BattleScript_EffectSpecialAttackDownHit
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_1
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
@@ -2126,12 +1983,32 @@ BattleScript_EffectConstrict::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_EffectConstrict2
-	setmoveeffect MOVE_EFFECT_CONSTRICT
-	seteffectprimary
 	ppreduce
 BattleScript_EffectConstrict2:
 	confuseifrepeatingattackends
-	goto BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_CONSTRICT
+	seteffectsecondary
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectStunSpore:
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_StunSporeFlinch
@@ -2354,6 +2231,7 @@ BattleScript_EffectPetalDance2:
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
@@ -2475,24 +2353,7 @@ BattleScript_TropKickAtkDefDown::
 BattleScript_TropKickAtkDefDownUserAtkUp::
 	setstatchanger STAT_ATK, 1, FALSE
 	setmoveeffect MOVE_EFFECT_ATK_DEF_DOWN
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_TropKickEnd
@@ -2633,6 +2494,7 @@ BattleScript_EffectFairyWind::
 	jumpifstatus3 BS_TARGET, STATUS3_MINIMIZED, BattleScript_EffectHit
 	call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setminimize
@@ -2978,9 +2840,20 @@ BattleScript_EffectSpeedDownHit2::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectSnapTrap::
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_WRAP
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_EffectSpeedDownHit2
-	goto BattleScript_EffectHit
+	seteffectprimary
+	waitmessage B_WAIT_TIME_LONG
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_SnapTrapPart2
+	goto BattleScript_MoveEnd
+BattleScript_SnapTrapPart2::
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_2
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectGrippingNail::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_GrippingNailBloomingEffect
@@ -3007,6 +2880,7 @@ BattleScript_EffectGrippingNailContinue::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
@@ -3046,6 +2920,7 @@ BattleScript_GrippingNailBloomingEffect::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
@@ -3552,25 +3427,8 @@ BattleScript_AlreadyPanicking::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectRazingSun::
-	jumpifword CMP_NO_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
@@ -3620,24 +3478,7 @@ BattleScript_EffectSeizeChance:
 	goto BattleScript_EffectFlinchHit
 
 BattleScript_EffectExecution::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
@@ -3728,6 +3569,7 @@ BattleScript_EffectSandTomb::
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectSandTombCheckSand
 	call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_WRAP
@@ -3798,6 +3640,7 @@ BattleScript_AllStatsDownRet::
 	return
 
 BattleScript_DurinBerryAllStatsDown::
+	copybyte sBATTLER, gBattlerAttacker
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
@@ -3806,34 +3649,48 @@ BattleScript_DurinBerryAllStatsDown::
 	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownRet
 BattleScript_DurinBerryAllStatsDownAtk::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF | BIT_ACC | BIT_EVASION, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
 	playstatchangeanimation BS_ATTACKER, BIT_ATK, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_ATK, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownDef
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownDef::
 	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpeed
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpeed
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpeed::
 	playstatchangeanimation BS_ATTACKER, BIT_SPEED, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPEED, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpAtk
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpAtk
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpAtk::
 	playstatchangeanimation BS_ATTACKER, BIT_SPATK, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPATK, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpDef
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpDef::
 	playstatchangeanimation BS_ATTACKER, BIT_SPDEF, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPDEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownRet
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownAccuracy
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_TARGET
+BattleScript_DurinBerryAllStatsDownAccuracy::
+	playstatchangeanimation BS_ATTACKER, BIT_ACC, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_ACC, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownEvasion
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_TARGET
+BattleScript_DurinBerryAllStatsDownEvasion::
+	playstatchangeanimation BS_ATTACKER, BIT_EVASION, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_EVASION, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownRet
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
@@ -4103,25 +3960,9 @@ BattleScript_EffectRadioacid:
 	goto BattleScript_EffectHit
 BattleScript_RadioacidDefSpDef:
 	setmoveeffect MOVE_EFFECT_DEF_SPDEF_DOWN
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
@@ -4157,25 +3998,9 @@ BattleScript_EffectWarmWelcomeSunnyDayFailedStuffCheeksSucceeded::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTormentHit:
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
@@ -4199,28 +4024,25 @@ BattleScript_EffectSilence:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectCinderDrill:
-	setmoveeffect MOVE_EFFECT_CINDER_DRILL | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	setmoveeffect MOVE_EFFECT_CINDER_DRILL | MOVE_EFFECT_AFFECTS_USER
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
-	tryfaintmon BS_TARGET
 	argumentstatuseffect
+	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectCinderTwirl:
-	setmoveeffect MOVE_EFFECT_CINDER_TWIRL | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	call BattleScript_EffectHit_Ret
-	jumpifhalfword CMP_COMMON_BITS, gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE, BattleScript_MoveEnd
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
-	seteffectwithchance
-	setstatchanger STAT_SPEED, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_EffectRapidSpinEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_EffectRapidSpinEnd
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printfromtable gStatUpStringIds
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_CINDER_TWIRL | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
 	waitmessage B_WAIT_TIME_LONG
-	moveendall
-	end
+	setmoveeffect MOVE_EFFECT_SPD_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
+	seteffectsecondary
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectDragonRuin::
 	@ DecideTurn
@@ -4435,25 +4257,9 @@ BattleScript_EffectSignalBeam::
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	goto BattleScript_EffectHit
 BattleScript_SignalBeamStatDrop::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ACC_MINUS_1
@@ -4623,14 +4429,14 @@ BattleScript_EffectAllStatsUp2HitFoe::
 	goto BattleScript_EffectHit
 
 BattleScript_AllStatsUp2Foe::
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeRet
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_AllStatsUp2FoeRet
 BattleScript_AllStatsUp2FoeAtk::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF, 0
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF, 0
 	setstatchanger STAT_ATK, 2, FALSE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AllStatsUp2FoeDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AllStatsUp2FoeDef
@@ -4990,7 +4796,7 @@ BattleScript_MakeItRainContinuous:
 	seteffectprimary
 	goto BattleScript_MoveEnd
 BattleScript_MakeItRainDoubles:
-	jumpifword CMP_NO_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
 	goto BattleScript_MakeItRainContinuous
 
 BattleScript_EffectSpinOut::
@@ -5939,6 +5745,22 @@ BattleScript_DefDown::
 BattleScript_DefDown_Ret:
 	return
 
+BattleScript_AtkDownAgain::
+	modifybattlerstatstage BS_TARGET, STAT_SPATK, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_SpeedDown::
+	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_SpAtkDown::
+	modifybattlerstatstage BS_TARGET, STAT_SPATK, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
+BattleScript_EvaDown::
+	modifybattlerstatstage BS_TARGET, STAT_EVASION, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
+	return
+
 BattleScript_SpDefDown::
 	modifybattlerstatstage BS_TARGET, STAT_SPDEF, DECREASE, 1, BattleScript_DefDown_Ret, ANIM_ON
 	return
@@ -6014,12 +5836,6 @@ BattleScript_TormentTauntString::
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotTormentAttacker
 	call BattleScript_TryDestinyKnotTauntAttacker
-	return
-
-BattleScript_SpeedDown::
-	updatestatusicon BS_TARGET
-	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_SpeedDown_Ret, ANIM_ON
-BattleScript_SpeedDown_Ret:
 	return
 
 BattleScript_AtkUp::
@@ -6151,26 +5967,9 @@ BattleScript_EffectBugBite:
 	goto BattleScript_EffectHit
 
 BattleScript_EffectIncinerate:
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_INCINERATE | MOVE_EFFECT_CERTAIN
@@ -6669,6 +6468,8 @@ BattleScript_FlowerShieldLoop:
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_FlowerShieldCheckAffected
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_FlowerShieldCantRaiseMultipleStats
 BattleScript_FlowerShieldCheckAffected:
+	jumpiffainted BS_TARGET, TRUE, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifstatus BS_TARGET, STATUS1_BLOOMING, BattleScript_FlowerShieldNoEffect
 	jumpifnotrototilleraffected BS_TARGET, BattleScript_FlowerShieldNoEffect
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
@@ -6684,9 +6485,9 @@ BattleScript_FlowerShieldTrySpDef::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_FlowerShieldTryApplyBlooming::
-	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_FlowerShieldMoveTargetEnd
-	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_FlowerShieldMoveTargetEnd
-	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_FlowerShieldMoveTargetEnd
+	jumpiftype BS_TARGET, TYPE_FIRE, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_FlowerShieldMoveTargetEnd
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_FlowerShieldMoveTargetEnd
 	setmoveeffect MOVE_EFFECT_BLOOMING
 	seteffectprimary
 	goto BattleScript_FlowerShieldMoveTargetEnd
@@ -6724,6 +6525,8 @@ BattleScript_RototillerLoop:
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_RototillerCheckAffected
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_RototillerCantRaiseMultipleStats
 BattleScript_RototillerCheckAffected:
+	jumpiffainted BS_TARGET, TRUE, BattleScript_RototillerMoveTargetEnd
+	jumpifstatus BS_TARGET, STATUS1_BLOOMING, BattleScript_RototillerNoEffect
 	jumpifnotrototilleraffected BS_TARGET, BattleScript_RototillerNoEffect
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK, 0
@@ -6739,9 +6542,9 @@ BattleScript_RototillerTrySpAtk::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RototillerTryApplyBlooming::
-	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_RototillerMoveTargetEnd
-	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_RototillerMoveTargetEnd
-	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_RototillerMoveTargetEnd
+	jumpiftype BS_TARGET, TYPE_FIRE, BattleScript_RototillerMoveTargetEnd
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_RototillerMoveTargetEnd
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_RototillerMoveTargetEnd
 	setmoveeffect MOVE_EFFECT_BLOOMING
 	seteffectprimary
 	goto BattleScript_RototillerMoveTargetEnd
@@ -8958,24 +8761,7 @@ BattleScript_ZapCannonCheckGearedUp:
 	goto BattleScript_EffectParalyzeHit
 BattleScript_ZapCannonRecharge:
 	removesupergear
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_RECHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
@@ -10371,25 +10157,9 @@ BattleScript_EffectMiseryWailTorments::
     goto BattleScript_MoveEnd
 
 BattleScript_EffectEerieSpell::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	eeriespellppreduce BattleScript_MoveEnd
@@ -12228,7 +11998,7 @@ BattleScript_CheckOverheatDoubles::
 	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_OverheatDoubles
 	goto BattleScript_DoOverheat
 BattleScript_OverheatDoubles::
-	jumpifword CMP_NO_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
 	goto BattleScript_DoOverheat
 
 BattleScript_EffectHammerArm::
@@ -12969,6 +12739,10 @@ BattleScript_InverseRoomEnds::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+BattleScript_GrassyTerrainEnds::
+	call BattleScript_GrassyTerrainHeals_Ret
+	goto BattleScript_TerrainEnds
+
 BattleScript_TerrainEnds_Ret::
 	printfromtable gTerrainStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -13192,16 +12966,16 @@ BattleScript_LostMantleDef:
 	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
 	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LostMantleSpDef
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_LostMantleSpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LostMantleSpDef
-	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	printstring STRINGID_USINGITEMSTATOFPKMNFELL
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_LostMantleSpDef:
 	setstatchanger STAT_SPDEF, 1, TRUE
 	playstatchangeanimation BS_ATTACKER, BIT_SPDEF, STAT_CHANGE_NEGATIVE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LostMantleEnd
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_LostMantleEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LostMantleEnd
-	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	printstring STRINGID_USINGITEMSTATOFPKMNFELL
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_LostMantleEnd:
 	return
@@ -15567,16 +15341,17 @@ BattleScript_WatcherActivates::
 	savetarget
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	printstring STRINGID_WATCHERSALVATION
-	waitmessage B_WAIT_TIME_LONG
 	destroyabilitypopup
 	setbyte gBattlerTarget, 0
 BattleScript_WatcherLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_WatcherLoopIncrement
+	jumpiftargetally BattleScript_WatcherLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_WatcherLoopIncrement
 BattleScript_WatcherEffect:
 	copybyte sBATTLER, gBattlerAttacker
 	setalwayshitflag
+	printstring STRINGID_WATCHERSALVATION
+	waitmessage B_WAIT_TIME_LONG
 BattleScript_WatcherEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
 	copybyte sBATTLER, gBattlerTarget
@@ -16278,24 +16053,26 @@ BattleScript_MoveUsedPsychicTerrainPrevents::
 	goto BattleScript_MoveEnd
 
 BattleScript_GrassyTerrainHeals::
+	call BattleScript_GrassyTerrainHeals_Ret
+	end2
+
+BattleScript_GrassyTerrainHeals_Ret::
 	setbyte gBattleCommunication, 0
 BattleScript_GrassyTerrainLoop:
 	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
 	checkgrassyterrainheal BS_ATTACKER, BattleScript_GrassyTerrainLoopIncrement
 	printstring STRINGID_GRASSYTERRAINHEALS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_GrassyTerrainHpChange:
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 BattleScript_GrassyTerrainLoopIncrement::
 	addbyte gBattleCommunication, 1
 	jumpifbytenotequal gBattleCommunication, gBattlersCount, BattleScript_GrassyTerrainLoop
-BattleScript_GrassyTerrainLoopEnd::
 	bicword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_GrassyTerrainHealEnd
 BattleScript_GrassyTerrainHealEnd:
-	end2
+	return
 
 BattleScript_AbilityNoSpecificStatLoss::
 	pause B_WAIT_TIME_SHORT
@@ -17864,24 +17641,7 @@ BattleScript_ExtremeEvoboostEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectHitSetRemoveTerrain:
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_TryFaint
 	setremoveterrain BattleScript_TryFaint
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG

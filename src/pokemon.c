@@ -4704,7 +4704,7 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         newMaxHP = 5;
     }
-    else if (species == SPECIES_SHUNYONG || species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
+    else if ((species == SPECIES_SHUNYONG || species == SPECIES_SHUNYONG_GOLDEN_OFFENSE) && IsShunyongBattle())
     {
         newMaxHP = 2500;
     }
@@ -9460,12 +9460,12 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
 }
 
 static const u16 sMaxEvByLevel[][2] = {
-    {11, 85}, // before level 11, can only get 70 EVs total
-    {21, 170},
-    {31, 255},
-    {41, 340},
-    {51, 425},
-    {61, MAX_TOTAL_EVS},
+    {10, 85},
+    {20, 170},
+    {30, 255},
+    {40, 340},
+    {50, 425},
+    {60, MAX_TOTAL_EVS},
 };
 
 u32 GetMaxTotalEVs(u32 level)

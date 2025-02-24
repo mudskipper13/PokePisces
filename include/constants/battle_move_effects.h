@@ -650,7 +650,9 @@
 #define EFFECT_POISON_TAIL                  644
 #define EFFECT_DRAGON_PULSE                 645
 #define EFFECT_BLAZING_SOUL                 646
+#define EFFECT_BARRAGE                      647
+#define EFFECT_PIN_MISSILE                  648
 
-#define NUM_BATTLE_MOVE_EFFECTS             647
+#define NUM_BATTLE_MOVE_EFFECTS             649
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

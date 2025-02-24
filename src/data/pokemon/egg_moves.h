@@ -4362,12 +4362,16 @@ const u16 gEggMoves[] = {
         MOVE_JUMP_KICK,
         MOVE_ENDEAVOR,
         MOVE_SKITTER_SMACK,
-        MOVE_FLAME_WHEEL),
+        MOVE_FLAME_WHEEL,
+        MOVE_VENOM_GALE,
+        MOVE_VENOM_DRENCH),
 
     egg_moves(KOMORODE,
         MOVE_ENDEAVOR,
         MOVE_SKITTER_SMACK,
-        MOVE_FLAME_WHEEL),
+        MOVE_FLAME_WHEEL,
+        MOVE_VENOM_GALE,
+        MOVE_VENOM_DRENCH),
 
     egg_moves(PRIMEAPE,
         MOVE_SPITE,
