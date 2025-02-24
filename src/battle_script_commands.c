@@ -1000,6 +1000,7 @@ static const u16 sFinalStrikeOnlyEffects[] =
     EFFECT_RECOIL_HP_25,
     EFFECT_HIT_PREVENT_ESCAPE,
     EFFECT_HIT_SWITCH_TARGET,
+    EFFECT_SPOOK,
     EFFECT_VITAL_THROW,
     EFFECT_SCORP_FANG,
     EFFECT_GLACIAL_SHIFT,
@@ -3180,6 +3181,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
     case MOVE_EFFECT_KNOCK_OFF:
     case MOVE_EFFECT_SMACK_DOWN:
     case MOVE_EFFECT_REMOVE_STATUS:
+    case MOVE_EFFECT_FIREBRAND:
     case MOVE_EFFECT_STOCKPILE_WORE_OFF:
         gBattleStruct->moveEffect2 = gBattleScripting.moveEffect;
         gBattlescriptCurrInstr++;
@@ -4209,6 +4211,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectClearSmog;
                 }
                 break;
+            case MOVE_EFFECT_FIREBRAND:
             case MOVE_EFFECT_FLAME_BURST:
                 if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
                         && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
@@ -6818,6 +6821,7 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectSmackDown;
                 }
                 break;
+            case MOVE_EFFECT_FIREBRAND:
             case MOVE_EFFECT_REMOVE_STATUS: // Smelling salts, Wake-Up Slap, Sparkling Aria
                 if ((gBattleMons[gBattlerTarget].status1 & gBattleMoves[gCurrentMove].argument) && IsBattlerAlive(gBattlerTarget))
                 {
@@ -6846,30 +6850,6 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_TargetPoisonHeal;
                         break;
                     }
-                }
-                break; // MOVE_EFFECT_REMOVE_STATUS
-            case MOVE_EFFECT_FIREBRAND:
-                if ((gBattleMons[gBattlerTarget].status1 & STATUS1_BURN) && IsBattlerAlive(gBattlerTarget))
-                {
-                    gBattleMons[gBattlerTarget].status1 &= ~STATUS1_BURN;
-
-                    BtlController_EmitSetMonData(gBattlerTarget, 0, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gBattlerTarget].status1);
-                    MarkBattlerForControllerExec(gBattlerTarget);
-                    effect = TRUE;
-                    BattleScriptPush(gBattlescriptCurrInstr);
-                    gBattlescriptCurrInstr = BattleScript_TargetBurnHeal;
-                }
-                if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
-                        && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
-                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_MAGIC_GUARD
-                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_SUGAR_COAT
-                        && !TestTeruCharm(BATTLE_PARTNER(gBattlerTarget)))
-                {
-                    gBattleScripting.savedBattler = BATTLE_PARTNER(gBattlerTarget);
-                    gBattleMoveDamage = gBattleMons[BATTLE_PARTNER(gBattlerTarget)].hp / 2;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattlescriptCurrInstr = BattleScript_MoveEffectFlameBurst;
                 }
                 break; // MOVE_EFFECT_REMOVE_STATUS
             }
@@ -7266,7 +7246,7 @@ static void Cmd_moveend(void)
                         if (IsBattlerAlive(battler)
                             && CountUsablePartyMons(battler) > 0 // Has mon to switch into
                             // Does not activate if attacker used Parting Shot and can switch out
-                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW) && CanBattlerSwitch(gBattlerAttacker))
+                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET || gBattleMoves[gCurrentMove].effect == EFFECT_SPOOK || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW) && CanBattlerSwitch(gBattlerAttacker))
                             )
                         {
                             gBattleScripting.battler = battler;
@@ -7333,6 +7313,7 @@ static void Cmd_moveend(void)
                 if (redCardBattlers
                   && (gBattleMoves[gCurrentMove].effect != EFFECT_HIT_SWITCH_TARGET 
                   || gBattleMoves[gCurrentMove].effect != EFFECT_VITAL_THROW
+                  || gBattleMoves[gCurrentMove].effect != EFFECT_SPOOK
                   || gBattleStruct->hitSwitchTargetFailed)
                   && IsBattlerAlive(gBattlerAttacker)
                   && !TestSheerForceFlag(gBattlerAttacker, gCurrentMove)
@@ -10331,18 +10312,21 @@ static void Cmd_various(void)
         {
             gBattleStruct->boundaryBasePower = 1;
             boundary = 1;
+            PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary30;
         }
         else if (boundary < 2)
         {
             gBattleStruct->boundaryBasePower = 2;
             boundary = 2;
+            PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary60;
         }
         else if (boundary < 3)
         {
             gBattleStruct->boundaryBasePower = 3;
             boundary = 3;
+            PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary90;
         }
         else
@@ -10350,7 +10334,7 @@ static void Cmd_various(void)
             gBattleScripting.animTurn = 1;
             gBattlescriptCurrInstr = BattleScript_BigBoundary;
         }
- 
+
         return;
     }
     case VARIOUS_HIGH_ROLL_HIT:
@@ -10389,7 +10373,7 @@ static void Cmd_various(void)
             rolling = 6;
         }
  
-        PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 2, rolling)
+        PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, rolling)
 
         gBattlescriptCurrInstr = cmd->nextInstr;
 

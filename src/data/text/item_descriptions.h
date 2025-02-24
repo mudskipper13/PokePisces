@@ -2625,10 +2625,10 @@ static const u8 sPowerHerbDesc[] = _(
     "charge-but only once.");
 
 static const u8 sFocusSashDesc[] = _(
-    "A sturdy sash that lets\n"
-    "the holder endure a\n"
-    "potential KO with 1 HP\n"
-    "if at full HP.");
+    "A sturdy sash that\n"
+    "lets the holder endure\n"
+    "a potential KO with 1\n"
+    "HP if at full HP.");
 
 static const u8 sZoomLensDesc[] = _(
     "A special lens that\n"

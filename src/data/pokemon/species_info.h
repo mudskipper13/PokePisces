@@ -23951,7 +23951,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},
         .abilities = {ABILITY_DOWNLOAD, ABILITY_PLUS, ABILITY_MOODY},
         .bodyColor = BODY_COLOR_GREEN,
-        .noFlip = FALSE,
+        .noFlip = TRUE,
     },
 
     [SPECIES_MERALCORE] =
@@ -24753,12 +24753,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_TURRYTURRY] =
     {
-        .baseHP        = 75,
+        .baseHP        = 65,
         .baseAttack    = 50,
-        .baseDefense   = 70,
+        .baseDefense   = 50,
         .baseSpeed     = 95,
         .baseSpAttack  = 80,
-        .baseSpDefense = 70,
+        .baseSpDefense = 50,
         .types = { TYPE_WATER,TYPE_WATER },
         .catchRate = 45,
         .expYield = 176,

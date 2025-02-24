@@ -1624,10 +1624,12 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPEED))
                 score -= 10;
-            else if (aiData->abilities[battlerDef] == ABILITY_SPEED_BOOST)
-                score -= 10;
             else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_DEF))
                 score -= 10;
+            else if (gDisableStructs[battlerAtk].isFirstTurn)
+                score += 4;
+            else if (!gDisableStructs[battlerDef].spiderweb)
+                score += 4;
             break;
         case EFFECT_EERIE_IMPULSE:
             if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPATK)) //|| !HasMoveWithSplit(battlerDef, SPLIT_SPECIAL))
@@ -2101,11 +2103,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 2; // mainly to prevent looping between hail and snow
             break;
         case EFFECT_ATTRACT:
-            if (!(aiData->abilities[battlerAtk] == ABILITY_FREE_LOVE))
-            {
-                if (!AI_CanBeInfatuated(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-                    score -= 10;
-            }
+            if (!AI_CanBeInfatuated(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+                score -= 10;
+            else
+                score += 10;
             break;
         case EFFECT_SAFEGUARD:
             if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_SAFEGUARD
@@ -2368,6 +2369,14 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;    // don't blow away mon that will faint soon
             else if (gStatuses3[battlerDef] & STATUS3_PERISH_SONG)
                 score -= 10;
+            break;
+        case EFFECT_SPOOK:
+            if (DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                score -= 10; // don't scare away pokemon twice
+            else if (gStatuses3[battlerDef] & STATUS3_PERISH_SONG)
+                score -= 10;
+            else if (aiData->hpPercents[battlerDef] < 50)
+                score += 4;
             break;
         case EFFECT_WOOD_HAMMER:
             if (aiData->abilities[battlerAtk] != (ABILITY_MAGIC_GUARD || ABILITY_SUGAR_COAT) && aiData->abilities[battlerAtk] != ABILITY_ROCK_HEAD)
@@ -2808,6 +2817,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_DEF))
                 score -= 10;
             else if (gDisableStructs[battlerAtk].isFirstTurn)
+                score += 4;
+            else if (!gDisableStructs[battlerDef].octolock)
                 score += 4;
             break;
         case EFFECT_RAGE_POWDER:

@@ -386,6 +386,7 @@ extern const u8 BattleScript_ReversiActivated[];
 extern const u8 BattleScript_ReversiDeactivated[];
 extern const u8 BattleScript_TerrainEnds[];
 extern const u8 BattleScript_TerrainEnds_Ret[];
+extern const u8 BattleScript_GrassyTerrainEnds[];
 extern const u8 BattleScript_MudSportEnds[];
 extern const u8 BattleScript_WaterSportEnds[];
 extern const u8 BattleScript_SturdiedMsg[];

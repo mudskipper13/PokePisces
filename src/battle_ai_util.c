@@ -3358,7 +3358,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       || AI_GetMoveEffectiveness(AI_THINKING_STRUCT->moveConsidered, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || defAbility == ABILITY_OBLIVIOUS
       || defAbility == ABILITY_TITANIC
-      || !AreBattlersOfOppositeGender(battlerAtk, battlerDef)
+      || (!AreBattlersOfOppositeGender(battlerAtk, battlerDef) && AI_DATA->abilities[battlerAtk] != ABILITY_FREE_LOVE)
       || AI_IsAbilityOnSide(battlerDef, ABILITY_AROMA_VEIL))
         return FALSE;
     return TRUE;

@@ -1818,9 +1818,11 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
             if (!IsAbilityOnField(ABILITY_ENDLESS))
             {
                 gFieldStatuses &= ~terrainFlag;
-                TryToRevertMimicry();
                 gBattleCommunication[MULTISTRING_CHOOSER] = stringTableId;
-                BattleScriptExecute(BattleScript_TerrainEnds);
+                if (terrainFlag & STATUS_FIELD_GRASSY_TERRAIN)
+                    BattleScriptExecute(BattleScript_GrassyTerrainEnds);
+                else
+                    BattleScriptExecute(BattleScript_TerrainEnds);
                 return TRUE;
             }
             else
@@ -4007,21 +4009,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 }
                 else if (gBattleMoves[gCurrentMove].effect == EFFECT_HAYWIRE)
                 {
-                    for (i = 0; i < NUM_BATTLE_STATS; i++)
-                    {
-                        if (gBattleMons[gBattlerAttacker].statStages[i] > DEFAULT_STAT_STAGE)
-                        {
-                            gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + gBattleMoves[gCurrentMove].strikeCount;
-                            if (gMultiHitCounter > 10)
-                                gMultiHitCounter = 10;
-                            PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
-                        }
-                        else
-                        {
-                            gMultiHitCounter = gBattleMoves[gCurrentMove].strikeCount;
-                            PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
-                        }
-                    }
+                    gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + gBattleMoves[gCurrentMove].strikeCount;
+                    if (gMultiHitCounter > 10)
+                        gMultiHitCounter = 10;
+                    PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
                 }
                 else
                 {
@@ -4905,6 +4896,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     goto HAIL;
                 }
             }
+            break;
         case ABILITY_DRIZZLE:
             RAIN:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
@@ -12586,7 +12578,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     case ABILITY_EXTREMO:
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY_NEGATIVE)
         {
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
             if (updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_EXTREMO);
         }
