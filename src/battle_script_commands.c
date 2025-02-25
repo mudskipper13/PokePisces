@@ -2080,11 +2080,6 @@ static void Cmd_ppreduce(void)
         || moveTarget == MOVE_TARGET_ALL_BATTLERS
         || gSpecialStatuses[gBattlerAttacker].ppNotAffectedByPressure)
     {
-        if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
-            ppToDeduct++;
-        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
-            ppToDeduct++;
-
         for (i = 0; i < gBattlersCount; i++)
         {
             if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
@@ -2099,11 +2094,13 @@ static void Cmd_ppreduce(void)
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
             ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
-            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
-                ppToDeduct++;
-            if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
-                ppToDeduct++;
     }
+
+    if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
+        ppToDeduct++;
+    
+    if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && !(IS_MOVE_STATUS(gCurrentMove))))
+        ppToDeduct++;
 
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
     {

@@ -14198,7 +14198,7 @@ static const struct TrainerMon sParty_PMayFinal[] = {
     },
     {
     .species = SPECIES_CRADILY,
-    .ability = ABILITY_POISON_HEAL,
+    .ability = ABILITY_DRAINAGE,
     .heldItem = ITEM_BIG_ROOT,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 84,

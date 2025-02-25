@@ -441,7 +441,6 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_DEEP_GAZE,
     EFFECT_TRAILBLAZE,
     EFFECT_AROMATHERAPY,
-    EFFECT_GREEN_GUISE,
     EFFECT_SPEED_UP_USER_ALLY,
     EFFECT_IGNITION,
     EFFECT_STUN_SPORE,
@@ -3107,7 +3106,6 @@ bool32 ShouldBloomSelf(u32 battler, u32 ability)
       || HasMoveEffect(battler, EFFECT_PETAL_DANCE)
       || HasMoveEffect(battler, EFFECT_FRENZY_PLANT)
       || HasMoveEffect(battler, EFFECT_AROMATHERAPY)
-      || HasMoveEffect(battler, EFFECT_GREEN_GUISE)
       || HasMoveEffect(battler, EFFECT_COTTON_SPORE)
       || HasMoveEffect(battler, EFFECT_SLEEP_POWDER)
       || HasMoveEffect(battler, EFFECT_STUN_SPORE)

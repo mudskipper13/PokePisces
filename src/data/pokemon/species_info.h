@@ -8921,7 +8921,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_WATER_3, EGG_GROUP_WATER_3},
-        .abilities = {ABILITY_POISON_HEAL, ABILITY_POISON_HEAL, ABILITY_POISON_HEAL},
+        .abilities = {ABILITY_DRAINAGE, ABILITY_DRAINAGE, ABILITY_DRAINAGE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
