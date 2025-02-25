@@ -7174,7 +7174,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_SILENCE_ACTIVATED:
-                if (gEvolutionTable[species][i].param <= stat)
+                if (gEvolutionTable[species][i].param >= stat)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_BATTLE_TERRAIN:

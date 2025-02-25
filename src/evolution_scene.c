@@ -778,6 +778,10 @@ static void Task_EvolutionScene(u8 taskId)
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
+            if (gTasks[taskId].tPostEvoSpecies == SPECIES_PURGATIVAL)
+            {
+                SetGameStat(GAME_STAT_SILENCE_ACTIVATED, 0);
+            }
         }
         break;
     case EVOSTATE_TRY_LEARN_MOVE:
@@ -1197,6 +1201,10 @@ static void Task_TradeEvolutionScene(u8 taskId)
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
+            if (gTasks[taskId].tPostEvoSpecies == SPECIES_PURGATIVAL)
+            {
+                SetGameStat(GAME_STAT_SILENCE_ACTIVATED, 0);
+            }
         }
         break;
     case T_EVOSTATE_TRY_LEARN_MOVE:

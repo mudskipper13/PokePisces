@@ -2080,15 +2080,17 @@ static void Cmd_ppreduce(void)
         || moveTarget == MOVE_TARGET_ALL_BATTLERS
         || gSpecialStatuses[gBattlerAttacker].ppNotAffectedByPressure)
     {
+        if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC);
+            ppToDeduct++;
+        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+            ppToDeduct++;
+
         for (i = 0; i < gBattlersCount; i++)
         {
             if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
                 ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
                 ppToDeduct += (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
                 ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
-                ppToDeduct += (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
-                if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
-                    ppToDeduct++;
         }
     }
     else if (moveTarget != MOVE_TARGET_OPPONENTS_FIELD)
@@ -2097,7 +2099,8 @@ static void Cmd_ppreduce(void)
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
             ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
-            ppToDeduct += (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrentMove))));
+                ppToDeduct++;
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
                 ppToDeduct++;
     }
@@ -6554,7 +6557,7 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
                     effect = 1;
                 }
-                else if (gProtectStructs[gBattlerTarget].acidArmorCharge && gCurrentMove != MOVE_SUCKER_PUNCH)
+                else if (gProtectStructs[gBattlerTarget].acidArmorCharge && gCurrentMove != MOVE_SUCKER_PUNCH && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
                     i = gBattlerAttacker;
@@ -15479,8 +15482,8 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_FREE_LOVE
-        || AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
+        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         && (!(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)))
         {
             gBattlescriptCurrInstr = cmd->failInstr;

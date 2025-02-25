@@ -2251,7 +2251,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_INGRAIN:
             if (gStatuses3[battlerAtk] & STATUS3_ROOTED)
             {
-                if (!(gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING))
+                if ((AI_CanBloom(battlerAtk, battlerDef, move)))
                     break;
                 else
                     score -= 10;
@@ -2409,9 +2409,25 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SOFTBOILED:
         case EFFECT_ROOST:
         case EFFECT_CRITICAL_REPAIR:
-        case EFFECT_VIGOR_ROOT:
-        case EFFECT_RESERVOIR:
         case EFFECT_SHIELDS_UP:
+            if (AtMaxHp(battlerAtk))
+                score -= 10;
+            else if (aiData->hpPercents[battlerAtk] >= 90)
+                score -= 9; //No point in healing, but should at least do it if nothing better
+            else
+                score += 2;
+            break;
+        case EFFECT_VIGOR_ROOT:
+            if (AtMaxHp(battlerAtk))
+                score -= 10;
+            else if (aiData->hpPercents[battlerAtk] >= 90)
+                score -= 9; //No point in healing, but should at least do it if nothing better
+            else
+                score += 2;
+            break;
+        case EFFECT_RESERVOIR:
+            if (gStatuses3[battlerAtk] & STATUS4_PUMPED_UP)
+            score -= 5;
             if (AtMaxHp(battlerAtk))
                 score -= 10;
             else if (aiData->hpPercents[battlerAtk] >= 90)
@@ -4724,17 +4740,15 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_MOONLIGHT:
     case EFFECT_COLD_MEND:
     case EFFECT_CRITICAL_REPAIR:
-    case EFFECT_VIGOR_ROOT:
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
             score += 3;
         break;
     case EFFECT_RESERVOIR:
+        if (HasDamagingMoveOfType(battlerAtk, TYPE_WATER))
+            score += 2;
     case EFFECT_SHIELDS_UP:
-        score++;
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
             score += 3;
-        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
-            score++;
         if (gBattleMons[battlerAtk].status1 & STATUS1_ANY_NEGATIVE)
             score += 2;
         break;
@@ -6370,6 +6384,15 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
         break;
+    case EFFECT_VIGOR_ROOT:
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPATK, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
+        if (ShouldRecover(battlerAtk, battlerDef, move, 100))
+            score += 3;
+        break;
     case EFFECT_TRAILBLAZE:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
         {
@@ -7125,6 +7148,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_ACUPRESSURE:
     case EFFECT_AUTOTOMIZE:
     case EFFECT_SHIFT_GEAR:
+    case EFFECT_VIGOR_ROOT:
     case EFFECT_SHELL_SMASH:
     case EFFECT_GROWTH:
     case EFFECT_QUIVER_DANCE:
@@ -7394,7 +7418,6 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_COLD_MEND:
             case EFFECT_DECAY_BEAM:
             case EFFECT_CRITICAL_REPAIR:
-            case EFFECT_VIGOR_ROOT:
                 score -= 2;
                 break;
             case EFFECT_RESERVOIR:
@@ -7484,16 +7507,6 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_MIND_READER:
             case EFFECT_STALAG_BLAST:
                 score -= 2;
-                break;
-            case EFFECT_CANNONADE:
-                score--;
-                break;
-            case EFFECT_TICK_TACK:
-            case EFFECT_ODOR_SLEUTH:
-                score += 2;
-                break;
-            case EFFECT_VIGOR_ROOT:
-                score += 8;
                 break;
             default:
                 break;

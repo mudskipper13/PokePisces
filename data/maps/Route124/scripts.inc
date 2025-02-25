@@ -617,8 +617,8 @@ Route124_Text_JulioIntro:
 
 Route124_Text_JulioDefeated:
 	.string "I-I ain't down yet!!\p"
-	.string "(The child begins to shoot you furiously\n"
-	.string "with his gun.)\p"
+	.string "(The child begins to shoot you\n"
+	.string "furiously with his gun.)\p"
 	.string "(This does not change\n"
 	.string "the battle's outcome.)$"
 
