@@ -535,8 +535,8 @@ PrettyPetalsScuttill_Text_Nicole3:
 PrettyPetalsScuttill_Text_Courtney3:
 	.string "You were an excellent student.\n"
 	.string "Grass 'mons are my favorites,\l"
-	.string "you know. I hope this gave you a\l"
-	.string "greater appreciation for what they can do.\p"
+	.string "you know. I hope this gave you a greater\l"
+	.string "appreciation for what they can do.\p"
 	.string "…So, you know Tabitha, right?\p"
 	.string "Him and I used to work together in an\n"
 	.string "organization that, on paper, sought to\l"

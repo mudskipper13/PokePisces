@@ -13596,7 +13596,9 @@ BattleScript_SilenceRet::
 	end2
 
 BattleScript_SilenceActivatesNonArcane::
+	jumpifnotbattletype BATTLE_TYPE_TRAINER, BattleScript_SilenceContinueWithoutIncrementingGameStat
 	incrementgamestat GAME_STAT_SILENCE_ACTIVATED
+BattleScript_SilenceContinueWithoutIncrementingGameStat::
 	playanimation BS_BATTLER_0, B_ANIM_SILENCE
 	jumpifspecies BS_ATTACKER, SPECIES_INFAIRNO, BattleScript_SilenceActivatesArcane
 	jumpifspecies BS_ATTACKER, SPECIES_PURGATIVAL, BattleScript_SilenceActivatesArcane
@@ -18358,7 +18360,8 @@ BattleScript_EvilEyeParalysisFlowerVeilPrevented:
 BattleScript_PanicTurn::
 	printstring STRINGID_PKMNSISPANICKED
     waitmessage B_WAIT_TIME_LONG
-    goto BattleScript_DoStatusTurnDmg
+	statusanimation BS_ATTACKER
+	end2
 
 BattleScript_BloomingHpGain::
 	printstring STRINGID_PKMNSISBLOOMING

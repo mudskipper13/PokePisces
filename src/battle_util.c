@@ -3010,9 +3010,9 @@ u8 DoBattlerEndTurnEffects(void)
                     else
                     {
 #if B_SLEEP_TURNS >= GEN_5
-                        gBattleMons[battler].status1 |= ((Random() % 3) + 2);
+                        gBattleMons[battler].status1 |= ((Random() % 2) + 2);
 #else
-                        gBattleMons[battler].status1 |= ((Random() % 4) + 3);
+                        gBattleMons[battler].status1 |= ((Random() % 2) + 2);
 #endif
                         BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                         MarkBattlerForControllerExec(battler);
@@ -3186,8 +3186,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_PANIC:
-            if ((gBattleMons[battler].status1 & STATUS1_PANIC)
-                && gBattleMons[battler].hp != 0)
+            if (gBattleMons[battler].status1 & STATUS1_PANIC && IsBattlerAlive(battler))
             {
                 BattleScriptExecute(BattleScript_PanicTurn);
                 effect++;

@@ -3072,7 +3072,7 @@ static bool32 AI_CanBloomType(u32 battlerAttacker, u32 battlerTarget, u32 move)
     return (!(IS_BATTLER_OF_TYPE(battlerTarget, TYPE_FIRE)));
 }
 
-static bool32 AI_CanBloom(u32 battlerAtk, u32 battlerDef, u32 move)
+bool32 AI_CanBloom(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     u32 ability = AI_DATA->abilities[battlerDef];
 
@@ -3092,7 +3092,6 @@ bool32 ShouldBloomSelf(u32 battler, u32 ability)
     if (AI_CanBloom(battler, battler, 0) && (
      HasMoveEffect(battler, EFFECT_GRIPPING_NAIL)
       || HasMoveEffect(battler, EFFECT_SNAP_TRAP)
-      || HasMoveEffect(battler, EFFECT_VIGOR_ROOT)
       || HasMoveEffect(battler, EFFECT_SEED_BOMB)
       || HasMoveEffect(battler, EFFECT_PETAL_BLIZZARD)
       || HasMoveEffect(battler, EFFECT_SNAPBLOSSOM)

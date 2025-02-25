@@ -297,8 +297,8 @@ OzoneLilycoveHQ_Text_Tabitha1:
 	.string "being that the arctic regions\l"
 	.string "of Hoenn should be focused on.\p"
 	.string "I believe it noble to supply the\n"
-	.string "subzero-dwelling monks and villagegoers\l"
-	.string "with all they need to thrive\l"
+	.string "subzero-dwelling monks and village\l"
+	.string "goers with all they need to thrive\l"
 	.string "in a harsh climate.$"
 
 OzoneLilycoveHQ_Text_Boardroom3:
@@ -492,11 +492,12 @@ OzoneLilycoveHQ_Text_MarinaIntro:
 	.string "You remind me of me when I was your age.$"
 
 OzoneLilycoveHQ_Text_MarinaDefeated:
-	.string "Oh yeah, I was kind of a twerp at your age, too...$"
+	.string "Oh yeah, I was kind of a twerp at your\n"
+	.string "age, too...$"
 
 OzoneLilycoveHQ_Text_MarinaPostBattle:
-	.string "Team Ozone is dedicated to keeping Hoenn\n"
-	.string "in one piece.\p"
+	.string "Team Ozone is dedicated to keeping\n"
+	.string "Hoenn in one piece.\p"
 	.string "Remember that, kid!$"
 
 OzoneLilycoveHQ_Text_NoBusinessHere:
