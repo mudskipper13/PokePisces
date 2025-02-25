@@ -276,9 +276,9 @@ static const struct ListMenuTemplate sItemListMenu =
     .item_X = 8,
     .cursor_X = 0,
     .upText_Y = 1,
-    .cursorPal = 1,
+    .cursorPal = 5,
     .fillValue = 0,
-    .cursorShadowPal = 3,
+    .cursorShadowPal = 2,
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
@@ -413,9 +413,9 @@ enum {
 };
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
-    [COLORID_NORMAL]      = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
-    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_RED},
-    [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_GREEN},
+    [COLORID_NORMAL]      = {TEXT_COLOR_TRANSPARENT, 5,                     2},
+    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, 5,                     2},
+    [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, 6,                     3},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
     [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5,  TEXT_DYNAMIC_COLOR_1}
 };
@@ -428,7 +428,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 2,
         .width = 15,
         .height = 16,
-        .paletteNum = 1,
+        .paletteNum = 0,
         .baseBlock = 0x27,
     },
     [WIN_DESCRIPTION] = {
@@ -437,7 +437,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 13,
         .width = 14,
         .height = 6,
-        .paletteNum = 1,
+        .paletteNum = 0,
         .baseBlock = 0x117,
     },
     [WIN_POCKET_NAME] = {
@@ -446,7 +446,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 1,
         .width = 8,
         .height = 2,
-        .paletteNum = 1,
+        .paletteNum = 0,
         .baseBlock = 0x1A1,
     },
     [WIN_TMHM_INFO_ICONS] = {
@@ -769,9 +769,6 @@ static bool8 SetupBagMenu(void)
     case 13:
         PrintPocketNames(gPocketNamesStringsTable[gBagPosition.pocket], 0);
         CopyPocketNameToWindow(0);
-        //DrawPocketIndicatorSquare(0, FALSE);
-        //DrawPocketIndicatorSquare(1, FALSE);
-        //DrawPocketIndicatorSquare(6, FALSE);
         DrawPocketIndicatorSquare(gBagPosition.pocket, TRUE);
         gMain.state++;
         break;
@@ -850,9 +847,9 @@ static bool8 LoadBagMenu_Graphics(void)
         break;
     case 2:
         if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
-            LoadCompressedPalette(gBagScreenFemale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+            LoadCompressedPalette(gBagScreenFemale_Pal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         else
-            LoadCompressedPalette(gBagScreenMale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+            LoadCompressedPalette(gBagScreenMale_Pal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         gBagMenu->graphicsLoadState++;
         break;
     case 3:
@@ -1485,9 +1482,9 @@ static void DrawPocketIndicatorSquare(u8 pocket, bool8 isCurrentPocket)
         pocket -= 1;    // filter out TMHM_POCKET
     
     if (!isCurrentPocket)
-        FillBgTilemapBufferRect_Palette0(2, 0x1017, pocket + 4, 3, 1, 1);
+        FillBgTilemapBufferRect(2, 0x1017, pocket + 5, 3, 1, 1, 0);
     else
-        FillBgTilemapBufferRect_Palette0(2, 0x102B, pocket + 4, 3, 1, 1);
+        FillBgTilemapBufferRect(2, 0x102B, pocket + 5, 3, 1, 1, 0);
     ScheduleBgCopyTilemapToVram(2);
 }
 
