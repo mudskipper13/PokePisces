@@ -573,7 +573,7 @@
       "y": 28,
       "elevation": 0,
       "var": "VAR_MINES_MERALCORE_STATE",
-      "var_value": "1",
+      "var_value": "2",
       "script": "TheColdMines_EventScript_MeddlingElectrician"
     },
     {
@@ -582,7 +582,7 @@
       "y": 27,
       "elevation": 0,
       "var": "VAR_MINES_MERALCORE_STATE",
-      "var_value": "1",
+      "var_value": "2",
       "script": "TheColdMines_EventScript_MeddlingElectrician"
     }
   ],
