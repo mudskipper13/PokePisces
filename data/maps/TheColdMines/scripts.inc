@@ -32,6 +32,8 @@ TheColdMines_OnFrame:
 	.2byte 0
 
 TheColdMines_OnLoad:
+	call_if_set FLAG_TEMP_1B, TheColdMines_EventScript_RemoveTape1
+	call_if_set FLAG_TEMP_1B, TheColdMines_EventScript_RemoveTape2
 	call_if_lt VAR_OZONE_ADMINS_STATE, 3, TheColdMines_EventScript_RemoveTabitha
 	call_if_gt VAR_OZONE_ADMINS_STATE, 3, TheColdMines_EventScript_ReplaceSouthSnow
 	call_if_gt VAR_OZONE_ADMINS_STATE, 4, TheColdMines_EventScript_ReplaceNorthSnow
@@ -264,6 +266,22 @@ TheColdMines_EventScript_RemoveMeralcorePuzzle3::
 	setmetatile 44, 10, METATILE_Snow_MeralSnow, FALSE
 	setmetatile 45, 10, METATILE_Snow_MeralSnow, FALSE
 	setmetatile 43, 10, METATILE_Snow_MeralSnow, FALSE
+	special DrawWholeMapView
+	return
+
+TheColdMines_EventScript_RemoveTape1::
+	setmetatile 22, 17, METATILE_Snow_ColdMineRightCliff, TRUE
+	setmetatile 23, 17, METATILE_Snow_ColdMineFloor, FALSE
+	setmetatile 24, 17, METATILE_Snow_ColdMineFloor, FALSE
+	setmetatile 25, 17, METATILE_Snow_ColdMineLeftCliff, TRUE
+	special DrawWholeMapView
+	return
+
+TheColdMines_EventScript_RemoveTape2::
+	setmetatile 8, 18, METATILE_Snow_ColdMineRightCliff, TRUE
+	setmetatile 9, 18, METATILE_Snow_ColdMineFloor, FALSE
+	setmetatile 10, 18, METATILE_Snow_ColdMineFloor, FALSE
+	setmetatile 11, 18, METATILE_Snow_ColdMineLeftCliff, TRUE
 	special DrawWholeMapView
 	return
 
@@ -789,6 +807,7 @@ TheColdMines_EventScript_ClearedPuzzle2Part1::
 	waitse
 	setvar VAR_TEMP_4, 0
 	playse SE_SUCCESS
+	setvar VAR_MINES_MERALCORE_STATE, 2
 	release
 	end
 
@@ -1474,11 +1493,16 @@ TheColdMines_EventScript_M13SetOffM12::
 
 TheColdMines_EventScript_MeddlingElectrician::
 	lock
+	goto_if_set FLAG_ACTIVATED_COLD_MINES_ELECTRICIAN, TheColdMines_EventScript_ReleaseOut
 	applymovement LOCALID_ELECTRICIAN, TheColdMines_Movement_WalkUpToMeral
 	waitmovement 0
-	setvar VAR_MINES_MERALCORE_STATE, 2
+	setflag FLAG_ACTIVATED_COLD_MINES_ELECTRICIAN
 	msgbox TheColdMines_Text_WhatIsThisThing, MSGBOX_AUTOCLOSE
 	goto TheColdMines_EventScript_M13Interact
+	release
+	end
+
+TheColdMines_EventScript_ReleaseOut::
 	release
 	end
 
