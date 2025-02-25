@@ -2339,10 +2339,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     score -= 4;
             }
             break;
-        case EFFECT_GREEN_GUISE:
-            if (gBattleMons[battlerAtk].status1 & STATUS1_ANY)
-                score -= 8;
-            break;
         case EFFECT_COPYCAT:
         case EFFECT_MIRROR_MOVE:
             return AI_CheckBadMove(battlerAtk, battlerDef, predictedMove, score);
@@ -5581,10 +5577,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score += 2;
         }
         break;
-    case EFFECT_GREEN_GUISE:
-        if (!(gBattleMons[battlerAtk].status1 & STATUS1_ANY))
-            score += 6;
-        break;
     case EFFECT_GRASS_CANNON:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
             score += 2;
@@ -7198,7 +7190,6 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_DEEP_GAZE:
     case EFFECT_ENERVATOR:
     case EFFECT_HEAVY_CELL:
-    case EFFECT_GREEN_GUISE:
     case EFFECT_COTTON_SPORE:
     case EFFECT_FLORESCENCE:
     case EFFECT_SPIRIT_AWAY:
