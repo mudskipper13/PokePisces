@@ -2172,7 +2172,7 @@ TheColdMines_EventScript_M20SetOffM19::
 
 TheColdMines_EventScript_CautionTape1::
 	lock
-	goto_if_set FLAG_TEMP_1B, TheColdMines_EventScript_CantCut
+	goto_if_set FLAG_TEMP_1B, TheColdMines_EventScript_AlreadyCut
 	msgbox TheColdMines_Text_ThereIsTape, MSGBOX_DEFAULT
 	goto_if_unset FLAG_BADGE03_GET, TheColdMines_EventScript_CantCut
 	checkpartymove MOVE_CUT
@@ -2184,6 +2184,11 @@ TheColdMines_EventScript_CautionTape1::
 
 TheColdMines_EventScript_CantCut::
 	msgbox TheColdMines_Text_NoCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+TheColdMines_EventScript_AlreadyCut::
+	msgbox TheColdMines_Text_AlreadyCut, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -2201,7 +2206,7 @@ TheColdMines_EventScript_CutTape1::
 
 TheColdMines_EventScript_CautionTape2::
 	lock
-	goto_if_set FLAG_TEMP_1C, TheColdMines_EventScript_CantCut
+	goto_if_set FLAG_TEMP_1C, TheColdMines_EventScript_AlreadyCut
 	msgbox TheColdMines_Text_ThereIsTape, MSGBOX_DEFAULT
 	goto_if_unset FLAG_BADGE03_GET, TheColdMines_EventScript_CantCut
 	checkpartymove MOVE_CUT
@@ -2446,28 +2451,38 @@ TheColdMines_Text_WeWillTakeCareOfThis:
 	.string "Tell her I sent you.$"
 
 TheColdMines_Text_ThereIsMeralcore:
-	.string "It's a road-blocking Meralcore.\n"
+	.string "(It's a road-blocking Meralcore.\n"
 	.string "The icy shell courses with\l"
-	.string "electricity...$"
+	.string "electricity...)$"
 
 TheColdMines_Text_WantToUseFlash:
-	.string "Would you like to use Flash\n"
-	.string "to direct its current?$"
+	.string "(Would you like to use Flash\n"
+	.string "to direct its current?)$"
 
 TheColdMines_Text_NoFlash:
-	.string "no flash tho$"
+	.string "(Perhaps a Pokemon that can use\n"
+	.string "the Flash field move could\l"
+	.string "direct its current...)$"
 
 TheColdMines_Text_OnceWasMeralcore:
-	.string "once was a meral here$"
+	.string "(There was once a Meralcore in\n"
+	.string "this position...)$"
 
 TheColdMines_Text_WhatIsThisThing:
-	.string "what in tarnation$"
+	.string "What in tarnation was that\n"
+	.string "just now!?$"
 
 TheColdMines_Text_ThereIsTape:
-	.string "there is tape here$"
+	.string "(This caution tape is blocking\n"
+	.string "your path.)$"
 
 TheColdMines_Text_WantToUseCut:
-	.string "wanna cut it$"
+	.string "(Would you like to have one of\n"
+	.string "your Pokemon cut down this tape?)$"
 
 TheColdMines_Text_NoCut:
-	.string "no cut$"
+	.string "(You have no means of cutting\n"
+	.string "down the tape...)$"
+
+TheColdMines_Text_AlreadyCut:
+	.string "(The path is now open.)$"

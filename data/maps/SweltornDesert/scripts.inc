@@ -494,28 +494,76 @@ SweltornDesert_Text_DottyPostBattle:
 	.string "post$"
 
 SweltornDesert_Text_NameMatt:
-	.string "$"
+	.string "Matt$"
 
 SweltornDesert_Text_IsThatYou:
-	.string "$"
+	.string "Aye, is that that trainer\n"
+	.string "that whooped my butt at Lilycove?\p"
+	.string "Gaha! It is! Get on over here\n"
+	.string "real quick. I won't bite!$"
 
 SweltornDesert_Text_BeenSpelunking:
-	.string "$"
+	.string "I've been spelunking in Sweltorn\n"
+	.string "Palace all day! Sweatin' my\l"
+	.string "ASS off, I'll tell you that!\l"
+	.string "But, it's been a blast piecing\l"
+	.string "together its history.\p"
+	.string "The people that live here in the\n"
+	.string "desert get a lot of their money\l"
+	.string "from research grants. And I find\l"
+	.string "the archaeology real damned cool!\l"
+	.string "So I push to get 'em funded\l"
+	.string "whenever I can.\p"
+	.string "That crudmuncher Tabitha could\n"
+	.string "never understand my thought\l"
+	.string "process on it. Hey, at least I'm\l"
+	.string "rid of that chump. Archie\l"
+	.string "teared me a new one for the\l"
+	.string "splintering, but in the end I\l"
+	.string "got what I wanted!$"
 
 SweltornDesert_Text_MattIntro:
-	.string "$"
+	.string "And you know what? When we battled\n"
+	.string "the first time with you as a team?\l"
+	.string "That didn't let me show off\l"
+	.string "jack all about my true skillset!\l"
+	.string "I promise you that!\p"
+	.string "I've half a mind to re-battle you!\n"
+	.string "...Make that full a mind!\l"
+	.string "Let's have at it!$"
 
 SweltornDesert_Text_MattDefeated:
-	.string "$"
+	.string "Offed even on my own!\n"
+	.string "You sure as hell ain't\l"
+	.string "no pipsqueak!$"
 
 SweltornDesert_Text_GoodBattleIllMoveMyGuys:
-	.string "$"
+	.string "That really fired me up!\n"
+	.string "Thanks for the good battle.\l"
+	.string "You're something else!\p"
+	.string "Check out the palace if you're\n"
+	.string "in the mood to spelunk.\l"
+	.string "The craftsmanship is unreal!\l"
+	.string "Anyways, I've gotta get going.\l"
+	.string "My squad's waitin' for me at\l"
+	.string "the southern gate. See ya!$"
 
 SweltornDesert_Text_OzoneRoadblocker1:
-	.string "$"
+	.string "Matt was always the spacier,\n"
+	.string "looser one of our department's\l"
+	.string "old admins. Since the splinter,\l"
+	.string "I went with him. I like not being\l"
+	.string "micromanaged but, like, he\l"
+	.string "needs to stick to SOME\l"
+	.string "time schedule someday...$"
 
 SweltornDesert_Text_OzoneRoadblocker2:
-	.string "$"
+	.string "Where's our manager gone off to?\p"
+	.string "Ehh. He probably got distracted\n"
+	.string "by Sweltorn Palace yet again.\l"
+	.string "The guy practically lives in there.$"
 
 SweltornDesert_Text_OzoneRoadblocker3:
-	.string "$"
+	.string "Sorry, can't really afford letting\n"
+	.string "people through the gate without\l"
+	.string "the admin's approval.$"

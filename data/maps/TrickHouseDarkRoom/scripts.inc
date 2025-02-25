@@ -208,15 +208,24 @@ TrickHouseDarkRoom_EventScript_ExplodePart7::
 	return
 
 TrickHouseDarkRoom_Text_AntonIntro:
-	.string "You want it? It's yours.$"
+	.string "HEY! YOU!\n"
+	.string "THIS IS MY CAVE!\l"
+	.string "SEEIN' SOMEONE IN HERE\l"
+	.string "THAT AIN'T ALLOWED...\p"
+	.string "IT MAKES ME WANT TO\n"
+	.string "BLOW THE HECK UP!$"
 
 TrickHouseDarkRoom_Text_AntonDefeated:
-	.string "Bombs!?$"
+	.string "NOW I'M EVEN ANGRIER..!!!$"
 
 TrickHouseDarkRoom_Text_AntonBlowUp:
-	.string "Come back when you're a little...\n"
-	.string "mmm...\l"
-	.string "richer!$"
+	.string "...\p"
+	.string "I WAS BORN TO BLAST!\n"
+	.string "AND IMMA DO JUST THAT!\p"
+	.string "NO ONE...\n"
+	.string "COMES INTO...\l"
+	.string "MY...\l"
+	.string "ROOOOOOOOOOOOOOOOOOOOOOM!!!$"
 
 TrickHouseDarkRoom_Text_ScrollC:
 	.string "(It's a scroll with odd\n"

@@ -33,6 +33,22 @@ MauvilleNew_EventScript_Kizuna::
 	msgbox MauvilleNew_Text_LookingForClues, MSGBOX_NPC
     end
 
+MauvilleNew_EventScript_Clue1::
+	msgbox MauvilleNew_Text_Clue1, MSGBOX_NPC
+    end
+
+MauvilleNew_EventScript_Clue2::
+	msgbox MauvilleNew_Text_Clue2, MSGBOX_NPC
+    end
+
+MauvilleNew_EventScript_Clue3::
+	msgbox MauvilleNew_Text_Clue3, MSGBOX_NPC
+    end
+
+MauvilleNew_EventScript_Clue4::
+	msgbox MauvilleNew_Text_Clue4, MSGBOX_NPC
+    end
+
 MauvilleNew_EventScript_MrBonding::
 	lock
 	faceplayer
@@ -342,7 +358,52 @@ MauvilleNew_Text_NameMrBonding:
 	.string "Mr. Bonding$"
 
 MauvilleNew_Text_LookingForClues:
-	.string "lookin for clues$"
+	.string "I've been asking anyone who\n"
+	.string "will listen. But I got nothing.\l"
+	.string "Let's try and pry for info.$"
+
+MauvilleNew_Text_Clue1:
+	.string "I've been really wanting\n"
+	.string "to explore the Trick House!\l"
+	.string "I hear its like an indoor\l"
+	.string "theme park. The Trick Master,\l"
+	.string "Giddy, keeps a tight lip on its\l"
+	.string "location, though.\p"
+	.string "I've at least heard that it's\n"
+	.string "nearby New Mauville.$"
+
+MauvilleNew_Text_Clue2:
+	.string "The Trick House? Yeah, I've been.\n"
+	.string "But ol' Giddy doesn't like\l"
+	.string "people revealing the location.\l"
+	.string "He says it's like the puzzle\l"
+	.string "before the puzzle, or whatever.\p"
+	.string "I'll give you a hint.\n"
+	.string "From the front door, you can\l"
+	.string "smell fresh crops.$"
+
+MauvilleNew_Text_Clue3:
+	.string "I live in an apartment on the\n"
+	.string "west side of New Mauville.\l"
+	.string "And I tell you, I sometimes\l"
+	.string "hear the darndest noises.\l"
+	.string "It's like there's some carnival\l"
+	.string "going on just outside of the city!\p"
+	.string "But I haven't heard of any\n"
+	.string "travelling circus coming near\l"
+	.string "New Mauville in some time.\l"
+	.string "Curious...$"
+
+MauvilleNew_Text_Clue4:
+	.string "That old nutjob Giddy sometimes\n"
+	.string "shops for props in the mall.\p"
+	.string "I often see him with tree bristles\n"
+	.string "stuck into his outfit.\l"
+	.string "Either that's his fashion sense,\l"
+	.string "or he has to brush past a lot\l"
+	.string "of trees to make it here\l"
+	.string "from his house.\p"
+	.string "Either is likely.$"
 
 MauvilleNew_Text_YouHaveArrived:
 	.string "you have arrived$"

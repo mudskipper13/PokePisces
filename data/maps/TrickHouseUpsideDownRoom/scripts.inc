@@ -50,7 +50,6 @@ TrickHouseUpsideDownRoom_EventScript_BreadEncounter::
 	applymovement LOCALID_PANDOU, TrickHouseUpsideDownRoom_Movement_BumpIntoPlayer
 	waitmovement 0
 	msgbox TrickHouseUpsideDownRoom_Text_WhatIsGoingOn, MSGBOX_DEFAULT
-	msgbox TrickHouseUpsideDownRoom_Text_BreadwinnerIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_P_PANDOU_4, TrickHouseUpsideDownRoom_Text_BreadwinnerDefeat
 	goto TrickHouseUpsideDownRoom_EventScript_BreadRun
 	release
@@ -95,16 +94,23 @@ TrickHouseUpsideDownRoom_Text_NamePandou:
 	.string "Pandou$"
 
 TrickHouseUpsideDownRoom_Text_WhatIsGoingOn:
-	.string "What DA HELL IS GOIN ON$"
+	.string "How did I even get here!?\p"
+	.string "How did YOU even get here!?!?\p"
+	.string "WHAT is going on!?!?!?$"
 
 TrickHouseUpsideDownRoom_Text_BreadwinnerIntro:
-	.string "?????$"
+	.string "Still NO ANSWERS!$"
 
 TrickHouseUpsideDownRoom_Text_BreadwinnerDefeat:
-	.string "INTERROBANG$"
+	.string "Still NO ANSWERS!$"
 
 TrickHouseUpsideDownRoom_Text_IGottaGo:
-	.string "GOTTA JET????$"
+	.string "...This is a nightmare, i-isn't it?\n"
+	.string "That's the only explanation\l"
+	.string "that m-makes sense...\p"
+	.string "I'll wake up soon...\n"
+	.string "I'll w-wake up soon...\l"
+	.string "...please...$"
 
 TrickHouseUpsideDownRoom_Text_ScrollB:
 	.string "(It's a scroll with odd\n"

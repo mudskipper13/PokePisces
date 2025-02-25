@@ -185,13 +185,23 @@ PerplumeMaze_Text_NamePandou:
 	.string "Pandou$"
 
 PerplumeMaze_Text_BreadwinnerIntro:
-	.string "$"
+	.string "...Sigh...\p"
+	.string "I-I surmise I can't b-bargain\n"
+	.string "with you to not b-battle me again?\p"
+	.string "We both know you're s-stronger...!\n"
+	.string "You'd just be w-wasting both\l"
+	.string "of our valuable time!\p"
+	.string "And I h-have to get to wo-$"
 
 PerplumeMaze_Text_BreadwinnerDefeat:
-	.string "$"
+	.string "(He's frantically looking\n"
+	.string "at his watch.)\p"
+	.string "This won't d-do...!$"
 
 PerplumeMaze_Text_BreadwinnerRunAway:
-	.string "$"
+	.string "S-So that's how it's going\n"
+	.string "to be, huh...\p"
+	.string "Oy, vey...$"
 
 PerplumeMaze_Text_KitikitiFound:
 	.string "(You've found one of\n"

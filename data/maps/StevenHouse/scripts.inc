@@ -102,7 +102,7 @@ StevenHouse_Text_Pondering:
 	.string "your momentum. If… and only if… you\l"
 	.string "get to a champion power level…\p"
 	.string "I will bring you along a very…\n"
-	.string "special voyage.$"
+	.string "special voyage.\p"
 	.string "To that end, here is a\n"
 	.string "deal I'll make you.\p"
 	.string "Challenge the Mossdeep Gym,\n"

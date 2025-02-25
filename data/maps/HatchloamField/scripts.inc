@@ -235,28 +235,71 @@ HatchloamField_Text_LexAndTrishNeedTwoMons:
 	.string "need 2 dood$"
 
 HatchloamField_Text_NameCourtney:
-	.string "$"
+	.string "Courtney$"
 
 HatchloamField_Text_NiceToSeeYou:
-	.string "$"
+	.string "Welcome to Hatchloam Field,\n"
+	.string "{PLAYER}. It's nice to see\l"
+	.string "you again! I hope you've\l"
+	.string "been well.\p"
+	.string "I must tell you, watching you\n"
+	.string "taking on the sisters at\l"
+	.string "Pretty Petals really made me want\l"
+	.string "to pick up battling again.\p"
+	.string "I'm a bit rusty, but I'd like\n"
+	.string "to try out my team on you.\l"
+	.string "Does that sound like it'd\l"
+	.string "be up your alley?$"
 
 HatchloamField_Text_ThatsTooBad:
-	.string "$"
+	.string "That's too bad. Come talk\n"
+	.string "to me again if you change your mind.\l"
+	.string "Oh, and check out the berry shop\l"
+	.string "in the farmhouse too!$"
 
 HatchloamField_Text_CourtneyIntro:
-	.string "$"
+	.string "Excellent! Here goes nothing!$"
 
 HatchloamField_Text_CourtneyDefeated:
-	.string "$"
+	.string "I'll concede defeat.\n"
+	.string "I'm still far too rusty...$"
 
 HatchloamField_Text_ThatWasFun:
-	.string "$"
+	.string "I had a good time! Ever since\n"
+	.string "leaving Team Magma, I hung\l"
+	.string "up my trainer's cap, so to speak.\l"
+	.string "It feels nice to battle for fun\l"
+	.string "instead of for... them.$"
 
 HatchloamField_Text_IllStockNewBerries:
-	.string "$"
+	.string "I will tell Teala to offer you\n"
+	.string "the more deluxe selection of\l"
+	.string "berries the next time you are\l"
+	.string "in the shop, since I consider\l"
+	.string "you a friend.\l"
+	.string "It's my pleasure.\p"
+	.string "...Oh? Have you been looking\n"
+	.string "for the Trick House? I see.\l"
+	.string "Well, Giddy had made me promise\l"
+	.string "to zip my lips, but...\p"
+	.string "...I'll let the secret slip.\n"
+	.string "If you squeeze through the pine\l"
+	.string "trees at the north end of\l"
+	.string "the farm, there is a secret\l"
+	.string "passage leading to the\l"
+	.string "Trick House. But you didn't\l"
+	.string "hear that from me!$"
 
 HatchloamField_Text_TrickHouseIsNorth:
-	.string "$"
+	.string "If you squeeze through the pine\n"
+	.string "trees at the north end of\l"
+	.string "the farm, there is a secret\l"
+	.string "passage leading to the\l"
+	.string "Trick House. But you didn't\l"
+	.string "hear that from me!$"
 
 HatchloamField_Text_HowIsYourJourney:
-	.string "$"
+	.string "How has your journey been\n"
+	.string "treating you, {PLAYER}?\p"
+	.string "The harvest has been bountiful\n"
+	.string "this year. I'm very thankful!$"

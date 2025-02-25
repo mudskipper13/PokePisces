@@ -248,23 +248,33 @@ TrickHouseLeverRooms_Text_DavidPostBattle:
 	.string "post$"
 
 TrickHouseLeverRooms_Text_YouFoundOil:
-	.string "found oil\n"
-	.string "you are the u.s. government now$"
+	.string "(You found a can of oil!)$"
 
 TrickHouseLeverRooms_Text_ThisLeverNeedsOil:
-	.string "needs oil$"
+	.string "Fixing to fix this lever?\n"
+	.string "I've been tryin'. But I'm going\l"
+	.string "to need some good oil to\l"
+	.string "do it.\p"
+	.string "Could've swore I had some with\n"
+	.string "me... did I drop it in this room?$"
 
 TrickHouseLeverRooms_Text_GoOnHitLever:
-	.string "go on hit it$"
+	.string "Lever is oiled up and ready to go!\n"
+	.string "Go on and swing it.$"
 
 TrickHouseLeverRooms_Text_OhImSorry:
-	.string "oh my b$"
+	.string "Oh, you wanted the lever\n"
+	.string "to stay activated?\l"
+	.string "My bad. I'll wait to reset\l"
+	.string "it longer this time.$"
 
 TrickHouseLeverRooms_Text_YouCanFeelSafeNow:
-	.string "you feel safe now$"
+	.string "Again, my bad. Feel free\n"
+	.string "to hit the lever again,\l"
+	.string "I promise I'll wait.$"
 
 TrickHouseLeverRooms_Text_LeverJammed:
-	.string "lever is jammed$"
+	.string "(This lever won't budge...)$"
 
 TrickHouseLeverRooms_Text_ScrollA:
 	.string "(It's a scroll with odd\n"
